@@ -1,2 +1,5 @@
 *.exe
 *.txt
+
+# Compiled code
+template
