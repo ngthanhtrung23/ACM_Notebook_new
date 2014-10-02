@@ -1,4 +1,8 @@
 // Gomory Hu tree - calculate cut between every pair of vertices
+// Applictions:
+// - http://codeforces.com/contest/343/problem/E
+// - http://vn.spoj.com/problems/MCQUERY/
+
 int ok[1000], saveCap[1000][1000], qu[1000];
 int answer[1000][1000], parent[1000];
 void bfs(int start) {
