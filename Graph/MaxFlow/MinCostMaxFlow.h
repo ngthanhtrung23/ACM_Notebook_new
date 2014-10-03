@@ -1,12 +1,20 @@
 /*
  * mincostflow implementation. Vertex indices from 0
  * ex usage: for i = 1..N: int v = mcf.addV();
- * for i = 1..E: MinCostFlow<int,int>::Edge* e = mcf.addEdge(...);
+ * for i = 1..E: MinCostFlow<int,int>::Edge* e = mcf.addEdge(u, v, flow, cost);
+ * returns: pair<flow, cost>
+ * DANGEROUS!!!!!!! If need to find flow through each edge, remember that there can
+ * be flow through both (u, v) and (v, u)
  */
+
+// Implementation note: this is implemented using Ford Fulkerson algorithm
+// for augmenting path. It could be improved by using Dijkstra (read TC tutorial on how
+// to handle negative edges)
 
 #define _MAX_COST INT_MAX
 #define _MAX_FLOW INT_MAX
 
+// Must be careful when used with double.
 template<class Flow = int, class Cost = int>
 struct MinCostFlow {
     struct Edge {
@@ -70,7 +78,7 @@ struct MinCostFlow {
                     }
             }
 
-            if (dist[vt] == MAX_COST)
+            if (dist[vt] == MAX_COST) // careful with double
                 break;
             Flow by = am[vt];
             int u = vt;
