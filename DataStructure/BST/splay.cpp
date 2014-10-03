@@ -14,11 +14,13 @@ int initTree() { // Must be called at the start of program
 }
 int ensureInit = initTree();
 
+// For updating node's value based on children (sum, min, max...)
 void update(Node *x) {
     if (x == nil) return ;
     x->size = x->child[0]->size + x->child[1]->size + 1;
 }
 
+// For pushing down lazy update values
 void refine(Node *x) {
     if (x == nil) return ;
 }
