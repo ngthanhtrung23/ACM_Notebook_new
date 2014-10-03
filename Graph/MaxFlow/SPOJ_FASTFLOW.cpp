@@ -1,3 +1,4 @@
+// Accepted
 #include <set>
 #include <map>
 #include <list>
@@ -120,6 +121,7 @@ struct PushRelabel {
 };
 
 int main() {
+    ios :: sync_with_stdio(false);
     int n, m, s, t;
     cin >> n >> m; s = 1; t = n;
     --s; --t;

@@ -1,3 +1,4 @@
+// Accepted
 #include <set>
 #include <map>
 #include <list>
@@ -120,6 +121,7 @@ struct PushRelabel {
 };
 
 int main() {
+    ios :: sync_with_stdio(false);
     int n, m, s, t;
     cin >> n >> m >> s >> t;
     --s; --t;
@@ -128,7 +130,7 @@ int main() {
         int u, v, c; cin >> u >> v >> c;
         --u; --v;
         flow.AddEdge(u, v, c);
-        flow.AddEdge(v, u, c);
+        // flow.AddEdge(v, u, c);
     }
     cout << flow.GetMaxFlow(s, t) << endl;
 }
