@@ -54,3 +54,9 @@ vector<Point> intersection(Line l, Circle cir) {
         return res;
     }
 }
+
+// Given 2 circles: (0, 0, r) and (x2, y2, r2)
+// Intersections are intersections with line Ax + By + C where
+// A = -2 * x2
+// B = -2 * y2
+// C = x2^2 + y2^2 + r^2 - r2^2

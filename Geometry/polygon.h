@@ -26,6 +26,7 @@ Polygon convex_hull(Polygon p) { // minimum vertices
     return r;
 }
 
+// Area, perimeter, centroid
 double signed_area(Polygon p) {
     double area = 0;
     for(int i = 0; i < p.size(); i++) {
@@ -186,3 +187,10 @@ pair<Point,Point> closestPair(vector<Point> p) {
     // Source: e-maxx.ru
     return make_pair(Point(0, 0), Point(0, 0));
 }
+
+// Pick theorem
+// Given non-intersecting polygon.
+// S = area
+// I = number of integer points strictly Inside
+// B = number of points on sides of polygon
+// S = I + B/2 - 1
