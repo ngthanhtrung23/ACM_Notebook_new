@@ -1,10 +1,16 @@
 struct Circle : Point {
-    long double r;
+    double r;
+    Circle(double x = 0, double y = 0, double r = 0) : Point(x, y), r(r) {}
 };
-void tangents(Point c, long double r1, long double r2, vector<Line> & ans) {
-    long double r = r2 - r1;
-    long double z = sqr(c.x) + sqr(c.y);
-    long double d = z - sqr(r);
+// Find common tangents to 2 circles
+// Also works when one / both of circle degenerate into point --> can also be used
+// for finding tangents to a circle
+
+// This is just a helper method
+void tangents(Point c, double r1, double r2, vector<Line> & ans) {
+    double r = r2 - r1;
+    double z = sqr(c.x) + sqr(c.y);
+    double d = z - sqr(r);
     if (d < -EPS)  return;
     d = sqrt(fabs(d));
     Line l((c.x * r + c.y * d) / z,
@@ -12,6 +18,7 @@ void tangents(Point c, long double r1, long double r2, vector<Line> & ans) {
             r1);
     ans.push_back(l);
 }
+// Actual method: returns vector containing all common tangents
 vector<Line> tangents(Circle a, Circle b) {
     vector<Line> ans; ans.clear();
     for (int i=-1; i<=1; i+=2)
@@ -21,30 +28,29 @@ vector<Line> tangents(Circle a, Circle b) {
         ans[i].c -= ans[i].a * a.x + ans[i].b * a.y;
     return ans;
 }
-int intersection(Line l, Circle cir, Point &A, Point &B) {
-    long double r, a, b, c;
-    r = cir.r;
-    a = l.a;
-    b = l.b;
-    c = l.c + l.a*cir.x + l.b*cir.y;
 
-    long double x0 = -a*c/(a*a+b*b),  y0 = -b*c/(a*a+b*b);
-    if (c*c > r*r*(a*a+b*b)+EPS) return 0;
+// Circle & line intersection
+vector<Point> intersection(Line l, Circle cir) {
+    double r = cir.r, a = l.a, b = l.b, c = l.c + l.a*cir.x + l.b*cir.y;
+    vector<Point> res;
+
+    double x0 = -a*c/(a*a+b*b),  y0 = -b*c/(a*a+b*b);
+    if (c*c > r*r*(a*a+b*b)+EPS) return res;
     else if (fabs(c*c - r*r*(a*a+b*b)) < EPS) {
-        A = Point(x0, y0) + Point(cir.x, cir.y);
-        return 1;
+        res.push_back(Point(x0, y0) + Point(cir.x, cir.y));
+        return res;
     }
     else {
-        long double d = r*r - c*c/(a*a+b*b);
-        long double mult = sqrt (d / (a*a+b*b));
-        long double ax,ay,bx,by;
+        double d = r*r - c*c/(a*a+b*b);
+        double mult = sqrt (d / (a*a+b*b));
+        double ax,ay,bx,by;
         ax = x0 + b * mult;
         bx = x0 - b * mult;
         ay = y0 - a * mult;
         by = y0 + a * mult;
 
-        A = Point(ax, ay) + Point(cir.x, cir.y);
-        B = Point(bx, by) + Point(cir.x, cir.y);
-        return 2;
+        res.push_back(Point(ax, ay) + Point(cir.x, cir.y));
+        res.push_back(Point(bx, by) + Point(cir.x, cir.y));
+        return res;
     }
 }
