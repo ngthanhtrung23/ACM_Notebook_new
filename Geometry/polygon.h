@@ -34,7 +34,7 @@ double signed_area(Polygon p) {
     }
     return area / 2.0;
 }
-double area(Polygon p) {
+double area(const Polygon &p) {
     return fabs(signed_area(p));
 }
 Point centroid(Polygon p) {
@@ -46,19 +46,42 @@ Point centroid(Polygon p) {
     }
     return c / scale;
 }
+double perimeter(Polygon P) {
+    double res = 0;
+    REP(i,P.size()) {
+        int j = (i + 1) % P.size();
+        res += (P[i] - P[j]).len();
+    }
+    return res;
+}
+// Is convex: checks if polygon is convex. Assume there are no 3 collinear points
+bool is_convex(const Polygon &P) {
+    int sz = (int) P.size();
+    if (sz <= 2) return false;
+    int isLeft = ccw(P[0], P[1], P[2]);
+    for (int i = 1; i < sz; i++)
+        if (ccw(P[i], P[(i+1) % sz], P[(i+2) % sz]) * isLeft < 0)
+            return false;
+    return true;
+}
+
 // Inside polygon: O(N). Works with any polygon
-bool in_polygon(Point pt, const Polygon &P) {
+// Does not work when point is on edge. Should check separately
+bool in_polygon(const Polygon &P, Point pt) {
     if ((int)P.size() == 0) return false;
     double sum = 0;
-    for (int i = 0; i < (int)P.size()-1; i++) {
-        if (ccw(pt, P[i], P[i+1]) > 0)
-            sum += angle(P[i], pt, P[i+1]);
-        else sum -= angle(P[i], pt, P[i+1]); }
+    for (int i = 0; i < (int)P.size(); i++) {
+        Point Pj = P[(i+1) % P.size()];
+        if (ccw(pt, P[i], Pj) > 0)
+            sum += angle(P[i], pt, Pj);
+        else sum -= angle(P[i], pt, Pj);
+    }
     return fabs(fabs(sum) - 2*M_PI) < EPS;
 }
 
 // Check point in convex polygon, O(logN)
 // Source: http://codeforces.com/contest/166/submission/1392387
+// On edge --> false
 #define Det(a,b,c) ((double)(b.x-a.x)*(double)(c.y-a.y)-(double)(b.y-a.y)*(c.x-a.x))
 ;
 bool in_convex(vector<Point>& l, Point p){
@@ -73,10 +96,10 @@ bool in_convex(vector<Point>& l, Point p){
 }
 
 
-// Cut a convex polygon with a line. Returns one half.
+// Cut a polygon with a line. Returns one half.
 // To return the other half, reverse the direction of Line l (by negating l.a, l.b)
 // The line must be formed using 2 points
-Polygon convex_cut(Polygon P, Line l) {
+Polygon polygon_cut(Polygon P, Line l) {
     Polygon Q;
     REP(i,P.size()) {
         Point A = P[i], B = (i == P.size()-1) ? P[0] : P[i+1];
