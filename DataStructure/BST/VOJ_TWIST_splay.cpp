@@ -60,8 +60,8 @@ void refine(Node *x) {
     if (x == nil) return ;
     if (x->reverse) {
         x->reverse = false;
-        x->child[0]->reverse = !x->child[0]->reverse;
-        x->child[1]->reverse = !x->child[1]->reverse;
+        x->child[0]->reverse ^= 1;
+        x->child[1]->reverse ^= 1;
 
         swap(x->child[0], x->child[1]);
     }
@@ -161,6 +161,20 @@ void cut(Node *x, Node * &t1, Node * &t2) {
     update(t1);
 }
 
+// t1 = (1 --> k); t2 = (k+1 --> size)
+void cut(Node * &root, Node * &t1, Node * &t2, int k) {
+    if (k == 0) {
+        t1 = nil;
+        t2 = root;
+    } else if (k == root->size) {
+        t1 = root;
+        t2 = nil;
+    } else {
+        Node *x = access(root, k);
+        cut(x, t1, t2);
+    }
+}
+
 Node *create(int from, int to) {
     if (from > to) return nil;
 
@@ -176,7 +190,6 @@ Node *create(int from, int to) {
 }
 
 int main() {
-    DEBUG(sizeof(Node*) + sizeof(Node));
     ios :: sync_with_stdio(false); cin.tie(NULL);
     int n, q;
     while (cin >> n >> q) {
@@ -185,23 +198,10 @@ int main() {
             int u, v; cin >> u >> v;
             Node *t1, *t2, *t3, *tmp;
 
-            if (v == n) {
-                t2 = root;
-                t3 = nil;
-            } else {
-                tmp = access(root, v);
-                cut(tmp, t2, t3);
-            }
+            cut(root, tmp, t3, v);
+            cut(tmp, t1, t2, u-1);
 
-            if (u == 1) {
-                t1 = nil;
-            }
-            else {
-                tmp = access(t2, u-1);
-                cut(tmp, t1, t2);
-            }
-
-            t2->reverse = !t2->reverse;
+            t2->reverse ^= 1;
             root = join(t1, t2);
             root = join(root, t3);
         }

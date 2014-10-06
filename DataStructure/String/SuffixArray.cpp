@@ -1,3 +1,4 @@
+// O(N*logN) implementation. Should switch to dc3 algo in O(N)
 // Input: a, Output: s. Indices from 1
 void initsuffix() {
      int i,h,x;

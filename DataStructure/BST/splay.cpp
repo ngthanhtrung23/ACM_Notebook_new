@@ -116,5 +116,33 @@ void cut(Node *x, Node * &t1, Node * &t2) {
     update(t1);
 }
 
+// t1 = (1 --> k); t2 = (k+1 --> size)
+void cut(Node * &root, Node * &t1, Node * &t2, int k) {
+    if (k == 0) {
+        t1 = nil;
+        t2 = root;
+    } else if (k == root->size) {
+        t1 = root;
+        t2 = nil;
+    } else {
+        Node *x = access(root, k);
+        cut(x, t1, t2);
+    }
+}
+
+Node *create(int from, int to) {
+    if (from > to) return nil;
+
+    int mid = (from + to) >> 1;
+    Node *p = createNode(mid);
+    Node *left = create(from, mid - 1);
+    Node *right = create(mid + 1, to);
+
+    if (left != nil) setChild(p, left, 0);
+    if (right != nil) setChild(p, right, 1);
+    update(p);
+    return p;
+}
+
 int main() {
 }
