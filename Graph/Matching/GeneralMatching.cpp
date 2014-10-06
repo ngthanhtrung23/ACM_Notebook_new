@@ -1,71 +1,115 @@
-const int MAXN = 411;
-int n;
-vector<int> g[MAXN];
-int match[MAXN], p[MAXN], base[MAXN], q[MAXN];
-bool used[MAXN], blossom[MAXN];
+#include "../../template.h"
 
-int lca(int a, int b) {
-    bool used[MAXN] = { 0 };
-    for(;;) {
-        a = base[a]; used[a] = true;
-        if (match[a] == -1)  break;
-        a = p[match[a]];
+const int maxv = 1000;
+const int maxe = 50000;
+
+// Index from 1
+// Directed
+struct EdmondsLawler {
+    int n, E, start, finish, newRoot, qsize, adj[maxe], next[maxe], last[maxv], mat[maxv], que[maxv], dad[maxv], root[maxv];
+    bool inque[maxv], inpath[maxv], inblossom[maxv];
+
+    void init(int _n) {
+        n = _n; E = 0;
+        FOR(x, 1, n) { last[x] = -1; mat[x] = 0; }
     }
-    for(;;) {
-        b = base[b];
-        if (used[b]) return b;
-        b = p[match[b]];
+    void add(int u, int v) {
+        adj[E] = v; next[E] = last[u]; last[u] = E++;
     }
-}
-void mark_path(int v, int b, int children) {
-    while (base[v] != b) {
-        blossom[base[v]] = blossom[base[match[v]]] = true;
-        p[v] = children; children = match[v]; v = p[match[v]];
+    int lca(int u, int v) {
+        FOR(x,1,n) inpath[x] = false;
+        while (true) {
+            u = root[u];
+            inpath[u] = true;
+            if (u == start) break;
+            u = dad[mat[u]];
+        }
+        while (true) {
+            v = root[v];
+            if (inpath[v]) break;
+            v = dad[mat[v]];
+        }
+        return v;
     }
-}
-int find_path(int root) {
-    memset(used, 0, sizeof used); memset(p, -1, sizeof p);
-    REP(i,n) base[i] = i;
-    used[root] = true;
-    int qh=0, qt=0;
-    q[qt++] = root;
-    while (qh < qt) {
-        int v = q[qh++];
-        REP(i,g[v].size()) {
-            int to = g[v][i];
-            if (base[v] == base[to] || match[v] == to)  continue;
-            if (to == root || match[to] != -1 && p[match[to]] != -1) {
-                int curbase = lca (v, to);
-                memset (blossom, 0, sizeof blossom);
-                mark_path (v, curbase, to); mark_path (to, curbase, v);
-                REP(i,n)
-                    if (blossom[base[i]]) {
-                        base[i] = curbase;
-                        if (!used[i]) { used[i] = true; q[qt++] = i; }
-                    }
-            }
-            else if (p[to] == -1) {
-                p[to] = v;
-                if (match[to] == -1) return to;
-                to = match[to]; used[to] = true; q[qt++] = to;
+    void trace(int u) {
+        while (root[u] != newRoot) {
+            int v = mat[u];
+
+            inblossom[root[u]] = true;
+            inblossom[root[v]] = true;
+
+            u = dad[v];
+            if (root[u] != newRoot) dad[u] = v;
+        }
+    }
+    void blossom(int u, int v) {
+        FOR(x, 1, n) inblossom[x] = false;
+
+        newRoot = lca(u, v);
+        trace(u); trace(v);
+
+        if (root[u] != newRoot) dad[u] = v;
+        if (root[v] != newRoot) dad[v] = u;
+
+        FOR(x,1,n) if (inblossom[root[x]]) {
+            root[x] = newRoot;
+            if (!inque[x]) {
+                inque[x] = true;
+                que[qsize++] = x;
             }
         }
     }
-    return -1;
-}
-// Usage: Init n, g
-          memset (match, -1, sizeof match);
-          REP(i,n) if (match[i] == -1)
-                REP(j, g[i].size())
-                     if (match[g[i][j]] == -1) {
-                          match[g[i][j]] = i; match[i] = g[i][j];
-                          break;
-                     }
-          REP(i,n) if (match[i] == -1) {
-                int v = find_path(i);
-                while (v != -1) {
-                     int pv = p[v], ppv = match[pv];
-                     match[v] = pv, match[pv] = v;
-                     v = ppv;
+    bool bfs() {
+        FOR(x,1,n) {
+            inque[x] = false;
+            dad[x] = 0;
+            root[x] = x;
+        }
+        qsize = 0;
+        que[qsize++] = start;
+        inque[start] = true;
+        finish = 0;
+
+        REP(i, qsize) {
+            int u = que[i];
+            for (int e = last[u]; e != -1; e = next[e]) {
+                int v = adj[e];
+                if (root[v] != root[u] && v != mat[u]) {
+                    if (v == start || (mat[v] > 0 && dad[mat[v]] > 0)) blossom(u, v);
+                    else if (dad[v] == 0) {
+                        dad[v] = u;
+                        if (mat[v] > 0) que[qsize++] = mat[v];
+                        else {
+                            finish = v;
+                            return true;
+                        }
+                    }
                 }
-          }
+            }
+        }
+        return false;
+    }
+    void enlarge() {
+        int u = finish;
+        while (u > 0) {
+            int v = dad[u], x = mat[v];
+            mat[v] = u;
+            mat[u] = v;
+            u = x;
+        }
+    }
+    int maxmat() {
+        FOR(x, 1, n) if (mat[x] == 0) {
+            start = x;
+            if (bfs()) enlarge();
+        }
+
+        int ret = 0;
+        FOR(x, 1, n) if (mat[x] > x) ++ret;
+        return ret;
+    }
+} edmonds;
+
+
+int main() {
+}

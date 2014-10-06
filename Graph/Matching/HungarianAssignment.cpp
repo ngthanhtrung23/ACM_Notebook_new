@@ -1,81 +1,69 @@
-/* Hungarian Implementation
- * When change it to long long, remove EPS
- * Indices from 0
- */
-typedef LL VD[MAXV + 5];
-typedef LL VVD[MAXV + 5][MAXV + 5];
-typedef int VI[MAXV + 5];
+#include "../../template.h"
 
-#define EPS 1e-10
- 
-LL MinCostMatching(int n, const VVD cost, VI Lmate, VI Rmate) {
-    VD u = {0};
-    VD v = {0};
-    REP (i, n) {
-        u[i] = cost[i][0];
-        FOR (j, 1, n-1) u[i] = min(u[i], cost[i][j]);
+const int maxn = 511;
+const int inf = 1000111000;
+
+// Vertex: 1 --> nx, 1 --> ny
+// cost >= 0
+// fx[x] + fy[y] <= cost[x][y] for all x, y
+
+struct Hungary {
+    int nx, ny, cost[maxn][maxn], fx[maxn], fy[maxn], maty[maxn], which[maxn], dist[maxn];
+    bool used[maxn];
+
+    void init(int _nx, int _ny) {
+        nx = _nx; ny = _ny;
+        memset(fx, 0, sizeof fx);
+        memset(fy, 0, sizeof fy);
+        FOR(i, 0, nx) FOR(j, 0, ny) cost[i][j] = inf;
     }
-    REP (j, n) {
-        v[j] = cost[0][j] - u[0];
-        FOR (i, 1, n-1) v[j] = min(v[j], cost[i][j] - u[i]);
-    }
-    REP (i, n) Lmate[i] = Rmate[i] = -1;
-    int mated = 0;
-    REP (i, n) REP (j, n) {
-        if (Rmate[j] != -1) continue;
-        if (fabs(cost[i][j] - u[i] - v[j]) < EPS) {
-            Lmate[i] = j;
-            Rmate[j] = i;
-            mated++;
-            break;
-        }
-    }
-    VD dist = {0};
-    VI dad = {0};
-    VI seen = {0};
-    while (mated < n) {
-        int s = 0;
-        while (Lmate[s] != -1) s++;
-        fill(dad, dad + n, -1);
-        fill(seen, seen + n, 0);
-        REP (k, n) dist[k] = cost[s][k] - u[s] - v[k];
-        int j = 0;
-        while (true) {
-            j = -1;
-            REP (k, n) {
-                if (seen[k]) continue;
-                if (j == -1 || dist[k] < dist[j]) j = k;
-            }
-            seen[j] = 1;
-            if (Rmate[j] == -1) break;
-            const int i = Rmate[j];
-            REP (k, n) {
-                if (seen[k]) continue;
-                const LL new_dist = dist[j] + cost[i][k] - u[i] - v[k];
-                if (dist[k] > new_dist) {
-                    dist[k] = new_dist;
-                    dad[k] = j;
+
+    void add(int x, int y, int c) { cost[x][y] = c; }
+
+    int mincost() {
+        FOR(x, 1, nx) {
+            int y0 = 0; maty[0] = x;
+            FOR(y, 0, ny) { dist[y] = inf + 1; used[y] = false; }
+
+            do {
+                used[y0] = true;
+                int x0 = maty[y0], delta = inf + 1, y1;
+
+                FOR(y, 1, ny) if (!used[y]) {
+                    int curdist = cost[x0][y] - fx[x0] - fy[y];
+                    if (curdist < dist[y]) {
+                        dist[y] = curdist;
+                        which[y] = y0;
+                    }
+                    if (dist[y] < delta) {
+                        delta = dist[y];
+                        y1 = y;
+                    }
                 }
-            }
+
+                FOR(y, 0, ny) if (used[y]) {
+                    fx[maty[y]] += delta;
+                    fy[y] -= delta;
+                } else dist[y] -= delta;
+
+                y0 = y1;
+            } while (maty[y0] != 0);
+
+            do {
+                int y1 = which[y0];
+                maty[y0] = maty[y1];
+                y0 = y1;
+            } while (y0);
         }
-        REP (k, n) {
-            if (k == j || !seen[k]) continue;
-            const int i = Rmate[k];
-            v[k] += dist[k] - dist[j];
-            u[i] -= dist[k] - dist[j];
+//      return -fy[0]; // nếu luôn đảm bảo có bộ ghép đầy đủ
+        int ret = 0;
+        FOR(y, 1, ny) {
+            int x = maty[y];
+            if (cost[x][y] < inf) ret += cost[x][y];
         }
-        u[s] += dist[j];
-        while (dad[j] >= 0) {
-            const int d = dad[j];
-            Rmate[j] = Rmate[d];
-            Lmate[Rmate[j]] = j;
-            j = d;
-        }
-        Rmate[j] = s;
-        Lmate[s] = j;
-        mated++;
+        return ret;
     }
-    LL value = 0;
-    REP (i, n) value += cost[i][Lmate[i]];
-    return value;
+} hungary;
+
+int main() {
 }

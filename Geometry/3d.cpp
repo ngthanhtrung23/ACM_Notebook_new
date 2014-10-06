@@ -1,65 +1,212 @@
-struct point3 { 
-   double x, y, z; 
-   point3(double X=0, double Y=0, double Z=0) : x(X), y(Y), z(Z) {} 
-   point3 operator+(point3 p) { return point3(x + p.x, y + p.y, z + p.z); } 
-   point3 operator*(double k) { return point3(k*x, k*y, k*z); } 
-   point3 operator-(point3 p) { return *this + (p*-1.0); } 
-   point3 operator/(double k) { return *this*(1.0/k); } 
-   double mag2() { return x*x + y*y + z*z; } 
-   double mag() { return sqrt(mag2()); } 
-   point3 norm() { return *this/this->mag(); } 
-}; 
-double dot(point3 a, point3 b) {  return a.x*b.x + a.y*b.y + a.z*b.z; } 
-point3 cross(point3 a, point3 b) { 
-   return point3(a.y*b.z - b.y*a.z, b.x*a.z - a.x*b.z, a.x*b.y - b.x*a.y); 
-} 
-struct line { 
-   point3 a, b; 
-   line(point3 A=point3(), point3 B=point3()) : a(A), b(B) {} 
-   point3 dir() { return (b - a).norm(); } 
-}; 
-point3 cpoint_iline(line u, point3 p) {// Closest point on line u to a given point p 
-   point3 ud = u.dir(); 
-   return u.a - ud*dot(u.a - p, ud); 
-} 
-double dist_ilines(line u, line v) { // Shortest distance between two lines u and v 
-   return dot(v.a - u.a, cross(u.dir(), v.dir()).norm()); 
-} 
-point3 cpoint_ilines(line u, line v) { // Finds the closest point line u to line v. 
-   // Assumes non-parallel lines 
-   point3 ud = u.dir(); point3 vd = v.dir(); 
-   double uu = dot(ud, ud), vv = dot(vd, vd), uv = dot(ud, vd); 
-   double t = dot(u.a, ud) - dot(v.a, ud); t *= vv; 
-   t -= uv*(dot(u.a, vd) - dot(v.a, vd)); 
-   t /= (uv*uv - uu*vv); 
-   return u.a + ud*t; 
-} 
-point3 cpoint_lineseg(line u, point3 p) { // Closest point on a segment u       
-   point3 ud = u.b - u.a; double s = dot(u.a - p, ud)/ud.mag2(); 
-   if (s < -1.0) return u.b; 
-   if (s > 0.0) return u.a; 
-   return u.a - ud*s; 
-} 
-struct plane { 
-   point3 n, p; 
-   plane(point3 ni = point3(), point3 pi = point3()) : n(ni), p(pi) {} 
-   plane(point3 a, point3 b, point3 c) : n(cross(b-a, c-a).norm()), p(a) {} 
-   double d() { return -dot(n, p); } 
-}; 
-point3 cpoint_plane(plane u, point3 p) { // Closest point on a plane u 
-   return p - u.n*(dot(u.n, p) + u.d()); 
-} 
-point3 iline_isect_plane(plane u, line v) {
-   // Point of intersection between an infinite line v and a plane u. 
-   // Assumes line not parallel to plane. 
-   point3 vd = v.dir(); 
-   return v.a - vd*((dot(u.n, v.a) + u.d())/dot(u.n, vd)); 
-} 
-line isect_planes(plane u, plane v) { 
-   // Infinite line of intersection between two planes u and v. 
-   // Assumes planes not parallel. 
-   point3 o = u.n*-u.d(), uv = cross(u.n, v.n); 
-   point3 uvu = cross(uv, u.n); 
-   point3 a = o - uvu*((dot(v.n, o) + v.d())/(dot(v.n, uvu)*uvu.mag2())); 
-   return line(a, a + uv); 
+// Quay điểm P quanh trục vector đơn vị (x,y,z) 1 góc a
+// [ txx + c  | txy – sz | txz + sy ]
+// [ txy + sz | tyy + c  | tyz – sx ]
+// [ txz - sy | tyz + sx | tzz + c  ]
+// Với: c = cos(a)      s = sin(a)      t = 1 – cos(a)
+
+inline ld det(ld a, ld b, ld c, ld d) {
+    return a * d - b * c;
+}
+struct Point {
+    ld x, y, z;
+    ld length() {
+        return sqrt(x * x + y * y + z * z);
+    }
+    Point operator %(const Point &op) const {
+        return Point(det(y, z, op.y, op.z), -det(x, z, op.x, op.z), det(x, y,
+                op.x, op.y));
+    }
+};
+struct Space {
+    ld a, b, c, d;
+    Space(Point p0, Point p1, Point p2) {
+        a = p0.y * (p1.z - p2.z) + p1.y * (p2.z - p0.z) + p2.y * (p0.z - p1.z);
+        b = p0.z * (p1.x - p2.x) + p1.z * (p2.x - p0.x) + p2.z * (p0.x - p1.x);
+        c = p0.x * (p1.y - p2.y) + p1.x * (p2.y - p0.y) + p2.x * (p0.y - p1.y);
+        d = -p0.x * (p1.y * p2.z - p2.y * p1.z) - p1.x * (p2.y * p0.z - p0.y * p2.z) 
+- p2.x * (p0.y * p1.z - p1.y * p0.z);
+    }
+};
+Point projection(Point v, Point u) { // Chiếu vector v lên vector u
+    ld scalar = (v * u) / (u * u);
+    return u * scalar;
+}
+Point projection(Point p, Point a, Point b, Point c) { // Chiếu điểm p lên mặt phẳng ABC
+    Point u = (b - a) % (c - a), v = p - a;
+    ld scalar = (v * u) / (u * u);
+    return p - (u * scalar);
+}
+ld dist(Point p, Point a, Point b) { // Khoảng cách từ p tới đường thẳng AB
+    p = p - a;
+    Point proj = projection(p, b - a);
+    return sqrt(p * p - proj * proj);
+}
+ld area(Point a, Point b, Point c) { // Diện tích tam giác ABC
+    ld h = dist(a, b, c);
+    return (h * (b - c).length()) / 2;
+}
+ld volume(Point x, Point y, Point z) { // Thể tích của 3 vector 
+    Point base = Point(y.y * z.z - y.z * z.y, y.z * z.x - y.x * z.z, y.x * z.y
+            - y.y * z.x);
+    return abs(x.x * base.x + x.y * base.y + x.z * base.z) / 3;
+}
+
+// V - E + F = 2  |  E <= 3V – 6  |  F <= 2V - 4
+
+
+// 3d convex hull
+inline int sign(ld x) { return x < -eps ? -1 : x > eps ? 1 : 0; }
+vector<Point> arr;
+vector<int> rnd;
+set<int> used;
+Side getFirstSide(vector<Point> &p) {
+    int i1 = 0;
+    Rep(i,sz(p)) {
+        if (p[i].z < p[i1].z || (p[i].z == p[i1].z && p[i].x < p[i1].x)
+                || (p[i].z == p[i1].z && p[i].x == p[i1].x && p[i].y < p[i1].y)) {
+            i1 = i;
+        }
+    }
+    int i2 = i1 == 0 ? 1 : 0;
+    Rep(i,sz(p)) {
+        if (i != i1) {
+            Point zDir(0, 0, 1);
+            ld curCos = (p[i] - p[i1]) * zDir / (p[i] - p[i1]).length();
+            ld bestCos = (p[i2] - p[i1]) * zDir / (p[i2] - p[i1]).length();
+            if (curCos < bestCos) {
+                i2 = i;
+            }
+        }
+    }
+    int i3 = -1;
+    int n = sz(p);
+    Rep(ri,n) {
+        int i = rnd[ri];
+        if (i != i1 && i != i2) {
+            Point norm = (p[i1] - p[i]) % (p[i2] - p[i]);
+            bool sg[] = { 0, 0, 0 };
+            Rep(t,n) {
+                int j = rnd[t];
+                sg[1 + sign((p[j] - p[i]) * norm)] = true;
+                if (sg[0] && sg[2]) {
+                    break;
+                }
+            }
+            if (sg[0] ^ sg[2]) {
+                i3 = i;
+                if (!sg[0]) {
+                    swap(i3, i2);
+                }
+                break;
+            }
+        }
+    }
+    vector<int> res;
+    res.pb(i1);
+    res.pb(i2);
+    res.pb(i3);
+    return res;
+}
+
+inline int getSideKey(int i, int j, int k) {
+    int key = (i * 1000 + j) * 1000 + k;
+    return key;
+}
+inline bool isUsed(int i, int j, int k) {
+    return used.find(getSideKey(i, j, k)) != used.end();
+}
+
+inline ld getAngle(const Point &n1, const Point &n2) {
+    return atan2((n1 % n2).length(), n1 * n2);
+}
+
+inline ld getNormsAngle(int i, int j, int k, int t, vector<Point> &p) {
+    Point n1 = (p[j] - p[i]) % (p[k] - p[i]);
+    Point n2 = (p[t] - p[i]) % (p[j] - p[i]);
+    return getAngle(n1, n2);
+}
+
+void dfs(int i, int j, int k, vector<Point> &p, vector<Side> &sides) {
+    if (i < j && i < k) {
+        vector<int> side(3);
+        side[0] = i;
+        side[1] = j;
+        side[2] = k;
+        sides.pb(side);
+    }
+    int key = getSideKey(i, j, k);
+    used.insert(key);
+    int n = sz(p);
+    if (!isUsed(j, k, i))
+        dfs(j, k, i, p, sides);
+    if (!isUsed(k, i, j))
+        dfs(k, i, j, p, sides);
+
+    int bestT = -1;
+    ld bestAngle = 1e20;
+    Point curNorm = (p[j] - p[i]) % (p[k] - p[i]);
+    Point dir = p[j] - p[i];
+    Rep(t,n) {
+        if (t != i && t != j && t != k) {
+            Point newNorm = (p[t] - p[i]) % dir;
+            ld curAng = curNorm * newNorm / newNorm.length();
+            if (bestT == -1 || curAng > bestAngle) {
+                bestT = t;
+                bestAngle = curAng;
+            }
+        }
+    }
+    if (!isUsed(i, bestT, j)) {
+        dfs(i, bestT, j, p, sides);
+    }
+}
+vector<Side> convexHull3d(vector<Point> p) {
+    used.clear();
+    rnd.resize(sz(p));
+    Rep(i,sz(p))
+        rnd[i] = i;
+    random_shuffle(rnd.begin(), rnd.end());
+    Side side0 = getFirstSide(p);
+    vector<Side> sides;
+
+    dfs(side0[0], side0[1], side0[2], p, sides);
+    return sides;
+}
+
+/* eliminate conflict sides */
+inline bool isEmpty(Point x, Point y, Point z) {
+    return abs(x * Point(y.y * z.z - y.z * z.y, y.z * z.x - y.x * z.z, y.x
+            * z.y - y.y * z.x)) <= eps;
+}
+inline bool conflict(Side a, Side b) {
+    Point x = arr[a[0]], y = arr[a[1]], z = arr[a[2]];
+    Rep(i,3) {
+        Point t = arr[b[i]];
+        if (!isEmpty(x - t, y - t, z - t))
+            return false;
+    }
+    return true;
+}
+vector<Side> eliminate(vector<Side> p) {
+    vector<Side> res;
+    vector<bool> fre;
+    fre.resize(sz(p), true);
+    Rep(i,sz(p)) {
+        if (!fre[i])
+            continue;
+        res.pb(p[i]);
+        For(j,i+1,sz(p) - 1)
+            if (fre[j]) {
+                if (conflict(p[i], p[j])) {
+                    fre[j] = false;
+                    res.back().insert(res.back().end(), p[j].begin(),
+                            p[j].end());
+                }
+            }
+    }
+    Rep(i,sz(res)) {
+        sort(res[i].begin(), res[i].end());
+        res[i].resize(unique(res[i].begin(), res[i].end()) - res[i].begin());
+    }
+    return res;
 }
