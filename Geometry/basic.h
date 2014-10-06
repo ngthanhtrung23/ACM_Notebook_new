@@ -74,16 +74,13 @@ double distToLineSegment(Point p, Point a, Point b, Point &c) {
 struct Line {
     double a, b, c;
     Point A, B; // Added for polygon intersect line. Do not rely on assumption that these are valid
-    Line(double a, double b, double c) : a(a), b(b), c(c) {}
+
+    Line(double a, double b, double c) : a(a), b(b), c(c) {} 
+
     Line(Point A, Point B) : A(A), B(B) {
-        if (cmp(A.x, B.x) == 0) { // vertical Line
-            a = 1.0; b = 0.0; c = -A.x;
-        } else {
-            // Careful with integer points
-            a = -(double)(A.y - B.y) / (A.x - B.x);
-            b = 1.0;
-            c = -(double)(a * A.x) - A.y;
-        }
+        a = B.y - A.y;
+        b = A.x - B.x;
+        c = - (a * A.x + b * A.y);
     }
     Line(Point P, double m) {
         a = -m; b = 1;
@@ -95,39 +92,35 @@ struct Line {
 };
 
 bool areParallel(Line l1, Line l2) {
-    // Works because we normalized Line so that a = 0 or b = 0
-    return (cmp(l1.a, l2.a) == 0) && (cmp(l1.b, l2.b) == 0);
+    return cmp(l1.a*l2.b, l1.b*l2.a) == 0;
 }
 
 bool areSame(Line l1, Line l2) {
-    // Works because we normalized Line so that a = 0 or b = 0
-    return areParallel(l1 ,l2) && cmp(l1.c, l2.c) == 0;
+    return areParallel(l1 ,l2) && cmp(l1.c*l2.a, l2.c*l1.a) == 0;
 }
 
 bool areIntersect(Line l1, Line l2, Point &p) {
     if (areParallel(l1, l2)) return false;
-    p.x = (l2.b * l1.c - l1.b * l2.c) / (l2.a * l1.b - l1.a * l2.b);
-    if (fabs(l1.b) > EPS) p.y = -(l1.a * p.x + l1.c);
-    else                  p.y = -(l2.a * p.x + l2.c);
+    double dx = l1.b*l2.c - l2.b*l1.c;
+    double dy = l1.c*l2.a - l2.c*l1.a;
+    double d  = l1.a*l2.b - l2.a*l1.b;
+    p = Point(dx/d, dy/d);
     return true;
 }
 
 void closestPoint(Line l, Point p, Point &ans) {
     if (fabs(l.b) < EPS) {
-        ans.x = -(l.c); ans.y = p.y;
+        ans.x = -(l.c) / l.a; ans.y = p.y;
         return;
     }
     if (fabs(l.a) < EPS) {
-        ans.x = p.x; ans.y = -(l.c);
+        ans.x = p.x; ans.y = -(l.c) / l.b;
         return;
     }
-    Line perpendicular(p, 1 / l.a);
-    // intersect Line l with this perpendicular Line
-    // the intersection Point is the closest Point
-    areIntersect(l, perpendicular, ans);
+    Line perp(l.b, -l.a, - (l.b*p.x - l.a*p.y));
+    areIntersect(l, perp, ans);
 }
 
-// returns the reflection of Point on a Line
 void reflectionPoint(Line l, Point p, Point &ans) {
     Point b;
     closestPoint(l, p, b);

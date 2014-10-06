@@ -49,14 +49,12 @@ int main() {
 
     // Line equations
     Line l1(P[0], P[1]);
-    assert(cmp(l1.a, -0.5) == 0);
-    assert(cmp(l1.b, 1) == 0);
-    assert(cmp(l1.c, -1) == 0);
+    assert(cmp(l1.a * P[0].x + l1.b * P[0].y + l1.c, 0) == 0);
+    assert(cmp(l1.a * P[1].x + l1.b * P[1].y + l1.c, 0) == 0);
 
     Line l2(P[0], P[2]);
-    assert(cmp(l2.a, 1) == 0);
-    assert(cmp(l2.b, 0) == 0);
-    assert(cmp(l2.c, -2) == 0);
+    assert(cmp(l2.a * P[0].x + l2.b * P[0].y + l2.c, 0) == 0);
+    assert(cmp(l2.a * P[2].x + l2.b * P[0].y + l2.c, 0) == 0);
 
     // parallel, same, and Line intersection tests
     Line l3(P[2], P[3]);
