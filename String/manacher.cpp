@@ -31,6 +31,6 @@ int manacher(string s) {
         }
     }
 
-    // s[center - f[center]..center + f[center]] is the needed substring
+    // a[center - f[center]..center + f[center]] is the needed substring
     return res;
 }
