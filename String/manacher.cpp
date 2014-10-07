@@ -11,7 +11,7 @@ int manacher(string s) {
 
     int n = s.size() * 2 - 1;
     f = vector <int>(n, 0);
-    a = string(n, '.');
+    a = string(n, DUMMY);
     for (int i = 0; i < n; i += 2) a[i] = s[i / 2];
 
     int l = 0, r = -1, center, res = 0;
