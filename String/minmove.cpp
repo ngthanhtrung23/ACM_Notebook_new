@@ -1,3 +1,5 @@
+#include "../template.h"
+
 int minmove(char s[], int n) {
     int x, y, i, j, u, v; // x is the smallest string before string y
     for (x = 0, y = 1; y < n; ++ y) {
@@ -18,5 +20,9 @@ int minmove(char s[], int n) {
     return x;
 }
 
+// VOJ - MINMOVE
+char tmp[100111];
 int main() {
+    gets(tmp);
+    cout << minmove(tmp, strlen(tmp)) << endl;
 }

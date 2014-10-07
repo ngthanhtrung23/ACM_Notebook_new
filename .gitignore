@@ -1,5 +1,7 @@
 *.exe
 *.txt
+*.dSYM/
+*.swp
 
 # Compiled code
 template
