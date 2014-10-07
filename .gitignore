@@ -5,3 +5,6 @@
 
 # Compiled code
 template
+
+# Gen test
+gentest*

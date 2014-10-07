@@ -124,6 +124,5 @@ void closestPoint(Line l, Point p, Point &ans) {
 void reflectionPoint(Line l, Point p, Point &ans) {
     Point b;
     closestPoint(l, p, b);
-    Point v = b - p;
     ans = p + (b - p) * 2;
 }
