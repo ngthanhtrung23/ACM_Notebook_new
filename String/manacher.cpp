@@ -1,17 +1,14 @@
 #include "../template.h"
 const char DUMMY = '.';
 
-vector <int> f;
-string a;
-
 int manacher(string s) {
     // Add dummy character to not consider odd/even length
     // NOTE: Ensure DUMMY does not appear in input
     // NOTE: Remember to ignore DUMMY when tracing
 
     int n = s.size() * 2 - 1;
-    f = vector <int>(n, 0);
-    a = string(n, DUMMY);
+    vector <int> f = vector <int>(n, 0);
+    string a = string(n, DUMMY);
     for (int i = 0; i < n; i += 2) a[i] = s[i / 2];
 
     int l = 0, r = -1, center, res = 0;
