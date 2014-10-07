@@ -1,5 +1,6 @@
 #include "../template.h"
 
+// z[i] = độ dài xâu con dài nhất bắt đầu từ vị trí i mà trùng với đoạn đầu của v[]
 void zfunc(int n, int v[], int z[]) {
     int l = 0, r = -1;
     z[0] = 0;

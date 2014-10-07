@@ -1,5 +1,6 @@
 #include "../template.h"
 
+// Tính vị trí của xâu xoay vòng có thứ tự từ điển nhỏ nhất của xâu s[]
 int minmove(char s[], int n) {
     int x, y, i, j, u, v; // x is the smallest string before string y
     for (x = 0, y = 1; y < n; ++ y) {

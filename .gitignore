@@ -2,6 +2,7 @@
 *.txt
 *.dSYM/
 *.swp
+*.class
 
 # Compiled code
 template
