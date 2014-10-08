@@ -1,5 +1,3 @@
-#include "../../template.h"
-
 const int maxn = 1007;
 const int inf = 1000111000;
 
@@ -65,5 +63,3 @@ struct Hungary {
     }
 } hungary;
 
-int main() {
-}
