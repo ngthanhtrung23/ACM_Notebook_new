@@ -1,6 +1,7 @@
-#include "../../template.h"
+#include <bits/stdc++.h>
+using namespace std;
 
-const int maxn = 1007;
+const int maxn = 207;
 const int inf = 1000111000;
 
 // Vertex: 1 --> nx, 1 --> ny
@@ -65,5 +66,17 @@ struct Hungary {
     }
 } hungary;
 
+int m,n,e;
+
 int main() {
+    //freopen("input.txt","r",stdin);
+    scanf("%d",&m); n=m;
+    hungary.init(m,n);
+    int x,y,w;
+    while(scanf("%d%d%d",&x,&y,&w)!=EOF) hungary.add(y,x,w);
+    printf("%d\n",hungary.mincost());
+    for(int y=1; y<=hungary.ny; ++y){
+        int x=hungary.maty[y];
+        if(hungary.cost[x][y] < inf) printf("%d %d\n",y,x);
+    }
 }

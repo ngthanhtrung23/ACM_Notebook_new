@@ -1,10 +1,10 @@
-#include "../../template.h"
+#include <bits/stdc++.h>
 
-const int maxv = 1000;
-const int maxe = 50000;
+using namespace std;
 
-// Index from 1
-// Directed
+const int maxv = 1007;
+const int maxe = 2007;
+
 struct EdmondsLawler {
     int n, E, start, finish, newRoot, qsize, adj[maxe], next[maxe], last[maxv], mat[maxv], que[maxv], dad[maxv], root[maxv];
     bool inque[maxv], inpath[maxv], inblossom[maxv];
@@ -112,4 +112,14 @@ struct EdmondsLawler {
 
 
 int main() {
+    //freopen("input.txt","r",stdin);
+    int n,m,u,v;
+    scanf("%d%d",&n,&m);
+    edmonds.init(n);
+    for(int i=0; i<m; ++i){
+        scanf("%d%d",&u,&v);
+        edmonds.add(u,v);
+        edmonds.add(v,u);
+    }
+    printf("%d\n",n - edmonds.maxmat());
 }
