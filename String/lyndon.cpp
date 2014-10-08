@@ -1,5 +1,6 @@
 #include "../template.h"
 
+// Phân tích xâu s = w1w2..wk mà w1 ≥ w2 ≥ .. ≥ wk
 void lyndon(string s) {
     int n = (int) s.length();
     int i = 0;

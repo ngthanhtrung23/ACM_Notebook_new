@@ -3,10 +3,7 @@ struct Circle : Point {
     Circle(double x = 0, double y = 0, double r = 0) : Point(x, y), r(r) {}
 };
 // Find common tangents to 2 circles
-// Also works when one / both of circle degenerate into point --> can also be used
-// for finding tangents to a circle
-
-// This is just a helper method
+// Helper method
 void tangents(Point c, double r1, double r2, vector<Line> & ans) {
     double r = r2 - r1;
     double z = sqr(c.x) + sqr(c.y);
@@ -26,7 +23,18 @@ vector<Line> tangents(Circle a, Circle b) {
             tangents(b-a, a.r*i, b.r*j, ans);
     REP(i,ans.size())
         ans[i].c -= ans[i].a * a.x + ans[i].b * a.y;
-    return ans;
+
+    vector<Line> ret;
+    for(int i = 0; i < (int) ans.size(); ++i) {
+        bool ok = true;
+        for(int j = 0; j < i; ++j)
+            if (areSame(ret[j], ans[i])) {
+                ok = false;
+                break;
+            }
+        if (ok) ret.push_back(ans[i]);
+    }
+    return ret;
 }
 
 // Circle & line intersection

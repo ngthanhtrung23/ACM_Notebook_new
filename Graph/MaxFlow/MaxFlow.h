@@ -1,84 +1,128 @@
-/* Usage: PushRelabel flow(n); for each directed edge (u,v,f): flow.AddEdge(u, v, f);
-    Result: flow.GetMaxFlow(s, t).
-    Note: vertices numbering from 0
-    Note: The flow generated on an edge can be positive in both direction. If required to print flow, need to be careful.
-*/
-#define LL long long
+// Fastest flow
+
 struct Edge {
-    int from, to, cap, flow, index;
-    Edge(int from, int to, int cap, int flow, int index) :
-        from(from), to(to), cap(cap), flow(flow), index(index) {}
+    int u, v, c, f;
+    int next;
 };
-struct PushRelabel {
-    int N;
-    vector<vector<Edge> > G;
-    vector<LL> excess;
-    vector<int> dist, active, count;
-    queue<int> Q;
 
-    PushRelabel(int N) : N(N), G(N), excess(N), dist(N), active(N), count(2*N) {}
+struct MaxFlow {
+    int n, s, t;
+    vector< Edge > edges;
+    vector<int> head, current, h, avail;
+    vector<long long> excess;
 
-    void AddEdge(int from, int to, int cap) {
-        G[from].push_back(Edge(from, to, cap, 0, G[to].size()));
-        if (from == to) G[from].back().index++;
-        G[to].push_back(Edge(to, from, 0, 0, G[from].size() - 1));
+    MaxFlow(int n) : n(n), head(n, -1), current(n, -1), h(n), avail(n), excess(n) {
+        edges.clear();
     }
-    void Enqueue(int v) { 
-        if (!active[v] && excess[v] > 0) { active[v] = true; Q.push(v); } 
+
+    void addEdge(int u, int v, int c) {
+        Edge xuoi = {u, v, c, 0, head[u]};
+        head[u] = edges.size(); edges.push_back(xuoi);
+        Edge nguoc = {v, u, 0, 0, head[v]};
+        head[v] = edges.size(); edges.push_back(nguoc);
     }
-    void Push(Edge &e) {
-        int amt = (int)(min(excess[e.from], (LL)(e.cap - e.flow)));
-        if (dist[e.from] <= dist[e.to] || amt == 0) return;
-        e.flow += amt;
-        G[e.to][e.index].flow -= amt;
-        excess[e.to] += amt;        
-        excess[e.from] -= amt;
-        Enqueue(e.to);
-    }
-    void Gap(int k) {
-        for (int v = 0; v < N; v++) {
-            if (dist[v] < k) continue;
-            count[dist[v]]--;
-            dist[v] = max(dist[v], N+1);
-            count[dist[v]]++;
-            Enqueue(v);
+
+    long long getFlow(int _s, int _t) {
+        s = _s; t = _t;
+        init();
+
+        int now = 0;
+        queue<int> qu[2];
+        REP(x,n)
+            if (x != s && x != t && excess[x] > 0)
+                qu[now].push(x);
+        
+        globalLabeling();
+
+        int cnt = 0, ok = 0;
+        while (!qu[now].empty()) {
+            while (!qu[1-now].empty()) qu[1-now].pop();
+
+            while (!qu[now].empty()) {
+                int x = qu[now].front(); qu[now].pop();
+                while (current[x] >= 0) {
+                    int p = current[x];
+                    if (edges[p].c > edges[p].f && h[edges[p].u] > h[edges[p].v]) {
+                        bool need = (edges[p].v != s && edges[p].v != t && !excess[edges[p].v]);
+                        push(current[x]);
+                        if (need) qu[1-now].push(edges[p].v);
+                        if (!excess[x]) break;
+                    }
+                    current[x] = edges[current[x]].next;
+                }
+                
+                if (excess[x] > 0) {
+                    lift(x);
+                    current[x] = head[x];
+                    qu[1-now].push(x);
+                    cnt++;
+                    if (cnt == n) {
+                        globalLabeling();
+                        cnt=0;
+                    }
+                }
+            }
+            now = 1 - now;
         }
+        return excess[t];
     }
-    void Relabel(int v) {
-        count[dist[v]]--;
-        dist[v] = 2*N;
-        for (int i = 0; i < G[v].size(); i++) 
-            if (G[v][i].cap - G[v][i].flow > 0)
-        dist[v] = min(dist[v], dist[G[v][i].to] + 1);
-        count[dist[v]]++;
-        Enqueue(v);
+
+private:
+    void init() {
+        REP(i,n) current[i] = head[i];
+
+        int p = head[s];
+        while (p >= 0) {
+            edges[p].f = edges[p].c;
+            edges[p^1].f -= edges[p].c;
+            excess[edges[p].v] += edges[p].c;
+            excess[s] -= edges[p].c;
+            p = edges[p].next;
+        }
+        FOR(v,0,n-1) h[v] = 1;
+        h[s] = n; h[t] = 0;
     }
-    void Discharge(int v) {
-        for (int i = 0; excess[v] > 0 && i < G[v].size(); i++) Push(G[v][i]);
-        if (excess[v] > 0) {
-            if (count[dist[v]] == 1) 
-        Gap(dist[v]); 
-            else
-        Relabel(v);
-        }
+
+    void push(int i) {
+        long long delta = min(excess[edges[i].u], (long long) edges[i].c - edges[i].f);
+        edges[i].f += delta; edges[i^1].f -= delta;
+        excess[edges[i].u] -= delta;
+        excess[edges[i].v] += delta;
     }
-    LL GetMaxFlow(int s, int t) {
-        count[0] = N-1;
-        count[N] = 1;
-        dist[s] = N;
-        active[s] = active[t] = true;
-        for (int i = 0; i < G[s].size(); i++) {
-            excess[s] += G[s][i].cap;
-            Push(G[s][i]);
+
+    void lift(int u) {
+        int minH = 2 * n;
+        int p = head[u];
+        while (p>=0) {
+            if (edges[p].c > edges[p].f)
+                minH = min(minH, h[edges[p].v]);
+            p = edges[p].next;
         }
-        while (!Q.empty()) {
-            int v = Q.front();
-            Q.pop();
-            active[v] = false;
-            Discharge(v);
+        h[u] = minH + 1;
+    }
+
+    void globalLabeling() {
+        REP(i,n) avail[i] = 1, h[i] = 0;
+        h[s] = n; h[t] = 0;
+        queue<int> q; q.push(t); avail[t] = false;
+
+        while (!q.empty()) {
+            int x = q.front(); q.pop();
+            int p = head[x];
+            while (p >= 0) {
+                int pp = p^1;
+                if (avail[edges[pp].u] && edges[pp].f < edges[pp].c) {
+                    h[edges[pp].u] = h[x] + 1;
+                    avail[edges[pp].u] = 0;
+                    q.push(edges[pp].u);
+                }
+                p = edges[p].next;
+            }
+            if (q.empty() && avail[s]) {
+                avail[s] = false;
+                q.push(s);
+            }
         }
-        LL totflow = 0;
-        for (int i = 0; i < G[s].size(); i++) totflow += G[s][i].flow;
-        return totflow;
+        REP(x,n) current[x] = head[x];
     }
 };
