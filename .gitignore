@@ -9,3 +9,7 @@ template
 
 # Gen test
 gentest*
+
+# IDE
+*.sublime-project
+*.sublime-workspace
