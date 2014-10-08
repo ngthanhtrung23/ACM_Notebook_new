@@ -1,5 +1,3 @@
-#include "../../template.h"
-
 const int maxv = 1000;
 const int maxe = 50000;
 
@@ -110,6 +108,3 @@ struct EdmondsLawler {
     }
 } edmonds;
 
-
-int main() {
-}
