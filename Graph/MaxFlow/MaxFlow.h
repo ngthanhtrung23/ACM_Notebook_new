@@ -34,7 +34,7 @@ struct MaxFlow {
         
         globalLabeling();
 
-        int cnt = 0, ok = 0;
+        int cnt = 0;
         while (!qu[now].empty()) {
             while (!qu[1-now].empty()) qu[1-now].pop();
 

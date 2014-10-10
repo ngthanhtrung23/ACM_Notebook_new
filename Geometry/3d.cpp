@@ -4,21 +4,28 @@
 // [ txz - sy | tyz + sx | tzz + c  ]
 // Với: c = cos(a)      s = sin(a)      t = 1 – cos(a)
 
-inline ld det(ld a, ld b, ld c, ld d) {
+#include "../template.h"
+
+const double EPS = 1e-6;
+
+inline double det(double a, double b, double c, double d) {
     return a * d - b * c;
 }
 struct Point {
-    ld x, y, z;
-    ld length() {
+    double x, y, z;
+    Point(double x = 0, double y = 0, double z = 0) : x(x), y(y), z(z) {}
+    double length() {
         return sqrt(x * x + y * y + z * z);
     }
+    double operator * (Point a) const { return x*a.x + y*a.y + z*a.z; }
+    Point operator - (Point a) { return Point(x-a.x, y-a.y, z-a.z); }
     Point operator %(const Point &op) const {
         return Point(det(y, z, op.y, op.z), -det(x, z, op.x, op.z), det(x, y,
                 op.x, op.y));
     }
 };
 struct Space {
-    ld a, b, c, d;
+    double a, b, c, d;
     Space(Point p0, Point p1, Point p2) {
         a = p0.y * (p1.z - p2.z) + p1.y * (p2.z - p0.z) + p2.y * (p0.z - p1.z);
         b = p0.z * (p1.x - p2.x) + p1.z * (p2.x - p0.x) + p2.z * (p0.x - p1.x);
@@ -28,64 +35,66 @@ struct Space {
     }
 };
 Point projection(Point v, Point u) { // Chiếu vector v lên vector u
-    ld scalar = (v * u) / (u * u);
+    double scalar = (v * u) / (u * u);
     return u * scalar;
 }
 Point projection(Point p, Point a, Point b, Point c) { // Chiếu điểm p lên mặt phẳng ABC
     Point u = (b - a) % (c - a), v = p - a;
-    ld scalar = (v * u) / (u * u);
+    double scalar = (v * u) / (u * u);
     return p - (u * scalar);
 }
-ld dist(Point p, Point a, Point b) { // Khoảng cách từ p tới đường thẳng AB
+double dist(Point p, Point a, Point b) { // Khoảng cách từ p tới đường thẳng AB
     p = p - a;
     Point proj = projection(p, b - a);
     return sqrt(p * p - proj * proj);
 }
-ld area(Point a, Point b, Point c) { // Diện tích tam giác ABC
-    ld h = dist(a, b, c);
+double area(Point a, Point b, Point c) { // Diện tích tam giác ABC
+    double h = dist(a, b, c);
     return (h * (b - c).length()) / 2;
 }
-ld volume(Point x, Point y, Point z) { // Thể tích của 3 vector 
+double volume(Point x, Point y, Point z) { // Thể tích của 3 vector 
     Point base = Point(y.y * z.z - y.z * z.y, y.z * z.x - y.x * z.z, y.x * z.y
             - y.y * z.x);
-    return abs(x.x * base.x + x.y * base.y + x.z * base.z) / 3;
+    return fabs(x.x * base.x + x.y * base.y + x.z * base.z) / 3;
 }
 
 // V - E + F = 2  |  E <= 3V – 6  |  F <= 2V - 4
 
 
 // 3d convex hull
-inline int sign(ld x) { return x < -eps ? -1 : x > eps ? 1 : 0; }
+inline int sign(double x) { return x < -EPS ? -1 : x > EPS ? 1 : 0; }
 vector<Point> arr;
 vector<int> rnd;
 set<int> used;
+
+typedef vector<int> Side;
 Side getFirstSide(vector<Point> &p) {
     int i1 = 0;
-    Rep(i,sz(p)) {
+    REP(i,p.size()) {
         if (p[i].z < p[i1].z || (p[i].z == p[i1].z && p[i].x < p[i1].x)
                 || (p[i].z == p[i1].z && p[i].x == p[i1].x && p[i].y < p[i1].y)) {
             i1 = i;
         }
     }
     int i2 = i1 == 0 ? 1 : 0;
-    Rep(i,sz(p)) {
+    REP(i,p.size()) {
         if (i != i1) {
             Point zDir(0, 0, 1);
-            ld curCos = (p[i] - p[i1]) * zDir / (p[i] - p[i1]).length();
-            ld bestCos = (p[i2] - p[i1]) * zDir / (p[i2] - p[i1]).length();
+            double curCos = (p[i] - p[i1]) * zDir / (p[i] - p[i1]).length();
+            double bestCos = (p[i2] - p[i1]) * zDir / (p[i2] - p[i1]).length();
             if (curCos < bestCos) {
                 i2 = i;
             }
         }
     }
     int i3 = -1;
-    int n = sz(p);
-    Rep(ri,n) {
+    int n = p.size();
+    REP(ri,n) {
         int i = rnd[ri];
         if (i != i1 && i != i2) {
             Point norm = (p[i1] - p[i]) % (p[i2] - p[i]);
             bool sg[] = { 0, 0, 0 };
-            Rep(t,n) {
+            REP(t,n) {
                 int j = rnd[t];
                 sg[1 + sign((p[j] - p[i]) * norm)] = true;
                 if (sg[0] && sg[2]) {
@@ -102,9 +111,9 @@ Side getFirstSide(vector<Point> &p) {
         }
     }
     vector<int> res;
-    res.pb(i1);
-    res.pb(i2);
-    res.pb(i3);
+    res.push_back(i1);
+    res.push_back(i2);
+    res.push_back(i3);
     return res;
 }
 
@@ -116,11 +125,11 @@ inline bool isUsed(int i, int j, int k) {
     return used.find(getSideKey(i, j, k)) != used.end();
 }
 
-inline ld getAngle(const Point &n1, const Point &n2) {
+inline double getAngle(const Point &n1, const Point &n2) {
     return atan2((n1 % n2).length(), n1 * n2);
 }
 
-inline ld getNormsAngle(int i, int j, int k, int t, vector<Point> &p) {
+inline double getNormsAngle(int i, int j, int k, int t, vector<Point> &p) {
     Point n1 = (p[j] - p[i]) % (p[k] - p[i]);
     Point n2 = (p[t] - p[i]) % (p[j] - p[i]);
     return getAngle(n1, n2);
@@ -132,24 +141,24 @@ void dfs(int i, int j, int k, vector<Point> &p, vector<Side> &sides) {
         side[0] = i;
         side[1] = j;
         side[2] = k;
-        sides.pb(side);
+        sides.push_back(side);
     }
     int key = getSideKey(i, j, k);
     used.insert(key);
-    int n = sz(p);
+    int n = p.size();
     if (!isUsed(j, k, i))
         dfs(j, k, i, p, sides);
     if (!isUsed(k, i, j))
         dfs(k, i, j, p, sides);
 
     int bestT = -1;
-    ld bestAngle = 1e20;
+    double bestAngle = 1e20;
     Point curNorm = (p[j] - p[i]) % (p[k] - p[i]);
     Point dir = p[j] - p[i];
-    Rep(t,n) {
+    REP(t,n) {
         if (t != i && t != j && t != k) {
             Point newNorm = (p[t] - p[i]) % dir;
-            ld curAng = curNorm * newNorm / newNorm.length();
+            double curAng = curNorm * newNorm / newNorm.length();
             if (bestT == -1 || curAng > bestAngle) {
                 bestT = t;
                 bestAngle = curAng;
@@ -162,8 +171,8 @@ void dfs(int i, int j, int k, vector<Point> &p, vector<Side> &sides) {
 }
 vector<Side> convexHull3d(vector<Point> p) {
     used.clear();
-    rnd.resize(sz(p));
-    Rep(i,sz(p))
+    rnd.resize(p.size());
+    REP(i,p.size())
         rnd[i] = i;
     random_shuffle(rnd.begin(), rnd.end());
     Side side0 = getFirstSide(p);
@@ -176,11 +185,11 @@ vector<Side> convexHull3d(vector<Point> p) {
 /* eliminate conflict sides */
 inline bool isEmpty(Point x, Point y, Point z) {
     return abs(x * Point(y.y * z.z - y.z * z.y, y.z * z.x - y.x * z.z, y.x
-            * z.y - y.y * z.x)) <= eps;
+            * z.y - y.y * z.x)) <= EPS;
 }
 inline bool conflict(Side a, Side b) {
     Point x = arr[a[0]], y = arr[a[1]], z = arr[a[2]];
-    Rep(i,3) {
+    REP(i,3) {
         Point t = arr[b[i]];
         if (!isEmpty(x - t, y - t, z - t))
             return false;
@@ -190,12 +199,12 @@ inline bool conflict(Side a, Side b) {
 vector<Side> eliminate(vector<Side> p) {
     vector<Side> res;
     vector<bool> fre;
-    fre.resize(sz(p), true);
-    Rep(i,sz(p)) {
+    fre.resize(p.size(), true);
+    REP(i,p.size()) {
         if (!fre[i])
             continue;
-        res.pb(p[i]);
-        For(j,i+1,sz(p) - 1)
+        res.push_back(p[i]);
+        FOR(j,i+1,p.size() - 1)
             if (fre[j]) {
                 if (conflict(p[i], p[j])) {
                     fre[j] = false;
@@ -204,7 +213,7 @@ vector<Side> eliminate(vector<Side> p) {
                 }
             }
     }
-    Rep(i,sz(res)) {
+    REP(i,res.size()) {
         sort(res[i].begin(), res[i].end());
         res[i].resize(unique(res[i].begin(), res[i].end()) - res[i].begin());
     }
