@@ -1,4 +1,9 @@
 // Fastest flow
+// Index from 0, directed
+// To use:
+// MaxFlow flow(n)
+// For each edge: flow.addEdge(u, v, c)
+// result = flow.getFlow(s, t)
 
 struct Edge {
     int u, v, c, f;
