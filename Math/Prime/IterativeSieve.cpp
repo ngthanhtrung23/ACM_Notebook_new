@@ -13,7 +13,7 @@ void sieve() {
         unsigned int i2 = i + i;
         for( unsigned int j = i * i; j < N; j += i2 ) rP( j );
     }
-   prime[++nprime] = 2;
-   for( i = 3; i < N; i += 2)
-      if (gP(i)) prime[++nprime] = i;
+    prime[++nprime] = 2;
+    for( i = 3; i < N; i += 2)
+        if (gP(i)) prime[++nprime] = i;
 }
