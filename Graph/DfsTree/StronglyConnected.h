@@ -1,9 +1,15 @@
-struct DirectedDFS {
+// Assume that already have directed graph vector< vector<int> > G with V vertices
+// Index from 0
+// Usage:
+// DirectedDfs tree;
+// tree.solve();
+// Now you can use tree.scc
+struct DirectedDfs {
     vector<int> num, low, visited, S;
     int counter;
     vector< vector<int> > scc;
 
-    DirectedDFS() : num(V, -1), low(V, 0), visited(V, 0), counter(0) {}
+    DirectedDfs() : num(V, -1), low(V, 0), visited(V, 0), counter(0) {}
 
     void solve() {
         REP(i,V) if (num[i] == -1) dfs(i);

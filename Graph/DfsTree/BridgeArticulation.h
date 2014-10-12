@@ -1,5 +1,9 @@
 // Assume already have undirected graph vector< vector<int> > G with V vertices
-
+// Vertex index from 0
+// Usage:
+// UndirectedDfs tree;
+// tree.solve();
+// Now you can use tree.bridges and tree.cuts
 struct UndirectedDfs {
     vector<int> low, num, parent;
     vector<bool> articulation;

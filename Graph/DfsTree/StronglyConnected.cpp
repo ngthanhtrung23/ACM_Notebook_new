@@ -18,7 +18,7 @@ int main() {
             G[u].push_back(v);
         }
 
-        DirectedDFS tree;
+        DirectedDfs tree;
         tree.solve();
 
         DEBUG(V);
