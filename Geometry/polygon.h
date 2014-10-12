@@ -23,6 +23,7 @@ Polygon convex_hull(Polygon p) { // minimum vertices
         r[j++] = p[i];
     }
     r.resize(j);
+    if (r.size() >= 2 && r.back() == r.front()) r.pop_back();
     return r;
 }
 

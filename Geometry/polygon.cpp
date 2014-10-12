@@ -76,5 +76,33 @@ int main() {
     assert(in_polygon(P, Point(3, 2)));
     assert(!in_polygon(P, Point(3, 0)));
 
+    P.clear();
+    for(int i = 0; i < 10; ++i)
+        for(int j = 0; j < 10; ++j)
+            for(int turn = 0; turn < 3; ++turn)
+                P.push_back(Point(i, j));
+    P = convex_hull(P);
+    assert(P.size() == 4);
+    assert(P[0] == Point(0, 0));
+    assert(P[1] == Point(0, 9));
+    assert(P[2] == Point(9, 9));
+    assert(P[3] == Point(9, 0));
+
+    P.clear();
+    for(int i = 0; i < 10; ++i)
+        P.push_back(Point(7, 7 * i));
+    P = convex_hull(P);
+    assert(P.size() == 2);
+    assert(P[0] == Point(7, 0));
+    assert(P[1] == Point(7, 63));
+
+    P.clear();
+    for(int i = 0; i < 10; ++i)
+        P.push_back(Point(7, 7));
+    P = convex_hull(P);
+    assert(P.size() == 1);
+    assert(P[0] == Point(7, 7));
+    cout << "All test passed " << endl;
+
     return 0;
 }
