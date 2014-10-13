@@ -1,6 +1,6 @@
 // table[i-L] == true <=> i == prime
 const int SQRTN = 1<<16; // upperbound of sqrt(H)
-vector<Int> segmentSieve(Int L, Int H) {
+vector<bool> segmentSieve(int L, int H) {
    static int p[SQRTN], lookup = 0;
    if (!lookup) {
       for (int i = 2; i < SQRTN; ++i) p[i] = i;
@@ -11,8 +11,8 @@ vector<Int> segmentSieve(Int L, Int H) {
       remove(p, p+SQRTN, 0);
       lookup = 1;
    }
-   vector<Int> table(H - L);
-   for (Int i = L; i < H; ++i) table[i - L] = i;
+   vector<bool> table(H - L);
+   for (int i = L; i < H; ++i) table[i - L] = 1;
    for (int i = 0, j; p[i] * p[i] < H; ++i) { // O( \sqrt(H) )
       if (p[i] >= L) j = p[i] * p[i];
       else if (L % p[i] == 0) j = L;

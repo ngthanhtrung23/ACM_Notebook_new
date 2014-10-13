@@ -1,6 +1,11 @@
-#include <bits/stdc++.h>
+// Linear Suffix Array O(N)
 
-using namespace std;
+// String index from 0
+// Usage:
+//  string s;
+//  DC3Algorithm dc3;
+//  dc3.Construct(s);
+//  Now we can use dc3.GetSA() and dc3.GetLCP()
 
 #define MAXN 1000010 // >= 256
 class DC3Algorithm {
