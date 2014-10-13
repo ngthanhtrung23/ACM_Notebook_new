@@ -12,7 +12,7 @@ bool congruenceEquation(vector<int> a, int b, int m, vector<int> &ret) {
     if (b % g[n]) return false;
     int val = b / g[n];
     Ford(i, n, 1) {
-        pair<ll, ll> p = extendedEuclid(g[i - 1], a[i]);
+        pair<ll, ll> p = extgcd(g[i - 1], a[i]);
         x[i] = p.se * val % m;
         val = p.fi * val % m;
     }
