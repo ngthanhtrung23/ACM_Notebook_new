@@ -1,3 +1,6 @@
+#include <bits/stdc++.h>
+using namespace std;
+
 struct Circle : Point {
     double r;
     Circle(double x = 0, double y = 0, double r = 0) : Point(x, y), r(r) {}
@@ -5,15 +8,15 @@ struct Circle : Point {
 
 // Find common tangents to 2 circles
 // Helper method
-void tangents(Point c, double c1.r, double c2.r, vector<Line> & ans) {
-    double r = c2.r - c1.r;
+void tangents(Point c, double r1, double r2, vector<Line> & ans) {
+    double r = r2 - r1;
     double z = sqr(c.x) + sqr(c.y);
     double d = z - sqr(r);
     if (d < -EPS)  return;
     d = sqrt(fabs(d));
     Line l((c.x * r + c.y * d) / z,
             (c.y * r - c.x * d) / z,
-            c1.r);
+            r1);
     ans.push_back(l);
 }
 // Actual method: returns vector containing all common tangents
@@ -64,12 +67,11 @@ vector<Point> intersection(Line l, Circle cir) {
     }
 }
 
-
 double commonCircleArea(Circle c1, Circle c2) { //return the common area of two circle
     double d = hypot(c1.x-c2.x, c1.y-c2.y), area;
     if (c1.r+c2.r <= d) area = 0;
-    else if (c2.r+d <= c1.r) area = (c1.r * c1.r - c2.r * c2.r) * PI;
-    else if (c1.r+d <= c2.r) area = (c2.r * c2.r - c1.r * c1.r) * PI;
+    else if (c2.r+d <= c1.r) area = (c1.r * c1.r - c2.r * c2.r) * M_PI;
+    else if (c1.r+d <= c2.r) area = (c2.r * c2.r - c1.r * c1.r) * M_PI;
     else {
         double p1 = c2.r * c2.r * acos((d*d + c2.r*c2.r - c1.r*c1.r) / (2*d*c2.r));
         double p2 = c1.r * c1.r * acos((d*d + c1.r*c1.r - c2.r*c2.r) / (2*d*c1.r));
