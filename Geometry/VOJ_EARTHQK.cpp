@@ -1,7 +1,7 @@
 // Accepted
-#include "../../template.h"
-#include "polygon.h"
+#include "../template.h"
 #include "basic.h"
+#include "polygon.h"
 
 int test, x, y, m, n;
 
