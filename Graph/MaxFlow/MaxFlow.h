@@ -20,10 +20,10 @@ struct MaxFlow {
         edges.clear();
     }
 
-    void addEdge(int u, int v, int c) {
+    void addEdge(int u, int v, int c, bool bi = false) {
         Edge xuoi = {u, v, c, 0, head[u]};
         head[u] = edges.size(); edges.push_back(xuoi);
-        Edge nguoc = {v, u, 0, 0, head[v]};
+        Edge nguoc = {v, u, bi ? c : 0, 0, head[v]};
         head[v] = edges.size(); edges.push_back(nguoc);
     }
 
