@@ -85,15 +85,16 @@ bool in_polygon(const Polygon &P, Point pt) {
 // Source: http://codeforces.com/contest/166/submission/1392387
 // On edge --> false
 #define Det(a,b,c) ((double)(b.x-a.x)*(double)(c.y-a.y)-(double)(b.y-a.y)*(c.x-a.x))
-;
 bool in_convex(vector<Point>& l, Point p){
     int a = 1, b = l.size()-1, c;
     if (Det(l[0], l[a], l[b]) > 0) swap(a,b);
+    // Allow on edge --> if (Det... > 0 || Det ... < 0)
     if (Det(l[0], l[a], p) >= 0 || Det(l[0], l[b], p) <= 0) return false;
     while(abs(a-b) > 1) {
         c = (a+b)/2;
         if (Det(l[0], l[c], p) > 0) b = c; else a = c;
     }
+    // Alow on edge --> return Det... <= 0
     return Det(l[a], l[b], p) < 0;
 }
 
