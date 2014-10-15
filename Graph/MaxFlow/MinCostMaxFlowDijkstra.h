@@ -1,7 +1,8 @@
-// Source: rng_58
+// Source: rng_58: http://codeforces.com/contest/277/submission/3212642
 // Faster min cost max flow
 // Index from 0
 // NOTE!!!!!! Flow through both direction can be < 0
+// Does not work when cost < 0
 // --> need to be careful when trace
 
 const long long F_INF = 1000111000111000LL;
