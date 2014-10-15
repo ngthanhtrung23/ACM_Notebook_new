@@ -1,9 +1,9 @@
 // Source: rng_58: http://codeforces.com/contest/277/submission/3212642
-// Faster min cost max flow
+// Fast min cost max flow (Dijkstra)
 // Index from 0
 // NOTE!!!!!! Flow through both direction can be < 0
-// Does not work when cost < 0
 // --> need to be careful when trace
+// Does not work when cost < 0
 
 const long long F_INF = 1000111000111000LL;
 const long long C_INF = 1000111000111000LL;

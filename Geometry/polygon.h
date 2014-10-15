@@ -185,6 +185,7 @@ double convex_diameter(Polygon pt) {
     return maxd; /* farthest pair is (maxi, maxj). */
 }
 
+// Closest pair
 pair<Point,Point> closestPair(vector<Point> p) {
     // Source: e-maxx.ru
     return make_pair(Point(0, 0), Point(0, 0));
