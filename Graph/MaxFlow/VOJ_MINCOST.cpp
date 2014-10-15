@@ -1,19 +1,18 @@
 #include "../../template.h"
-#include "MinCostMaxFlow.h"
+
+#define prev prev_
+#include "MinCostMaxFlowDijkstra.h"
 
 const int MN = 111*111*2;
-int id[111];
-MinCostFlow<long long,long long>::Edge* edges[MN];
-int f[111][111], c[111][111];
-int id_u[MN], id_v[MN];
+long long f[111][111], c[111][111];
+int id_u[MN], id_v[MN], edges[MN];
 
 int main() {
-    MinCostFlow<long long, long long> mcf;
     int n, m, k, s, t;
     while (cin >> n >> m >> k >> s >> t) {
-        FOR(i,0,n) id[i] = mcf.addV();
+        MinCostFlow<long long, long long> mcf(n+1, m*2+2);
 
-        mcf.addEdge(id[0], id[s], k, 0);
+        mcf.addEdge(0, s, k, 0);
 
         memset(f, 0, sizeof f);
         FOR(i,1,m) {
@@ -29,7 +28,7 @@ int main() {
             edges[++m] = mcf.addEdge(j, i, f[i][j], c[i][j]); id_u[m] = j; id_v[m] = i;
         }
 
-        pair<long long, long long> res = mcf.minCostFlow(id[0], id[t]);
+        pair<long long, long long> res = mcf.minCostFlow(0, t);
 
         if (res.first < k) {
             cout << -1 << endl;
@@ -39,8 +38,8 @@ int main() {
 
         FOR(i,1,m/2) {
             int u = id_u[i], v = id_v[i];
-            int f_xuoi = f[u][v] - edges[i*2-1]->f;
-            int f_nguoc = f[v][u] - edges[i*2]->f;
+            int f_xuoi = f[u][v] - mcf.cap[edges[i*2-1]];
+            int f_nguoc = f[v][u] - mcf.cap[edges[i*2]];
 
             int t = min(f_xuoi, f_nguoc);
             f_xuoi -= t;
