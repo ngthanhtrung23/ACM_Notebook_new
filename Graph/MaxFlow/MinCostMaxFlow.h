@@ -7,7 +7,7 @@
  * be flow through both (u, v) and (v, u)
  */
 
-// Implementation note: this is implemented using Ford Fulkerson algorithm
+// Implementation note: this is implemented using Ford Bellman algorithm
 // for augmenting path. It could be improved by using Dijkstra (read TC tutorial on how
 // to handle negative edges)
 
@@ -40,7 +40,7 @@ struct MinCostFlow {
         e1->rev = e2, e2->rev = e1;
         return e1;
     }
-    pair<Flow, Cost> minCostFlow(int vs, int vt) { //flow,cost
+    pair<Flow, Cost> minCostFlow(int vs, int vt) {
         int n = E.size();
         Flow flow = 0;
         Cost cost = 0;
