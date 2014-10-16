@@ -10,11 +10,11 @@
 
 // Slow version (Ford Bellman)
 // Can work with negative edges. (not loop!)
+// Must be careful when used with double.
 
 #define _MAX_COST INT_MAX
 #define _MAX_FLOW INT_MAX
 
-// Must be careful when used with double.
 template<class Flow = int, class Cost = int>
 struct MinCostFlow {
     struct Edge {
