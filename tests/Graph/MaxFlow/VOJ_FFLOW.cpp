@@ -1,6 +1,4 @@
-// Fastest flow
-// Index from 0
-
+// Problem: http://vn.spoj.com/problems/FFLOW/
 #include "template.h"
 #include "buffered_reader.h"
 #include "Graph/MaxFlow/MaxFlow.h"

@@ -1,4 +1,4 @@
-// Accepted
+// Problem: http://vn.spoj.com/problems/NKFLOW/
 #include "template.h"
 #include "Graph/MaxFlow/MaxFlow.h"
 

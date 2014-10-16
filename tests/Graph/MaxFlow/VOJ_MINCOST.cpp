@@ -1,3 +1,4 @@
+// Problem: http://vn.spoj.com/problems/MINCOST/
 #include "template.h"
 
 #define prev prev_

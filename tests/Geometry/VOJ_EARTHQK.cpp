@@ -1,7 +1,7 @@
-// Accepted
-#include "../template.h"
-#include "basic.h"
-#include "polygon.h"
+// Problem: http://vn.spoj.com/problems/EARTHQK/
+#include "template.h"
+#include "Geometry/basic.h"
+#include "Geometry/polygon.h"
 
 int test, x, y, m, n;
 

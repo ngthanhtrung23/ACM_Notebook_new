@@ -1,3 +1,4 @@
+// Problem: http://vn.spoj.com/problems/MCQUERY
 #include "template.h"
 
 const int MN = 211;
