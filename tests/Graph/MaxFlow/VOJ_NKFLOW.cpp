@@ -1,6 +1,6 @@
 // Accepted
-#include "../../template.h"
-#include "MaxFlow.h"
+#include "template.h"
+#include "Graph/MaxFlow/MaxFlow.h"
 
 int main() {
     ios :: sync_with_stdio(false);

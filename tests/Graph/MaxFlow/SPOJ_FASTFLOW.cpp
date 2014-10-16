@@ -1,6 +1,6 @@
-// Accepted
-#include "../../template.h"
-#include "MaxFlow.h"
+// Problem: http://www.spoj.com/problems/FASTFLOW/
+#include "template.h"
+#include "Graph/MaxFlow/MaxFlow.h"
 
 int main() {
     ios :: sync_with_stdio(false);

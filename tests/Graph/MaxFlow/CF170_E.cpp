@@ -1,5 +1,7 @@
-#include "../../template.h"
-#include "MinCostMaxFlow.h"
+// Problem: http://codeforces.com/contest/277/problem/E
+
+#include "template.h"
+#include "Graph/MaxFlow/MinCostMaxFlow.h"
 
 int x[411], y[411];
 

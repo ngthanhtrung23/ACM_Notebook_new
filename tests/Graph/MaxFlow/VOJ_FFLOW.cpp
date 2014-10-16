@@ -1,17 +1,17 @@
 // Fastest flow
 // Index from 0
 
-#include "../../template.h"
-#include "../../buffered_reader.h"
-#include "MaxFlow.h"
+#include "template.h"
+#include "buffered_reader.h"
+#include "Graph/MaxFlow/MaxFlow.h"
 
 int main() {
-    int n; GN(n);
+    int n; scanf("%d", &n);
     MaxFlow flow(n);
-    int x; GN(x);
+    int x; scanf("%d", &x);
     while (x--) {
         int u, v, c;
-        GN(u); GN(v); GN(c);
+        scanf("%d%d%d", &u, &v, &c);
         --u; --v;
         flow.addEdge(u, v, c);
         flow.addEdge(v, u, c);

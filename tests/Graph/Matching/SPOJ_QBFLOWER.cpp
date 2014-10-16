@@ -1,5 +1,5 @@
-#include "../../template.h"
-#include "GeneralMatching.h"
+#include "template.h"
+#include "Graph/Matching/GeneralMatching.h"
 
 int main() {
     //freopen("input.txt","r",stdin);

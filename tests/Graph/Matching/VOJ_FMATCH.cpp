@@ -1,5 +1,5 @@
-#include "../../template.h"
-#include "FastMatching.h"
+#include "template.h"
+#include "Graph/Matching/FastMatching.h"
 
 int main() {
     int m, n, p;

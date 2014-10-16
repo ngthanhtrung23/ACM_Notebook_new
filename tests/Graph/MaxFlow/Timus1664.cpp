@@ -1,6 +1,6 @@
-#include "../../template.h"
-#include "../../buffered_reader.h"
-#include "MaxFlow.h"
+#include "template.h"
+#include "buffered_reader.h"
+#include "Graph/MaxFlow/MaxFlow.h"
 
 int main() {
     freopen("input.txt", "r", stdin);

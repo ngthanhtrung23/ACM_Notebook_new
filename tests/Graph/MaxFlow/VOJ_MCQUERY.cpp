@@ -1,10 +1,10 @@
-#include "../../template.h"
+#include "template.h"
 
 const int MN = 211;
 const int oo = 1000111000;
 
-#include "MaxFlowDinic.h"
-#include "GomoryHu.h"
+#include "Graph/MaxFlow/MaxFlowDinic.h"
+#include "Graph/MaxFlow/GomoryHu.h"
 
 int main() {
     ios :: sync_with_stdio(false);

@@ -1,7 +1,7 @@
-#include "../../template.h"
+#include "template.h"
 
 #define prev prev_
-#include "MinCostMaxFlowDijkstra.h"
+#include "Graph/MaxFlow/MinCostMaxFlowDijkstra.h"
 
 const int MN = 111*111*2;
 long long f[111][111], c[111][111];

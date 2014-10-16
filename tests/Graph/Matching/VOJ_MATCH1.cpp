@@ -1,8 +1,9 @@
-#include "../../template.h"
-#include "Matching.h"
+#include "template.h"
+#include "Graph/Matching/Matching.h"
 
 int main() {
     ios :: sync_with_stdio(false); cin.tie(NULL);
+    freopen("input.txt", "r", stdin);
     int m, n;
     while (cin >> m >> n) {
         Matching match(max(m, n));

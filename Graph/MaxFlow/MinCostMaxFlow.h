@@ -9,6 +9,7 @@
  */
 
 // Slow version (Ford Bellman)
+// Can work with negative edges. (not loop!)
 
 #define _MAX_COST INT_MAX
 #define _MAX_FLOW INT_MAX
