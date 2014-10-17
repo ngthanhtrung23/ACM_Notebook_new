@@ -17,9 +17,9 @@ struct MinCostFlow {
         int to;
         Flow cap;
         Cost cost;
-        int next, rev;
-        Edge(int to, Flow cap, Cost cost, int next, int rev) :
-                to(to), cap(cap), cost(cost), next(next), rev(rev) {}
+        int next;
+        Edge(int to, Flow cap, Cost cost, int next) :
+                to(to), cap(cap), cost(cost), next(next) {}
     };
     vector<Edge> edges;
 
@@ -27,11 +27,12 @@ struct MinCostFlow {
         edges.clear();
     }
 
-    void addEdge(int from, int to, Flow cap, Cost cost) {
-        edges.push_back(Edge(to, cap, cost, last[from], t^1));
+    int addEdge(int from, int to, Flow cap, Cost cost) {
+        edges.push_back(Edge(to, cap, cost, last[from]));
         last[from] = t; ++t;
-        edges.push_back(Edge(from, 0, -cost, last[to], t^1));
+        edges.push_back(Edge(from, 0, -cost, last[to]));
         last[to] = t; ++t;
+        return t - 2;
     }
 
     pair<Flow, Cost> minCostFlow(int _S, int _T) {
@@ -56,6 +57,7 @@ private:
             int x = Q.top().second;
             Cost d = -Q.top().first;
             Q.pop();
+            // For double: dis[x] > d + EPS
             if (dis[x] != d) continue;
             for(int it = last[x]; it >= 0; it = edges[it].next)
                 if (edges[it].cap > 0 && dis[edges[it].to] > d + edges[it].cost)
@@ -73,10 +75,11 @@ private:
         visited[x] = 1;
         Flow now = flow;
         for(int it = last[x]; it >= 0; it = edges[it].next)
+            // For double: fabs(dis[edges[it].to] + edges[it].cost - dis[x]) < EPS
             if (edges[it].cap && !visited[edges[it].to] && dis[edges[it].to] + edges[it].cost == dis[x]) {
                 Flow tmp = findFlow(edges[it].to, min(now, edges[it].cap));
                 edges[it].cap -= tmp;
-                edges[edges[it].rev].cap += tmp;
+                edges[it ^ 1].cap += tmp;
                 now -= tmp;
                 if (!now) break;
             }
@@ -90,6 +93,7 @@ private:
                 if (edges[it].cap && !visited[edges[it].to])
                     d = min(d, dis[edges[it].to] + edges[it].cost - dis[i]);
 
+        // For double: if (d > INF / 10)     INF = 1e20
         if (d == INF) return false;
         REP(i,n) if (visited[i])
             dis[i] += d;
