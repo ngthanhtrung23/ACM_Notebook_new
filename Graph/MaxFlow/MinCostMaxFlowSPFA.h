@@ -29,9 +29,9 @@ struct MinCostFlow {
 
     int addEdge(int from, int to, Flow cap, Cost cost) {
         edges.push_back(Edge(to, cap, cost, last[from]));
-        last[from] = t; ++t;
+        last[from] = t++;
         edges.push_back(Edge(from, 0, -cost, last[to]));
-        last[to] = t; ++t;
+        last[to] = t++;
         return t - 2;
     }
 
