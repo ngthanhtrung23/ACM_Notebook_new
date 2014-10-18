@@ -1,28 +1,29 @@
+// Problem: http://codeforces.com/problemset/problem/237/E
 #include "template.h"
-#include "Graph/MaxFlow/MinCostMaxFlow.h"
+#include "Graph/MaxFlow/MinCostMaxFlowSPFA.h"
 
 string t, s[111];
 int a[111], n, t_id[111], s_id[111][111];
 
 int main() {
     ios :: sync_with_stdio(false); cin.tie(NULL);
-    freopen("input.txt", "r", stdin);
     while (cin >> t) {
         cin >> n;
         FOR(i,1,n) cin >> s[i] >> a[i];
 
-        MinCostFlow<int,int> flow;
-        int source = flow.addV();
-        FOR(i,1,n) flow.addV();
+        int nId = 0;
+        int source = nId++;
+        FOR(i,1,n) nId++;
         REP(it,t.length())
-            t_id[it] = flow.addV();
+            t_id[it] = nId++;
 
         FOR(i,1,n) {
             REP(is,s[i].length())
-                s_id[i][is] = flow.addV();
+                s_id[i][is] = nId++;
         }
-        int sink = flow.addV();
+        int sink = nId++;
 
+        MinCostFlow<int,int> flow(nId);
         REP(it,t.length())
             flow.addEdge(t_id[it], sink, 1, 0);
 
