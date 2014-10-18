@@ -12,7 +12,7 @@ struct SuffixArray {
     vector<int> SA, LCP, x, y, w, c;
 
     SuffixArray(string _a, int m) : a(" " + _a), N(a.length()), m(m),
-            SA(N), LCP(N), x(N), y(N), w(m), c(N) {
+            SA(N), LCP(N), x(N), y(N), w(max(m, N)), c(N) {
         a[0] = 0;
         DA();
         kasaiLCP();
