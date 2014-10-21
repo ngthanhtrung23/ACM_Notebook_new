@@ -2,8 +2,7 @@
 // Vertex index from 0
 // Usage:
 // UndirectedDfs tree;
-// tree.solve();
-// Now you can use tree.bridges and tree.cuts
+// Then you can use tree.bridges and tree.cuts
 struct UndirectedDfs {
     vector<int> low, num, parent;
     vector<bool> articulation;
@@ -13,9 +12,7 @@ struct UndirectedDfs {
     vector<int> cuts;
 
     UndirectedDfs() : low(V, 0), num(V, -1), parent(V, 0), articulation(V, false),
-            counter(0), children(0) {}
-
-    void solve() {
+            counter(0), children(0) {
         REP(i,V) if (num[i] == -1) {
             root = i; children = 0;
             dfs(i);
