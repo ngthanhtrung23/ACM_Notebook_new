@@ -3,7 +3,7 @@ struct Circle : Point {
     Circle(double x = 0, double y = 0, double r = 0) : Point(x, y), r(r) {}
     Circle(Point p, double r) : Point(p), r(r) {}
     
-    bool contains(Point p) { return (*this - p).len() < r + EPS; }
+    bool contains(Point p) { return (*this - p).len() <= r + EPS; }
 };
 
 // Find common tangents to 2 circles

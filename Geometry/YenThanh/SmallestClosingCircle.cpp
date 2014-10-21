@@ -91,7 +91,7 @@ struct SmallestClosingCircle{
 			else if (cross < 0 && (right == NULL || pq.cross(c->c.subtract(p)) < pq.cross(right->c.subtract(p))))
 				right = c;
 		}
-		return right == NULL || left != NULL && left->r <= right->r ? left : right;
+		return right == NULL || (left != NULL && left->r) <= right->r ? left : right;
 	}
 
 	Circle *makeDiameter(Point a, Point b) {

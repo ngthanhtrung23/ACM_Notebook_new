@@ -1,7 +1,5 @@
 #include "template.h"
-#include "basic.h"
-#include "circle.h"
-#include "SmallestEnclosingCircle.h"
+#include "YenThanh/SmallestClosingCircle.cpp"
 
 int main() {
     int ntest; cin >> ntest;
@@ -12,9 +10,8 @@ int main() {
             double x, y; cin >> x >> y;
             p.push_back(Point(x, y));
         }
-
         Circle *c = smallestClosingCircle.makeCircle(p);
-        cout << (fixed) << setprecision(2) << c->r << "\n" << c->x << ' ' << c->y << "\n";
+        cout << (fixed) << setprecision(2) << c->r << "\n" << c->c.x << ' ' << c->c.y << "\n";
     }
 }
 
