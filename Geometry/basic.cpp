@@ -138,5 +138,7 @@ int main() {
     Point G = B.rotate(DEG_to_RAD(180));
     assert(G == Point(-4, -3));
 
+    cout << "All tests passed" << endl;
+
     return 0;
 }

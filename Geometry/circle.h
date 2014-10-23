@@ -25,7 +25,7 @@ vector<Line> tangents(Circle a, Circle b) {
     for (int i=-1; i<=1; i+=2)
         for (int j=-1; j<=1; j+=2)
             tangents(b-a, a.r*i, b.r*j, ans);
-    REP(i,ans.size())
+    for(int i = 0; i < ans.size(); ++i)
         ans[i].c -= ans[i].a * a.x + ans[i].b * a.y;
 
     vector<Line> ret;

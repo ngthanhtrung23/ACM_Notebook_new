@@ -17,5 +17,5 @@ int main() {
     assert(t.size() == 2);
     assert(cmp(t[0].f(Point(5, 0)), 0) == 0);
     assert(cmp(t[1].f(Point(5, 0)), 0) == 0);
-    DEBUG(t[0].f(Point(0, -0.3)));
+    cout << "All tests passed" << endl;
 }

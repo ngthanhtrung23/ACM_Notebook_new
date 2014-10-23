@@ -18,7 +18,7 @@ Polygon convex_hull(Polygon p) { // minimum vertices
     comp_hull comp;
     comp.pivot = *min_element(p.begin(),p.end());
     sort(p.begin(),p.end(),comp);
-    REP(i,n) {
+    for(int i = 0; i < n; ++i) {
         while (j > 1 && ccw(r[j-1],r[j-2],p[i]) <= 0) j--;
         r[j++] = p[i];
     }
@@ -50,7 +50,7 @@ Point centroid(Polygon p) {
 }
 double perimeter(Polygon P) {
     double res = 0;
-    REP(i,P.size()) {
+    for(int i = 0; i < P.size(); ++i) {
         int j = (i + 1) % P.size();
         res += (P[i] - P[j]).len();
     }
@@ -104,7 +104,7 @@ bool in_convex(vector<Point>& l, Point p){
 // The line must be formed using 2 points
 Polygon polygon_cut(Polygon P, Line l) {
     Polygon Q;
-    REP(i,P.size()) {
+    for(int i = 0; i < P.size(); ++i) {
         Point A = P[i], B = (i == P.size()-1) ? P[0] : P[i+1];
         if (ccw(l.A, l.B, A) != -1) Q.push_back(A);
         if (ccw(l.A, l.B, A)*ccw(l.A, l.B, B) < 0) {
