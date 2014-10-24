@@ -1,17 +1,25 @@
-#include "template.h"
-#include "YenThanh/SmallestClosingCircle.cpp"
+#include "../template.h"
+#include "basic.h"
+#include "circle.h"
+#include "smallestEnclosingCircle.h"
 
-int main() {
-    int ntest; cin >> ntest;
-    while (ntest--) {
-        int n; cin >> n;
-        vector< Point > p;
+int main()
+{
+    int test, n;
+    double x, y;
+
+    cin >> test;
+    while (test--) {
+        cin >> n;
+        vector<Point> points;
         while (n--) {
-            double x, y; cin >> x >> y;
-            p.push_back(Point(x, y));
+            scanf("%lf%lf", &x, &y);
+            points.push_back(Point(x, y));
         }
-        Circle *c = smallestClosingCircle.makeCircle(p);
-        cout << (fixed) << setprecision(2) << c->r << "\n" << c->c.x << ' ' << c->c.y << "\n";
+
+        SmallestEnclosingCircle scc;
+        Circle c = scc.getCircle(points);
+        printf("%.2lf\n%.2lf %.2lf\n", c.r, c.x, c.y);
     }
 }
 
