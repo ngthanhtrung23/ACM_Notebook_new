@@ -5,9 +5,12 @@
 // MinCostFlow mcf(n);
 // mcf.addEdge(1, 2, 3, 4);
 // cout << mcf.minCostFlow() << endl;
-const int INF = 1000111000;
+
 template<class Flow=int, class Cost=int>
 struct MinCostFlow {
+    const Flow INF_FLOW = 1000111000;
+    const Cost INF_COST = 1000111000111000LL;
+
     int n, t, S, T;
     Flow totalFlow;
     Cost totalCost;
@@ -41,7 +44,7 @@ struct MinCostFlow {
         while (1) {
             while (1) {
                 REP(i,n) visited[i] = 0;
-                if (!findFlow(S, INF)) break;
+                if (!findFlow(S, INF_FLOW)) break;
             }
             if (!modifyLabel()) break;
         }
@@ -50,7 +53,7 @@ struct MinCostFlow {
 
 private:
     void SPFA() {
-        REP(i,n) dis[i] = INF;
+        REP(i,n) dis[i] = INF_COST;
         priority_queue< pair<Cost,int> > Q;
         Q.push(make_pair(dis[S]=0, S));
         while (!Q.empty()) {
@@ -87,14 +90,14 @@ private:
     }
 
     bool modifyLabel() {
-        Cost d = INF;
+        Cost d = INF_COST;
         REP(i,n) if (visited[i])
             for(int it = last[i]; it >= 0; it = edges[it].next)
                 if (edges[it].cap && !visited[edges[it].to])
                     d = min(d, dis[edges[it].to] + edges[it].cost - dis[i]);
 
-        // For double: if (d > INF / 10)     INF = 1e20
-        if (d == INF) return false;
+        // For double: if (d > INF_COST / 10)     INF_COST = 1e20
+        if (d == INF_COST) return false;
         REP(i,n) if (visited[i])
             dis[i] += d;
         return true;
