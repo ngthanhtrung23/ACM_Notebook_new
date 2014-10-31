@@ -13,17 +13,18 @@ struct UndirectedDfs {
 
     UndirectedDfs() : low(V, 0), num(V, -1), parent(V, 0), articulation(V, false),
             counter(0), children(0) {
-        REP(i,V) if (num[i] == -1) {
+        for(int i = 0; i < V; ++i) if (num[i] == -1) {
             root = i; children = 0;
             dfs(i);
             articulation[root] = (children > 1);
         }
-        REP(i,V) if (articulation[i]) cuts.push_back(i);
+        for(int i = 0; i < V; ++i)
+            if (articulation[i]) cuts.push_back(i);
     }
 private:
     void dfs(int u) {
         low[u] = num[u] = counter++;
-        REP (j, G[u].size()) {
+        for(int j = 0; j < G[u].size(); ++j) {
             int v = G[u][j];
             if (num[v] == -1) {
                 parent[v] = u;

@@ -12,7 +12,7 @@ int main() {
     while (cin >> n >> m) {
         FOR(i,1,n) cin >> a[i];
 
-        MinCostFlow<int,int> flow(2 * (m+n) + 2);
+        MinCostFlow<int,long long> flow(2 * (m+n) + 2);
 
         int sink = 2 * (m+n) + 1;
         FOR(i,1,m+n) flow.addEdge(0, i, 1, 0);
@@ -31,7 +31,7 @@ int main() {
                 }
             }
 
-        pair<int,int> res = flow.minCostFlow(0, sink);
+        pair<int,long long> res = flow.minCostFlow(0, sink);
         vector< pair<int, pair<int,int> > > statements;
 
         FOR(j,m+1,m+n) {

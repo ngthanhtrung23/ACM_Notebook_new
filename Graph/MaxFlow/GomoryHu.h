@@ -13,8 +13,10 @@ struct GomoryHu {
     MaxFlow flow;
 
     GomoryHu(int n) : n(n), flow(n) {
-        REP(i,n) ok[i] = parent[i] = 0;
-        REP(i,n) REP(j,n) cap[i][j] = 0, answer[i][j] = oo;
+        for(int i = 0; i < n; ++i) ok[i] = parent[i] = 0;
+        for(int i = 0; i < n; ++i)
+            for(int j = 0; j < n; ++j)
+                cap[i][j] = 0, answer[i][j] = INF;
     }
 
     void addEdge(int u, int v, int c) {
@@ -22,10 +24,12 @@ struct GomoryHu {
     }
 
     void calc() {
-        REP(i,n) parent[i]=0;
-        REP(i,n) REP(j,n) answer[i][j]=2000111000;
+        for(int i = 0; i < n; ++i) parent[i]=0;
+        for(int i = 0; i < n; ++i)
+            for(int j = 0; j < n; ++j)
+                answer[i][j]=2000111000;
 
-        FOR(i,1,n-1) {
+        for(int i = 1; i <= n-1; ++i) {
             flow = MaxFlow(n);
             REP(u,n) REP(v,n)
                 if (cap[u][v])
@@ -34,12 +38,12 @@ struct GomoryHu {
             int f = flow.getMaxFlow(i, parent[i]);
 
             bfs(i);
-            FOR(j,i+1,n-1)
+            for(int j = i+1; j < n; ++j)
                 if (ok[j] && parent[j]==parent[i])
                     parent[j]=i;
             
             answer[i][parent[i]] = answer[parent[i]][i] = f;
-            FOR(j,0,i-1)
+            for(int j = 0; j < i; ++j)
                 answer[i][j]=answer[j][i]=min(f,answer[parent[i]][j]);
         }
     }
@@ -49,7 +53,7 @@ struct GomoryHu {
         qu.push(start);
         while (!qu.empty()) {
             int u=qu.front(); qu.pop();
-            REP(xid,flow.g[u].size()) {
+            for(int xid = 0; xid < flow.g[u].size(); ++xid) {
                 int id = flow.g[u][xid];
                 int v = flow.e[id].b, fl = flow.e[id].flow, cap = flow.e[id].cap;
                 if (!ok[v] && fl < cap) {

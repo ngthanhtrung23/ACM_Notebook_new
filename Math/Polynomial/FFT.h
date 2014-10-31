@@ -46,7 +46,8 @@ void multiply(Base a[][MN], int n) {
     calc_rev(outN, lg);
     eval(a[0], outN, false);
     eval(a[1], outN, false);
-    FOR(i,0,outN) a[2][i] = a[0][i] * a[1][i];
+    for(int i = 0; i < outN; ++i)
+        a[2][i] = a[0][i] * a[1][i];
     eval(a[2], outN, true);
 }
 

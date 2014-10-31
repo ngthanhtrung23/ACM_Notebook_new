@@ -15,10 +15,11 @@ struct Matching {
 
     bool bfs() {
         queue<int> qu;
-        FOR(u,1,n) if (!matchL[u]) {
-            dist[u] = 0;
-            qu.push(u);
-        } else dist[u] = inf;
+        for(int u = 1; u <= n; ++u)
+            if (!matchL[u]) {
+                dist[u] = 0;
+                qu.push(u);
+            } else dist[u] = inf;
         dist[0] = inf;
 
         while (!qu.empty()) {
@@ -50,7 +51,7 @@ struct Matching {
     int match() {
         int res = 0;
         while (bfs()) {
-            FOR(u,1,n)
+            for(int u = 1; u <= n; ++u)
                 if (!matchL[u])
                     if (dfs(u)) ++res;
         }

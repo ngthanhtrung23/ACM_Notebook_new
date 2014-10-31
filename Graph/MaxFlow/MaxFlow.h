@@ -85,7 +85,7 @@ private:
             excess[s] -= edges[p].c;
             p = edges[p].next;
         }
-        FOR(v,0,n-1) h[v] = 1;
+        for(int v = 0; v < n; ++v) h[v] = 1;
         h[s] = n; h[t] = 0;
     }
 
