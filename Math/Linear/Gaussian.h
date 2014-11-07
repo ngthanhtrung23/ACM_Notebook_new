@@ -1,7 +1,10 @@
 // Gauss-Jordan elimination.
 // Returns: number of solution (0, 1 or INF)
-// When the system has at least one solution, ans will contains
-// one possible solution
+//   When the system has at least one solution, ans will contains
+//   one possible solution
+// Possible improvement when having precision errors:
+//   - Divide i-th row by a(i, i)
+//   - Choosing pivoting row with min absolute value (sometimes this is better that maximum, as implemented here)
 int gauss (vector < vector<double> > a, vector<double> & ans) {
 	int n = (int) a.size();
 	int m = (int) a[0].size() - 1;
