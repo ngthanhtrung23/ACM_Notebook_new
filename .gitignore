@@ -1,3 +1,4 @@
+.fuse*
 *.exe
 *.txt
 *.dSYM/
