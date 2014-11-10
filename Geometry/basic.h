@@ -96,7 +96,8 @@ bool areParallel(Line l1, Line l2) {
 }
 
 bool areSame(Line l1, Line l2) {
-    return areParallel(l1 ,l2) && cmp(l1.c*l2.a, l2.c*l1.a) == 0;
+    return areParallel(l1 ,l2) && cmp(l1.c*l2.a, l2.c*l1.a) == 0
+                && cmp(l1.c*l2.b, l1.b*l2.c) == 0;
 }
 
 bool areIntersect(Line l1, Line l2, Point &p) {
