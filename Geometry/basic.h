@@ -71,6 +71,7 @@ double distToLineSegment(Point p, Point a, Point b, Point &c) {
     return distToLine(p, a, b, c);
 }
 
+// NOTE: WILL NOT WORK WHEN a = b = 0.
 struct Line {
     double a, b, c;
     Point A, B; // Added for polygon intersect line. Do not rely on assumption that these are valid
