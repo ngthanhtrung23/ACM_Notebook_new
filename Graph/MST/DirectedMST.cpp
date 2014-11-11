@@ -111,6 +111,3 @@ namespace chuliu {
         return ret;
     }
 }
-
-int main() {
-}
