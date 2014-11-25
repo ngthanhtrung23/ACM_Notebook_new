@@ -1,26 +1,4 @@
-#include <set>
-#include <map>
-#include <list>
-#include <cmath>
-#include <queue>
-#include <stack>
-#include <cstdio>
-#include <string>
-#include <vector>
-#include <cstdlib>
-#include <cstring>
-#include <sstream>
-#include <iomanip>
-#include <complex>
-#include <iostream>
-#include <algorithm>
-
-#include <ctime>
-#include <deque>
-#include <bitset>
-#include <cctype>
-#include <utility>
-#include <cassert>
+#include <bits/stdc++.h>
 
 #define FOR(i,a,b) for(int i=(a),_b=(b); i<=_b; i++)
 #define FORD(i,a,b) for(int i=(a),_b=(b); i>=_b; i--)
