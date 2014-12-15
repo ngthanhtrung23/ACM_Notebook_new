@@ -11,6 +11,7 @@ set clipboard=unnamed,unnamedplus
 set nowrap
 set textwidth=0
 set cindent
+set timeoutlen=100
 
 " Tab related stuffs
 set shiftwidth=4  " tab size = 4
