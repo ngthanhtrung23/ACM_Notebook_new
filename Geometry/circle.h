@@ -67,6 +67,7 @@ vector<Point> intersection(Line l, Circle cir) {
     }
 }
 
+// Only works when 2 circle intersects. If outside / inside, need to handle separately
 double commonCircleArea(Circle c1, Circle c2) { //return the common area of two circle
     double d = hypot(c1.x-c2.x, c1.y-c2.y), area;
     if (c1.r+c2.r <= d) area = 0;
