@@ -221,3 +221,11 @@ void rec(int l, int r, Point a[]) {
 // I = number of integer points strictly Inside
 // B = number of points on sides of polygon
 // S = I + B/2 - 1
+
+// Check if we can form triangle with edges x, y, z.
+bool isSquare(long long x) { /* */ }
+bool isIntegerCoordinates(int x, int y, int z) {
+    long long s=(long long)(x+y+z)*(x+y-z)*(x+z-y)*(y+z-x);
+    return (s%4==0 && isSquare(s/4));
+}
+
