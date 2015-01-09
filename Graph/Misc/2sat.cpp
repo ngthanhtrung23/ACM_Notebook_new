@@ -20,7 +20,7 @@ void dfs2 (int v, int cl) {
         }
 }
 int main() {
-    //contruct graph g and graph gt
+    //initially, clear used, order, comp. Resize & construct g, gt
     // if there’s an edge from i  i^1, there’s no solution
     // n = 2 * (number of boolean variables)
     used.assign (n, false);
