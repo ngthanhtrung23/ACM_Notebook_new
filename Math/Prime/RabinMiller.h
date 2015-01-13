@@ -1,11 +1,13 @@
 typedef long long ll;
 
-ll powMod(ll x, ll k, ll m) {
-  if (k == 0)      return 1;
-  if ((k & 1))     return x*powMod(x, k-1, m) % m;
-  else                return powMod(x*x % m, k/2, m);
+ll mulMod(ll x, ll y, ll p) {
+    return ((((x*(y>>20))%p)<<20)%p + x*(y&((1<<20)-1)))%p;
 }
-
+ll powMod(ll x, ll k, ll m) {
+    if (k == 0) return 1;
+    if ((k & 1)) return mulMod(x,powMod(x, k-1, m), m);
+    else return powMod(mulMod(x,x,m), k/2, m);
+}
 bool suspect(ll a, ll s, ll d, ll n) {
     ll x = powMod(a, d, n);
     if (x == 1) return true;
@@ -26,3 +28,4 @@ bool isPrime(ll n) {
         if (!suspect(test[i], s, d, n)) return false;
     return true;
 }
+// Killer prime: 5555555557LL (fail when not used mulMod)
