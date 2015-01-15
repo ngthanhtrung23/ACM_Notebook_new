@@ -1,0 +1,15 @@
+If g and f are arithmetic functions satisfying:
+    g(n) = sum( f(d) for d|n )
+then
+    f(n) = sum( mu(d)*g(n/d) for d|n )
+
+where mu(n) is:
+    0 if n has squared prime factor
+    1 if n is square-free and has even number of prime factor
+    -1 if n is square-free and has odd number of prime factor
+
+Generalized version:
+    g(n) = sum( f(n div m) for 1 <= m <= n)
+then
+    f(n) = sum( mu(m) * g(n div m) for 1 <= m <= n)
+

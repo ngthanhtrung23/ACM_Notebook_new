@@ -1,0 +1,8 @@
+Polygonal numbers: # dots arranged in shape of regular polygon.
+3. n*(n+1)/2
+4. n*n
+5. n*(3*n-1)/2
+6. n*(2*n-1)
+s. P(s, n) = (n*n*(s-2) - n*(s-4))/2
+2*P(s, n) = P(s+k, n) + P(s-k, n)
+

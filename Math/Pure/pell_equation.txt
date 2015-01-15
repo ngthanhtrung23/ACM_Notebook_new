@@ -1,0 +1,8 @@
+Consider equation: x*x - n*y*y = 1
+Notice that for any solution (x, y), x/y is good approximation of sqrt(n).
+In fact, fundamental (which min. x) satisfies:
+(x,y) = (hi, ki) where hi/ki is the sequence of convergents to continued fraction for sqrt(n).
+From fundamental solution, all solutions can be found using:
+x(k+1) = x1*xk + n*y1*yk
+y(k+1) = x1*yk + y1*xk
+
