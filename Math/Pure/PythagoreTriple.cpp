@@ -13,4 +13,6 @@ vector< vector<int> > genPrimitivePytTriples(int n) {
     return ret;
 }
 // a^2 + b^2 == c^2
-// a = m^2 - n^2, b = 2mn, c = m^2 + n^2
+// To generate all primitive triples:
+// a = m^2 - n^2, b = 2mn, c = m^2 + n^2 (m > n)
+// Primitive triples iff gcd(m, n) == 1 && (m - n) % 2 == 1
