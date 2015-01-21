@@ -19,6 +19,7 @@ bool suspect(ll a, ll s, ll d, ll n) {
 }
 // {2,7,61,-1}                      is for n < 4759123141 (= 2^32)
 // {2,3,5,7,11,13,17,19,23,-1} is for n < 10^16 (at least)
+// Could not make it work with n < 10^18 :(
 bool isPrime(ll n) {
     if (n <= 1 || (n > 2 && n % 2 == 0)) return false;
     ll test[] = {2,3,5,7,11,13,17,19,23,-1};
