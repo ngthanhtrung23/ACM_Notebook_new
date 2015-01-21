@@ -1,7 +1,12 @@
+// Does not seem to work with big N (N ~ 10^16)
+// Because of mulMod, it is slower than Java isProbablePrime when N is big
 typedef long long ll;
 
 ll mulMod(ll x, ll y, ll p) {
-    return ((((x*(y>>20))%p)<<20)%p + x*(y&((1<<20)-1)))%p;
+    if (x < 1000111000111000111LL / y) return x * y % p;
+    ll mid = mulMod((x+x)%p, y>>1LL, p);
+    if (y & 1) return (mid + x) % p;
+    else return mid;
 }
 ll powMod(ll x, ll k, ll m) {
     if (k == 0) return 1;
@@ -18,8 +23,7 @@ bool suspect(ll a, ll s, ll d, ll n) {
     return false;
 }
 // {2,7,61,-1}                      is for n < 4759123141 (= 2^32)
-// {2,3,5,7,11,13,17,19,23,-1} is for n < 10^16 (at least)
-// Could not make it work with n < 10^18 :(
+// {2,3,5,7,11,13,17,19,23,-1} is for n < 10^15 (at least)
 bool isPrime(ll n) {
     if (n <= 1 || (n > 2 && n % 2 == 0)) return false;
     ll test[] = {2,3,5,7,11,13,17,19,23,-1};
