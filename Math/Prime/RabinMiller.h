@@ -13,7 +13,7 @@ bool suspect(ll a, ll s, ll d, ll n) {
     if (x == 1) return true;
     for (int r = 0; r < s; ++r) {
         if (x == n - 1) return true;
-        x = x * x % n;
+        x = mulMod(x, x, n);
     }
     return false;
 }
