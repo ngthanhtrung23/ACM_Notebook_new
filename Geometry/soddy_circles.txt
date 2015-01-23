@@ -1,0 +1,9 @@
+Given 3 mutually tangent circles. Find inner circle (touching all 3) and outer circle (touching all 3).
+The radius is given by:
+k4 = k1 + k2 + k3 +- 2*sqrt(k1*k2 + k2*k3 + k3*k1)
+Plus --> Outer
+Minus --> Inner
+
+Special cases:
+- If 1 circle --> line, change radius to 0 --> k4 = k1 + k2 +- 2*sqrt(k1*k2)
+
