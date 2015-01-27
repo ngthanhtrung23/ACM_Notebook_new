@@ -1,3 +1,4 @@
+// only work for undirected graph
 int main() {
     int n;
     vector < vector<int> > g (n, vector<int> (n));
