@@ -1,26 +1,20 @@
-// If directed --> do not need reverse_edge, update add_edge method
+// If directed --> do not need rev, update add_edge method
 // No solution? NEED TO CHECK YOURSELF (connected graph, number of odd vertices)
-struct Edge;
-typedef list<Edge>::iterator iter;
-
 struct Edge {
-    int next_vertex;
-    iter reverse_edge;
+    int to;
+    list<Edge>::iterator rev;
 
-    Edge(int next_vertex)
-        :next_vertex(next_vertex) { }
+    Edge(int to) :to(to) {}
 };
 
-const int max_vertices = 4011;
-int num_vertices;
-list<Edge> adj[max_vertices];       // adjacency list
-
-vector<int> path;
+const int MN = 100111;
+list<Edge> adj[MN];
+vector<int> path; // our result
 
 void find_path(int v) {
     while(adj[v].size() > 0) {
-        int vn = adj[v].front().next_vertex;
-        adj[vn].erase(adj[v].front().reverse_edge);
+        int vn = adj[v].front().to;
+        adj[vn].erase(adj[v].front().rev);
         adj[v].pop_front();
         find_path(vn);
     }
@@ -29,10 +23,10 @@ void find_path(int v) {
 
 void add_edge(int a, int b) {
     adj[a].push_front(Edge(b));
-    iter ita = adj[a].begin();
+    auto ita = adj[a].begin();
     adj[b].push_front(Edge(a));
-    iter itb = adj[b].begin();
-    ita->reverse_edge = itb;
-    itb->reverse_edge = ita;
+    auto itb = adj[b].begin();
+    ita->rev = itb;
+    itb->rev = ita;
 }
 

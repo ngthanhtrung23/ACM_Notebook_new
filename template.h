@@ -13,7 +13,7 @@
 #define sqr(x) ((x) * (x))
 using namespace std;
 
-int main() {
+int main_() {
     ios :: sync_with_stdio(false);
     cout << (fixed) << setprecision(9);
     // Stack: To the infinity and beyond!
