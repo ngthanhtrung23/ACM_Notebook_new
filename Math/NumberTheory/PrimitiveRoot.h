@@ -1,3 +1,10 @@
+// Primitive root of modulo n is integer g iff for all a < n & gcd(a, n) == 1, there exist k: g^k = a mod n
+// k is called discrete log of a
+//
+// Exist if:
+// - n is 1, 2, 4
+// - n = p^k for odd prime p
+// - n = 2*p^k for odd prime p
 int powmod (int a, int b, int p) {
     int res = 1;
     while (b)
