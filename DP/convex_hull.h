@@ -6,8 +6,8 @@
 // To solve:
 // Hull hull;
 // FOR(i,1,n) {
-//   f[i] = hull.get(a[i]);
-//   hull.add(b[i], f[i]);
+//   dp[i] = hull.get(a[i]);
+//   hull.add(b[i], dp[i]);
 // }
 
 const int MAXN = 100100;
