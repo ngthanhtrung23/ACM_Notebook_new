@@ -1,5 +1,3 @@
-#include "../../template.h"
-
 const int maxe = 100111;
 const int maxv = 100;
 

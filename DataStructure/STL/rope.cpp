@@ -1,11 +1,8 @@
-#include <iostream>
-#include <cstdio>
-#include <ext/rope> //header with rope
+#include <bits/stdc++.h>
+#include <ext/rope>
 using namespace std;
-using namespace __gnu_cxx; //namespace with rope and some additional stuff
-int main()
-{
-    ios_base::sync_with_stdio(false);
+using namespace __gnu_cxx;
+int main() {
     rope <int> v; //use as usual STL container
     int n, m;
     cin >> n >> m;
@@ -22,5 +19,4 @@ int main()
     }
     for(rope <int>::iterator it = v.mutable_begin(); it != v.mutable_end(); ++it)
         cout << *it << " ";
-    return 0;
 }

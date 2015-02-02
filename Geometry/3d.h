@@ -4,8 +4,6 @@
 // [ txz - sy | tyz + sx | tzz + c  ]
 // Với: c = cos(a)      s = sin(a)      t = 1 – cos(a)
 
-#include "../template.h"
-
 const double EPS = 1e-6;
 
 inline double det(double a, double b, double c, double d) {

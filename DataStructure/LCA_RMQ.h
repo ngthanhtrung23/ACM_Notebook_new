@@ -1,4 +1,3 @@
-#include "template.h"
 // L[i] = level
 // L[root] = -1
 // LCA[0][root] = -1
