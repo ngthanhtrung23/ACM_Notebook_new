@@ -1,4 +1,3 @@
-// Does not seem to work with big N (N ~ 10^16)
 // Because of mulMod, it is slower than Java isProbablePrime when N is big
 typedef long long ll;
 
