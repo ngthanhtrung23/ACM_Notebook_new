@@ -1,4 +1,3 @@
-#include "template.h"
 // sinh bo 3 pytago nguyen thuy voi x, y, z <= n
 vector< vector<int> > genPrimitivePytTriples(int n) {
     vector< vector<int> > ret;

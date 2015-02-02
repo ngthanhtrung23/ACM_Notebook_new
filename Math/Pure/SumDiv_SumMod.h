@@ -1,4 +1,3 @@
-#include "template.h"
 // sumdiv(n) = [n/1] + [n/2] + [n/3] + ... + [n/n]
 long long sumdiv(long long n) {
     long long s=0;
