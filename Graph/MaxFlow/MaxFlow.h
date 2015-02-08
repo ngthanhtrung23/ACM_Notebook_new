@@ -1,3 +1,4 @@
+// ONLY WORKS FOR UNDIRECTED GRAPH!!!!!! (c[u][v] == c[v][u])
 // Fastest flow
 // Index from 0, directed
 // To use:
