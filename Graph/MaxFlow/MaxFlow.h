@@ -3,7 +3,7 @@
 // To use:
 // MaxFlow flow(n)
 // For each edge: flow.addEdge(u, v, c)
-// result = flow.getFlow(s, t)
+// result = flow.getMaxFlow(s, t)
 
 struct Edge {
     int u, v, c, f;
@@ -28,7 +28,7 @@ struct MaxFlow {
         return v == u ? head[u] - 1 : head[u];
     }
 
-    long long getFlow(int _s, int _t) {
+    long long getMaxFlow(int _s, int _t) {
         s = _s; t = _t;
         init();
 
