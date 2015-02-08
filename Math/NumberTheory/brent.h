@@ -1,4 +1,5 @@
-#include "../Prime/RabinMiller.h"
+#include "template.h"
+#include "Math/Prime/RabinMiller.h"
 
 long long mul(long long a, long long b, long long mod) {
     if (b == 0) return 0;
