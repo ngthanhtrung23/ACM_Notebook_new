@@ -50,3 +50,4 @@ inline void decompose () {
     RESET (in_segment_id, -1);
     rec (0, -1);
 }
+
