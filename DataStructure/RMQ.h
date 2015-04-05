@@ -1,3 +1,4 @@
+// Source: https://github.com/ADJA/algos/tree/master/DataStructures/SparseTable.cpp
 int table[MAXLOG][MAXN];
 int numlog[MAXN];
 
