@@ -102,7 +102,7 @@ bool in_convex(vector<Point>& l, Point p){
 // Cut a polygon with a line. Returns one half.
 // To return the other half, reverse the direction of Line l (by negating l.a, l.b)
 // The line must be formed using 2 points
-Polygon polygon_cut(Polygon P, Line l) {
+Polygon polygon_cut(const Polygon& P, Line l) {
     Polygon Q;
     for(int i = 0; i < P.size(); ++i) {
         Point A = P[i], B = (i == P.size()-1) ? P[0] : P[i+1];
