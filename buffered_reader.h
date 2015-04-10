@@ -3,11 +3,11 @@ int INP,AM,REACHEOF;
 char BUF[BUFSIZE+1], *inp=BUF;
 #define GETCHAR(INP) { \
     if(!*inp) { \
-        if (REACHEOF) {\
+        if (REACHEOF) return 0;\
         memset(BUF,0,sizeof BUF);\
         int inpzzz = fread(BUF,1,BUFSIZE,stdin);\
         if (inpzzz != BUFSIZE) REACHEOF = true;\
-        inp=BUF; }\
+        inp=BUF; \
     } \
     INP=*inp++; \
 }
