@@ -1,30 +1,45 @@
 typedef vector< Point > Polygon;
 
-// Convex Hull: returns minimum number of vertices. Should work when N <= 1 and when all points 
-// are collinear
-struct comp_hull {
-    Point pivot;
-    bool operator() (Point q,Point w) {
-        Point Q = q - pivot, W = w - pivot;
-        double R = Q % W;
-        if (cmp(R,0)) return R < 0;
-        return cmp(Q*Q,W*W) < 0;
+// Convex Hull:
+// If minimum point --> #define REMOVE_REDUNDANT
+// If maximum point --> no need to change.
+// Known issues:
+// - Max. point does not work when some points are the same.
+double area2(Point a, Point b, Point c) { return a%b + b%c + c%a; }
+#ifdef REMOVE_REDUNDANT
+bool between(const Point &a, const Point &b, const Point &c) {
+    return (fabs(area2(a,b,c)) < EPS && (a.x-b.x)*(c.x-b.x) <= 0 && (a.y-b.y)*(c.y-b.y) <= 0);
+}
+#endif
+
+void ConvexHull(vector<Point> &pts) {
+    sort(pts.begin(), pts.end());
+    pts.erase(unique(pts.begin(), pts.end()), pts.end());
+    vector<Point> up, dn;
+    for (int i = 0; i < pts.size(); i++) {
+        while (up.size() > 1 && area2(up[up.size()-2], up.back(), pts[i]) >= 0) up.pop_back();
+        while (dn.size() > 1 && area2(dn[dn.size()-2], dn.back(), pts[i]) <= 0) dn.pop_back();
+        up.push_back(pts[i]);
+        dn.push_back(pts[i]);
     }
-};
-Polygon convex_hull(Polygon p) { // minimum vertices
-    int j = 0, k, n = p.size();
-    Polygon r(n);
-    if (!n) return r;
-    comp_hull comp;
-    comp.pivot = *min_element(p.begin(),p.end());
-    sort(p.begin(),p.end(),comp);
-    for(int i = 0; i < n; ++i) {
-        while (j > 1 && ccw(r[j-1],r[j-2],p[i]) <= 0) j--;
-        r[j++] = p[i];
+    pts = dn;
+    for (int i = (int) up.size() - 2; i >= 1; i--) pts.push_back(up[i]);
+    
+#ifdef REMOVE_REDUNDANT
+    if (pts.size() <= 2) return;
+    dn.clear();
+    dn.push_back(pts[0]);
+    dn.push_back(pts[1]);
+    for (int i = 2; i < pts.size(); i++) {
+        if (between(dn[dn.size()-2], dn[dn.size()-1], pts[i])) dn.pop_back();
+        dn.push_back(pts[i]);
     }
-    r.resize(j);
-    if (r.size() >= 2 && r.back() == r.front()) r.pop_back();
-    return r;
+    if (dn.size() >= 3 && between(dn.back(), dn[0], dn[1])) {
+        dn[0] = dn.back();
+        dn.pop_back();
+    }
+    pts = dn;
+#endif
 }
 
 // Area, perimeter, centroid
