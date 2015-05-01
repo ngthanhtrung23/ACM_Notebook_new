@@ -3,7 +3,7 @@
 
 // String index from 0
 // Usage:
-// string s;
+// string s;  (s[i] > 0)
 // SuffixArray sa(s);
 // Now we can use sa.SA and sa.LCP
 // sa.LCP[i] = max common prefix suffix of sa.SA[i-1] and sa.SA[i]
