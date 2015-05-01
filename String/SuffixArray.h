@@ -6,6 +6,7 @@
 // string s;
 // SuffixArray sa(s);
 // Now we can use sa.SA and sa.LCP
+// sa.LCP[i] = max common prefix suffix of sa.SA[i-1] and sa.SA[i]
 struct SuffixArray {
     string a;
     int N, m;
