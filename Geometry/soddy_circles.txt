@@ -6,5 +6,5 @@ Plus --> Outer
 Minus --> Inner
 
 Special cases:
-- If 1 circle --> line, change radius to 0 --> k4 = k1 + k2 +- 2*sqrt(k1*k2)
+- If 1 circle --> line, change ki to 0 --> k4 = k1 + k2 +- 2*sqrt(k1*k2)
 
