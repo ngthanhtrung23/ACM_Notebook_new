@@ -2,8 +2,7 @@ int INP,AM,REACHEOF;
 #define BUFSIZE (1<<12)
 char BUF[BUFSIZE+1], *inp=BUF;
 #define GETCHAR(INP) { \
-    if(!*inp) { \
-        if (REACHEOF) return 0;\
+    if(!*inp && !REACHEOF) { \
         memset(BUF,0,sizeof BUF);\
         int inpzzz = fread(BUF,1,BUFSIZE,stdin);\
         if (inpzzz != BUFSIZE) REACHEOF = true;\
