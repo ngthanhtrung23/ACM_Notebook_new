@@ -2,7 +2,7 @@ typedef unsigned int uint;
 
 // NOTE: gP(n) is incorrect for even values of n
 #define N 90000000
-uint mark[N / 64];
+uint mark[N / 64 + 1];
 #define gP(n) (mark[n>>6]&(1<<((n>>1)&31)))
 #define rP(n) (mark[n>>6]&=~(1<<((n>>1)&31)))
 
