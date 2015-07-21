@@ -2,6 +2,7 @@
 typedef long long ll;
 
 ll mulMod(ll x, ll y, ll p) {
+    if (y == 0) return 0;
     if (x < 1000111000111000111LL / y) return x * y % p;
     ll mid = mulMod((x+x)%p, y>>1LL, p);
     if (y & 1) return (mid + x) % p;
