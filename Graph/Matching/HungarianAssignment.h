@@ -11,7 +11,7 @@ struct Hungary {
     bool used[MN];
 
     void init(int _nx, int _ny) {
-        nx = _nx; ny = _ny;
+        nx = _nx; ny = max(_nx, _ny);
         memset(fx, 0, sizeof fx);
         memset(fy, 0, sizeof fy);
         memset(used, false, sizeof used);
