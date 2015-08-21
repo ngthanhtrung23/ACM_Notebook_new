@@ -1,3 +1,4 @@
+// NOTE: DOES NOT WORK WHEN THERE ARE MULTIPLE EDGES! To fix, use map to count # occurrences of edges
 // Assume already have undirected graph vector< vector<int> > G with V vertices
 // Vertex index from 0
 // Usage:
