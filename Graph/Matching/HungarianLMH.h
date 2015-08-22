@@ -8,7 +8,7 @@ int front, rear, start, finish;
 
 void init() {
     FOR(i,1,n) {
-        fx[i] = fy[i] = mx[i] = my[i] = 0;
+        fy[i] = mx[i] = my[i] = 0;
         FOR(j,1,n) c[i][j] = inf;
     }
 }
@@ -87,6 +87,7 @@ void enlarge() {
 }
 
 int mincost() {
+    FOR(i,1,n) fx[i] = *min_element(c[i]+1, c[i]+n+1);
     FOR(i,1,n) {
         start = i;
         initBFS();
