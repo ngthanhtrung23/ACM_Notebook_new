@@ -82,8 +82,24 @@ double commonCircleArea(Circle c1, Circle c2) { //return the common area of two 
     return area;
 }
 
-// Given 2 circles: (0, 0, r) and (c2.x, c2.y, c2.r)
-// Intersections are intersections with line Ax + By + C where
-// A = -2 * c2.x
-// B = -2 * c2.y
-// C = c2.x^2 + c2.y^2 + r^2 - c2.r^2
+// Check if 2 circle intersects. Return true if 2 circles touch
+bool areIntersect(Circle u, Circle v) {
+    if (cmp((u - v).len(), u.r + v.r) > 0) return false;
+    if (cmp((u - v).len() + v.r, u.r) < 0) return false;
+    if (cmp((u - v).len() + u.r, v.r) < 0) return false;
+    return true;
+}
+
+// If 2 circle touches, will return 2 (same) points
+vector<Point> circleIntersect(Circle u, Circle v) {
+    vector<Point> res;
+    if (!areIntersect(u, v)) return res;
+    double d = (u - v).len();
+    double alpha = acos((u.r * u.r + d*d - v.r * v.r) / 2.0 / u.r / d);
+
+    Point p1 = (v - u).rotate(alpha);
+    Point p2 = (v - u).rotate(-alpha);
+    res.push_back(p1 / p1.len() * u.r + u);
+    res.push_back(p2 / p2.len() * u.r + u);
+    return res;
+}

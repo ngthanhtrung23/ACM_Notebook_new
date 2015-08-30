@@ -4,6 +4,7 @@
 // Usage:
 // MaxFlow flow(n)
 // For each edge: flow.addEdge(u, v, c)
+// Index from 0
 
 const int INF = 1000000000;
  
