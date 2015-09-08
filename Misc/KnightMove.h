@@ -1,5 +1,7 @@
 // Knight’s shortest path (from (0, 0))
 int KSP(int x, int y) {
+    if (x < 0) x = -x;
+    if (y < 0) y = -y;
     if (x < y) swap(x, y);
     if (x == 1 && y == 0) return 3;
     if (x == 2 && y == 2) return 4;

@@ -6,6 +6,8 @@
 // For each edge: flow.addEdge(u, v, c)
 // Index from 0
 
+// Tested:
+// - https://open.kattis.com/problems/maxflow
 const int INF = 1000000000;
  
 struct Edge {

@@ -24,11 +24,11 @@ int sqrtMod(int n, int p) { //find x: x2 = n (mod p) p is prime
     }
 }
 int powMod (int a, int b, int p) {
-          int res = 1;
-          while (b)
-                     if (b & 1)
-                                res = int (res * 1ll * a % p),  --b;
-                     else
-                                a = int (a * 1ll * a % p),  b >>= 1;
-          return res;
+    int res = 1;
+    while (b)
+        if (b & 1)
+            res = int (res * 1ll * a % p),  --b;
+        else
+            a = int (a * 1ll * a % p),  b >>= 1;
+    return res;
 } 

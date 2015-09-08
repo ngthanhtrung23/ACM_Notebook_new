@@ -15,13 +15,13 @@ pair<int, VI> GetMinCut(VVI &weights) {
             if (!added[j] && (last == -1 || w[j] > w[last])) last = j;
             if (i == phase-1) {
                 for (int j = 0; j < N; j++) weights[prev][j] += weights[last][j];
-                    for (int j = 0; j < N; j++) weights[j][prev] = weights[prev][j];
-                    used[last] = true;
-                    cut.push_back(last);
-                    if (best_weight == -1 || w[last] < best_weight) {
-                        best_cut = cut;
-                        best_weight = w[last];
-                    }
+                for (int j = 0; j < N; j++) weights[j][prev] = weights[prev][j];
+                used[last] = true;
+                cut.push_back(last);
+                if (best_weight == -1 || w[last] < best_weight) {
+                    best_cut = cut;
+                    best_weight = w[last];
+                }
             }
             else {
                 for (int j = 0; j < N; j++)

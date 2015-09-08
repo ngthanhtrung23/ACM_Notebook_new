@@ -1,4 +1,3 @@
-// Because of mulMod, it is slower than Java isProbablePrime when N is big
 typedef long long ll;
 
 ll mulMod(ll x, ll y, ll p) {

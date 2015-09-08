@@ -1,9 +1,14 @@
+// Note:
+// - DOES NOT WORK WITH DIRECTED GRAPH
 // Fastest flow
 // Index from 0, directed
 // To use:
 // MaxFlow flow(n)
 // For each edge: flow.addEdge(u, v, c)
 // result = flow.getMaxFlow(s, t)
+//
+// Tested:
+// - http://vn.spoj.com/problems/FFLOW/
 
 struct Edge {
     int u, v, c, f;
@@ -20,12 +25,11 @@ struct MaxFlow {
         edges.clear();
     }
 
-    int addEdge(int u, int v, int c, bool bi = false) {
+    int addEdge(int u, int v, int c) {
         Edge xuoi = {u, v, c, 0, head[u]};
         head[u] = edges.size(); edges.push_back(xuoi);
-        Edge nguoc = {v, u, bi ? c : 0, 0, head[v]};
+        Edge nguoc = {v, u, c, 0, head[v]};
         head[v] = edges.size(); edges.push_back(nguoc);
-        return v == u ? head[u] - 1 : head[u];
     }
 
     long long getMaxFlow(int _s, int _t) {

@@ -1,3 +1,8 @@
+// Tested:
+// - https://open.kattis.com/problems/polymul2 (need long double)
+// Note:
+// - a[2] will have size <= 2*n
+// - When rounding, careful with negative numbers
 typedef complex<double> Base;
 int rev[MN];
 Base wlen_pw[MN];

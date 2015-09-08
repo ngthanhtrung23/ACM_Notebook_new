@@ -202,6 +202,12 @@ double convex_diameter(Polygon pt) {
 
 // Closest pair
 // Source: e-maxx.ru
+// Tested:
+// - https://open.kattis.com/problems/closestpair2
+// - https://open.kattis.com/problems/closestpair1
+// Notes:
+// - Sort by X first
+// - Implement compare by Y
 #define upd_ans(x, y) {}
 #define MAXN 100
 double mindist = 1e20; // will be the result
