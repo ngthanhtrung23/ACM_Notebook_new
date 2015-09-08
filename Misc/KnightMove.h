@@ -1,4 +1,6 @@
 // Knight’s shortest path (from (0, 0))
+// Tested:
+// - https://open.kattis.com/problems/knightstrip
 int KSP(int x, int y) {
     if (x < 0) x = -x;
     if (y < 0) y = -y;

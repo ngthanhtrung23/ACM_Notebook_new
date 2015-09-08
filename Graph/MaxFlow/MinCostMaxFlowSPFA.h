@@ -5,6 +5,8 @@
 // MinCostFlow mcf(n);
 // mcf.addEdge(1, 2, 3, 4);
 // cout << mcf.minCostFlow() << endl;
+// Tested:
+// - https://open.kattis.com/problems/mincostmaxflow
 
 template<class Flow=int, class Cost=int>
 struct MinCostFlow {

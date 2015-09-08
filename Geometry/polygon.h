@@ -5,6 +5,8 @@ typedef vector< Point > Polygon;
 // If maximum point --> no need to change.
 // Known issues:
 // - Max. point does not work when some points are the same.
+// Tested:
+// - https://open.kattis.com/problems/convexhull
 double area2(Point a, Point b, Point c) { return a%b + b%c + c%a; }
 #ifdef REMOVE_REDUNDANT
 bool between(const Point &a, const Point &b, const Point &c) {
@@ -83,7 +85,9 @@ bool is_convex(const Polygon &P) {
 }
 
 // Inside polygon: O(N). Works with any polygon
-// Does not work when point is on edge. Should check separately
+// Does not work when point is on edge. Should check separately (before calling this)
+// Tested:
+// - https://open.kattis.com/problems/pointinpolygon
 bool in_polygon(const Polygon &P, Point pt) {
     if ((int)P.size() == 0) return false;
     double sum = 0;
@@ -216,7 +220,7 @@ void rec(int l, int r, Point a[]) {
         for (int i=l; i<=r; ++i)
             for (int j=i+1; j<=r; ++j)
                     upd_ans(a[i], a[j]);
-        sort(a+l, a+r+1); // compare by y
+        sort(a+l, a+r+1, cmpy); // compare by y
         return;
     }
 
@@ -224,7 +228,7 @@ void rec(int l, int r, Point a[]) {
     int midx = a[m].x;
     rec(l, m, a), rec(m+1, r, a);
     static Point t[MAXN];
-    merge(a+l, a+m+1, a+m+1, a+r+1, t); // compare by y
+    merge(a+l, a+m+1, a+m+1, a+r+1, t, cmpy); // compare by y
     copy(t, t+r-l+1, a+l);
 
     int tsz = 0;

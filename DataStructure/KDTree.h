@@ -1,9 +1,16 @@
+// Tested:
+// - https://open.kattis.com/problems/closestpair1
+// - https://open.kattis.com/problems/closestpair2
+//
 // A straightforward, but probably sub-optimal KD-tree implmentation that's
 // probably good enough for most things (current it's a 2D-tree)
 //
-//  - constructs from n Points in O(n lg^2 n) time
-//  - handles nearest-neighbor query in O(lg n) if Points are well distributed
-//  - worst case for nearest-neighbor may be linear in pathological case
+// - constructs from n Points in O(n lg^2 n) time
+// - handles nearest-neighbor query in O(lg n) if Points are well distributed
+// - worst case for nearest-neighbor may be linear in pathological case
+// Note:
+// - When there are multiple points in same position & we need to tell a Point
+//   not to find itself, must handle separatedly.
 
 typedef long long ll;
 const ll sentry = numeric_limits<ll>::max();
@@ -99,6 +106,7 @@ struct kdtree {
     ll search(Kdnode *node, const Point &p) {
         if (node->leaf) {
             // commented special case tells a Point not to find itself
+            // BUT NOTE THAT THIS WILL FAIL WHEN THERE ARE MULTIPLE POINTS AT SAME POSITION
             //            if (p == node->pt) return sentry;
             //            else
             return (p - node->pt).dist2();
