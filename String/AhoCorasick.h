@@ -1,3 +1,5 @@
+// Tested:
+// - https://open.kattis.com/problems/stringmultimatching
 // Linked list
 struct Node {
     int x; Node *next; bool visited;

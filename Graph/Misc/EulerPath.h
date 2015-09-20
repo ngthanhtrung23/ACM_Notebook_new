@@ -1,5 +1,15 @@
-// If directed --> do not need rev, update add_edge method
+// Tested:
+// - https://open.kattis.com/problems/eulerianpath (directed)
 // No solution? NEED TO CHECK YOURSELF (connected graph, number of odd vertices)
+//
+// If directed:
+// - Edge --> int
+// - add_edge(int a, int b) { adj[a].push_back(b); }
+// - Check for no solution:
+// - - for all u, |in_deg[u] - out_deg[u]| <= 1
+// - - At most 1 vertex with in_deg[u] - out_deg[u] = 1
+// - - At most 1 vertex with out_deg[u] - in_deg[u] = 1 (start vertex)
+// - - BFS from start vertex, all vertices u with out_deg[u] > 0 must be visited
 struct Edge {
     int to;
     list<Edge>::iterator rev;

@@ -88,11 +88,14 @@ bool is_convex(const Polygon &P) {
 // Does not work when point is on edge. Should check separately (before calling this)
 // Tested:
 // - https://open.kattis.com/problems/pointinpolygon
+// - https://open.kattis.com/problems/cuttingpolygon
 bool in_polygon(const Polygon &P, Point pt) {
     if ((int)P.size() == 0) return false;
     double sum = 0;
     for (int i = 0; i < (int)P.size(); i++) {
         Point Pj = P[(i+1) % P.size()];
+        // If allow on edge --> uncomment the following line
+        // if (ccw(P[i], Pj, pt) == 0 && min(P[i], Pj) <= pt && pt <= max(P[i], Pj)) return true;
         if (ccw(pt, P[i], Pj) > 0)
             sum += angle(P[i], pt, Pj);
         else sum -= angle(P[i], pt, Pj);

@@ -1,3 +1,7 @@
+// Solve linear congruences equation:
+// - a[i] * x = b[i] MOD m[i]
+// Tested:
+// - https://open.kattis.com/problems/generalchineseremainder
 bool linearCongruences(const vector<int> &a, const vector<int> &b, 
         const vector<int> &m, int &x, int &M) {  
     int n = a.size();
