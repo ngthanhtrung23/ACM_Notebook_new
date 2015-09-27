@@ -1,4 +1,5 @@
 // Decompose s = w1w2..wk : k max and w1 >= w2 >= ...
+// each wi is strictly smaller than all its rotation
 void lyndon(string s) {
     int n = (int) s.length();
     int i = 0;

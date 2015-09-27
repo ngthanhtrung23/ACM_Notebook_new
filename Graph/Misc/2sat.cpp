@@ -1,3 +1,8 @@
+// Tested: http://codeforces.com/contest/568/problem/C
+#include <bits/stdc++.h>
+#define REP(i,a) for(int i=0,_a=(a); i<_a; i++)
+using namespace std;
+
 int n;
 vector < vector<int> > g, gt;
 vector<bool> used;
@@ -20,9 +25,10 @@ void dfs2 (int v, int cl) {
         }
 }
 int main() {
-    //initially, clear used, order, comp. Resize & construct g, gt
-    // if there’s an edge from i  i^1, there’s no solution
+    // initially, clear used, order, comp. Resize & construct g, gt
+    // if there’s an edge from i --> i^1, there’s no solution (NOTE: should work automatically, but just to be safe, check this before proceeding)
     // n = 2 * (number of boolean variables)
+    // NOTE: if we need to fix some variable, e.g. set i = 0 --> addEdge(2*i+1, 2*i)
     used.assign (n, false);
     REP(i,n)
         if (!used[i])    dfs1 (i);
@@ -41,3 +47,4 @@ int main() {
         printf ("%d ", ans);
     }
 }
+

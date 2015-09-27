@@ -16,6 +16,7 @@ struct Point {
         return sqrt(x * x + y * y + z * z);
     }
     double operator * (Point a) const { return x*a.x + y*a.y + z*a.z; }
+    Point operator + (Point a) { return Point(x+a.x, y+a.y, z+a.z); }
     Point operator - (Point a) { return Point(x-a.x, y-a.y, z-a.z); }
     Point operator %(const Point &op) const {
         return Point(det(y, z, op.y, op.z), -det(x, z, op.x, op.z), det(x, y,
