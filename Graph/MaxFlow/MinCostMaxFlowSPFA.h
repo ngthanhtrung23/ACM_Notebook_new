@@ -3,10 +3,11 @@
 // Lots of double comparison --> likely to fail for double
 // Example:
 // MinCostFlow mcf(n);
-// mcf.addEdge(1, 2, 3, 4);
+// mcf.addEdge(u, v, cap, cost);
 // cout << mcf.minCostFlow() << endl;
 // Tested:
 // - https://open.kattis.com/problems/mincostmaxflow
+// - http://codeforces.com/gym/100213 - A
 
 template<class Flow=int, class Cost=int>
 struct MinCostFlow {

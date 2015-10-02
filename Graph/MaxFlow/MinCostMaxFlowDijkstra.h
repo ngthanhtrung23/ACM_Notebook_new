@@ -5,8 +5,8 @@
 // --> need to be careful when trace
 // Does not work when cost < 0
 
-#define F_INF 1000111000LL;
-#define C_INF 1000111000LL;
+#define F_INF 1000111000LL
+#define C_INF 1000111000LL
 
 template<class Flow = long long, class Cost = long long>
 struct MinCostFlow {

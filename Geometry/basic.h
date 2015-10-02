@@ -43,9 +43,16 @@ int ccw(Point a, Point b, Point c) {
     return cmp((b-a)%(c-a),0);
 }
 
-double angle(Point a, Point o, Point b) { // angle AOB
+double angle(Point a, Point o, Point b) { // min of directed angle AOB & BOA
     a = a - o; b = b - o;
     return acos((a * b) / sqrt(a.norm() * b.norm()));
+}
+
+double directed_angle(Point a, Point o, Point b) { // angle AOB, in range [0, 2*PI)
+    double t = -atan2(a.y - o.y, a.x - o.x)
+            + atan2(b.y - o.y, b.x - o.x);
+    while (t < 0) t += 2*M_PI;
+    return t;
 }
 
 // Distance from p to Line ab (closest Point --> c)

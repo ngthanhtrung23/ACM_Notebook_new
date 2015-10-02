@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-#include <ext/rope>
+#include <ext/rope> // Slow (balanced BST)!!! do not abuse
 using namespace std;
 using namespace __gnu_cxx;
 int main() {
