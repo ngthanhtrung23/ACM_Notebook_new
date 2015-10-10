@@ -8,6 +8,7 @@
 // Tested:
 // - https://open.kattis.com/problems/mincostmaxflow
 // - http://codeforces.com/gym/100213 - A
+// - http://codeforces.com/gym/100216 - A
 
 template<class Flow=int, class Cost=int>
 struct MinCostFlow {

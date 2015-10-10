@@ -1,12 +1,10 @@
-// m - number of (less than) inequalities, n - number of variables 
-// C - (m+1) by (n+1) array of coefficients: 
-// row 0 - objective function coefficients 
-// row 1:m - less-than inequalities 
-// column 0:n-1 - inequality coefficients 
-// column n - inequality constants (0 for objective function) 
-// X[n] - result variables 
-// return value - maximum value of objective function 
-// (-inf for infeasible, inf for unbounded) 
+// Tested:
+// - http://codeforces.com/gym/100216 - C
+// m = # inequalities, n = #variables
+// C[0] = objective function (max)
+// C[1..m] = leq equations:
+//   sum( C[i][j] * X[j] ) <= C[i][n]
+// Return: -INF if infeasible, INF if unbounded, max otherwise
 #define MAXM 400 // leave one extra 
 #define MAXN 400 // leave one extra 
 #define EPS 1e-9 
