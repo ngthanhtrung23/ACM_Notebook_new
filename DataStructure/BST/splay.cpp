@@ -144,5 +144,8 @@ Node *create(int from, int to) {
     return p;
 }
 
+// NOTE: If we get access to pointer of some node & want to move it up,
+// need to carefully lazy update the parents. HOW???
+
 int main() {
 }

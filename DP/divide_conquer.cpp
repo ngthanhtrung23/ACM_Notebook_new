@@ -40,21 +40,17 @@ void compute(int i, int L, int R, int optL, int optR) {
     compute(i, mid+1, R, savek, optR);
 }
 
-int main() {
-    ios :: sync_with_stdio(false); cin.tie(NULL);
-    while (cin >> n >> k) {
-        FOR(i,1,n) FOR(j,1,n) {
-            cin >> cost[i][j];
-            cost[i][j] = cost[i-1][j] + cost[i][j-1] - cost[i-1][j-1] + cost[i][j];
-        }
-
-        dp[0][0] = 0;
-        FOR(i,1,n) dp[0][i] = inf;
-
-        FOR(i,1,k) {
-            compute(i, 1, n, 0, n);
-        }
-        cout << dp[k][n] / 2 << endl;
+void solve() {
+    cin >> n >> k;
+    FOR(i,1,n) FOR(j,1,n) {
+        cin >> cost[i][j];
+        cost[i][j] = cost[i-1][j] + cost[i][j-1] - cost[i-1][j-1] + cost[i][j];
     }
-    return 0;
+    dp[0][0] = 0;
+    FOR(i,1,n) dp[0][i] = inf;
+
+    FOR(i,1,k) {
+        compute(i, 1, n, 0, n);
+    }
+    cout << dp[k][n] / 2 << endl;
 }
