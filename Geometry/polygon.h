@@ -146,7 +146,7 @@ bool intersect_1pt(Point a, Point b,
     double t =  ((c - a) % (d - c)) / D;
     double s = -((a - c) % (b - a)) / D;
     r = a + (b - a) * t;
-    return cmp(t, 0) > 0 && cmp(t, 1) < 0 && cmp(s, 0) > 0 && cmp(s, 1) < 0;
+    return cmp(t, 0) >= 0 && cmp(t, 1) <= 0 && cmp(s, 0) >= 0 && cmp(s, 1) <= 0;
 }
 Polygon convex_intersect(Polygon P, Polygon Q) {
     const int n = P.size(), m = Q.size();
@@ -169,10 +169,10 @@ Polygon convex_intersect(Polygon P, Polygon Q) {
             else            { a = (a + 1) % m; ++aa; }
         } else if (C >= 0) {
             if (A > 0) { if (in == Pin) R.push_back(P[a]); a = (a+1)%n; ++aa; }
-            else        { if (in == Qin) R.push_back(Q[b]); b = (b+1)%m; ++ba; }
+            else       { if (in == Qin) R.push_back(Q[b]); b = (b+1)%m; ++ba; }
         } else {
             if (B > 0) { if (in == Qin) R.push_back(Q[b]); b = (b+1)%m; ++ba; }
-            else        { if (in == Pin) R.push_back(P[a]); a = (a+1)%n; ++aa; }
+            else       { if (in == Pin) R.push_back(P[a]); a = (a+1)%n; ++aa; }
         }
     } while ( (aa < n || ba < m) && aa < 2*n && ba < 2*m );
     if (in == Unknown) {

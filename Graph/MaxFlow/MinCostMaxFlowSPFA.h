@@ -9,6 +9,7 @@
 // - https://open.kattis.com/problems/mincostmaxflow
 // - http://codeforces.com/gym/100213 - A
 // - http://codeforces.com/gym/100216 - A
+// - http://codeforces.com/gym/100222 - D
 
 template<class Flow=int, class Cost=int>
 struct MinCostFlow {

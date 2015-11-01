@@ -20,7 +20,7 @@ struct SuffixArray {
         #define REF(X) { rotate(X.begin(), X.begin()+1, X.end()); X.pop_back(); }
         REF(SA); REF(LCP);
         a = a.substr(1, a.size());
-        for(int i = 0; i < SA.size(); ++i) --SA[i];
+        for(int i = 0; i < (int) SA.size(); ++i) --SA[i];
         #undef REF
     }
 
