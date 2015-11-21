@@ -1,6 +1,7 @@
 " Minimum vimrc, used for ACM practices & real contest
 " Settings that should be on by default
 syntax on
+set bg=dark       " Dark background
 set bs=2          " backspace should work as we expect
 set autoindent
 set ruler         " show cursor position in bottom line
