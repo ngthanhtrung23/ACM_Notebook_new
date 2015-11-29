@@ -1,6 +1,7 @@
 " Minimum vimrc, used for ACM practices & real contest
 " Settings that should be on by default
 syntax on
+set bg=dark       " Dark background
 set bs=2          " backspace should work as we expect
 set autoindent
 set ruler         " show cursor position in bottom line
@@ -44,8 +45,8 @@ endfunction
 nnoremap <C-c> :call MyComment()<CR>
 
 function! CPPSET()
-  nnoremap <buffer> <F9> :w<cr>:!g++-4.9 % -o %< -std=c++11 -I ./<cr>:!clear;./%<<cr>
-  nnoremap <buffer> <F8> :w<cr>:!g++-4.9 % -o %< -std=c++11 -I ./<cr>
+  nnoremap <buffer> <F9> :w<cr>:!g++ % -o %< -std=c++11 -I ./<cr>:!clear;./%<<cr>
+  nnoremap <buffer> <F8> :w<cr>:!g++ % -o %< -std=c++11 -I ./<cr>
 endfunction
 
 function! JAVASET()
