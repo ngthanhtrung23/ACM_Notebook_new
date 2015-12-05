@@ -7,6 +7,8 @@ struct Circle : Point {
 };
 
 // Find common tangents to 2 circles
+// Tested:
+// - http://codeforces.com/gym/100803/ - H
 // Helper method
 void tangents(Point c, double r1, double r2, vector<Line> & ans) {
     double r = r2 - r1;
@@ -42,6 +44,8 @@ vector<Line> tangents(Circle a, Circle b) {
 }
 
 // Circle & line intersection
+// Tested:
+// - http://codeforces.com/gym/100803/ - H
 vector<Point> intersection(Line l, Circle cir) {
     double r = cir.r, a = l.a, b = l.b, c = l.c + l.a*cir.x + l.b*cir.y;
     vector<Point> res;
@@ -96,6 +100,8 @@ bool areIntersect(Circle u, Circle v) {
 }
 
 // If 2 circle touches, will return 2 (same) points
+// Tested:
+// - http://codeforces.com/gym/100803/ - H
 vector<Point> circleIntersect(Circle u, Circle v) {
     vector<Point> res;
     if (!areIntersect(u, v)) return res;
