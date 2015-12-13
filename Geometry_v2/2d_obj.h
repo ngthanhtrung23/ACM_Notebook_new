@@ -3,6 +3,7 @@
 // Experimenting
 // Tested:
 // - http://codeforces.com/gym/100803 - H
+// - http://codeforces.com/gym/100834 - E
 
 const double EPS = 1e-6;
 const double INF = 1e9;
@@ -13,7 +14,8 @@ int cmp(double x, double y) {
     return 1;
 }
 
-struct D { // replacement for double
+// ------------------------ BASIC TYPE
+struct D {
     double x;
 
     D() {}
@@ -53,7 +55,7 @@ struct D { // replacement for double
         cout << x.x;
         return cout;
     }
-};
+} O(0.0), PI(acos((double) -1.0));
 
 int cmp(const D& a, const D& b) {
     return cmp(a.x, b.x);
@@ -61,6 +63,7 @@ int cmp(const D& a, const D& b) {
 
 D sqrt(D x) { assert(x >= 0); return D(sqrt(x.x)); }
 D abs(D x) { if (x < 0) return -x; else return x; }
+D fabs(D x) { if (x < 0) return -x; else return x; }
 D sin(D x) { return sin(x.x); }
 D cos(D x) { return cos(x.x); }
 D tan(D x) { return tan(x.x); }
@@ -110,6 +113,13 @@ struct Point {
         return Point(x, y) * l / len();
     }
 };
+D angle(Point a, Point o, Point b) { // min of directed angle AOB & BOA
+    a = a - o; b = b - o;
+    return acos((a * b) / sqrt(a.norm() * b.norm()));
+}
+int ccw(const Point& a, const Point& b, const Point& c) {
+    return ((b - a) % (c - a)).sign();
+}
 
 struct Line {
     D a, b, c;
@@ -121,6 +131,13 @@ struct Line {
         a = B.y - A.y;
         b = A.x - B.x;
         c = D(0) - (a * A.x + b * A.y);
+    }
+    D f(const Point &p) {
+        return a*p.x + b*p.y + c;
+    }
+
+    D dist(Point p) {
+        return fabs(a*p.x + b*p.y + c) / sqrt(a*a + b*b);
     }
 };
 
@@ -141,6 +158,7 @@ struct Circle : Point {
     }
 };
 
+// ------------------------ Line operations
 bool areParallel(Line l1, Line l2) {
     return l1.a*l2.b == l1.b*l2.a;
 }
@@ -166,6 +184,7 @@ bool areIntersect(Circle u, Circle v) {
     return true;
 }
 
+// ------------------------ Circle operations
 vector<Point> circleIntersect(Circle u, Circle v) {
     vector<Point> res;
     if (!areIntersect(u, v)) return res;
@@ -240,6 +259,48 @@ vector<Line> tangents(Circle a, Circle b) {
     return ret;
 }
 
-int ccw(const Point& a, const Point& b, const Point& c) {
-    return ((b - a) % (c - a)).sign();
+// ------------------------ Polygon
+typedef vector< Point > Polygon;
+
+D area2(Point a, Point b, Point c) { return a%b + b%c + c%a; }
+bool between(const Point &a, const Point &b, const Point &c) {
+    return (fabs(area2(a,b,c)) < EPS && (a.x-b.x)*(c.x-b.x) <= 0 && (a.y-b.y)*(c.y-b.y) <= 0);
+}
+void ConvexHull(vector<Point> &pts) {
+    sort(pts.begin(), pts.end());
+    pts.erase(unique(pts.begin(), pts.end()), pts.end());
+    vector<Point> up, dn;
+    for (int i = 0; i < pts.size(); i++) {
+        while (up.size() > 1 && area2(up[up.size()-2], up.back(), pts[i]) >= 0) up.pop_back();
+        while (dn.size() > 1 && area2(dn[dn.size()-2], dn.back(), pts[i]) <= 0) dn.pop_back();
+        up.push_back(pts[i]);
+        dn.push_back(pts[i]);
+    }
+    pts = dn;
+    for (int i = (int) up.size() - 2; i >= 1; i--) pts.push_back(up[i]);
+    
+    if (pts.size() <= 2) return;
+    dn.clear();
+    dn.push_back(pts[0]);
+    dn.push_back(pts[1]);
+    for (int i = 2; i < pts.size(); i++) {
+        if (between(dn[dn.size()-2], dn[dn.size()-1], pts[i])) dn.pop_back();
+        dn.push_back(pts[i]);
+    }
+    if (dn.size() >= 3 && between(dn.back(), dn[0], dn[1])) {
+        dn[0] = dn.back();
+        dn.pop_back();
+    }
+    pts = dn;
+}
+D signed_area(Polygon p) {
+    D area = 0;
+    for(int i = 0; i < p.size(); i++) {
+        int j = (i+1) % p.size();
+        area += p[i].x*p[j].y - p[j].x*p[i].y;
+    }
+    return area / 2.0;
+}
+D area(const Polygon &p) {
+    return fabs(signed_area(p));
 }
