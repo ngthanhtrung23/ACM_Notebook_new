@@ -177,6 +177,7 @@ bool areIntersect(Line l1, Line l2, Point &p) {
     return true;
 }
 
+// ------------------------ Circle operations
 bool areIntersect(Circle u, Circle v) {
     if (cmp((u - v).len(), u.r + v.r) > 0) return false;
     if (cmp((u - v).len() + v.r, u.r) < 0) return false;
@@ -184,7 +185,6 @@ bool areIntersect(Circle u, Circle v) {
     return true;
 }
 
-// ------------------------ Circle operations
 vector<Point> circleIntersect(Circle u, Circle v) {
     vector<Point> res;
     if (!areIntersect(u, v)) return res;
@@ -279,6 +279,7 @@ void ConvexHull(vector<Point> &pts) {
     pts = dn;
     for (int i = (int) up.size() - 2; i >= 1; i--) pts.push_back(up[i]);
     
+#ifdef REMOVE_REDUNDANT
     if (pts.size() <= 2) return;
     dn.clear();
     dn.push_back(pts[0]);
@@ -292,6 +293,7 @@ void ConvexHull(vector<Point> &pts) {
         dn.pop_back();
     }
     pts = dn;
+#endif
 }
 D signed_area(Polygon p) {
     D area = 0;
