@@ -102,6 +102,7 @@ bool areIntersect(Circle u, Circle v) {
 // If 2 circle touches, will return 2 (same) points
 // Tested:
 // - http://codeforces.com/gym/100803/ - H
+// - http://codeforces.com/gym/100820/ - I
 vector<Point> circleIntersect(Circle u, Circle v) {
     vector<Point> res;
     if (!areIntersect(u, v)) return res;
