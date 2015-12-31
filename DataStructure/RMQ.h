@@ -1,15 +1,16 @@
 // Source: https://github.com/ADJA/algos/tree/master/DataStructures/SparseTable.cpp
+// index from 1
 int table[MAXLOG][MAXN];
 int numlog[MAXN];
 
 void buildTable() {
     numlog[1] = 0;
-    for (int i = 2; i <= n; i++)
+    for (int i = 2; i <= N; i++)
         numlog[i] = numlog[i / 2] + 1;
 
-    for (int i = 0; i <= numlog[n]; i++) {
+    for (int i = 0; i <= numlog[N]; i++) {
         int curlen = 1 << i;
-        for (int j = 1; j <= n; j++) {
+        for (int j = 1; j <= N; j++) {
             if (i == 0) {
                 table[i][j] = a[j];
                 continue;

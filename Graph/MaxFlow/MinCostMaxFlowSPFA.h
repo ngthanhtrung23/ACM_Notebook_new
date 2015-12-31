@@ -10,6 +10,7 @@
 // - http://codeforces.com/gym/100213 - A
 // - http://codeforces.com/gym/100216 - A
 // - http://codeforces.com/gym/100222 - D
+// - ACM Regional Daejeon 2014 - L (negative weights)
 
 template<class Flow=int, class Cost=int>
 struct MinCostFlow {
@@ -71,7 +72,7 @@ private:
                 if (edges[it].cap > 0 && dis[edges[it].to] > d + edges[it].cost)
                     Q.push(make_pair(-(dis[edges[it].to] = d + edges[it].cost), edges[it].to));
         }
-        REP(i,n) dis[i] = dis[T] - dis[i];
+        Cost disT = dis[T]; REP(i,n) dis[i] = disT - dis[i];
     }
 
     Flow findFlow(int x, Flow flow) {
