@@ -1,4 +1,6 @@
 // Tested: http://codeforces.com/gym/100211 - E
+// n : number of rows
+// m : number of columns
 int gauss (vector < bitset<N> > a, int n, int m, bitset<N> & ans) {
     vector<int> where (m, -1);
     for (int col=0, row=0; col<m && row<n; ++col) {
