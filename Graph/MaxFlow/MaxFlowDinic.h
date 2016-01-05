@@ -20,7 +20,7 @@ struct MaxFlow {
     vector< Edge > e;
     vector< vector<int> > g;
 
-    MaxFlow(int n) : n(n), d(n), ptr(n), g(n), q(n) {
+    MaxFlow(int n) : n(n), d(n), ptr(n), q(n), g(n) {
         e.clear();
         REP(i,n) {
             g[i].clear();

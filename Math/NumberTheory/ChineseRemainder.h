@@ -2,8 +2,8 @@
 // - a[i] * x = b[i] MOD m[i] (mi don't need to be co-prime)
 // Tested:
 // - https://open.kattis.com/problems/generalchineseremainder
-bool linearCongruences(const vector<ll> &a, const vector<ll> &b, 
-        const vector<ll> &m, ll &x, ll &M) {  
+bool linearCongruences(const vector<ll> &a, const vector<ll> &b,
+        const vector<ll> &m, ll &x, ll &M) {
     ll n = a.size();
     x = 0; M = 1;
     REP(i, n) {

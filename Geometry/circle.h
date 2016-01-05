@@ -7,6 +7,8 @@ struct Circle : Point {
 };
 
 // Find common tangents to 2 circles
+// Tested:
+// - http://codeforces.com/gym/100803/ - H
 // Helper method
 void tangents(Point c, double r1, double r2, vector<Line> & ans) {
     double r = r2 - r1;
@@ -42,6 +44,8 @@ vector<Line> tangents(Circle a, Circle b) {
 }
 
 // Circle & line intersection
+// Tested:
+// - http://codeforces.com/gym/100803/ - H
 vector<Point> intersection(Line l, Circle cir) {
     double r = cir.r, a = l.a, b = l.b, c = l.c + l.a*cir.x + l.b*cir.y;
     vector<Point> res;
@@ -67,19 +71,24 @@ vector<Point> intersection(Line l, Circle cir) {
     }
 }
 
-// Only works when 2 circle intersects. If outside / inside, need to handle separately
+// helper functions for commonCircleArea
+double cir_area_solve(double a, double b, double c) {
+    return acos((a*a + b*b - c*c) / 2 / a / b);
+}
+double cir_area_cut(double a, double r) {
+    double s1 = a * r * r / 2;
+    double s2 = sin(a) * r * r / 2;
+    return s1 - s2;
+}
+// Tested: http://codeforces.com/contest/600/problem/D
 double commonCircleArea(Circle c1, Circle c2) { //return the common area of two circle
-    double d = hypot(c1.x-c2.x, c1.y-c2.y), area;
-    if (c1.r+c2.r <= d) area = 0;
-    else if (c2.r+d <= c1.r) area = (c1.r * c1.r - c2.r * c2.r) * M_PI;
-    else if (c1.r+d <= c2.r) area = (c2.r * c2.r - c1.r * c1.r) * M_PI;
-    else {
-        double p1 = c2.r * c2.r * acos((d*d + c2.r*c2.r - c1.r*c1.r) / (2*d*c2.r));
-        double p2 = c1.r * c1.r * acos((d*d + c1.r*c1.r - c2.r*c2.r) / (2*d*c1.r));
-        double p3 = 0.5 * sqrt((-d+c2.r+c1.r) * (d+c2.r-c1.r) * (d+c1.r-c2.r) * (d+c1.r+c2.r));
-        area = p1 + p2 - p3;
-    }
-    return area;
+    if (c1.r < c2.r) swap(c1, c2);
+    double d = (c1 - c2).len();
+    if (d + c2.r <= c1.r + EPS) return c2.r*c2.r*M_PI;
+    if (d >= c1.r + c2.r - EPS) return 0.0;
+    double a1 = cir_area_solve(d, c1.r, c2.r);
+    double a2 = cir_area_solve(d, c2.r, c1.r);
+    return cir_area_cut(a1*2, c1.r) + cir_area_cut(a2*2, c2.r);
 }
 
 // Check if 2 circle intersects. Return true if 2 circles touch
@@ -91,6 +100,9 @@ bool areIntersect(Circle u, Circle v) {
 }
 
 // If 2 circle touches, will return 2 (same) points
+// Tested:
+// - http://codeforces.com/gym/100803/ - H
+// - http://codeforces.com/gym/100820/ - I
 vector<Point> circleIntersect(Circle u, Circle v) {
     vector<Point> res;
     if (!areIntersect(u, v)) return res;

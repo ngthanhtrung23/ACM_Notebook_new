@@ -1,0 +1,8 @@
+Problem: Given directed G=(V,E) and cost function f: V --> R. Find max (or min) weight closure. (Closure: set of vertices with no outgoing edges)
+Max closure <--> Min closure: compliment
+Max closure <--> Min cut in H:
+- Add source s, sink t
+- if f(v) > 0 --> add edge (s, v) with capacity = f(v)
+- if f(v) < 0 --> add edge (v, t) with capacity = -f(v)
+- All edges in G have infinite capacity in H
+- Vertices in same side as s forms a closure. Weight(cut) = sum(f(v) where f(v) > 0) - weight(closure) --> cut is minimum when closure is maximum

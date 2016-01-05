@@ -1,4 +1,6 @@
-// Tested: http://codeforces.com/contest/568/problem/C
+// Tested:
+// - http://codeforces.com/contest/568/problem/C
+// - https://open.kattis.com/contests/nwerc15open/problems/cleaningpipes
 #include <bits/stdc++.h>
 #define REP(i,a) for(int i=0,_a=(a); i<_a; i++)
 using namespace std;
@@ -13,8 +15,8 @@ void dfs1 (int v) {
         int to = g[v][i];
         if (!used[to])
             dfs1 (to);
-        }
-        order.push_back (v);
+	}
+	order.push_back (v);
 }
 void dfs2 (int v, int cl) {
     comp[v] = cl;
@@ -22,7 +24,7 @@ void dfs2 (int v, int cl) {
         int to = gt[v][i];
         if (comp[to] == -1)
             dfs2 (to, cl);
-        }
+	}
 }
 int main() {
     // initially, clear used, order, comp. Resize & construct g, gt
