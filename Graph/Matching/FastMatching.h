@@ -1,12 +1,12 @@
 // Maximum bipartite matching
 // Index from 1
 // Find max independent set:
-// for(i = 1 → M) if (mat.matchL[i] >= 0) {
-//   if (mat.seenLeft[i]) {
+// for(i = 1 → M) if (mat.matchL[i] > 0) {
+//   if (mat.dist[i] < inf) {
 //     for(j = 1 → N) if (ke[i][j]) right.erase(j); }
 //   else left.erase(i);
 // }
-// Tested: 
+// Tested:
 // - http://codeforces.com/gym/100216 - J
 const int inf = 1000111;
 struct Matching {

@@ -45,8 +45,8 @@ endfunction
 nnoremap <C-c> :call MyComment()<CR>
 
 function! CPPSET()
-  nnoremap <buffer> <F9> :w<cr>:!g++ % -o %< -std=c++11 -I ./<cr>:!clear;./%<<cr>
-  nnoremap <buffer> <F8> :w<cr>:!g++ % -o %< -std=c++11 -I ./<cr>
+  nnoremap <buffer> <F9> :w<cr>:!g++ % -O2 -o %< -std=c++11 -I ./<cr>:!clear;./%<<cr>
+  nnoremap <buffer> <F8> :w<cr>:!g++ % -O2 -o %< -std=c++11 -I ./<cr>
 endfunction
 
 function! JAVASET()

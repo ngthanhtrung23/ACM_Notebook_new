@@ -2,14 +2,14 @@
 // - https://open.kattis.com/problems/stringmultimatching
 // Linked list
 struct Node {
-    int x; Node *next; bool visited;
+    int x; Node *next;
 } *nil;
 struct List {
     Node *first, *last;
     List() { first = last = nil; }
     void add(int x) {
         Node *p = new Node;
-        p->x = x; p->next = nil; p->visited = false;
+        p->x = x; p->next = nil;
         if (first == nil) last = first = p;
         else last->next = p, last = p;
     }
