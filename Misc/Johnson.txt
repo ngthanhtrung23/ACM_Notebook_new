@@ -1,0 +1,6 @@
+2 machines:
+- Job i: A[i], B[i]
+- Sort by min(A[i], B[i])
+- Consider job i (sorted order):
+  if A[i] <= B[i] --> schedule first
+  else schedule last

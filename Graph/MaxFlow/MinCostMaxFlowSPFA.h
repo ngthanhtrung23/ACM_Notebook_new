@@ -1,5 +1,6 @@
 // Min Cost Max Flow - SPFA
 // Index from 0
+// edges cap changed during find flow
 // Lots of double comparison --> likely to fail for double
 // Example:
 // MinCostFlow mcf(n);

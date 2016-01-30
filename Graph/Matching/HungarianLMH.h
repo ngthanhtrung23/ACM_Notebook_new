@@ -1,3 +1,7 @@
+// Index from 1
+// Min cost matching
+// Usage: init(); for[i,j,cost] addEdge(i, j, cost)
+
 #define arg __arg
 long long c[MN][MN];
 long long fx[MN], fy[MN];
