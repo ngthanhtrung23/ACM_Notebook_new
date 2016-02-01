@@ -33,3 +33,4 @@ void mul( int n, ll *a, ll *b, ll *c ) {
     REP(i,2*n) c[i]%=MOD;
     ptr-=4*n;
 }
+// mul(2^x, a, b, c); REP(i,2*n) c[i] = (c[i] % MOD + MOD) % MOD
