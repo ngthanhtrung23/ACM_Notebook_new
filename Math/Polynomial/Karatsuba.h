@@ -3,7 +3,7 @@
 // - https://open.kattis.com/problems/polymul2
 // - http://codeforces.com/gym/100341 - C
 // Notes:
-// - n must be power of 2
+// - n must be power of 2. Remember to memset a, b, c to 0
 ll buf[10000000],*ptr=buf;
 void mul( int n, ll *a, ll *b, ll *c ) {
     if ( n<=32 ) {
