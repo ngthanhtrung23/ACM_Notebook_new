@@ -43,6 +43,14 @@ struct Point {
 int ccw(Point a, Point b, Point c) {
     return cmp((b-a)%(c-a),0);
 }
+istream& operator >> (istream& cin, Point& p) {
+    cin >> p.x >> p.y;
+    return cin;
+}
+ostream& operator << (ostream& cout, Point& p) {
+    cout << p.x << ' ' << p.y;
+    return cout;
+}
 
 double angle(Point a, Point o, Point b) { // min of directed angle AOB & BOA
     a = a - o; b = b - o;
