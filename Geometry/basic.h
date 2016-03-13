@@ -54,7 +54,7 @@ ostream& operator << (ostream& cout, Point& p) {
 
 double angle(Point a, Point o, Point b) { // min of directed angle AOB & BOA
     a = a - o; b = b - o;
-    return acos((a * b) / sqrt(a.norm() * b.norm()));
+    return acos((a * b) / sqrt(a.norm()) / sqrt(b.norm()));
 }
 
 double directed_angle(Point a, Point o, Point b) { // angle AOB, in range [0, 2*PI)

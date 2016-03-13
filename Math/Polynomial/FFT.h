@@ -5,9 +5,7 @@
 // - a[2] will have size <= 2*n
 // - When rounding, careful with negative numbers:
 int my_round(double x) {
-    if (x < 0) {
-        return -my_round(-x);
-    }
+    if (x < 0) return -my_round(-x);
     return (int) (x + 1e-3);
 }
 
