@@ -4,6 +4,9 @@
 // Tested:
 // - http://codeforces.com/gym/100803 - H
 // - http://codeforces.com/gym/100834 - E
+// - http://codeforces.com/gym/100506 - H
+// Tested vs Geometry v1:
+// - 100506H: slower (4.196 vs 3.666)
 
 const double EPS = 1e-6;
 const double INF = 1e9;
@@ -305,4 +308,23 @@ D signed_area(Polygon p) {
 }
 D area(const Polygon &p) {
     return fabs(signed_area(p));
+}
+
+D segment_union(vector< pair<D, D> > segs) {
+    int n = SZ(segs);
+    vector< pair<D, bool> > x(n*2);
+    REP(i,n) {
+        x[i*2] = make_pair(segs[i].first, false);
+        x[i*2+1] = make_pair(segs[i].second, true);
+    }
+    sort(x.begin(), x.end());
+
+    D res = 0.0;
+    int c = 0;
+    REP(i,n*2) {
+        if (c && i) res += x[i].first - x[i-1].first;
+        if (x[i].second) ++c;
+        else --c;
+    }
+    return res;
 }
