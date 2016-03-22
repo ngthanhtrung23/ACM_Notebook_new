@@ -1,5 +1,5 @@
 // Primitive root of modulo n is integer g iff for all a < n & gcd(a, n) == 1, there exist k: g^k = a mod n
-// k is called discrete log of a
+// k is called discrete log of a (in case P is prime, can find in O(sqrt(P)) by noting that (P-1) is divisible by k)
 //
 // Exist if:
 // - n is 1, 2, 4

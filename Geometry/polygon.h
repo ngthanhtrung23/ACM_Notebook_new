@@ -137,7 +137,7 @@ Polygon polygon_cut(const Polygon& P, Line l) {
     return Q;
 }
 
-// Find intersection of 2 polygons
+// Find intersection of 2 convex polygons
 // Helper method
 bool intersect_1pt(Point a, Point b,
     Point c, Point d, Point &r) {

@@ -28,7 +28,6 @@ void dfs2 (int v, int cl) {
 }
 int main() {
     // initially, clear used, order, comp. Resize & construct g, gt
-    // if there’s an edge from i --> i^1, there’s no solution (NOTE: should work automatically, but just to be safe, check this before proceeding)
     // n = 2 * (number of boolean variables)
     // NOTE: if we need to fix some variable, e.g. set i = 0 --> addEdge(2*i+1, 2*i)
     used.assign (n, false);

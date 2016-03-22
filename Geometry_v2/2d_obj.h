@@ -21,7 +21,7 @@ int cmp(double x, double y) {
 struct D {
     double x;
 
-    D() {}
+	D() {}
     D(double x) : x(x) {}
 
     D operator + (const D& a) const { return D(x+a.x); }
@@ -73,6 +73,7 @@ D tan(D x) { return tan(x.x); }
 D asin(D x) { assert(D(-1) <= x && x <= D(1)); return asin(x.x); }
 D acos(D x) { assert(D(-1) <= x && x <= D(1)); return acos(x.x); }
 D atan(D x) { return atan(x.x); }
+D atan2(D a, D b) { return atan2(a.x, b.x); }
 
 struct Point {
     D x, y;
@@ -120,6 +121,13 @@ D angle(Point a, Point o, Point b) { // min of directed angle AOB & BOA
     a = a - o; b = b - o;
     return acos((a * b) / sqrt(a.norm() * b.norm()));
 }
+D directed_angle(Point a, Point o, Point b) { // angle AOB, in range [0, 2*PI)
+    D t = -atan2(a.y - o.y, a.x - o.x)
+            + atan2(b.y - o.y, b.x - o.x);
+    while (t < O) t += D(2)*PI;
+    return t;
+}
+
 int ccw(const Point& a, const Point& b, const Point& c) {
     return ((b - a) % (c - a)).sign();
 }
@@ -162,6 +170,29 @@ struct Circle : Point {
 };
 
 // ------------------------ Line operations
+// Distance from p to Line ab (closest Point --> c)
+D distToLine(Point p, Point a, Point b, Point &c) {
+    Point ap = p - a, ab = b - a;
+    D u = (ap * ab) / ab.norm();
+    c = a + (ab * u);
+    return (p-c).len();
+}
+
+// Distance from p to segment ab (closest Point --> c)
+D distToLineSegment(Point p, Point a, Point b, Point &c) {
+    Point ap = p - a, ab = b - a;
+    D u = (ap * ab) / ab.norm();
+    if (u < O) {
+        c = Point(a.x, a.y);
+        return (p - a).len();
+    }
+    if (u > D(1.0)) {
+        c = Point(b.x, b.y);
+        return (p - b).len();
+    }
+    return distToLine(p, a, b, c);
+}
+
 bool areParallel(Line l1, Line l2) {
     return l1.a*l2.b == l1.b*l2.a;
 }
@@ -180,12 +211,69 @@ bool areIntersect(Line l1, Line l2, Point &p) {
     return true;
 }
 
+void closestPoint(Line l, Point p, Point& ans) {
+	if (l.b <= O) {
+		ans.x = -(l.c) / l.a; ans.y = p.y;
+	}
+	else if (l.a <= O) {
+		ans.x = p.x; ans.y = -(l.c) / l.b;
+	}
+	else {
+		Line perp(l.b, -l.a, -(l.b*p.x - l.a*p.y));
+		areIntersect(l, perp, ans);
+	}
+}
+void reflectionPoint(Line l, Point p, Point &ans) {
+    Point b;
+    closestPoint(l, p, b);
+    ans = p + (b - p) * 2;
+}
+
+D segment_union(vector< pair<D, D> > segs) {
+    int n = SZ(segs);
+    vector< pair<D, bool> > x(n*2);
+    REP(i,n) {
+        x[i*2] = make_pair(segs[i].first, false);
+        x[i*2+1] = make_pair(segs[i].second, true);
+    }
+    sort(x.begin(), x.end());
+
+    D res = 0.0;
+    int c = 0;
+    REP(i,n*2) {
+        if (c && i) res += x[i].first - x[i-1].first;
+        if (x[i].second) ++c;
+        else --c;
+    }
+    return res;
+}
+
 // ------------------------ Circle operations
 bool areIntersect(Circle u, Circle v) {
     if (cmp((u - v).len(), u.r + v.r) > 0) return false;
     if (cmp((u - v).len() + v.r, u.r) < 0) return false;
     if (cmp((u - v).len() + u.r, v.r) < 0) return false;
     return true;
+}
+
+// helper functions for commonCircleArea
+D cir_area_solve(D a, D b, D c) {
+    return acos((a*a + b*b - c*c) / 2 / a / b);
+}
+D cir_area_cut(D a, D r) {
+    D s1 = a * r * r / 2;
+    D s2 = sin(a) * r * r / 2;
+    return s1 - s2;
+}
+// Tested: http://codeforces.com/contest/600/problem/D
+D commonCircleArea(Circle c1, Circle c2) { //return the common area of two circle
+    if (c1.r < c2.r) swap(c1, c2);
+    D d = (c1 - c2).len();
+    if (d + c2.r <= c1.r) return c2.r*c2.r*PI;
+    if (d >= c1.r + c2.r) return O;
+    D a1 = cir_area_solve(d, c1.r, c2.r);
+    D a2 = cir_area_solve(d, c2.r, c1.r);
+    return cir_area_cut(a1*2, c1.r) + cir_area_cut(a2*2, c2.r);
 }
 
 vector<Point> circleIntersect(Circle u, Circle v) {
@@ -328,3 +416,4 @@ D segment_union(vector< pair<D, D> > segs) {
     }
     return res;
 }
+// Missing: polygon.h

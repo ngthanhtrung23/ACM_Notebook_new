@@ -1,0 +1,9 @@
+Feasible flow in network with upper + lower constraint, no source, no sink:
+cap' = upper bound - lower bound.
+Add source s, sink t.
+Let M[v] = (sum of lowerbounds of ingoing edges to v) - (sum of lower bounds of outgoing edges from v).
+For all v, if M[v] > 0, add (s, v, M), else add (v, t, -M).
+If all outgoing edges from S are full --> feasible flow exists, it is flow + lower bounds.
+
+Max flow with both upper + lower constraints, source s, sink t: add edge (t, s, +INF).
+Binary search lower bound, check whether feasible flow exists WITHOUT source / sink
