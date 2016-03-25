@@ -12,7 +12,7 @@ const int MN = 100111;
 vector<int> G[MN];
 int sz[MN], dep[MN], fa[MN];
 int dfn[MN], top[MN];
-int n, m, id;
+int n, id;
 
 // Operations on segment tree
 int querySeg(int i, int l, int r, int u, int v) {return 0;}

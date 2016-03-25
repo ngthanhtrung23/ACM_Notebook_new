@@ -6,9 +6,15 @@
 //     for(j = 1 → N) if (ke[i][j]) right.erase(j); }
 //   else left.erase(i);
 // }
+// Find vertices that belong to all maximum matching:
+// - L = vertices not matched on left side --> BFS from these vertices
+//   (left --> right: unmatched edges, right --> left: matched edges)
+//   reachable vertices on left side --> not belong to some maximum matching
+// - Do similar for right side
 // Tested:
 // - http://codeforces.com/gym/100216 - J
 // - SRM 589 - 450
+// - http://codeforces.com/gym/100337 - A
 const int inf = 1000111;
 struct Matching {
     int n;
