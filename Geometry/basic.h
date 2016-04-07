@@ -43,6 +43,8 @@ struct Point {
 int ccw(Point a, Point b, Point c) {
     return cmp((b-a)%(c-a),0);
 }
+int RE_TRAI = ccw(Point(0, 0), Point(0, 1), Point(-1, 1));
+int RE_PHAI = ccw(Point(0, 0), Point(0, 1), Point(1, 1));
 istream& operator >> (istream& cin, Point& p) {
     cin >> p.x >> p.y;
     return cin;

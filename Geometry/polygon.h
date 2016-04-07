@@ -256,4 +256,3 @@ bool isIntegerCoordinates(int x, int y, int z) {
     long long s=(long long)(x+y+z)*(x+y-z)*(x+z-y)*(y+z-x);
     return (s%4==0 && isSquare(s/4));
 }
-

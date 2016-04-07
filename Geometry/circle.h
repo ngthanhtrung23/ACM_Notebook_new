@@ -100,6 +100,7 @@ bool areIntersect(Circle u, Circle v) {
 }
 
 // If 2 circle touches, will return 2 (same) points
+// If 2 circle are same --> be careful
 // Tested:
 // - http://codeforces.com/gym/100803/ - H
 // - http://codeforces.com/gym/100820/ - I
