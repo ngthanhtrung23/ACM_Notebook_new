@@ -12,13 +12,13 @@ struct Point {
     double x, y;
     Point(double x = 0.0, double y = 0.0) : x(x), y(y) {}
 
-    Point operator + (Point a) { return Point(x+a.x, y+a.y); }
-    Point operator - (Point a) { return Point(x-a.x, y-a.y); }
-    Point operator * (double k) { return Point(x*k, y*k); }
-    Point operator / (double k) { return Point(x/k, y/k); }
+    Point operator + (const Point& a) const { return Point(x+a.x, y+a.y); }
+    Point operator - (const Point& a) const { return Point(x-a.x, y-a.y); }
+    Point operator * (double k) const { return Point(x*k, y*k); }
+    Point operator / (double k) const { return Point(x/k, y/k); }
 
-    double operator * (Point a) { return x*a.x + y*a.y; } // dot product
-    double operator % (Point a) { return x*a.y - y*a.x; } // cross product
+    double operator * (const Point& a) const { return x*a.x + y*a.y; } // dot product
+    double operator % (const Point& a) const { return x*a.y - y*a.x; } // cross product
 
     int cmp(Point q) const { if (int t = ::cmp(x,q.x)) return t; return ::cmp(y,q.y); }
 
