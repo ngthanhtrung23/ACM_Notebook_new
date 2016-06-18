@@ -7,6 +7,10 @@ typedef vector< Point > Polygon;
 // - Max. point does not work when some points are the same.
 // Tested:
 // - https://open.kattis.com/problems/convexhull
+/*
+bool operator<(const Point &rhs) const { return make_pair(y,x) < make_pair(rhs.y,rhs.x); }
+bool operator==(const Point &rhs) const { return make_pair(y,x) == make_pair(rhs.y,rhs.x); }
+ */
 double area2(Point a, Point b, Point c) { return a%b + b%c + c%a; }
 #ifdef REMOVE_REDUNDANT
 bool between(const Point &a, const Point &b, const Point &c) {
