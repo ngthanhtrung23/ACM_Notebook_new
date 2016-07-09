@@ -1,7 +1,9 @@
 // Tested:
 // - http://codeforces.com/gym/100216 - C
 // - SRM 676 - 1000
+// - SRM 694 - 900
 // m = # inequalities, n = #variables
+// variables numbered from 0
 // C[0] = objective function (max)
 // C[1..m] = leq equations:
 //    sum( C[i][j] * X[j] ) <= C[i][n]

@@ -8,7 +8,7 @@ inline int cmp(double a, double b) {
     return (a < b - EPS) ? -1 : ((a > b + EPS) ? 1 : 0);
 }
 
-struct Point {
+struct Point { // <--> Vector
     double x, y;
     Point(double x = 0.0, double y = 0.0) : x(x), y(y) {}
 
