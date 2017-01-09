@@ -5,7 +5,7 @@ const int MN = 100111;
 int V, LCA[22][MN], L[MN];
 long long Rmax[22][MN];
 #define LL long long
-inline void initLCA () {
+void initLCA () {
     FOR (lg, 1, 19) {
         REP (i, V) {
             if (LCA[lg - 1][i] == -1) continue;
@@ -15,7 +15,7 @@ inline void initLCA () {
     }
 }
 
-inline LL query (LL a, LL b) {
+LL query (LL a, LL b) {
     LL ret = 0;
     if (L[a] < L[b]) swap (a, b);
 

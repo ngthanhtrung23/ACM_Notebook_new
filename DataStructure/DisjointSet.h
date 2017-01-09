@@ -1,7 +1,7 @@
 struct DSU {
     int lab[MN];
     void init(int n) {
-        REP(i,n+1) lab[i] = -1;
+        REP(i,n+2) lab[i] = -1;
     }
 
     int getRoot(int u) {
