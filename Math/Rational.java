@@ -1,20 +1,16 @@
 import java.math.*;
 
-class Rational {
-    private BigInteger num, denom;
+class Rational implements Comparable<Rational> {
+    public BigInteger a, b;
 
-    public BigInteger getNumerator() {
-        return num;
-    }
-
-    public BigInteger getDenominator() {
-        return denom;
-    }
-
-    public Rational(BigInteger num, BigInteger denom) {
-        this.num = num;
-        this.denom = denom;
+    public Rational(BigInteger a, BigInteger b) {
+        this.a = a;
+        this.b = b;
         norm();
+    }
+
+    public int compareTo(Rational other) {
+        return a.multiply(other.b).compareTo(b.multiply(other.a));
     }
 
     public Rational(BigInteger bigInteger) {
@@ -26,36 +22,36 @@ class Rational {
     }
 
     public String toString() {
-        return num.toString() + "/" + denom.toString();
+        return a.toString() + "/" + b.toString();
     }
 
     private void reduce() {
-        BigInteger gcd = num.gcd(denom);
+        BigInteger gcd = a.gcd(b);
         if (!gcd.equals(BigInteger.ONE)) {
-            num = num.divide(gcd);
-            denom = denom.divide(gcd);
+            a = a.divide(gcd);
+            b = b.divide(gcd);
         }
     }
 
     private void norm() {
-        if (denom.compareTo(BigInteger.ZERO) == -1) {
-            num = num.negate();
-            denom = denom.negate();
+        if (b.compareTo(BigInteger.ZERO) == -1) {
+            a = a.negate();
+            b = b.negate();
         }
 
-        if (num.equals(BigInteger.ZERO)) {
-            denom = BigInteger.ONE;
+        if (a.equals(BigInteger.ZERO)) {
+            b = BigInteger.ONE;
         } else {
             reduce();
         }
     }
 
     public Rational add(Rational other) {
-        return new Rational(num.multiply(other.denom).add(other.num.multiply(denom)), denom.multiply(other.denom));
+        return new Rational(a.multiply(other.b).add(other.a.multiply(b)), b.multiply(other.b));
     }
 
     public Rational negate() {
-        return new Rational(num.negate(), denom);
+        return new Rational(a.negate(), b);
     }
 
     public Rational subtract(Rational other) {
@@ -63,14 +59,14 @@ class Rational {
     }
 
     public Rational multiply(Rational other) {
-        return new Rational(num.multiply(other.num), denom.multiply(other.denom));
+        return new Rational(a.multiply(other.a), b.multiply(other.b));
     }
 
     public Rational reciprocal() {
-        if (num.equals(BigInteger.ZERO)) {
+        if (a.equals(BigInteger.ZERO)) {
             throw new java.lang.ArithmeticException();
         }
-        return new Rational(denom, num);
+        return new Rational(b, a);
     }
 
     public Rational divide(Rational other) {
@@ -78,18 +74,18 @@ class Rational {
     }
 
     public boolean isInteger() {
-        return denom.equals(BigInteger.ONE);
+        return b.equals(BigInteger.ONE);
     }
 
     public BigInteger asInteger() {
         if (!isInteger()) {
             throw new java.lang.ArithmeticException();
         }
-        return num;
+        return a;
     }
 
     public boolean isZero() {
-        return num.equals(BigInteger.ZERO);
+        return a.equals(BigInteger.ZERO);
     }
 
     public static final Rational ZERO = new Rational(BigInteger.ZERO);

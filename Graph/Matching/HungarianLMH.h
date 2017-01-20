@@ -92,6 +92,12 @@ void enlarge() {
 
 int mincost() {
     FOR(i,1,n) fx[i] = *min_element(c[i]+1, c[i]+n+1);
+    FOR(j,1,n) {
+        fy[j] = c[1][j] - fx[1];
+        FOR(i,1,n) {
+            fy[j] = min(fy[j], c[i][j] - fx[i]);
+        }
+    }
     FOR(i,1,n) {
         start = i;
         initBFS();
