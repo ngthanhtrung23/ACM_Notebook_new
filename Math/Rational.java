@@ -47,7 +47,9 @@ class Rational implements Comparable<Rational> {
     }
 
     public Rational add(Rational other) {
-        return new Rational(a.multiply(other.b).add(other.a.multiply(b)), b.multiply(other.b));
+        return new Rational(
+                a.multiply(other.b).add(other.a.multiply(b)),
+                b.multiply(other.b));
     }
 
     public Rational negate() {
