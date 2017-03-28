@@ -1,7 +1,7 @@
 // http://codeforces.com/blog/entry/8219
 // Divide and conquer optimization:
 // Original Recurrence
-//   dp[i][j] = min(d[i-1][k] + C[k][j]) for k < j
+//   dp[i][j] = min(dp[i-1][k] + C[k][j]) for k < j
 // Sufficient condition:
 //   A[i][j] <= A[i][j+1]
 //   where A[i][j] = smallest k that gives optimal answer
