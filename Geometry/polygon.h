@@ -89,22 +89,30 @@ bool is_convex(const Polygon &P) {
 }
 
 // Inside polygon: O(N). Works with any polygon
-// Does not work when point is on edge. Should check separately (before calling this)
 // Tested:
 // - https://open.kattis.com/problems/pointinpolygon
 // - https://open.kattis.com/problems/cuttingpolygon
-bool in_polygon(const Polygon &P, Point pt) {
-    if ((int)P.size() == 0) return false;
-    double sum = 0;
-    for (int i = 0; i < (int)P.size(); i++) {
-        Point Pj = P[(i+1) % P.size()];
-        // If allow on edge --> uncomment the following line
-        // if (ccw(P[i], Pj, pt) == 0 && min(P[i], Pj) <= pt && pt <= max(P[i], Pj)) return true;
-        if (ccw(pt, P[i], Pj) > 0)
-            sum += angle(P[i], pt, Pj);
-        else sum -= angle(P[i], pt, Pj);
+bool in_polygon(const Polygon &p, Point q) {
+    if ((int)p.size() == 0) return false;
+
+    // Check if point is on edge.
+    int n = SZ(p);
+    REP(i,n) {
+        int j = (i + 1) % n;
+        Point u = p[i], v = p[j];
+
+        if (u > v) swap(u, v);
+
+        if (ccw(u, v, q) == 0 && u <= q && q <= v) return true;
     }
-    return fabs(fabs(sum) - 2*M_PI) < EPS;
+
+    // Check if point is strictly inside.
+    int c = 0;
+    for (int i = 0; i < n; i++) {
+        int j = (i + 1) % n;
+        if ((p[i].y <= q.y && q.y < p[j].y || p[j].y <= q.y && q.y < p[i].y) && q.x < p[i].x + (p[j].x - p[i].x) * (q.y - p[i].y) / (p[j].y - p[i].y)) c = !c;
+    }
+    return c;
 }
 
 // Check point in convex polygon, O(logN)
