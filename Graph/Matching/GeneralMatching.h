@@ -1,7 +1,7 @@
 // General matching on graph
 // Notes:
 // - Index from 1
-// - Directed (--> if undirected graph, must add edge in both direction)
+// - Must add edges in both directions.
 
 const int maxv = 1000;
 const int maxe = 50000;
