@@ -1,3 +1,9 @@
+// Given array D[i]
+// Calculate D'[i] = sum( D[j] | j is subset of i )
+//
+// If we want to calculate D'[i] = sum( D[j] | j is superset of i ),
+// change D[t|i] += D[f|i] --> D[f|i] += D[t|i]
+
 void magic() {
     for(b=0; b<K; b++) {
         int f=0, t=(1<<b);
