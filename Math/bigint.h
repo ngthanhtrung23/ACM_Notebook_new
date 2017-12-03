@@ -66,7 +66,8 @@ struct BigInt {
         return *this + (-v);
     }
 
-    void operator*=(int v) {
+    void operator*=(long long v) {
+        assert(v < base);
         if (v < 0)
             sign = -sign, v = -v;
         for (int i = 0, carry = 0; i < (int) a.size() || carry; ++i) {
@@ -80,7 +81,7 @@ struct BigInt {
         trim();
     }
 
-    BigInt operator*(int v) const {
+    BigInt operator*(long long v) const {
         BigInt res = *this;
         res *= v;
         return res;
@@ -162,7 +163,8 @@ struct BigInt {
         return divmod(*this, v).second;
     }
 
-    void operator/=(int v) {
+    void operator/=(long long v) {
+        assert(v < base);
         if (v < 0)
             sign = -sign, v = -v;
         for (int i = (int) a.size() - 1, rem = 0; i >= 0; --i) {
@@ -173,13 +175,14 @@ struct BigInt {
         trim();
     }
 
-    BigInt operator/(int v) const {
+    BigInt operator/(long long v) const {
         BigInt res = *this;
         res /= v;
         return res;
     }
 
-    int operator%(int v) const {
+    int operator%(long long v) const {
+        assert(v < base);
         if (v < 0)
             v = -v;
         int m = 0;

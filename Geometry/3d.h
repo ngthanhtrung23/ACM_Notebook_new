@@ -11,10 +11,15 @@ inline double det(double a, double b, double c, double d) {
 }
 struct Point {
     double x, y, z;
-    Point(double x = 0, double y = 0, double z = 0) : x(x), y(y), z(z) {}
+    
+    Point() { x = y = z = 0; }
+    Point(double x, double y, double z) : x(x), y(y), z(z) {}
+
     double length() {
         return sqrt(x * x + y * y + z * z);
     }
+    Point operator * (double k) const { return Point(x*k, y*k, z*k); }
+
     double operator * (Point a) const { return x*a.x + y*a.y + z*a.z; }
     Point operator + (Point a) { return Point(x+a.x, y+a.y, z+a.z); }
     Point operator - (Point a) { return Point(x-a.x, y-a.y, z-a.z); }
