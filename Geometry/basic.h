@@ -10,7 +10,8 @@ inline int cmp(double a, double b) {
 
 struct Point {
     double x, y;
-    Point(double x = 0.0, double y = 0.0) : x(x), y(y) {}
+    Point() { x = y = 0.0;
+    Point(double x, double y) : x(x), y(y) {}
 
     Point operator + (const Point& a) const { return Point(x+a.x, y+a.y); }
     Point operator - (const Point& a) const { return Point(x-a.x, y-a.y); }
