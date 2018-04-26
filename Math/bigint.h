@@ -1,5 +1,5 @@
-const int base = 1000000000;
-const int base_digits = 9;
+const int base = 10000;
+const int base_digits = 4;
 
 struct BigInt {
     vector<int> a;
@@ -113,6 +113,7 @@ struct BigInt {
         return make_pair(q, r / norm);
     }
 
+    // Tested: SGU 111
     friend BigInt sqrt(const BigInt &a1) {
         BigInt a = a1;
         while (a.a.empty() || a.a.size() % 2 == 1)
@@ -134,7 +135,7 @@ struct BigInt {
 
         for(int j = n / 2 - 1; j >= 0; j--) {
             for(; ; --q) {
-                BigInt r1 = (r - (res * 2 * base + q) * q) * base * base + (j > 0 ? (long long) a.a[2 * j - 1] * base + a.a[2 * j - 2] : 0);
+                BigInt r1 = (r - (res * 2 * BigInt(base) + q) * q) * BigInt(base) * BigInt(base) + (j > 0 ? (long long) a.a[2 * j - 1] * base + a.a[2 * j - 2] : 0);
                 if (r1 >= 0) {
                     r = r1;
                     break;
