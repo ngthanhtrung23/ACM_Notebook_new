@@ -1,3 +1,6 @@
+// Tested:
+// - https://www.e-olymp.com/en/problems/269 (inner)
+
 Given 3 mutually tangent circles. Find inner circle (touching all 3) and outer circle (touching all 3).
 The radius is given by:
 k4 = |k1 + k2 + k3 +- 2*sqrt(k1*k2 + k2*k3 + k3*k1)|

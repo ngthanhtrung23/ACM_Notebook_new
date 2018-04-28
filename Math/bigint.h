@@ -33,6 +33,8 @@
 // - https://www.e-olymp.com/en/problems/314: Addition/Subtraction
 // - https://www.e-olymp.com/en/problems/317: Multiplication (simple / karatsuba / fft)
 // - https://www.e-olymp.com/en/problems/1327: Multiplication
+// - https://www.e-olymp.com/en/problems/1328
+// - VOJ BIGNUM: Addition, Subtraction, Multiplication.
 // - SGU 111: sqrt
 
 const int base = 1e9;
