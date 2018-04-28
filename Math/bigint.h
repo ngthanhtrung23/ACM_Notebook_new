@@ -1,5 +1,42 @@
-const int base = 10000;
-const int base_digits = 4;
+// NOTE:
+// This code contains various bug fixes compared to the original version from
+// indy256 (github.com/indy256/codelibrary/blob/master/cpp/numbertheory/bigint-full.cpp),
+// including:
+// - Fix overflow bug in mul_karatsuba.
+// - Fix overflow bug in fft.
+// - Fix bug in initialization from long long.
+// - Removed operator*=(long long), which caused several subtle bugs.
+//
+// TODO:
+//
+// Optimize += and -= (http://codeforces.com/blog/entry/22566?#comment-394735)
+//   This code implemented += via +. It is not optimal, doing the other way is
+//   much better. Consider the example
+//     bigint large; // some large number
+//     for (int i = 0; i < 100000; ++i) {
+//       large += i;
+//     }
+//   Here large will be copied on each iteration, because += calls +.
+//   And if you implemented += inplace, this code would run in linear time.
+//   If you do it, + is implemented like
+//
+//     friend bigint operator+(bigint lhs, const bigint& rhs) {
+//       return lhs += rhs;
+//     }
+//
+// Tested:
+// - https://www.e-olymp.com/en/problems/266: Comparison
+// - https://www.e-olymp.com/en/problems/267: Subtraction
+// - https://www.e-olymp.com/en/problems/271: Multiplication
+// - https://www.e-olymp.com/en/problems/272: Multiplication
+// - https://www.e-olymp.com/en/problems/313: Addition
+// - https://www.e-olymp.com/en/problems/314: Addition/Subtraction
+// - https://www.e-olymp.com/en/problems/317: Multiplication (simple / karatsuba / fft)
+// - https://www.e-olymp.com/en/problems/1327: Multiplication
+// - SGU 111: sqrt
+
+const int base = 1e9;
+const int base_digits = 9;
 
 struct BigInt {
     vector<int> a;
@@ -66,27 +103,6 @@ struct BigInt {
         return *this + (-v);
     }
 
-    void operator*=(long long v) {
-        assert(v < base);
-        if (v < 0)
-            sign = -sign, v = -v;
-        for (int i = 0, carry = 0; i < (int) a.size() || carry; ++i) {
-            if (i == (int) a.size())
-                a.push_back(0);
-            long long cur = a[i] * (long long) v + carry;
-            carry = (int) (cur / base);
-            a[i] = (int) (cur % base);
-            //asm("divl %%ecx" : "=a"(carry), "=d"(a[i]) : "A"(cur), "c"(base));
-        }
-        trim();
-    }
-
-    BigInt operator*(long long v) const {
-        BigInt res = *this;
-        res *= v;
-        return res;
-    }
-
     friend pair<BigInt, BigInt> divmod(const BigInt &a1, const BigInt &b1) {
         int norm = base / (b1.a.back() + 1);
         BigInt a = a1.abs() * norm;
@@ -113,7 +129,6 @@ struct BigInt {
         return make_pair(q, r / norm);
     }
 
-    // Tested: SGU 111
     friend BigInt sqrt(const BigInt &a1) {
         BigInt a = a1;
         while (a.a.empty() || a.a.size() % 2 == 1)
@@ -303,6 +318,7 @@ struct BigInt {
         return stream;
     }
 
+    // Convert base 10^old --> 10^new.
     static vector<int> convert_base(const vector<int> &a, int old_digits, int new_digits) {
         vector<long long> p(max(old_digits, new_digits) + 1);
         p[0] = 1;
@@ -323,6 +339,86 @@ struct BigInt {
         res.push_back((int) cur);
         while (!res.empty() && !res.back())
             res.pop_back();
+        return res;
+    }
+
+    void fft(vector<complex<double> > & a, bool invert) const {
+        int n = (int) a.size();
+
+        for (int i = 1, j = 0; i < n; ++i) {
+            int bit = n >> 1;
+            for (; j >= bit; bit >>= 1)
+                j -= bit;
+            j += bit;
+            if (i < j)
+                swap(a[i], a[j]);
+        }
+
+        for (int len = 2; len <= n; len <<= 1) {
+            double ang = 2 * 3.14159265358979323846 / len * (invert ? -1 : 1);
+            complex<double> wlen(cos(ang), sin(ang));
+            for (int i = 0; i < n; i += len) {
+                complex<double> w(1);
+                for (int j = 0; j < len / 2; ++j) {
+                    complex<double> u = a[i + j];
+                    complex<double> v = a[i + j + len / 2] * w;
+                    a[i + j] = u + v;
+                    a[i + j + len / 2] = u - v;
+                    w *= wlen;
+                }
+            }
+        }
+        if (invert)
+            for (int i = 0; i < n; ++i)
+                a[i] /= n;
+    }
+
+    void multiply_fft(const vector<int> &a, const vector<int> &b, vector<int> &res) const {
+        vector<complex<double> > fa(a.begin(), a.end());
+        vector<complex<double> > fb(b.begin(), b.end());
+        int n = 1;
+        while (n < (int) max(a.size(), b.size()))
+            n <<= 1;
+        n <<= 1;
+        fa.resize(n);
+        fb.resize(n);
+
+        fft(fa, false);
+        fft(fb, false);
+        for (int i = 0; i < n; ++i)
+            fa[i] *= fb[i];
+        fft(fa, true);
+
+        res.resize(n);
+        long long carry = 0;
+        for (int i = 0; i < n; ++i) {
+            long long t = (long long) (fa[i].real() + 0.5) + carry;
+            carry = t / 1000;
+            res[i] = t % 1000;
+        }
+    }
+
+    BigInt operator*(const BigInt &v) const {
+        BigInt res;
+        res.sign = sign * v.sign;
+        multiply_fft(convert_base(a, base_digits, 3), convert_base(v.a, base_digits, 3), res.a);
+        res.a = convert_base(res.a, 3, base_digits);
+        res.trim();
+        return res;
+    }
+
+    BigInt mul_simple(const BigInt &v) const {
+        BigInt res;
+        res.sign = sign * v.sign;
+        res.a.resize(a.size() + v.a.size());
+        for (int i = 0; i < (int) a.size(); ++i)
+            if (a[i])
+                for (int j = 0, carry = 0; j < (int) v.a.size() || carry; ++j) {
+                    long long cur = res.a[i + j] + (long long) a[i] * (j < (int) v.a.size() ? v.a[j] : 0) + carry;
+                    carry = (int) (cur / base);
+                    res.a[i + j] = (int) (cur % base);
+                }
+        res.trim();
         return res;
     }
 
@@ -367,7 +463,7 @@ struct BigInt {
         return res;
     }
 
-    BigInt operator*(const BigInt &v) const {
+    BigInt mul_karatsuba(const BigInt &v) const {
         vector<int> a6 = convert_base(this->a, base_digits, 6);
         vector<int> b6 = convert_base(v.a, base_digits, 6);
         vll a(a6.begin(), a6.end());
@@ -381,14 +477,14 @@ struct BigInt {
         vll c = karatsubaMultiply(a, b);
         BigInt res;
         res.sign = sign * v.sign;
-        for (int i = 0, carry = 0; i < (int) c.size(); i++) {
+        long long carry = 0;
+        for (int i = 0; i < (int) c.size(); i++) {
             long long cur = c[i] + carry;
             res.a.push_back((int) (cur % 1000000));
-            carry = (int) (cur / 1000000);
+            carry = cur / 1000000;
         }
         res.a = convert_base(res.a, 6, base_digits);
         res.trim();
         return res;
     }
 };
-
