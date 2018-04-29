@@ -1,6 +1,11 @@
+// NOTES:
+// - When choosing starting vertex (for calling find_path), make sure deg[start] > 0.
+// - If find Euler path, starting vertex must have odd degree.
+// - Check no solution: SZ(path) == nEdge + 1.
+//
 // Tested:
 // - https://open.kattis.com/problems/eulerianpath (directed)
-// No solution? NEED TO CHECK YOURSELF (connected graph, number of odd vertices)
+// - SGU 101 (undirected).
 //
 // If directed:
 // - Edge --> int
