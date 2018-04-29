@@ -5,24 +5,7 @@
 // - Fix overflow bug in mul_karatsuba.
 // - Fix overflow bug in fft.
 // - Fix bug in initialization from long long.
-// - Removed operator*=(long long), which caused several subtle bugs.
-//
-// TODO:
-//
-// Optimize += and -= (http://codeforces.com/blog/entry/22566?#comment-394735)
-//   This code implemented += via +. It is not optimal, doing the other way is
-//   much better. Consider the example
-//     bigint large; // some large number
-//     for (int i = 0; i < 100000; ++i) {
-//       large += i;
-//     }
-//   Here large will be copied on each iteration, because += calls +.
-//   And if you implemented += inplace, this code would run in linear time.
-//   If you do it, + is implemented like
-//
-//     friend bigint operator+(bigint lhs, const bigint& rhs) {
-//       return lhs += rhs;
-//     }
+// - Optimized operators + - *.
 //
 // Tested:
 // - https://www.e-olymp.com/en/problems/266: Comparison
@@ -36,198 +19,102 @@
 // - https://www.e-olymp.com/en/problems/1328
 // - VOJ BIGNUM: Addition, Subtraction, Multiplication.
 // - SGU 111: sqrt
+// - SGU 193
+// - SPOJ MUL, VFMUL: Multiplication.
+// - SPOJ FDIV, VFDIV: Division.
 
-const int base = 1e9;
-const int base_digits = 9;
+const int BASE_DIGITS = 9;
+const int BASE = 1000000000;
 
 struct BigInt {
-    vector<int> a;
     int sign;
+    vector<int> a;
 
-    BigInt() :
-        sign(1) {
-    }
+    // -------------------- Constructors -------------------- 
+    // Default constructor.
+    BigInt() : sign(1) {}
 
+    // Constructor from long long.
     BigInt(long long v) {
         *this = v;
     }
+    BigInt& operator = (long long v) {
+        sign = 1;
+        if (v < 0) {
+            sign = -1;
+            v = -v;
+        }
+        a.clear();
+        for (; v > 0; v = v / BASE)
+            a.push_back(v % BASE);
+        return *this;
+    }
 
-    BigInt(const string &s) {
+    // Copy constructor.
+    BigInt(const BigInt& other) {
+        sign = other.sign;
+        a = other.a;
+    }
+    // Assignment operator using Copy-and-swap idiom.
+    friend void swap(BigInt& a, BigInt& b) {
+        using std::swap;
+        swap(a.sign, b.sign);
+        swap(a.a, b.a);
+    }
+    BigInt& operator = (BigInt other) {
+        swap(*this, other);
+        return *this;
+    }
+    BigInt(BigInt&& other) : BigInt() {
+        swap(*this, other);
+    }
+
+    // Initialize from string.
+    BigInt(const string& s) {
         read(s);
     }
 
-    void operator=(const BigInt &v) {
-        sign = v.sign;
-        a = v.a;
-    }
-
-    void operator=(long long v) {
+    // -------------------- Input / Output --------------------
+    void read(const string& s) {
         sign = 1;
-        if (v < 0)
-            sign = -1, v = -v;
         a.clear();
-        for (; v > 0; v = v / base)
-            a.push_back(v % base);
-    }
-
-    BigInt operator+(const BigInt &v) const {
-        if (sign == v.sign) {
-            BigInt res = v;
-
-            for (int i = 0, carry = 0; i < (int) max(a.size(), v.a.size()) || carry; ++i) {
-                if (i == (int) res.a.size())
-                    res.a.push_back(0);
-                res.a[i] += carry + (i < (int) a.size() ? a[i] : 0);
-                carry = res.a[i] >= base;
-                if (carry)
-                    res.a[i] -= base;
-            }
-            return res;
+        int pos = 0;
+        while (pos < (int) s.size() && (s[pos] == '-' || s[pos] == '+')) {
+            if (s[pos] == '-')
+                sign = -sign;
+            ++pos;
         }
-        return *this - (-v);
-    }
-
-    BigInt operator-(const BigInt &v) const {
-        if (sign == v.sign) {
-            if (abs() >= v.abs()) {
-                BigInt res = *this;
-                for (int i = 0, carry = 0; i < (int) v.a.size() || carry; ++i) {
-                    res.a[i] -= carry + (i < (int) v.a.size() ? v.a[i] : 0);
-                    carry = res.a[i] < 0;
-                    if (carry)
-                        res.a[i] += base;
-                }
-                res.trim();
-                return res;
-            }
-            return -(v - *this);
-        }
-        return *this + (-v);
-    }
-
-    friend pair<BigInt, BigInt> divmod(const BigInt &a1, const BigInt &b1) {
-        int norm = base / (b1.a.back() + 1);
-        BigInt a = a1.abs() * norm;
-        BigInt b = b1.abs() * norm;
-        BigInt q, r;
-        q.a.resize(a.a.size());
-
-        for (int i = a.a.size() - 1; i >= 0; i--) {
-            r *= base;
-            r += a.a[i];
-            int s1 = r.a.size() <= b.a.size() ? 0 : r.a[b.a.size()];
-            int s2 = r.a.size() <= b.a.size() - 1 ? 0 : r.a[b.a.size() - 1];
-            int d = ((long long) base * s1 + s2) / b.a.back();
-            r -= b * d;
-            while (r < 0)
-                r += b, --d;
-            q.a[i] = d;
-        }
-
-        q.sign = a1.sign * b1.sign;
-        r.sign = a1.sign;
-        q.trim();
-        r.trim();
-        return make_pair(q, r / norm);
-    }
-
-    friend BigInt sqrt(const BigInt &a1) {
-        BigInt a = a1;
-        while (a.a.empty() || a.a.size() % 2 == 1)
-            a.a.push_back(0);
-
-        int n = a.a.size();
-
-        int firstDigit = (int) sqrt((double) a.a[n - 1] * base + a.a[n - 2]);
-        int norm = base / (firstDigit + 1);
-        a *= norm;
-        a *= norm;
-        while (a.a.empty() || a.a.size() % 2 == 1)
-            a.a.push_back(0);
-
-        BigInt r = (long long) a.a[n - 1] * base + a.a[n - 2];
-        firstDigit = (int) sqrt((double) a.a[n - 1] * base + a.a[n - 2]);
-        int q = firstDigit;
-        BigInt res;
-
-        for(int j = n / 2 - 1; j >= 0; j--) {
-            for(; ; --q) {
-                BigInt r1 = (r - (res * 2 * BigInt(base) + q) * q) * BigInt(base) * BigInt(base) + (j > 0 ? (long long) a.a[2 * j - 1] * base + a.a[2 * j - 2] : 0);
-                if (r1 >= 0) {
-                    r = r1;
-                    break;
-                }
-            }
-            res *= base;
-            res += q;
-
-            if (j > 0) {
-                int d1 = res.a.size() + 2 < r.a.size() ? r.a[res.a.size() + 2] : 0;
-                int d2 = res.a.size() + 1 < r.a.size() ? r.a[res.a.size() + 1] : 0;
-                int d3 = res.a.size() < r.a.size() ? r.a[res.a.size()] : 0;
-                q = ((long long) d1 * base * base + (long long) d2 * base + d3) / (firstDigit * 2);
-            }
-        }
-
-        res.trim();
-        return res / norm;
-    }
-
-    BigInt operator/(const BigInt &v) const {
-        return divmod(*this, v).first;
-    }
-
-    BigInt operator%(const BigInt &v) const {
-        return divmod(*this, v).second;
-    }
-
-    void operator/=(long long v) {
-        assert(v < base);
-        if (v < 0)
-            sign = -sign, v = -v;
-        for (int i = (int) a.size() - 1, rem = 0; i >= 0; --i) {
-            long long cur = a[i] + rem * (long long) base;
-            a[i] = (int) (cur / v);
-            rem = (int) (cur % v);
+        for (int i = s.size() - 1; i >= pos; i -= BASE_DIGITS) {
+            int x = 0;
+            for (int j = max(pos, i - BASE_DIGITS + 1); j <= i; j++)
+                x = x * 10 + s[j] - '0';
+            a.push_back(x);
         }
         trim();
     }
-
-    BigInt operator/(long long v) const {
-        BigInt res = *this;
-        res /= v;
-        return res;
+    friend istream& operator>>(istream &stream, BigInt &v) {
+        string s;
+        stream >> s;
+        v.read(s);
+        return stream;
     }
 
-    int operator%(long long v) const {
-        assert(v < base);
-        if (v < 0)
-            v = -v;
-        int m = 0;
-        for (int i = a.size() - 1; i >= 0; --i)
-            m = (a[i] + m * (long long) base) % v;
-        return m * sign;
+    friend ostream& operator<<(ostream &stream, const BigInt &v) {
+        if (v.sign == -1 && !v.isZero())
+            stream << '-';
+        stream << (v.a.empty() ? 0 : v.a.back());
+        for (int i = (int) v.a.size() - 2; i >= 0; --i)
+            stream << setw(BASE_DIGITS) << setfill('0') << v.a[i];
+        return stream;
     }
 
-    void operator+=(const BigInt &v) {
-        *this = *this + v;
-    }
-    void operator-=(const BigInt &v) {
-        *this = *this - v;
-    }
-    void operator*=(const BigInt &v) {
-        *this = *this * v;
-    }
-    void operator/=(const BigInt &v) {
-        *this = *this / v;
-    }
-
+    // -------------------- Comparison --------------------
     bool operator<(const BigInt &v) const {
         if (sign != v.sign)
             return sign < v.sign;
         if (a.size() != v.a.size())
             return a.size() * sign < v.a.size() * v.sign;
-        for (int i = a.size() - 1; i >= 0; i--)
+        for (int i = ((int) a.size()) - 1; i >= 0; i--)
             if (a[i] != v.a[i])
                 return a[i] * sign < v.a[i] * sign;
         return false;
@@ -249,78 +136,239 @@ struct BigInt {
         return *this < v || v < *this;
     }
 
-    void trim() {
-        while (!a.empty() && !a.back())
-            a.pop_back();
-        if (a.empty())
-            sign = 1;
+    // Returns:
+    // 0 if |x| == |y|
+    // -1 if |x| < |y|
+    // 1 if |x| > |y|
+    friend int __compare_abs(const BigInt& x, const BigInt& y) {
+        if (x.a.size() != y.a.size()) {
+            return x.a.size() < y.a.size() ? -1 : 1;
+        }
+
+        for (int i = ((int) x.a.size()) - 1; i >= 0; --i) {
+            if (x.a[i] != y.a[i]) {
+                return x.a[i] < y.a[i] ? -1 : 1;
+            }
+        }
+        return 0;
     }
 
-    bool isZero() const {
-        return a.empty() || (a.size() == 1 && !a[0]);
-    }
-
+    // -------------------- Unary operator - and operators +- --------------------
     BigInt operator-() const {
         BigInt res = *this;
+        if (isZero()) return res;
+
         res.sign = -sign;
         return res;
     }
 
-    BigInt abs() const {
-        BigInt res = *this;
-        res.sign *= res.sign;
+    // Assumption: *this and v have same sign.
+    void __internal_add(const BigInt& v) {
+        if (a.size() < v.a.size()) {
+            a.resize(v.a.size(), 0);
+        }
+        for (int i = 0, carry = 0; i < (int) max(a.size(), v.a.size()) || carry; ++i) {
+            if (i == (int) a.size()) a.push_back(0);
+
+            a[i] += carry + (i < (int) v.a.size() ? v.a[i] : 0);
+            carry = a[i] >= BASE;
+            if (carry) a[i] -= BASE;
+        }
+    }
+
+    // Assumption: *this and v have same sign, and |*this| >= |v|
+    void __internal_sub(const BigInt& v) {
+        for (int i = 0, carry = 0; i < (int) v.a.size() || carry; ++i) {
+            a[i] -= carry + (i < (int) v.a.size() ? v.a[i] : 0);
+            carry = a[i] < 0;
+            if (carry) a[i] += BASE;
+        }
+        this->trim();
+    }
+
+    BigInt operator += (const BigInt& v) {
+        if (sign == v.sign) {
+            __internal_add(v);
+        } else {
+            if (__compare_abs(*this, v) >= 0) {
+                __internal_sub(v);
+            } else {
+                BigInt vv = v;
+                swap(*this, vv);
+                __internal_sub(vv);
+            }
+        }
+        return *this;
+    }
+
+    BigInt operator -= (const BigInt& v) {
+        if (sign == v.sign) {
+            if (__compare_abs(*this, v) >= 0) {
+                __internal_sub(v);
+            } else {
+                BigInt vv = v;
+                swap(*this, vv);
+                __internal_sub(vv);
+                this->sign = -this->sign;
+            }
+        } else {
+            __internal_add(v);
+        }
+        return *this;
+    }
+
+    // Optimize operators + and - according to
+    // https://stackoverflow.com/questions/13166079/move-semantics-and-pass-by-rvalue-reference-in-overloaded-arithmetic
+    template< typename L, typename R >
+        typename std::enable_if<
+            std::is_convertible<L, BigInt>::value &&
+            std::is_convertible<R, BigInt>::value &&
+            std::is_lvalue_reference<R&&>::value,
+            BigInt>::type friend operator + (L&& l, R&& r) {
+        BigInt result(std::forward<L>(l));
+        result += r;
+        return result;
+    }
+    template< typename L, typename R >
+        typename std::enable_if<
+            std::is_convertible<L, BigInt>::value &&
+            std::is_convertible<R, BigInt>::value &&
+            std::is_rvalue_reference<R&&>::value,
+            BigInt>::type friend operator + (L&& l, R&& r) {
+        BigInt result(std::move(r));
+        result += l;
+        return result;
+    }
+
+    template< typename L, typename R >
+        typename std::enable_if<
+            std::is_convertible<L, BigInt>::value &&
+            std::is_convertible<R, BigInt>::value,
+            BigInt>::type friend operator - (L&& l, R&& r) {
+        BigInt result(std::forward<L>(l));
+        result -= r;
+        return result;
+    }
+
+    // -------------------- Operators * / % --------------------
+    friend pair<BigInt, BigInt> divmod(const BigInt& a1, const BigInt& b1) {
+        assert(b1 > 0);  // divmod not well-defined for b < 0.
+
+        long long norm = BASE / (b1.a.back() + 1);
+        BigInt a = a1.abs() * norm;
+        BigInt b = b1.abs() * norm;
+        BigInt q = 0, r = 0;
+        q.a.resize(a.a.size());
+
+        for (int i = a.a.size() - 1; i >= 0; i--) {
+            r *= BASE;
+            r += a.a[i];
+            long long s1 = r.a.size() <= b.a.size() ? 0 : r.a[b.a.size()];
+            long long s2 = r.a.size() <= b.a.size() - 1 ? 0 : r.a[b.a.size() - 1];
+            long long d = ((long long) BASE * s1 + s2) / b.a.back();
+            r -= b * d;
+            while (r < 0) {
+                r += b, --d;
+            }
+            q.a[i] = d;
+        }
+
+        q.sign = a1.sign * b1.sign;
+        r.sign = a1.sign;
+        q.trim();
+        r.trim();
+        auto res = make_pair(q, r / norm);
+        if (res.second < 0) res.second += b1;
         return res;
     }
-
-    long long longValue() const {
-        long long res = 0;
-        for (int i = a.size() - 1; i >= 0; i--)
-            res = res * base + a[i];
-        return res * sign;
+    BigInt operator/(const BigInt &v) const {
+        return divmod(*this, v).first;
     }
 
-    friend BigInt gcd(const BigInt &a, const BigInt &b) {
-        return b.isZero() ? a : gcd(b, a % b);
-    }
-    friend BigInt lcm(const BigInt &a, const BigInt &b) {
-        return a / gcd(a, b) * b;
+    BigInt operator%(const BigInt &v) const {
+        return divmod(*this, v).second;
     }
 
-    void read(const string &s) {
-        sign = 1;
-        a.clear();
-        int pos = 0;
-        while (pos < (int) s.size() && (s[pos] == '-' || s[pos] == '+')) {
-            if (s[pos] == '-')
-                sign = -sign;
-            ++pos;
+    void operator/=(int v) {
+        assert(v > 0);  // operator / not well-defined for v <= 0.
+        if (llabs(v) >= BASE) {
+            *this /= BigInt(v);
+            return ;
         }
-        for (int i = s.size() - 1; i >= pos; i -= base_digits) {
-            int x = 0;
-            for (int j = max(pos, i - base_digits + 1); j <= i; j++)
-                x = x * 10 + s[j] - '0';
-            a.push_back(x);
+        if (v < 0)
+            sign = -sign, v = -v;
+        for (int i = (int) a.size() - 1, rem = 0; i >= 0; --i) {
+            long long cur = a[i] + rem * (long long) BASE;
+            a[i] = (int) (cur / v);
+            rem = (int) (cur % v);
         }
         trim();
     }
 
-    friend istream& operator>>(istream &stream, BigInt &v) {
-        string s;
-        stream >> s;
-        v.read(s);
-        return stream;
+    BigInt operator/(int v) const {
+        assert(v > 0);  // operator / not well-defined for v <= 0.
+
+        if (llabs(v) >= BASE) {
+            return *this / BigInt(v);
+        }
+        BigInt res = *this;
+        res /= v;
+        return res;
+    }
+    void operator/=(const BigInt &v) {
+        *this = *this / v;
     }
 
-    friend ostream& operator<<(ostream &stream, const BigInt &v) {
-        if (v.sign == -1 && !v.isZero())
-            stream << '-';
-        stream << (v.a.empty() ? 0 : v.a.back());
-        for (int i = (int) v.a.size() - 2; i >= 0; --i)
-            stream << setw(base_digits) << setfill('0') << v.a[i];
-        return stream;
+    long long operator%(long long v) const {
+        assert(v > 0);  // operator / not well-defined for v <= 0.
+        assert(v < BASE);
+        int m = 0;
+        for (int i = a.size() - 1; i >= 0; --i)
+            m = (a[i] + m * (long long) BASE) % v;
+        return m * sign;
     }
 
-    // Convert base 10^old --> 10^new.
+    void operator*=(int v) {
+        if (llabs(v) >= BASE) {
+            *this *= BigInt(v);
+            return ;
+        }
+        if (v < 0)
+            sign = -sign, v = -v;
+        for (int i = 0, carry = 0; i < (int) a.size() || carry; ++i) {
+            if (i == (int) a.size())
+                a.push_back(0);
+            long long cur = a[i] * (long long) v + carry;
+            carry = (int) (cur / BASE);
+            a[i] = (int) (cur % BASE);
+            //asm("divl %%ecx" : "=a"(carry), "=d"(a[i]) : "A"(cur), "c"(base));
+            /*
+             int val;
+             __asm {
+             lea esi, cur
+             mov eax, [esi]
+             mov edx, [esi+4]
+             mov ecx, base
+             div ecx
+             mov carry, eax
+             mov val, edx;
+             }
+             a[i] = val;
+             */
+        }
+        trim();
+    }
+
+    BigInt operator*(int v) const {
+        if (llabs(v) >= BASE) {
+            return *this * BigInt(v);
+        }
+        BigInt res = *this;
+        res *= v;
+        return res;
+    }
+
+    // Convert BASE 10^old --> 10^new.
     static vector<int> convert_base(const vector<int> &a, int old_digits, int new_digits) {
         vector<long long> p(max(old_digits, new_digits) + 1);
         p[0] = 1;
@@ -333,7 +381,7 @@ struct BigInt {
             cur += a[i] * p[cur_digits];
             cur_digits += old_digits;
             while (cur_digits >= new_digits) {
-                res.push_back(int(cur % p[new_digits]));
+                res.push_back((long long)(cur % p[new_digits]));
                 cur /= p[new_digits];
                 cur_digits -= new_digits;
             }
@@ -400,15 +448,6 @@ struct BigInt {
         }
     }
 
-    BigInt operator*(const BigInt &v) const {
-        BigInt res;
-        res.sign = sign * v.sign;
-        multiply_fft(convert_base(a, base_digits, 3), convert_base(v.a, base_digits, 3), res.a);
-        res.a = convert_base(res.a, 3, base_digits);
-        res.trim();
-        return res;
-    }
-
     BigInt mul_simple(const BigInt &v) const {
         BigInt res;
         res.sign = sign * v.sign;
@@ -417,8 +456,8 @@ struct BigInt {
             if (a[i])
                 for (int j = 0, carry = 0; j < (int) v.a.size() || carry; ++j) {
                     long long cur = res.a[i + j] + (long long) a[i] * (j < (int) v.a.size() ? v.a[j] : 0) + carry;
-                    carry = (int) (cur / base);
-                    res.a[i + j] = (int) (cur % base);
+                    carry = (int) (cur / BASE);
+                    res.a[i + j] = (int) (cur % BASE);
                 }
         res.trim();
         return res;
@@ -466,8 +505,8 @@ struct BigInt {
     }
 
     BigInt mul_karatsuba(const BigInt &v) const {
-        vector<int> a6 = convert_base(this->a, base_digits, 6);
-        vector<int> b6 = convert_base(v.a, base_digits, 6);
+        vector<int> a6 = convert_base(this->a, BASE_DIGITS, 6);
+        vector<int> b6 = convert_base(v.a, BASE_DIGITS, 6);
         vll a(a6.begin(), a6.end());
         vll b(b6.begin(), b6.end());
         while (a.size() < b.size())
@@ -485,8 +524,92 @@ struct BigInt {
             res.a.push_back((int) (cur % 1000000));
             carry = cur / 1000000;
         }
-        res.a = convert_base(res.a, 6, base_digits);
+        res.a = convert_base(res.a, 6, BASE_DIGITS);
         res.trim();
         return res;
+    }
+
+    void operator*=(const BigInt &v) {
+        *this = *this * v;
+    }
+    BigInt operator*(const BigInt &v) const {
+        if (a.size() * v.a.size() <= 1000111) return mul_simple(v);
+        if (a.size() > 500111 || v.a.size() > 500111) return mul_fft(v);
+        return mul_karatsuba(v);
+    }
+
+    BigInt mul_fft(const BigInt& v) const {
+        BigInt res;
+        res.sign = sign * v.sign;
+        multiply_fft(convert_base(a, BASE_DIGITS, 3), convert_base(v.a, BASE_DIGITS, 3), res.a);
+        res.a = convert_base(res.a, 3, BASE_DIGITS);
+        res.trim();
+        return res;
+    }
+
+    // -------------------- Misc --------------------
+    BigInt abs() const {
+        BigInt res = *this;
+        res.sign *= res.sign;
+        return res;
+    }
+    void trim() {
+        while (!a.empty() && !a.back())
+            a.pop_back();
+        if (a.empty())
+            sign = 1;
+    }
+
+    bool isZero() const {
+        return a.empty() || (a.size() == 1 && !a[0]);
+    }
+
+    friend BigInt gcd(const BigInt &a, const BigInt &b) {
+        return b.isZero() ? a : gcd(b, a % b);
+    }
+    friend BigInt lcm(const BigInt &a, const BigInt &b) {
+        return a / gcd(a, b) * b;
+    }
+
+    friend BigInt sqrt(const BigInt &a1) {
+        BigInt a = a1;
+        while (a.a.empty() || a.a.size() % 2 == 1)
+            a.a.push_back(0);
+
+        int n = a.a.size();
+
+        int firstDigit = (int) sqrt((double) a.a[n - 1] * BASE + a.a[n - 2]);
+        int norm = BASE / (firstDigit + 1);
+        a *= norm;
+        a *= norm;
+        while (a.a.empty() || a.a.size() % 2 == 1)
+            a.a.push_back(0);
+
+        BigInt r = (long long) a.a[n - 1] * BASE + a.a[n - 2];
+        firstDigit = (int) sqrt((double) a.a[n - 1] * BASE + a.a[n - 2]);
+        int q = firstDigit;
+        BigInt res;
+
+        for(int j = n / 2 - 1; j >= 0; j--) {
+            for(; ; --q) {
+                BigInt r1 = (r - (res * 2 * BigInt(BASE) + q) * q) * BigInt(BASE) * BigInt(BASE) + (j > 0 ? (long long) a.a[2 * j - 1] * BASE + a.a[2 * j - 2] : 0);
+                if (r1 >= 0) {
+                    r = r1;
+                    break;
+                }
+            }
+            res *= BASE;
+            res += q;
+
+            if (j > 0) {
+                int d1 = res.a.size() + 2 < r.a.size() ? r.a[res.a.size() + 2] : 0;
+                int d2 = res.a.size() + 1 < r.a.size() ? r.a[res.a.size() + 1] : 0;
+                int d3 = res.a.size() < r.a.size() ? r.a[res.a.size()] : 0;
+                q = ((long long) d1 * BASE * BASE + (long long) d2 * BASE + d3) / (firstDigit * 2);
+            }
+        }
+
+        res.trim();
+        return res / norm;
     }
 };
