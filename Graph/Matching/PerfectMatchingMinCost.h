@@ -5,6 +5,7 @@
 //
 // Tested:
 // - SGU 210
+// - SGU 206
 
 class PerfectMatchingMinCost {
 private:
@@ -34,7 +35,7 @@ private:
     int findPath() {
         while (!q.empty()) {
             int x = q.front(); q.pop();
-            for (int i = 0; i < adj[x].size(); i++) {
+            for (int i = 0; i < (int) adj[x].size(); i++) {
                 int y = adj[x][i];
                 if (trace[y] == -1) {
                     int w = getCost(x, y);
