@@ -1,10 +1,10 @@
-#include <bits/stdc++.h>
-using namespace std;
-
 // Hungarian Assignment
 // Note: 
 // - Vertex indexed from #0
 // - Change INF and int to long long (if needed) 
+//
+// Tested:
+// - SGU 210
 
 class PerfectMatchingMinCost {
 private:
@@ -95,7 +95,7 @@ public:
 
         trace = VI(n);
         arg = VI(n);
-        fx = VI(n);
+        fx = VI(n, -INF);
         fy = VI(n);
         d = VI(n);
         mx = VI(n, -1);

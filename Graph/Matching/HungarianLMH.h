@@ -1,6 +1,8 @@
 // Index from 1
 // Min cost matching
 // Usage: init(); for[i,j,cost] addEdge(i, j, cost)
+//
+// Tested: SGU 210
 
 #define arg __arg
 long long c[MN][MN];
