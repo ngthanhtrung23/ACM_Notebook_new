@@ -1,3 +1,5 @@
+// Find any prime factor of n.
+
 #include "template.h"
 #include "Math/Prime/RabinMiller.h"
 
