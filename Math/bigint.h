@@ -50,25 +50,6 @@ struct BigInt {
         return *this;
     }
 
-    // Copy constructor.
-    BigInt(const BigInt& other) {
-        sign = other.sign;
-        a = other.a;
-    }
-    // Assignment operator using Copy-and-swap idiom.
-    friend void swap(BigInt& a, BigInt& b) {
-        using std::swap;
-        swap(a.sign, b.sign);
-        swap(a.a, b.a);
-    }
-    BigInt& operator = (BigInt other) {
-        swap(*this, other);
-        return *this;
-    }
-    BigInt(BigInt&& other) : BigInt() {
-        swap(*this, other);
-    }
-
     // Initialize from string.
     BigInt(const string& s) {
         read(s);
@@ -164,6 +145,7 @@ struct BigInt {
 
     // Assumption: *this and v have same sign.
     void __internal_add(const BigInt& v) {
+        assert(sign == v.sign);
         if (a.size() < v.a.size()) {
             a.resize(v.a.size(), 0);
         }
@@ -178,6 +160,7 @@ struct BigInt {
 
     // Assumption: *this and v have same sign, and |*this| >= |v|
     void __internal_sub(const BigInt& v) {
+        assert(sign == v.sign);
         for (int i = 0, carry = 0; i < (int) v.a.size() || carry; ++i) {
             a[i] -= carry + (i < (int) v.a.size() ? v.a[i] : 0);
             carry = a[i] < 0;
