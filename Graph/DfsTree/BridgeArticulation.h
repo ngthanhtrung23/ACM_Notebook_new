@@ -25,7 +25,7 @@ struct UndirectedDfs {
 private:
     void dfs(int u) {
         low[u] = num[u] = counter++;
-        for(int j = 0; j < G[u].size(); ++j) {
+        for(int j = 0; j < (int) G[u].size(); ++j) {
             int v = G[u][j];
             if (num[v] == -1) {
                 parent[v] = u;

@@ -3,7 +3,7 @@
 // Usage: BiconnectedComponent bc; (bc.components is the list of components)
 
 struct BiconnectedComponent {
-    vector<int> low, num, s;
+    vector<int> num, low, s;
     vector< vector<int> > components;
     int counter;
 
@@ -21,7 +21,7 @@ struct BiconnectedComponent {
         }
         s.push_back(x);
 
-        for (int i = 0; i < a[x].size(); i++) {
+        for (int i = 0; i < (int) a[x].size(); i++) {
             int y = a[x][i];
             if (num[y] > -1) low[x] = min(low[x], num[y]);
             else {

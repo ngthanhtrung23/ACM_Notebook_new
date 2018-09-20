@@ -27,7 +27,12 @@ struct SmallestEnclosingCircle {
         return c;
     }
 
+    // NOTE: This code work only when a, b, c are not collinear and no 2 points are same --> DO NOT
+    // copy and use in other cases.
     Circle getCircumcircle(Point a, Point b, Point c) {
+        assert(a != b && b != c && a != c);
+        assert(ccw(a, b, c));
+
         double d = 2.0 * (a.x * (b.y - c.y) + b.x * (c.y - a.y) + c.x * (a.y - b.y));
         assert(fabs(d) > EPS);
         double x = (a.norm() * (b.y - c.y) + b.norm() * (c.y - a.y) + c.norm() * (a.y - b.y)) / d;
