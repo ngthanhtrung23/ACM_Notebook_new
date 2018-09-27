@@ -2,7 +2,7 @@ typedef vector< Point > Polygon;
 
 // Convex Hull:
 // If minimum point --> #define REMOVE_REDUNDANT
-// If maximum point --> no need to change.
+// If maximum point --> need to change >= and <= to > and < (see Note).
 // Known issues:
 // - Max. point does not work when some points are the same.
 // Tested:
