@@ -13,6 +13,7 @@
 // - http://codeforces.com/gym/100222 - D
 // - ACM Regional Daejeon 2014 - L (negative weights)
 // - http://www.infoarena.ro/problema/fmcm (TLE 3 tests)
+// - https://codeforces.com/contest/277/problem/E
 
 template<class Flow=int, class Cost=int>
 struct MinCostFlow {
