@@ -1,3 +1,27 @@
+// Let's just not use this inefficient code and use dacin21's code here:
+// https://github.com/dacin21/dacin21_codebook/blob/master/nt/polynomials_2.0.cpp
+//
+// Example with using Fft class directly (maybe it's easier to use dacin21's class Polynomial):
+//
+// const int MOD = 1e9 + 7;
+// vector<int64_t> a, b;
+// vector<int64_t> res;
+// 
+// // res = a * b:
+// if (mod <= 5000) Fft<Complex<double>>::poly_mul_faster(res, a, b, MOD);
+// else Fft<Complex<double>>::poly_mul_split(res, a, b, MOD);
+//
+// // res = a * a;
+// if (mod <= 5000) Fft<Complex<double>>::poly_mul_faster(res, a, a, MOD);
+// else Fft<Complex<double>>::poly_square_split(res, a, MOD);
+
+
+
+
+
+
+
+// Below code is my inefficient implementation:
 // Tested:
 // - FBHC 2016 R3 - Problem E
 // - https://open.kattis.com/problems/polymul2 (need long double)
