@@ -10,8 +10,10 @@ typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_
 
 int main() { 
     ordered_set X;
+    // X = {1, 2, 4, 8, 16}
     for(int i = 1; i <= 16; i *= 2)
         X.insert(i);
+    cout << *X.find_by_order(0) << endl; // 1
     cout << *X.find_by_order(1) << endl; // 2
     cout << *X.find_by_order(2) << endl; // 4
     cout << *X.find_by_order(4) << endl; // 16
