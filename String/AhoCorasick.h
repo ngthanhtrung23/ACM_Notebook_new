@@ -1,6 +1,8 @@
 // Tested:
 // - https://open.kattis.com/problems/stringmultimatching
 // Linked list
+
+const int MN = 1000111; // MN > total length of all patterns
 struct Node {
     int x; Node *next;
 } *nil;
