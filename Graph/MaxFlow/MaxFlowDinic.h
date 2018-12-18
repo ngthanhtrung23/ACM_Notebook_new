@@ -8,6 +8,7 @@
 
 // Tested:
 // - https://open.kattis.com/problems/maxflow
+// - https://www.lydsy.com/JudgeOnline/problem.php?id=1001
 const int INF = 1000000000;
  
 struct Edge {
