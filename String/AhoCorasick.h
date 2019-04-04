@@ -30,12 +30,10 @@ struct Aho {
         memset(link[0], -1, sizeof link[0]);
     }
     int getChild(int type, int v, int c) {
-        while (1) {
-            if (link[v][c] >= 0) return link[v][c];
-            if (type == 1) return 0;
-            if (!v) return 0;
-            v = suffixLink[v];
-        }
+        if (link[v][c] >= 0) return link[v][c];
+        if (type == 1) return 0;
+        if (!v) return link[v][c] = 0;
+        return link[v][c] = getChild(type, suffixLink[v], c);
     }
     void buildLink() {
         int first, last;
