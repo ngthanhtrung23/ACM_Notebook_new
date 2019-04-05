@@ -1,8 +1,20 @@
 // Tested:
 // - https://open.kattis.com/problems/stringmultimatching
-// Linked list
+// - https://icpc.kattis.com/problems/firstofhername
+//
+// Notes:
+// - Node IDs from 0 to aho.sz.
+// - Characters should be normalized to [0, MC-1].
+// - For each node of AhoCorasick, we store a linked list containing all queries "associated" with this node.
+//   The reason is that, when we reach a node in AhoCorasick, it's possible to match several queries at once.
+//   (this happens when queries are suffix of others, e.g. C, BC, ABC).
+//   This also means 1 node maps to several queries, and 1 query maps to several nodes.
+//   However I believe that the sum of length of all linked list is O(N) -- TODO: Source / proof required.
 
 const int MN = 1000111; // MN > total length of all patterns
+const int MC = 26; // Alphabet size.
+
+// Start of Linked list
 struct Node {
     int x; Node *next;
 } *nil;
@@ -17,6 +29,7 @@ struct List {
     }
 };
 // End of linked list
+//
 struct Aho {
     int qu[MN], suffixLink[MN];
     List leaf[MN];
