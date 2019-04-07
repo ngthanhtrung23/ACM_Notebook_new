@@ -143,9 +143,8 @@ struct BigInt {
         return res;
     }
 
-    // Assumption: *this and v have same sign.
+    // Note: sign ignored.
     void __internal_add(const BigInt& v) {
-        assert(sign == v.sign);
         if (a.size() < v.a.size()) {
             a.resize(v.a.size(), 0);
         }
@@ -158,9 +157,8 @@ struct BigInt {
         }
     }
 
-    // Assumption: *this and v have same sign, and |*this| >= |v|
+    // Note: sign ignored.
     void __internal_sub(const BigInt& v) {
-        assert(sign == v.sign);
         for (int i = 0, carry = 0; i < (int) v.a.size() || carry; ++i) {
             a[i] -= carry + (i < (int) v.a.size() ? v.a[i] : 0);
             carry = a[i] < 0;
