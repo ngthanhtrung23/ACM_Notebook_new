@@ -1,3 +1,6 @@
+// Given N segments.
+// Check (and returns the indices) if there are 2 segments intersect.
+//
 // NOTES:
 // - Must set Segment.id. Otherwise it will be impossible to debug..
 // - Floating point number? copy from here:
@@ -5,6 +8,7 @@
 //
 // TESTED:
 // - http://acm.timus.ru/problem.aspx?space=1&num=1469
+// - http://vn.spoj.com/problems/VMLINES
 
 int cmp(int x, int y) {
     if (x == y) return 0;
