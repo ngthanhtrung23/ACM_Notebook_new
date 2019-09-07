@@ -1,6 +1,11 @@
 // Smallest enclosing circle:
 // Given N points. Find the smallest circle enclosing these points.
 // Amortized complexity: O(N)
+//
+// Tested:
+// - https://www.spoj.com/problems/ALIENS/
+// - https://www.spoj.com/problems/QCJ4/
+// - https://www.acmicpc.net/problem/2626
 
 struct SmallestEnclosingCircle {
     Circle getCircle(vector<Point> points) {
