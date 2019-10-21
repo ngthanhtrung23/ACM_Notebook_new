@@ -129,6 +129,7 @@ bool areIntersect(Line l1, Line l2, Point &p) {
     return true;
 }
 
+// closest point from p in line l.
 void closestPoint(Line l, Point p, Point &ans) {
     if (fabs(l.b) < EPS) {
         ans.x = -(l.c) / l.a; ans.y = p.y;

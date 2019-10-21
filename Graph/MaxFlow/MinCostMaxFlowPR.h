@@ -9,6 +9,7 @@
 // - https://www.infoarena.ro/problema/fmcm
 // - https://open.kattis.com/problems/mincostmaxflow
 // - http://vn.spoj.com/problems/MINCOST  (trace)
+// - https://codeforces.com/blog/entry/70740
 
 template<typename flow_t = int, typename cost_t = int>
 struct MinCostFlow {
