@@ -1,3 +1,4 @@
+// TODO: Test with http://uoj.ac/problem/3
 struct Data {
     int time, u, par;  // before `time`, `par` = par[u]
 };
@@ -27,6 +28,7 @@ struct DSU {
     void join(int x, int y, int t) {
         x = getRoot(x, t);
         y = getRoot(y, t);
+        // TODO: Possible TLE here? should use union by rank?
         if (x != y) {
             change.push_back({t, x, par[x]});
             par[x] = y;
