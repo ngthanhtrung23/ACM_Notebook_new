@@ -1,6 +1,3 @@
-#include <bits/stdc++.h>
-
-using namespace std;
 // Tested with https://codeforces.com/gym/100551/problem/A
 // 0-based
 struct Data {
