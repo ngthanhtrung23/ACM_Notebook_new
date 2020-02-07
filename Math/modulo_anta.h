@@ -46,3 +46,22 @@ struct ModInt {
 	ModInt operator+(ModInt that) const { return ModInt(*this) += that; }
 	ModInt operator-(ModInt that) const { return ModInt(*this) -= that; }
 };
+const int MOD = 1e9 + 7;
+using modular = ModInt<MOD>;
+
+std::ostream& operator << (std::ostream& cout, const modular& m) {
+    cout << m.x;
+    return cout;
+}
+
+const int MOD = 1e9 + 7;
+using modular = ModInt<MOD>;
+
+std::ostream& operator << (std::ostream& cout, const modular& m) {
+    cout << m.x;
+    return cout;
+}
+std::istream& operator << (std::istream& cin, modular& m) {
+    cin >> m.x;
+    return cin;
+}
