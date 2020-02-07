@@ -16,8 +16,7 @@ struct DirectedDfs {
         low[u] = num[u] = counter++;
         S.push_back(u);
         current[u] = 1;
-        REP(j, G[u].size()) {
-            int v = G[u][j];
+        for (auto v : G[u]) {
             if (num[v] == -1) dfs(v);
             if (current[v]) low[u] = min(low[u], low[v]);
         }
