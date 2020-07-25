@@ -1,5 +1,7 @@
+// Assumption: points have coordinates <= n
+
 vector<int> nodes[MN];
-vector<int> f[MN];
+vector<int> f[MN];  // sum
 
 void fakeUpdate(int u, int v) {
     for(int x = u; x <= n; x += x & -x)
@@ -11,12 +13,14 @@ void fakeGet(int u, int v) {
         nodes[x].push_back(v);
 }
 
+// Add point (u, v)
 void update(int u, int v) {
     for(int x = u; x <= n; x += x & -x)
         for(int y = lower_bound(nodes[x].begin(), nodes[x].end(), v) - nodes[x].begin() + 1; y <= nodes[x].size(); y += y & -y)
             f[x][y]++;
 }
 
+// Get number of point in rectangle with corners at (1, 1) and (u, v)
 int get(int u, int v) {
     int res = 0;
     for(int x = u; x > 0; x -= x & -x)
@@ -26,6 +30,8 @@ int get(int u, int v) {
 }
 
 int main() {
+    // Note: Make sure coordinates <= n
+    // Otherwise, must fix fakeUpdate and update above.
     FORD(i,n,1) {
         fakeUpdate(a[i].b, a[i].c);
         fakeGet(a[i].b, a[i].c);
