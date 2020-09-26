@@ -24,7 +24,7 @@ struct SuffixArray {
         #undef REF
     }
 
-    inline bool cmp (const int a, const int b, const int l) { return (y[a] == y[b] && y[a + l] == y[b + l]); }
+    inline bool cmp (const int a, const int b, const int l) { return (y[a] == y[b] && (a + l < n && b + l < n ? y[a + l] == y[b + l] : false)); }
 
     void Sort() {
         for(int i = 0; i < m; ++i) w[i] = 0;
