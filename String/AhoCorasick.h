@@ -35,20 +35,25 @@ struct Aho {
     List leaf[MN];
     int link[MN][MC];
     int sz;
+    bool calledBuildLink;
 
     void init() {
+        calledBuildLink = false;
         sz = 0;
         memset(suffixLink, 0, sizeof suffixLink);
         leaf[0] = List();
         memset(link[0], -1, sizeof link[0]);
     }
     int getChild(int type, int v, int c) {
+        if (type == 2) assert(calledBuildLink);
+
         if (link[v][c] >= 0) return link[v][c];
         if (type == 1) return 0;
         if (!v) return link[v][c] = 0;
         return link[v][c] = getChild(type, suffixLink[v], c);
     }
     void buildLink() {
+        calledBuildLink = true;
         int first, last;
         qu[first = last = 1] = 0;
         while (first <= last) {
