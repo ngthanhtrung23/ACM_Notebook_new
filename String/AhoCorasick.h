@@ -1,6 +1,7 @@
 // Tested:
 // - https://open.kattis.com/problems/stringmultimatching
 // - https://icpc.kattis.com/problems/firstofhername
+// - https://oj.vnoi.info/problem/binpal
 //
 // Notes:
 // - Node IDs from 0 to aho.sz.
