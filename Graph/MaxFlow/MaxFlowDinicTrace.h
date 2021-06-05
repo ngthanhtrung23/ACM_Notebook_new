@@ -3,13 +3,14 @@
 
 // Usage:
 // MaxFlow flow(n)
-// For each edge: flow.addEdge(u, v, c, edge_id)
+// For each edge: flow.addEdge(u, v, c, edge_id)  // edge_id for trace
 // flow.getMaxFlow(s, t)
-// flow.trace()
+// flow.trace() --> edges in minimum cut
 // Index from 0
 
 // Tested:
 // - https://open.kattis.com/problems/maxflow
+// - GCJ 2021 R3 - B
 const int INF = 1000111000111000111LL;
  
 struct Edge {
@@ -22,7 +23,7 @@ struct MaxFlow {
     vector< Edge > e;
     vector< vector<int> > g;
 
-    MaxFlow(int n) : n(n), d(n), ptr(n), q(n), g(n) {
+    MaxFlow(int _n) : n(_n), d(_n), ptr(_n), q(_n), g(_n) {
         e.clear();
         REP(i,n) {
             g[i].clear();
