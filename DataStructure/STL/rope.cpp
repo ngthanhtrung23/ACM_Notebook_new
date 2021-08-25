@@ -15,6 +15,9 @@ int main() {
         --l, --r;
         rope <int> cur = v.substr(l, r - l + 1);
         v.erase(l, r - l + 1);
+        // Note: if erase a single element, must use v.erase(i, 1).
+        // There is another function v.erase(i) but it's wrong
+        // https://codeforces.com/blog/entry/94213
         v.insert(v.mutable_begin(), cur);
     }
     for(rope <int>::iterator it = v.mutable_begin(); it != v.mutable_end(); ++it)
