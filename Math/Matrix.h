@@ -1,4 +1,6 @@
-// Tested: https://oj.vnoi.info/problem/dtl_lsr
+// Tested:
+// - double -> https://oj.vnoi.info/problem/dtl_lsr
+// - ins -> TODO
 
 template<typename T>
 struct Matrix {
