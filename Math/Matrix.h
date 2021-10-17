@@ -44,6 +44,8 @@ struct Matrix {
     }
 
     // make matrix upper triangle
+    // - if all rows are independent, it becomes identity matrix
+    //   -> can be used to solve linear equation (remember to append column b)
     // copied from cp-algorithms
     // https://cp-algorithms.com/linear_algebra/linear-system-gauss.html
     void gauss() {
