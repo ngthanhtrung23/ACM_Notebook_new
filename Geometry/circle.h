@@ -4,6 +4,8 @@ struct Circle : Point {
     Circle(Point p, double _r) : Point(p), r(_r) {}
     
     bool contains(Point p) { return (*this - p).len() <= r + EPS; }
+
+    double area() const { return r*r*M_PI; }
 };
 
 // Find common tangents to 2 circles
