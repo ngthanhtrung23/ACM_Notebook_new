@@ -6,6 +6,19 @@ struct Circle : Point {
     bool contains(Point p) { return (*this - p).len() <= r + EPS; }
 
     double area() const { return r*r*M_PI; }
+
+    // definitions in https://en.wikipedia.org/wiki/Circle
+    // assumption: 0 <= theta <= 2*PI
+    // theta: angle in radian
+    double sector_area(double theta) const {
+        return 0.5 * r * r * theta;
+    }
+
+    // assumption: 0 <= theta <= 2*PI
+    // theta: angle in radian
+    double segment_area(double theta) const {
+        return 0.5 * r * r * (theta - sin(theta));
+    }
 };
 
 // Find common tangents to 2 circles
