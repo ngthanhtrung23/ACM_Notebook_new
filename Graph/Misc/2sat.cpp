@@ -1,6 +1,14 @@
 // Tested:
 // - http://codeforces.com/contest/568/problem/C
 // - https://open.kattis.com/contests/nwerc15open/problems/cleaningpipes
+// - https://oj.vnoi.info/problem/icpc21_mt_i -> min lexicographical result
+//
+// For lexicographical min result:
+// 1. Find which variables are fixed (if there is path i -> i^1 or i^1 -> i)
+// 2. For each variable, when assigning value to it
+//    -> DFS to set values of all others
+//    (Not sure if we need to do similar for reverse edges?)
+// See https://oj.vnoi.info/problem/icpc21_mt_i
 #include <bits/stdc++.h>
 #define REP(i,a) for(int i=0,_a=(a); i<_a; i++)
 using namespace std;
