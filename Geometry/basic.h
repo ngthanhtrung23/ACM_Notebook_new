@@ -11,7 +11,7 @@ inline int cmp(double a, double b) {
 struct Point {
     double x, y;
     Point() { x = y = 0.0; }
-    Point(double x, double y) : x(x), y(y) {}
+    Point(double _x, double _y) : x(_x), y(_y) {}
 
     Point operator + (const Point& a) const { return Point(x+a.x, y+a.y); }
     Point operator - (const Point& a) const { return Point(x-a.x, y-a.y); }
@@ -95,9 +95,9 @@ struct Line {
     double a, b, c;
     Point A, B; // Added for polygon intersect line. Do not rely on assumption that these are valid
 
-    Line(double a, double b, double c) : a(a), b(b), c(c) {} 
+    Line(double _a, double _b, double _c) : a(_a), b(_b), c(_c) {} 
 
-    Line(Point A, Point B) : A(A), B(B) {
+    Line(Point _A, Point _B) : A(_A), B(_B) {
         a = B.y - A.y;
         b = A.x - B.x;
         c = - (a * A.x + b * A.y);
@@ -106,8 +106,8 @@ struct Line {
         a = -m; b = 1;
         c = -((a * P.x) + (b * P.y));
     }
-    double f(Point A) {
-        return a*A.x + b*A.y + c;
+    double f(Point p) {
+        return a*p.x + b*p.y + c;
     }
 };
 

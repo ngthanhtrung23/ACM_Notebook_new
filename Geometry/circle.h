@@ -1,7 +1,7 @@
 struct Circle : Point {
     double r;
-    Circle(double x = 0, double y = 0, double r = 0) : Point(x, y), r(r) {}
-    Circle(Point p, double r) : Point(p), r(r) {}
+    Circle(double _x = 0, double _y = 0, double _r = 0) : Point(_x, _y), r(_r) {}
+    Circle(Point p, double _r) : Point(p), r(_r) {}
     
     bool contains(Point p) { return (*this - p).len() <= r + EPS; }
 };

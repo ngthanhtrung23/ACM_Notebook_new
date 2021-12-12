@@ -127,3 +127,19 @@ Matrix<T> identity(int n) {
     REP(i,n) res.x[i][i] = 1;
     return res;
 }
+
+// Tested: https://oj.vnoi.info/problem/icpc21_mt_k
+template<typename T>
+Matrix<T> power(Matrix<T> a, int k) {
+    assert(SZ(a.x) == SZ(a.x[0]));
+
+    Matrix<T> res = identity<T>(a.x.size());
+
+    while (k > 0) {
+        if (k & 1) res = res * a;
+        a = a * a;
+        k >>= 1;
+    }
+
+    return res;
+}

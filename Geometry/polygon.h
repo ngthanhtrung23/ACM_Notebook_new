@@ -22,7 +22,7 @@ void ConvexHull(vector<Point> &pts) {
     sort(pts.begin(), pts.end());
     pts.erase(unique(pts.begin(), pts.end()), pts.end());
     vector<Point> up, dn;
-    for (int i = 0; i < pts.size(); i++) {
+    for (int i = 0; i < (int) pts.size(); i++) {
         // Note: If need maximum points on convex hull, need to change >= and <= to > and <.
         while (up.size() > 1 && area2(up[up.size()-2], up.back(), pts[i]) >= 0) up.pop_back();
         while (dn.size() > 1 && area2(dn[dn.size()-2], dn.back(), pts[i]) <= 0) dn.pop_back();
@@ -37,7 +37,7 @@ void ConvexHull(vector<Point> &pts) {
     dn.clear();
     dn.push_back(pts[0]);
     dn.push_back(pts[1]);
-    for (int i = 2; i < pts.size(); i++) {
+    for (int i = 2; i < (int) pts.size(); i++) {
         if (between(dn[dn.size()-2], dn[dn.size()-1], pts[i])) dn.pop_back();
         dn.push_back(pts[i]);
     }
