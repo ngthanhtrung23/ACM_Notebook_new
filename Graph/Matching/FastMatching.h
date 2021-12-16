@@ -22,7 +22,7 @@ struct Matching {
     vector<bool> seen;
     vector< vector<int> > ke;
 
-    Matching(int n) : n(n), matchL(n+1), matchR(n+1), dist(n+1), seen(n+1, false), ke(n+1) {}
+    Matching(int _n) : n(_n), matchL(_n+1), matchR(_n+1), dist(_n+1), seen(_n+1, false), ke(_n+1) {}
 
     void addEdge(int u, int v) {
         ke[u].push_back(v);
