@@ -1,10 +1,10 @@
-// Assumption: points have coordinates <= n
+// MAX_COORD = max X-coordinates
 
 vector<int> nodes[MN];
 vector<int> f[MN];  // sum
 
 void fakeUpdate(int u, int v) {
-    for(int x = u; x <= n; x += x & -x)
+    for(int x = u; x <= MAX_COORD; x += x & -x)
         nodes[x].push_back(v);
 }
 
@@ -15,7 +15,7 @@ void fakeGet(int u, int v) {
 
 // Add point (u, v)
 void update(int u, int v) {
-    for(int x = u; x <= n; x += x & -x)
+    for(int x = u; x <= MAX_COORD; x += x & -x)
         for(int y = lower_bound(nodes[x].begin(), nodes[x].end(), v) - nodes[x].begin() + 1; y <= nodes[x].size(); y += y & -y)
             f[x][y]++;
 }
@@ -30,15 +30,16 @@ int get(int u, int v) {
 }
 
 int main() {
-    // Note: Make sure coordinates <= n
+    // Note: Make sure coordinates <= MAX_COORD
     // Otherwise, must fix fakeUpdate and update above.
-    FORD(i,n,1) {
+    FOR(i,1,MAX_COORD) {
         fakeUpdate(a[i].b, a[i].c);
         fakeGet(a[i].b, a[i].c);
     }
-    FOR(i,1,n) {
+    FOR(i,1,MAX_COORD) {
         nodes[i].push_back(1000111000);
         sort(nodes[i].begin(), nodes[i].end());
+        nodes[i].resize(unique(nodes[i].begin(), nodes[i].end()) - nodes[i].begin());
         f[i].resize(SZ(nodes[i]) + 3);
     }
 }
