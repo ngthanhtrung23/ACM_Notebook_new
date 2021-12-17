@@ -12,7 +12,7 @@ struct GomoryHu {
     int n;
     MaxFlow flow;
 
-    GomoryHu(int n) : n(n), flow(n) {
+    GomoryHu(int _n) : n(_n), flow(_n) {
         for(int i = 0; i < n; ++i) ok[i] = parent[i] = 0;
         for(int i = 0; i < n; ++i)
             for(int j = 0; j < n; ++j)
@@ -53,7 +53,7 @@ struct GomoryHu {
         qu.push(start);
         while (!qu.empty()) {
             int u=qu.front(); qu.pop();
-            for(int xid = 0; xid < flow.g[u].size(); ++xid) {
+            for(int xid = 0; xid < (int) flow.g[u].size(); ++xid) {
                 int id = flow.g[u][xid];
                 int v = flow.e[id].b, fl = flow.e[id].flow, cap = flow.e[id].cap;
                 if (!ok[v] && fl < cap) {
