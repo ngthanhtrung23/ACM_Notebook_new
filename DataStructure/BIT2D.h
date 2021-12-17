@@ -16,7 +16,8 @@ void fakeGet(int u, int v) {
 // Add point (u, v)
 void update(int u, int v) {
     for(int x = u; x <= MAX_COORD; x += x & -x)
-        for(int y = lower_bound(nodes[x].begin(), nodes[x].end(), v) - nodes[x].begin() + 1; y <= nodes[x].size(); y += y & -y)
+        for(int y = lower_bound(nodes[x].begin(), nodes[x].end(), v) - nodes[x].begin() + 1;
+                y <= (int) nodes[x].size(); y += y & -y)
             f[x][y]++;
 }
 
