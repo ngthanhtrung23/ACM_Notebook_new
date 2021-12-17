@@ -7,10 +7,10 @@
 //
 // Usage:
 // 
-// PushRelabel<int> flow(n);
+// MaxFlow<int> flow(n);
 // flow.addEdge(u, v, f);  // directed
 // flow.addEdge(u, v, f, f);  // undirected
-// int maxFlow = flow.maxFlow(s, t);
+// int maxFlow = flow.getMaxFlow(s, t);
 //
 // Tested:
 // - http://vn.spoj.com/problems/NKFLOW/ (directed)
@@ -21,13 +21,13 @@
 // TLE on https://www.lydsy.com/JudgeOnline/problem.php?id=1001. Why? (ACed with Dinic flow).
 
 template<typename flow_t = long long>
-struct PushRelabel {
+struct MaxFlow {
     struct Edge {
         int to, rev;
         flow_t f, c;
     };
     vector<vector<Edge> > g;
-    PushRelabel(int n) : g(n), ec(n), cur(n), hs(2*n), H(n) {}
+    MaxFlow(int _n) : g(_n), ec(_n), cur(_n), hs(2*_n), H(_n) {}
 
     int addEdge(int s, int t, flow_t cap, flow_t rcap=0) {
         if (s == t) return -1;
@@ -40,7 +40,7 @@ struct PushRelabel {
         return b.rev;
     }
 
-    flow_t maxFlow(int s, int t) {
+    flow_t getMaxFlow(int s, int t) {
         int v = g.size();
         H[s] = v;
         ec[t] = 1;
