@@ -1,8 +1,9 @@
 // Source: https://codeforces.com/blog/entry/53170
 //
 // Tested:
-// - HLD only: https://oj.vnoi.info/problem/icpc21_mt_l
-// - HLD only: https://oj.vnoi.info/problem/qtreex
+// - HLD on vertices: https://oj.vnoi.info/problem/icpc21_mt_l
+// - HLD on vertices: https://oj.vnoi.info/problem/qtree3
+// - HLD on edges: https://oj.vnoi.info/problem/qtreex
 //
 // Usage:
 // 
