@@ -1,6 +1,10 @@
+// Notes:
+// - for int / modulo --> Add const T ZERO = 0; then modify all "TODO: Modify for int"
+//
 // Tested:
 // - double -> https://oj.vnoi.info/problem/dtl_lsr
-// - ins -> TODO
+// - int -> https://oj.vnoi.info/problem/icpc21_mt_k (matrix mul & power)
+// - int -> https://oj.vnoi.info/problem/vmrook (gauss)
 
 template<typename T>
 struct Matrix {
@@ -58,10 +62,12 @@ struct Matrix {
         for (int col = 0, row = 0; col < m && row < n; ++col) {
             int sel = row;
             for (int i = row; i < n; ++i) {
+                // TODO: Modify for int
                 if (abs(x[i][col]) > abs(x[sel][col]))
                     sel = i;
             }
-            if (abs(x[sel][col]) < 1e-9)   // change this for int?
+            // TODO: Modify for int
+            if (abs(x[sel][col]) < 1e-9)
                 continue;
 
             for (int i = col; i < m; ++i)
@@ -78,6 +84,7 @@ struct Matrix {
             // normalize this row to [0 ... 0 1 ....]
             // needed for matrix inverse
             T coef = x[row][col];
+            // TODO: Modify for int
             if (coef > 1e-9) {
                 for (int j = 0; j < m; ++j)
                     x[row][j] /= coef;
