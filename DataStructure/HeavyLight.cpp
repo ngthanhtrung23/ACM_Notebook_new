@@ -1,5 +1,6 @@
 // Tested:
 // - http://codeforces.com/gym/100739/problem/G
+//
 // Notes:
 // - Index from 1
 // - dfn: vertex id --> position

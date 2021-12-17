@@ -2,6 +2,7 @@
 //
 // Tested:
 // - HLD only: https://oj.vnoi.info/problem/icpc21_mt_l
+// - HLD only: https://oj.vnoi.info/problem/qtreex
 //
 // Usage:
 // 
@@ -95,7 +96,33 @@ int query(int start, int target) {
 
     int res = 0;
     for (auto [u, v] : segments) {
-        // update res using [in[u], in[v]]
+        // update res using [in[u], in[v]].
+        // Be careful about order of in[u] and in[v]
     }
     return res;
+}
+
+/**
+ * For query by edges, can reuse everything above. After calling
+ * getSegments, we just query each segments, ignoring segments' ancestors
+ */
+int query(int start, int target) {
+    auto segments = getSegments(start, target);
+
+    for (int i = 0; i < (int) segments.size(); i++) {
+        auto [u, v] = segments[i];
+        if (isAncestor(u, v)) swap(u, v);
+        // u is now children of v
+        assert(in[v] <= in[u]);
+        // query segment tree [in[v], in[u]]
+
+        // connect end of this segment to start of next segment
+        v = segments[i].second;
+        if (i+1 < SZ(segments)) {
+            auto [x, y] = segments[i+1];
+            // need to query edge (v, x)
+            if (v == parent[x]) swap(v, x);
+            // query segment tree [in[v], in[v]]
+        }
+    }
 }
