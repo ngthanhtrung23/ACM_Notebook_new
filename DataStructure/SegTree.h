@@ -1,5 +1,5 @@
 // SegTree, copied from AtCoder library
-// AtCoder doc: https://github.com/atcoder/ac-library/blob/master/document_en/segtree.md
+// AtCoder doc: https://atcoder.github.io/ac-library/master/document_en/segtree.html
 //
 // Notes:
 // - Index of elements from 0 -> n-1
