@@ -1,3 +1,5 @@
+// Use isPrime in Pollard.h instead
+
 typedef long long ll;
 
 // mulMod and powMod is same as Math/modulo.h.

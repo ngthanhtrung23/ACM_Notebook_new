@@ -1,88 +1,129 @@
-// Copied from chemthan: https://github.com/chemthan/chemthan/blob/master/Math/Pollard.cpp
+// Pollard
+// Copied from https://judge.yosupo.jp/submission/61447
+//
 // Tested:
+// - (up to 10^18) https://judge.yosupo.jp/problem/factorize
 // - https://oj.vnoi.info/problem/icpc21_beta_l
-namespace Pollard {
-    template<typename num_t>
-    num_t mulmod(num_t a, num_t b, num_t p) {
-        a %= p; b %= p;
-        num_t q = (num_t) ((long double) a * b / p);
-        num_t r = a * b - q * p;
-        while (r < 0) r += p;
-        while (r >= p) r -= p;
-        return r;
-        /*
-        num_t r = 0;
-        int block = 1;
-        num_t base = 1LL << block;
-        for (; b; b >>= block) {
-            r = (r + a * (b & (base - 1))) % p;
-            a = a * base % p;
-        }
-        return r;
-        */
+
+using ll = long long;
+using ull = unsigned long long;
+using ld = long double;
+ll mult(ll x, ll y, ll md) {
+    ull q = (ld)x * y / md;
+    ll res = ((ull)x * y - q * md);
+    if (res >= md) res -= md;
+    if (res < 0) res += md;
+    return res;
+}
+
+ll bin_pow(ll x, ll p, ll md) {
+    if (p == 0) return 1;
+    if (p & 1) return mult(x, bin_pow(x, p - 1, md), md);
+    return bin_pow(mult(x, x, md), p / 2, md);
+}
+
+bool checkMillerRabin(ll x, ll md, ll s, int k) {
+    x = bin_pow(x, s, md);
+    if (x == 1) return true;
+    while(k--) {
+        if (x == md - 1) return true;
+        x = mult(x, x, md);
+        if (x == 1) return false;
     }
-    template<typename num_t>
-    num_t powmod(num_t n, num_t k, num_t p) {
-        num_t r = 1;
-        for (; k; k >>= 1) {
-            if (k & 1) r = mulmod(r, n, p);
-            n = mulmod(n, n, p);
-        }
-        return r;
+    return false;
+}
+bool isPrime(ll x) {
+    if (x == 2 || x == 3 || x == 5 || x == 7) return true;
+    if (x % 2 == 0 || x % 3 == 0 || x % 5 == 0 || x % 7 == 0) return false;
+    if (x < 121) return x > 1;
+    ll s = x - 1;
+    int k = 0;
+    while(s % 2 == 0) {
+        s >>= 1;
+        k++;
     }
-    template<typename num_t>
-    int rabin(num_t n) {
-        if (n == 2) return 1;
-        if (n < 2 || !(n & 1)) return 0;
-        const num_t p[9] = {2, 3, 5, 7, 11, 13, 17, 19, 23};
-        num_t a, d = n - 1, mx = 4;
-        int i, r, s = 0;
-        while (!(d & 1)) {++s; d >>= 1;}
-        for (i = 0; i < mx; i++) {
-            if (n == p[i]) return 1;
-            if (!(n % p[i])) return 0;
-            a = powmod(p[i], d, n);
-            if (a != 1) {
-                for (r = 0; r < s && a != n - 1; r++) a = mulmod(a, a, n);
-                if (r == s) return 0;
+    if (x < 1LL << 32) {
+        for (ll z : {2, 7, 61}) {
+            if (!checkMillerRabin(z, x, s, k)) return false;
+        }
+    } else {
+        for (ll z : {2, 325, 9375, 28178, 450775, 9780504, 1795265022}) {
+            if (!checkMillerRabin(z, x, s, k)) return false;
+        }
+    }
+    return true;
+}
+
+ll gcd(ll x, ll y) {
+    return y == 0 ? x : gcd(y, x % y);
+}
+
+void pollard(ll x, vector<ll> &ans) {
+    if (isPrime(x)) {
+        ans.push_back(x);
+        return;
+    }
+    ll c = 1;
+    while(true) {
+        c = 1 + get_rand(x - 1);
+        auto f = [&](ll y) {
+            ll res = mult(y, y, x) + c;
+            if (res >= x) res -= x;
+            return res;
+        };
+        ll y = 2;
+        int B = 100;
+        int len = 1;
+        ll g = 1;
+        while(g == 1) {
+            ll z = y;
+            for (int i = 0; i < len; i++) {
+                z = f(z);
             }
-        }
-        return 1;
-    }
-    template<typename num_t>
-    inline num_t f(num_t a, num_t b, num_t n) {
-        return (mulmod(a, a, n) + b) % n;
-    }
-    template<typename num_t>
-    void factorize(num_t n, vector<num_t>& facs) {
-        static int init_seed = 0;
-        if (!init_seed) {
-            init_seed = 1;
-            srand(2311);
-        }
-        if (n == 1) {
-            return;
-        }
-        if (rabin(n)) {
-            facs.push_back(n);
-            return;
-        }
-        if (n == 4) {
-            facs.push_back(2);
-            facs.push_back(2);
-            return;
-        }
-        while (1) {
-            num_t a = rand() & 63, x = 2, y = 2;
-            while (1) {
-                x = f(x, a, n), y = f(f(y, a, n), a, n);
-                if (x == y) break;
-                num_t p = __gcd(n, y <= x ? x - y : y - x);
-                if (p > 1) {
-                    factorize(p, facs), factorize(n / p, facs);
-                    return;
+            ll zs = -1;
+            int lft = len;
+            while(g == 1 && lft > 0) {
+                zs = z;
+                ll p = 1;
+                for (int i = 0; i < B && i < lft; i++) {
+                    p = mult(p, abs(z - y), x);
+                    z = f(z);
+                }
+                g = gcd(p, x);
+                lft -= B;
+            }
+            if (g == 1) {
+                y = z;
+                len <<= 1;
+                continue;
+            }
+            if (g == x) {
+                g = 1;
+                z = zs;
+                while(g == 1) {
+                    g = gcd(abs(z - y), x);
+                    z = f(z);
                 }
             }
+            if (g == x) break;
+            assert(g != 1);
+            pollard(g, ans);
+            pollard(x / g, ans);
+            return;
         }
     }
-};
+}
+vector<ll> factorize(ll x) {
+    vector<ll> ans;
+    for (ll p : {2, 3, 5, 7, 11, 13, 17, 19}) {
+        while(x % p == 0) {
+            x /= p;
+            ans.push_back(p);
+        }
+    }
+    if (x != 1) {
+        pollard(x, ans);
+    }
+    sort(ans.begin(), ans.end());
+    return ans;
+}

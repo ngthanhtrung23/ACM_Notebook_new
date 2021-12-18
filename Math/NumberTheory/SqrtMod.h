@@ -1,34 +1,74 @@
-// Jacobi Symbol (m/n), m,n≥0  and n is odd
-// (m/n)==1 x^2 == m (mod n) solvable, -1 unsolvable
-#define NEGPOW(e) ((e) % 2 ? -1 : 1)
-int jacobi(int a, int m) {
-    if (a == 0) return m == 1 ? 1 : 0;
-    if (a % 2)  return NEGPOW((a-1)*(m-1)/4)*jacobi(m%a, a);
-    else return NEGPOW((m*m-1)/8)*jacobi(a/2, m);
-}
-int invMod(int a, int m) {
-    int x, y;
-    if (extgcd(a, m, x, y) == 1) return (x + m) % m;
-    else                                 return 0; // unsolvable
-}
-// No solution when: n(p-1)/2 = -1 mod p
-int sqrtMod(int n, int p) { //find x: x2 = n (mod p) p is prime
-    int S, Q, W, i, m = invMod(n, p);
-    for (Q = p - 1, S = 0; Q % 2 == 0; Q /= 2, ++S);
-    do { W = rand() % p; } while (W == 0 || jacobi(W, p) != -1);
-    for (int R = powMod(n, (Q+1)/2, p), V = powMod(W, Q, p); ;) {
-        int z = R * R * m % p;
-        for (i = 0; i < S && z % p != 1; z *= z, ++i);
-        if (i == 0) return R;
-        R = (R * powMod(V, 1 << (S-i-1), p)) % p;
+// sqrtMod(X, q), with q is prime, returns:
+// a where a*a = X
+// -1 if no solution
+//
+// Note:
+// - there are either 1 or 2 solutions, a and p - a (which can be same).
+//   This code return smaller solution
+//
+// Copied from https://judge.yosupo.jp/submission/59210
+//
+// Tested:
+// - (p <= 10^9) https://judge.yosupo.jp/problem/sqrt_mod
+// - (print all sols) https://oj.vnoi.info/problem/jacobi
+// - https://oj.vnoi.info/problem/newj
+
+using ll = long long;
+ll euclid(ll x, ll y, ll &k, ll &l) {
+    if (y == 0) {
+        k = 1;
+        l = 0;
+        return x;
     }
+    ll g = euclid(y, x % y, l, k);
+    l -= k * (x / y);
+    return g;
 }
-int powMod (int a, int b, int p) {
-    int res = 1;
-    while (b)
-        if (b & 1)
-            res = int (res * 1ll * a % p),  --b;
-        else
-            a = int (a * 1ll * a % p),  b >>= 1;
-    return res;
-} 
+
+ll mult(ll x, ll y, ll md) {
+    return x * y % md;
+}
+ll bin_pow(ll x, ll p, ll md) {
+    if (p == 0) return 1;
+    if (p & 1) return mult(x, bin_pow(x, p - 1, md), md);
+    return bin_pow(mult(x, x, md), p / 2, md);
+}
+
+ll Cipolla(ll X, ll q) {
+    ll pw = (q - 1) / 2;
+    int K = 60;
+    while((1LL << K) > pw) K--;
+    while(true) {
+        ll t = get_rand(q);
+        ll a = 0, b = 0, c = 1;
+        for (int k = K; k >= 0; k--) {
+            a = b * b % q;
+            b = 2 * b * c % q;
+            c = (c * c + a * X) % q;
+            if (((pw >> k) & 1) == 0) continue;
+            a = b;
+            b = (b * t + c) % q;
+            c = (c * t + a * X) % q;
+        }
+        if (b == 0) continue;
+        c = (c + q - 1) % q;
+        ll k, l;
+        euclid(b, q, k, l);
+        c = -c * k % q;
+        if (c < 0) c += q;
+        if (c * c % q == X) return c;
+    }
+    assert(false);
+}
+
+ll sqrtMod(ll X, ll q) {
+    X %= q;
+    if (q == 2 || X == 0) return min(X, q-X);
+    if (bin_pow(X, (q - 1) / 2, q) != 1) return -1;
+    if (q % 4 == 3) {
+        int res = bin_pow(X, (q + 1) / 4, q);
+        return min(res, q - res);
+    }
+    auto res = (Cipolla(X, q) % q + q) % q;
+    return min(res, q-res);
+}
