@@ -6,6 +6,7 @@
 // - SGU 210
 // - SGU 206
 // - https://codeforces.com/contest/1437/problem/C
+// - https://judge.yosupo.jp/problem/assignment
 
 #define arg __arg
 long long c[MN][MN];
