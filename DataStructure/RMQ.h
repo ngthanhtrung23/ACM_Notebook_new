@@ -1,26 +1,28 @@
-// Source: https://github.com/ADJA/algos/tree/master/DataStructures/SparseTable.cpp
-// index from 1
-int table[MAXLOG][MAXN];
-int numlog[MAXN];
-
-void buildTable() {
-    numlog[1] = 0;
-    for (int i = 2; i <= N; i++)
-        numlog[i] = numlog[i / 2] + 1;
-
-    for (int i = 0; i <= numlog[N]; i++) {
-        int curlen = 1 << i;
-        for (int j = 1; j <= N; j++) {
-            if (i == 0) {
-                table[i][j] = a[j];
-                continue;
+// Sparse table
+// Usage:
+// SparseTable<int, _min> st(v);
+//
+// Tested:
+// - https://judge.yosupo.jp/problem/staticrmq
+template<class T, T (*op) (T, T)> struct SparseTable {
+    SparseTable(const vector<T>& v) : t{v} {
+        for (int k = 1, n = (int) v.size(); (1<<k) <= n; ++k) {
+            t.emplace_back(n - (1<<k) + 1);
+            for (int i = 0; i + (1<<k) <= n; ++i) {
+                t[k][i] = op(t[k-1][i], t[k-1][i + (1<<(k-1))]);
             }
-            table[i][j] = max(table[i - 1][j], table[i - 1][j + curlen / 2]);
         }
     }
-}
 
-int getMax(int l, int r) {
-    int curlog = numlog[r - l + 1];
-    return max(table[curlog][l], table[curlog][r - (1 << curlog) + 1]); 
-}
+    // get range [l, r-1]
+    T get(int l, int r) const {
+        assert(l < r);
+        int k = __lg(r - l);
+        return op(t[k][l], t[k][r - (1<<k)]);
+    }
+
+private:
+    vector<vector<T>> t;
+};
+template<class T> T _min(T a, T b) { return b < a ? b : a; }
+template<class T> T _max(T a, T b) { return a < b ? b : a; }
