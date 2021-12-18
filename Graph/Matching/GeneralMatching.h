@@ -1,7 +1,5 @@
 // Max matching on general graph
-// Copied from https://judge.yosupo.jp/submission/51961
-//
-// It's short and seems to run fast..
+// Copied from https://judge.yosupo.jp/submission/61234
 //
 // Notes:
 // - Index from 0
@@ -9,61 +7,92 @@
 // Tested:
 // - https://judge.yosupo.jp/problem/general_matching
 // - https://oj.vnoi.info/problem/qbflower
+// - https://uoj.ac/problem/79
+// - https://acm.timus.ru/problem.aspx?space=1&num=1099
 
 struct GeneralMatching {
-    GeneralMatching(int _n) : n(_n), g(_n) {}
+    GeneralMatching(int _n) : n(_n), match(_n, -1), g(_n),
+            timer(-1), label(_n), parent(_n), orig(_n), aux(_n, -1) {}
 
-    void add_edge(int a, int b) {
-        assert(0 <= a && a < n);
-        assert(0 <= b && b < n);
-        assert(a != b);
-        g[a].push_back(b);
-        g[b].push_back(a);
+    void add_edge(int u, int v) {
+        g[u].push_back(v);
+        g[v].push_back(u);
     }
 
     int get_match() {
-        match.assign(n, -1);
-        hits.assign(n, 0);
-        for (int i = 0; i < n; i++) if (!g[i].empty()) {
-            unmatched.emplace(0, i);
+        for (int i = 0; i < n; i++) {
+            if (match[i] == -1) bfs(i);
         }
-
-        /////// If WA, increase this
-        // there are some cases that need >=1.3*n^2 steps for BLOCK=1
-        // no idea what the actual bound needed here is.
-        const int MAX_STEPS = 10 + 2*n + n*n/BLOCK/2;
-        for (int it = 0; it < MAX_STEPS; ++it) {
-            if (unmatched.empty()) break;
-            int u = unmatched.top().second;
-            unmatched.pop();
-            if (match[u] != -1) continue;
-
-            for (int it2 = 0; it2 < BLOCK; it2++) {
-                ++hits[u];
-                auto &e = g[u];
-                const int v = e[get_rand(e.size())];
-                match[u] = v;
-                swap(u, match[v]);
-                if (u == -1) break;
-            }
-            if (u != -1) {
-                match[u] = -1;
-                unmatched.emplace(hits[u] * 100ull / (g[u].size() + 1), u);
-            }
+        int res = 0;
+        for (int i = 0; i < n; i++) {
+            if (match[i] >= 0) ++res;
         }
-        int size = 0;
-        for (auto& e : match) size += (e != -1);
-        return size / 2;
+        return res / 2;
     }
 
+    int n;
     vector<int> match;
 
 private:
-    template<typename T> using min_heap = priority_queue<T, vector<T>, greater<T>>;
-    const int BLOCK = 10;
+    int lca(int x, int y) {
+        for (timer++; ; swap(x, y)) {
+            if (x == -1) continue;
+            if (aux[x] == timer) return x;
+            aux[x] = timer;
+            x = (match[x] == -1 ? -1 : orig[parent[match[x]]]);
+        }
+    }
 
-    int n;
-    vector<vector<int> > g;
-    vector<int> hits;
-    min_heap<pair<uint64_t, int> > unmatched;
+    void blossom(int v, int w, int a) {
+        while (orig[v] != a) {
+            parent[v] = w;
+            w = match[v];
+            if (label[w] == 1) {
+                label[w] = 0;
+                q.push_back(w);
+            }
+            orig[v] = orig[w] = a;
+            v = parent[w];
+        }
+    }
+
+    void augment(int v) {
+        while (v != -1) {
+            int pv = parent[v], nv = match[pv];
+            match[v] = pv; match[pv] = v; v = nv;
+        }
+    }
+
+    int bfs(int root) {
+        fill(label.begin(), label.end(), -1);
+        iota(orig.begin(), orig.end(), 0);
+        q.clear();
+        label[root] = 0;
+        q.push_back(root);
+        for (int i = 0; i < (int) q.size(); ++i) {
+            int v = q[i];
+            for (auto x : g[v]) {
+                if (label[x] == -1) {
+                    label[x] = 1;
+                    parent[x] = v;
+                    if (match[x] == -1) {
+                        augment(x);
+                        return 1;
+                    }
+                    label[match[x]] = 0;
+                    q.push_back(match[x]);
+                } else if (label[x] == 0 && orig[v] != orig[x]) {
+                    int a = lca(orig[v], orig[x]);
+                    blossom(x, v, a);
+                    blossom(v, x, a);
+                }
+            }
+        }
+        return 0;
+    }
+
+private:
+    vector<vector<int>> g;
+    int timer;
+    vector<int> label, parent, orig, aux, q;
 };
