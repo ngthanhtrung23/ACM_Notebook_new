@@ -1,113 +1,69 @@
-// General matching on graph
+// Max matching on general graph
+// Copied from https://judge.yosupo.jp/submission/51961
+//
+// It's short and seems to run fast..
+//
 // Notes:
-// - Index from 1
-// - Must add edges in both directions.
+// - Index from 0
+//
+// Tested:
+// - https://judge.yosupo.jp/problem/general_matching
+// - https://oj.vnoi.info/problem/qbflower
 
-const int maxv = 1000;
-const int maxe = 50000;
+struct GeneralMatching {
+    GeneralMatching(int _n) : n(_n), g(_n) {}
 
-struct EdmondsLawler {
-    int n, E, start, finish, newRoot, qsize, adj[maxe], next[maxe], last[maxv], mat[maxv], que[maxv], dad[maxv], root[maxv];
-    bool inque[maxv], inpath[maxv], inblossom[maxv];
-
-    void init(int _n) {
-        n = _n; E = 0;
-        for(int x=1; x<=n; ++x) { last[x] = -1; mat[x] = 0; }
+    void add_edge(int a, int b) {
+        assert(0 <= a && a < n);
+        assert(0 <= b && b < n);
+        assert(a != b);
+        g[a].push_back(b);
+        g[b].push_back(a);
     }
-    void add(int u, int v) {
-        adj[E] = v; next[E] = last[u]; last[u] = E++;
-    }
-    int lca(int u, int v) {
-        for(int x=1; x<=n; ++x) inpath[x] = false;
-        while (true) {
-            u = root[u];
-            inpath[u] = true;
-            if (u == start) break;
-            u = dad[mat[u]];
+
+    int get_match() {
+        match.assign(n, -1);
+        hits.assign(n, 0);
+        for (int i = 0; i < n; i++) if (!g[i].empty()) {
+            unmatched.emplace(0, i);
         }
-        while (true) {
-            v = root[v];
-            if (inpath[v]) break;
-            v = dad[mat[v]];
-        }
-        return v;
-    }
-    void trace(int u) {
-        while (root[u] != newRoot) {
-            int v = mat[u];
 
-            inblossom[root[u]] = true;
-            inblossom[root[v]] = true;
+        /////// If WA, increase this
+        // there are some cases that need >=1.3*n^2 steps for BLOCK=1
+        // no idea what the actual bound needed here is.
+        const int MAX_STEPS = 10 + 2*n + n*n/BLOCK/2;
+        for (int it = 0; it < MAX_STEPS; ++it) {
+            if (unmatched.empty()) break;
+            int u = unmatched.top().second;
+            unmatched.pop();
+            if (match[u] != -1) continue;
 
-            u = dad[v];
-            if (root[u] != newRoot) dad[u] = v;
-        }
-    }
-    void blossom(int u, int v) {
-        for(int x=1; x<=n; ++x) inblossom[x] = false;
-
-        newRoot = lca(u, v);
-        trace(u); trace(v);
-
-        if (root[u] != newRoot) dad[u] = v;
-        if (root[v] != newRoot) dad[v] = u;
-
-        for(int x=1; x<=n; ++x) if (inblossom[root[x]]) {
-            root[x] = newRoot;
-            if (!inque[x]) {
-                inque[x] = true;
-                que[qsize++] = x;
+            for (int it2 = 0; it2 < BLOCK; it2++) {
+                ++hits[u];
+                auto &e = g[u];
+                const int v = e[get_rand(e.size())];
+                match[u] = v;
+                swap(u, match[v]);
+                if (u == -1) break;
+            }
+            if (u != -1) {
+                match[u] = -1;
+                unmatched.emplace(hits[u] * 100ull / (g[u].size() + 1), u);
             }
         }
+        int size = 0;
+        for (auto& e : match) size += (e != -1);
+        return size / 2;
     }
-    bool bfs() {
-        for(int x=1; x<=n; ++x){
-            inque[x] = false;
-            dad[x] = 0;
-            root[x] = x;
-        }
-        qsize = 0;
-        que[qsize++] = start;
-        inque[start] = true;
-        finish = 0;
 
-        for(int i=0; i<qsize; ++i) {
-            int u = que[i];
-            for (int e = last[u]; e != -1; e = next[e]) {
-                int v = adj[e];
-                if (root[v] != root[u] && v != mat[u]) {
-                    if (v == start || (mat[v] > 0 && dad[mat[v]] > 0)) blossom(u, v);
-                    else if (dad[v] == 0) {
-                        dad[v] = u;
-                        if (mat[v] > 0) que[qsize++] = mat[v];
-                        else {
-                            finish = v;
-                            return true;
-                        }
-                    }
-                }
-            }
-        }
-        return false;
-    }
-    void enlarge() {
-        int u = finish;
-        while (u > 0) {
-            int v = dad[u], x = mat[v];
-            mat[v] = u;
-            mat[u] = v;
-            u = x;
-        }
-    }
-    int maxmat() {
-        for(int x=1; x<=n; ++x) if (mat[x] == 0) {
-            start = x;
-            if (bfs()) enlarge();
-        }
+    vector<int> match;
 
-        int ret = 0;
-        for(int x=1; x<=n; ++x) if (mat[x] > x) ++ret;
-        return ret;
-    }
-} edmonds;
+private:
+    template<typename T> using min_heap = priority_queue<T, vector<T>, greater<T>>;
+    const int BLOCK = 10;
 
+    int n;
+    vector<vector<int> > g;
+    vector<int> hits;
+    min_heap<pair<uint64_t, int> > unmatched;
+};
