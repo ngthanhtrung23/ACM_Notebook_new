@@ -1,12 +1,9 @@
 // Tested:
-// - int -> https://oj.vnoi.info/problem/icpc21_mt_k (matrix mul & power)
-// - int -> https://oj.vnoi.info/problem/vmrook (gauss)
-// - https://judge.yosupo.jp/problem/matrix_product
+// - double -> https://oj.vnoi.info/problem/dtl_lsr
 
 template<typename T>
 struct Matrix {
     vector< vector<T> > x;
-    T ZERO{0};
 
     Matrix() {
         x.clear();
@@ -60,10 +57,10 @@ struct Matrix {
         for (int col = 0, row = 0; col < m && row < n; ++col) {
             int sel = row;
             for (int i = row; i < n; ++i) {
-                if (x[i][col] > x[sel][col])
+                if (abs(x[i][col]) > abs(x[sel][col]))
                     sel = i;
             }
-            if (x[sel][col] == ZERO)
+            if (abs(x[sel][col]) < 1e-9)
                 continue;
 
             for (int i = col; i < m; ++i)
@@ -80,7 +77,7 @@ struct Matrix {
             // normalize this row to [0 ... 0 1 ....]
             // needed for matrix inverse
             T coef = x[row][col];
-            if (coef > ZERO) {
+            if (coef > 1e-9) {
                 for (int j = 0; j < m; ++j)
                     x[row][j] /= coef;
             }

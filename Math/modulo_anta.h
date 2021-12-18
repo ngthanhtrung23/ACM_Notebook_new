@@ -1,8 +1,11 @@
 // Modified from anta's code
 // Not tested with MOD > 10^9 + 7.
+// Slow?
+//
 // Tested:
 // - https://codeforces.com/gym/101383 - F (MOD = 1e9+7, +, *)
 
+// ??? somehow this is 2.5x slower on https://judge.yosupo.jp/problem/matrix_product
 inline void fasterLLDivMod(unsigned long long x, unsigned y, unsigned &out_d, unsigned &out_m) {
     unsigned xh = (unsigned)(x >> 32), xl = (unsigned)x, d, m;
 #ifdef __GNUC__
