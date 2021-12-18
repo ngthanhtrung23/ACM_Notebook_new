@@ -3,7 +3,9 @@
 // Tested:
 // - HLD on vertices: https://oj.vnoi.info/problem/icpc21_mt_l
 // - HLD on vertices: https://oj.vnoi.info/problem/qtree3
+// - HLD on vertices (order u -> v or v -> u matters): https://judge.yosupo.jp/problem/vertex_set_path_composite
 // - HLD on edges: https://oj.vnoi.info/problem/qtreex
+// - Subtree: https://judge.yosupo.jp/problem/vertex_add_subtree_sum
 //
 // Usage:
 // 
