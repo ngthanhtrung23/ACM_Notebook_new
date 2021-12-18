@@ -10,6 +10,8 @@
 // - https://oj.vnoi.info/problem/qmax
 // - https://oj.vnoi.info/problem/gss
 // - https://oj.vnoi.info/problem/nklineup
+// - https://judge.yosupo.jp/problem/point_add_range_sum
+// - https://judge.yosupo.jp/problem/point_set_range_composite
 int ceil_pow2(int n) {
     int x = 0;
     while ((1U << x) < (unsigned int)(n)) x++;

@@ -10,6 +10,7 @@
 // - https://oj.vnoi.info/problem/qmax2
 // - https://oj.vnoi.info/problem/lites
 // - https://atcoder.jp/contests/practice2/tasks/practice2_l
+// - https://judge.yosupo.jp/problem/range_affine_range_sum
 
 int ceil_pow2(int n) {
     int x = 0;
