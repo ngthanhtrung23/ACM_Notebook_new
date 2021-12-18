@@ -1,3 +1,5 @@
+// Tested:
+// - https://judge.yosupo.jp/problem/enumerate_primes
 typedef unsigned int uint;
 
 // NOTE: gP(n) is incorrect for even values of n
@@ -18,9 +20,6 @@ void sieve() {
     for (i = 3; i < sqrtN; i += 2) if (gP(i)) {
         uint i2 = i + i;
         for (uint j = i * i; j < N; j += i2) rP(j);
-    }
-    for (i = 4; i < N; i += 2) {
-        rP(i);
     }
     nprime = 0;
     prime[nprime++] = 2;
