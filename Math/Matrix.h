@@ -4,10 +4,11 @@
 // Tested:
 // - (mat mul): https://judge.yosupo.jp/problem/matrix_product
 // - (mat pow): https://oj.vnoi.info/problem/icpc21_mt_k
+// - (mat pow): https://oj.vnoi.info/problem/icpc21_mb_h
 // - (gauss): https://oj.vnoi.info/problem/vmrook
 // - (inverse): https://oj.vnoi.info/problem/dtl_lsr
-// - (det): https://judge.yosupo.jp/problem/matrix_det
 // - (inverse): https://judge.yosupo.jp/problem/inverse_matrix
+// - (det): https://judge.yosupo.jp/problem/matrix_det
 
 template<typename T>
 struct Matrix {

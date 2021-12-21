@@ -8,6 +8,12 @@
 // Tested:
 // - https://open.kattis.com/problems/equationsolver
 // - https://open.kattis.com/problems/equationsolverplus
+// - https://oj.vnoi.info/problem/icpc21_mb_c
+
+// From https://cp-algorithms.com/linear_algebra/linear-system-gauss.html
+// Solve:
+//   sum(aij * xj) = bi
+// last column of a is vector b
 int gauss (vector < vector<double> > a, vector<double> & ans) {
     int n = (int) a.size();
     int m = (int) a[0].size() - 1;

@@ -5,10 +5,13 @@
 // Notes:
 // - Index of elements from 0
 // - Range queries are [l, r-1]
+// - composition(f, g) should return f(g())
 //
 // Tested:
 // - https://oj.vnoi.info/problem/qmax2
 // - https://oj.vnoi.info/problem/lites
+// - (range set, add, mult, sum) https://oj.vnoi.info/problem/segtree_itmix
+// - (range add (i-L)*A + B, sum) https://oj.vnoi.info/problem/segtree_itladder
 // - https://atcoder.jp/contests/practice2/tasks/practice2_l
 // - https://judge.yosupo.jp/problem/range_affine_range_sum
 

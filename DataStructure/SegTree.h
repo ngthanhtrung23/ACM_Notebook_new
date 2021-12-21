@@ -6,10 +6,10 @@
 // - Range queries are [l, r-1]
 //
 // Tested:
-// - https://atcoder.jp/contests/practice2/tasks/practice2_j (with binary search)
-// - https://oj.vnoi.info/problem/qmax
+// - (binary search) https://atcoder.jp/contests/practice2/tasks/practice2_j
 // - https://oj.vnoi.info/problem/gss
 // - https://oj.vnoi.info/problem/nklineup
+// - (max_right & min_left for delete position queries) https://oj.vnoi.info/problem/segtree_itstr
 // - https://judge.yosupo.jp/problem/point_add_range_sum
 // - https://judge.yosupo.jp/problem/point_set_range_composite
 int ceil_pow2(int n) {
