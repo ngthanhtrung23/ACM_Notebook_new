@@ -14,6 +14,7 @@
 //
 // Tested:
 // - CSES Tree Distance I: https://cses.fi/problemset/task/1132/
+// - https://oj.vnoi.info/problem/icpc21_mn_h
 
 const int MN = 200111;
 int g[MN];  // longest path from u, outside subtree(u)
