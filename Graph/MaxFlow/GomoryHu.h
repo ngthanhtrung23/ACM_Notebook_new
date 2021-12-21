@@ -1,5 +1,16 @@
-// Source: RR
-// Tested with VOJ - MCQUERY
+// Usage:
+//   GomoryHu g(n);
+//   g.addEdge(u, v, c)  // 1-direction
+//   g.calc()
+//   --> g.answer[i][j] = min cut i-j
+//
+// Note:
+// - When i -> j is not connected, answer[i][j] = INF
+// - Used together with MaxFlowDinic.h
+//
+// Tested:
+// - https://oj.vnoi.info/problem/mcquery
+// - https://oj.vnoi.info/problem/icpc21_mn_a
 
 /*
  * Find min cut between every pair of vertices using N max_flow call (instead of N^2)
@@ -24,11 +35,6 @@ struct GomoryHu {
     }
 
     void calc() {
-        for(int i = 0; i < n; ++i) parent[i]=0;
-        for(int i = 0; i < n; ++i)
-            for(int j = 0; j < n; ++j)
-                answer[i][j]=2000111000;
-
         for(int i = 1; i <= n-1; ++i) {
             flow = MaxFlow(n);
             REP(u,n) REP(v,n)
@@ -55,7 +61,7 @@ struct GomoryHu {
             int u=qu.front(); qu.pop();
             for(int xid = 0; xid < (int) flow.g[u].size(); ++xid) {
                 int id = flow.g[u][xid];
-                int v = flow.e[id].b, fl = flow.e[id].flow, cap = flow.e[id].cap;
+                int v = flow.e[id].b, fl = flow.e[id].flow, c = flow.e[id].cap;
                 if (!ok[v] && fl < cap) {
                     ok[v]=1;
                     qu.push(v);
