@@ -1,54 +1,64 @@
-// TODO: seems incorrect
-// Tested: http://codeforces.com/contest/678/standings/friends/true
-// Add lines a*x + b, must be in increasing order of a
+// Add lines a*x + b, must be in:
+// - increasing order of a
+// - decreasing order of b
 // Get y = max(a*x + b)
+//
+// Tested:
+// - http://codeforces.com/contest/678/standings/friends/true
+// - https://oj.vnoi.info/problem/segtree_itds2
+
+const long long INF = 1e18 + 11;
+struct Line {
+    long long a, b;
+    long long f(long long x) {
+        return a*x + b;
+    }
+};
+bool operator < (const Line& f, const Line& g) {
+    if (f.a != g.a) return f.a < g.a;
+    return f.b > g.b;
+}
+
 struct Hull {
     vector<double> x;
-    vector<int> a;
-    vector<int> b;
-
-    Hull() {}
-
-    void remove() {
-        a.pop_back();
-        b.pop_back();
-        x.pop_back();
-    }
+    vector<Line> segs;
 
     void insert(Line l) {
-        if (a.empty()) {
+        if (segs.empty()) {
             x.push_back(-INF);
-            a.push_back(l.a);
-            b.push_back(l.b);
+            segs.push_back(l);
+            return;
         }
-        else {
-            double xNew = -INF;
-            while (!a.empty()) {
-                if (a.back() == l.a) {
-                    // TODO: Should update x.back() here?
-                    b.back() = max(b.back(), l.b);
-                    return;
-                }
-                assert(l.a > a.back());
-
-                xNew = 1.0 * (b.back() - l.b) / (l.a - a.back());
-                if (xNew < x.back()) {
-                    remove();
-                }
-                else break;
+        double xNew = -INF;
+        while (!segs.empty()) {
+            if (segs.back().a == l.a) {
+                assert(segs.back().b >= l.b);
+                return;
             }
-
-            a.push_back(l.a);
-            b.push_back(l.b);
-            x.push_back(xNew);
+            xNew = intersection(segs.back(), l);
+            if (xNew < x.back()) {
+                remove();
+            } else break;
         }
+
+        segs.push_back(l);
+        x.push_back(xNew);
     }
 
-    int get(int x0) {
-        if (a.empty()) {
+    long long get(long long x0) {
+        if (segs.empty()) {
             return -INF;
         }
-        int i = upper_bound(x.begin(), x.end(), x0) - x.begin() - 1;
-        return a[i] * x0 + b[i];
+        auto i = upper_bound(x.begin(), x.end(), x0) - x.begin() - 1;
+        return segs[i].f(x0);
+    }
+
+private:
+    void remove() {
+        segs.pop_back();
+        x.pop_back();
+    }
+    double intersection(const Line& f, const Line& g) {
+        return 1.0 * (f.b - g.b) / (g.a - f.a);
     }
 };
