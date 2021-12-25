@@ -1,3 +1,4 @@
+// TODO: seems incorrect
 // Tested: http://codeforces.com/contest/678/standings/friends/true
 // Add lines a*x + b, must be in increasing order of a
 // Get y = max(a*x + b)
@@ -6,11 +7,7 @@ struct Hull {
     vector<int> a;
     vector<int> b;
 
-    void init() {
-        x.clear();
-        a.clear();
-        b.clear();
-    }
+    Hull() {}
 
     void remove() {
         a.pop_back();
@@ -28,6 +25,7 @@ struct Hull {
             double xNew = -INF;
             while (!a.empty()) {
                 if (a.back() == l.a) {
+                    // TODO: Should update x.back() here?
                     b.back() = max(b.back(), l.b);
                     return;
                 }
