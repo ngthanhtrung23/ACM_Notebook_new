@@ -201,6 +201,12 @@ struct SplayTreeById {
                 std::tie(c->key, c->data) = mapping(x->lazy, c);
                 c->lazy = composition(x->lazy, c->lazy);
             }
+            // For problem like UPIT, where we want to push different
+            // lazy tags to left & right children, may need to modify
+            // code here
+            // (query L R X: a(L) += X, a(L+1) += 2X, ...)
+            // e.g. for UPIT:
+            // x->lazy.add_left += (1 + c->size) * x->lazy.step;
         }
 
         x->lazy = id();
