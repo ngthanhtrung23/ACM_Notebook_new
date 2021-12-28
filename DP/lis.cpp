@@ -1,43 +1,51 @@
 // Source: http://codeforces.com/blog/entry/13225
 // Non-strict.
-multiset<int> s;
-vector<int> a;
 
-for (int i = 1; i <= n; i++) {
-    s.insert(a[i]);
-    auto it = s.upper_bound(a[i]);
+int lis_non_strict(const vector<int>& a) {
+    multiset<int> s;
+    for (int x : a) {
+        s.insert(x);
+        auto it = s.upper_bound(x);
 
-    if (it != s.end())
-        s.erase(it);
+        if (it != s.end())
+            s.erase(it);
+    }
+    return s.size();
 }
-cout << s.size() << endl;
 
 // Strict.
-multiset<int> s;
-for (int i = 1; i <= n; i++) {
-    s.insert(a[i]);
-    it = s.lower_bound(a[i]);
-    it++;
-    
-    if (it != s.end())
-        s.erase(it);
+int lis_strict(const vector<int>& a) {
+    multiset<int> s;
+    for (int x : a) {
+        s.insert(x);
+        auto it = s.lower_bound(x);
+        it++;
+        
+        if (it != s.end())
+            s.erase(it);
+    }
+    return s.size();
 }
 
 // Trace
-vector<int> b(n+1, 0);
-int answer = 0;
-for (int i = 1; i <= n; i++) {
-    f[i] = lower_bound(b+1, b+answer+1, a[i]) - b;
-    answer = max(answer, f[i]);
-    b[f[i]] = a[i];
-}
-
-int require = answer;
-vector<int> T;
-for (int i = n; i >= 1; i--) {
-    if (f[i] == require) {
-        T.push_back(a[i]);
-        require--;
+vector<int> lis_trace(const vector<int>& a) {
+    int n = (int) a.size();
+    vector<int> b(n+1, 0);
+    int answer = 0;
+    for (int i = 0; i < n; i++) {
+        f[i] = lower_bound(b+1, b+answer+1, a[i]) - b;
+        answer = max(answer, f[i]);
+        b[f[i]] = a[i];
     }
+
+    int require = answer;
+    vector<int> T;
+    for (int i = n-1; i >= 0; i--) {
+        if (f[i] == require) {
+            T.push_back(a[i]);
+            require--;
+        }
+    }
+    reverse(T.begin(), T.end());
+    return T;
 }
-reverse(T.begin(), T.end());
