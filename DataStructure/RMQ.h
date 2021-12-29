@@ -2,6 +2,9 @@
 // Usage:
 // SparseTable<int, _min> st(v);
 //
+// Note:
+// - doesn't work for empty range
+//
 // Tested:
 // - https://judge.yosupo.jp/problem/staticrmq
 template<class T, T (*op) (T, T)> struct SparseTable {
@@ -15,6 +18,7 @@ template<class T, T (*op) (T, T)> struct SparseTable {
     }
 
     // get range [l, r-1]
+    // doesn't work for empty range
     T get(int l, int r) const {
         assert(l < r);
         int k = __lg(r - l);
