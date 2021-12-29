@@ -1,31 +1,34 @@
-const char DUMMY = '.';
+// Return <even_len, odd_len>
+// - even_len[i] = length of longest palindrome centered at [i, i+1]
+// - odd_len[i] = length of longest palindrome centered at i
+//
+// Tested:
+// - https://judge.yosupo.jp/problem/enumerate_palindromes
+std::array<vector<int>, 2> manacher(const string& s) {
+    int n = s.size();
+    std::array res = {vector<int> (n+1, 0), vector<int> (n, 0)};
 
-int manacher(string s) {
-    // Add dummy character to not consider odd/even length
-    // NOTE: Ensure DUMMY does not appear in input
-    // NOTE: Remember to ignore DUMMY when tracing
+    for (int z = 0; z < 2; z++) {
+        for (int i = 0, l = 0, r = 0; i < n; i++) {
+            int t = r - i + !z;
+            if (i < r) res[z][i] = min(t, res[z][l + t]);
 
-    int n = s.size() * 2 - 1;
-    vector <int> f = vector <int>(n, 0);
-    string a = string(n, DUMMY);
-    for (int i = 0; i < n; i += 2) a[i] = s[i / 2];
-
-    int l = 0, r = -1, center, res = 0;
-    for (int i = 0, j = 0; i < n; i++) {
-        j = (i > r ? 0 : min(f[l + r - i], r - i)) + 1;
-        while (i - j >= 0 && i + j < n && a[i - j] == a[i + j]) j++;
-        f[i] = --j;
-        if (i + j > r) {
-            r = i + j;
-            l = i - j;
+            int l2 = i - res[z][i], r2 = i + res[z][i] - !z;
+            while (l2 && r2 + 1 < n && s[l2 - 1] == s[r2 + 1]) {
+                ++res[z][i];
+                --l2;
+                ++r2;
+            }
+            if (r2 > r) {
+                l = l2;
+                r = r2;
+            }
         }
-
-        int len = (f[i] + i % 2) / 2 * 2 + 1 - i % 2;
-        if (len > res) {
-            res = len;
-            center = i;
+        for (int i = 0; i < n; i++) {
+            res[z][i] = 2*res[z][i] + z;
         }
     }
-    // a[center - f[center]..center + f[center]] is the needed substring
+    res[0].erase(res[0].begin(), res[0].begin() + 1);
+    res[0].pop_back();
     return res;
 }
