@@ -4,6 +4,7 @@
 //
 // Tested:
 // - https://judge.yosupo.jp/problem/enumerate_palindromes
+// - https://oj.vnoi.info/problem/paliny
 std::array<vector<int>, 2> manacher(const string& s) {
     int n = s.size();
     std::array res = {vector<int> (n+1, 0), vector<int> (n, 0)};
