@@ -1,10 +1,14 @@
-// z[i] = độ dài xâu con dài nhất bắt đầu từ vị trí i mà trùng với đoạn đầu của v[]
+// z[i] = length of longest common prefix of s[0..N] and s[i..N]
+//
+// Tested:
+// - https://judge.yosupo.jp/problem/zalgorithm
 vector<int> zfunc(string s) {
     int n = (int) s.length();
     vector<int> z(n);
+    z[0] = n;
     for (int i = 1, l = 0, r = 0; i < n; ++i) {
         if (i <= r)
-            z[i] = min (r - i + 1, z[i - l]);
+            z[i] = min(r - i + 1, z[i - l]);
         while (i + z[i] < n && s[z[i]] == s[i + z[i]])
             ++z[i];
         if (i + z[i] - 1 > r)
