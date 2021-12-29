@@ -313,6 +313,7 @@ struct SplayTreeById {
     }
 };
 
+////////// Below: example usage
 // Splay tree only need to store keys (no aggregated value / no lazy update)
 struct KeyOnlyOps {
     struct S{};
@@ -350,8 +351,8 @@ struct KeyOnlyOps {
  */
 
 
-// S = max of keys
-// No lazy updates
+// For query get max of keys in range
+// No lazy update tags
 struct MaxQueryOps {
     static const int INF = 1e9 + 11;
     struct F{};
@@ -384,4 +385,57 @@ struct MaxQueryOps {
         MaxQueryOps::composition,
         MaxQueryOps::id
     > tree;
+ */
+
+// For queries a[i] <- a[i]*mult + add
+struct RangeAffineOps {
+    struct S {
+        long long sum, sz;
+    };
+    struct F {
+        long long a, b;
+    };
+    using Node = node_t<int, S, F>;
+
+    static const int MOD = 998244353;
+    static S op(const S& left, int key, const S& right) {
+        return S {
+            (left.sum + key + right.sum) % MOD,
+            left.sz + 1 + right.sz,
+        };
+    }
+    static pair<int, S> e() {
+        return {0, {0, 0}};
+    }
+    static pair<int, S> mapping(const F& f, Node* node) {
+        return {
+            (f.a * node->key + f.b) % MOD,
+            S {
+                (f.a * node->data.sum + f.b * node->data.sz) % MOD,
+                node->data.sz,
+            }
+        };
+    }
+    static F composition(const F&f, const F& g) {
+        return F {
+            f.a * g.a % MOD,
+            (f.a * g.b + f.b) % MOD,
+        };
+    }
+    static F id() {
+        return F {1, 0};
+    }
+};
+
+/* Example
+    SplayTreeById<
+        int,
+        RangeAffineOps::S,
+        RangeAffineOps::op,
+        RangeAffineOps::e,
+        RangeAffineOps::F,
+        RangeAffineOps::mapping,
+        RangeAffineOps::composition,
+        RangeAffineOps::id
+    > tree(keys);
  */
