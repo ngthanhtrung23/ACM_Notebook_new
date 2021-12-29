@@ -2,6 +2,7 @@
 //
 // Tested:
 // - https://judge.yosupo.jp/problem/zalgorithm
+// - (string matching) https://oj.vnoi.info/problem/substr
 vector<int> zfunc(string s) {
     int n = (int) s.length();
     vector<int> z(n);
@@ -16,3 +17,18 @@ vector<int> zfunc(string s) {
     }
     return z;
 }
+
+// Examples:
+// Find all occurrences of p in t
+
+/**
+    string s = p + "_" + t;
+    auto z = zfunc(s);
+
+    REP(i,SZ(t)) {
+        if (z[i + SZ(p) + 1] == SZ(p)) {
+            cout << 1+i << ' ';
+        }
+    }
+    cout << endl;
+*/
