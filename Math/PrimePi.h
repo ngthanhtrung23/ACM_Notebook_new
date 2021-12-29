@@ -1,6 +1,4 @@
 // prime_pi(n) = number of primes <= n
-
-// prime_pi(n) = number of primes <= n
 //
 // Copied from https://judge.yosupo.jp/submission/61551
 //

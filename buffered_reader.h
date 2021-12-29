@@ -27,7 +27,6 @@ namespace IO {
             res = res * 10 + (c - '0');
             c = get_char();
         }
-        if (neg) res = -res;
-        return res;
+        return neg ? -res : res;
     }
 };
