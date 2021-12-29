@@ -15,7 +15,7 @@ namespace IO {
     template<typename T>
     T get_int() {
         int neg = 0;
-        int res = 0;
+        T res = 0;
         char c = get_char();
         while (!std::isdigit(c) && c != '-' && c != '+') c = get_char();
         if (c == '+') { neg = 0; }
