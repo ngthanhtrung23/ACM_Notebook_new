@@ -1,5 +1,6 @@
 // Tested:
 // - https://oj.vnoi.info/problem/icpc21_mt_d
+// - (__int128_t) https://judge.yosupo.jp/problem/convolution_mod_1000000007
 template<typename T>
 struct CRT {
     T res;

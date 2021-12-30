@@ -1,6 +1,8 @@
 // Copied from chemthan
 // Tested:
 // - https://oj.vnoi.info/problem/icpc21_mt_d
+// - https://judge.yosupo.jp/problem/convolution_mod
+// - https://judge.yosupo.jp/problem/convolution_mod_1000000007
 //
 // Sample usage: Multiply big-int polynomials using NTT + CRT
 //   NTT<MOD0, 1 << 21> ntt0;
@@ -14,6 +16,8 @@
 //   crt.add(MOD1, r1[idx]);
 //   cout << crt.res << endl;
 
+// mod must be NTT mod
+// maxf = max degree of c. Should be 2^k?
 template<const int mod, const int maxf>
 struct NTT {
     NTT() {
@@ -126,6 +130,7 @@ private:
 
 const int MOD0 = 1004535809; //2^21 * 479 + 1
 const int MOD1 = 1012924417; //2^21 * 483 + 1
+const int MOD2 = 998244353;  //2^20 * 476 + 1
 NTT<MOD0, 1 << 21> ntt0;
 NTT<MOD1, 1 << 21> ntt1;
 
