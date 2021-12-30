@@ -7,6 +7,13 @@
 // SuffixArray sa(s);
 // Now we can use sa.SA and sa.LCP
 // sa.LCP[i] = max common prefix suffix of sa.SA[i-1] and sa.SA[i]
+//
+// Notes:
+// - Number of distinct substrings = |S| * (|S| + 1) / 2 - sum(LCP)
+//
+// Tested:
+// - (build SA) https://judge.yosupo.jp/problem/suffixarray
+// - (LCP) https://judge.yosupo.jp/problem/number_of_substrings
 struct SuffixArray {
     string a;
     int N, m;
