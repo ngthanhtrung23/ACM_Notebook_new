@@ -3,6 +3,11 @@
 // Usage:
 // DirectedDfs tree;
 // Now you can use tree.scc
+//
+// Note: reverse(tree.scc) is topo sorted
+//
+// Tested:
+// - (requires scc to be topo sorted) https://judge.yosupo.jp/problem/scc
 struct DirectedDfs {
     vector<int> num, low, current, S;
     int counter;
