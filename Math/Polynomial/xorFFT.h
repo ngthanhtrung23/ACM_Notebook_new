@@ -45,8 +45,8 @@ void xorFFT(int a[], int n, int MOD, int invert) {
     }
 
     if (invert) {
-        long long invert = power(n, MOD - 2, MOD);
-        REP(i,n) a[i] = a[i] * invert % MOD;
+        long long inv = power(n, MOD - 2, MOD);
+        REP(i,n) a[i] = a[i] * inv % MOD;
     }
 }
 
