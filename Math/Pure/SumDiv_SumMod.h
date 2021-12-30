@@ -1,21 +1,21 @@
-// sumdiv(n) = [n/1] + [n/2] + [n/3] + ... + [n/n]
-long long sumdiv(long long n) {
-    long long s=0;
-    for (long long i=1; i<=n; ) {
-        long long q=n/i, r=n/q;
-        s+=(long long)(r-i+1)*q;
-        i=r+1;
-    }
-    return s;
-}
-// summod(n,k) = n%1 + n%2 + ... + n%k   (k<=n)
-long long summod(int n, int k) {
-    long long s=0;
-    for (int i=1; i<=k;) {
-        int q=n/i, r=min(k,n/q), t=r-i+1;
-        s+=(n%i)*t-(t*(t-1)*q)/2;
-        i=r+1;
-    }
-    return s;
-}
+// Copied from https://judge.yosupo.jp/submission/15864
+// Tested:
+// - https://judge.yosupo.jp/problem/sum_of_floor_of_linear
 
+using ll = long long;
+ll sum(ll n) {
+    return n * (n-1) / 2;
+}
+// sum( (a + d*i) / m ) for i in [0, n-1]
+ll sum_div(ll a, ll d, ll m, ll n) {
+    ll res = d / m * sum(n) + a / m * n;
+    d %= m, a %= m;
+    if (!d) return res;
+    ll to = (n * d + a) / m;
+    return res + (n - 1) * to - sum_div(m - 1 - a, m, d, to);
+}
+// sum( (a + d*i) % m ) for i in [0, n-1]
+ll sum_mod(ll a, ll d, ll m, ll n) {
+  a = ((a % m) + m) % m, d = ((d % m) + m) % m;
+  return n * a + d * sum(n) - m * sum_div(a, d, m, n);
+}
