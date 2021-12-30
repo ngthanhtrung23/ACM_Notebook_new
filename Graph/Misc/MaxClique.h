@@ -1,68 +1,67 @@
-// Source: https://github.com/bobogei81123/bcw_codebook/blob/master/codes/Graph/Maximum_Clique/Maximum_Clique.cpp
-class MaxClique {
-public:
-    static const int MV = 210;
+// MaxClique
+// Copied from https://judge.yosupo.jp/submission/15825
+//
+// 0-based index
+//
+// Tested:
+// - https://judge.yosupo.jp/problem/maximum_independent_set
+struct MaxClique {
+    static const int MN = 64; // change to bitset for n > 64
+    int n, deg[MN];
+    uint64_t g[MN], ans;
+    vector<pair<int,int>> edges;
 
-    int V;
-    int el[MV][MV/30+1];
-    int dp[MV];
-    int ans;
-    int s[MV][MV/30+1];
-    vector<int> sol;
-
-    void init(int v) {
-        V = v; ans = 0;
-        FZ(el); FZ(dp);
+    MaxClique(int _n) : n(_n) {
+        fill(g, g+n, 0ull);
+        fill(deg, deg+n, 0);
+        edges.clear();
     }
 
-    /* Zero Base */
+    // Add bi-directional edge
+    // 0-based index
     void addEdge(int u, int v) {
-        if(u > v) swap(u, v);
-        if(u == v) return;
-        el[u][v/32] |= (1<<(v%32));
+        edges.emplace_back(u, v);
+        ++deg[u]; ++deg[v];
     }
 
-    bool dfs(int v, int k) {
-        int c = 0, d = 0;
-        for(int i=0; i<(V+31)/32; i++) {
-            s[k][i] = el[v][i];
-            if(k != 1) s[k][i] &= s[k-1][i];
-            c += __builtin_popcount(s[k][i]);
+    vector<int> solve() {
+        vector<int> ord(n);
+        iota(ord.begin(), ord.end(), 0);
+        sort(ord.begin(), ord.end(), [&] (int u, int v) { return deg[u] < deg[v]; });
+        vector<int> id(n);
+        for (int i = 0; i < n; i++) id[ord[i]] = i;
+
+        for (const auto& e : edges) {
+            int u = id[e.first], v = id[e.second];
+            g[u] |= 1ull << v;
+            g[v] |= 1ull << u;
         }
-        if(c == 0) {
-            if(k > ans) {
-                ans = k;
-                sol.clear();
-                sol.push_back(v);
-                return 1;
-            }
-            return 0;
+        uint64_t r = 0, p = (1ull << n) - 1;
+        ans = 0;
+        dfs(r, p);
+        vector<int> res;
+        for (int i = 0; i < n; i++) {
+            if ((ans >> i) & 1) res.push_back(ord[i]);
         }
-        for(int i=0; i<(V+31)/32; i++) {
-            for(int a = s[k][i]; a ; d++) {
-                if(k + (c-d) <= ans) return 0;
-                int lb = a&(-a), lg = 0;
-                a ^= lb;
-                while(lb!=1) {
-                    lb = (unsigned int)(lb) >> 1;
-                    lg ++;
-                }
-                int u = i*32 + lg;
-                if(k + dp[u] <= ans) return 0;
-                if(dfs(u, k+1)) { 
-                    sol.push_back(v); 
-                    return 1;
-                }
-            }
-        }
-        return 0;
+        return res;
     }
 
-    int solve() {
-        for(int i=V-1; i>=0; i--) {
-            dfs(i, 1);
-            dp[i] = ans;
+#define cnt __builtin_popcountll
+    void dfs(uint64_t r, uint64_t p) {
+        if (p == 0) {
+            if (cnt(r) > cnt(ans)) ans = r;
+            return;
         }
-        return ans;
+        if (cnt(r | p) <= cnt(ans)) return;
+        int x = __builtin_ctzll(p & -p);
+        uint64_t c = p;
+        while (c > 0) {
+            x = __builtin_ctzll(c & -c);
+            r |= 1ull << x;
+            dfs(r, p & g[x]);
+            r &= ~(1ull << x);
+            p &= ~(1ull << x);
+            c ^= 1ull << x;
+        }
     }
 };
