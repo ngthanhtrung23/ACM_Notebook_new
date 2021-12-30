@@ -5,10 +5,12 @@
 // Tested:
 // - https://oj.vnoi.info/problem/match2
 // - https://judge.yosupo.jp/problem/assignment
+// - https://hochiminh17.kattis.com/problems/engaging
 // 
 // Returns {total weight, matches (from left)}
+const int N = 1011;
 template<typename T>
-pair<T, vector<int>> Hungarian (int n, int m, T c[N][N]) {
+pair<T, vector<int>> Hungarian (int n, int m, T c[][N]) {
     vector<T> v(m), dist(m);
     vector<int> L(n, -1), R(m, -1);
     vector<int> index(m), prev(m);
@@ -19,7 +21,7 @@ pair<T, vector<int>> Hungarian (int n, int m, T c[N][N]) {
         for (int j = 0; j < m; ++j) {
             dist[j] = getc(f, j), prev[j] = f;
         }
-        T w; int i, j, l, s = 0, t = 0;
+        T w = 0; int j, l = 0, s = 0, t = 0;
         while (true) {
             if (s == t) {
                 l = s, w = dist[index[t++]];
@@ -50,8 +52,10 @@ pair<T, vector<int>> Hungarian (int n, int m, T c[N][N]) {
         }
     augment:
         for (int k = 0; k < l; ++k) v[index[k]] += dist[index[k]] - w;
+        int i;
         do {
-            R[j] = i = prev[j], swap(j, L[i]);
+            i = R[j] = prev[j];
+            swap(j, L[i]);
         } while (i != f);
     }
     T ret = 0;
