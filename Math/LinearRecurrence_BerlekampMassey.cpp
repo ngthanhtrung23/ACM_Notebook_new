@@ -21,8 +21,9 @@
 //   but this comment says it doesn't work on some problem: https://codeforces.com/blog/entry/61306?#comment-454682
 //
 // Tested:
-// - https://judge.yosupo.jp/problem/find_linear_recurrence
-// - https://oj.vnoi.info/problem/selfdiv
+// - (BM) https://judge.yosupo.jp/problem/find_linear_recurrence
+// - (BM + find_kth) https://oj.vnoi.info/problem/selfdiv
+// - (find_kth) https://oj.vnoi.info/problem/errichto_matexp_fibonacci
 
 // Returns c1, ..., cd
 template<typename T>
