@@ -1,111 +1,99 @@
-const int maxe = 100111;
-const int maxv = 100;
+// include DSU_rollback.h
 
+// Directed MST
 // Index from 0
-// Running time O(E*V)
-namespace chuliu {
-    struct Cost;
-    vector<Cost> costlist;
+//
+// Tested:
+// - https://judge.yosupo.jp/problem/directedmst
 
-    struct Cost {
-        int id, val, used, a, b, pos;
-        Cost() { val = -1; used = 0; }
-        Cost(int _id, int _val, bool temp) {
-            a = b = -1; id = _id; val = _val; used = 0;
-            pos = costlist.size(); costlist.push_back(*this);
-        }
-        Cost(int _a, int _b) {
-            a = _a; b = _b; id = -1; val = costlist[a].val - costlist[b].val; 
-            used = 0; pos = costlist.size(); costlist.push_back(*this);
-        }
-        void push() {
-            if (id == -1) {
-                costlist[a].used += used;
-                costlist[b].used -= used;
-            }
-        }
-    };
+using ll = long long;
+struct Edge {
+    int u, v;  // directed, u -> v
+    ll cost;
+};
+struct HeapNode {  // lazy skew heap node
+    Edge key;
+    HeapNode *l, *r;
+    ll delta;
 
-    struct Edge {
-        int u, v;
-        Cost cost;
-        Edge() {}
-        Edge(int id, int _u, int _v, int c) {
-            u = _u; v = _v; cost = Cost(id, c, 0);
-        }
-    } edge[maxe];
+    void prop() {
+        key.cost += delta;
+        if (l) l->delta += delta;
+        if (r) r->delta += delta;
+        delta = 0;
+    }
+    Edge top() {
+        prop();
+        return key;
+    }
+};
+HeapNode* merge(HeapNode *a, HeapNode *b) {
+    if (!a) return b;
+    if (!b) return a;
+    a->prop(); b->prop();
+    if (a->key.cost > b->key.cost) swap(a, b);
+    swap(a->l, (a->r = merge(b, a->r)));
+    return a;
+}
+void pop(HeapNode *&a) {
+    a->prop();
+    a = merge(a->l, a->r);
+}
 
-    int n, m, root, pre[maxv], node[maxv], vis[maxv], best[maxv];
-
-    void init(int _n) {
-        n = _n; m = 0;
-        costlist.clear();
+// return {cost, parent[i]}
+// parent[root] = -1
+// Not found -> return {-1, {}}
+pair<ll, vector<int>> directed_mst(int n, int root, vector<Edge>& edges) {
+    DSU dsu(n);
+    int dsu_time = 0;
+    vector<HeapNode*> heap(n);
+    for (const Edge& e : edges) {
+        heap[e.v] = merge(heap[e.v], new HeapNode{e});
     }
 
-    void add(int id, int u, int v, int c) {
-        edge[m++] = Edge(id, u, v, c);
-    }
+    ll res = 0;
+    vector<int> seen(n, -1), path(n);
+    seen[root] = root;
+    vector<Edge> Q(n), in(n, {-1, -1});
+    deque<tuple<int, int, vector<Edge>>> cycs;
+    for (int s = 0; s < n; ++s) {
+        int u = s, qi = 0, w;
+        while (seen[u] < 0) {
+            if (!heap[u]) return {-1, {}};
+            Edge e = heap[u]->top();
+            heap[u]->delta -= e.cost;
+            pop(heap[u]);
+            Q[qi] = e;
+            path[qi++] = u;
+            seen[u] = s;
+            res += e.cost;
+            u = dsu.getRoot(e.u);
 
-    int mst(int root) {
-        int ret = 0;
+            if (seen[u] == s) {
+                HeapNode* cyc = 0;
+                int end = qi;
+                int time = dsu_time;
+                do {
+                    cyc = merge(cyc, heap[w = path[--qi]]);
+                } while (dsu.join(u, w, ++dsu_time));
 
-        while (true) {
-            REP(i, n) best[i] = -1;
-
-            REP(e, m) {
-                int u = edge[e].u, v = edge[e].v;
-                if ((best[v] == -1 || edge[e].cost.val < costlist[best[v]].val) && u != v) {
-                    pre[v] = u;
-                    best[v] = edge[e].cost.pos;
-                }
+                u = dsu.getRoot(u);
+                heap[u] = cyc;
+                seen[u] = -1;
+                cycs.push_front({u, time, {&Q[qi], &Q[end]}});
             }
-
-            REP(i, n) if (i != root && best[i] == -1) return -1;
-
-            int cntnode = 0;
-            memset(node, -1, sizeof node); memset(vis, -1, sizeof vis);
-
-            REP(i, n) if (i != root) {
-                ret += costlist[best[i]].val;
-                costlist[best[i]].used++;
-
-                int v = i;
-                while (vis[v] != i && node[v] == -1 && v != root) {
-                    vis[v] = i;
-                    v = pre[v];
-                }
-
-                if (v != root && node[v] == -1) {
-                    for (int u = pre[v]; u != v; u = pre[u]) node[u] = cntnode;
-                    node[v] = cntnode++;
-                }
-            }
-
-            if (cntnode == 0) break;
-
-            REP(i, n) if (node[i] == -1) node[i] = cntnode++;
-
-            REP(e, m) {
-                int v = edge[e].v;
-                edge[e].u = node[edge[e].u];
-                edge[e].v = node[edge[e].v];
-                if (edge[e].u != edge[e].v) edge[e].cost = Cost(edge[e].cost.pos, best[v]);
-            }
-
-            n = cntnode;
-            root = node[root];
         }
-
-        return ret;
+        for (int i = 0; i < qi; i++) in[dsu.getRoot(Q[i].v)] = Q[i];
     }
 
-    vector<int> trace() {
-        vector<int> ret;
-        FORD(i, costlist.size()-1,0) costlist[i].push();
-        REP(i, costlist.size()) {
-            Cost cost = costlist[i];
-            if (cost.id != -1 && cost.used > 0) ret.push_back(cost.id);
-        }
-        return ret;
+    for (auto& [u, t, comp] : cycs) {
+        dsu.rollback(t);
+        Edge inEdge = in[u];
+        for (auto& e : comp) in[dsu.getRoot(e.v)] = e;
+        in[dsu.getRoot(inEdge.v)] = inEdge;
     }
+
+    vector<int> par(n);
+    for (int i = 0; i < n; i++) par[i] = in[i].u;
+    return {res, par};
 }

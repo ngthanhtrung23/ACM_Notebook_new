@@ -1,4 +1,7 @@
-// Tested with https://codeforces.com/gym/100551/problem/A
+// Tested:
+// - https://codeforces.com/gym/100551/submission/68858439
+// - (used for directed MST) https://judge.yosupo.jp/problem/directedmst
+//
 // 0-based
 struct Data {
     int time, u, par;  // before `time`, `par` = par[u]
@@ -33,8 +36,6 @@ struct DSU {
         par[y] += par[x];
         change.push_back({t, x, par[x]});
         par[x] = y;
-        
-
     }
 
     // rollback all changes at time > t.
