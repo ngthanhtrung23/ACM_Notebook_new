@@ -1,7 +1,10 @@
 // PersistentDSU
 //
-// Note that this doesn't support delete edge operation, so isn't enough
-// to solve dynamic connectivity problem.
+// Notes:
+// - this doesn't support delete edge operation, so isn't enough to
+//   solve dynamic connectivity problem.
+// - it has high mem and time usage, so be careful (both TLE and MLE on
+//   https://oj.vnoi.info/problem/hello22_schoolplan)
 //
 // Tested:
 // - https://judge.yosupo.jp/problem/persistent_unionfind

@@ -1,4 +1,9 @@
 // PersistentArray
+//
+// Notes:
+// - Reduce mem -> decrease LOG
+// - Reduce time -> increase LOG
+//
 // Tested:
 // - https://codeforces.com/contest/707/problem/D
 template<typename T>
