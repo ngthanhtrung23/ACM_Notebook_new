@@ -4,7 +4,9 @@
 // Tested:
 // - https://codeforces.com/contest/600/problem/F
 // - https://judge.yosupo.jp/problem/bipartite_edge_coloring
+// - https://oj.vnoi.info/problem/nkdec
 
+// Credit: Benq
 // returns vector of {vertex, id of edge to vertex}
 // the second element of the first pair is always -1
 template<int N, bool directed> struct Euler {
@@ -101,7 +103,7 @@ struct EdgeColoring {
             }
         }
         vector<int> v;
-        for (int i = 0; i < lab.size(); i++) if (cnt_good[i]) v.push_back(lab[i]);
+        for (int i = 0; i < (int) lab.size(); i++) if (cnt_good[i]) v.push_back(lab[i]);
         assert((int)v.size() == n);
         return v;
     }
@@ -179,8 +181,8 @@ struct EdgeColoring {
         iota(lab.begin(), lab.end(),0);
         auto tmp = edge_color(lab);
         ans.resize(_ed.size());
-        for (int i = 0; i < tmp.size(); i++) {
-            for (auto x: tmp[i]) if (x < _ed.size()) ans[x] = i + 1;
+        for (int i = 0; i < (int) tmp.size(); i++) {
+            for (auto x: tmp[i]) if (x < (int) _ed.size()) ans[x] = i + 1;
         }
         return tmp.size();
     }
