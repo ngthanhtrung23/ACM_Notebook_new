@@ -1,4 +1,10 @@
 // SplayTreeById
+//
+// Note:
+// - op() must be commutative, otherwise reverse queries won't work.
+//   To fix it, need to store aggregate data from right->left
+//   See https://judge.yosupo.jp/submission/53778 (and look at invsum)
+//
 // Tested:
 // - (cut, join)      https://vn.spoj.com/problems/CARDS/
 // - (keys, reverse)  https://oj.vnoi.info/problem/twist
