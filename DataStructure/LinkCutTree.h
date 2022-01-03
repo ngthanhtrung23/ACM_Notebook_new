@@ -4,6 +4,7 @@
 //   For subtree queries -> requires - operation
 //   --> see this comment for how to handle it: https://codeforces.com/blog/entry/67637?#comment-650424
 // - Not using template here, since inheritance becomes very ugly
+// - Doesn't support lazy update (so no subtree updates)
 //
 // Tested:
 // - https://judge.yosupo.jp/problem/dynamic_tree_subtree_add_subtree_sum
@@ -24,7 +25,6 @@ struct SplayTree { // can we replace SplayTreeById and use this only?
         // Subtree aggregates
         T sub, vir;
 
-        // for reverse. Lazy tags can be implemented similarly (?)
         bool reverse = false;
     };
     vector<Node> nodes;
@@ -169,3 +169,29 @@ struct LinkCut : SplayTree {
         return splay(x), v;
     }
 };
+
+// Example for custom type: // https://judge.yosupo.jp/problem/dynamic_tree_vertex_set_path_composite
+// Since T doesn't support subtract -> comment out line
+//   nodes[u].vir -= nodes[v].sub
+/**
+struct T {
+    modular a, b;
+
+    T() : a(1), b(0) {}
+    T(modular _a, modular _b) : a(_a), b(_b) {}
+
+    // return f(g())
+    T operator + (const T& g) const {
+        return T {
+            a * g.a,
+            a * g.b + b,
+        };
+    }
+
+    T operator += (const T& g) {
+        b = a * g.b + b;
+        a = a * g.a;
+        return *this;
+    }
+};
+*/
