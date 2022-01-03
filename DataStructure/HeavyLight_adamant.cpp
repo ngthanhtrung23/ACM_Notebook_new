@@ -1,131 +1,182 @@
-// Source: https://codeforces.com/blog/entry/53170
-//
-// Tested:
-// - HLD on vertices: https://oj.vnoi.info/problem/icpc21_mt_l
-// - HLD on vertices: https://oj.vnoi.info/problem/qtree3
-// - HLD on vertices (order u -> v or v -> u matters): https://judge.yosupo.jp/problem/vertex_set_path_composite
-// - HLD on edges: https://oj.vnoi.info/problem/qtreex
-// - Subtree: https://judge.yosupo.jp/problem/vertex_add_subtree_sum
+// HeavyLight
+// Index from 0
+// Best used with SegTree.h
 //
 // Usage:
-// 
-// ```
-// // init g
-// depth[1] = 1;
-// dfs_parent(1, -1);
-// 
-// // If there's parent node in g --> need to delete it
-// FOR(i,1,n) {
-//   auto it = std::find(g[i].begin(), g[i].end(), parent[i]);
-//   if (it != g[i].end()) g[i].erase(it);
-// }
-// dfs_number = 1;
-// nxt[1] = 1;
-// dfs_sz(1);
-// dfs_hld(1);
+// HLD hld(g, root);
+// // build segment tree. Note that we must use hld.order[i]
+// vector<T> nodes;
+// for (int i = 0; i < n; i++)
+//   nodes.push_back(initial_value[hld.order[i]])
 //
-// query(u, v)
-// ```
+// Tested:
+// - (vertex, path) https://judge.yosupo.jp/problem/vertex_add_path_sum
+// - (vertex, path, non-commutative) https://judge.yosupo.jp/problem/vertex_set_path_composite
+// - (vertex, subtree) https://judge.yosupo.jp/problem/vertex_add_subtree_sum
+// - (vertex, path, non-commutative, 1-index) https://oj.vnoi.info/problem/icpc21_mt_l
+// - (vertex, path) https://oj.vnoi.info/problem/qtree3
 //
-// T(v) = [in[v]; out[v])
-// path from v -> last vertex in ascending heavy path from v (nxt[v]): [in[nxt[v]]; in[v]] 
+// - (edge, path) https://oj.vnoi.info/problem/qtreex
+// - (edge, path) https://oj.vnoi.info/problem/lubenica
+// - (edge, path) https://oj.vnoi.info/problem/pwalk
+// - (edge, path, lazy) https://oj.vnoi.info/problem/kbuild
+// - (edge, path, lazy) https://oj.vnoi.info/problem/onbridge
+//
+// - (lca) https://oj.vnoi.info/problem/fselect
+struct HLD {
+    HLD(const vector<vector<int>>& _g, int root)
+            : n(_g.size()), g(_g),
+            parent(n), depth(n), sz(n),
+            dfs_number(0), nxt(n), in(n), out(n), order(n)
+    {
+        assert(0 <= root && root < n);
 
-int parent[MN], depth[MN];
-int in[MN], out[MN], nxt[MN], sz[MN], dfs_number, order[MN];
+        // init parent, depth, sz
+        // also move most heavy child of u to g[u][0]
+        depth[root] = 0;
+        dfs_sz(root, -1);
 
-// initialize parent[] and depth[]
-void dfs_parent(int v, int pv) {
-    parent[v] = pv;
-    for (int u : g[v]) {
-        if (u != pv) {
-            depth[u] = depth[v] + 1;
-            dfs_parent(u, v);
+        // init nxt, in, out
+        nxt[root] = root;
+        dfs_hld(root);
+    }
+
+    int lca(int u, int v) const {
+        assert(0 <= u && u < n);
+        assert(0 <= v && v < n);
+        while (true) {
+            if (in[u] > in[v]) swap(u, v); // in[u] <= in[v]
+            if (nxt[u] == nxt[v]) return u;
+            v = parent[nxt[v]];
         }
     }
-}
 
-// initialize sz[] and re-organize tree
-void dfs_sz(int v) {
-    sz[v] = 1;
-    for(auto &u: g[v]) {
-        dfs_sz(u);
-        sz[v] += sz[u];
-        if(sz[u] > sz[g[v][0]])
-            swap(u, g[v][0]);
+    int dist(int u, int v) const {
+        assert(0 <= u && u < n);
+        assert(0 <= v && v < n);
+        int l = lca(u, v);
+        return depth[u] + depth[v] - 2*depth[l];
     }
-}
 
-// initialize in[], out[] and order[]
-void dfs_hld(int v) {
-    order[dfs_number] = v;
-    in[v] = dfs_number++;
-    for(auto u: g[v]) {
-        nxt[u] = (u == g[v][0] ? nxt[v] : u);
-        dfs_hld(u);
-    }
-    out[v] = dfs_number;
-}
+    // apply f on vertices on path [u, v]
+    // edge = true -> apply on edge
+    //
+    // f(l, r) should update segment tree [l, r] INCLUSIVE
+    void apply_path(int u, int v, bool edge, const function<void(int, int)> &f) {
+        assert(0 <= u && u < n);
+        assert(0 <= v && v < n);
 
-// return true if u is ancestor of v
-bool isAncestor(int u, int v) {
-    return in[u] <= in[v] && out[v] <= out[u];
-}
-
-// Return all segments on path from u -> v
-// For this problem, the order (u -> v is different from v -> u)
-vector< pair<int,int> > getSegments(int u, int v) {
-    vector< pair<int,int> > upFromU, upFromV;
-
-    int fu = nxt[u], fv = nxt[v];
-    while (fu != fv) {  // u and v are on different chains
-        if (depth[fu] >= depth[fv]) { // move u up
-            upFromU.push_back({u, fu});
-            u = parent[fu];
-            fu = nxt[u];
-        } else { // move v up
-            upFromV.push_back({fv, v});
-            v = parent[fv];
-            fv = nxt[v];
+        while (true) {
+            if (in[u] > in[v]) swap(u, v); // in[u] <= in[v]
+            if (nxt[u] == nxt[v]) break;
+            f(in[nxt[v]], in[v]);
+            v = parent[nxt[v]];
+        }
+        if (u != v || !edge) {
+            f(in[u] + edge, in[v]);
         }
     }
-    upFromU.push_back({u, v});
-    reverse(upFromV.begin(), upFromV.end());
-    upFromU.insert(upFromU.end(), upFromV.begin(), upFromV.end());
-    return upFromU;
-}
 
-int query(int start, int target) {
-    auto segments = getSegments(start, target);
-
-    int res = 0;
-    for (auto [u, v] : segments) {
-        // update res using [in[u], in[v]].
-        // Be careful about order of in[u] and in[v]
+    // get prod of path u -> v
+    // edge = true -> get on edges
+    //
+    // f(l, r) should query segment tree [l, r] INCLUSIVE
+    // f must be commutative. For non-commutative, use getSegments below
+    template<class S, S (*op) (S, S), S (*e)()>
+    S prod_path_commutative(
+            int u, int v, bool edge,
+            const function<S(int, int)>& f) const {
+        assert(0 <= u && u < n);
+        assert(0 <= v && v < n);
+        S su = e(), sv = e();
+        while (true) {
+            if (in[u] > in[v]) { swap(u, v); swap(su, sv); }
+            if (nxt[u] == nxt[v]) break;
+            sv = op(sv, f(in[nxt[v]], in[v]));
+            v = parent[nxt[v]];
+        }
+        return op(su, op(sv, f(in[u] + edge, in[v])));
     }
-    return res;
-}
 
-/**
- * For query by edges, can reuse everything above. After calling
- * getSegments, we just query each segments, ignoring segments' ancestors
- */
-int query(int start, int target) {
-    auto segments = getSegments(start, target);
+    // f(l, r) modify seg_tree [l, r] INCLUSIVE
+    void apply_subtree(int u, bool edge, const function<void(int, int)>& f) {
+        assert(0 <= u && u < n);
+        f(in[u] + edge, out[u] - 1);
+    }
 
-    for (int i = 0; i < (int) segments.size(); i++) {
-        auto [u, v] = segments[i];
-        if (isAncestor(u, v)) swap(u, v);
-        // u is now children of v
-        assert(in[v] <= in[u]);
-        // query segment tree [in[v], in[u]]
+    // f(l, r) queries seg_tree [l, r] INCLUSIVE
+    template<class S>
+    S prod_subtree_commutative(int u, bool edge, const function<S(S, S)>& f) {
+        assert(0 <= u && u < n);
+        return f(in[u] + edge, out[u] - 1);
+    }
 
-        // connect end of this segment to start of next segment
-        v = segments[i].second;
-        if (i+1 < SZ(segments)) {
-            auto [x, y] = segments[i+1];
-            // need to query edge (v, x)
-            if (v == parent[x]) swap(v, x);
-            // query segment tree [in[v], in[v]]
+    // Useful when functions are non-commutative
+    // Return all segments on path from u -> v
+    // For this problem, the order (u -> v is different from v -> u)
+    vector< pair<int,int> > getSegments(int u, int v) const {
+        assert(0 <= u && u < n);
+        assert(0 <= v && v < n);
+        vector< pair<int,int> > upFromU, upFromV;
+
+        int fu = nxt[u], fv = nxt[v];
+        while (fu != fv) {  // u and v are on different chains
+            if (depth[fu] >= depth[fv]) { // move u up
+                upFromU.push_back({u, fu});
+                u = parent[fu];
+                fu = nxt[u];
+            } else { // move v up
+                upFromV.push_back({fv, v});
+                v = parent[fv];
+                fv = nxt[v];
+            }
+        }
+        upFromU.push_back({u, v});
+        reverse(upFromV.begin(), upFromV.end());
+        upFromU.insert(upFromU.end(), upFromV.begin(), upFromV.end());
+        return upFromU;
+    }
+
+    // return true if u is ancestor
+    bool isAncestor(int u, int v) {
+        return in[u] <= in[v] && out[v] <= out[u];
+    }
+
+// private:
+    int n;
+    vector<vector<int>> g;
+    vector<int> parent;   // par[u] = parent of u. par[root] = -1
+    vector<int> depth;    // depth[u] = distance from root -> u
+    vector<int> sz;       // sz[u] = size of subtree rooted at u
+    int dfs_number;
+    vector<int> nxt;      // nxt[u] = vertex on heavy path of u, nearest to root
+    vector<int> in, out;  // subtree(u) is in range [in[u], out[u]-1]
+    vector<int> order;    // euler tour
+
+    void dfs_sz(int u, int fu) {
+        parent[u] = fu;
+        sz[u] = 1;
+        // remove parent from adjacency list
+        auto it = std::find(g[u].begin(), g[u].end(), fu);
+        if (it != g[u].end()) g[u].erase(it);
+
+        for (int& v : g[u]) {
+            depth[v] = depth[u] + 1;
+            dfs_sz(v, u);
+
+            sz[u] += sz[v];
+            if (sz[v] > sz[g[u][0]]) swap(v, g[u][0]);
         }
     }
-}
+
+    void dfs_hld(int u) {
+        order[dfs_number] = u;
+        in[u] = dfs_number++;
+
+        for (int v : g[u]) {
+            nxt[v] = (v == g[u][0] ? nxt[u] : v);
+            dfs_hld(v);
+        }
+        out[u] = dfs_number;
+    }
+};
