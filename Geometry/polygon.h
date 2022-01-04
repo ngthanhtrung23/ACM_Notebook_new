@@ -23,7 +23,6 @@ void ConvexHull(vector<Point> &pts) {
     pts.erase(unique(pts.begin(), pts.end()), pts.end());
     vector<Point> up, dn;
     for (int i = 0; i < (int) pts.size(); i++) {
-        // Note: If need maximum points on convex hull, need to change >= and <= to > and <.
 #ifdef REMOVE_REDUNDANT
         while (up.size() > 1 && area2(up[up.size()-2], up.back(), pts[i]) >= 0) up.pop_back();
         while (dn.size() > 1 && area2(dn[dn.size()-2], dn.back(), pts[i]) <= 0) dn.pop_back();
