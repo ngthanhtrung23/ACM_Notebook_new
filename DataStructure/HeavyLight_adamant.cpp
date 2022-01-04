@@ -8,7 +8,7 @@
 // vector<T> nodes;
 // for (int i = 0; i < n; i++)
 //   nodes.push_back(initial_value[hld.order[i]])
-// SegTree<S, op, e> st;
+// SegTree<S, op, e> st(nodes);
 //
 // // Update path
 // hld.apply_path(from, to, is_edge_or_vertex, [&] (int l, int r) {

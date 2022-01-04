@@ -149,5 +149,6 @@ struct MaxSegTreeOp {
         return -1000111000;
     }
 };
-SegTree<int, MaxSegTreeOp::f, MaxSegTreeOp::e> seg_tree(a);
 
+// Example
+// SegTree<int, MaxSegTreeOp::f, MaxSegTreeOp::e> seg_tree(a);

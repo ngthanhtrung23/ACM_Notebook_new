@@ -1,8 +1,7 @@
 struct DSU {
-    int lab[MN];
-    void init(int n) {
-        REP(i,n+2) lab[i] = -1;
-    }
+    vector<int> lab;
+
+    DSU(int n) : lab(n+1, -1) {}
 
     int getRoot(int u) {
         if (lab[u] < 0) return u;
