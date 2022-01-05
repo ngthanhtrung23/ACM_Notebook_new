@@ -1,15 +1,21 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/point_set_range_composite"
 
 #include "bits/stdc++.h"
-#include <atcoder/modint>
 using namespace std;
-using namespace atcoder;
 
 #include "../SegTree.h"
 #include "../../Math/modulo_anta.h"
 #include "../../buffered_reader.h"
 
-using modular = modint998244353;
+using modular = ModInt<998244353>;
+std::ostream& operator << (std::ostream& cout, const modular& m) {
+    cout << m.x;
+    return cout;
+}
+std::istream& operator >> (std::istream& cin, modular& m) {
+    cin >> m.x;
+    return cin;
+}
 
 struct Func {
     modular a, b;

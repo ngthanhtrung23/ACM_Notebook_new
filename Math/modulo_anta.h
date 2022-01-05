@@ -73,6 +73,7 @@ struct ModInt {
     ModInt operator / (ModInt that) const { return ModInt(*this) /= that; }
 };
 
+/* Example:
 const int MOD = 1e9 + 7;
 using modular = ModInt<MOD>;
 
@@ -84,3 +85,4 @@ std::istream& operator >> (std::istream& cin, modular& m) {
     cin >> m.x;
     return cin;
 }
+*/
