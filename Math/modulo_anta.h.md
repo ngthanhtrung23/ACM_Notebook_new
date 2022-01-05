@@ -44,8 +44,8 @@ data:
     \  t = ax - bx*q;\n            ax = bx; bx = t;\n        }\n        assert(a ==\
     \ 1);\n        if (ax < 0) ax += MOD;\n        return ax;\n    }\n    ModInt&\
     \ operator /= (ModInt m) { return (*this) *= m.inv(); }\n    ModInt operator /\
-    \ (ModInt that) const { return ModInt(*this) /= that; }\n};\nconst int MOD = 1e9\
-    \ + 7;\nusing modular = ModInt<MOD>;\n\nstd::ostream& operator << (std::ostream&\
+    \ (ModInt that) const { return ModInt(*this) /= that; }\n};\n\nconst int MOD =\
+    \ 1e9 + 7;\nusing modular = ModInt<MOD>;\n\nstd::ostream& operator << (std::ostream&\
     \ cout, const modular& m) {\n    cout << m.x;\n    return cout;\n}\nstd::istream&\
     \ operator >> (std::istream& cin, modular& m) {\n    cin >> m.x;\n    return cin;\n\
     }\n"
@@ -80,8 +80,8 @@ data:
     \  t = ax - bx*q;\n            ax = bx; bx = t;\n        }\n        assert(a ==\
     \ 1);\n        if (ax < 0) ax += MOD;\n        return ax;\n    }\n    ModInt&\
     \ operator /= (ModInt m) { return (*this) *= m.inv(); }\n    ModInt operator /\
-    \ (ModInt that) const { return ModInt(*this) /= that; }\n};\nconst int MOD = 1e9\
-    \ + 7;\nusing modular = ModInt<MOD>;\n\nstd::ostream& operator << (std::ostream&\
+    \ (ModInt that) const { return ModInt(*this) /= that; }\n};\n\nconst int MOD =\
+    \ 1e9 + 7;\nusing modular = ModInt<MOD>;\n\nstd::ostream& operator << (std::ostream&\
     \ cout, const modular& m) {\n    cout << m.x;\n    return cout;\n}\nstd::istream&\
     \ operator >> (std::istream& cin, modular& m) {\n    cin >> m.x;\n    return cin;\n\
     }\n"
@@ -89,7 +89,7 @@ data:
   isVerificationFile: false
   path: Math/modulo_anta.h
   requiredBy: []
-  timestamp: '2021-12-19 03:39:59+08:00'
+  timestamp: '2022-01-05 23:44:41+08:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
