@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/Fenwick2D.h
     title: DataStructure/Fenwick2D.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/point_add_rectangle_sum
@@ -41,8 +41,8 @@ data:
   isVerificationFile: true
   path: DataStructure/test/fenwick_2d_pointaddrectsum.test.cpp
   requiredBy: []
-  timestamp: '2022-01-06 03:00:25+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2022-01-06 03:05:50+08:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/fenwick_2d_pointaddrectsum.test.cpp
 layout: document

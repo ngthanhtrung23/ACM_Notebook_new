@@ -35,7 +35,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/Fenwick.h
       title: DataStructure/Fenwick.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/Fenwick2D.h
       title: DataStructure/Fenwick2D.h
     - icon: ':warning:'
@@ -83,9 +83,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/WaveletMatrix.h
       title: DataStructure/WaveletMatrix.h
-    - icon: ':warning:'
-      path: DataStructure/dijkstra.h
-      title: DataStructure/dijkstra.h
     - icon: ':heavy_check_mark:'
       path: DataStructure/splay_tree.h
       title: DataStructure/splay_tree.h
@@ -251,6 +248,9 @@ data:
     - icon: ':warning:'
       path: Graph/bipartite_edge_coloring.h
       title: Graph/bipartite_edge_coloring.h
+    - icon: ':heavy_check_mark:'
+      path: Graph/dijkstra.h
+      title: Graph/dijkstra.h
     - icon: ':warning:'
       path: Graph/tree_diameter.h
       title: Graph/tree_diameter.h
@@ -474,10 +474,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/fenwick.test.cpp
       title: DataStructure/test/fenwick.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/test/fenwick_2d_pointaddrectsum.test.cpp
       title: DataStructure/test/fenwick_2d_pointaddrectsum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/test/fenwick_2d_rectsum.test.cpp
       title: DataStructure/test/fenwick_2d_rectsum.test.cpp
     - icon: ':heavy_check_mark:'
@@ -537,5 +537,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/wavelet_matrix_staticrangefreq.test.cpp
       title: DataStructure/test/wavelet_matrix_staticrangefreq.test.cpp
+  - name: Graph/tests
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Graph/tests/dijkstra.test.cpp
+      title: Graph/tests/dijkstra.test.cpp
 layout: toppage
 ---

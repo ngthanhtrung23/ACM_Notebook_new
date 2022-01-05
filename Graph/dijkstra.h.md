@@ -2,15 +2,18 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: Graph/tests/dijkstra.test.cpp
+    title: Graph/tests/dijkstra.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://judge.yosupo.jp/problem/shortest_path
-  bundledCode: "#line 1 \"DataStructure/dijkstra.h\"\n// Dijkstra\n//\n// Notes:\n\
-    // - Index from 0\n//\n// Tested:\n// - https://judge.yosupo.jp/problem/shortest_path\n\
+  bundledCode: "#line 1 \"Graph/dijkstra.h\"\n// Dijkstra\n//\n// Notes:\n// - Index\
+    \ from 0\n//\n// Tested:\n// - https://judge.yosupo.jp/problem/shortest_path\n\
     //\n// Param:\n// - g[u] = pair<v, cost>, adjacency list\n// - start = start vertex\n\
     // Returns:\n// - distances from start. If unreachable -> dist = INF\n// - previous\
     \ vertex. Previous[start] = start. If unreachable -> trace = -1\nusing ll = long\
@@ -56,15 +59,16 @@ data:
     \   return {f[target], path};\n}\n"
   dependsOn: []
   isVerificationFile: false
-  path: DataStructure/dijkstra.h
+  path: Graph/dijkstra.h
   requiredBy: []
-  timestamp: '2022-01-02 23:33:14+08:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
-documentation_of: DataStructure/dijkstra.h
+  timestamp: '2022-01-06 03:02:41+08:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - Graph/tests/dijkstra.test.cpp
+documentation_of: Graph/dijkstra.h
 layout: document
 redirect_from:
-- /library/DataStructure/dijkstra.h
-- /library/DataStructure/dijkstra.h.html
-title: DataStructure/dijkstra.h
+- /library/Graph/dijkstra.h
+- /library/Graph/dijkstra.h.html
+title: Graph/dijkstra.h
 ---

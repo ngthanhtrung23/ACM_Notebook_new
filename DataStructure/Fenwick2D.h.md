@@ -3,15 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/test/fenwick_2d_pointaddrectsum.test.cpp
     title: DataStructure/test/fenwick_2d_pointaddrectsum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/test/fenwick_2d_rectsum.test.cpp
     title: DataStructure/test/fenwick_2d_rectsum.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://judge.yosupo.jp/problem/point_add_rectangle_sum
@@ -61,8 +61,8 @@ data:
     \            for(int y = lower_bound(nodes[x].begin(), nodes[x].end(), v) - nodes[x].begin()\
     \ + 1; y <= (int) nodes[x].size(); y += y & -y)\n                f[x][y] += val;\n\
     \    }\n\n    // Get sum of point in rectangle with corners at (1, 1) and (u,\
-    \ v)\n    int get(int u, int v) {\n        int res = 0;\n        for(int x = u;\
-    \ x > 0; x -= x & -x)\n            for(int y = upper_bound(nodes[x].begin(), nodes[x].end(),\
+    \ v)\n    T get(int u, int v) {\n        T res = 0;\n        for(int x = u; x\
+    \ > 0; x -= x & -x)\n            for(int y = upper_bound(nodes[x].begin(), nodes[x].end(),\
     \ v) - nodes[x].begin(); y > 0; y -= y & -y)\n                res += f[x][y];\n\
     \        return res;\n    }\n};\n"
   code: "// 2D Fenwick\n// Note:\n// - already included coordinate compression, so\
@@ -108,16 +108,16 @@ data:
     \            for(int y = lower_bound(nodes[x].begin(), nodes[x].end(), v) - nodes[x].begin()\
     \ + 1; y <= (int) nodes[x].size(); y += y & -y)\n                f[x][y] += val;\n\
     \    }\n\n    // Get sum of point in rectangle with corners at (1, 1) and (u,\
-    \ v)\n    int get(int u, int v) {\n        int res = 0;\n        for(int x = u;\
-    \ x > 0; x -= x & -x)\n            for(int y = upper_bound(nodes[x].begin(), nodes[x].end(),\
+    \ v)\n    T get(int u, int v) {\n        T res = 0;\n        for(int x = u; x\
+    \ > 0; x -= x & -x)\n            for(int y = upper_bound(nodes[x].begin(), nodes[x].end(),\
     \ v) - nodes[x].begin(); y > 0; y -= y & -y)\n                res += f[x][y];\n\
     \        return res;\n    }\n};\n"
   dependsOn: []
   isVerificationFile: false
   path: DataStructure/Fenwick2D.h
   requiredBy: []
-  timestamp: '2021-12-30 02:18:43+08:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2022-01-06 03:05:50+08:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/fenwick_2d_rectsum.test.cpp
   - DataStructure/test/fenwick_2d_pointaddrectsum.test.cpp
