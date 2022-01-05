@@ -6,6 +6,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/wavelet_matrix_rangekthsmallest.test.cpp
     title: DataStructure/test/wavelet_matrix_rangekthsmallest.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: DataStructure/test/wavelet_matrix_staticrangefreq.test.cpp
+    title: DataStructure/test/wavelet_matrix_staticrangefreq.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -165,6 +168,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/wavelet_matrix_rangekthsmallest.test.cpp
+  - DataStructure/test/wavelet_matrix_staticrangefreq.test.cpp
 documentation_of: DataStructure/WaveletMatrix.h
 layout: document
 redirect_from:

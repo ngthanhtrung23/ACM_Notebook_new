@@ -6,6 +6,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/li_chao_seg_tree_lineaddgetmin.test.cpp
     title: DataStructure/test/li_chao_seg_tree_lineaddgetmin.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: DataStructure/test/li_chao_seg_tree_segaddgetmin.test.cpp
+    title: DataStructure/test/li_chao_seg_tree_segaddgetmin.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -124,6 +127,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/li_chao_seg_tree_lineaddgetmin.test.cpp
+  - DataStructure/test/li_chao_seg_tree_segaddgetmin.test.cpp
 documentation_of: DataStructure/LiChaoSegTree.h
 layout: document
 redirect_from:

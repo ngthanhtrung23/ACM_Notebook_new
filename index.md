@@ -65,10 +65,10 @@ data:
     - icon: ':warning:'
       path: DataStructure/OrderedSet.h
       title: DataStructure/OrderedSet.h
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/PersistentArray.h
       title: DataStructure/PersistentArray.h
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/PersistentDSU.h
       title: DataStructure/PersistentDSU.h
     - icon: ':heavy_check_mark:'
@@ -493,6 +493,9 @@ data:
       path: DataStructure/test/li_chao_seg_tree_lineaddgetmin.test.cpp
       title: DataStructure/test/li_chao_seg_tree_lineaddgetmin.test.cpp
     - icon: ':heavy_check_mark:'
+      path: DataStructure/test/li_chao_seg_tree_segaddgetmin.test.cpp
+      title: DataStructure/test/li_chao_seg_tree_segaddgetmin.test.cpp
+    - icon: ':heavy_check_mark:'
       path: DataStructure/test/link_cut_tree_addpathsum.test.cpp
       title: DataStructure/test/link_cut_tree_addpathsum.test.cpp
     - icon: ':heavy_check_mark:'
@@ -501,6 +504,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp
       title: DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/test/persistent_dsu.test.cpp
+      title: DataStructure/test/persistent_dsu.test.cpp
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/rmq.test.cpp
       title: DataStructure/test/rmq.test.cpp
@@ -522,5 +528,8 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/wavelet_matrix_rangekthsmallest.test.cpp
       title: DataStructure/test/wavelet_matrix_rangekthsmallest.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/test/wavelet_matrix_staticrangefreq.test.cpp
+      title: DataStructure/test/wavelet_matrix_staticrangefreq.test.cpp
 layout: toppage
 ---
