@@ -6,12 +6,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: Math/tests/ntt.test.cpp
     title: Math/tests/ntt.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/ntt_any_mod.test.cpp
     title: Math/tests/ntt_any_mod.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://judge.yosupo.jp/problem/convolution_mod
@@ -135,7 +135,7 @@ data:
   path: Math/Polynomial/NTT.h
   requiredBy: []
   timestamp: '2022-01-06 05:06:40+08:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Math/tests/ntt_any_mod.test.cpp
   - Math/tests/ntt.test.cpp

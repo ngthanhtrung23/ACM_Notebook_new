@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Math/Polynomial/NTT.h
     title: Math/Polynomial/NTT.h
   _extendedRequiredBy: []

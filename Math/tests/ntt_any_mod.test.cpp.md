@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/NumberTheory/CRT_chemthan.h
     title: Math/NumberTheory/CRT_chemthan.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Math/Polynomial/NTT.h
     title: Math/Polynomial/NTT.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/convolution_mod_1000000007
@@ -89,19 +89,7 @@ data:
     \ r.first - a / b * r.second);\n    }\n};\n#line 8 \"Math/tests/ntt_any_mod.test.cpp\"\
     \n\nconst int MOD0 = 167772161;\nconst int MOD1 = 469762049;\nconst int MOD2 =\
     \ 754974721;\nNTT<MOD0, 1 << 20> ntt0;\nNTT<MOD1, 1 << 20> ntt1;\nNTT<MOD2, 1\
-    \ << 20> ntt2;\nusing namespace atcoder;\n\nint32_t main() {\n    ios::sync_with_stdio(0);\
-    \ cin.tie(0);\n    int n, m; cin >> n >> m;\n    vector<int> a(n); REP(i,n) cin\
-    \ >> a[i];\n    vector<int> b(m); REP(i,m) cin >> b[i];\n\n    auto c0 = ntt0.multiply(a,\
-    \ b);\n    auto c1 = ntt1.multiply(a, b);\n    auto c2 = ntt2.multiply(a, b);\n\
-    \n    const int MOD = 1e9 + 7;\n    REP(i,n+m-1) {\n        CRT<__int128_t> crt;\n\
-    \        crt.add(MOD0, c0[i]);\n        crt.add(MOD1, c1[i]);\n        crt.add(MOD2,\
-    \ c2[i]);\n        cout << (int) (crt.res % MOD) << ' ';\n    }\n    cout << endl;\n\
-    \    return 0;\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod_1000000007\"\
-    \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../Polynomial/NTT.h\"\
-    \n#include \"../NumberTheory/CRT_chemthan.h\"\n\nconst int MOD0 = 167772161;\n\
-    const int MOD1 = 469762049;\nconst int MOD2 = 754974721;\nNTT<MOD0, 1 << 20> ntt0;\n\
-    NTT<MOD1, 1 << 20> ntt1;\nNTT<MOD2, 1 << 20> ntt2;\nusing namespace atcoder;\n\
+    \ << 20> ntt2;\n\n#define REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)\n\
     \nint32_t main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n, m; cin\
     \ >> n >> m;\n    vector<int> a(n); REP(i,n) cin >> a[i];\n    vector<int> b(m);\
     \ REP(i,m) cin >> b[i];\n\n    auto c0 = ntt0.multiply(a, b);\n    auto c1 = ntt1.multiply(a,\
@@ -109,14 +97,27 @@ data:
     \  REP(i,n+m-1) {\n        CRT<__int128_t> crt;\n        crt.add(MOD0, c0[i]);\n\
     \        crt.add(MOD1, c1[i]);\n        crt.add(MOD2, c2[i]);\n        cout <<\
     \ (int) (crt.res % MOD) << ' ';\n    }\n    cout << endl;\n    return 0;\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod_1000000007\"\
+    \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../Polynomial/NTT.h\"\
+    \n#include \"../NumberTheory/CRT_chemthan.h\"\n\nconst int MOD0 = 167772161;\n\
+    const int MOD1 = 469762049;\nconst int MOD2 = 754974721;\nNTT<MOD0, 1 << 20> ntt0;\n\
+    NTT<MOD1, 1 << 20> ntt1;\nNTT<MOD2, 1 << 20> ntt2;\n\n#define REP(i, a) for (int\
+    \ i = 0, _##i = (a); i < _##i; ++i)\n\nint32_t main() {\n    ios::sync_with_stdio(0);\
+    \ cin.tie(0);\n    int n, m; cin >> n >> m;\n    vector<int> a(n); REP(i,n) cin\
+    \ >> a[i];\n    vector<int> b(m); REP(i,m) cin >> b[i];\n\n    auto c0 = ntt0.multiply(a,\
+    \ b);\n    auto c1 = ntt1.multiply(a, b);\n    auto c2 = ntt2.multiply(a, b);\n\
+    \n    const int MOD = 1e9 + 7;\n    REP(i,n+m-1) {\n        CRT<__int128_t> crt;\n\
+    \        crt.add(MOD0, c0[i]);\n        crt.add(MOD1, c1[i]);\n        crt.add(MOD2,\
+    \ c2[i]);\n        cout << (int) (crt.res % MOD) << ' ';\n    }\n    cout << endl;\n\
+    \    return 0;\n}\n"
   dependsOn:
   - Math/Polynomial/NTT.h
   - Math/NumberTheory/CRT_chemthan.h
   isVerificationFile: true
   path: Math/tests/ntt_any_mod.test.cpp
   requiredBy: []
-  timestamp: '2022-01-06 05:06:40+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2022-01-06 05:13:12+08:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Math/tests/ntt_any_mod.test.cpp
 layout: document

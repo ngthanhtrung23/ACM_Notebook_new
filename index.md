@@ -305,7 +305,7 @@ data:
       title: Math/Linear/GaussianBinary.h
   - name: Math/NumberTheory
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/NumberTheory/CRT_chemthan.h
       title: Math/NumberTheory/CRT_chemthan.h
     - icon: ':warning:'
@@ -340,7 +340,7 @@ data:
     - icon: ':warning:'
       path: Math/Polynomial/Karatsuba.h
       title: Math/Polynomial/Karatsuba.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Math/Polynomial/NTT.h
       title: Math/Polynomial/NTT.h
     - icon: ':warning:'
@@ -584,7 +584,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/tests/ntt.test.cpp
       title: Math/tests/ntt.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/ntt_any_mod.test.cpp
       title: Math/tests/ntt_any_mod.test.cpp
     - icon: ':heavy_check_mark:'
