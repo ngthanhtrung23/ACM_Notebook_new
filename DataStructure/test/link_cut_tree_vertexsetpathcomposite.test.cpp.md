@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/LinkCutTree.h
     title: DataStructure/LinkCutTree.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Math/modulo_anta.h
     title: Math/modulo_anta.h
   _extendedRequiredBy: []
@@ -58,7 +58,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp
   requiredBy: []
-  timestamp: '2022-01-06 01:46:37+08:00'
+  timestamp: '2022-01-06 04:56:25+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp

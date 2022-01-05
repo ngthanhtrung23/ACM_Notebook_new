@@ -271,7 +271,7 @@ data:
     - icon: ':warning:'
       path: Math/Fraction.h
       title: Math/Fraction.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/LinearRecurrence_BerlekampMassey.h
       title: Math/LinearRecurrence_BerlekampMassey.h
     - icon: ':warning:'
@@ -289,7 +289,7 @@ data:
     - icon: ':warning:'
       path: Math/modulo.h
       title: Math/modulo.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Math/modulo_anta.h
       title: Math/modulo_anta.h
     - icon: ':heavy_check_mark:'
@@ -572,7 +572,7 @@ data:
       title: Graph/tests/triangles.test.cpp
   - name: Math/tests
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/berlekamp_massey.test.cpp
       title: Math/tests/berlekamp_massey.test.cpp
     - icon: ':heavy_check_mark:'

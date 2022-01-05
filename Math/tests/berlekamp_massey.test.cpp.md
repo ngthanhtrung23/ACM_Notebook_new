@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/LinearRecurrence_BerlekampMassey.h
     title: Math/LinearRecurrence_BerlekampMassey.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Math/modulo_anta.h
     title: Math/modulo_anta.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/find_linear_recurrence
@@ -30,12 +30,11 @@ data:
     \        div dword ptr[y];\n        mov dword ptr[d], eax;\n        mov dword\
     \ ptr[m], edx;\n    };\n#endif\n    out_d = d; out_m = m;\n}\n\ntemplate<int MOD>\n\
     struct ModInt {\n    unsigned x;\n\n    constexpr ModInt() : x(0) { }\n    constexpr\
-    \ ModInt(signed sig) { int sigt = sig % MOD; if (sigt < 0) sigt += MOD; x = sigt;\
-    \ }\n    constexpr ModInt(signed long long sig) { int sigt = sig % MOD; if (sigt\
-    \ < 0) sigt += MOD; x = sigt; }\n\n#define COMPAREOP(OP) bool constexpr operator\
-    \ OP(ModInt b) const { return x OP b.x; }\n    COMPAREOP(==) COMPAREOP(!=) COMPAREOP(<)\
-    \ COMPAREOP(>) COMPAREOP(<=) COMPAREOP(>=)\n#undef COMPAREOP\n\n    ModInt operator-()\
-    \ const { return ModInt(x ? MOD - x : 0); }\n\n    ModInt constexpr& operator+=(ModInt\
+    \ ModInt(signed long long sig) { int sigt = sig % MOD; if (sigt < 0) sigt += MOD;\
+    \ x = sigt; }\n\n#define COMPAREOP(OP) bool constexpr operator OP(ModInt b) const\
+    \ { return x OP b.x; }\n    COMPAREOP(==) COMPAREOP(!=) COMPAREOP(<) COMPAREOP(>)\
+    \ COMPAREOP(<=) COMPAREOP(>=)\n#undef COMPAREOP\n\n    ModInt operator-() const\
+    \ { return ModInt(x ? MOD - x : 0); }\n\n    ModInt constexpr& operator+=(ModInt\
     \ that) { if ((x += that.x) >= MOD) x -= MOD; return *this; }\n    ModInt constexpr&\
     \ operator-=(ModInt that) { if ((x += MOD - that.x) >= MOD) x -= MOD; return *this;\
     \ }\n    ModInt &operator*=(ModInt that) {\n        unsigned dummy;\n        fasterLLDivMod((unsigned\
@@ -54,18 +53,22 @@ data:
     \ int MOD = 1e9 + 7;\nusing modular = ModInt<MOD>;\n\nstd::ostream& operator <<\
     \ (std::ostream& cout, const modular& m) {\n    cout << m.x;\n    return cout;\n\
     }\nstd::istream& operator >> (std::istream& cin, modular& m) {\n    cin >> m.x;\n\
-    \    return cin;\n}\n*/\n#line 1 \"Math/LinearRecurrence_BerlekampMassey.h\"\n\
-    // Berlekamp Massey\n// Given sequence s0, ..., s(N-1)\n// Find sequence c1, ...,\
-    \ cd with minimum d (d >= 0), such that:\n//   si = sum(s(i-j) * c(j), for j =\
-    \ 1..d)\n//\n// Tutorial: https://mzhang2021.github.io/cp-blog/berlekamp-massey/\n\
-    // If we have the linear recurrence, we can compute s(n):\n// - O(n*d) naively\n\
-    // - O(d^3 * log(n)) with matrix exponentiation\n// - O(d*log(d)*log(k)) with\
-    \ generating function (tutorial above)\n//\n// Solving problems where we need\
-    \ to compute f(n) mod P (e.g. VOJ SELFDIV)\n// - Guess that f is a linear recurrence\n\
-    // - Compute f(n) for small n\n// - Run Berlekamp Massey to find C (we must have\
-    \ 2*|C| < n, otherwise it's wrong)\n//\n// Note:\n// - should be calculated in\
-    \ prime modulo (i.e. T=modint), as it\n//   requires modular inverse\n// - when\
-    \ modulo is not prime --> https://github.com/zimpha/algorithmic-library/blob/master/cpp/mathematics/linear-recurrence.cc\n\
+    \    return cin;\n}\n*/\n#line 7 \"Math/tests/berlekamp_massey.test.cpp\"\n\n\
+    using modular = ModInt<998244353>;\nstd::ostream& operator << (std::ostream& cout,\
+    \ const modular& m) {\n    cout << m.x;\n    return cout;\n}\nstd::istream& operator\
+    \ >> (std::istream& cin, modular& m) {\n    cin >> m.x;\n    return cin;\n}\n\n\
+    #line 1 \"Math/LinearRecurrence_BerlekampMassey.h\"\n// Berlekamp Massey\n// Given\
+    \ sequence s0, ..., s(N-1)\n// Find sequence c1, ..., cd with minimum d (d >=\
+    \ 0), such that:\n//   si = sum(s(i-j) * c(j), for j = 1..d)\n//\n// Tutorial:\
+    \ https://mzhang2021.github.io/cp-blog/berlekamp-massey/\n// If we have the linear\
+    \ recurrence, we can compute s(n):\n// - O(n*d) naively\n// - O(d^3 * log(n))\
+    \ with matrix exponentiation\n// - O(d*log(d)*log(k)) with generating function\
+    \ (tutorial above)\n//\n// Solving problems where we need to compute f(n) mod\
+    \ P (e.g. VOJ SELFDIV)\n// - Guess that f is a linear recurrence\n// - Compute\
+    \ f(n) for small n\n// - Run Berlekamp Massey to find C (we must have 2*|C| <\
+    \ n, otherwise it's wrong)\n//\n// Note:\n// - should be calculated in prime modulo\
+    \ (i.e. T=modint), as it\n//   requires modular inverse\n// - when modulo is not\
+    \ prime --> https://github.com/zimpha/algorithmic-library/blob/master/cpp/mathematics/linear-recurrence.cc\n\
     //   but this comment says it doesn't work on some problem: https://codeforces.com/blog/entry/61306?#comment-454682\n\
     //\n// Tested:\n// - (BM) https://judge.yosupo.jp/problem/find_linear_recurrence\n\
     // - (BM + find_kth) https://oj.vnoi.info/problem/selfdiv\n// - (find_kth) https://oj.vnoi.info/problem/errichto_matexp_fibonacci\n\
@@ -99,32 +102,31 @@ data:
     \ (; k>0; k/=2) {\n        if (k % 2)\n            x = mul(x, a, c);  // mul(a,\
     \ b) computes a(x) * b(x) mod f(x)\n        a = mul(a, a, c);\n    }\n    x.resize(n);\n\
     \n    T ret = 0;\n    for (int i=0; i<n; i++)\n        ret += x[i] * s[i];\n \
-    \   return ret;\n}\n#line 8 \"Math/tests/berlekamp_massey.test.cpp\"\n\nusing\
-    \ modular = ModInt<998244353>;\nstd::ostream& operator << (std::ostream& cout,\
-    \ const modular& m) {\n    cout << m.x;\n    return cout;\n}\nstd::istream& operator\
-    \ >> (std::istream& cin, modular& m) {\n    cin >> m.x;\n    return cin;\n}\n\n\
-    int32_t main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n; cin >>\
-    \ n;\n    vector<modular> a(n);\n    REP(i,n) cin >> a[i];\n\n    auto c = berlekampMassey<modular>(a);\n\
-    \    cout << SZ(c) << endl;\n    for (auto x : c) cout << x << ' ';\n    cout\
-    \ << endl;\n    return 0;\n}\n"
+    \   return ret;\n}\n#line 19 \"Math/tests/berlekamp_massey.test.cpp\"\n\n#define\
+    \ REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)\n#define SZ(x) ((int)(x).size())\n\
+    \nint32_t main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n; cin >>\
+    \ n;\n    vector<modular> a(n);\n    REP(i,n) cin >> a[i];\n\n    vector<modular>\
+    \ c = berlekampMassey<modular>(a);\n    cout << SZ(c) << endl;\n    for (auto\
+    \ x : c) cout << x << ' ';\n    cout << endl;\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/find_linear_recurrence\"\
     \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../modulo_anta.h\"\
-    \n#include \"../LinearRecurrence_BerlekampMassey.h\"\n\nusing modular = ModInt<998244353>;\n\
-    std::ostream& operator << (std::ostream& cout, const modular& m) {\n    cout <<\
-    \ m.x;\n    return cout;\n}\nstd::istream& operator >> (std::istream& cin, modular&\
-    \ m) {\n    cin >> m.x;\n    return cin;\n}\n\nint32_t main() {\n    ios::sync_with_stdio(0);\
-    \ cin.tie(0);\n    int n; cin >> n;\n    vector<modular> a(n);\n    REP(i,n) cin\
-    \ >> a[i];\n\n    auto c = berlekampMassey<modular>(a);\n    cout << SZ(c) <<\
-    \ endl;\n    for (auto x : c) cout << x << ' ';\n    cout << endl;\n    return\
-    \ 0;\n}\n"
+    \n\nusing modular = ModInt<998244353>;\nstd::ostream& operator << (std::ostream&\
+    \ cout, const modular& m) {\n    cout << m.x;\n    return cout;\n}\nstd::istream&\
+    \ operator >> (std::istream& cin, modular& m) {\n    cin >> m.x;\n    return cin;\n\
+    }\n\n#include \"../LinearRecurrence_BerlekampMassey.h\"\n\n#define REP(i, a) for\
+    \ (int i = 0, _##i = (a); i < _##i; ++i)\n#define SZ(x) ((int)(x).size())\n\n\
+    int32_t main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n; cin >>\
+    \ n;\n    vector<modular> a(n);\n    REP(i,n) cin >> a[i];\n\n    vector<modular>\
+    \ c = berlekampMassey<modular>(a);\n    cout << SZ(c) << endl;\n    for (auto\
+    \ x : c) cout << x << ' ';\n    cout << endl;\n    return 0;\n}\n"
   dependsOn:
   - Math/modulo_anta.h
   - Math/LinearRecurrence_BerlekampMassey.h
   isVerificationFile: true
   path: Math/tests/berlekamp_massey.test.cpp
   requiredBy: []
-  timestamp: '2022-01-06 04:37:34+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2022-01-06 04:56:25+08:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Math/tests/berlekamp_massey.test.cpp
 layout: document
