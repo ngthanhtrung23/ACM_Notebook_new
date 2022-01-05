@@ -76,6 +76,7 @@ struct HLD {
     void apply_path(int u, int v, bool edge, const function<void(int, int)> &f) {
         assert(0 <= u && u < n);
         assert(0 <= v && v < n);
+        if (u == v && edge) return;
 
         while (true) {
             if (in[u] > in[v]) swap(u, v); // in[u] <= in[v]
@@ -83,9 +84,7 @@ struct HLD {
             f(in[nxt[v]], in[v]);
             v = parent[nxt[v]];
         }
-        if (u != v || !edge) {
-            f(in[u] + edge, in[v]);
-        }
+        f(in[u] + edge, in[v]);
     }
 
     // get prod of path u -> v
@@ -99,6 +98,9 @@ struct HLD {
             const function<S(int, int)>& f) const {
         assert(0 <= u && u < n);
         assert(0 <= v && v < n);
+        if (u == v && edge) {
+            return e();
+        }
         S su = e(), sv = e();
         while (true) {
             if (in[u] > in[v]) { swap(u, v); swap(su, sv); }
