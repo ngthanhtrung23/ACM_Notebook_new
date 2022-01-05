@@ -2,6 +2,8 @@
 "DP/tests/dynamic_hull_lineaddgetmin.test.cpp": "2022-01-06 02:20:31 +0800",
 "DataStructure/test/dsu.test.cpp": "2022-01-06 00:00:20 +0800",
 "DataStructure/test/fenwick.test.cpp": "2022-01-06 00:00:20 +0800",
+"DataStructure/test/fenwick_2d_pointaddrectsum.test.cpp": "2022-01-06 03:05:50 +0800",
+"DataStructure/test/fenwick_2d_rectsum.test.cpp": "2022-01-06 03:05:50 +0800",
 "DataStructure/test/fenwick_pointaddrangesum.test.cpp": "2022-01-06 00:00:20 +0800",
 "DataStructure/test/hld_vertexaddpathsum.test.cpp": "2022-01-06 00:22:29 +0800",
 "DataStructure/test/hld_vertexaddsubtreesum.test.cpp": "2022-01-06 00:22:29 +0800",
@@ -20,5 +22,6 @@
 "DataStructure/test/segment_tree_staticrmq.test.cpp": "2022-01-05 23:36:58 +0800",
 "DataStructure/test/splay_tree.test.cpp": "2022-01-06 00:33:53 +0800",
 "DataStructure/test/wavelet_matrix_rangekthsmallest.test.cpp": "2022-01-06 00:00:20 +0800",
-"DataStructure/test/wavelet_matrix_staticrangefreq.test.cpp": "2022-01-06 02:48:27 +0800"
+"DataStructure/test/wavelet_matrix_staticrangefreq.test.cpp": "2022-01-06 02:48:27 +0800",
+"Graph/tests/dijkstra.test.cpp": "2022-01-06 03:02:41 +0800"
 }
