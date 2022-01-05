@@ -2,16 +2,19 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: Graph/tests/triangles.test.cpp
+    title: Graph/tests/triangles.test.cpp
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://judge.yosupo.jp/problem/enumerate_triangles
-  bundledCode: "#line 1 \"Graph/Misc/find_triangles.h\"\n// Find all cycles of length\
-    \ 3 (a.k.a. triangles)\n// Complexity: O(N + M*sqrt(M))\n//\n// Index from 0\n\
-    //\n// Tested:\n// - https://judge.yosupo.jp/problem/enumerate_triangles\nvector<\
+  bundledCode: "#line 1 \"Graph/find_triangles.h\"\n// Find all cycles of length 3\
+    \ (a.k.a. triangles)\n// Complexity: O(N + M*sqrt(M))\n//\n// Index from 0\n//\n\
+    // Tested:\n// - https://judge.yosupo.jp/problem/enumerate_triangles\nvector<\
     \ tuple<int,int,int> > find_all_triangles(\n        int n,\n        vector<pair<int,int>>\
     \ edges) {\n    // Remove duplicated edges\n    sort(edges.begin(), edges.end());\n\
     \    edges.erase(unique(edges.begin(), edges.end()), edges.end());\n\n    // Compute\
@@ -46,15 +49,16 @@ data:
     \ good[j] = false;\n    }\n    return res;\n}\n"
   dependsOn: []
   isVerificationFile: false
-  path: Graph/Misc/find_triangles.h
+  path: Graph/find_triangles.h
   requiredBy: []
-  timestamp: '2021-12-30 19:55:26+08:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
-documentation_of: Graph/Misc/find_triangles.h
+  timestamp: '2022-01-06 04:24:18+08:00'
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - Graph/tests/triangles.test.cpp
+documentation_of: Graph/find_triangles.h
 layout: document
 redirect_from:
-- /library/Graph/Misc/find_triangles.h
-- /library/Graph/Misc/find_triangles.h.html
-title: Graph/Misc/find_triangles.h
+- /library/Graph/find_triangles.h
+- /library/Graph/find_triangles.h.html
+title: Graph/find_triangles.h
 ---

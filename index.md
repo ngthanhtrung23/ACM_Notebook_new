@@ -189,6 +189,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Graph/dijkstra.h
       title: Graph/dijkstra.h
+    - icon: ':x:'
+      path: Graph/find_triangles.h
+      title: Graph/find_triangles.h
     - icon: ':warning:'
       path: Graph/tree_diameter.h
       title: Graph/tree_diameter.h
@@ -246,9 +249,6 @@ data:
     - icon: ':warning:'
       path: Graph/Misc/EulerPath.h
       title: Graph/Misc/EulerPath.h
-    - icon: ':warning:'
-      path: Graph/Misc/find_triangles.h
-      title: Graph/Misc/find_triangles.h
   - name: Java
     pages:
     - icon: ':warning:'
@@ -564,5 +564,8 @@ data:
     - icon: ':heavy_check_mark:'
       path: Graph/tests/strongly_connected.test.cpp
       title: Graph/tests/strongly_connected.test.cpp
+    - icon: ':x:'
+      path: Graph/tests/triangles.test.cpp
+      title: Graph/tests/triangles.test.cpp
 layout: toppage
 ---
