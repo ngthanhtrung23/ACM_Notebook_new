@@ -15,7 +15,7 @@ data:
     links:
     - https://judge.yosupo.jp/problem/unionfind
   bundledCode: "#line 1 \"DataStructure/test/dsu.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/unionfind\"\
-    \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#line 1 \"DataStructure/DisjointSet.h\"\
+    \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#line 2 \"DataStructure/DisjointSet.h\"\
     \nstruct DSU {\n    vector<int> lab;\n\n    DSU(int n) : lab(n+1, -1) {}\n\n \
     \   int getRoot(int u) {\n        if (lab[u] < 0) return u;\n        return lab[u]\
     \ = getRoot(lab[u]);\n    }\n\n    bool merge(int u, int v) {\n        u = getRoot(u);\
@@ -39,7 +39,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/dsu.test.cpp
   requiredBy: []
-  timestamp: '2022-01-05 22:52:58+08:00'
+  timestamp: '2022-01-06 00:00:20+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/dsu.test.cpp

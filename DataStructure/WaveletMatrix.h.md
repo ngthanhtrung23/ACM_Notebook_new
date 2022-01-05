@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: DataStructure/test/wavelet_matrix_rangekthsmallest.test.cpp
+    title: DataStructure/test/wavelet_matrix_rangekthsmallest.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://github.com/dacin21/dacin21_codebook/blob/master/trees/wavelet_matrix.cpp
@@ -159,8 +162,9 @@ data:
   path: DataStructure/WaveletMatrix.h
   requiredBy: []
   timestamp: '2021-12-18 21:34:47+08:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - DataStructure/test/wavelet_matrix_rangekthsmallest.test.cpp
 documentation_of: DataStructure/WaveletMatrix.h
 layout: document
 redirect_from:

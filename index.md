@@ -80,7 +80,7 @@ data:
     - icon: ':warning:'
       path: DataStructure/SegmentTreeBeats.cpp
       title: DataStructure/SegmentTreeBeats.cpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/WaveletMatrix.h
       title: DataStructure/WaveletMatrix.h
     - icon: ':warning:'
@@ -490,5 +490,8 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/segment_tree_staticrmq.test.cpp
       title: DataStructure/test/segment_tree_staticrmq.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/test/wavelet_matrix_rangekthsmallest.test.cpp
+      title: DataStructure/test/wavelet_matrix_rangekthsmallest.test.cpp
 layout: toppage
 ---

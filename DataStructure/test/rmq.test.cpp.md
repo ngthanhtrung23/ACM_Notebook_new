@@ -30,7 +30,7 @@ data:
     \  assert(l < r);\n        int k = __lg(r - l);\n        return op(t[k][l], t[k][r\
     \ - (1<<k)]);\n    }\n\nprivate:\n    vector<vector<T>> t;\n};\ntemplate<class\
     \ T> T _min(T a, T b) { return b < a ? b : a; }\ntemplate<class T> T _max(T a,\
-    \ T b) { return a < b ? b : a; }\n#line 1 \"buffered_reader.h\"\nnamespace IO\
+    \ T b) { return a < b ? b : a; }\n#line 2 \"buffered_reader.h\"\nnamespace IO\
     \ {\n    const int BUFSIZE = 1<<14;\n    char buf[BUFSIZE + 1], *inp = buf;\n\n\
     \    bool reacheof;\n    char get_char() {\n        if (!*inp && !reacheof) {\n\
     \            memset(buf, 0, sizeof buf);\n            int tmp = fread(buf, 1,\
@@ -61,7 +61,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/rmq.test.cpp
   requiredBy: []
-  timestamp: '2022-01-05 23:09:09+08:00'
+  timestamp: '2022-01-06 00:00:20+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/rmq.test.cpp

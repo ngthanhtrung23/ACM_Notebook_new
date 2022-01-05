@@ -49,7 +49,7 @@ data:
     \ int fu, int d) {\n        id[u] = order.size();\n        depth[u] = d;\n   \
     \     order.emplace_back(d, u);\n        for (int v : adj[u]) {\n            if\
     \ (v == fu) continue;\n            dfs(v, u, d + 1);\n            order.emplace_back(d,\
-    \ u);\n        }\n    }\n};\n#line 1 \"buffered_reader.h\"\nnamespace IO {\n \
+    \ u);\n        }\n    }\n};\n#line 2 \"buffered_reader.h\"\nnamespace IO {\n \
     \   const int BUFSIZE = 1<<14;\n    char buf[BUFSIZE + 1], *inp = buf;\n\n   \
     \ bool reacheof;\n    char get_char() {\n        if (!*inp && !reacheof) {\n \
     \           memset(buf, 0, sizeof buf);\n            int tmp = fread(buf, 1, BUFSIZE,\
@@ -84,7 +84,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/lca.test.cpp
   requiredBy: []
-  timestamp: '2022-01-05 22:42:17+08:00'
+  timestamp: '2022-01-06 00:00:20+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/lca.test.cpp
