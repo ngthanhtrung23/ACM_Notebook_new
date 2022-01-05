@@ -153,6 +153,12 @@ struct LinkCut : SplayTree {
         return nodes[u].self;
     }
 
+    // Get aggregate of subtree(u). v is parent of u. There must exist edge(v, u) (?)
+    T getSubtree(int u, int v) {
+        reroot(v); access(u);
+        return nodes[u].vir + nodes[u].self;
+    }
+
 // private:
     void reroot(int x) {
         access(x);
