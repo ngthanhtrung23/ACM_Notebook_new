@@ -10,7 +10,12 @@
 // - https://judge.yosupo.jp/problem/dynamic_tree_subtree_add_subtree_sum
 // - https://judge.yosupo.jp/problem/dynamic_tree_vertex_set_path_composite
 // - https://judge.yosupo.jp/problem/dynamic_tree_vertex_add_subtree_sum
-using T = long long;
+
+// Add this for path queries only
+// #define PATH_QUERIES_ONLY
+
+// TODO: Specify T
+// using T = long long;
 struct SplayTree { // can we replace SplayTreeById and use this only?
     struct Node {
         array<int, 2> child = {0, 0};
@@ -161,8 +166,10 @@ struct LinkCut : SplayTree {
             splay(u);
             int& ov = nodes[u].child[1];
             nodes[u].vir += nodes[ov].sub;
+#ifndef PATH_QUERIES_ONLY
             // T requires subtract for subtree queries
             nodes[u].vir -= nodes[v].sub;
+#endif
 
             ov = v; pushUp(u);
         }
