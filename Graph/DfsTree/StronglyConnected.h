@@ -1,4 +1,3 @@
-// Assume that already have directed graph vector< vector<int> > G with V vertices
 // Index from 0
 // Usage:
 // DirectedDfs tree;
@@ -9,12 +8,17 @@
 // Tested:
 // - (requires scc to be topo sorted) https://judge.yosupo.jp/problem/scc
 struct DirectedDfs {
+    vector<vector<int>> G;
+    int V;
     vector<int> num, low, current, S;
     int counter;
     vector< vector<int> > scc;
 
-    DirectedDfs() : num(V, -1), low(V, 0), current(V, 0), counter(0) {
-        REP(i,V) if (num[i] == -1) dfs(i);
+    DirectedDfs(const vector<vector<int>>& _G) : G(_G), V(G.size()),
+            num(V, -1), low(V, 0), current(V, 0), counter(0) {
+        for (int i = 0; i < V; i++) {
+            if (num[i] == -1) dfs(i);
+        }
     }
 
     void dfs(int u) {
