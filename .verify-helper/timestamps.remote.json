@@ -6,5 +6,6 @@
 "DataStructure/test/rmq.test.cpp": "2022-01-05 23:09:09 +0800",
 "DataStructure/test/segment_tree_pointaddrangesum.test.cpp": "2022-01-05 23:36:58 +0800",
 "DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp": "2022-01-05 23:46:52 +0800",
+"DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp": "2022-01-05 23:49:51 +0800",
 "DataStructure/test/segment_tree_staticrmq.test.cpp": "2022-01-05 23:36:58 +0800"
 }
