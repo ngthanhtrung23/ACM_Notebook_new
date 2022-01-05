@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: String/SuffixArray.h
     title: String/SuffixArray.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/number_of_substrings
@@ -43,23 +43,26 @@ data:
     \        for (int i = 0; i < N; i++) c[SA[i]] = i;\n        for (int i = 0, j,\
     \ k = 0; i < N; LCP[c[i++]] = k)\n            if (c[i] > 0) for (k ? k-- : 0,\
     \ j = SA[c[i] - 1]; a[i + k] == a[j + k]; k++);\n            else k = 0;\n   \
-    \ }\n};\n#line 7 \"String/tests/lcp.test.cpp\"\n\nint32_t main() {\n    ios::sync_with_stdio(0);\
-    \ cin.tie(0);\n    string s; cin >> s;\n    int res = SZ(s) * (SZ(s) + 1) / 2;\n\
-    \    SuffixArray sa(s);\n    for (int x : sa.LCP) {\n        res -= x;\n    }\n\
-    \    cout << res << endl;\n    return 0;\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/number_of_substrings\"\n\
-    \n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../SuffixArray.h\"\
-    \n\nint32_t main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n    string s;\
-    \ cin >> s;\n    int res = SZ(s) * (SZ(s) + 1) / 2;\n    SuffixArray sa(s);\n\
+    \ }\n};\n#line 7 \"String/tests/lcp.test.cpp\"\n\n#define REP(i, a) for (int i\
+    \ = 0, _##i = (a); i < _##i; ++i)\n#define SZ(x) ((int)(x).size())\n\nint32_t\
+    \ main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n    string s; cin >> s;\n\
+    \    long long res = SZ(s) * (long long)(SZ(s) + 1) / 2;\n    SuffixArray sa(s);\n\
     \    for (int x : sa.LCP) {\n        res -= x;\n    }\n    cout << res << endl;\n\
     \    return 0;\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/number_of_substrings\"\n\
+    \n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../SuffixArray.h\"\
+    \n\n#define REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)\n#define SZ(x)\
+    \ ((int)(x).size())\n\nint32_t main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n\
+    \    string s; cin >> s;\n    long long res = SZ(s) * (long long)(SZ(s) + 1) /\
+    \ 2;\n    SuffixArray sa(s);\n    for (int x : sa.LCP) {\n        res -= x;\n\
+    \    }\n    cout << res << endl;\n    return 0;\n}\n"
   dependsOn:
   - String/SuffixArray.h
   isVerificationFile: true
   path: String/tests/lcp.test.cpp
   requiredBy: []
-  timestamp: '2022-01-06 05:40:17+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2022-01-06 05:55:24+08:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: String/tests/lcp.test.cpp
 layout: document

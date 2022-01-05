@@ -3,15 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: String/tests/lcp.test.cpp
     title: String/tests/lcp.test.cpp
   - icon: ':heavy_check_mark:'
     path: String/tests/suffix_array.test.cpp
     title: String/tests/suffix_array.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - http://codeforces.com/contest/452/submission/7269543
@@ -78,7 +78,7 @@ data:
   path: String/SuffixArray.h
   requiredBy: []
   timestamp: '2022-01-06 05:40:17+08:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - String/tests/lcp.test.cpp
   - String/tests/suffix_array.test.cpp

@@ -414,7 +414,7 @@ data:
     - icon: ':warning:'
       path: String/DC3SuffixArray.h
       title: String/DC3SuffixArray.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: String/SuffixArray.h
       title: String/SuffixArray.h
     - icon: ':warning:'
@@ -607,7 +607,7 @@ data:
       title: Math/tests/sumdiv.test.cpp
   - name: String/tests
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: String/tests/lcp.test.cpp
       title: String/tests/lcp.test.cpp
     - icon: ':x:'
