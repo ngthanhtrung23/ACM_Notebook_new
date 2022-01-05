@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
-  _pathExtension: cpp
-  _verificationStatusIcon: ':warning:'
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: Math/tests/berlekamp_massey.test.cpp
+    title: Math/tests/berlekamp_massey.test.cpp
+  _isVerificationFailed: true
+  _pathExtension: h
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://codeforces.com/blog/entry/61306?#comment-454682
@@ -15,7 +18,7 @@ data:
     - https://mzhang2021.github.io/cp-blog/berlekamp-massey/
     - https://oj.vnoi.info/problem/errichto_matexp_fibonacci
     - https://oj.vnoi.info/problem/selfdiv
-  bundledCode: "#line 1 \"Math/LinearRecurrence_BerlekampMassey.cpp\"\n// Berlekamp\
+  bundledCode: "#line 1 \"Math/LinearRecurrence_BerlekampMassey.h\"\n// Berlekamp\
     \ Massey\n// Given sequence s0, ..., s(N-1)\n// Find sequence c1, ..., cd with\
     \ minimum d (d >= 0), such that:\n//   si = sum(s(i-j) * c(j), for j = 1..d)\n\
     //\n// Tutorial: https://mzhang2021.github.io/cp-blog/berlekamp-massey/\n// If\
@@ -108,15 +111,16 @@ data:
     \   return ret;\n}\n"
   dependsOn: []
   isVerificationFile: false
-  path: Math/LinearRecurrence_BerlekampMassey.cpp
+  path: Math/LinearRecurrence_BerlekampMassey.h
   requiredBy: []
-  timestamp: '2021-12-31 16:01:17+08:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
-documentation_of: Math/LinearRecurrence_BerlekampMassey.cpp
+  timestamp: '2022-01-06 04:37:34+08:00'
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - Math/tests/berlekamp_massey.test.cpp
+documentation_of: Math/LinearRecurrence_BerlekampMassey.h
 layout: document
 redirect_from:
-- /library/Math/LinearRecurrence_BerlekampMassey.cpp
-- /library/Math/LinearRecurrence_BerlekampMassey.cpp.html
-title: Math/LinearRecurrence_BerlekampMassey.cpp
+- /library/Math/LinearRecurrence_BerlekampMassey.h
+- /library/Math/LinearRecurrence_BerlekampMassey.h.html
+title: Math/LinearRecurrence_BerlekampMassey.h
 ---

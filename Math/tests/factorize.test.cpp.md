@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/NumberTheory/Pollard.h
     title: Math/NumberTheory/Pollard.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/factorize
@@ -62,24 +62,24 @@ data:
     \            ans.push_back(p);\n        }\n    }\n    if (x != 1) {\n        pollard(x,\
     \ ans);\n    }\n    sort(ans.begin(), ans.end());\n    return ans;\n}\n#line 13\
     \ \"Math/tests/factorize.test.cpp\"\n\nint32_t main() {\n    int ntest; cin >>\
-    \ ntest;\n    while (ntest--) {\n        int n; cin >> n;\n        auto f = factorize(n);\n\
-    \        cout << f.size();\n        for (auto x : f) cout << ' ' << x;\n     \
-    \   cout << '\\n';\n    }\n    return 0;\n}\n"
+    \ ntest;\n    while (ntest--) {\n        long long n; cin >> n;\n        auto\
+    \ f = factorize(n);\n        cout << f.size();\n        for (auto x : f) cout\
+    \ << ' ' << x;\n        cout << '\\n';\n    }\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/factorize\"\n\n#include\
     \ <bits/stdc++.h>\nusing namespace std;\n\n// for 64-bit, use mt19937_64\nmt19937_64\
     \ rng(chrono::steady_clock::now().time_since_epoch().count());\nlong long get_rand(long\
     \ long r) {\n    return uniform_int_distribution<long long> (0, r-1)(rng);\n}\n\
     \n#include \"../NumberTheory/Pollard.h\"\n\nint32_t main() {\n    int ntest; cin\
-    \ >> ntest;\n    while (ntest--) {\n        int n; cin >> n;\n        auto f =\
-    \ factorize(n);\n        cout << f.size();\n        for (auto x : f) cout << '\
-    \ ' << x;\n        cout << '\\n';\n    }\n    return 0;\n}\n"
+    \ >> ntest;\n    while (ntest--) {\n        long long n; cin >> n;\n        auto\
+    \ f = factorize(n);\n        cout << f.size();\n        for (auto x : f) cout\
+    \ << ' ' << x;\n        cout << '\\n';\n    }\n    return 0;\n}\n"
   dependsOn:
   - Math/NumberTheory/Pollard.h
   isVerificationFile: true
   path: Math/tests/factorize.test.cpp
   requiredBy: []
-  timestamp: '2022-01-06 04:34:09+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2022-01-06 04:41:45+08:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Math/tests/factorize.test.cpp
 layout: document

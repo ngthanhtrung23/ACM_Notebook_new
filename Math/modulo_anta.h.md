@@ -18,9 +18,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/splay_tree.test.cpp
     title: DataStructure/test/splay_tree.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: Math/tests/berlekamp_massey.test.cpp
+    title: Math/tests/berlekamp_massey.test.cpp
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://codeforces.com/gym/101383
@@ -102,13 +105,14 @@ data:
   path: Math/modulo_anta.h
   requiredBy: []
   timestamp: '2022-01-05 23:46:52+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
   - DataStructure/test/hld_vertexsetpathcomposite.test.cpp
   - DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
   - DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp
   - DataStructure/test/splay_tree.test.cpp
+  - Math/tests/berlekamp_massey.test.cpp
 documentation_of: Math/modulo_anta.h
 layout: document
 redirect_from:

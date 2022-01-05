@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/Prime/IterativeSieve.h
     title: Math/Prime/IterativeSieve.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/enumerate_primes
@@ -18,10 +18,10 @@ data:
     \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#line 1 \"Math/Prime/IterativeSieve.h\"\
     \n// Tested:\n// - (up to 5e8) https://judge.yosupo.jp/problem/enumerate_primes\n\
     typedef unsigned int uint;\n\n// NOTE: gP(n) is incorrect for even values of n\n\
-    #define N 90000000\nuint mark[N / 64 + 1];\n// DO NOT USE gP(n) directly.\n#define\
-    \ gP(n) (mark[(n)>>6]&(1<<(((n)>>1)&31)))\n#define rP(n) (mark[(n)>>6]&=~(1<<(((n)>>1)&31)))\n\
-    \n// prime indexed from 0\nuint prime[5222222], nprime;\n\nvoid sieve() {\n  \
-    \  memset(mark, -1, sizeof mark);\n    uint i;\n    uint sqrtN = (uint)sqrt((double)\
+    const uint N = 5e8 + 11;\nuint mark[N / 64 + 1];\n// DO NOT USE gP(n) directly.\n\
+    #define gP(n) (mark[(n)>>6]&(1<<(((n)>>1)&31)))\n#define rP(n) (mark[(n)>>6]&=~(1<<(((n)>>1)&31)))\n\
+    \n// prime indexed from 0\nuint prime[30111000], nprime;\n\nvoid sieve() {\n \
+    \   memset(mark, -1, sizeof mark);\n    uint i;\n    uint sqrtN = (uint)sqrt((double)\
     \ N) + 1;\n\n    for (i = 3; i < sqrtN; i += 2) if (gP(i)) {\n        uint i2\
     \ = i + i;\n        for (uint j = i * i; j < N; j += i2) rP(j);\n    }\n    nprime\
     \ = 0;\n    prime[nprime++] = 2;\n    for (i = 3; i < N; i += 2)\n        if (gP(i))\
@@ -51,8 +51,8 @@ data:
   isVerificationFile: true
   path: Math/tests/sieve.test.cpp
   requiredBy: []
-  timestamp: '2022-01-06 04:34:09+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2022-01-06 04:41:45+08:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Math/tests/sieve.test.cpp
 layout: document

@@ -271,9 +271,9 @@ data:
     - icon: ':warning:'
       path: Math/Fraction.h
       title: Math/Fraction.h
-    - icon: ':warning:'
-      path: Math/LinearRecurrence_BerlekampMassey.cpp
-      title: Math/LinearRecurrence_BerlekampMassey.cpp
+    - icon: ':x:'
+      path: Math/LinearRecurrence_BerlekampMassey.h
+      title: Math/LinearRecurrence_BerlekampMassey.h
     - icon: ':warning:'
       path: Math/Matrix.h
       title: Math/Matrix.h
@@ -286,7 +286,7 @@ data:
     - icon: ':warning:'
       path: Math/modulo.h
       title: Math/modulo.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Math/modulo_anta.h
       title: Math/modulo_anta.h
     - icon: ':warning:'
@@ -314,7 +314,7 @@ data:
     - icon: ':warning:'
       path: Math/NumberTheory/FactorialMod.h
       title: Math/NumberTheory/FactorialMod.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/NumberTheory/Pollard.h
       title: Math/NumberTheory/Pollard.h
     - icon: ':warning:'
@@ -354,7 +354,7 @@ data:
     - icon: ':warning:'
       path: Math/Prime/EulerPhi.h
       title: Math/Prime/EulerPhi.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/Prime/IterativeSieve.h
       title: Math/Prime/IterativeSieve.h
     - icon: ':heavy_check_mark:'
@@ -573,12 +573,15 @@ data:
   - name: Math/tests
     pages:
     - icon: ':x:'
+      path: Math/tests/berlekamp_massey.test.cpp
+      title: Math/tests/berlekamp_massey.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Math/tests/factorize.test.cpp
       title: Math/tests/factorize.test.cpp
     - icon: ':heavy_check_mark:'
       path: Math/tests/prime_pi.test.cpp
       title: Math/tests/prime_pi.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/sieve.test.cpp
       title: Math/tests/sieve.test.cpp
 layout: toppage
