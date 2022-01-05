@@ -108,8 +108,8 @@ struct Fenwick2D {
     }
 
     // Get sum of point in rectangle with corners at (1, 1) and (u, v)
-    int get(int u, int v) {
-        int res = 0;
+    T get(int u, int v) {
+        T res = 0;
         for(int x = u; x > 0; x -= x & -x)
             for(int y = upper_bound(nodes[x].begin(), nodes[x].end(), v) - nodes[x].begin(); y > 0; y -= y & -y)
                 res += f[x][y];
