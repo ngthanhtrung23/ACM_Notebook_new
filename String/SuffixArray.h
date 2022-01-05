@@ -19,7 +19,7 @@ struct SuffixArray {
     int N, m;
     vector<int> SA, LCP, x, y, w, c;
 
-    SuffixArray(string _a, int m = 256) : a(" " + _a), N(a.length()), m(m),
+    SuffixArray(string _a, int _m = 256) : a(" " + _a), N(a.length()), m(_m),
             SA(N), LCP(N), x(N), y(N), w(max(m, N)), c(N) {
         a[0] = 0;
         DA();
@@ -31,7 +31,9 @@ struct SuffixArray {
         #undef REF
     }
 
-    inline bool cmp (const int a, const int b, const int l) { return (y[a] == y[b] && (a + l < N && b + l < N ? y[a + l] == y[b + l] : false)); }
+    inline bool cmp (const int u, const int v, const int l) {
+        return (y[u] == y[v] && (u + l < N && v + l < N ? y[u + l] == y[v + l] : false));
+    }
 
     void Sort() {
         for(int i = 0; i < m; ++i) w[i] = 0;
