@@ -27,7 +27,7 @@ long long power(long long x, long long k, long long MOD) {
 }
 
 // H = [1 1; 1 -1]
-void xorFFT(int a[], int n, int MOD, int invert) {
+void xorFFT(long long a[], int n, int MOD, int invert) {
     assert(__builtin_popcountll(n) == 1);  // N must be power of 2.
 
     for (int len = 1; len < n; len <<= 1) {
@@ -52,14 +52,14 @@ void xorFFT(int a[], int n, int MOD, int invert) {
 }
 
 // H = [0 1; 1 1]
-void andFFT(int a[], int n, int MOD, int invert) {
+void andFFT(long long a[], int n, int MOD, int invert) {
     assert(__builtin_popcountll(n) == 1);  // N must be power of 2.
 
     for (int len = 1; len < n; len <<= 1) {
         for (int i = 0; i < n; i += len << 1) {
             for (int j = 0; j < len; j++) {
-                int u = a[i + j];
-                int v = a[i + j + len];
+                long long u = a[i + j];
+                long long v = a[i + j + len];
 
                 if (!invert) {
                     a[i + j] = v;
@@ -76,7 +76,7 @@ void andFFT(int a[], int n, int MOD, int invert) {
 }
 
 // H = [1 1; 1 0]
-void orFFT(int a[], int n, int MOD, int invert) {
+void orFFT(long long a[], int n, int MOD, int invert) {
     assert(__builtin_popcountll(n) == 1);  // N must be power of 2.
 
     for (int len = 1; len < n; len <<= 1) {
@@ -109,7 +109,7 @@ namespace Test {
 #define TWO(X) (1LL << (X))
     const int MAXN = 1e5 + 5;
     const int MAXV = 100;
-    int a[MAXN], b[MAXN], c[MAXN];
+    long long a[MAXN], b[MAXN], c[MAXN];
     void testXorFFT() {
         memset(a, 0, sizeof a);
         memset(b, 0, sizeof b);

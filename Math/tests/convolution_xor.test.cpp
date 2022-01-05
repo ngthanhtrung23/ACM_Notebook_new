@@ -6,7 +6,7 @@ using namespace std;
 #define int long long
 #include "../Polynomial/xorFFT.h"
 
-int a[1<<20], b[1<<20];
+long long a[1<<20], b[1<<20];
 const int MOD = 998244353;
 
 #define REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)
