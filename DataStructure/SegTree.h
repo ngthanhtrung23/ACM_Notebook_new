@@ -141,6 +141,7 @@ private:
     }
 };
 
+// Examples: Commonly used SegTree ops: max / min / sum
 struct MaxSegTreeOp {
     static int op(int x, int y) {
         return max(x, y);
@@ -156,6 +157,15 @@ struct MinSegTreeOp {
     }
     static int e() {
         return INT_MAX;
+    }
+};
+
+struct SumSegTreeOp {
+    static long long op(long long x, long long y) {
+        return x + y;
+    }
+    static long long e() {
+        return 0;
     }
 };
 
