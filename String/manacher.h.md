@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: String/tests/manacher.test.cpp
+    title: String/tests/manacher.test.cpp
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://judge.yosupo.jp/problem/enumerate_palindromes
@@ -45,8 +48,9 @@ data:
   path: String/manacher.h
   requiredBy: []
   timestamp: '2021-12-30 02:54:14+08:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - String/tests/manacher.test.cpp
 documentation_of: String/manacher.h
 layout: document
 redirect_from:

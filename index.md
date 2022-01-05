@@ -414,7 +414,7 @@ data:
     - icon: ':warning:'
       path: String/DC3SuffixArray.h
       title: String/DC3SuffixArray.h
-    - icon: ':warning:'
+    - icon: ':question:'
       path: String/SuffixArray.h
       title: String/SuffixArray.h
     - icon: ':warning:'
@@ -432,7 +432,7 @@ data:
     - icon: ':warning:'
       path: String/maine_lorentz.h
       title: String/maine_lorentz.h
-    - icon: ':warning:'
+    - icon: ':x:'
       path: String/manacher.h
       title: String/manacher.h
     - icon: ':warning:'
@@ -444,7 +444,7 @@ data:
     - icon: ':warning:'
       path: String/suffix_automaton.h
       title: String/suffix_automaton.h
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: String/zfunc.h
       title: String/zfunc.h
   - name: .
@@ -605,5 +605,19 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/tests/sumdiv.test.cpp
       title: Math/tests/sumdiv.test.cpp
+  - name: String/tests
+    pages:
+    - icon: ':x:'
+      path: String/tests/lcp.test.cpp
+      title: String/tests/lcp.test.cpp
+    - icon: ':x:'
+      path: String/tests/manacher.test.cpp
+      title: String/tests/manacher.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: String/tests/suffix_array.test.cpp
+      title: String/tests/suffix_array.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: String/tests/zfunc.test.cpp
+      title: String/tests/zfunc.test.cpp
 layout: toppage
 ---
