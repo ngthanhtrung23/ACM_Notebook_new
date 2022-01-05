@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
+    title: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://codeforces.com/gym/101383
@@ -87,8 +90,9 @@ data:
   path: Math/modulo_anta.h
   requiredBy: []
   timestamp: '2021-12-19 03:39:59+08:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
 documentation_of: Math/modulo_anta.h
 layout: document
 redirect_from:

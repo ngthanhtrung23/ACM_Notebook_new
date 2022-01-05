@@ -74,7 +74,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/RMQ.h
       title: DataStructure/RMQ.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: DataStructure/SegTree.h
       title: DataStructure/SegTree.h
     - icon: ':warning:'
@@ -294,7 +294,7 @@ data:
     - icon: ':warning:'
       path: Math/modulo.h
       title: Math/modulo.h
-    - icon: ':warning:'
+    - icon: ':x:'
       path: Math/modulo_anta.h
       title: Math/modulo_anta.h
     - icon: ':warning:'
@@ -454,7 +454,7 @@ data:
       title: String/zfunc.h
   - name: .
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: buffered_reader.h
       title: buffered_reader.h
     - icon: ':warning:'
@@ -478,6 +478,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/rmq.test.cpp
       title: DataStructure/test/rmq.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/test/segment_tree_pointaddrangesum.test.cpp
+      title: DataStructure/test/segment_tree_pointaddrangesum.test.cpp
+    - icon: ':x:'
+      path: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
+      title: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/segment_tree_staticrmq.test.cpp
       title: DataStructure/test/segment_tree_staticrmq.test.cpp

@@ -15,9 +15,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/rmq.test.cpp
     title: DataStructure/test/rmq.test.cpp
-  _isVerificationFailed: false
+  - icon: ':heavy_check_mark:'
+    path: DataStructure/test/segment_tree_pointaddrangesum.test.cpp
+    title: DataStructure/test/segment_tree_pointaddrangesum.test.cpp
+  - icon: ':x:'
+    path: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
+    title: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"buffered_reader.h\"\nnamespace IO {\n    const int BUFSIZE\
@@ -49,10 +55,12 @@ data:
   path: buffered_reader.h
   requiredBy: []
   timestamp: '2021-12-30 01:16:19+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
   - DataStructure/test/fenwick.test.cpp
   - DataStructure/test/lca.test.cpp
+  - DataStructure/test/segment_tree_pointaddrangesum.test.cpp
   - DataStructure/test/rmq.test.cpp
   - DataStructure/test/fenwick_pointaddrangesum.test.cpp
 documentation_of: buffered_reader.h

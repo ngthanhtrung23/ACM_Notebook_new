@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: DataStructure/SegTree.h
     title: DataStructure/SegTree.h
   _extendedRequiredBy: []
@@ -71,10 +71,13 @@ data:
     \          }\n            sm = op(d[r], sm);\n        } while ((r & -r) != r);\n\
     \        return 0;\n    }\n\nprivate:\n    int _n, size, log;\n    vector<T> d;\n\
     \n    void update(int k) {\n        d[k] = op(d[2*k], d[2*k+1]);\n    }\n};\n\n\
-    struct MaxSegTreeOp {\n    static int op(int x, int y) {\n        return max(x,\
-    \ y);\n    }\n    static int e() {\n        return INT_MIN;\n    }\n};\n\nstruct\
-    \ MinSegTreeOp {\n    static int op(int x, int y) {\n        return min(x, y);\n\
-    \    }\n    static int e() {\n        return INT_MAX;\n    }\n};\n\n// Example\n\
+    // Examples: Commonly used SegTree ops: max / min / sum\nstruct MaxSegTreeOp {\n\
+    \    static int op(int x, int y) {\n        return max(x, y);\n    }\n    static\
+    \ int e() {\n        return INT_MIN;\n    }\n};\n\nstruct MinSegTreeOp {\n   \
+    \ static int op(int x, int y) {\n        return min(x, y);\n    }\n    static\
+    \ int e() {\n        return INT_MAX;\n    }\n};\n\nstruct SumSegTreeOp {\n   \
+    \ static long long op(long long x, long long y) {\n        return x + y;\n   \
+    \ }\n    static long long e() {\n        return 0;\n    }\n};\n\n// Example\n\
     // SegTree<int, MaxSegTreeOp::f, MaxSegTreeOp::e> seg_tree(a);\n// SegTree<int,\
     \ MinSegTreeOp::f, MinSegTreeOp::e> seg_tree(a);\n#line 6 \"DataStructure/test/segment_tree_staticrmq.test.cpp\"\
     \n\n#define REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)\n\nint32_t main()\
@@ -94,7 +97,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/segment_tree_staticrmq.test.cpp
   requiredBy: []
-  timestamp: '2022-01-05 23:20:29+08:00'
+  timestamp: '2022-01-05 23:36:58+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/segment_tree_staticrmq.test.cpp

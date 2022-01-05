@@ -4,11 +4,17 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: DataStructure/test/segment_tree_pointaddrangesum.test.cpp
+    title: DataStructure/test/segment_tree_pointaddrangesum.test.cpp
+  - icon: ':x:'
+    path: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
+    title: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
+  - icon: ':heavy_check_mark:'
     path: DataStructure/test/segment_tree_staticrmq.test.cpp
     title: DataStructure/test/segment_tree_staticrmq.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://atcoder.github.io/ac-library/master/document_en/segtree.html
@@ -73,10 +79,13 @@ data:
     \          }\n            sm = op(d[r], sm);\n        } while ((r & -r) != r);\n\
     \        return 0;\n    }\n\nprivate:\n    int _n, size, log;\n    vector<T> d;\n\
     \n    void update(int k) {\n        d[k] = op(d[2*k], d[2*k+1]);\n    }\n};\n\n\
-    struct MaxSegTreeOp {\n    static int op(int x, int y) {\n        return max(x,\
-    \ y);\n    }\n    static int e() {\n        return INT_MIN;\n    }\n};\n\nstruct\
-    \ MinSegTreeOp {\n    static int op(int x, int y) {\n        return min(x, y);\n\
-    \    }\n    static int e() {\n        return INT_MAX;\n    }\n};\n\n// Example\n\
+    // Examples: Commonly used SegTree ops: max / min / sum\nstruct MaxSegTreeOp {\n\
+    \    static int op(int x, int y) {\n        return max(x, y);\n    }\n    static\
+    \ int e() {\n        return INT_MIN;\n    }\n};\n\nstruct MinSegTreeOp {\n   \
+    \ static int op(int x, int y) {\n        return min(x, y);\n    }\n    static\
+    \ int e() {\n        return INT_MAX;\n    }\n};\n\nstruct SumSegTreeOp {\n   \
+    \ static long long op(long long x, long long y) {\n        return x + y;\n   \
+    \ }\n    static long long e() {\n        return 0;\n    }\n};\n\n// Example\n\
     // SegTree<int, MaxSegTreeOp::f, MaxSegTreeOp::e> seg_tree(a);\n// SegTree<int,\
     \ MinSegTreeOp::f, MinSegTreeOp::e> seg_tree(a);\n"
   code: "// SegTree, copied from AtCoder library\n// AtCoder doc: https://atcoder.github.io/ac-library/master/document_en/segtree.html\n\
@@ -133,19 +142,24 @@ data:
     \          }\n            sm = op(d[r], sm);\n        } while ((r & -r) != r);\n\
     \        return 0;\n    }\n\nprivate:\n    int _n, size, log;\n    vector<T> d;\n\
     \n    void update(int k) {\n        d[k] = op(d[2*k], d[2*k+1]);\n    }\n};\n\n\
-    struct MaxSegTreeOp {\n    static int op(int x, int y) {\n        return max(x,\
-    \ y);\n    }\n    static int e() {\n        return INT_MIN;\n    }\n};\n\nstruct\
-    \ MinSegTreeOp {\n    static int op(int x, int y) {\n        return min(x, y);\n\
-    \    }\n    static int e() {\n        return INT_MAX;\n    }\n};\n\n// Example\n\
+    // Examples: Commonly used SegTree ops: max / min / sum\nstruct MaxSegTreeOp {\n\
+    \    static int op(int x, int y) {\n        return max(x, y);\n    }\n    static\
+    \ int e() {\n        return INT_MIN;\n    }\n};\n\nstruct MinSegTreeOp {\n   \
+    \ static int op(int x, int y) {\n        return min(x, y);\n    }\n    static\
+    \ int e() {\n        return INT_MAX;\n    }\n};\n\nstruct SumSegTreeOp {\n   \
+    \ static long long op(long long x, long long y) {\n        return x + y;\n   \
+    \ }\n    static long long e() {\n        return 0;\n    }\n};\n\n// Example\n\
     // SegTree<int, MaxSegTreeOp::f, MaxSegTreeOp::e> seg_tree(a);\n// SegTree<int,\
     \ MinSegTreeOp::f, MinSegTreeOp::e> seg_tree(a);\n"
   dependsOn: []
   isVerificationFile: false
   path: DataStructure/SegTree.h
   requiredBy: []
-  timestamp: '2022-01-05 23:20:29+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2022-01-05 23:36:58+08:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
+  - DataStructure/test/segment_tree_pointaddrangesum.test.cpp
   - DataStructure/test/segment_tree_staticrmq.test.cpp
 documentation_of: DataStructure/SegTree.h
 layout: document
