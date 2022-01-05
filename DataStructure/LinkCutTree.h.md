@@ -6,15 +6,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/link_cut_tree_addpathsum.test.cpp
     title: DataStructure/test/link_cut_tree_addpathsum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/test/link_cut_tree_vertexaddsubtreesum.test.cpp
     title: DataStructure/test/link_cut_tree_vertexaddsubtreesum.test.cpp
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp
     title: DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://codeforces.com/blog/entry/67637?#comment-650424
@@ -72,15 +72,17 @@ data:
     \    pushUp(v);\n    }\n\n    T getPath(int u, int v) {\n        reroot(u);\n\
     \        access(v);\n        return nodes[v].path[1];\n    }\n\n    void set(int\
     \ u, T val) {\n        access(u);\n        nodes[u].self = val;\n        pushUp(u);\n\
-    \    }\n\n    T get(int u) {\n        return nodes[u].self;\n    }\n\n// private:\n\
-    \    void reroot(int x) {\n        access(x);\n        nodes[x].reverse ^= 1;\n\
-    \        pushDown(x);\n    }\n\n    int access(int x) {\n        int u = x, v\
-    \ = 0;\n        for (; u; v = u, u = nodes[u].parent) {\n            splay(u);\n\
-    \            int& ov = nodes[u].child[1];\n            nodes[u].vir += nodes[ov].sub;\n\
-    #ifndef PATH_QUERIES_ONLY\n            // T requires subtract for subtree queries\n\
-    \            nodes[u].vir -= nodes[v].sub;\n#endif\n\n            ov = v; pushUp(u);\n\
-    \        }\n        return splay(x), v;\n    }\n};\n\n// Example for custom type:\
-    \ // https://judge.yosupo.jp/problem/dynamic_tree_vertex_set_path_composite\n\
+    \    }\n\n    T get(int u) {\n        return nodes[u].self;\n    }\n\n    // Get\
+    \ aggregate of subtree(u). v is parent of u. There must exist edge(v, u) (?)\n\
+    \    T getSubtree(int u, int v) {\n        reroot(v); access(u);\n        return\
+    \ nodes[u].vir + nodes[u].self;\n    }\n\n// private:\n    void reroot(int x)\
+    \ {\n        access(x);\n        nodes[x].reverse ^= 1;\n        pushDown(x);\n\
+    \    }\n\n    int access(int x) {\n        int u = x, v = 0;\n        for (; u;\
+    \ v = u, u = nodes[u].parent) {\n            splay(u);\n            int& ov =\
+    \ nodes[u].child[1];\n            nodes[u].vir += nodes[ov].sub;\n#ifndef PATH_QUERIES_ONLY\n\
+    \            // T requires subtract for subtree queries\n            nodes[u].vir\
+    \ -= nodes[v].sub;\n#endif\n\n            ov = v; pushUp(u);\n        }\n    \
+    \    return splay(x), v;\n    }\n};\n\n// Example for custom type: // https://judge.yosupo.jp/problem/dynamic_tree_vertex_set_path_composite\n\
     // Since T doesn't support subtract -> comment out line\n//   nodes[u].vir -=\
     \ nodes[v].sub\n/**\nstruct T {\n    modular a, b;\n\n    T() : a(1), b(0) {}\n\
     \    T(modular _a, modular _b) : a(_a), b(_b) {}\n\n    // return f(g())\n   \
@@ -137,15 +139,17 @@ data:
     \    pushUp(v);\n    }\n\n    T getPath(int u, int v) {\n        reroot(u);\n\
     \        access(v);\n        return nodes[v].path[1];\n    }\n\n    void set(int\
     \ u, T val) {\n        access(u);\n        nodes[u].self = val;\n        pushUp(u);\n\
-    \    }\n\n    T get(int u) {\n        return nodes[u].self;\n    }\n\n// private:\n\
-    \    void reroot(int x) {\n        access(x);\n        nodes[x].reverse ^= 1;\n\
-    \        pushDown(x);\n    }\n\n    int access(int x) {\n        int u = x, v\
-    \ = 0;\n        for (; u; v = u, u = nodes[u].parent) {\n            splay(u);\n\
-    \            int& ov = nodes[u].child[1];\n            nodes[u].vir += nodes[ov].sub;\n\
-    #ifndef PATH_QUERIES_ONLY\n            // T requires subtract for subtree queries\n\
-    \            nodes[u].vir -= nodes[v].sub;\n#endif\n\n            ov = v; pushUp(u);\n\
-    \        }\n        return splay(x), v;\n    }\n};\n\n// Example for custom type:\
-    \ // https://judge.yosupo.jp/problem/dynamic_tree_vertex_set_path_composite\n\
+    \    }\n\n    T get(int u) {\n        return nodes[u].self;\n    }\n\n    // Get\
+    \ aggregate of subtree(u). v is parent of u. There must exist edge(v, u) (?)\n\
+    \    T getSubtree(int u, int v) {\n        reroot(v); access(u);\n        return\
+    \ nodes[u].vir + nodes[u].self;\n    }\n\n// private:\n    void reroot(int x)\
+    \ {\n        access(x);\n        nodes[x].reverse ^= 1;\n        pushDown(x);\n\
+    \    }\n\n    int access(int x) {\n        int u = x, v = 0;\n        for (; u;\
+    \ v = u, u = nodes[u].parent) {\n            splay(u);\n            int& ov =\
+    \ nodes[u].child[1];\n            nodes[u].vir += nodes[ov].sub;\n#ifndef PATH_QUERIES_ONLY\n\
+    \            // T requires subtract for subtree queries\n            nodes[u].vir\
+    \ -= nodes[v].sub;\n#endif\n\n            ov = v; pushUp(u);\n        }\n    \
+    \    return splay(x), v;\n    }\n};\n\n// Example for custom type: // https://judge.yosupo.jp/problem/dynamic_tree_vertex_set_path_composite\n\
     // Since T doesn't support subtract -> comment out line\n//   nodes[u].vir -=\
     \ nodes[v].sub\n/**\nstruct T {\n    modular a, b;\n\n    T() : a(1), b(0) {}\n\
     \    T(modular _a, modular _b) : a(_a), b(_b) {}\n\n    // return f(g())\n   \
@@ -157,8 +161,8 @@ data:
   isVerificationFile: false
   path: DataStructure/LinkCutTree.h
   requiredBy: []
-  timestamp: '2022-01-06 01:34:06+08:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2022-01-06 01:46:37+08:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/link_cut_tree_vertexaddsubtreesum.test.cpp
   - DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp

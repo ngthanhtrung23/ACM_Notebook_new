@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/LinkCutTree.h
     title: DataStructure/LinkCutTree.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/dynamic_tree_vertex_add_subtree_sum
@@ -45,8 +45,8 @@ data:
   isVerificationFile: true
   path: DataStructure/test/link_cut_tree_vertexaddsubtreesum.test.cpp
   requiredBy: []
-  timestamp: '2022-01-06 01:34:06+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2022-01-06 01:46:37+08:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/link_cut_tree_vertexaddsubtreesum.test.cpp
 layout: document

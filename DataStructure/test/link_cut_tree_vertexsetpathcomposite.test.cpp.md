@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/LinkCutTree.h
     title: DataStructure/LinkCutTree.h
   - icon: ':heavy_check_mark:'
@@ -58,7 +58,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp
   requiredBy: []
-  timestamp: '2022-01-06 01:34:06+08:00'
+  timestamp: '2022-01-06 01:46:37+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp
