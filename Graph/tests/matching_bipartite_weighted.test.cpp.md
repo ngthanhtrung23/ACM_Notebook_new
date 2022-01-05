@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Graph/Matching/HungarianLMH.h
     title: Graph/Matching/HungarianLMH.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/assignment
@@ -45,12 +45,12 @@ data:
     \ j; return ; }\n            qu[++rear] = my[j];\n        }\n}\n\nvoid enlarge()\
     \ {\n    do {\n        int i = trace[finish];\n        int next = mx[i];\n   \
     \     mx[i] = finish;\n        my[finish] = i;\n        finish = next;\n    }\
-    \ while (finish);\n}\n\nint mincost() {\n    FOR(i,1,N) fx[i] = *min_element(c[i]+1,\
+    \ while (finish);\n}\n\nlong long mincost() {\n    FOR(i,1,N) fx[i] = *min_element(c[i]+1,\
     \ c[i]+N+1);\n    FOR(j,1,N) {\n        fy[j] = c[1][j] - fx[1];\n        FOR(i,1,N)\
     \ {\n            fy[j] = min(fy[j], c[i][j] - fx[i]);\n        }\n    }\n    FOR(i,1,N)\
     \ {\n        start = i;\n        initBFS();\n        while (finish == 0) {\n \
     \           findAugPath();\n            if (!finish) subx_addy();\n        }\n\
-    \        enlarge();\n    }\n    int res = 0;\n    FOR(i,1,N) res += c[i][mx[i]];\n\
+    \        enlarge();\n    }\n    long long res = 0;\n    FOR(i,1,N) res += c[i][mx[i]];\n\
     \    return res;\n}\n#line 12 \"Graph/tests/matching_bipartite_weighted.test.cpp\"\
     \n\nint32_t main() {\n    cin >> N;\n    FOR(i,1,N) FOR(j,1,N) cin >> c[i][j];\n\
     \    cout << mincost() << '\\n';\n    FOR(i,1,N) {\n        cout << mx[i] - 1\
@@ -67,8 +67,8 @@ data:
   isVerificationFile: true
   path: Graph/tests/matching_bipartite_weighted.test.cpp
   requiredBy: []
-  timestamp: '2022-01-06 03:56:46+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2022-01-06 04:03:40+08:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Graph/tests/matching_bipartite_weighted.test.cpp
 layout: document

@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Graph/tests/matching_bipartite_weighted_2.test.cpp
     title: Graph/tests/matching_bipartite_weighted_2.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://hochiminh17.kattis.com/problems/engaging
@@ -74,7 +74,7 @@ data:
   path: Graph/Matching/Hungarian_short.h
   requiredBy: []
   timestamp: '2021-12-30 13:33:06+08:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Graph/tests/matching_bipartite_weighted_2.test.cpp
 documentation_of: Graph/Matching/Hungarian_short.h

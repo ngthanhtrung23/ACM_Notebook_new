@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Graph/tests/matching_bipartite_weighted.test.cpp
     title: Graph/tests/matching_bipartite_weighted.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://codeforces.com/contest/1437/problem/C
@@ -40,12 +40,12 @@ data:
     \ { finish = j; return ; }\n            qu[++rear] = my[j];\n        }\n}\n\n\
     void enlarge() {\n    do {\n        int i = trace[finish];\n        int next =\
     \ mx[i];\n        mx[i] = finish;\n        my[finish] = i;\n        finish = next;\n\
-    \    } while (finish);\n}\n\nint mincost() {\n    FOR(i,1,N) fx[i] = *min_element(c[i]+1,\
+    \    } while (finish);\n}\n\nlong long mincost() {\n    FOR(i,1,N) fx[i] = *min_element(c[i]+1,\
     \ c[i]+N+1);\n    FOR(j,1,N) {\n        fy[j] = c[1][j] - fx[1];\n        FOR(i,1,N)\
     \ {\n            fy[j] = min(fy[j], c[i][j] - fx[i]);\n        }\n    }\n    FOR(i,1,N)\
     \ {\n        start = i;\n        initBFS();\n        while (finish == 0) {\n \
     \           findAugPath();\n            if (!finish) subx_addy();\n        }\n\
-    \        enlarge();\n    }\n    int res = 0;\n    FOR(i,1,N) res += c[i][mx[i]];\n\
+    \        enlarge();\n    }\n    long long res = 0;\n    FOR(i,1,N) res += c[i][mx[i]];\n\
     \    return res;\n}\n"
   code: "// Index from 1\n// Min cost matching\n// Usage: init(); for[i,j,cost] addEdge(i,\
     \ j, cost)\n//\n// Tested:\n// - SGU 210\n// - SGU 206\n// - https://codeforces.com/contest/1437/problem/C\n\
@@ -73,19 +73,19 @@ data:
     \ { finish = j; return ; }\n            qu[++rear] = my[j];\n        }\n}\n\n\
     void enlarge() {\n    do {\n        int i = trace[finish];\n        int next =\
     \ mx[i];\n        mx[i] = finish;\n        my[finish] = i;\n        finish = next;\n\
-    \    } while (finish);\n}\n\nint mincost() {\n    FOR(i,1,N) fx[i] = *min_element(c[i]+1,\
+    \    } while (finish);\n}\n\nlong long mincost() {\n    FOR(i,1,N) fx[i] = *min_element(c[i]+1,\
     \ c[i]+N+1);\n    FOR(j,1,N) {\n        fy[j] = c[1][j] - fx[1];\n        FOR(i,1,N)\
     \ {\n            fy[j] = min(fy[j], c[i][j] - fx[i]);\n        }\n    }\n    FOR(i,1,N)\
     \ {\n        start = i;\n        initBFS();\n        while (finish == 0) {\n \
     \           findAugPath();\n            if (!finish) subx_addy();\n        }\n\
-    \        enlarge();\n    }\n    int res = 0;\n    FOR(i,1,N) res += c[i][mx[i]];\n\
+    \        enlarge();\n    }\n    long long res = 0;\n    FOR(i,1,N) res += c[i][mx[i]];\n\
     \    return res;\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: Graph/Matching/HungarianLMH.h
   requiredBy: []
-  timestamp: '2021-12-19 00:28:43+08:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2022-01-06 04:03:40+08:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Graph/tests/matching_bipartite_weighted.test.cpp
 documentation_of: Graph/Matching/HungarianLMH.h

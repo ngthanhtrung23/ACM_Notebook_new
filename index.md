@@ -182,10 +182,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: Graph/Matching/GeneralMatching.h
       title: Graph/Matching/GeneralMatching.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/Matching/HungarianLMH.h
       title: Graph/Matching/HungarianLMH.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/Matching/Hungarian_short.h
       title: Graph/Matching/Hungarian_short.h
     - icon: ':warning:'
@@ -551,10 +551,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: Graph/tests/matching_bipartite.test.cpp
       title: Graph/tests/matching_bipartite.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/matching_bipartite_weighted.test.cpp
       title: Graph/tests/matching_bipartite_weighted.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/matching_bipartite_weighted_2.test.cpp
       title: Graph/tests/matching_bipartite_weighted_2.test.cpp
     - icon: ':heavy_check_mark:'
