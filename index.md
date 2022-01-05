@@ -41,9 +41,9 @@ data:
     - icon: ':warning:'
       path: DataStructure/HeavyLight.cpp
       title: DataStructure/HeavyLight.cpp
-    - icon: ':warning:'
-      path: DataStructure/HeavyLight_adamant.cpp
-      title: DataStructure/HeavyLight_adamant.cpp
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/HeavyLight_adamant.h
+      title: DataStructure/HeavyLight_adamant.h
     - icon: ':warning:'
       path: DataStructure/KDTree.h
       title: DataStructure/KDTree.h
@@ -472,6 +472,15 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/fenwick_pointaddrangesum.test.cpp
       title: DataStructure/test/fenwick_pointaddrangesum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/test/hld_vertexaddpathsum.test.cpp
+      title: DataStructure/test/hld_vertexaddpathsum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/test/hld_vertexaddsubtreesum.test.cpp
+      title: DataStructure/test/hld_vertexaddsubtreesum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/test/hld_vertexsetpathcomposite.test.cpp
+      title: DataStructure/test/hld_vertexsetpathcomposite.test.cpp
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/lca.test.cpp
       title: DataStructure/test/lca.test.cpp

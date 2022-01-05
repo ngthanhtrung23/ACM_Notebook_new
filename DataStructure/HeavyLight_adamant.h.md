@@ -2,10 +2,19 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: DataStructure/test/hld_vertexaddpathsum.test.cpp
+    title: DataStructure/test/hld_vertexaddpathsum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: DataStructure/test/hld_vertexaddsubtreesum.test.cpp
+    title: DataStructure/test/hld_vertexaddsubtreesum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: DataStructure/test/hld_vertexsetpathcomposite.test.cpp
+    title: DataStructure/test/hld_vertexsetpathcomposite.test.cpp
   _isVerificationFailed: false
-  _pathExtension: cpp
-  _verificationStatusIcon: ':warning:'
+  _pathExtension: h
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://judge.yosupo.jp/problem/vertex_add_path_sum
@@ -19,8 +28,8 @@ data:
     - https://oj.vnoi.info/problem/pwalk
     - https://oj.vnoi.info/problem/qtree3
     - https://oj.vnoi.info/problem/qtreex
-  bundledCode: "#line 1 \"DataStructure/HeavyLight_adamant.cpp\"\n// HeavyLight\n\
-    // Index from 0\n// Best used with SegTree.h\n//\n// Usage:\n// HLD hld(g, root);\n\
+  bundledCode: "#line 1 \"DataStructure/HeavyLight_adamant.h\"\n// HeavyLight\n//\
+    \ Index from 0\n// Best used with SegTree.h\n//\n// Usage:\n// HLD hld(g, root);\n\
     // // build segment tree. Note that we must use hld.order[i]\n// vector<T> nodes;\n\
     // for (int i = 0; i < n; i++)\n//   nodes.push_back(initial_value[hld.order[i]])\n\
     // SegTree<S, op, e> st(nodes);\n//\n// // Update path\n// hld.apply_path(from,\
@@ -182,15 +191,18 @@ data:
     \            dfs_hld(v);\n        }\n        out[u] = dfs_number;\n    }\n};\n"
   dependsOn: []
   isVerificationFile: false
-  path: DataStructure/HeavyLight_adamant.cpp
+  path: DataStructure/HeavyLight_adamant.h
   requiredBy: []
-  timestamp: '2022-01-05 22:20:16+08:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
-documentation_of: DataStructure/HeavyLight_adamant.cpp
+  timestamp: '2022-01-06 00:22:29+08:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - DataStructure/test/hld_vertexsetpathcomposite.test.cpp
+  - DataStructure/test/hld_vertexaddpathsum.test.cpp
+  - DataStructure/test/hld_vertexaddsubtreesum.test.cpp
+documentation_of: DataStructure/HeavyLight_adamant.h
 layout: document
 redirect_from:
-- /library/DataStructure/HeavyLight_adamant.cpp
-- /library/DataStructure/HeavyLight_adamant.cpp.html
-title: DataStructure/HeavyLight_adamant.cpp
+- /library/DataStructure/HeavyLight_adamant.h
+- /library/DataStructure/HeavyLight_adamant.h.html
+title: DataStructure/HeavyLight_adamant.h
 ---

@@ -4,6 +4,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: DataStructure/test/hld_vertexsetpathcomposite.test.cpp
+    title: DataStructure/test/hld_vertexsetpathcomposite.test.cpp
+  - icon: ':heavy_check_mark:'
     path: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
     title: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
   - icon: ':heavy_check_mark:'
@@ -96,6 +99,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
+  - DataStructure/test/hld_vertexsetpathcomposite.test.cpp
   - DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
 documentation_of: Math/modulo_anta.h
 layout: document

@@ -4,6 +4,15 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: DataStructure/test/hld_vertexaddpathsum.test.cpp
+    title: DataStructure/test/hld_vertexaddpathsum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: DataStructure/test/hld_vertexaddsubtreesum.test.cpp
+    title: DataStructure/test/hld_vertexaddsubtreesum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: DataStructure/test/hld_vertexsetpathcomposite.test.cpp
+    title: DataStructure/test/hld_vertexsetpathcomposite.test.cpp
+  - icon: ':heavy_check_mark:'
     path: DataStructure/test/segment_tree_pointaddrangesum.test.cpp
     title: DataStructure/test/segment_tree_pointaddrangesum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -159,8 +168,11 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
+  - DataStructure/test/hld_vertexsetpathcomposite.test.cpp
+  - DataStructure/test/hld_vertexaddpathsum.test.cpp
   - DataStructure/test/segment_tree_pointaddrangesum.test.cpp
   - DataStructure/test/segment_tree_staticrmq.test.cpp
+  - DataStructure/test/hld_vertexaddsubtreesum.test.cpp
 documentation_of: DataStructure/SegTree.h
 layout: document
 redirect_from:
