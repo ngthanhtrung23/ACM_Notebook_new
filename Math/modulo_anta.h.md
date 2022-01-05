@@ -7,6 +7,9 @@ data:
     path: DataStructure/test/hld_vertexsetpathcomposite.test.cpp
     title: DataStructure/test/hld_vertexsetpathcomposite.test.cpp
   - icon: ':heavy_check_mark:'
+    path: DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp
+    title: DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp
+  - icon: ':heavy_check_mark:'
     path: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
     title: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
   - icon: ':heavy_check_mark:'
@@ -104,6 +107,7 @@ data:
   - DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
   - DataStructure/test/hld_vertexsetpathcomposite.test.cpp
   - DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
+  - DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp
   - DataStructure/test/splay_tree.test.cpp
 documentation_of: Math/modulo_anta.h
 layout: document

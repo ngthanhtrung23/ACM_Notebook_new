@@ -59,7 +59,7 @@ data:
     - icon: ':warning:'
       path: DataStructure/LiChaoSegTree.h
       title: DataStructure/LiChaoSegTree.h
-    - icon: ':warning:'
+    - icon: ':question:'
       path: DataStructure/LinkCutTree.h
       title: DataStructure/LinkCutTree.h
     - icon: ':warning:'
@@ -484,6 +484,15 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/lca.test.cpp
       title: DataStructure/test/lca.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/test/link_cut_tree_addpathsum.test.cpp
+      title: DataStructure/test/link_cut_tree_addpathsum.test.cpp
+    - icon: ':x:'
+      path: DataStructure/test/link_cut_tree_vertexaddsubtreesum.test.cpp
+      title: DataStructure/test/link_cut_tree_vertexaddsubtreesum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp
+      title: DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/rmq.test.cpp
       title: DataStructure/test/rmq.test.cpp

@@ -2,10 +2,19 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: DataStructure/test/link_cut_tree_addpathsum.test.cpp
+    title: DataStructure/test/link_cut_tree_addpathsum.test.cpp
+  - icon: ':x:'
+    path: DataStructure/test/link_cut_tree_vertexaddsubtreesum.test.cpp
+    title: DataStructure/test/link_cut_tree_vertexaddsubtreesum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp
+    title: DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://codeforces.com/blog/entry/67637?#comment-650424
@@ -20,32 +29,34 @@ data:
     // - Not using template here, since inheritance becomes very ugly\n// - Doesn't\
     \ support lazy update (so no subtree updates)\n//\n// Tested:\n// - https://judge.yosupo.jp/problem/dynamic_tree_subtree_add_subtree_sum\n\
     // - https://judge.yosupo.jp/problem/dynamic_tree_vertex_set_path_composite\n\
-    // - https://judge.yosupo.jp/problem/dynamic_tree_vertex_add_subtree_sum\nusing\
-    \ T = long long;\nstruct SplayTree { // can we replace SplayTreeById and use this\
-    \ only?\n    struct Node {\n        array<int, 2> child = {0, 0};\n        int\
-    \ parent = 0;\n\n        // Path aggregates\n        // - path[0] = go from left\
-    \ -> right\n        // - path[1] = go from right -> left\n        array<T, 2>\
-    \ path;  // default to T constructor\n        T self;\n\n        // Subtree aggregates\n\
-    \        T sub, vir;\n\n        bool reverse = false;\n    };\n    vector<Node>\
-    \ nodes;\n\n    SplayTree(int n) : nodes(n + 1) {}\n\n    void splay(int x) {\n\
-    \        for (pushDown(x); ~getDirection(x); ) {\n            int y = nodes[x].parent;\n\
-    \            int z = nodes[y].parent;\n            pushDown(z);\n            pushDown(y);\n\
-    \            pushDown(x);\n            int dx = getDirection(x);\n           \
-    \ int dy = getDirection(y);\n            if (~dy) rotate(dx != dy ? x : y);\n\
-    \            rotate(x);\n        }\n    }\n\n// private:\n    // Return t where\
-    \ nodes[parent(x)].child[t] == x\n    int getDirection(int x) {\n        int p\
-    \ = nodes[x].parent;\n        if (!p) return -1;\n        return nodes[p].child[0]\
-    \ == x ? 0 : nodes[p].child[1] == x ? 1 : -1;\n    }\n\n    /**\n     * Before:\n\
-    \     *    z\n     *    |\n     *    y\n     *   /\n     *  x\n     *   \\\n \
-    \    *   xchild\n     * \n     * After:\n     *    z\n     *    |\n     *    x\n\
-    \     *     \\\n     *      y\n     *     /\n     *   xchild\n     */\n    void\
-    \ rotate(int x) {\n        int y = nodes[x].parent, dx = getDirection(x);\n  \
-    \      int z = nodes[y].parent, dy = getDirection(y);\n\n        setChild(y, nodes[x].child[!dx],\
-    \ dx);\n        setChild(x, y, !dx);\n        if (~dy) setChild(z, x, dy);\n \
-    \       nodes[x].parent = z;\n    }\n\n    void pushDown(int x) {\n        if\
-    \ (!x) return;\n        if (nodes[x].reverse) {\n            auto [l, r] = nodes[x].child;\n\
-    \            nodes[l].reverse ^= 1;\n            nodes[r].reverse ^= 1;\n\n  \
-    \          swap(nodes[x].child[0], nodes[x].child[1]);\n            swap(nodes[x].path[0],\
+    // - https://judge.yosupo.jp/problem/dynamic_tree_vertex_add_subtree_sum\n\n//\
+    \ Add this for path queries only\n// #define PATH_QUERIES_ONLY\n\n// TODO: Specify\
+    \ T\n// using T = long long;\nstruct SplayTree { // can we replace SplayTreeById\
+    \ and use this only?\n    struct Node {\n        array<int, 2> child = {0, 0};\n\
+    \        int parent = 0;\n\n        // Path aggregates\n        // - path[0] =\
+    \ go from left -> right\n        // - path[1] = go from right -> left\n      \
+    \  array<T, 2> path;  // default to T constructor\n        T self;\n\n       \
+    \ // Subtree aggregates\n        T sub, vir;\n\n        bool reverse = false;\n\
+    \    };\n    vector<Node> nodes;\n\n    SplayTree(int n) : nodes(n + 1) {}\n\n\
+    \    void splay(int x) {\n        for (pushDown(x); ~getDirection(x); ) {\n  \
+    \          int y = nodes[x].parent;\n            int z = nodes[y].parent;\n  \
+    \          pushDown(z);\n            pushDown(y);\n            pushDown(x);\n\
+    \            int dx = getDirection(x);\n            int dy = getDirection(y);\n\
+    \            if (~dy) rotate(dx != dy ? x : y);\n            rotate(x);\n    \
+    \    }\n    }\n\n// private:\n    // Return t where nodes[parent(x)].child[t]\
+    \ == x\n    int getDirection(int x) {\n        int p = nodes[x].parent;\n    \
+    \    if (!p) return -1;\n        return nodes[p].child[0] == x ? 0 : nodes[p].child[1]\
+    \ == x ? 1 : -1;\n    }\n\n    /**\n     * Before:\n     *    z\n     *    |\n\
+    \     *    y\n     *   /\n     *  x\n     *   \\\n     *   xchild\n     * \n \
+    \    * After:\n     *    z\n     *    |\n     *    x\n     *     \\\n     *  \
+    \    y\n     *     /\n     *   xchild\n     */\n    void rotate(int x) {\n   \
+    \     int y = nodes[x].parent, dx = getDirection(x);\n        int z = nodes[y].parent,\
+    \ dy = getDirection(y);\n\n        setChild(y, nodes[x].child[!dx], dx);\n   \
+    \     setChild(x, y, !dx);\n        if (~dy) setChild(z, x, dy);\n        nodes[x].parent\
+    \ = z;\n    }\n\n    void pushDown(int x) {\n        if (!x) return;\n       \
+    \ if (nodes[x].reverse) {\n            auto [l, r] = nodes[x].child;\n       \
+    \     nodes[l].reverse ^= 1;\n            nodes[r].reverse ^= 1;\n\n         \
+    \   swap(nodes[x].child[0], nodes[x].child[1]);\n            swap(nodes[x].path[0],\
     \ nodes[x].path[1]);\n            nodes[x].reverse = false;\n        }\n    }\n\
     \n    void pushUp(int x) {\n        auto [l, r] = nodes[x].child;\n        pushDown(l);\
     \ pushDown(r);\n\n        nodes[x].path[0] = nodes[l].path[0] + nodes[x].self\
@@ -66,9 +77,10 @@ data:
     \        pushDown(x);\n    }\n\n    int access(int x) {\n        int u = x, v\
     \ = 0;\n        for (; u; v = u, u = nodes[u].parent) {\n            splay(u);\n\
     \            int& ov = nodes[u].child[1];\n            nodes[u].vir += nodes[ov].sub;\n\
-    \            // T requires subtract for subtree queries\n            nodes[u].vir\
-    \ -= nodes[v].sub;\n\n            ov = v; pushUp(u);\n        }\n        return\
-    \ splay(x), v;\n    }\n};\n\n// Example for custom type: // https://judge.yosupo.jp/problem/dynamic_tree_vertex_set_path_composite\n\
+    #ifndef PATH_QUERIES_ONLY\n            // T requires subtract for subtree queries\n\
+    \            nodes[u].vir -= nodes[v].sub;\n#endif\n\n            ov = v; pushUp(u);\n\
+    \        }\n        return splay(x), v;\n    }\n};\n\n// Example for custom type:\
+    \ // https://judge.yosupo.jp/problem/dynamic_tree_vertex_set_path_composite\n\
     // Since T doesn't support subtract -> comment out line\n//   nodes[u].vir -=\
     \ nodes[v].sub\n/**\nstruct T {\n    modular a, b;\n\n    T() : a(1), b(0) {}\n\
     \    T(modular _a, modular _b) : a(_a), b(_b) {}\n\n    // return f(g())\n   \
@@ -82,32 +94,34 @@ data:
     // - Not using template here, since inheritance becomes very ugly\n// - Doesn't\
     \ support lazy update (so no subtree updates)\n//\n// Tested:\n// - https://judge.yosupo.jp/problem/dynamic_tree_subtree_add_subtree_sum\n\
     // - https://judge.yosupo.jp/problem/dynamic_tree_vertex_set_path_composite\n\
-    // - https://judge.yosupo.jp/problem/dynamic_tree_vertex_add_subtree_sum\nusing\
-    \ T = long long;\nstruct SplayTree { // can we replace SplayTreeById and use this\
-    \ only?\n    struct Node {\n        array<int, 2> child = {0, 0};\n        int\
-    \ parent = 0;\n\n        // Path aggregates\n        // - path[0] = go from left\
-    \ -> right\n        // - path[1] = go from right -> left\n        array<T, 2>\
-    \ path;  // default to T constructor\n        T self;\n\n        // Subtree aggregates\n\
-    \        T sub, vir;\n\n        bool reverse = false;\n    };\n    vector<Node>\
-    \ nodes;\n\n    SplayTree(int n) : nodes(n + 1) {}\n\n    void splay(int x) {\n\
-    \        for (pushDown(x); ~getDirection(x); ) {\n            int y = nodes[x].parent;\n\
-    \            int z = nodes[y].parent;\n            pushDown(z);\n            pushDown(y);\n\
-    \            pushDown(x);\n            int dx = getDirection(x);\n           \
-    \ int dy = getDirection(y);\n            if (~dy) rotate(dx != dy ? x : y);\n\
-    \            rotate(x);\n        }\n    }\n\n// private:\n    // Return t where\
-    \ nodes[parent(x)].child[t] == x\n    int getDirection(int x) {\n        int p\
-    \ = nodes[x].parent;\n        if (!p) return -1;\n        return nodes[p].child[0]\
-    \ == x ? 0 : nodes[p].child[1] == x ? 1 : -1;\n    }\n\n    /**\n     * Before:\n\
-    \     *    z\n     *    |\n     *    y\n     *   /\n     *  x\n     *   \\\n \
-    \    *   xchild\n     * \n     * After:\n     *    z\n     *    |\n     *    x\n\
-    \     *     \\\n     *      y\n     *     /\n     *   xchild\n     */\n    void\
-    \ rotate(int x) {\n        int y = nodes[x].parent, dx = getDirection(x);\n  \
-    \      int z = nodes[y].parent, dy = getDirection(y);\n\n        setChild(y, nodes[x].child[!dx],\
-    \ dx);\n        setChild(x, y, !dx);\n        if (~dy) setChild(z, x, dy);\n \
-    \       nodes[x].parent = z;\n    }\n\n    void pushDown(int x) {\n        if\
-    \ (!x) return;\n        if (nodes[x].reverse) {\n            auto [l, r] = nodes[x].child;\n\
-    \            nodes[l].reverse ^= 1;\n            nodes[r].reverse ^= 1;\n\n  \
-    \          swap(nodes[x].child[0], nodes[x].child[1]);\n            swap(nodes[x].path[0],\
+    // - https://judge.yosupo.jp/problem/dynamic_tree_vertex_add_subtree_sum\n\n//\
+    \ Add this for path queries only\n// #define PATH_QUERIES_ONLY\n\n// TODO: Specify\
+    \ T\n// using T = long long;\nstruct SplayTree { // can we replace SplayTreeById\
+    \ and use this only?\n    struct Node {\n        array<int, 2> child = {0, 0};\n\
+    \        int parent = 0;\n\n        // Path aggregates\n        // - path[0] =\
+    \ go from left -> right\n        // - path[1] = go from right -> left\n      \
+    \  array<T, 2> path;  // default to T constructor\n        T self;\n\n       \
+    \ // Subtree aggregates\n        T sub, vir;\n\n        bool reverse = false;\n\
+    \    };\n    vector<Node> nodes;\n\n    SplayTree(int n) : nodes(n + 1) {}\n\n\
+    \    void splay(int x) {\n        for (pushDown(x); ~getDirection(x); ) {\n  \
+    \          int y = nodes[x].parent;\n            int z = nodes[y].parent;\n  \
+    \          pushDown(z);\n            pushDown(y);\n            pushDown(x);\n\
+    \            int dx = getDirection(x);\n            int dy = getDirection(y);\n\
+    \            if (~dy) rotate(dx != dy ? x : y);\n            rotate(x);\n    \
+    \    }\n    }\n\n// private:\n    // Return t where nodes[parent(x)].child[t]\
+    \ == x\n    int getDirection(int x) {\n        int p = nodes[x].parent;\n    \
+    \    if (!p) return -1;\n        return nodes[p].child[0] == x ? 0 : nodes[p].child[1]\
+    \ == x ? 1 : -1;\n    }\n\n    /**\n     * Before:\n     *    z\n     *    |\n\
+    \     *    y\n     *   /\n     *  x\n     *   \\\n     *   xchild\n     * \n \
+    \    * After:\n     *    z\n     *    |\n     *    x\n     *     \\\n     *  \
+    \    y\n     *     /\n     *   xchild\n     */\n    void rotate(int x) {\n   \
+    \     int y = nodes[x].parent, dx = getDirection(x);\n        int z = nodes[y].parent,\
+    \ dy = getDirection(y);\n\n        setChild(y, nodes[x].child[!dx], dx);\n   \
+    \     setChild(x, y, !dx);\n        if (~dy) setChild(z, x, dy);\n        nodes[x].parent\
+    \ = z;\n    }\n\n    void pushDown(int x) {\n        if (!x) return;\n       \
+    \ if (nodes[x].reverse) {\n            auto [l, r] = nodes[x].child;\n       \
+    \     nodes[l].reverse ^= 1;\n            nodes[r].reverse ^= 1;\n\n         \
+    \   swap(nodes[x].child[0], nodes[x].child[1]);\n            swap(nodes[x].path[0],\
     \ nodes[x].path[1]);\n            nodes[x].reverse = false;\n        }\n    }\n\
     \n    void pushUp(int x) {\n        auto [l, r] = nodes[x].child;\n        pushDown(l);\
     \ pushDown(r);\n\n        nodes[x].path[0] = nodes[l].path[0] + nodes[x].self\
@@ -128,9 +142,10 @@ data:
     \        pushDown(x);\n    }\n\n    int access(int x) {\n        int u = x, v\
     \ = 0;\n        for (; u; v = u, u = nodes[u].parent) {\n            splay(u);\n\
     \            int& ov = nodes[u].child[1];\n            nodes[u].vir += nodes[ov].sub;\n\
-    \            // T requires subtract for subtree queries\n            nodes[u].vir\
-    \ -= nodes[v].sub;\n\n            ov = v; pushUp(u);\n        }\n        return\
-    \ splay(x), v;\n    }\n};\n\n// Example for custom type: // https://judge.yosupo.jp/problem/dynamic_tree_vertex_set_path_composite\n\
+    #ifndef PATH_QUERIES_ONLY\n            // T requires subtract for subtree queries\n\
+    \            nodes[u].vir -= nodes[v].sub;\n#endif\n\n            ov = v; pushUp(u);\n\
+    \        }\n        return splay(x), v;\n    }\n};\n\n// Example for custom type:\
+    \ // https://judge.yosupo.jp/problem/dynamic_tree_vertex_set_path_composite\n\
     // Since T doesn't support subtract -> comment out line\n//   nodes[u].vir -=\
     \ nodes[v].sub\n/**\nstruct T {\n    modular a, b;\n\n    T() : a(1), b(0) {}\n\
     \    T(modular _a, modular _b) : a(_a), b(_b) {}\n\n    // return f(g())\n   \
@@ -142,9 +157,12 @@ data:
   isVerificationFile: false
   path: DataStructure/LinkCutTree.h
   requiredBy: []
-  timestamp: '2022-01-03 18:27:30+08:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2022-01-06 01:34:06+08:00'
+  verificationStatus: LIBRARY_SOME_WA
+  verifiedWith:
+  - DataStructure/test/link_cut_tree_vertexaddsubtreesum.test.cpp
+  - DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp
+  - DataStructure/test/link_cut_tree_addpathsum.test.cpp
 documentation_of: DataStructure/LinkCutTree.h
 layout: document
 redirect_from:
