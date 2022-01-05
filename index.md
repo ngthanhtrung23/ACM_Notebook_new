@@ -189,10 +189,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: Graph/dijkstra.h
       title: Graph/dijkstra.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/find_triangles.h
       title: Graph/find_triangles.h
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: Graph/tree_diameter.h
       title: Graph/tree_diameter.h
   - name: Graph/Matching
@@ -564,7 +564,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: Graph/tests/strongly_connected.test.cpp
       title: Graph/tests/strongly_connected.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
+      path: Graph/tests/tree_diameter.test.cpp
+      title: Graph/tests/tree_diameter.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/triangles.test.cpp
       title: Graph/tests/triangles.test.cpp
 layout: toppage

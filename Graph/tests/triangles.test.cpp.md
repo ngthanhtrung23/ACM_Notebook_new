@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Graph/find_triangles.h
     title: Graph/find_triangles.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/enumerate_triangles
@@ -35,29 +35,29 @@ data:
     \ good[j] = false;\n    }\n    return res;\n}\n#line 7 \"Graph/tests/triangles.test.cpp\"\
     \n\n#define REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)\n\nint32_t main()\
     \ {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n, m; cin >> n >> m;\n\
-    \    vector<int> xs(n);\n    REP(i,n) cin >> xs[i];\n\n    vector<pair<int,int>>\
+    \    vector<long long> xs(n);\n    REP(i,n) cin >> xs[i];\n\n    vector<pair<int,int>>\
     \ edges(m);\n    for (auto& [u, v] : edges) {\n        cin >> u >> v;\n    }\n\
-    \n    auto res = find_all_triangles(n, edges);\n    int sum = 0;\n    const int\
-    \ MOD = 998244353;\n    for (auto [i, j, k] : res) {\n        sum = (sum + xs[i]\
-    \ * xs[j] % MOD * xs[k]) % MOD;\n    }\n    cout << sum << endl;\n    return 0;\n\
-    }\n"
+    \n    auto res = find_all_triangles(n, edges);\n    long long sum = 0;\n    const\
+    \ int MOD = 998244353;\n    for (auto [i, j, k] : res) {\n        sum = (sum +\
+    \ xs[i] * xs[j] % MOD * xs[k]) % MOD;\n    }\n    cout << sum << endl;\n    return\
+    \ 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/enumerate_triangles\"\n\
     \n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../find_triangles.h\"\
     \n\n#define REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)\n\nint32_t main()\
     \ {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n, m; cin >> n >> m;\n\
-    \    vector<int> xs(n);\n    REP(i,n) cin >> xs[i];\n\n    vector<pair<int,int>>\
+    \    vector<long long> xs(n);\n    REP(i,n) cin >> xs[i];\n\n    vector<pair<int,int>>\
     \ edges(m);\n    for (auto& [u, v] : edges) {\n        cin >> u >> v;\n    }\n\
-    \n    auto res = find_all_triangles(n, edges);\n    int sum = 0;\n    const int\
-    \ MOD = 998244353;\n    for (auto [i, j, k] : res) {\n        sum = (sum + xs[i]\
-    \ * xs[j] % MOD * xs[k]) % MOD;\n    }\n    cout << sum << endl;\n    return 0;\n\
-    }\n"
+    \n    auto res = find_all_triangles(n, edges);\n    long long sum = 0;\n    const\
+    \ int MOD = 998244353;\n    for (auto [i, j, k] : res) {\n        sum = (sum +\
+    \ xs[i] * xs[j] % MOD * xs[k]) % MOD;\n    }\n    cout << sum << endl;\n    return\
+    \ 0;\n}\n"
   dependsOn:
   - Graph/find_triangles.h
   isVerificationFile: true
   path: Graph/tests/triangles.test.cpp
   requiredBy: []
-  timestamp: '2022-01-06 04:24:18+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2022-01-06 04:27:27+08:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Graph/tests/triangles.test.cpp
 layout: document

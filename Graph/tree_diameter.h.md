@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: Graph/tests/tree_diameter.test.cpp
+    title: Graph/tests/tree_diameter.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://judge.yosupo.jp/problem/tree_diameter
@@ -38,8 +41,9 @@ data:
   path: Graph/tree_diameter.h
   requiredBy: []
   timestamp: '2021-12-31 14:19:54+08:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - Graph/tests/tree_diameter.test.cpp
 documentation_of: Graph/tree_diameter.h
 layout: document
 redirect_from:
