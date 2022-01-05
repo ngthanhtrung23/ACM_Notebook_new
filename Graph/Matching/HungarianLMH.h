@@ -96,7 +96,7 @@ void enlarge() {
     } while (finish);
 }
 
-int mincost() {
+long long mincost() {
     FOR(i,1,N) fx[i] = *min_element(c[i]+1, c[i]+N+1);
     FOR(j,1,N) {
         fy[j] = c[1][j] - fx[1];
@@ -113,7 +113,7 @@ int mincost() {
         }
         enlarge();
     }
-    int res = 0;
+    long long res = 0;
     FOR(i,1,N) res += c[i][mx[i]];
     return res;
 }
