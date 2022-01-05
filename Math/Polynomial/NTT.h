@@ -128,9 +128,10 @@ private:
     }
 };
 
+/* Examples
 const int MOD0 = 1004535809; //2^21 * 479 + 1
 const int MOD1 = 1012924417; //2^21 * 483 + 1
 const int MOD2 = 998244353;  //2^20 * 476 + 1
 NTT<MOD0, 1 << 21> ntt0;
 NTT<MOD1, 1 << 21> ntt1;
-
+*/
