@@ -6,6 +6,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/fenwick.test.cpp
     title: DataStructure/test/fenwick.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: DataStructure/test/fenwick_pointaddrangesum.test.cpp
+    title: DataStructure/test/fenwick_pointaddrangesum.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -47,6 +50,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/fenwick.test.cpp
+  - DataStructure/test/fenwick_pointaddrangesum.test.cpp
 documentation_of: DataStructure/Fenwick.h
 layout: document
 redirect_from:

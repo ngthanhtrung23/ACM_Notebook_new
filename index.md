@@ -470,6 +470,9 @@ data:
       path: DataStructure/test/fenwick.test.cpp
       title: DataStructure/test/fenwick.test.cpp
     - icon: ':heavy_check_mark:'
+      path: DataStructure/test/fenwick_pointaddrangesum.test.cpp
+      title: DataStructure/test/fenwick_pointaddrangesum.test.cpp
+    - icon: ':heavy_check_mark:'
       path: DataStructure/test/lca.test.cpp
       title: DataStructure/test/lca.test.cpp
     - icon: ':heavy_check_mark:'

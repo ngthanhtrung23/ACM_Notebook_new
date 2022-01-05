@@ -7,6 +7,9 @@ data:
     path: DataStructure/test/fenwick.test.cpp
     title: DataStructure/test/fenwick.test.cpp
   - icon: ':heavy_check_mark:'
+    path: DataStructure/test/fenwick_pointaddrangesum.test.cpp
+    title: DataStructure/test/fenwick_pointaddrangesum.test.cpp
+  - icon: ':heavy_check_mark:'
     path: DataStructure/test/lca.test.cpp
     title: DataStructure/test/lca.test.cpp
   - icon: ':heavy_check_mark:'
@@ -51,6 +54,7 @@ data:
   - DataStructure/test/fenwick.test.cpp
   - DataStructure/test/lca.test.cpp
   - DataStructure/test/rmq.test.cpp
+  - DataStructure/test/fenwick_pointaddrangesum.test.cpp
 documentation_of: buffered_reader.h
 layout: document
 redirect_from:
