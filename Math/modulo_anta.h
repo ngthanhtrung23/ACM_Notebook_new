@@ -31,7 +31,6 @@ struct ModInt {
     unsigned x;
 
     constexpr ModInt() : x(0) { }
-    constexpr ModInt(signed sig) { int sigt = sig % MOD; if (sigt < 0) sigt += MOD; x = sigt; }
     constexpr ModInt(signed long long sig) { int sigt = sig % MOD; if (sigt < 0) sigt += MOD; x = sigt; }
 
 #define COMPAREOP(OP) bool constexpr operator OP(ModInt b) const { return x OP b.x; }
