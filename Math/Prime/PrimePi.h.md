@@ -2,16 +2,19 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: Math/tests/prime_pi.test.cpp
+    title: Math/tests/prime_pi.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://judge.yosupo.jp/problem/counting_primes
     - https://judge.yosupo.jp/submission/61551
-  bundledCode: "#line 1 \"Math/PrimePi.h\"\n// prime_pi(n) = number of primes <= n\n\
-    //\n// Copied from https://judge.yosupo.jp/submission/61551\n//\n// Tested:\n\
+  bundledCode: "#line 1 \"Math/Prime/PrimePi.h\"\n// prime_pi(n) = number of primes\
+    \ <= n\n//\n// Copied from https://judge.yosupo.jp/submission/61551\n//\n// Tested:\n\
     // - https://judge.yosupo.jp/problem/counting_primes\n\nusing ll = long long;\n\
     int isqrt(ll n) {\n    return sqrtl(n);\n}\nll prime_pi(const ll N) {\n    if\
     \ (N <= 1) return 0;\n    if (N == 2) return 1;\n    const int v = isqrt(N);\n\
@@ -65,15 +68,16 @@ data:
     \ - (ll)(e - l) * (pc + l - 1);\n    }\n    return larges[0] + 1;\n}\n"
   dependsOn: []
   isVerificationFile: false
-  path: Math/PrimePi.h
+  path: Math/Prime/PrimePi.h
   requiredBy: []
-  timestamp: '2021-12-30 19:55:22+08:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
-documentation_of: Math/PrimePi.h
+  timestamp: '2022-01-06 04:34:09+08:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - Math/tests/prime_pi.test.cpp
+documentation_of: Math/Prime/PrimePi.h
 layout: document
 redirect_from:
-- /library/Math/PrimePi.h
-- /library/Math/PrimePi.h.html
-title: Math/PrimePi.h
+- /library/Math/Prime/PrimePi.h
+- /library/Math/Prime/PrimePi.h.html
+title: Math/Prime/PrimePi.h
 ---

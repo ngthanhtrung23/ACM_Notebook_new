@@ -278,9 +278,6 @@ data:
       path: Math/Matrix.h
       title: Math/Matrix.h
     - icon: ':warning:'
-      path: Math/PrimePi.h
-      title: Math/PrimePi.h
-    - icon: ':warning:'
       path: Math/Simplex.h
       title: Math/Simplex.h
     - icon: ':warning:'
@@ -317,7 +314,7 @@ data:
     - icon: ':warning:'
       path: Math/NumberTheory/FactorialMod.h
       title: Math/NumberTheory/FactorialMod.h
-    - icon: ':warning:'
+    - icon: ':x:'
       path: Math/NumberTheory/Pollard.h
       title: Math/NumberTheory/Pollard.h
     - icon: ':warning:'
@@ -357,9 +354,12 @@ data:
     - icon: ':warning:'
       path: Math/Prime/EulerPhi.h
       title: Math/Prime/EulerPhi.h
-    - icon: ':warning:'
+    - icon: ':x:'
       path: Math/Prime/IterativeSieve.h
       title: Math/Prime/IterativeSieve.h
+    - icon: ':heavy_check_mark:'
+      path: Math/Prime/PrimePi.h
+      title: Math/Prime/PrimePi.h
     - icon: ':warning:'
       path: Math/Prime/RabinMiller.h
       title: Math/Prime/RabinMiller.h
@@ -570,5 +570,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: Graph/tests/triangles.test.cpp
       title: Graph/tests/triangles.test.cpp
+  - name: Math/tests
+    pages:
+    - icon: ':x:'
+      path: Math/tests/factorize.test.cpp
+      title: Math/tests/factorize.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Math/tests/prime_pi.test.cpp
+      title: Math/tests/prime_pi.test.cpp
+    - icon: ':x:'
+      path: Math/tests/sieve.test.cpp
+      title: Math/tests/sieve.test.cpp
 layout: toppage
 ---
