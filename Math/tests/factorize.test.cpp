@@ -14,7 +14,7 @@ long long get_rand(long long r) {
 int32_t main() {
     int ntest; cin >> ntest;
     while (ntest--) {
-        int n; cin >> n;
+        long long n; cin >> n;
         auto f = factorize(n);
         cout << f.size();
         for (auto x : f) cout << ' ' << x;
