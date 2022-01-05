@@ -1,0 +1,22 @@
+.code-btn {
+    position: absolute;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    width: 6em;
+    line-height: 1.2em;
+    font-size: 0.8em;
+    cursor: pointer;
+}
+.code-btn:hover {
+    color: #fff;
+    background-color: #267cb9;
+}
+.code-copy-btn {
+    top: 0px;
+    right: 0px;
+}
+.code-bundle-btn {
+    top: 0px;
+    right: 6em;
+    border-radius: 0 0 0 6px;
+}

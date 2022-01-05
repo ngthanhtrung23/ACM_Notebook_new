@@ -1,0 +1,48 @@
+{% if page.data.dependsOn.size != 0 %}
+    <h2>Depends on</h2>
+    <ul>
+    {% for item in page.data._extendedDependsOn %}
+        <li><a href="{{ item.path | absolute_url }}">{{ item.icon }} {{ item.title }}
+            {% if item.title != item.path %}<small>({{ item.path }})</small>{% endif %}
+        </a></li>
+    {% endfor %}
+    </ul>
+{% endif %}
+
+
+{% if page.data.requiredBy.size != 0 %}
+    <h2>Required by</h2>
+    <ul>
+    {% for item in page.data._extendedRequiredBy %}
+        <li><a href="{{ item.path | absolute_url }}">{{ item.icon }} {{ item.title }}
+            {% if item.title != item.path %}<small>({{ item.path }})</small>{% endif %}
+        </a></li>
+    {% endfor %}
+    </ul>
+{% endif %}
+
+
+{% if page.data.verifiedWith.size != 0 %}
+    <h2>Verified with</h2>
+    <ul>
+    {% for item in page.data._extendedVerifiedWith %}
+        <li><a href="{{ item.path | absolute_url }}">{{ item.icon }} {{ item.title }}
+            {% if item.title != item.path %}<small>({{ item.path }})</small>{% endif %}
+        </a></li>
+    {% endfor %}
+    </ul>
+{% endif %}
+
+
+<h2>Code</h2>
+
+<script defer type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/jquery-balloon-js@1.1.2/jquery.balloon.min.js" integrity="sha256-ZEYs9VrgAeNuPvs15E39OsyOJaIkXEEt10fzxJ20+2I=" crossorigin="anonymous"></script>
+<script defer type="text/javascript" src="{{ "/assets/js/copy-button.js" | absolute_url }}"></script>
+<link rel="stylesheet" href="{{ "/assets/css/copy-button.css" | absolute_url }}">
+
+<span><a id="unbundled"></a></span>
+{% include highlight.html extension=page.data._pathExtension content=page.data.code %}
+
+<span><a id="bundled"></a></span>
+{% include highlight.html extension=page.data._pathExtension content=page.data.bundledCode %}

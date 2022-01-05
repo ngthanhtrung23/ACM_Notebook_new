@@ -1,0 +1,25 @@
+{% if site.theme == "jekyll-theme-minimal" %}
+<style type="text/css">
+@media screen and (min-width: 900px) {
+    div.wrapper {
+        width: 100%;
+    }
+    div.wrapper > header {
+        width: 280px;
+    }
+    div.wrapper > section {
+        width: calc(100% - 300px);
+    }
+}
+a:hover, a:focus {
+    font-weight: normal;
+    text-decoration: underline;
+}
+h1 a:hover {
+    font-weight: bold;
+}
+h1 a:focus {
+    font-weight: bold;
+}
+</style>
+{% endif %}

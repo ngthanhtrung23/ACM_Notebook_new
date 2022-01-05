@@ -1,0 +1,66 @@
+{% comment %}
+    This file is a workaround for Jekyll's `highlight` block.
+    We cannot pass language to the `highlight` block as a parameter, so we need to list `if` blocks. Please feel free to add new languages.
+{% endcomment %}
+
+{% if include.extension == "py" %}
+{% highlight python %}
+{{ include.content }}
+{% endhighlight %}
+
+{% elsif include.extension == "rs" %}
+{% highlight rust %}
+{{ include.content }}
+{% endhighlight %}
+
+{% elsif include.extension == "java" %}
+{% highlight java %}
+{{ include.content }}
+{% endhighlight %}
+
+{% elsif include.extension == "cs" || include.extension == "csx" %}
+{% highlight csharp %}
+{{ include.content }}
+{% endhighlight %}
+
+{% elsif include.extension == "fs" || include.extension == "fsx" %}
+{% highlight fsharp %}
+{{ include.content }}
+{% endhighlight %}
+
+{% elsif include.extension == "go" %}
+{% highlight go %}
+{{ include.content }}
+{% endhighlight %}
+
+{% elsif include.extension == "rb" %}
+{% highlight ruby %}
+{{ include.content }}
+{% endhighlight %}
+
+{% elsif include.extension == "d" %}
+{% highlight csharp %}
+{{ include.content }}
+{% endhighlight %}
+
+{% elsif include.extension == "nim" %}
+{% highlight nim %}
+{{ include.content }}
+{% endhighlight %}
+
+{% elsif include.extension == "awk" %}
+{% highlight awk %}
+{{ include.content }}
+{% endhighlight %}
+
+{% elsif include.extension == "bf" || include.extension == "brainfuck" %}
+{% highlight brainfuck %}
+{{ include.content }}
+{% endhighlight %}
+
+{% else %}
+{% highlight cpp %}
+{{ include.content }}
+{% endhighlight %}
+
+{% endif %}

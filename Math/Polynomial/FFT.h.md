@@ -1,0 +1,96 @@
+---
+data:
+  _extendedDependsOn: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: Math/Polynomial/VOJ_POST2.cpp
+    title: Math/Polynomial/VOJ_POST2.cpp
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
+  _pathExtension: h
+  _verificationStatusIcon: ':warning:'
+  attributes:
+    links:
+    - https://github.com/dacin21/dacin21_codebook/blob/master/nt/polynomials_2.0.cpp
+    - https://open.kattis.com/problems/polymul2
+  bundledCode: "#line 1 \"Math/Polynomial/FFT.h\"\n// Let's just not use this inefficient\
+    \ code and use dacin21's code here:\n// https://github.com/dacin21/dacin21_codebook/blob/master/nt/polynomials_2.0.cpp\n\
+    //\n// Example with using Fft class directly (maybe it's easier to use dacin21's\
+    \ class Polynomial):\n//\n// const int MOD = 1e9 + 7;\n// vector<int64_t> a, b;\n\
+    // vector<int64_t> res;\n// \n// // res = a * b:\n// if (mod <= 5000) Fft<Complex<double>>::poly_mul_faster(res,\
+    \ a, b, MOD);\n// else Fft<Complex<double>>::poly_mul_split(res, a, b, MOD);\n\
+    //\n// // res = a * a;\n// if (mod <= 5000) Fft<Complex<double>>::poly_mul_faster(res,\
+    \ a, a, MOD);\n// else Fft<Complex<double>>::poly_square_split(res, a, MOD);\n\
+    \n\n\n\n\n\n\n// Below code is my inefficient implementation:\n// Tested:\n//\
+    \ - FBHC 2016 R3 - Problem E\n// - https://open.kattis.com/problems/polymul2 (need\
+    \ long double)\n// Note:\n// - a[2] will have size <= 2*n\n// - When rounding,\
+    \ careful with negative numbers:\nint my_round(double x) {\n    if (x < 0) return\
+    \ -my_round(-x);\n    return (int) (x + 1e-3);\n}\n\nconst double PI = acos((double)\
+    \ -1.0);\n\ntypedef complex<double> cplex;\nint rev[MN];\ncplex wlen_pw[MN], fa[MN],\
+    \ fb[MN];\n\nvoid fft(cplex a[], int n, bool invert) {\n    for (int i = 0; i\
+    \ < n; ++i) if (i < rev[i]) swap (a[i], a[rev[i]]);\n\n    for (int len = 2; len\
+    \ <= n; len <<= 1) {\n        double alpha = 2 * PI / len * (invert ? -1 : +1);\n\
+    \        int len2 = len >> 1;\n\n        wlen_pw[0] = cplex(1, 0);\n        cplex\
+    \ wlen(cos(alpha), sin(alpha));\n        for (int i = 1; i < len2; ++i) wlen_pw[i]\
+    \ = wlen_pw[i-1] * wlen;\n\n        for (int i = 0; i < n; i += len) {\n     \
+    \       cplex t, *pu = a+i, *pv = a + i + len2,\n                    *pu_end =\
+    \ a + i + len2, *pw = wlen_pw;\n            for (; pu != pu_end; ++pu, ++pv, ++pw)\
+    \ {\n                t = *pv * *pw;\n                *pv = *pu - t;\n        \
+    \        *pu += t;\n            }\n        }\n    }\n\n    if (invert) REP(i,\
+    \ n) a[i] /= n;\n}\n\nvoid calcRev(int n, int logn) {\n    REP(i, n) {\n     \
+    \   rev[i] = 0;\n        REP(j, logn) if (i & (1 << j)) rev[i] |= 1 << (logn -\
+    \ 1 - j);\n    }\n}\n\nvoid mulpoly(int a[], int b[], ll c[], int na, int nb,\
+    \ int &n) {\n    int l = max(na, nb), logn = 0;\n    for (n = 1; n < l; n <<=\
+    \ 1) ++logn;\n    n <<= 1; ++logn;\n    calcRev(n, logn);\n\n    REP(i,n) fa[i]\
+    \ = fb[i] = cplex(0);\n    REP(i,na) fa[i] = cplex(a[i]);\n    REP(i,nb) fb[i]\
+    \ = cplex(b[i]);\n\n    fft(fa, n, false);\n    fft(fb, n, false);\n\n    REP(i,n)\
+    \ fa[i] *= fb[i];\n    fft(fa, n, true);\n\n    REP(i,n) c[i] = (ll)(fa[i].real()\
+    \ + 0.5);\n}\n"
+  code: "// Let's just not use this inefficient code and use dacin21's code here:\n\
+    // https://github.com/dacin21/dacin21_codebook/blob/master/nt/polynomials_2.0.cpp\n\
+    //\n// Example with using Fft class directly (maybe it's easier to use dacin21's\
+    \ class Polynomial):\n//\n// const int MOD = 1e9 + 7;\n// vector<int64_t> a, b;\n\
+    // vector<int64_t> res;\n// \n// // res = a * b:\n// if (mod <= 5000) Fft<Complex<double>>::poly_mul_faster(res,\
+    \ a, b, MOD);\n// else Fft<Complex<double>>::poly_mul_split(res, a, b, MOD);\n\
+    //\n// // res = a * a;\n// if (mod <= 5000) Fft<Complex<double>>::poly_mul_faster(res,\
+    \ a, a, MOD);\n// else Fft<Complex<double>>::poly_square_split(res, a, MOD);\n\
+    \n\n\n\n\n\n\n// Below code is my inefficient implementation:\n// Tested:\n//\
+    \ - FBHC 2016 R3 - Problem E\n// - https://open.kattis.com/problems/polymul2 (need\
+    \ long double)\n// Note:\n// - a[2] will have size <= 2*n\n// - When rounding,\
+    \ careful with negative numbers:\nint my_round(double x) {\n    if (x < 0) return\
+    \ -my_round(-x);\n    return (int) (x + 1e-3);\n}\n\nconst double PI = acos((double)\
+    \ -1.0);\n\ntypedef complex<double> cplex;\nint rev[MN];\ncplex wlen_pw[MN], fa[MN],\
+    \ fb[MN];\n\nvoid fft(cplex a[], int n, bool invert) {\n    for (int i = 0; i\
+    \ < n; ++i) if (i < rev[i]) swap (a[i], a[rev[i]]);\n\n    for (int len = 2; len\
+    \ <= n; len <<= 1) {\n        double alpha = 2 * PI / len * (invert ? -1 : +1);\n\
+    \        int len2 = len >> 1;\n\n        wlen_pw[0] = cplex(1, 0);\n        cplex\
+    \ wlen(cos(alpha), sin(alpha));\n        for (int i = 1; i < len2; ++i) wlen_pw[i]\
+    \ = wlen_pw[i-1] * wlen;\n\n        for (int i = 0; i < n; i += len) {\n     \
+    \       cplex t, *pu = a+i, *pv = a + i + len2,\n                    *pu_end =\
+    \ a + i + len2, *pw = wlen_pw;\n            for (; pu != pu_end; ++pu, ++pv, ++pw)\
+    \ {\n                t = *pv * *pw;\n                *pv = *pu - t;\n        \
+    \        *pu += t;\n            }\n        }\n    }\n\n    if (invert) REP(i,\
+    \ n) a[i] /= n;\n}\n\nvoid calcRev(int n, int logn) {\n    REP(i, n) {\n     \
+    \   rev[i] = 0;\n        REP(j, logn) if (i & (1 << j)) rev[i] |= 1 << (logn -\
+    \ 1 - j);\n    }\n}\n\nvoid mulpoly(int a[], int b[], ll c[], int na, int nb,\
+    \ int &n) {\n    int l = max(na, nb), logn = 0;\n    for (n = 1; n < l; n <<=\
+    \ 1) ++logn;\n    n <<= 1; ++logn;\n    calcRev(n, logn);\n\n    REP(i,n) fa[i]\
+    \ = fb[i] = cplex(0);\n    REP(i,na) fa[i] = cplex(a[i]);\n    REP(i,nb) fb[i]\
+    \ = cplex(b[i]);\n\n    fft(fa, n, false);\n    fft(fb, n, false);\n\n    REP(i,n)\
+    \ fa[i] *= fb[i];\n    fft(fa, n, true);\n\n    REP(i,n) c[i] = (ll)(fa[i].real()\
+    \ + 0.5);\n}\n"
+  dependsOn: []
+  isVerificationFile: false
+  path: Math/Polynomial/FFT.h
+  requiredBy:
+  - Math/Polynomial/VOJ_POST2.cpp
+  timestamp: '2018-10-04 14:36:34+08:00'
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
+documentation_of: Math/Polynomial/FFT.h
+layout: document
+redirect_from:
+- /library/Math/Polynomial/FFT.h
+- /library/Math/Polynomial/FFT.h.html
+title: Math/Polynomial/FFT.h
+---

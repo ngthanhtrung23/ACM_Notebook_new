@@ -1,0 +1,39 @@
+<h1>{{ page.data._verificationStatusIcon }} {{ page.title }}
+    {% if page.title != page.data.path %}<br><small>({{ page.data.path }})</small>{% endif %}
+</h1>
+
+<ul>
+    <li><a href="{{ site.github.repository_url }}/blob/master/{{ page.data.path }}">View this file on GitHub</a></li>
+    <li>Last update: {{ page.data.timestamp }}</li>
+    {% if page.data.attributes.PROBLEM %}
+    <li>Problem: <a href="{{ page.data.attributes.PROBLEM }}">{{ page.data.attributes.PROBLEM }}</a></li>
+    {% endif %}
+    {% if page.data._pathExtension == "hpp" %}<li><a id="include-directive-anchor">Include: <code id="include-directive-code">#include "{{ page.data.path }}"</code></a></li>{% endif %}
+    {% if page.data._isVerificationFailed %}<li>Link: <a href="{{ site.github.repository_url }}/actions">{{ page.data._verificationStatusIcon }} View error logs on GitHub Actions</a></li>{% endif %}
+    {% for link in page.data.attributes.links %}
+    {% if link != page.data.attributes.PROBLEM %}
+    <li>Link: <a href="{{ link }}">{{ link }}</a></li>
+    {% endif %}
+    {% endfor %}
+</ul>
+
+{% if page.data._pathExtension == "hpp" %}
+<script defer type="text/javascript">
+    // make the include directive clickable
+    (function() {
+        const anchor = document.getElementById('include-directive-anchor');
+        const code = document.getElementById('include-directive-code');
+        anchor.addEventListener('click', function() {
+            window.getSelection().selectAllChildren(code);
+            document.execCommand("copy");
+            window.getSelection().removeAllRanges();
+
+            const textContent = code.textContent;
+            code.textContent = "Copied!";
+            setTimeout(function() {
+                code.textContent = textContent;
+            }, 300);
+        });
+    })();
+</script>
+{% endif %}

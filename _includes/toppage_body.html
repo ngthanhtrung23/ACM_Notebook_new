@@ -1,0 +1,25 @@
+<h2>Library Files</h2>
+
+{% for category in page.data.libraryCategories %}
+    <h3>{{ category.name }}</h3>
+    <ul>
+        {% for item in category.pages %}
+        <li><a href="{{ item.path | absolute_url }}">{{ item.icon }} {{ item.title }}
+            {% if item.title != item.path %}<small>({{ item.path }})</small>{% endif %}
+        </a></li>
+        {% endfor %}
+    </ul>
+{% endfor %}
+
+<h2>Verification Files</h2>
+
+{% for category in page.data.verificationCategories %}
+    <h3>{{ category.name }}</h3>
+    <ul>
+        {% for item in category.pages %}
+        <li><a href="{{ item.path | absolute_url }}">{{ item.icon }} {{ item.title }}
+            {% if item.title != item.path %}<small>({{ item.path }})</small>{% endif %}
+        </a></li>
+        {% endfor %}
+    </ul>
+{% endfor %}
