@@ -66,7 +66,7 @@ ll sqrtMod(ll X, ll q) {
     if (q == 2 || X == 0) return min(X, q-X);
     if (bin_pow(X, (q - 1) / 2, q) != 1) return -1;
     if (q % 4 == 3) {
-        int res = bin_pow(X, (q + 1) / 4, q);
+        ll res = bin_pow(X, (q + 1) / 4, q);
         return min(res, q - res);
     }
     auto res = (Cipolla(X, q) % q + q) % q;
