@@ -163,7 +163,7 @@ data:
     - icon: ':warning:'
       path: Graph/DfsTree/BiconnectedComponent.h
       title: Graph/DfsTree/BiconnectedComponent.h
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: Graph/DfsTree/BridgeArticulation.h
       title: Graph/DfsTree/BridgeArticulation.h
     - icon: ':heavy_check_mark:'
@@ -539,6 +539,9 @@ data:
       title: DataStructure/test/wavelet_matrix_staticrangefreq.test.cpp
   - name: Graph/tests
     pages:
+    - icon: ':heavy_check_mark:'
+      path: Graph/tests/bridge_biconnected.test.cpp
+      title: Graph/tests/bridge_biconnected.test.cpp
     - icon: ':heavy_check_mark:'
       path: Graph/tests/dijkstra.test.cpp
       title: Graph/tests/dijkstra.test.cpp
