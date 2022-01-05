@@ -86,9 +86,9 @@ data:
     - icon: ':warning:'
       path: DataStructure/dijkstra.h
       title: DataStructure/dijkstra.h
-    - icon: ':warning:'
-      path: DataStructure/splay_tree.cpp
-      title: DataStructure/splay_tree.cpp
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/splay_tree.h
+      title: DataStructure/splay_tree.h
   - name: DataStructure/STL
     pages:
     - icon: ':warning:'
@@ -499,6 +499,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/segment_tree_staticrmq.test.cpp
       title: DataStructure/test/segment_tree_staticrmq.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/test/splay_tree.test.cpp
+      title: DataStructure/test/splay_tree.test.cpp
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/wavelet_matrix_rangekthsmallest.test.cpp
       title: DataStructure/test/wavelet_matrix_rangekthsmallest.test.cpp

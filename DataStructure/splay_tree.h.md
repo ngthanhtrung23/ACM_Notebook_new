@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: DataStructure/test/splay_tree.test.cpp
+    title: DataStructure/test/splay_tree.test.cpp
   _isVerificationFailed: false
-  _pathExtension: cpp
-  _verificationStatusIcon: ':warning:'
+  _pathExtension: h
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://judge.yosupo.jp/problem/dynamic_sequence_range_affine_range_sum
@@ -16,9 +19,9 @@ data:
     - https://vn.spoj.com/problems/CARDS/
     - https://vn.spoj.com/problems/CARDSHUF/
     - https://vn.spoj.com/problems/QMAX4/
-  bundledCode: "#line 1 \"DataStructure/splay_tree.cpp\"\n// SplayTreeById\n//\n//\
-    \ Note:\n// - op() must be commutative, otherwise reverse queries won't work.\n\
-    //   To fix it, need to store aggregate data from right->left\n//   See https://judge.yosupo.jp/submission/53778\
+  bundledCode: "#line 1 \"DataStructure/splay_tree.h\"\n// SplayTreeById\n//\n// Note:\n\
+    // - op() must be commutative, otherwise reverse queries won't work.\n//   To\
+    \ fix it, need to store aggregate data from right->left\n//   See https://judge.yosupo.jp/submission/53778\
     \ (and look at invsum)\n//\n// Tested:\n// - (cut, join)      https://vn.spoj.com/problems/CARDS/\n\
     // - (keys, reverse)  https://oj.vnoi.info/problem/twist\n// - (insert, prod)\
     \   https://oj.vnoi.info/problem/qmax3vn\n// - (insert, delete) https://vn.spoj.com/problems/QMAX4/\n\
@@ -31,37 +34,37 @@ data:
     \ code,\n    // so I couldn't put this in F\n    bool reverse;\n\n    K key;\n\
     \    S data;\n    F lazy;\n};\ntemplate<\n    class K,                       \
     \        // key\n    class S,                               // node aggregate\
-    \ data\n    S (*op) (const S&, K, const S&),       // for recomputing data of\
+    \ data\n    S (*op) (S, K, S),                     // for recomputing data of\
     \ a node\n    pair<K, S> (*e) (),                    // identity data\n    class\
     \ F,                               // lazy propagation tag\n    pair<K, S> (*mapping)\
-    \ (const F&, node_t<K, S, F>*),  // apply tag F on a node\n    F (*composition)\
-    \ (const F&, const F&), // combine 2 tags\n    F (*id)()                     \
-    \         // identity tag\n>\nstruct SplayTreeById {\n    using Node = node_t<K,\
-    \ S, F>;\n\n    Node *nil, *root;\n\n    SplayTreeById() {\n        initNil();\n\
-    \        root = nil;\n    }\n    SplayTreeById(const vector<K>& keys) {\n    \
-    \    initNil();\n        root = createNode(keys, 0, (int) keys.size());\n    }\n\
-    \n    vector<K> getKeys() {\n        vector<K> keys;\n        traverse(root, keys);\n\
-    \        return keys;\n    }\n\n    // k in [0, n-1]\n    Node* kth(int k) {\n\
-    \        auto res = _kth(root, k);\n        splay(res);\n        root = res;\n\
-    \        return res;\n    }\n\n    // Return <L, R>:\n    // - L contains [0,\
-    \ k-1]\n    // - R contains [k, N-1]\n    // Modify tree\n    pair<Node*, Node*>\
-    \ cut(int k) {\n        if (k == 0) {\n            return {nil, root};\n     \
-    \   } else if (k == root->size) {\n            return {root, nil};\n        }\
-    \ else {\n            Node *left = kth(k - 1);  // kth already splayed\n     \
-    \       Node* right = left->child[1];\n            left->child[1] = right->father\
-    \ = nil;\n            pushUp(left);\n            return {left, right};\n     \
-    \   }\n    }\n\n    // Return <X, Y, Z>:\n    // - X contains [0, u-1]\n    //\
-    \ - Y contains [u, v-1]\n    // - Z contains [v, N-1]\n    // This is useful for\
-    \ queries on [u, v-1]\n    // Modify tree\n    tuple<Node*, Node*, Node*> cut(int\
-    \ u, int v) {\n        auto [xy, z] = cut(v);\n        root = xy;\n        auto\
-    \ [x, y] = cut(u);\n        return {x, y, z};\n    }\n\n    // Make this tree\
-    \ x + y\n    void join(Node *x, Node *y) {\n        if (x == nil) {\n        \
-    \    root = y;\n            return;\n        }\n        while (1) {\n        \
-    \    pushDown(x);\n            if (x->child[1] == nil) break;\n            x =\
-    \ x->child[1];\n        }\n        splay(x);\n        setChild(x, y, 1);\n   \
-    \     pushUp(x);\n        root = x;\n    }\n\n    // reverse range [u, v-1]\n\
-    \    void reverse(int u, int v) {\n        assert(0 <= u && u <= v && v <= root->size);\n\
-    \        if (u == v) return;\n\n        auto [x, y, z] = cut(u, v);\n        y->reverse\
+    \ (F, node_t<K, S, F>*),  // apply tag F on a node\n    F (*composition) (F, F),\
+    \               // combine 2 tags\n    F (*id)()                             \
+    \ // identity tag\n>\nstruct SplayTreeById {\n    using Node = node_t<K, S, F>;\n\
+    \n    Node *nil, *root;\n\n    SplayTreeById() {\n        initNil();\n       \
+    \ root = nil;\n    }\n    SplayTreeById(const vector<K>& keys) {\n        initNil();\n\
+    \        root = createNode(keys, 0, (int) keys.size());\n    }\n\n    vector<K>\
+    \ getKeys() {\n        vector<K> keys;\n        traverse(root, keys);\n      \
+    \  return keys;\n    }\n\n    // k in [0, n-1]\n    Node* kth(int k) {\n     \
+    \   auto res = _kth(root, k);\n        splay(res);\n        root = res;\n    \
+    \    return res;\n    }\n\n    // Return <L, R>:\n    // - L contains [0, k-1]\n\
+    \    // - R contains [k, N-1]\n    // Modify tree\n    pair<Node*, Node*> cut(int\
+    \ k) {\n        if (k == 0) {\n            return {nil, root};\n        } else\
+    \ if (k == root->size) {\n            return {root, nil};\n        } else {\n\
+    \            Node *left = kth(k - 1);  // kth already splayed\n            Node*\
+    \ right = left->child[1];\n            left->child[1] = right->father = nil;\n\
+    \            pushUp(left);\n            return {left, right};\n        }\n   \
+    \ }\n\n    // Return <X, Y, Z>:\n    // - X contains [0, u-1]\n    // - Y contains\
+    \ [u, v-1]\n    // - Z contains [v, N-1]\n    // This is useful for queries on\
+    \ [u, v-1]\n    // Modify tree\n    tuple<Node*, Node*, Node*> cut(int u, int\
+    \ v) {\n        auto [xy, z] = cut(v);\n        root = xy;\n        auto [x, y]\
+    \ = cut(u);\n        return {x, y, z};\n    }\n\n    // Make this tree x + y\n\
+    \    void join(Node *x, Node *y) {\n        if (x == nil) {\n            root\
+    \ = y;\n            return;\n        }\n        while (1) {\n            pushDown(x);\n\
+    \            if (x->child[1] == nil) break;\n            x = x->child[1];\n  \
+    \      }\n        splay(x);\n        setChild(x, y, 1);\n        pushUp(x);\n\
+    \        root = x;\n    }\n\n    // reverse range [u, v-1]\n    void reverse(int\
+    \ u, int v) {\n        assert(0 <= u && u <= v && v <= root->size);\n        if\
+    \ (u == v) return;\n\n        auto [x, y, z] = cut(u, v);\n        y->reverse\
     \ = true;\n        join(x, y);\n        join(root, z);\n    }\n\n    // apply\
     \ F on range [u, v-1]\n    void apply(int u, int v, const F& f) {\n        assert(0\
     \ <= u && u <= v && v <= root->size);\n        if (u == v) return;\n\n       \
@@ -184,37 +187,37 @@ data:
     \ code,\n    // so I couldn't put this in F\n    bool reverse;\n\n    K key;\n\
     \    S data;\n    F lazy;\n};\ntemplate<\n    class K,                       \
     \        // key\n    class S,                               // node aggregate\
-    \ data\n    S (*op) (const S&, K, const S&),       // for recomputing data of\
+    \ data\n    S (*op) (S, K, S),                     // for recomputing data of\
     \ a node\n    pair<K, S> (*e) (),                    // identity data\n    class\
     \ F,                               // lazy propagation tag\n    pair<K, S> (*mapping)\
-    \ (const F&, node_t<K, S, F>*),  // apply tag F on a node\n    F (*composition)\
-    \ (const F&, const F&), // combine 2 tags\n    F (*id)()                     \
-    \         // identity tag\n>\nstruct SplayTreeById {\n    using Node = node_t<K,\
-    \ S, F>;\n\n    Node *nil, *root;\n\n    SplayTreeById() {\n        initNil();\n\
-    \        root = nil;\n    }\n    SplayTreeById(const vector<K>& keys) {\n    \
-    \    initNil();\n        root = createNode(keys, 0, (int) keys.size());\n    }\n\
-    \n    vector<K> getKeys() {\n        vector<K> keys;\n        traverse(root, keys);\n\
-    \        return keys;\n    }\n\n    // k in [0, n-1]\n    Node* kth(int k) {\n\
-    \        auto res = _kth(root, k);\n        splay(res);\n        root = res;\n\
-    \        return res;\n    }\n\n    // Return <L, R>:\n    // - L contains [0,\
-    \ k-1]\n    // - R contains [k, N-1]\n    // Modify tree\n    pair<Node*, Node*>\
-    \ cut(int k) {\n        if (k == 0) {\n            return {nil, root};\n     \
-    \   } else if (k == root->size) {\n            return {root, nil};\n        }\
-    \ else {\n            Node *left = kth(k - 1);  // kth already splayed\n     \
-    \       Node* right = left->child[1];\n            left->child[1] = right->father\
-    \ = nil;\n            pushUp(left);\n            return {left, right};\n     \
-    \   }\n    }\n\n    // Return <X, Y, Z>:\n    // - X contains [0, u-1]\n    //\
-    \ - Y contains [u, v-1]\n    // - Z contains [v, N-1]\n    // This is useful for\
-    \ queries on [u, v-1]\n    // Modify tree\n    tuple<Node*, Node*, Node*> cut(int\
-    \ u, int v) {\n        auto [xy, z] = cut(v);\n        root = xy;\n        auto\
-    \ [x, y] = cut(u);\n        return {x, y, z};\n    }\n\n    // Make this tree\
-    \ x + y\n    void join(Node *x, Node *y) {\n        if (x == nil) {\n        \
-    \    root = y;\n            return;\n        }\n        while (1) {\n        \
-    \    pushDown(x);\n            if (x->child[1] == nil) break;\n            x =\
-    \ x->child[1];\n        }\n        splay(x);\n        setChild(x, y, 1);\n   \
-    \     pushUp(x);\n        root = x;\n    }\n\n    // reverse range [u, v-1]\n\
-    \    void reverse(int u, int v) {\n        assert(0 <= u && u <= v && v <= root->size);\n\
-    \        if (u == v) return;\n\n        auto [x, y, z] = cut(u, v);\n        y->reverse\
+    \ (F, node_t<K, S, F>*),  // apply tag F on a node\n    F (*composition) (F, F),\
+    \               // combine 2 tags\n    F (*id)()                             \
+    \ // identity tag\n>\nstruct SplayTreeById {\n    using Node = node_t<K, S, F>;\n\
+    \n    Node *nil, *root;\n\n    SplayTreeById() {\n        initNil();\n       \
+    \ root = nil;\n    }\n    SplayTreeById(const vector<K>& keys) {\n        initNil();\n\
+    \        root = createNode(keys, 0, (int) keys.size());\n    }\n\n    vector<K>\
+    \ getKeys() {\n        vector<K> keys;\n        traverse(root, keys);\n      \
+    \  return keys;\n    }\n\n    // k in [0, n-1]\n    Node* kth(int k) {\n     \
+    \   auto res = _kth(root, k);\n        splay(res);\n        root = res;\n    \
+    \    return res;\n    }\n\n    // Return <L, R>:\n    // - L contains [0, k-1]\n\
+    \    // - R contains [k, N-1]\n    // Modify tree\n    pair<Node*, Node*> cut(int\
+    \ k) {\n        if (k == 0) {\n            return {nil, root};\n        } else\
+    \ if (k == root->size) {\n            return {root, nil};\n        } else {\n\
+    \            Node *left = kth(k - 1);  // kth already splayed\n            Node*\
+    \ right = left->child[1];\n            left->child[1] = right->father = nil;\n\
+    \            pushUp(left);\n            return {left, right};\n        }\n   \
+    \ }\n\n    // Return <X, Y, Z>:\n    // - X contains [0, u-1]\n    // - Y contains\
+    \ [u, v-1]\n    // - Z contains [v, N-1]\n    // This is useful for queries on\
+    \ [u, v-1]\n    // Modify tree\n    tuple<Node*, Node*, Node*> cut(int u, int\
+    \ v) {\n        auto [xy, z] = cut(v);\n        root = xy;\n        auto [x, y]\
+    \ = cut(u);\n        return {x, y, z};\n    }\n\n    // Make this tree x + y\n\
+    \    void join(Node *x, Node *y) {\n        if (x == nil) {\n            root\
+    \ = y;\n            return;\n        }\n        while (1) {\n            pushDown(x);\n\
+    \            if (x->child[1] == nil) break;\n            x = x->child[1];\n  \
+    \      }\n        splay(x);\n        setChild(x, y, 1);\n        pushUp(x);\n\
+    \        root = x;\n    }\n\n    // reverse range [u, v-1]\n    void reverse(int\
+    \ u, int v) {\n        assert(0 <= u && u <= v && v <= root->size);\n        if\
+    \ (u == v) return;\n\n        auto [x, y, z] = cut(u, v);\n        y->reverse\
     \ = true;\n        join(x, y);\n        join(root, z);\n    }\n\n    // apply\
     \ F on range [u, v-1]\n    void apply(int u, int v, const F& f) {\n        assert(0\
     \ <= u && u <= v && v <= root->size);\n        if (u == v) return;\n\n       \
@@ -324,15 +327,16 @@ data:
     \ */\n"
   dependsOn: []
   isVerificationFile: false
-  path: DataStructure/splay_tree.cpp
+  path: DataStructure/splay_tree.h
   requiredBy: []
-  timestamp: '2022-01-03 13:00:07+08:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
-documentation_of: DataStructure/splay_tree.cpp
+  timestamp: '2022-01-06 00:33:53+08:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - DataStructure/test/splay_tree.test.cpp
+documentation_of: DataStructure/splay_tree.h
 layout: document
 redirect_from:
-- /library/DataStructure/splay_tree.cpp
-- /library/DataStructure/splay_tree.cpp.html
-title: DataStructure/splay_tree.cpp
+- /library/DataStructure/splay_tree.h
+- /library/DataStructure/splay_tree.h.html
+title: DataStructure/splay_tree.h
 ---

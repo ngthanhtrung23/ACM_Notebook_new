@@ -12,6 +12,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
     title: DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: DataStructure/test/splay_tree.test.cpp
+    title: DataStructure/test/splay_tree.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -101,6 +104,7 @@ data:
   - DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
   - DataStructure/test/hld_vertexsetpathcomposite.test.cpp
   - DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
+  - DataStructure/test/splay_tree.test.cpp
 documentation_of: Math/modulo_anta.h
 layout: document
 redirect_from:
