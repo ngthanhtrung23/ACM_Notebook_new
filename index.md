@@ -26,7 +26,7 @@ data:
       title: DP/reroot_tree_dp.cpp
   - name: DataStructure
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/DSU_rollback.h
       title: DataStructure/DSU_rollback.h
     - icon: ':heavy_check_mark:'
@@ -169,11 +169,26 @@ data:
     - icon: ':heavy_check_mark:'
       path: Graph/DfsTree/StronglyConnected.h
       title: Graph/DfsTree/StronglyConnected.h
-  - name: Graph/MST
+  - name: Graph
     pages:
+    - icon: ':heavy_check_mark:'
+      path: Graph/DirectedMST.h
+      title: Graph/DirectedMST.h
     - icon: ':warning:'
-      path: Graph/MST/DirectedMST.h
-      title: Graph/MST/DirectedMST.h
+      path: Graph/bfs.h
+      title: Graph/bfs.h
+    - icon: ':warning:'
+      path: Graph/bfs_using_map.h
+      title: Graph/bfs_using_map.h
+    - icon: ':heavy_check_mark:'
+      path: Graph/bipartite_edge_coloring.h
+      title: Graph/bipartite_edge_coloring.h
+    - icon: ':heavy_check_mark:'
+      path: Graph/dijkstra.h
+      title: Graph/dijkstra.h
+    - icon: ':warning:'
+      path: Graph/tree_diameter.h
+      title: Graph/tree_diameter.h
   - name: Graph/Matching
     pages:
     - icon: ':heavy_check_mark:'
@@ -188,9 +203,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: Graph/Matching/Hungarian_short.h
       title: Graph/Matching/Hungarian_short.h
-    - icon: ':warning:'
-      path: Graph/Matching/PerfectMatchingMinCost.h
-      title: Graph/Matching/PerfectMatchingMinCost.h
     - icon: ':warning:'
       path: Graph/Matching/StableMarriage.h
       title: Graph/Matching/StableMarriage.h
@@ -237,23 +249,6 @@ data:
     - icon: ':warning:'
       path: Graph/Misc/find_triangles.h
       title: Graph/Misc/find_triangles.h
-  - name: Graph
-    pages:
-    - icon: ':warning:'
-      path: Graph/bfs.h
-      title: Graph/bfs.h
-    - icon: ':warning:'
-      path: Graph/bfs_using_map.h
-      title: Graph/bfs_using_map.h
-    - icon: ':heavy_check_mark:'
-      path: Graph/bipartite_edge_coloring.h
-      title: Graph/bipartite_edge_coloring.h
-    - icon: ':heavy_check_mark:'
-      path: Graph/dijkstra.h
-      title: Graph/dijkstra.h
-    - icon: ':warning:'
-      path: Graph/tree_diameter.h
-      title: Graph/tree_diameter.h
   - name: Java
     pages:
     - icon: ':warning:'
@@ -548,6 +543,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Graph/tests/dijkstra.test.cpp
       title: Graph/tests/dijkstra.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Graph/tests/directed_mst.test.cpp
+      title: Graph/tests/directed_mst.test.cpp
     - icon: ':heavy_check_mark:'
       path: Graph/tests/matching_bipartite.test.cpp
       title: Graph/tests/matching_bipartite.test.cpp
