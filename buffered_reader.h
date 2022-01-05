@@ -1,3 +1,4 @@
+#pragma once
 namespace IO {
     const int BUFSIZE = 1<<14;
     char buf[BUFSIZE + 1], *inp = buf;
