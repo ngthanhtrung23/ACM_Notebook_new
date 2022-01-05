@@ -432,7 +432,7 @@ data:
     - icon: ':warning:'
       path: String/maine_lorentz.h
       title: String/maine_lorentz.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: String/manacher.h
       title: String/manacher.h
     - icon: ':warning:'
@@ -610,7 +610,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: String/tests/lcp.test.cpp
       title: String/tests/lcp.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: String/tests/manacher.test.cpp
       title: String/tests/manacher.test.cpp
     - icon: ':heavy_check_mark:'

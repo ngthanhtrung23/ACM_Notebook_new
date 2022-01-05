@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: String/manacher.h
     title: String/manacher.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/zalgorithm
+    PROBLEM: https://judge.yosupo.jp/problem/enumerate_palindromes
     links:
-    - https://judge.yosupo.jp/problem/zalgorithm
-  bundledCode: "#line 1 \"String/tests/manacher.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/zalgorithm\"\
+    - https://judge.yosupo.jp/problem/enumerate_palindromes
+  bundledCode: "#line 1 \"String/tests/manacher.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/enumerate_palindromes\"\
     \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#line 1 \"String/manacher.h\"\
     \n// Return <even_len, odd_len>\n// - even_len[i] = length of longest palindrome\
     \ centered at [i, i+1]\n// - odd_len[i] = length of longest palindrome centered\
@@ -36,20 +36,20 @@ data:
     \ >> s;\n    auto [even, odd] = manacher(s);\n\n    REP(i,SZ(s)) {\n        cout\
     \ << odd[i] << ' ';\n        if (i+1 < SZ(s)) cout << even[i] << ' ';\n    }\n\
     \    cout << endl;\n    return 0;\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/zalgorithm\"\n\n#include\
-    \ <bits/stdc++.h>\nusing namespace std;\n\n#include \"../manacher.h\"\n\n#define\
-    \ REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)\n#define SZ(x) ((int)(x).size())\n\
-    \nint32_t main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n    string s; cin\
-    \ >> s;\n    auto [even, odd] = manacher(s);\n\n    REP(i,SZ(s)) {\n        cout\
-    \ << odd[i] << ' ';\n        if (i+1 < SZ(s)) cout << even[i] << ' ';\n    }\n\
-    \    cout << endl;\n    return 0;\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/enumerate_palindromes\"\
+    \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../manacher.h\"\
+    \n\n#define REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)\n#define SZ(x)\
+    \ ((int)(x).size())\n\nint32_t main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n\
+    \    string s; cin >> s;\n    auto [even, odd] = manacher(s);\n\n    REP(i,SZ(s))\
+    \ {\n        cout << odd[i] << ' ';\n        if (i+1 < SZ(s)) cout << even[i]\
+    \ << ' ';\n    }\n    cout << endl;\n    return 0;\n}\n"
   dependsOn:
   - String/manacher.h
   isVerificationFile: true
   path: String/tests/manacher.test.cpp
   requiredBy: []
-  timestamp: '2022-01-06 05:40:17+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2022-01-06 05:58:33+08:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: String/tests/manacher.test.cpp
 layout: document
