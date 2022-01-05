@@ -44,7 +44,7 @@ int32_t main() {
             int l = IO::get_int<int>();
             int r = IO::get_int<int>();
             auto f = seg_tree.prod(l, r);
-            int x = IO::get_int<int>();
+            modular x(IO::get_int<int>());
             cout << f.a * x + f.b << '\n';
         }
     }
