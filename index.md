@@ -12,7 +12,7 @@ data:
     - icon: ':warning:'
       path: DP/divide_conquer.cpp
       title: DP/divide_conquer.cpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: DP/dynamic_hull.h
       title: DP/dynamic_hull.h
     - icon: ':warning:'
@@ -56,7 +56,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/LazySegTree.h
       title: DataStructure/LazySegTree.h
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/LiChaoSegTree.h
       title: DataStructure/LiChaoSegTree.h
     - icon: ':heavy_check_mark:'
@@ -461,6 +461,11 @@ data:
       path: template.h
       title: template.h
   verificationCategories:
+  - name: DP/tests
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: DP/tests/dynamic_hull_lineaddgetmin.test.cpp
+      title: DP/tests/dynamic_hull_lineaddgetmin.test.cpp
   - name: DataStructure/test
     pages:
     - icon: ':heavy_check_mark:'
@@ -484,6 +489,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/lca.test.cpp
       title: DataStructure/test/lca.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/test/li_chao_seg_tree_lineaddgetmin.test.cpp
+      title: DataStructure/test/li_chao_seg_tree_lineaddgetmin.test.cpp
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/link_cut_tree_addpathsum.test.cpp
       title: DataStructure/test/link_cut_tree_addpathsum.test.cpp

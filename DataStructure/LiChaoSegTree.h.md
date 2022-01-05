@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: DataStructure/test/li_chao_seg_tree_lineaddgetmin.test.cpp
+    title: DataStructure/test/li_chao_seg_tree_lineaddgetmin.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://judge.yosupo.jp/problem/line_add_get_min
@@ -118,8 +121,9 @@ data:
   path: DataStructure/LiChaoSegTree.h
   requiredBy: []
   timestamp: '2022-01-03 02:31:11+08:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - DataStructure/test/li_chao_seg_tree_lineaddgetmin.test.cpp
 documentation_of: DataStructure/LiChaoSegTree.h
 layout: document
 redirect_from:
