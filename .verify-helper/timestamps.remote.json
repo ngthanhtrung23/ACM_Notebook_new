@@ -27,6 +27,8 @@
 "Graph/tests/bridge_biconnected.test.cpp": "2022-01-06 03:31:08 +0800",
 "Graph/tests/dijkstra.test.cpp": "2022-01-06 03:02:41 +0800",
 "Graph/tests/matching_bipartite.test.cpp": "2022-01-06 03:56:46 +0800",
+"Graph/tests/matching_bipartite_weighted.test.cpp": "2022-01-06 04:03:40 +0800",
+"Graph/tests/matching_bipartite_weighted_2.test.cpp": "2022-01-06 04:03:40 +0800",
 "Graph/tests/matching_general.test.cpp": "2022-01-06 03:56:46 +0800",
 "Graph/tests/strongly_connected.test.cpp": "2022-01-06 03:14:44 +0800"
 }
