@@ -2,16 +2,22 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
-  _pathExtension: cpp
-  _verificationStatusIcon: ':warning:'
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: Math/tests/ntt.test.cpp
+    title: Math/tests/ntt.test.cpp
+  - icon: ':x:'
+    path: Math/tests/ntt_any_mod.test.cpp
+    title: Math/tests/ntt_any_mod.test.cpp
+  _isVerificationFailed: true
+  _pathExtension: h
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://judge.yosupo.jp/problem/convolution_mod
     - https://judge.yosupo.jp/problem/convolution_mod_1000000007
     - https://oj.vnoi.info/problem/icpc21_mt_d
-  bundledCode: "#line 1 \"Math/Polynomial/NTT.cpp\"\n// Copied from chemthan\n// Tested:\n\
+  bundledCode: "#line 1 \"Math/Polynomial/NTT.h\"\n// Copied from chemthan\n// Tested:\n\
     // - https://oj.vnoi.info/problem/icpc21_mt_d\n// - https://judge.yosupo.jp/problem/convolution_mod\n\
     // - https://judge.yosupo.jp/problem/convolution_mod_1000000007\n//\n// Sample\
     \ usage: Multiply big-int polynomials using NTT + CRT\n//   NTT<MOD0, 1 << 21>\
@@ -64,10 +70,10 @@ data:
     \        for (int i = 0; i < na; i++) fa[i] = a[i];\n        for (int i = 0; i\
     \ < nb; i++) fb[i] = b[i];\n        dft(fa, n, 1), dft(fb, n, 1);\n        for\
     \ (int i = 0; i < n; i++) fa[i] = (long long) fa[i] * fb[i] % mod;\n        dft(fa,\
-    \ n, -1);\n        for (int i = 0; i < n; i++) c[i] = fa[i];\n    }\n};\n\nconst\
-    \ int MOD0 = 1004535809; //2^21 * 479 + 1\nconst int MOD1 = 1012924417; //2^21\
-    \ * 483 + 1\nconst int MOD2 = 998244353;  //2^20 * 476 + 1\nNTT<MOD0, 1 << 21>\
-    \ ntt0;\nNTT<MOD1, 1 << 21> ntt1;\n\n"
+    \ n, -1);\n        for (int i = 0; i < n; i++) c[i] = fa[i];\n    }\n};\n\n/*\
+    \ Examples\nconst int MOD0 = 1004535809; //2^21 * 479 + 1\nconst int MOD1 = 1012924417;\
+    \ //2^21 * 483 + 1\nconst int MOD2 = 998244353;  //2^20 * 476 + 1\nNTT<MOD0, 1\
+    \ << 21> ntt0;\nNTT<MOD1, 1 << 21> ntt1;\n*/\n"
   code: "// Copied from chemthan\n// Tested:\n// - https://oj.vnoi.info/problem/icpc21_mt_d\n\
     // - https://judge.yosupo.jp/problem/convolution_mod\n// - https://judge.yosupo.jp/problem/convolution_mod_1000000007\n\
     //\n// Sample usage: Multiply big-int polynomials using NTT + CRT\n//   NTT<MOD0,\
@@ -121,20 +127,22 @@ data:
     \        for (int i = 0; i < nb; i++) fb[i] = b[i];\n        dft(fa, n, 1), dft(fb,\
     \ n, 1);\n        for (int i = 0; i < n; i++) fa[i] = (long long) fa[i] * fb[i]\
     \ % mod;\n        dft(fa, n, -1);\n        for (int i = 0; i < n; i++) c[i] =\
-    \ fa[i];\n    }\n};\n\nconst int MOD0 = 1004535809; //2^21 * 479 + 1\nconst int\
-    \ MOD1 = 1012924417; //2^21 * 483 + 1\nconst int MOD2 = 998244353;  //2^20 * 476\
-    \ + 1\nNTT<MOD0, 1 << 21> ntt0;\nNTT<MOD1, 1 << 21> ntt1;\n\n"
+    \ fa[i];\n    }\n};\n\n/* Examples\nconst int MOD0 = 1004535809; //2^21 * 479\
+    \ + 1\nconst int MOD1 = 1012924417; //2^21 * 483 + 1\nconst int MOD2 = 998244353;\
+    \  //2^20 * 476 + 1\nNTT<MOD0, 1 << 21> ntt0;\nNTT<MOD1, 1 << 21> ntt1;\n*/\n"
   dependsOn: []
   isVerificationFile: false
-  path: Math/Polynomial/NTT.cpp
+  path: Math/Polynomial/NTT.h
   requiredBy: []
-  timestamp: '2021-12-31 02:11:02+08:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
-documentation_of: Math/Polynomial/NTT.cpp
+  timestamp: '2022-01-06 05:06:40+08:00'
+  verificationStatus: LIBRARY_SOME_WA
+  verifiedWith:
+  - Math/tests/ntt_any_mod.test.cpp
+  - Math/tests/ntt.test.cpp
+documentation_of: Math/Polynomial/NTT.h
 layout: document
 redirect_from:
-- /library/Math/Polynomial/NTT.cpp
-- /library/Math/Polynomial/NTT.cpp.html
-title: Math/Polynomial/NTT.cpp
+- /library/Math/Polynomial/NTT.h
+- /library/Math/Polynomial/NTT.h.html
+title: Math/Polynomial/NTT.h
 ---
