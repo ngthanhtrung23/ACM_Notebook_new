@@ -43,8 +43,8 @@ data:
     \    int a = IO::get_int<int>();\n            int b = IO::get_int<int>();\n  \
     \          seg_tree.set(pos, {a, b});\n        } else {\n            int l = IO::get_int<int>();\n\
     \            int r = IO::get_int<int>();\n            auto f = seg_tree.prod(l,\
-    \ r);\n            int x = IO::get_int<int>();\n            cout << f.a * x +\
-    \ f.b << '\\n';\n        }\n    }\n    return 0;\n}\n"
+    \ r);\n            modular x(IO::get_int<int>());\n            cout << f.a * x\
+    \ + f.b << '\\n';\n        }\n    }\n    return 0;\n}\n"
   dependsOn:
   - DataStructure/SegTree.h
   - Math/modulo_anta.h
@@ -52,7 +52,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
   requiredBy: []
-  timestamp: '2022-01-05 23:36:58+08:00'
+  timestamp: '2022-01-05 23:41:04+08:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
