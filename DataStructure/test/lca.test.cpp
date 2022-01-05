@@ -7,17 +7,19 @@ using namespace std;
 #include "../LCA.h"
 #include "../../buffered_reader.h"
 
+#define FOR(i, a, b) for (int i = (a), _##i = (b); i <= _##i; ++i)
+
 int32_t main() {
-    ios::sync_with_stdio(0); cin.tie(0);
     int n = IO::get_int<int>();
     int q = IO::get_int<int>();
-
-    LCA lca(n);
+    vector<vector<int>> adj(n);
     FOR(i,1,n-1) {
         int pi = IO::get_int<int>();
-        lca.add_edge(i, pi);
+        adj[i].push_back(pi);
+        adj[pi].push_back(i);
     }
-    lca.build(0);
+
+    LCA lca(n, adj, 0);
 
     while (q--) {
         int u = IO::get_int<int>();
