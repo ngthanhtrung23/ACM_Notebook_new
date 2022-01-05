@@ -1,11 +1,12 @@
 {
-"DataStructure/test/dsu.test.cpp": "2022-01-05 22:52:58 +0800",
-"DataStructure/test/fenwick.test.cpp": "2022-01-05 23:03:47 +0800",
-"DataStructure/test/fenwick_pointaddrangesum.test.cpp": "2022-01-05 23:25:36 +0800",
-"DataStructure/test/lca.test.cpp": "2022-01-05 22:42:17 +0800",
-"DataStructure/test/rmq.test.cpp": "2022-01-05 23:09:09 +0800",
-"DataStructure/test/segment_tree_pointaddrangesum.test.cpp": "2022-01-05 23:36:58 +0800",
-"DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp": "2022-01-05 23:46:52 +0800",
-"DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp": "2022-01-05 23:49:51 +0800",
-"DataStructure/test/segment_tree_staticrmq.test.cpp": "2022-01-05 23:36:58 +0800"
+"DataStructure/test/dsu.test.cpp": "2022-01-06 00:00:20 +0800",
+"DataStructure/test/fenwick.test.cpp": "2022-01-06 00:00:20 +0800",
+"DataStructure/test/fenwick_pointaddrangesum.test.cpp": "2022-01-06 00:00:20 +0800",
+"DataStructure/test/lca.test.cpp": "2022-01-06 00:00:20 +0800",
+"DataStructure/test/rmq.test.cpp": "2022-01-06 00:00:20 +0800",
+"DataStructure/test/segment_tree_pointaddrangesum.test.cpp": "2022-01-06 00:00:20 +0800",
+"DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp": "2022-01-06 00:00:20 +0800",
+"DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp": "2022-01-06 00:00:20 +0800",
+"DataStructure/test/segment_tree_staticrmq.test.cpp": "2022-01-05 23:36:58 +0800",
+"DataStructure/test/wavelet_matrix_rangekthsmallest.test.cpp": "2022-01-06 00:00:20 +0800"
 }
