@@ -11,5 +11,6 @@
 "DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp": "2022-01-06 00:00:20 +0800",
 "DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp": "2022-01-06 00:00:20 +0800",
 "DataStructure/test/segment_tree_staticrmq.test.cpp": "2022-01-05 23:36:58 +0800",
+"DataStructure/test/splay_tree.test.cpp": "2022-01-06 00:33:53 +0800",
 "DataStructure/test/wavelet_matrix_rangekthsmallest.test.cpp": "2022-01-06 00:00:20 +0800"
 }
