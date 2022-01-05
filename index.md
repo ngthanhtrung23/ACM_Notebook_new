@@ -53,7 +53,7 @@ data:
     - icon: ':warning:'
       path: DataStructure/LCA_RMQ.h
       title: DataStructure/LCA_RMQ.h
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/LazySegTree.h
       title: DataStructure/LazySegTree.h
     - icon: ':warning:'
@@ -484,6 +484,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
       title: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
+      title: DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/segment_tree_staticrmq.test.cpp
       title: DataStructure/test/segment_tree_staticrmq.test.cpp

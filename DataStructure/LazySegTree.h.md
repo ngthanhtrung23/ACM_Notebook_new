@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
+    title: DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://atcoder.github.io/ac-library/master/document_en/lazysegtree.html
@@ -196,8 +199,9 @@ data:
   path: DataStructure/LazySegTree.h
   requiredBy: []
   timestamp: '2021-12-21 14:25:18+08:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
 documentation_of: DataStructure/LazySegTree.h
 layout: document
 redirect_from:

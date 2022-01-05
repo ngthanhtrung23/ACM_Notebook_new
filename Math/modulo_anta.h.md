@@ -6,6 +6,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
     title: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
+    title: DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -93,6 +96,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
+  - DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
 documentation_of: Math/modulo_anta.h
 layout: document
 redirect_from:

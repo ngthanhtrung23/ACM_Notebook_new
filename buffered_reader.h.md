@@ -21,6 +21,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
     title: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
+    title: DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -61,6 +64,7 @@ data:
   - DataStructure/test/fenwick.test.cpp
   - DataStructure/test/lca.test.cpp
   - DataStructure/test/segment_tree_pointaddrangesum.test.cpp
+  - DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
   - DataStructure/test/rmq.test.cpp
   - DataStructure/test/fenwick_pointaddrangesum.test.cpp
 documentation_of: buffered_reader.h
