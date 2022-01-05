@@ -10,7 +10,7 @@ using namespace std;
 int32_t main() {
     ios::sync_with_stdio(0); cin.tie(0);
     int n, m; cin >> n >> m;
-    vector<int> xs(n);
+    vector<long long> xs(n);
     REP(i,n) cin >> xs[i];
 
     vector<pair<int,int>> edges(m);
@@ -19,7 +19,7 @@ int32_t main() {
     }
 
     auto res = find_all_triangles(n, edges);
-    int sum = 0;
+    long long sum = 0;
     const int MOD = 998244353;
     for (auto [i, j, k] : res) {
         sum = (sum + xs[i] * xs[j] % MOD * xs[k]) % MOD;
