@@ -6,9 +6,9 @@
 //
 // Tested:
 // - https://judge.yosupo.jp/problem/two_edge_connected_components
-int n;
-vector<vector<int>> g;
 struct UndirectedDfs {
+    vector<vector<int>> g;
+    int n;
     vector<int> low, num, parent;
     vector<bool> articulation;
     int counter, root, children;
@@ -17,7 +17,8 @@ struct UndirectedDfs {
     vector<int> cuts;
     map<pair<int,int>, int> cnt_edges;
 
-    UndirectedDfs() : low(n, 0), num(n, -1), parent(n, 0), articulation(n, false),
+    UndirectedDfs(const vector<vector<int>>& _g) : g(_g), n(g.size()),
+            low(n, 0), num(n, -1), parent(n, 0), articulation(n, false),
             counter(0), children(0) {
         for (int u = 0; u < n; u++) {
             for (int v : g[u]) {
