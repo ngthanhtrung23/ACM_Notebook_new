@@ -35,5 +35,7 @@
 "Graph/tests/strongly_connected.test.cpp": "2022-01-06 03:14:44 +0800",
 "Graph/tests/tree_diameter.test.cpp": "2022-01-06 04:26:27 +0800",
 "Graph/tests/triangles.test.cpp": "2022-01-06 04:27:27 +0800",
-"Math/tests/prime_pi.test.cpp": "2022-01-06 04:34:09 +0800"
+"Math/tests/factorize.test.cpp": "2022-01-06 04:41:45 +0800",
+"Math/tests/prime_pi.test.cpp": "2022-01-06 04:34:09 +0800",
+"Math/tests/sieve.test.cpp": "2022-01-06 04:41:45 +0800"
 }
