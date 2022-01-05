@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: DataStructure/test/segment_tree_staticrmq.test.cpp
+    title: DataStructure/test/segment_tree_staticrmq.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://atcoder.github.io/ac-library/master/document_en/segtree.html
@@ -70,9 +73,12 @@ data:
     \          }\n            sm = op(d[r], sm);\n        } while ((r & -r) != r);\n\
     \        return 0;\n    }\n\nprivate:\n    int _n, size, log;\n    vector<T> d;\n\
     \n    void update(int k) {\n        d[k] = op(d[2*k], d[2*k+1]);\n    }\n};\n\n\
-    struct MaxSegTreeOp {\n    static int f(int x, int y) {\n        return max(x,\
-    \ y);\n    }\n    static int e() {\n        return -1000111000;\n    }\n};\n\n\
-    // Example\n// SegTree<int, MaxSegTreeOp::f, MaxSegTreeOp::e> seg_tree(a);\n"
+    struct MaxSegTreeOp {\n    static int op(int x, int y) {\n        return max(x,\
+    \ y);\n    }\n    static int e() {\n        return INT_MIN;\n    }\n};\n\nstruct\
+    \ MinSegTreeOp {\n    static int op(int x, int y) {\n        return min(x, y);\n\
+    \    }\n    static int e() {\n        return INT_MAX;\n    }\n};\n\n// Example\n\
+    // SegTree<int, MaxSegTreeOp::f, MaxSegTreeOp::e> seg_tree(a);\n// SegTree<int,\
+    \ MinSegTreeOp::f, MinSegTreeOp::e> seg_tree(a);\n"
   code: "// SegTree, copied from AtCoder library\n// AtCoder doc: https://atcoder.github.io/ac-library/master/document_en/segtree.html\n\
     //\n// Notes:\n// - Index of elements from 0 -> n-1\n// - Range queries are [l,\
     \ r-1]\n//\n// Tested:\n// - (binary search) https://atcoder.jp/contests/practice2/tasks/practice2_j\n\
@@ -127,16 +133,20 @@ data:
     \          }\n            sm = op(d[r], sm);\n        } while ((r & -r) != r);\n\
     \        return 0;\n    }\n\nprivate:\n    int _n, size, log;\n    vector<T> d;\n\
     \n    void update(int k) {\n        d[k] = op(d[2*k], d[2*k+1]);\n    }\n};\n\n\
-    struct MaxSegTreeOp {\n    static int f(int x, int y) {\n        return max(x,\
-    \ y);\n    }\n    static int e() {\n        return -1000111000;\n    }\n};\n\n\
-    // Example\n// SegTree<int, MaxSegTreeOp::f, MaxSegTreeOp::e> seg_tree(a);\n"
+    struct MaxSegTreeOp {\n    static int op(int x, int y) {\n        return max(x,\
+    \ y);\n    }\n    static int e() {\n        return INT_MIN;\n    }\n};\n\nstruct\
+    \ MinSegTreeOp {\n    static int op(int x, int y) {\n        return min(x, y);\n\
+    \    }\n    static int e() {\n        return INT_MAX;\n    }\n};\n\n// Example\n\
+    // SegTree<int, MaxSegTreeOp::f, MaxSegTreeOp::e> seg_tree(a);\n// SegTree<int,\
+    \ MinSegTreeOp::f, MinSegTreeOp::e> seg_tree(a);\n"
   dependsOn: []
   isVerificationFile: false
   path: DataStructure/SegTree.h
   requiredBy: []
-  timestamp: '2022-01-05 00:51:08+08:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2022-01-05 23:20:29+08:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - DataStructure/test/segment_tree_staticrmq.test.cpp
 documentation_of: DataStructure/SegTree.h
 layout: document
 redirect_from:

@@ -74,7 +74,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/RMQ.h
       title: DataStructure/RMQ.h
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/SegTree.h
       title: DataStructure/SegTree.h
     - icon: ':warning:'
@@ -475,5 +475,8 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/rmq.test.cpp
       title: DataStructure/test/rmq.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/test/segment_tree_staticrmq.test.cpp
+      title: DataStructure/test/segment_tree_staticrmq.test.cpp
 layout: toppage
 ---
