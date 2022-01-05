@@ -35,7 +35,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/Fenwick.h
       title: DataStructure/Fenwick.h
-    - icon: ':warning:'
+    - icon: ':x:'
       path: DataStructure/Fenwick2D.h
       title: DataStructure/Fenwick2D.h
     - icon: ':warning:'
@@ -474,6 +474,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/fenwick.test.cpp
       title: DataStructure/test/fenwick.test.cpp
+    - icon: ':x:'
+      path: DataStructure/test/fenwick_2d_pointaddrectsum.test.cpp
+      title: DataStructure/test/fenwick_2d_pointaddrectsum.test.cpp
+    - icon: ':x:'
+      path: DataStructure/test/fenwick_2d_rectsum.test.cpp
+      title: DataStructure/test/fenwick_2d_rectsum.test.cpp
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/fenwick_pointaddrangesum.test.cpp
       title: DataStructure/test/fenwick_pointaddrangesum.test.cpp
