@@ -174,6 +174,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Graph/DirectedMST.h
       title: Graph/DirectedMST.h
+    - icon: ':heavy_check_mark:'
+      path: Graph/MaxClique.h
+      title: Graph/MaxClique.h
     - icon: ':warning:'
       path: Graph/bfs.h
       title: Graph/bfs.h
@@ -243,9 +246,6 @@ data:
     - icon: ':warning:'
       path: Graph/Misc/EulerPath.h
       title: Graph/Misc/EulerPath.h
-    - icon: ':warning:'
-      path: Graph/Misc/MaxClique.h
-      title: Graph/Misc/MaxClique.h
     - icon: ':warning:'
       path: Graph/Misc/find_triangles.h
       title: Graph/Misc/find_triangles.h
@@ -540,6 +540,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Graph/tests/bridge_biconnected.test.cpp
       title: Graph/tests/bridge_biconnected.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Graph/tests/clique_maxindependentset.test.cpp
+      title: Graph/tests/clique_maxindependentset.test.cpp
     - icon: ':heavy_check_mark:'
       path: Graph/tests/dijkstra.test.cpp
       title: Graph/tests/dijkstra.test.cpp

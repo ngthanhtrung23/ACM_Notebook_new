@@ -2,15 +2,18 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: Graph/tests/clique_maxindependentset.test.cpp
+    title: Graph/tests/clique_maxindependentset.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://judge.yosupo.jp/problem/maximum_independent_set
     - https://judge.yosupo.jp/submission/15825
-  bundledCode: "#line 1 \"Graph/Misc/MaxClique.h\"\n// MaxClique\n// Copied from https://judge.yosupo.jp/submission/15825\n\
+  bundledCode: "#line 1 \"Graph/MaxClique.h\"\n// MaxClique\n// Copied from https://judge.yosupo.jp/submission/15825\n\
     //\n// 0-based index\n//\n// Tested:\n// - https://judge.yosupo.jp/problem/maximum_independent_set\n\
     struct MaxClique {\n    static const int MN = 64; // change to bitset for n >\
     \ 64\n    int n, deg[MN];\n    uint64_t g[MN], ans;\n    vector<pair<int,int>>\
@@ -58,15 +61,16 @@ data:
     \    p &= ~(1ull << x);\n            c ^= 1ull << x;\n        }\n    }\n};\n"
   dependsOn: []
   isVerificationFile: false
-  path: Graph/Misc/MaxClique.h
+  path: Graph/MaxClique.h
   requiredBy: []
-  timestamp: '2021-12-30 10:55:15+08:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
-documentation_of: Graph/Misc/MaxClique.h
+  timestamp: '2022-01-06 04:21:41+08:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - Graph/tests/clique_maxindependentset.test.cpp
+documentation_of: Graph/MaxClique.h
 layout: document
 redirect_from:
-- /library/Graph/Misc/MaxClique.h
-- /library/Graph/Misc/MaxClique.h.html
-title: Graph/Misc/MaxClique.h
+- /library/Graph/MaxClique.h
+- /library/Graph/MaxClique.h.html
+title: Graph/MaxClique.h
 ---
