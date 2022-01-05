@@ -72,6 +72,7 @@ struct ModInt {
     ModInt& operator /= (ModInt m) { return (*this) *= m.inv(); }
     ModInt operator / (ModInt that) const { return ModInt(*this) /= that; }
 };
+
 const int MOD = 1e9 + 7;
 using modular = ModInt<MOD>;
 
