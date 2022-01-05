@@ -1,4 +1,4 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/zalgorithm"
+#define PROBLEM "https://judge.yosupo.jp/problem/enumerate_palindromes"
 
 #include <bits/stdc++.h>
 using namespace std;
