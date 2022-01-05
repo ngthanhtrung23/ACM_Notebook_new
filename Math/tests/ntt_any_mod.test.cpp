@@ -12,7 +12,8 @@ const int MOD2 = 754974721;
 NTT<MOD0, 1 << 20> ntt0;
 NTT<MOD1, 1 << 20> ntt1;
 NTT<MOD2, 1 << 20> ntt2;
-using namespace atcoder;
+
+#define REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)
 
 int32_t main() {
     ios::sync_with_stdio(0); cin.tie(0);
