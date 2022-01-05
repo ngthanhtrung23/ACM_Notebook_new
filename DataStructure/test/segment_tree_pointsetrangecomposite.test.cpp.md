@@ -1,21 +1,25 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/SegTree.h
     title: DataStructure/SegTree.h
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/modulo_anta.h
     title: Math/modulo_anta.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: buffered_reader.h
     title: buffered_reader.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
-  attributes: {}
+  _verificationStatusIcon: ':heavy_check_mark:'
+  attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/point_set_range_composite
+    links:
+    - https://judge.yosupo.jp/problem/point_set_range_composite
   bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.10.1/x64/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/opt/hostedtoolcache/Python/3.10.1/x64/lib/python3.10/site-packages/onlinejudge_verify/languages/cplusplus.py\"\
@@ -26,10 +30,12 @@ data:
     )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: bits/stdc++.h:\
     \ line -1: no such header\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_set_range_composite\"\
-    \n\n#include \"bits/stdc++.h\"\n#include <atcoder/modint>\nusing namespace std;\n\
-    using namespace atcoder;\n\n#include \"../SegTree.h\"\n#include \"../../Math/modulo_anta.h\"\
-    \n#include \"../../buffered_reader.h\"\n\nusing modular = modint998244353;\n\n\
-    struct Func {\n    modular a, b;\n};\n\nFunc op(Func l, Func r) {\n    return\
+    \n\n#include \"bits/stdc++.h\"\nusing namespace std;\n\n#include \"../SegTree.h\"\
+    \n#include \"../../Math/modulo_anta.h\"\n#include \"../../buffered_reader.h\"\n\
+    \nusing modular = ModInt<998244353>;\nstd::ostream& operator << (std::ostream&\
+    \ cout, const modular& m) {\n    cout << m.x;\n    return cout;\n}\nstd::istream&\
+    \ operator >> (std::istream& cin, modular& m) {\n    cin >> m.x;\n    return cin;\n\
+    }\n\nstruct Func {\n    modular a, b;\n};\n\nFunc op(Func l, Func r) {\n    return\
     \ Func{\n        l.a * r.a,\n        r.a * l.b + r.b\n    };\n}\nFunc e() {\n\
     \    return Func{1, 0};\n}\n\nint32_t main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n\
     \    int n = IO::get_int<int>();\n    int q = IO::get_int<int>();\n    vector<Func>\
@@ -49,8 +55,8 @@ data:
   isVerificationFile: true
   path: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
   requiredBy: []
-  timestamp: '2022-01-05 23:44:41+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2022-01-05 23:46:52+08:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
 layout: document

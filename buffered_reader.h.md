@@ -18,12 +18,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/segment_tree_pointaddrangesum.test.cpp
     title: DataStructure/test/segment_tree_pointaddrangesum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
     title: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"buffered_reader.h\"\nnamespace IO {\n    const int BUFSIZE\
@@ -55,7 +55,7 @@ data:
   path: buffered_reader.h
   requiredBy: []
   timestamp: '2021-12-30 01:16:19+08:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
   - DataStructure/test/fenwick.test.cpp
