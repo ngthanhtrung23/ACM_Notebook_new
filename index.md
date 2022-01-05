@@ -280,6 +280,9 @@ data:
     - icon: ':warning:'
       path: Math/Simplex.h
       title: Math/Simplex.h
+    - icon: ':heavy_check_mark:'
+      path: Math/SumDiv_SumMod.h
+      title: Math/SumDiv_SumMod.h
     - icon: ':warning:'
       path: Math/bigint.h
       title: Math/bigint.h
@@ -289,7 +292,7 @@ data:
     - icon: ':question:'
       path: Math/modulo_anta.h
       title: Math/modulo_anta.h
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: Math/nim_product.h
       title: Math/nim_product.h
   - name: Math/Linear
@@ -320,7 +323,7 @@ data:
     - icon: ':warning:'
       path: Math/NumberTheory/PrimitiveRoot.h
       title: Math/NumberTheory/PrimitiveRoot.h
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: Math/NumberTheory/SqrtMod.h
       title: Math/NumberTheory/SqrtMod.h
     - icon: ':warning:'
@@ -374,9 +377,6 @@ data:
     - icon: ':warning:'
       path: Math/Pure/PythagoreTriple.h
       title: Math/Pure/PythagoreTriple.h
-    - icon: ':warning:'
-      path: Math/Pure/SumDiv_SumMod.h
-      title: Math/Pure/SumDiv_SumMod.h
     - icon: ':warning:'
       path: Math/Pure/farey.h
       title: Math/Pure/farey.h
@@ -579,10 +579,19 @@ data:
       path: Math/tests/factorize.test.cpp
       title: Math/tests/factorize.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Math/tests/nimber.test.cpp
+      title: Math/tests/nimber.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Math/tests/prime_pi.test.cpp
       title: Math/tests/prime_pi.test.cpp
     - icon: ':heavy_check_mark:'
       path: Math/tests/sieve.test.cpp
       title: Math/tests/sieve.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Math/tests/sqrt_mod.test.cpp
+      title: Math/tests/sqrt_mod.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Math/tests/sumdiv.test.cpp
+      title: Math/tests/sumdiv.test.cpp
 layout: toppage
 ---

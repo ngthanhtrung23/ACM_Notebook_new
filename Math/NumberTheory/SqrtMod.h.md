@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: Math/tests/sqrt_mod.test.cpp
+    title: Math/tests/sqrt_mod.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://judge.yosupo.jp/problem/sqrt_mod
@@ -34,7 +37,7 @@ data:
     \ q, k, l);\n        c = -c * k % q;\n        if (c < 0) c += q;\n        if (c\
     \ * c % q == X) return c;\n    }\n    assert(false);\n}\n\nll sqrtMod(ll X, ll\
     \ q) {\n    X %= q;\n    if (q == 2 || X == 0) return min(X, q-X);\n    if (bin_pow(X,\
-    \ (q - 1) / 2, q) != 1) return -1;\n    if (q % 4 == 3) {\n        int res = bin_pow(X,\
+    \ (q - 1) / 2, q) != 1) return -1;\n    if (q % 4 == 3) {\n        ll res = bin_pow(X,\
     \ (q + 1) / 4, q);\n        return min(res, q - res);\n    }\n    auto res = (Cipolla(X,\
     \ q) % q + q) % q;\n    return min(res, q-res);\n}\n"
   code: "// sqrtMod(X, q), with q is prime, returns:\n// a where a*a = X\n// -1 if\
@@ -59,16 +62,17 @@ data:
     \ % q;\n        if (c < 0) c += q;\n        if (c * c % q == X) return c;\n  \
     \  }\n    assert(false);\n}\n\nll sqrtMod(ll X, ll q) {\n    X %= q;\n    if (q\
     \ == 2 || X == 0) return min(X, q-X);\n    if (bin_pow(X, (q - 1) / 2, q) != 1)\
-    \ return -1;\n    if (q % 4 == 3) {\n        int res = bin_pow(X, (q + 1) / 4,\
+    \ return -1;\n    if (q % 4 == 3) {\n        ll res = bin_pow(X, (q + 1) / 4,\
     \ q);\n        return min(res, q - res);\n    }\n    auto res = (Cipolla(X, q)\
     \ % q + q) % q;\n    return min(res, q-res);\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: Math/NumberTheory/SqrtMod.h
   requiredBy: []
-  timestamp: '2021-12-19 02:05:12+08:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2022-01-06 04:47:02+08:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - Math/tests/sqrt_mod.test.cpp
 documentation_of: Math/NumberTheory/SqrtMod.h
 layout: document
 redirect_from:

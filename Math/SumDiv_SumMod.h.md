@@ -2,15 +2,18 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: Math/tests/sumdiv.test.cpp
+    title: Math/tests/sumdiv.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://judge.yosupo.jp/problem/sum_of_floor_of_linear
     - https://judge.yosupo.jp/submission/15864
-  bundledCode: "#line 1 \"Math/Pure/SumDiv_SumMod.h\"\n// Copied from https://judge.yosupo.jp/submission/15864\n\
+  bundledCode: "#line 1 \"Math/SumDiv_SumMod.h\"\n// Copied from https://judge.yosupo.jp/submission/15864\n\
     // Tested:\n// - https://judge.yosupo.jp/problem/sum_of_floor_of_linear\n\nusing\
     \ ll = long long;\nll sum(ll n) {\n    return n * (n-1) / 2;\n}\n// sum( (a +\
     \ d*i) / m ) for i in [0, n-1]\nll sum_div(ll a, ll d, ll m, ll n) {\n    ll res\
@@ -30,15 +33,16 @@ data:
     \ sum(n) - m * sum_div(a, d, m, n);\n}\n"
   dependsOn: []
   isVerificationFile: false
-  path: Math/Pure/SumDiv_SumMod.h
+  path: Math/SumDiv_SumMod.h
   requiredBy: []
-  timestamp: '2021-12-30 17:16:00+08:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
-documentation_of: Math/Pure/SumDiv_SumMod.h
+  timestamp: '2022-01-06 04:47:02+08:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - Math/tests/sumdiv.test.cpp
+documentation_of: Math/SumDiv_SumMod.h
 layout: document
 redirect_from:
-- /library/Math/Pure/SumDiv_SumMod.h
-- /library/Math/Pure/SumDiv_SumMod.h.html
-title: Math/Pure/SumDiv_SumMod.h
+- /library/Math/SumDiv_SumMod.h
+- /library/Math/SumDiv_SumMod.h.html
+title: Math/SumDiv_SumMod.h
 ---
