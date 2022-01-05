@@ -166,7 +166,7 @@ data:
     - icon: ':warning:'
       path: Graph/DfsTree/BridgeArticulation.h
       title: Graph/DfsTree/BridgeArticulation.h
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: Graph/DfsTree/StronglyConnected.h
       title: Graph/DfsTree/StronglyConnected.h
   - name: Graph/MST
@@ -542,5 +542,8 @@ data:
     - icon: ':heavy_check_mark:'
       path: Graph/tests/dijkstra.test.cpp
       title: Graph/tests/dijkstra.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Graph/tests/strongly_connected.test.cpp
+      title: Graph/tests/strongly_connected.test.cpp
 layout: toppage
 ---
