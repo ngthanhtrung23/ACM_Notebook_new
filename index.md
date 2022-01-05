@@ -349,7 +349,7 @@ data:
     - icon: ':warning:'
       path: Math/Polynomial/VOJ_POST2.cpp
       title: Math/Polynomial/VOJ_POST2.cpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Math/Polynomial/xorFFT.h
       title: Math/Polynomial/xorFFT.h
   - name: Math/Prime
@@ -575,7 +575,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/tests/berlekamp_massey.test.cpp
       title: Math/tests/berlekamp_massey.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/convolution_and.test.cpp
       title: Math/tests/convolution_and.test.cpp
     - icon: ':heavy_check_mark:'
