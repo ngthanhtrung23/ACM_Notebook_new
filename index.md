@@ -176,18 +176,18 @@ data:
       title: Graph/MST/DirectedMST.h
   - name: Graph/Matching
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
+      path: Graph/Matching/BipartiteMatching.h
+      title: Graph/Matching/BipartiteMatching.h
+    - icon: ':heavy_check_mark:'
       path: Graph/Matching/GeneralMatching.h
       title: Graph/Matching/GeneralMatching.h
-    - icon: ':warning:'
+    - icon: ':x:'
       path: Graph/Matching/HungarianLMH.h
       title: Graph/Matching/HungarianLMH.h
-    - icon: ':warning:'
+    - icon: ':x:'
       path: Graph/Matching/Hungarian_short.h
       title: Graph/Matching/Hungarian_short.h
-    - icon: ':warning:'
-      path: Graph/Matching/Matching.h
-      title: Graph/Matching/Matching.h
     - icon: ':warning:'
       path: Graph/Matching/PerfectMatchingMinCost.h
       title: Graph/Matching/PerfectMatchingMinCost.h
@@ -245,7 +245,7 @@ data:
     - icon: ':warning:'
       path: Graph/bfs_using_map.h
       title: Graph/bfs_using_map.h
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: Graph/bipartite_edge_coloring.h
       title: Graph/bipartite_edge_coloring.h
     - icon: ':heavy_check_mark:'
@@ -540,11 +540,26 @@ data:
   - name: Graph/tests
     pages:
     - icon: ':heavy_check_mark:'
+      path: Graph/tests/bipartite_coloring.test.cpp
+      title: Graph/tests/bipartite_coloring.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/bridge_biconnected.test.cpp
       title: Graph/tests/bridge_biconnected.test.cpp
     - icon: ':heavy_check_mark:'
       path: Graph/tests/dijkstra.test.cpp
       title: Graph/tests/dijkstra.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Graph/tests/matching_bipartite.test.cpp
+      title: Graph/tests/matching_bipartite.test.cpp
+    - icon: ':x:'
+      path: Graph/tests/matching_bipartite_weighted.test.cpp
+      title: Graph/tests/matching_bipartite_weighted.test.cpp
+    - icon: ':x:'
+      path: Graph/tests/matching_bipartite_weighted_2.test.cpp
+      title: Graph/tests/matching_bipartite_weighted_2.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Graph/tests/matching_general.test.cpp
+      title: Graph/tests/matching_general.test.cpp
     - icon: ':heavy_check_mark:'
       path: Graph/tests/strongly_connected.test.cpp
       title: Graph/tests/strongly_connected.test.cpp

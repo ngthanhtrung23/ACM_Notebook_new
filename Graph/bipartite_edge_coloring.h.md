@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: Graph/tests/bipartite_coloring.test.cpp
+    title: Graph/tests/bipartite_coloring.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://codeforces.com/contest/600/problem/F
@@ -104,12 +107,7 @@ data:
     \        iota(lab.begin(), lab.end(),0);\n        auto tmp = edge_color(lab);\n\
     \        ans.resize(_ed.size());\n        for (int i = 0; i < (int) tmp.size();\
     \ i++) {\n            for (auto x: tmp[i]) if (x < (int) _ed.size()) ans[x] =\
-    \ i + 1;\n        }\n        return tmp.size();\n    }\n};\n\nint32_t main() {\n\
-    \    ios_base::sync_with_stdio(0); cin.tie(0);\n    int l, r, m; cin >> l >> r\
-    \ >> m;\n    vector<T> ed(m);\n    for (auto &x: ed) {\n        cin >> x[0] >>\
-    \ x[1];\n        --x[0]; --x[1];\n    }\n    EdgeColoring E;\n    vector<int>\
-    \ ans;\n    int cnt = E.solve(ed, ans);\n    cout << cnt << '\\n';\n    for (auto\
-    \ &x: ans) cout << x << ' ';\n    cout << endl;\n    return 0;\n}\n"
+    \ i + 1;\n        }\n        return tmp.size();\n    }\n};\n"
   code: "// Copied from https://judge.yosupo.jp/submission/11755\n// Source: Benq\n\
     //\n// Tested:\n// - https://codeforces.com/contest/600/problem/F\n// - https://judge.yosupo.jp/problem/bipartite_edge_coloring\n\
     // - https://oj.vnoi.info/problem/nkdec\n\n// Credit: Benq\n// returns vector\
@@ -201,19 +199,15 @@ data:
     \        iota(lab.begin(), lab.end(),0);\n        auto tmp = edge_color(lab);\n\
     \        ans.resize(_ed.size());\n        for (int i = 0; i < (int) tmp.size();\
     \ i++) {\n            for (auto x: tmp[i]) if (x < (int) _ed.size()) ans[x] =\
-    \ i + 1;\n        }\n        return tmp.size();\n    }\n};\n\nint32_t main() {\n\
-    \    ios_base::sync_with_stdio(0); cin.tie(0);\n    int l, r, m; cin >> l >> r\
-    \ >> m;\n    vector<T> ed(m);\n    for (auto &x: ed) {\n        cin >> x[0] >>\
-    \ x[1];\n        --x[0]; --x[1];\n    }\n    EdgeColoring E;\n    vector<int>\
-    \ ans;\n    int cnt = E.solve(ed, ans);\n    cout << cnt << '\\n';\n    for (auto\
-    \ &x: ans) cout << x << ' ';\n    cout << endl;\n    return 0;\n}\n"
+    \ i + 1;\n        }\n        return tmp.size();\n    }\n};\n"
   dependsOn: []
   isVerificationFile: false
   path: Graph/bipartite_edge_coloring.h
   requiredBy: []
-  timestamp: '2022-01-04 04:17:50+08:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2022-01-06 03:56:46+08:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - Graph/tests/bipartite_coloring.test.cpp
 documentation_of: Graph/bipartite_edge_coloring.h
 layout: document
 redirect_from:

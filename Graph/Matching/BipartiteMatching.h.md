@@ -2,17 +2,20 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: Graph/tests/matching_bipartite.test.cpp
+    title: Graph/tests/matching_bipartite.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://codeforces.com/gym/100337
     - https://codeforces.com/gym/100337/submission/139751832)
     - https://judge.yosupo.jp/problem/bipartitematching
     - https://oj.vnoi.info/problem/fmatch
-  bundledCode: "#line 1 \"Graph/Matching/Matching.h\"\n// Max Bipartite matching.\n\
+  bundledCode: "#line 1 \"Graph/Matching/BipartiteMatching.h\"\n// Max Bipartite matching.\n\
     // Index from 0\n// Assume 2 sides have same number of vertices\n//\n// Notes:\n\
     // - If TLE --> try shuffle edges\n//   REP(i,n) shuffle(ke[i].begin(), ke[i].end(),\
     \ rng)\n// - It should be quite fast, can AC 10^5 vertices\n//\n// Find vertices\
@@ -66,15 +69,16 @@ data:
     \      } while (newMatches > 0);\n        return res;\n    }\n};\n"
   dependsOn: []
   isVerificationFile: false
-  path: Graph/Matching/Matching.h
+  path: Graph/Matching/BipartiteMatching.h
   requiredBy: []
-  timestamp: '2021-12-18 22:52:02+08:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
-documentation_of: Graph/Matching/Matching.h
+  timestamp: '2022-01-06 03:56:46+08:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - Graph/tests/matching_bipartite.test.cpp
+documentation_of: Graph/Matching/BipartiteMatching.h
 layout: document
 redirect_from:
-- /library/Graph/Matching/Matching.h
-- /library/Graph/Matching/Matching.h.html
-title: Graph/Matching/Matching.h
+- /library/Graph/Matching/BipartiteMatching.h
+- /library/Graph/Matching/BipartiteMatching.h.html
+title: Graph/Matching/BipartiteMatching.h
 ---
