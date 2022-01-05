@@ -142,13 +142,23 @@ private:
 };
 
 struct MaxSegTreeOp {
-    static int f(int x, int y) {
+    static int op(int x, int y) {
         return max(x, y);
     }
     static int e() {
-        return -1000111000;
+        return INT_MIN;
+    }
+};
+
+struct MinSegTreeOp {
+    static int op(int x, int y) {
+        return min(x, y);
+    }
+    static int e() {
+        return INT_MAX;
     }
 };
 
 // Example
 // SegTree<int, MaxSegTreeOp::f, MaxSegTreeOp::e> seg_tree(a);
+// SegTree<int, MinSegTreeOp::f, MinSegTreeOp::e> seg_tree(a);
