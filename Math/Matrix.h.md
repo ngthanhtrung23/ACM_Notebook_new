@@ -7,6 +7,9 @@ data:
     path: Math/tests/matrix_det.test.cpp
     title: Math/tests/matrix_det.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Math/tests/matrix_inverse.test.cpp
+    title: Math/tests/matrix_inverse.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Math/tests/matrix_mult.test.cpp
     title: Math/tests/matrix_mult.test.cpp
   _isVerificationFailed: false
@@ -180,6 +183,7 @@ data:
   timestamp: '2021-12-21 14:25:18+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Math/tests/matrix_inverse.test.cpp
   - Math/tests/matrix_det.test.cpp
   - Math/tests/matrix_mult.test.cpp
 documentation_of: Math/Matrix.h
