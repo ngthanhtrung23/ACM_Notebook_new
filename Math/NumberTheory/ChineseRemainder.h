@@ -3,18 +3,19 @@
 // Tested:
 // - https://open.kattis.com/problems/generalchineseremainder
 // - https://oj.vnoi.info/problem/icpc21_mt_d
+template<typename T>
 bool linearCongruences(
-        const vector<long long> &a,
-        const vector<long long> &b,
-        const vector<long long> &m,
-        long long &x,
-        long long &M
+        const vector<T> &a,
+        const vector<T> &b,
+        const vector<T> &m,
+        T &x,
+        T &M
 ) {
-    long long n = a.size();
+    int n = a.size();
     x = 0; M = 1;
-    REP(i, n) {
-        long long a_ = a[i] * M, b_ = b[i] - a[i] * x, m_ = m[i];
-        long long y, t, g = extgcd(a_, m_, y, t);
+    for (int i = 0; i < n; i++) {
+        T a_ = a[i] * M, b_ = b[i] - a[i] * x, m_ = m[i];
+        T y, t, g = extgcd<T>(a_, m_, y, t);
         if (b_ % g) return false;
         b_ /= g; m_ /= g;
         x += M * (y * b_ % m_);
