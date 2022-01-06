@@ -30,12 +30,12 @@ data:
     \n#include \"bits/stdc++.h\"\nusing namespace std;\n\n#include \"../Fenwick.h\"\
     \n#include \"../../buffered_reader.h\"\n\n#define REP(i, a) for (int i = 0, _##i\
     \ = (a); i < _##i; ++i)\n\nint32_t main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n\
-    \    int n = IO::get_int<int>();\n    int q = IO::get_int<int>();\n\n    Fenwick<long\
-    \ long> f(n);\n    REP(i,n) {\n        int x = IO::get_int<int>();\n        f.update(i,\
-    \ x);\n    }\n\n    while (q--) {\n        int typ = IO::get_int<int>();\n   \
-    \     if (typ == 0) {\n            int u = IO::get_int<int>();\n            int\
-    \ val = IO::get_int<int>();\n            f.update(u, val);\n        } else if\
-    \ (typ == 1) {\n            int l = IO::get_int<int>();\n            int r = IO::get_int<int>();\n\
+    \    int n = IO::get<int>();\n    int q = IO::get<int>();\n\n    Fenwick<long\
+    \ long> f(n);\n    REP(i,n) {\n        int x = IO::get<int>();\n        f.update(i,\
+    \ x);\n    }\n\n    while (q--) {\n        int typ = IO::get<int>();\n       \
+    \ if (typ == 0) {\n            int u = IO::get<int>();\n            int val =\
+    \ IO::get<int>();\n            f.update(u, val);\n        } else if (typ == 1)\
+    \ {\n            int l = IO::get<int>();\n            int r = IO::get<int>();\n\
     \            cout << f.get(l, r) << '\\n';\n        } else {\n            assert(false);\n\
     \        }\n    }\n    return 0;\n}\n"
   dependsOn:
@@ -44,7 +44,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/fenwick_pointaddrangesum.test.cpp
   requiredBy: []
-  timestamp: '2022-01-06 00:00:20+08:00'
+  timestamp: '2022-01-06 20:02:32+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/fenwick_pointaddrangesum.test.cpp

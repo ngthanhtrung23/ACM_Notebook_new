@@ -306,39 +306,39 @@ data:
     \ {\n        if (!*inp && !reacheof) {\n            memset(buf, 0, sizeof buf);\n\
     \            int tmp = fread(buf, 1, BUFSIZE, stdin);\n            if (tmp !=\
     \ BUFSIZE) reacheof = true;\n            inp = buf;\n        }\n        return\
-    \ *inp++;\n    }\n    template<typename T>\n    T get_int() {\n        int neg\
-    \ = 0;\n        T res = 0;\n        char c = get_char();\n        while (!std::isdigit(c)\
+    \ *inp++;\n    }\n    template<typename T>\n    T get() {\n        int neg = 0;\n\
+    \        T res = 0;\n        char c = get_char();\n        while (!std::isdigit(c)\
     \ && c != '-' && c != '+') c = get_char();\n        if (c == '+') { neg = 0; }\n\
     \        else if (c == '-') { neg = 1; }\n        else res = c - '0';\n\n    \
     \    c = get_char();\n        while (std::isdigit(c)) {\n            res = res\
     \ * 10 + (c - '0');\n            c = get_char();\n        }\n        return neg\
     \ ? -res : res;\n    }\n};\n#line 10 \"Math/tests/matrix_mult.test.cpp\"\n\n#define\
     \ REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)\n\nint32_t main() {\n \
-    \   ios::sync_with_stdio(0); cin.tie(0);\n    int n = IO::get_int<int>();\n  \
-    \  int m = IO::get_int<int>();\n    int k = IO::get_int<int>();\n    Matrix<modint998244353>\
+    \   ios::sync_with_stdio(0); cin.tie(0);\n    int n = IO::get<int>();\n    int\
+    \ m = IO::get<int>();\n    int k = IO::get<int>();\n    Matrix<modint998244353>\
     \ a(n, m);\n    Matrix<modint998244353> b(m, k);\n    REP(i,n) REP(j,m) {\n  \
-    \      int x = IO::get_int<int>();\n        a[i][j] = x;\n    }\n    REP(i,m)\
-    \ REP(j,k) {\n        int x = IO::get_int<int>();\n        b[i][j] = x;\n    }\n\
-    \    auto c = a * b;\n    REP(i,n) {\n        REP(j,k) cout << c[i][j].val() <<\
-    \ ' ';\n        cout << '\\n';\n    }\n    return 0;\n}\n"
+    \      int x = IO::get<int>();\n        a[i][j] = x;\n    }\n    REP(i,m) REP(j,k)\
+    \ {\n        int x = IO::get<int>();\n        b[i][j] = x;\n    }\n    auto c\
+    \ = a * b;\n    REP(i,n) {\n        REP(j,k) cout << c[i][j].val() << ' ';\n \
+    \       cout << '\\n';\n    }\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/matrix_product\"\n\n#include\
     \ <bits/stdc++.h>\n#include \"../../atcoder/modint.hpp\"\nusing namespace std;\n\
     using namespace atcoder;\n\n#include \"../Matrix.h\"\n#include \"../../buffered_reader.h\"\
     \n\n#define REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)\n\nint32_t main()\
-    \ {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n = IO::get_int<int>();\n\
-    \    int m = IO::get_int<int>();\n    int k = IO::get_int<int>();\n    Matrix<modint998244353>\
+    \ {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n = IO::get<int>();\n \
+    \   int m = IO::get<int>();\n    int k = IO::get<int>();\n    Matrix<modint998244353>\
     \ a(n, m);\n    Matrix<modint998244353> b(m, k);\n    REP(i,n) REP(j,m) {\n  \
-    \      int x = IO::get_int<int>();\n        a[i][j] = x;\n    }\n    REP(i,m)\
-    \ REP(j,k) {\n        int x = IO::get_int<int>();\n        b[i][j] = x;\n    }\n\
-    \    auto c = a * b;\n    REP(i,n) {\n        REP(j,k) cout << c[i][j].val() <<\
-    \ ' ';\n        cout << '\\n';\n    }\n    return 0;\n}\n"
+    \      int x = IO::get<int>();\n        a[i][j] = x;\n    }\n    REP(i,m) REP(j,k)\
+    \ {\n        int x = IO::get<int>();\n        b[i][j] = x;\n    }\n    auto c\
+    \ = a * b;\n    REP(i,n) {\n        REP(j,k) cout << c[i][j].val() << ' ';\n \
+    \       cout << '\\n';\n    }\n    return 0;\n}\n"
   dependsOn:
   - Math/Matrix.h
   - buffered_reader.h
   isVerificationFile: true
   path: Math/tests/matrix_mult.test.cpp
   requiredBy: []
-  timestamp: '2022-01-06 13:36:35+08:00'
+  timestamp: '2022-01-06 20:02:32+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Math/tests/matrix_mult.test.cpp

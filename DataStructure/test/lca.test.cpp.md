@@ -55,28 +55,27 @@ data:
     \           memset(buf, 0, sizeof buf);\n            int tmp = fread(buf, 1, BUFSIZE,\
     \ stdin);\n            if (tmp != BUFSIZE) reacheof = true;\n            inp =\
     \ buf;\n        }\n        return *inp++;\n    }\n    template<typename T>\n \
-    \   T get_int() {\n        int neg = 0;\n        T res = 0;\n        char c =\
-    \ get_char();\n        while (!std::isdigit(c) && c != '-' && c != '+') c = get_char();\n\
-    \        if (c == '+') { neg = 0; }\n        else if (c == '-') { neg = 1; }\n\
-    \        else res = c - '0';\n\n        c = get_char();\n        while (std::isdigit(c))\
+    \   T get() {\n        int neg = 0;\n        T res = 0;\n        char c = get_char();\n\
+    \        while (!std::isdigit(c) && c != '-' && c != '+') c = get_char();\n  \
+    \      if (c == '+') { neg = 0; }\n        else if (c == '-') { neg = 1; }\n \
+    \       else res = c - '0';\n\n        c = get_char();\n        while (std::isdigit(c))\
     \ {\n            res = res * 10 + (c - '0');\n            c = get_char();\n  \
     \      }\n        return neg ? -res : res;\n    }\n};\n#line 9 \"DataStructure/test/lca.test.cpp\"\
     \n\n#define FOR(i, a, b) for (int i = (a), _##i = (b); i <= _##i; ++i)\n\nint32_t\
-    \ main() {\n    int n = IO::get_int<int>();\n    int q = IO::get_int<int>();\n\
-    \    vector<vector<int>> adj(n);\n    FOR(i,1,n-1) {\n        int pi = IO::get_int<int>();\n\
-    \        adj[i].push_back(pi);\n        adj[pi].push_back(i);\n    }\n\n    LCA\
-    \ lca(n, adj, 0);\n\n    while (q--) {\n        int u = IO::get_int<int>();\n\
-    \        int v = IO::get_int<int>();\n\n        cout << lca.lca(u, v) << '\\n';\n\
-    \    }\n    return 0;\n}\n"
+    \ main() {\n    int n = IO::get<int>();\n    int q = IO::get<int>();\n    vector<vector<int>>\
+    \ adj(n);\n    FOR(i,1,n-1) {\n        int pi = IO::get<int>();\n        adj[i].push_back(pi);\n\
+    \        adj[pi].push_back(i);\n    }\n\n    LCA lca(n, adj, 0);\n\n    while\
+    \ (q--) {\n        int u = IO::get<int>();\n        int v = IO::get<int>();\n\n\
+    \        cout << lca.lca(u, v) << '\\n';\n    }\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n\n#include <bits/stdc++.h>\n\
     using namespace std;\n\n#include \"../RMQ.h\"\n#include \"../LCA.h\"\n#include\
     \ \"../../buffered_reader.h\"\n\n#define FOR(i, a, b) for (int i = (a), _##i =\
-    \ (b); i <= _##i; ++i)\n\nint32_t main() {\n    int n = IO::get_int<int>();\n\
-    \    int q = IO::get_int<int>();\n    vector<vector<int>> adj(n);\n    FOR(i,1,n-1)\
-    \ {\n        int pi = IO::get_int<int>();\n        adj[i].push_back(pi);\n   \
-    \     adj[pi].push_back(i);\n    }\n\n    LCA lca(n, adj, 0);\n\n    while (q--)\
-    \ {\n        int u = IO::get_int<int>();\n        int v = IO::get_int<int>();\n\
-    \n        cout << lca.lca(u, v) << '\\n';\n    }\n    return 0;\n}\n"
+    \ (b); i <= _##i; ++i)\n\nint32_t main() {\n    int n = IO::get<int>();\n    int\
+    \ q = IO::get<int>();\n    vector<vector<int>> adj(n);\n    FOR(i,1,n-1) {\n \
+    \       int pi = IO::get<int>();\n        adj[i].push_back(pi);\n        adj[pi].push_back(i);\n\
+    \    }\n\n    LCA lca(n, adj, 0);\n\n    while (q--) {\n        int u = IO::get<int>();\n\
+    \        int v = IO::get<int>();\n\n        cout << lca.lca(u, v) << '\\n';\n\
+    \    }\n    return 0;\n}\n"
   dependsOn:
   - DataStructure/RMQ.h
   - DataStructure/LCA.h
@@ -84,7 +83,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/lca.test.cpp
   requiredBy: []
-  timestamp: '2022-01-06 00:00:20+08:00'
+  timestamp: '2022-01-06 20:02:32+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/lca.test.cpp

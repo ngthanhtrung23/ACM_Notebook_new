@@ -38,16 +38,16 @@ data:
     }\n\nstruct Func {\n    modular a, b;\n};\n\nFunc op(Func l, Func r) {\n    return\
     \ Func{\n        l.a * r.a,\n        r.a * l.b + r.b\n    };\n}\nFunc e() {\n\
     \    return Func{1, 0};\n}\n\nint32_t main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n\
-    \    int n = IO::get_int<int>();\n    int q = IO::get_int<int>();\n    vector<Func>\
-    \ funcs(n);\n    for (auto& f : funcs) {\n        int a = IO::get_int<int>();\n\
-    \        int b = IO::get_int<int>();\n        f = {a, b};\n    }\n\n    SegTree<Func,\
-    \ op, e> seg_tree(funcs);\n    while (q--) {\n        int typ = IO::get_int<int>();\n\
-    \        if (typ == 0) {\n            int pos = IO::get_int<int>();\n        \
-    \    int a = IO::get_int<int>();\n            int b = IO::get_int<int>();\n  \
-    \          seg_tree.set(pos, {a, b});\n        } else {\n            int l = IO::get_int<int>();\n\
-    \            int r = IO::get_int<int>();\n            auto f = seg_tree.prod(l,\
-    \ r);\n            modular x(IO::get_int<int>());\n            cout << f.a * x\
-    \ + f.b << '\\n';\n        }\n    }\n    return 0;\n}\n"
+    \    int n = IO::get<int>();\n    int q = IO::get<int>();\n    vector<Func> funcs(n);\n\
+    \    for (auto& f : funcs) {\n        int a = IO::get<int>();\n        int b =\
+    \ IO::get<int>();\n        f = {a, b};\n    }\n\n    SegTree<Func, op, e> seg_tree(funcs);\n\
+    \    while (q--) {\n        int typ = IO::get<int>();\n        if (typ == 0) {\n\
+    \            int pos = IO::get<int>();\n            int a = IO::get<int>();\n\
+    \            int b = IO::get<int>();\n            seg_tree.set(pos, {a, b});\n\
+    \        } else {\n            int l = IO::get<int>();\n            int r = IO::get<int>();\n\
+    \            auto f = seg_tree.prod(l, r);\n            modular x(IO::get<int>());\n\
+    \            cout << f.a * x + f.b << '\\n';\n        }\n    }\n    return 0;\n\
+    }\n"
   dependsOn:
   - DataStructure/SegTree.h
   - Math/modulo_anta.h
@@ -55,7 +55,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
   requiredBy: []
-  timestamp: '2022-01-06 04:56:25+08:00'
+  timestamp: '2022-01-06 20:02:32+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp

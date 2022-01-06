@@ -49,11 +49,11 @@ data:
     \ char get_char() {\n        if (!*inp && !reacheof) {\n            memset(buf,\
     \ 0, sizeof buf);\n            int tmp = fread(buf, 1, BUFSIZE, stdin);\n    \
     \        if (tmp != BUFSIZE) reacheof = true;\n            inp = buf;\n      \
-    \  }\n        return *inp++;\n    }\n    template<typename T>\n    T get_int()\
-    \ {\n        int neg = 0;\n        T res = 0;\n        char c = get_char();\n\
-    \        while (!std::isdigit(c) && c != '-' && c != '+') c = get_char();\n  \
-    \      if (c == '+') { neg = 0; }\n        else if (c == '-') { neg = 1; }\n \
-    \       else res = c - '0';\n\n        c = get_char();\n        while (std::isdigit(c))\
+    \  }\n        return *inp++;\n    }\n    template<typename T>\n    T get() {\n\
+    \        int neg = 0;\n        T res = 0;\n        char c = get_char();\n    \
+    \    while (!std::isdigit(c) && c != '-' && c != '+') c = get_char();\n      \
+    \  if (c == '+') { neg = 0; }\n        else if (c == '-') { neg = 1; }\n     \
+    \   else res = c - '0';\n\n        c = get_char();\n        while (std::isdigit(c))\
     \ {\n            res = res * 10 + (c - '0');\n            c = get_char();\n  \
     \      }\n        return neg ? -res : res;\n    }\n};\n"
   code: "#pragma once\nnamespace IO {\n    const int BUFSIZE = 1<<14;\n    char buf[BUFSIZE\
@@ -61,18 +61,18 @@ data:
     \ && !reacheof) {\n            memset(buf, 0, sizeof buf);\n            int tmp\
     \ = fread(buf, 1, BUFSIZE, stdin);\n            if (tmp != BUFSIZE) reacheof =\
     \ true;\n            inp = buf;\n        }\n        return *inp++;\n    }\n  \
-    \  template<typename T>\n    T get_int() {\n        int neg = 0;\n        T res\
-    \ = 0;\n        char c = get_char();\n        while (!std::isdigit(c) && c !=\
-    \ '-' && c != '+') c = get_char();\n        if (c == '+') { neg = 0; }\n     \
-    \   else if (c == '-') { neg = 1; }\n        else res = c - '0';\n\n        c\
-    \ = get_char();\n        while (std::isdigit(c)) {\n            res = res * 10\
-    \ + (c - '0');\n            c = get_char();\n        }\n        return neg ? -res\
-    \ : res;\n    }\n};\n"
+    \  template<typename T>\n    T get() {\n        int neg = 0;\n        T res =\
+    \ 0;\n        char c = get_char();\n        while (!std::isdigit(c) && c != '-'\
+    \ && c != '+') c = get_char();\n        if (c == '+') { neg = 0; }\n        else\
+    \ if (c == '-') { neg = 1; }\n        else res = c - '0';\n\n        c = get_char();\n\
+    \        while (std::isdigit(c)) {\n            res = res * 10 + (c - '0');\n\
+    \            c = get_char();\n        }\n        return neg ? -res : res;\n  \
+    \  }\n};\n"
   dependsOn: []
   isVerificationFile: false
   path: buffered_reader.h
   requiredBy: []
-  timestamp: '2022-01-06 00:00:20+08:00'
+  timestamp: '2022-01-06 20:02:32+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp

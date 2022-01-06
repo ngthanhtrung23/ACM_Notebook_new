@@ -306,17 +306,17 @@ data:
     \ {\n        if (!*inp && !reacheof) {\n            memset(buf, 0, sizeof buf);\n\
     \            int tmp = fread(buf, 1, BUFSIZE, stdin);\n            if (tmp !=\
     \ BUFSIZE) reacheof = true;\n            inp = buf;\n        }\n        return\
-    \ *inp++;\n    }\n    template<typename T>\n    T get_int() {\n        int neg\
-    \ = 0;\n        T res = 0;\n        char c = get_char();\n        while (!std::isdigit(c)\
+    \ *inp++;\n    }\n    template<typename T>\n    T get() {\n        int neg = 0;\n\
+    \        T res = 0;\n        char c = get_char();\n        while (!std::isdigit(c)\
     \ && c != '-' && c != '+') c = get_char();\n        if (c == '+') { neg = 0; }\n\
     \        else if (c == '-') { neg = 1; }\n        else res = c - '0';\n\n    \
     \    c = get_char();\n        while (std::isdigit(c)) {\n            res = res\
     \ * 10 + (c - '0');\n            c = get_char();\n        }\n        return neg\
     \ ? -res : res;\n    }\n};\n#line 10 \"Math/tests/matrix_inverse.test.cpp\"\n\n\
     #define REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)\n\nint32_t main()\
-    \ {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n = IO::get_int<int>();\n\
-    \    Matrix<modint998244353> a(n, n);\n    REP(i,n) REP(j,n) {\n        int x\
-    \ = IO::get_int<int>();\n        a[i][j] = x;\n    }\n    int rank = a.inverse();\n\
+    \ {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n = IO::get<int>();\n \
+    \   Matrix<modint998244353> a(n, n);\n    REP(i,n) REP(j,n) {\n        int x =\
+    \ IO::get<int>();\n        a[i][j] = x;\n    }\n    int rank = a.inverse();\n\
     \    if (rank < n) cout << -1 << '\\n';\n    else {\n        REP(i,n) {\n    \
     \        REP(j,n) cout << a[i][j].val() << ' ';\n            cout << '\\n';\n\
     \        }\n    }\n    return 0;\n}\n"
@@ -324,9 +324,9 @@ data:
     \ <bits/stdc++.h>\n#include \"../../atcoder/modint.hpp\"\nusing namespace std;\n\
     using namespace atcoder;\n\n#include \"../Matrix.h\"\n#include \"../../buffered_reader.h\"\
     \n\n#define REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)\n\nint32_t main()\
-    \ {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n = IO::get_int<int>();\n\
-    \    Matrix<modint998244353> a(n, n);\n    REP(i,n) REP(j,n) {\n        int x\
-    \ = IO::get_int<int>();\n        a[i][j] = x;\n    }\n    int rank = a.inverse();\n\
+    \ {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n = IO::get<int>();\n \
+    \   Matrix<modint998244353> a(n, n);\n    REP(i,n) REP(j,n) {\n        int x =\
+    \ IO::get<int>();\n        a[i][j] = x;\n    }\n    int rank = a.inverse();\n\
     \    if (rank < n) cout << -1 << '\\n';\n    else {\n        REP(i,n) {\n    \
     \        REP(j,n) cout << a[i][j].val() << ' ';\n            cout << '\\n';\n\
     \        }\n    }\n    return 0;\n}\n"
@@ -336,7 +336,7 @@ data:
   isVerificationFile: true
   path: Math/tests/matrix_inverse.test.cpp
   requiredBy: []
-  timestamp: '2022-01-06 13:54:21+08:00'
+  timestamp: '2022-01-06 20:02:32+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Math/tests/matrix_inverse.test.cpp

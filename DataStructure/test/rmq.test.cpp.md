@@ -36,9 +36,9 @@ data:
     \            memset(buf, 0, sizeof buf);\n            int tmp = fread(buf, 1,\
     \ BUFSIZE, stdin);\n            if (tmp != BUFSIZE) reacheof = true;\n       \
     \     inp = buf;\n        }\n        return *inp++;\n    }\n    template<typename\
-    \ T>\n    T get_int() {\n        int neg = 0;\n        T res = 0;\n        char\
-    \ c = get_char();\n        while (!std::isdigit(c) && c != '-' && c != '+') c\
-    \ = get_char();\n        if (c == '+') { neg = 0; }\n        else if (c == '-')\
+    \ T>\n    T get() {\n        int neg = 0;\n        T res = 0;\n        char c\
+    \ = get_char();\n        while (!std::isdigit(c) && c != '-' && c != '+') c =\
+    \ get_char();\n        if (c == '+') { neg = 0; }\n        else if (c == '-')\
     \ { neg = 1; }\n        else res = c - '0';\n\n        c = get_char();\n     \
     \   while (std::isdigit(c)) {\n            res = res * 10 + (c - '0');\n     \
     \       c = get_char();\n        }\n        return neg ? -res : res;\n    }\n\
@@ -61,7 +61,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/rmq.test.cpp
   requiredBy: []
-  timestamp: '2022-01-06 00:00:20+08:00'
+  timestamp: '2022-01-06 20:02:32+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/rmq.test.cpp
