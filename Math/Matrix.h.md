@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: Math/tests/matrix_mult.test.cpp
+    title: Math/tests/matrix_mult.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://judge.yosupo.jp/problem/inverse_matrix
@@ -172,8 +175,9 @@ data:
   path: Math/Matrix.h
   requiredBy: []
   timestamp: '2021-12-21 14:25:18+08:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - Math/tests/matrix_mult.test.cpp
 documentation_of: Math/Matrix.h
 layout: document
 redirect_from:

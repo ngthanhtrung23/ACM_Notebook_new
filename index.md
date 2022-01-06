@@ -274,7 +274,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/LinearRecurrence_BerlekampMassey.h
       title: Math/LinearRecurrence_BerlekampMassey.h
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: Math/Matrix.h
       title: Math/Matrix.h
     - icon: ':warning:'
@@ -584,7 +584,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/tests/factorize.test.cpp
       title: Math/tests/factorize.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/matrix_mult.test.cpp
       title: Math/tests/matrix_mult.test.cpp
     - icon: ':heavy_check_mark:'
