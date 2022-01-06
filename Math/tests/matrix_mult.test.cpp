@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/matrix_product"
 
 #include <bits/stdc++.h>
-#include <atcoder/modint>
+#include "../../atcoder/modint.h"
 using namespace std;
 using namespace atcoder;
 
