@@ -39,6 +39,7 @@
 "Math/tests/convolution_and.test.cpp": "2022-01-06 05:27:57 +0800",
 "Math/tests/convolution_xor.test.cpp": "2022-01-06 05:27:57 +0800",
 "Math/tests/factorize.test.cpp": "2022-01-06 04:41:45 +0800",
+"Math/tests/matrix_det.test.cpp": "2022-01-06 13:44:43 +0800",
 "Math/tests/matrix_mult.test.cpp": "2022-01-06 13:36:35 +0800",
 "Math/tests/nimber.test.cpp": "2022-01-06 04:47:02 +0800",
 "Math/tests/ntt.test.cpp": "2022-01-06 05:06:40 +0800",
