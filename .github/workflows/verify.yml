@@ -8,6 +8,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+      submodules: true
 
     - name: Set up Python
       uses: actions/setup-python@v1
