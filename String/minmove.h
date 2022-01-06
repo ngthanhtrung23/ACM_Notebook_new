@@ -1,4 +1,6 @@
 // Tính vị trí của xâu xoay vòng có thứ tự từ điển nhỏ nhất của xâu s[]
+// Tested:
+// - https://cses.fi/problemset/task/1110/
 int minmove(string s) {
     int n = s.length();
     int x, y, i, j, u, v; // x is the smallest string before string y
