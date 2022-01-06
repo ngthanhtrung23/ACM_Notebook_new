@@ -326,16 +326,16 @@ struct KeyOnlyOps {
     struct F{};
     using Node = node_t<int, S, F>;
     
-    static S op(__attribute__((unused)) const S& left, __attribute__((unused)) int key, __attribute__((unused)) const S& right) {
+    static S op(__attribute__((unused)) S left, __attribute__((unused)) int key, __attribute__((unused)) S right) {
         return {};
     }
     static pair<int, S> e() {
         return {-1, {}};
     }
-    static pair<int, S> mapping(__attribute__((unused)) const F& f, Node* node) {
+    static pair<int, S> mapping(__attribute__((unused)) F f, Node* node) {
         return {node->key, {}};
     }
-    static F composition(__attribute__((unused)) const F& f, __attribute__((unused)) const F& g) {
+    static F composition(__attribute__((unused)) F f, __attribute__((unused)) F g) {
         return {};
     }
     static F id() {
