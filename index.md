@@ -295,6 +295,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/modulo_anta.h
       title: Math/modulo_anta.h
+    - icon: ':warning:'
+      path: Math/multiplicative_function.h
+      title: Math/multiplicative_function.h
     - icon: ':heavy_check_mark:'
       path: Math/nim_product.h
       title: Math/nim_product.h
