@@ -28,6 +28,9 @@ data:
     path: DataStructure/test/wavelet_matrix_rangekthsmallest.test.cpp
     title: DataStructure/test/wavelet_matrix_rangekthsmallest.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Math/tests/matrix_det.test.cpp
+    title: Math/tests/matrix_det.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Math/tests/matrix_mult.test.cpp
     title: Math/tests/matrix_mult.test.cpp
   _isVerificationFailed: false
@@ -74,6 +77,7 @@ data:
   - DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
   - DataStructure/test/rmq.test.cpp
   - DataStructure/test/fenwick_pointaddrangesum.test.cpp
+  - Math/tests/matrix_det.test.cpp
   - Math/tests/matrix_mult.test.cpp
 documentation_of: buffered_reader.h
 layout: document

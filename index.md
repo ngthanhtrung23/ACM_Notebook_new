@@ -585,6 +585,9 @@ data:
       path: Math/tests/factorize.test.cpp
       title: Math/tests/factorize.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Math/tests/matrix_det.test.cpp
+      title: Math/tests/matrix_det.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Math/tests/matrix_mult.test.cpp
       title: Math/tests/matrix_mult.test.cpp
     - icon: ':heavy_check_mark:'
