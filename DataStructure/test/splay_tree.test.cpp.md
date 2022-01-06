@@ -169,14 +169,14 @@ data:
     \        return _kth(p->child[1], k - 1);\n    }\n};\n\n////////// Below: example\
     \ usage\n// Splay tree only need to store keys (no aggregated value / no lazy\
     \ update)\nstruct KeyOnlyOps {\n    struct S{};\n    struct F{};\n    using Node\
-    \ = node_t<int, S, F>;\n    \n    static S op(__attribute__((unused)) const S&\
-    \ left, __attribute__((unused)) int key, __attribute__((unused)) const S& right)\
-    \ {\n        return {};\n    }\n    static pair<int, S> e() {\n        return\
-    \ {-1, {}};\n    }\n    static pair<int, S> mapping(__attribute__((unused)) const\
-    \ F& f, Node* node) {\n        return {node->key, {}};\n    }\n    static F composition(__attribute__((unused))\
-    \ const F& f, __attribute__((unused)) const F& g) {\n        return {};\n    }\n\
-    \    static F id() {\n        return {};\n    }\n};\n\n/* Example:\n    SplayTreeById<\n\
-    \        int,\n        KeyOnlyOps::S,\n        KeyOnlyOps::op,\n        KeyOnlyOps::e,\n\
+    \ = node_t<int, S, F>;\n    \n    static S op(__attribute__((unused)) S left,\
+    \ __attribute__((unused)) int key, __attribute__((unused)) S right) {\n      \
+    \  return {};\n    }\n    static pair<int, S> e() {\n        return {-1, {}};\n\
+    \    }\n    static pair<int, S> mapping(__attribute__((unused)) F f, Node* node)\
+    \ {\n        return {node->key, {}};\n    }\n    static F composition(__attribute__((unused))\
+    \ F f, __attribute__((unused)) F g) {\n        return {};\n    }\n    static F\
+    \ id() {\n        return {};\n    }\n};\n\n/* Example:\n    SplayTreeById<\n \
+    \       int,\n        KeyOnlyOps::S,\n        KeyOnlyOps::op,\n        KeyOnlyOps::e,\n\
     \        KeyOnlyOps::F,\n        KeyOnlyOps::mapping,\n        KeyOnlyOps::composition,\n\
     \        KeyOnlyOps::id\n    > tree(keys);\n */\n\n\n// For query get max of keys\
     \ in range\n// No lazy update tags\nstruct MaxQueryOps {\n    static const int\
@@ -264,7 +264,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/splay_tree.test.cpp
   requiredBy: []
-  timestamp: '2022-01-06 04:56:25+08:00'
+  timestamp: '2022-01-07 04:26:13+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/splay_tree.test.cpp
