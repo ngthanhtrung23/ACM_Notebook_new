@@ -9,6 +9,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: String/tests/suffix_array.test.cpp
     title: String/tests/suffix_array.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: String/tests/suffix_array_queries.test.cpp
+    title: String/tests/suffix_array_queries.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -44,7 +47,19 @@ data:
     \        for (int i = 0; i < N; i++) c[SA[i]] = i;\n        for (int i = 0, j,\
     \ k = 0; i < N; LCP[c[i++]] = k)\n            if (c[i] > 0) for (k ? k-- : 0,\
     \ j = SA[c[i] - 1]; a[i + k] == a[j + k]; k++);\n            else k = 0;\n   \
-    \ }\n};\n"
+    \ }\n};\n\n// Example:\n// given string S and Q queries pat_i, for each query,\
+    \ count how many\n// times pat_i appears in S\n// O(min(|S|, |pat|) * log(|S|))\
+    \ per query\nint count_occurrence(const string& s, const vector<int>& sa, const\
+    \ string& pat) {\n    int n = s.size(), m = pat.size();\n    assert(n == (int)\
+    \ sa.size());\n    if (n < m) return 0;\n\n    auto f = [&] (int start) {  //\
+    \ compare S[start..] and pat[0..]\n        for (int i = 0; start + i < n && i\
+    \ < m; ++i) {\n            if (s[start + i] < pat[i]) return true;\n         \
+    \   if (s[start + i] > pat[i]) return false;\n        }\n        return n - start\
+    \ < m;\n    };\n    auto g = [&] (int start) {\n        for (int i = 0; start\
+    \ + i < n && i < m; ++i) {\n            if (s[start + i] > pat[i]) return false;\n\
+    \        }\n        return true;\n    };\n    auto l = std::partition_point(sa.begin(),\
+    \ sa.end(), f);\n    auto r = std::partition_point(l, sa.end(), g);\n    return\
+    \ std::distance(l, r);\n}\n"
   code: "// Source: http://codeforces.com/contest/452/submission/7269543\n// Efficient\
     \ Suffix Array O(N*logN)\n\n// String index from 0\n// Usage:\n// string s;  (s[i]\
     \ > 0)\n// SuffixArray sa(s);\n// Now we can use sa.SA and sa.LCP\n// sa.LCP[i]\
@@ -72,15 +87,28 @@ data:
     \        for (int i = 0; i < N; i++) c[SA[i]] = i;\n        for (int i = 0, j,\
     \ k = 0; i < N; LCP[c[i++]] = k)\n            if (c[i] > 0) for (k ? k-- : 0,\
     \ j = SA[c[i] - 1]; a[i + k] == a[j + k]; k++);\n            else k = 0;\n   \
-    \ }\n};\n"
+    \ }\n};\n\n// Example:\n// given string S and Q queries pat_i, for each query,\
+    \ count how many\n// times pat_i appears in S\n// O(min(|S|, |pat|) * log(|S|))\
+    \ per query\nint count_occurrence(const string& s, const vector<int>& sa, const\
+    \ string& pat) {\n    int n = s.size(), m = pat.size();\n    assert(n == (int)\
+    \ sa.size());\n    if (n < m) return 0;\n\n    auto f = [&] (int start) {  //\
+    \ compare S[start..] and pat[0..]\n        for (int i = 0; start + i < n && i\
+    \ < m; ++i) {\n            if (s[start + i] < pat[i]) return true;\n         \
+    \   if (s[start + i] > pat[i]) return false;\n        }\n        return n - start\
+    \ < m;\n    };\n    auto g = [&] (int start) {\n        for (int i = 0; start\
+    \ + i < n && i < m; ++i) {\n            if (s[start + i] > pat[i]) return false;\n\
+    \        }\n        return true;\n    };\n    auto l = std::partition_point(sa.begin(),\
+    \ sa.end(), f);\n    auto r = std::partition_point(l, sa.end(), g);\n    return\
+    \ std::distance(l, r);\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: String/SuffixArray.h
   requiredBy: []
-  timestamp: '2022-01-06 05:40:17+08:00'
+  timestamp: '2022-01-06 16:25:49+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - String/tests/lcp.test.cpp
+  - String/tests/suffix_array_queries.test.cpp
   - String/tests/suffix_array.test.cpp
 documentation_of: String/SuffixArray.h
 layout: document

@@ -453,6 +453,9 @@ data:
       path: buffered_reader.h
       title: buffered_reader.h
     - icon: ':warning:'
+      path: debug.h
+      title: debug.h
+    - icon: ':warning:'
       path: template.h
       title: template.h
   verificationCategories:
@@ -637,6 +640,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: String/tests/suffix_array.test.cpp
       title: String/tests/suffix_array.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: String/tests/suffix_array_queries.test.cpp
+      title: String/tests/suffix_array_queries.test.cpp
     - icon: ':heavy_check_mark:'
       path: String/tests/zfunc.test.cpp
       title: String/tests/zfunc.test.cpp
