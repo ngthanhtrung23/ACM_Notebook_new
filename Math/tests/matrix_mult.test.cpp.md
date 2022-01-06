@@ -5,15 +5,6 @@ data:
     path: Math/Matrix.h
     title: Math/Matrix.h
   - icon: ':heavy_check_mark:'
-    path: ac-library/atcoder/internal_math.hpp
-    title: ac-library/atcoder/internal_math.hpp
-  - icon: ':heavy_check_mark:'
-    path: ac-library/atcoder/internal_type_traits.hpp
-    title: ac-library/atcoder/internal_type_traits.hpp
-  - icon: ':heavy_check_mark:'
-    path: ac-library/atcoder/modint.hpp
-    title: ac-library/atcoder/modint.hpp
-  - icon: ':heavy_check_mark:'
     path: buffered_reader.h
     title: buffered_reader.h
   _extendedRequiredBy: []
@@ -136,9 +127,6 @@ data:
     \    auto c = a * b;\n    REP(i,n) {\n        REP(j,k) cout << c[i][j].val() <<\
     \ ' ';\n        cout << '\\n';\n    }\n    return 0;\n}\n"
   dependsOn:
-  - ac-library/atcoder/modint.hpp
-  - ac-library/atcoder/internal_math.hpp
-  - ac-library/atcoder/internal_type_traits.hpp
   - Math/Matrix.h
   - buffered_reader.h
   isVerificationFile: true
