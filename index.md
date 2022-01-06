@@ -198,6 +198,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Graph/find_triangles.h
       title: Graph/find_triangles.h
+    - icon: ':warning:'
+      path: Graph/topo_sort.h
+      title: Graph/topo_sort.h
     - icon: ':heavy_check_mark:'
       path: Graph/tree_diameter.h
       title: Graph/tree_diameter.h
