@@ -308,10 +308,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/NumberTheory/CRT_chemthan.h
       title: Math/NumberTheory/CRT_chemthan.h
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: Math/NumberTheory/ChineseRemainder.h
       title: Math/NumberTheory/ChineseRemainder.h
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: Math/NumberTheory/ExtendedEuclid.h
       title: Math/NumberTheory/ExtendedEuclid.h
     - icon: ':warning:'
@@ -617,6 +617,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/tests/ntt_any_mod.test.cpp
       title: Math/tests/ntt_any_mod.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Math/tests/ntt_any_mod_2.test.cpp
+      title: Math/tests/ntt_any_mod_2.test.cpp
     - icon: ':heavy_check_mark:'
       path: Math/tests/prime_pi.test.cpp
       title: Math/tests/prime_pi.test.cpp

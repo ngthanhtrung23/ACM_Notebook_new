@@ -9,6 +9,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Math/tests/ntt_any_mod.test.cpp
     title: Math/tests/ntt_any_mod.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Math/tests/ntt_any_mod_2.test.cpp
+    title: Math/tests/ntt_any_mod_2.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -137,6 +140,7 @@ data:
   timestamp: '2022-01-06 05:06:40+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Math/tests/ntt_any_mod_2.test.cpp
   - Math/tests/ntt_any_mod.test.cpp
   - Math/tests/ntt.test.cpp
 documentation_of: Math/Polynomial/NTT.h
