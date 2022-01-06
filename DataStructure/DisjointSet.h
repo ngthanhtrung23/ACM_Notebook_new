@@ -17,4 +17,8 @@ struct DSU {
         lab[v] = u;
         return true;
     }
+
+    bool same_component(int u, int v) {
+        return getRoot(u) == getRoot(v);
+    }
 };
