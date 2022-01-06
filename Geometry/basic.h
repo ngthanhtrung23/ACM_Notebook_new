@@ -148,3 +148,25 @@ void reflectionPoint(Line l, Point p, Point &ans) {
     closestPoint(l, p, b);
     ans = p + (b - p) * 2;
 }
+
+// Segment intersect
+// Tested:
+// - https://cses.fi/problemset/task/2190/
+// returns true if p is on segment [a, b]
+bool onSegment(Point a, Point b, Point p) {
+    return ccw(a, b, p) == 0
+        && min(a.x, b.x) <= p.x && p.x <= max(a.x, b.x)
+        && min(a.y, b.y) <= p.y && p.y <= max(a.y, b.y);
+}
+
+bool segmentIntersect(Point a, Point b, Point c, Point d) {
+    if (onSegment(a, b, c)
+            || onSegment(a, b, d)
+            || onSegment(c, d, a)
+            || onSegment(c, d, b)) {
+        return true;
+    }
+
+    return ccw(a, b, c) * ccw(a, b, d) < 0
+        && ccw(c, d, a) * ccw(c, d, b) < 0;
+}
