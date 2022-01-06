@@ -485,6 +485,9 @@ data:
       path: DataStructure/test/fenwick_pointaddrangesum.test.cpp
       title: DataStructure/test/fenwick_pointaddrangesum.test.cpp
     - icon: ':heavy_check_mark:'
+      path: DataStructure/test/hld_lca.test.cpp
+      title: DataStructure/test/hld_lca.test.cpp
+    - icon: ':heavy_check_mark:'
       path: DataStructure/test/hld_vertexaddpathsum.test.cpp
       title: DataStructure/test/hld_vertexaddpathsum.test.cpp
     - icon: ':heavy_check_mark:'

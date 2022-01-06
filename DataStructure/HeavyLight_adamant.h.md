@@ -4,6 +4,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: DataStructure/test/hld_lca.test.cpp
+    title: DataStructure/test/hld_lca.test.cpp
+  - icon: ':heavy_check_mark:'
     path: DataStructure/test/hld_vertexaddpathsum.test.cpp
     title: DataStructure/test/hld_vertexaddpathsum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -198,6 +201,7 @@ data:
   verifiedWith:
   - DataStructure/test/hld_vertexsetpathcomposite.test.cpp
   - DataStructure/test/hld_vertexaddpathsum.test.cpp
+  - DataStructure/test/hld_lca.test.cpp
   - DataStructure/test/hld_vertexaddsubtreesum.test.cpp
 documentation_of: DataStructure/HeavyLight_adamant.h
 layout: document

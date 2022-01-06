@@ -10,6 +10,9 @@ data:
     path: DataStructure/test/fenwick_pointaddrangesum.test.cpp
     title: DataStructure/test/fenwick_pointaddrangesum.test.cpp
   - icon: ':heavy_check_mark:'
+    path: DataStructure/test/hld_lca.test.cpp
+    title: DataStructure/test/hld_lca.test.cpp
+  - icon: ':heavy_check_mark:'
     path: DataStructure/test/lca.test.cpp
     title: DataStructure/test/lca.test.cpp
   - icon: ':heavy_check_mark:'
@@ -79,6 +82,7 @@ data:
   - DataStructure/test/segment_tree_pointaddrangesum.test.cpp
   - DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
   - DataStructure/test/rmq.test.cpp
+  - DataStructure/test/hld_lca.test.cpp
   - DataStructure/test/fenwick_pointaddrangesum.test.cpp
   - Math/tests/matrix_inverse.test.cpp
   - Math/tests/matrix_det.test.cpp
