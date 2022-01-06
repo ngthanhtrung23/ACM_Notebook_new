@@ -35,25 +35,30 @@ data:
     \ https://oj.vnoi.info/problem/qtreex\n// - (edge, path) https://oj.vnoi.info/problem/lubenica\n\
     // - (edge, path) https://oj.vnoi.info/problem/pwalk\n// - (edge, path, lazy)\
     \ https://oj.vnoi.info/problem/kbuild\n// - (edge, path, lazy) https://oj.vnoi.info/problem/onbridge\n\
-    //\n// - (lca) https://oj.vnoi.info/problem/fselect\nstruct HLD {\n    HLD(const\
-    \ vector<vector<int>>& _g, int root)\n            : n(_g.size()), g(_g),\n   \
-    \         parent(n), depth(n), sz(n),\n            dfs_number(0), nxt(n), in(n),\
-    \ out(n), order(n)\n    {\n        assert(0 <= root && root < n);\n\n        //\
-    \ init parent, depth, sz\n        // also move most heavy child of u to g[u][0]\n\
-    \        depth[root] = 0;\n        dfs_sz(root, -1);\n\n        // init nxt, in,\
-    \ out\n        nxt[root] = root;\n        dfs_hld(root);\n    }\n\n    int lca(int\
-    \ u, int v) const {\n        assert(0 <= u && u < n);\n        assert(0 <= v &&\
-    \ v < n);\n        while (true) {\n            if (in[u] > in[v]) swap(u, v);\
-    \ // in[u] <= in[v]\n            if (nxt[u] == nxt[v]) return u;\n           \
-    \ v = parent[nxt[v]];\n        }\n    }\n\n    int dist(int u, int v) const {\n\
-    \        assert(0 <= u && u < n);\n        assert(0 <= v && v < n);\n        int\
-    \ l = lca(u, v);\n        return depth[u] + depth[v] - 2*depth[l];\n    }\n\n\
-    \    // apply f on vertices on path [u, v]\n    // edge = true -> apply on edge\n\
-    \    //\n    // f(l, r) should update segment tree [l, r] INCLUSIVE\n    void\
-    \ apply_path(int u, int v, bool edge, const function<void(int, int)> &f) {\n \
-    \       assert(0 <= u && u < n);\n        assert(0 <= v && v < n);\n        if\
-    \ (u == v && edge) return;\n\n        while (true) {\n            if (in[u] >\
-    \ in[v]) swap(u, v); // in[u] <= in[v]\n            if (nxt[u] == nxt[v]) break;\n\
+    //\n// - (lca) https://oj.vnoi.info/problem/fselect\n// - (kth_parent) https://cses.fi/problemset/task/1687\n\
+    struct HLD {\n    HLD(const vector<vector<int>>& _g, int root)\n            :\
+    \ n(_g.size()), g(_g),\n            parent(n), depth(n), sz(n),\n            dfs_number(0),\
+    \ nxt(n), in(n), out(n), order(n)\n    {\n        assert(0 <= root && root < n);\n\
+    \n        // init parent, depth, sz\n        // also move most heavy child of\
+    \ u to g[u][0]\n        depth[root] = 0;\n        dfs_sz(root, -1);\n\n      \
+    \  // init nxt, in, out\n        nxt[root] = root;\n        dfs_hld(root);\n \
+    \   }\n\n    int lca(int u, int v) const {\n        assert(0 <= u && u < n);\n\
+    \        assert(0 <= v && v < n);\n        while (true) {\n            if (in[u]\
+    \ > in[v]) swap(u, v); // in[u] <= in[v]\n            if (nxt[u] == nxt[v]) return\
+    \ u;\n            v = parent[nxt[v]];\n        }\n    }\n\n    // return k-th\
+    \ parent\n    // if no such parent -> return -1\n    int kth_parent(int u, int\
+    \ k) const {\n        assert(0 <= u && u < n);\n        if (depth[u] < k) return\
+    \ -1;\n\n        while (true) {\n            int v = nxt[u];\n            if (in[u]\
+    \ - k >= in[v]) return order[in[u] - k];\n            k -= in[u] - in[v] + 1;\n\
+    \            u = parent[v];\n        }\n    }\n\n    int dist(int u, int v) const\
+    \ {\n        assert(0 <= u && u < n);\n        assert(0 <= v && v < n);\n    \
+    \    int l = lca(u, v);\n        return depth[u] + depth[v] - 2*depth[l];\n  \
+    \  }\n\n    // apply f on vertices on path [u, v]\n    // edge = true -> apply\
+    \ on edge\n    //\n    // f(l, r) should update segment tree [l, r] INCLUSIVE\n\
+    \    void apply_path(int u, int v, bool edge, const function<void(int, int)> &f)\
+    \ {\n        assert(0 <= u && u < n);\n        assert(0 <= v && v < n);\n    \
+    \    if (u == v && edge) return;\n\n        while (true) {\n            if (in[u]\
+    \ > in[v]) swap(u, v); // in[u] <= in[v]\n            if (nxt[u] == nxt[v]) break;\n\
     \            f(in[nxt[v]], in[v]);\n            v = parent[nxt[v]];\n        }\n\
     \        f(in[u] + edge, in[v]);\n    }\n\n    // get prod of path u -> v\n  \
     \  // edge = true -> get on edges\n    //\n    // f(l, r) should query segment\
@@ -132,7 +137,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/hld_lca.test.cpp
   requiredBy: []
-  timestamp: '2022-01-06 20:02:32+08:00'
+  timestamp: '2022-01-07 02:16:16+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/hld_lca.test.cpp
