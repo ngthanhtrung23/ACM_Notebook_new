@@ -10,24 +10,24 @@ using namespace std;
 
 int32_t main() {
     ios::sync_with_stdio(0); cin.tie(0);
-    int n = IO::get_int<int>();
-    int q = IO::get_int<int>();
+    int n = IO::get<int>();
+    int q = IO::get<int>();
 
     Fenwick<long long> f(n);
     REP(i,n) {
-        int x = IO::get_int<int>();
+        int x = IO::get<int>();
         f.update(i, x);
     }
 
     while (q--) {
-        int typ = IO::get_int<int>();
+        int typ = IO::get<int>();
         if (typ == 0) {
-            int u = IO::get_int<int>();
-            int val = IO::get_int<int>();
+            int u = IO::get<int>();
+            int val = IO::get<int>();
             f.update(u, val);
         } else if (typ == 1) {
-            int l = IO::get_int<int>();
-            int r = IO::get_int<int>();
+            int l = IO::get<int>();
+            int r = IO::get<int>();
             cout << f.get(l, r) << '\n';
         } else {
             assert(false);

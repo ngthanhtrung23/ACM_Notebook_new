@@ -10,18 +10,18 @@ using namespace std;
 
 int32_t main() {
     ios::sync_with_stdio(0); cin.tie(0);
-    int n = IO::get_int<int>();
-    int q = IO::get_int<int>();
+    int n = IO::get<int>();
+    int q = IO::get<int>();
 
     Fenwick<long long> f(n);
     REP(i,n) {
-        int x = IO::get_int<int>();
+        int x = IO::get<int>();
         f.update(i, x);
     }
 
     while (q--) {
-        int l = IO::get_int<int>();
-        int r = IO::get_int<int>();
+        int l = IO::get<int>();
+        int r = IO::get<int>();
         cout << f.get(l, r) << '\n';
     }
     return 0;

@@ -33,28 +33,28 @@ Func e() {
 
 int32_t main() {
     ios::sync_with_stdio(0); cin.tie(0);
-    int n = IO::get_int<int>();
-    int q = IO::get_int<int>();
+    int n = IO::get<int>();
+    int q = IO::get<int>();
     vector<Func> funcs(n);
     for (auto& f : funcs) {
-        int a = IO::get_int<int>();
-        int b = IO::get_int<int>();
+        int a = IO::get<int>();
+        int b = IO::get<int>();
         f = {a, b};
     }
 
     SegTree<Func, op, e> seg_tree(funcs);
     while (q--) {
-        int typ = IO::get_int<int>();
+        int typ = IO::get<int>();
         if (typ == 0) {
-            int pos = IO::get_int<int>();
-            int a = IO::get_int<int>();
-            int b = IO::get_int<int>();
+            int pos = IO::get<int>();
+            int a = IO::get<int>();
+            int b = IO::get<int>();
             seg_tree.set(pos, {a, b});
         } else {
-            int l = IO::get_int<int>();
-            int r = IO::get_int<int>();
+            int l = IO::get<int>();
+            int r = IO::get<int>();
             auto f = seg_tree.prod(l, r);
-            modular x(IO::get_int<int>());
+            modular x(IO::get<int>());
             cout << f.a * x + f.b << '\n';
         }
     }

@@ -12,10 +12,10 @@ using namespace atcoder;
 
 int32_t main() {
     ios::sync_with_stdio(0); cin.tie(0);
-    int n = IO::get_int<int>();
+    int n = IO::get<int>();
     Matrix<modint998244353> a(n, n);
     REP(i,n) REP(j,n) {
-        int x = IO::get_int<int>();
+        int x = IO::get<int>();
         a[i][j] = x;
     }
     int rank = a.inverse();

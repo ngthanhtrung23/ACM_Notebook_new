@@ -10,11 +10,11 @@ using namespace std;
 #define FOR(i, a, b) for (int i = (a), _##i = (b); i <= _##i; ++i)
 
 int32_t main() {
-    int n = IO::get_int<int>();
-    int q = IO::get_int<int>();
+    int n = IO::get<int>();
+    int q = IO::get<int>();
     vector<vector<int>> adj(n);
     FOR(i,1,n-1) {
-        int pi = IO::get_int<int>();
+        int pi = IO::get<int>();
         adj[i].push_back(pi);
         adj[pi].push_back(i);
     }
@@ -22,8 +22,8 @@ int32_t main() {
     LCA lca(n, adj, 0);
 
     while (q--) {
-        int u = IO::get_int<int>();
-        int v = IO::get_int<int>();
+        int u = IO::get<int>();
+        int v = IO::get<int>();
 
         cout << lca.lca(u, v) << '\n';
     }

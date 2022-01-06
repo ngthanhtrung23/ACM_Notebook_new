@@ -12,17 +12,17 @@ using namespace atcoder;
 
 int32_t main() {
     ios::sync_with_stdio(0); cin.tie(0);
-    int n = IO::get_int<int>();
-    int m = IO::get_int<int>();
-    int k = IO::get_int<int>();
+    int n = IO::get<int>();
+    int m = IO::get<int>();
+    int k = IO::get<int>();
     Matrix<modint998244353> a(n, m);
     Matrix<modint998244353> b(m, k);
     REP(i,n) REP(j,m) {
-        int x = IO::get_int<int>();
+        int x = IO::get<int>();
         a[i][j] = x;
     }
     REP(i,m) REP(j,k) {
-        int x = IO::get_int<int>();
+        int x = IO::get<int>();
         b[i][j] = x;
     }
     auto c = a * b;

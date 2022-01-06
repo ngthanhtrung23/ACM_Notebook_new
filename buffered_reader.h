@@ -14,7 +14,7 @@ namespace IO {
         return *inp++;
     }
     template<typename T>
-    T get_int() {
+    T get() {
         int neg = 0;
         T res = 0;
         char c = get_char();
