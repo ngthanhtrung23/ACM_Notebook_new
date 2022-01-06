@@ -1,9 +1,11 @@
 {
 "DP/tests/dynamic_hull_lineaddgetmin.test.cpp": "2022-01-06 02:20:31 +0800",
-"DataStructure/test/dsu.test.cpp": "2022-01-06 00:00:20 +0800",
+"DataStructure/test/dsu.test.cpp": "2022-01-06 15:39:49 +0800",
+"DataStructure/test/dsu_aizu.test.cpp": "2022-01-06 15:39:49 +0800",
 "DataStructure/test/fenwick.test.cpp": "2022-01-06 00:00:20 +0800",
 "DataStructure/test/fenwick_2d_pointaddrectsum.test.cpp": "2022-01-06 03:05:50 +0800",
 "DataStructure/test/fenwick_2d_rectsum.test.cpp": "2022-01-06 03:05:50 +0800",
+"DataStructure/test/fenwick_aizu.test.cpp": "2022-01-06 15:39:49 +0800",
 "DataStructure/test/fenwick_pointaddrangesum.test.cpp": "2022-01-06 00:00:20 +0800",
 "DataStructure/test/hld_vertexaddpathsum.test.cpp": "2022-01-06 00:22:29 +0800",
 "DataStructure/test/hld_vertexaddsubtreesum.test.cpp": "2022-01-06 00:22:29 +0800",
