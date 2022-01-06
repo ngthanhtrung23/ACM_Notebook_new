@@ -34,6 +34,7 @@
 // - (edge, path, lazy) https://oj.vnoi.info/problem/onbridge
 //
 // - (lca) https://oj.vnoi.info/problem/fselect
+// - (kth_parent) https://cses.fi/problemset/task/1687
 struct HLD {
     HLD(const vector<vector<int>>& _g, int root)
             : n(_g.size()), g(_g),
@@ -59,6 +60,20 @@ struct HLD {
             if (in[u] > in[v]) swap(u, v); // in[u] <= in[v]
             if (nxt[u] == nxt[v]) return u;
             v = parent[nxt[v]];
+        }
+    }
+
+    // return k-th parent
+    // if no such parent -> return -1
+    int kth_parent(int u, int k) const {
+        assert(0 <= u && u < n);
+        if (depth[u] < k) return -1;
+
+        while (true) {
+            int v = nxt[u];
+            if (in[u] - k >= in[v]) return order[in[u] - k];
+            k -= in[u] - in[v] + 1;
+            u = parent[v];
         }
     }
 
