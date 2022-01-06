@@ -77,6 +77,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/SegTree.h
       title: DataStructure/SegTree.h
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/SegTree2D.h
+      title: DataStructure/SegTree2D.h
     - icon: ':warning:'
       path: DataStructure/SegmentTreeBeats.cpp
       title: DataStructure/SegmentTreeBeats.cpp
@@ -523,6 +526,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/rmq.test.cpp
       title: DataStructure/test/rmq.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/test/segment_tree_2d_pointaddrectsum.test.cpp
+      title: DataStructure/test/segment_tree_2d_pointaddrectsum.test.cpp
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/segment_tree_pointaddrangesum.test.cpp
       title: DataStructure/test/segment_tree_pointaddrangesum.test.cpp

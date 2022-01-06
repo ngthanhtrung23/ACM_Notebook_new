@@ -13,6 +13,9 @@ data:
     path: DataStructure/test/hld_vertexsetpathcomposite.test.cpp
     title: DataStructure/test/hld_vertexsetpathcomposite.test.cpp
   - icon: ':heavy_check_mark:'
+    path: DataStructure/test/segment_tree_2d_pointaddrectsum.test.cpp
+    title: DataStructure/test/segment_tree_2d_pointaddrectsum.test.cpp
+  - icon: ':heavy_check_mark:'
     path: DataStructure/test/segment_tree_pointaddrangesum.test.cpp
     title: DataStructure/test/segment_tree_pointaddrangesum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -173,6 +176,7 @@ data:
   - DataStructure/test/segment_tree_pointaddrangesum.test.cpp
   - DataStructure/test/segment_tree_staticrmq.test.cpp
   - DataStructure/test/hld_vertexaddsubtreesum.test.cpp
+  - DataStructure/test/segment_tree_2d_pointaddrectsum.test.cpp
 documentation_of: DataStructure/SegTree.h
 layout: document
 redirect_from:

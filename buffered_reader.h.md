@@ -19,6 +19,9 @@ data:
     path: DataStructure/test/rmq.test.cpp
     title: DataStructure/test/rmq.test.cpp
   - icon: ':heavy_check_mark:'
+    path: DataStructure/test/segment_tree_2d_pointaddrectsum.test.cpp
+    title: DataStructure/test/segment_tree_2d_pointaddrectsum.test.cpp
+  - icon: ':heavy_check_mark:'
     path: DataStructure/test/segment_tree_pointaddrangesum.test.cpp
     title: DataStructure/test/segment_tree_pointaddrangesum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -84,6 +87,7 @@ data:
   - DataStructure/test/rmq.test.cpp
   - DataStructure/test/hld_lca.test.cpp
   - DataStructure/test/fenwick_pointaddrangesum.test.cpp
+  - DataStructure/test/segment_tree_2d_pointaddrectsum.test.cpp
   - Math/tests/matrix_inverse.test.cpp
   - Math/tests/matrix_det.test.cpp
   - Math/tests/matrix_mult.test.cpp
