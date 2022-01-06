@@ -83,11 +83,19 @@ data:
     \ = -(l.c) / l.b;\n        return;\n    }\n    Line perp(l.b, -l.a, - (l.b*p.x\
     \ - l.a*p.y));\n    areIntersect(l, perp, ans);\n}\n\nvoid reflectionPoint(Line\
     \ l, Point p, Point &ans) {\n    Point b;\n    closestPoint(l, p, b);\n    ans\
-    \ = p + (b - p) * 2;\n}\n#line 1 \"Geometry/circle.h\"\nstruct Circle : Point\
-    \ {\n    double r;\n    Circle(double _x = 0, double _y = 0, double _r = 0) :\
-    \ Point(_x, _y), r(_r) {}\n    Circle(Point p, double _r) : Point(p), r(_r) {}\n\
-    \    \n    bool contains(Point p) { return (*this - p).len() <= r + EPS; }\n\n\
-    \    double area() const { return r*r*M_PI; }\n\n    // definitions in https://en.wikipedia.org/wiki/Circle\n\
+    \ = p + (b - p) * 2;\n}\n\n// Segment intersect\n// Tested:\n// - https://cses.fi/problemset/task/2190/\n\
+    // returns true if p is on segment [a, b]\nbool onSegment(Point a, Point b, Point\
+    \ p) {\n    return ccw(a, b, p) == 0\n        && min(a.x, b.x) <= p.x && p.x <=\
+    \ max(a.x, b.x)\n        && min(a.y, b.y) <= p.y && p.y <= max(a.y, b.y);\n}\n\
+    \nbool segmentIntersect(Point a, Point b, Point c, Point d) {\n    if (onSegment(a,\
+    \ b, c)\n            || onSegment(a, b, d)\n            || onSegment(c, d, a)\n\
+    \            || onSegment(c, d, b)) {\n        return true;\n    }\n\n    return\
+    \ ccw(a, b, c) * ccw(a, b, d) < 0\n        && ccw(c, d, a) * ccw(c, d, b) < 0;\n\
+    }\n#line 1 \"Geometry/circle.h\"\nstruct Circle : Point {\n    double r;\n   \
+    \ Circle(double _x = 0, double _y = 0, double _r = 0) : Point(_x, _y), r(_r) {}\n\
+    \    Circle(Point p, double _r) : Point(p), r(_r) {}\n    \n    bool contains(Point\
+    \ p) { return (*this - p).len() <= r + EPS; }\n\n    double area() const { return\
+    \ r*r*M_PI; }\n\n    // definitions in https://en.wikipedia.org/wiki/Circle\n\
     \    // assumption: 0 <= theta <= 2*PI\n    // theta: angle in radian\n    double\
     \ sector_area(double theta) const {\n        return 0.5 * r * r * theta;\n   \
     \ }\n\n    // assumption: 0 <= theta <= 2*PI\n    // theta: angle in radian\n\
@@ -161,7 +169,7 @@ data:
   isVerificationFile: false
   path: Geometry/circle.cpp
   requiredBy: []
-  timestamp: '2021-12-12 22:09:32+08:00'
+  timestamp: '2022-01-07 03:13:39+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Geometry/circle.cpp
