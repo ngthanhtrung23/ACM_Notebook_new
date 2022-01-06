@@ -467,6 +467,9 @@ data:
       path: DataStructure/test/dsu.test.cpp
       title: DataStructure/test/dsu.test.cpp
     - icon: ':heavy_check_mark:'
+      path: DataStructure/test/dsu_aizu.test.cpp
+      title: DataStructure/test/dsu_aizu.test.cpp
+    - icon: ':heavy_check_mark:'
       path: DataStructure/test/fenwick.test.cpp
       title: DataStructure/test/fenwick.test.cpp
     - icon: ':heavy_check_mark:'
@@ -475,6 +478,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/fenwick_2d_rectsum.test.cpp
       title: DataStructure/test/fenwick_2d_rectsum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/test/fenwick_aizu.test.cpp
+      title: DataStructure/test/fenwick_aizu.test.cpp
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/fenwick_pointaddrangesum.test.cpp
       title: DataStructure/test/fenwick_pointaddrangesum.test.cpp
