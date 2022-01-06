@@ -21,4 +21,8 @@ struct DSU {
     bool same_component(int u, int v) {
         return getRoot(u) == getRoot(v);
     }
+
+    int component_size(int u) {
+        return -lab[getRoot(u)];
+    }
 };
