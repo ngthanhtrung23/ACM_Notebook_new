@@ -177,7 +177,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Graph/MaxClique.h
       title: Graph/MaxClique.h
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: Graph/bfs.h
       title: Graph/bfs.h
     - icon: ':warning:'
@@ -534,6 +534,9 @@ data:
       title: DataStructure/test/wavelet_matrix_staticrangefreq.test.cpp
   - name: Graph/tests
     pages:
+    - icon: ':heavy_check_mark:'
+      path: Graph/tests/bfs.test.cpp
+      title: Graph/tests/bfs.test.cpp
     - icon: ':heavy_check_mark:'
       path: Graph/tests/bipartite_coloring.test.cpp
       title: Graph/tests/bipartite_coloring.test.cpp

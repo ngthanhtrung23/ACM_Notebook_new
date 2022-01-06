@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: Graph/tests/bfs.test.cpp
+    title: Graph/tests/bfs.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://oj.vnoi.info/problem/vcoldwat
@@ -49,8 +52,9 @@ data:
   path: Graph/bfs.h
   requiredBy: []
   timestamp: '2022-01-05 21:06:29+08:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - Graph/tests/bfs.test.cpp
 documentation_of: Graph/bfs.h
 layout: document
 redirect_from:
