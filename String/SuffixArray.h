@@ -61,3 +61,30 @@ struct SuffixArray {
             else k = 0;
     }
 };
+
+// Example:
+// given string S and Q queries pat_i, for each query, count how many
+// times pat_i appears in S
+// O(min(|S|, |pat|) * log(|S|)) per query
+int count_occurrence(const string& s, const vector<int>& sa, const string& pat) {
+    int n = s.size(), m = pat.size();
+    assert(n == (int) sa.size());
+    if (n < m) return 0;
+
+    auto f = [&] (int start) {  // compare S[start..] and pat[0..]
+        for (int i = 0; start + i < n && i < m; ++i) {
+            if (s[start + i] < pat[i]) return true;
+            if (s[start + i] > pat[i]) return false;
+        }
+        return n - start < m;
+    };
+    auto g = [&] (int start) {
+        for (int i = 0; start + i < n && i < m; ++i) {
+            if (s[start + i] > pat[i]) return false;
+        }
+        return true;
+    };
+    auto l = std::partition_point(sa.begin(), sa.end(), f);
+    auto r = std::partition_point(l, sa.end(), g);
+    return std::distance(l, r);
+}
