@@ -14,6 +14,8 @@
 // Tested:
 // - (build SA) https://judge.yosupo.jp/problem/suffixarray
 // - (LCP) https://judge.yosupo.jp/problem/number_of_substrings
+// - (LCP - kth distinct substr) https://cses.fi/problemset/task/2108
+// - (LCP - longest repeated substr) https://cses.fi/problemset/task/2106/
 struct SuffixArray {
     string a;
     int N, m;
@@ -66,6 +68,11 @@ struct SuffixArray {
 // given string S and Q queries pat_i, for each query, count how many
 // times pat_i appears in S
 // O(min(|S|, |pat|) * log(|S|)) per query
+//
+// Tested:
+// - (yes / no) https://cses.fi/problemset/task/2102
+// - (count) https://cses.fi/problemset/task/2103
+// - (position) https://cses.fi/problemset/task/2104
 int count_occurrence(const string& s, const vector<int>& sa, const string& pat) {
     int n = s.size(), m = pat.size();
     assert(n == (int) sa.size());
