@@ -19,8 +19,8 @@ data:
     \ d, ptr, q;\n    vector< Edge > e;\n    vector< vector<int> > g;\n\n    MaxFlow(int\
     \ _n) : n(_n), d(_n), ptr(_n), q(_n), g(_n) {\n        e.clear();\n        REP(i,n)\
     \ {\n            g[i].clear();\n            ptr[i] = 0;\n        }\n    }\n\n\
-    \    void addEdge(int a, int b, int cap, int id) {\n        Edge e1 = { a, b,\
-    \ cap, 0, id };\n        Edge e2 = { b, a, 0, 0, id };\n        g[a].push_back(\
+    \    void addEdge(int a, int b, int cap, int id) { // one-direction\n        Edge\
+    \ e1 = { a, b, cap, 0, id };\n        Edge e2 = { b, a, 0, 0, id };\n        g[a].push_back(\
     \ (int) e.size() );\n        e.push_back(e1);\n        g[b].push_back( (int) e.size()\
     \ );\n        e.push_back(e2);\n    }\n    int getMaxFlow(int _s, int _t) {\n\
     \        s = _s; t = _t;\n        int flow = 0;\n        for (;;) {\n        \
@@ -52,8 +52,8 @@ data:
     \ d, ptr, q;\n    vector< Edge > e;\n    vector< vector<int> > g;\n\n    MaxFlow(int\
     \ _n) : n(_n), d(_n), ptr(_n), q(_n), g(_n) {\n        e.clear();\n        REP(i,n)\
     \ {\n            g[i].clear();\n            ptr[i] = 0;\n        }\n    }\n\n\
-    \    void addEdge(int a, int b, int cap, int id) {\n        Edge e1 = { a, b,\
-    \ cap, 0, id };\n        Edge e2 = { b, a, 0, 0, id };\n        g[a].push_back(\
+    \    void addEdge(int a, int b, int cap, int id) { // one-direction\n        Edge\
+    \ e1 = { a, b, cap, 0, id };\n        Edge e2 = { b, a, 0, 0, id };\n        g[a].push_back(\
     \ (int) e.size() );\n        e.push_back(e1);\n        g[b].push_back( (int) e.size()\
     \ );\n        e.push_back(e2);\n    }\n    int getMaxFlow(int _s, int _t) {\n\
     \        s = _s; t = _t;\n        int flow = 0;\n        for (;;) {\n        \
@@ -80,7 +80,7 @@ data:
   isVerificationFile: false
   path: Graph/MaxFlow/MaxFlowDinicTrace.h
   requiredBy: []
-  timestamp: '2021-06-06 01:50:34+08:00'
+  timestamp: '2022-01-08 03:48:10+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Graph/MaxFlow/MaxFlowDinicTrace.h

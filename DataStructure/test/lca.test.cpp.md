@@ -25,19 +25,19 @@ data:
     \n// Sparse table\n// Usage:\n// RMQ<int, _min> st(v);\n//\n// Note:\n// - doesn't\
     \ work for empty range\n//\n// Tested:\n// - https://judge.yosupo.jp/problem/staticrmq\n\
     template<class T, T (*op) (T, T)> struct RMQ {\n    RMQ() = default;\n    RMQ(const\
-    \ vector<T>& v) : t{v} {\n        for (int k = 1, n = (int) v.size(); (1<<k) <=\
+    \ vector<T>& v) : t{v}, n{(int) v.size()} {\n        for (int k = 1; (1<<k) <=\
     \ n; ++k) {\n            t.emplace_back(n - (1<<k) + 1);\n            for (int\
     \ i = 0; i + (1<<k) <= n; ++i) {\n                t[k][i] = op(t[k-1][i], t[k-1][i\
     \ + (1<<(k-1))]);\n            }\n        }\n    }\n\n    // get range [l, r-1]\n\
     \    // doesn't work for empty range\n    T get(int l, int r) const {\n      \
-    \  assert(l < r);\n        int k = __lg(r - l);\n        return op(t[k][l], t[k][r\
-    \ - (1<<k)]);\n    }\n\nprivate:\n    vector<vector<T>> t;\n};\ntemplate<class\
-    \ T> T _min(T a, T b) { return b < a ? b : a; }\ntemplate<class T> T _max(T a,\
-    \ T b) { return a < b ? b : a; }\n#line 1 \"DataStructure/LCA.h\"\n// LCA\n//\
-    \ Notes:\n// - Index from 0\n// - Cannot use for queries like min edge in path\
-    \ u -> v\n//\n// Tested:\n// - https://judge.yosupo.jp/problem/lca\nstruct LCA\
-    \ {\n    const int n;\n    vector<vector<int>> adj;\n    const int root;\n   \
-    \ using P = pair<int,int>;\n    static P f(P x, P y) { return std::min(x, y);\
+    \  assert(0 <= l && l < r && r <= n);\n        int k = __lg(r - l);\n        return\
+    \ op(t[k][l], t[k][r - (1<<k)]);\n    }\n\nprivate:\n    vector<vector<T>> t;\n\
+    \    int n;\n};\ntemplate<class T> T _min(T a, T b) { return b < a ? b : a; }\n\
+    template<class T> T _max(T a, T b) { return a < b ? b : a; }\n#line 1 \"DataStructure/LCA.h\"\
+    \n// LCA\n// Notes:\n// - Index from 0\n// - Cannot use for queries like min edge\
+    \ in path u -> v\n//\n// Tested:\n// - https://judge.yosupo.jp/problem/lca\nstruct\
+    \ LCA {\n    const int n;\n    vector<vector<int>> adj;\n    const int root;\n\
+    \    using P = pair<int,int>;\n    static P f(P x, P y) { return std::min(x, y);\
     \ }\n\n    LCA(int _n, const vector<vector<int>>& _adj, int _root)\n         \
     \   : n(_n), adj(_adj), root(_root) {\n        assert(0 <= root && root < n);\n\
     \        id.resize(n);\n        depth.resize(n);\n        order.reserve(2 * n);\n\
@@ -83,7 +83,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/lca.test.cpp
   requiredBy: []
-  timestamp: '2022-01-06 20:02:32+08:00'
+  timestamp: '2022-01-07 17:45:15+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/lca.test.cpp

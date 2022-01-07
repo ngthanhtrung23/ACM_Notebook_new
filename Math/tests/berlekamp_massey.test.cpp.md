@@ -72,28 +72,28 @@ data:
     //   but this comment says it doesn't work on some problem: https://codeforces.com/blog/entry/61306?#comment-454682\n\
     //\n// Tested:\n// - (BM) https://judge.yosupo.jp/problem/find_linear_recurrence\n\
     // - (BM + find_kth) https://oj.vnoi.info/problem/selfdiv\n// - (find_kth) https://oj.vnoi.info/problem/errichto_matexp_fibonacci\n\
-    \n// Returns c1, ..., cd\ntemplate<typename T>\nvector<T> berlekampMassey(vector<T>\
-    \ s) {\n    if (s.empty()) return {};\n\n    int n = s.size(), L = 0, m = 0; //\
-    \ m = i - f\n    vector<T> C(n), D(n), oldC;\n    C[0] = D[0] = 1;\n    T df1\
-    \ = 1;  // d(f+1)\n    for (int i = 0; i < n; i++) {\n        ++m;\n        //\
-    \ check if C(i) == a(i)\n        // delta = s_i - sum( cj * s(i-j) ) = d(f+1)?\n\
-    \        T delta = s[i];\n        for (int j = 1; j <= L; j++) {\n           \
-    \ delta += C[j] * s[i-j];  // C(j) is already multiplied by -1\n        }\n  \
-    \      if (delta == 0) continue;  // C(i) is correct\n\n        // Update c =\
-    \ c + d\n        oldC = C;\n        T coeff = delta * df1.inv();\n        for\
-    \ (int j = m; j < n; j++) {\n            C[j] -= coeff * D[j - m];  // prepend\
-    \ D with m zeroes, multiply by coeff and add to C\n        }\n        if (2*L\
-    \ > i) continue;\n        L = i + 1 - L, D = oldC, df1 = delta, m = 0;\n    }\n\
-    \    C.resize(L + 1);\n    C.erase(C.begin());\n    for (auto& x : C) x = -x;\n\
-    \    return C;\n}\n\n// Helper function\ntemplate<typename T>\nvector<T> mul(const\
-    \ vector<T> &a, const vector<T> &b, const vector<T>& c) {\n    vector<T> ret(a.size()\
-    \ + b.size() - 1);\n    // ret = a * b\n    for (int i=0; i<(int)a.size(); i++)\n\
-    \        for (int j=0; j<(int)b.size(); j++)\n            ret[i+j] += a[i] * b[j];\n\
-    \n    int n = c.size();\n    // reducing ret mod f(x)\n    for (int i=(int)ret.size()-1;\
-    \ i>=n; i--)\n        for (int j=n-1; j>=0; j--)\n            ret[i-j-1] += ret[i]\
-    \ * c[j];\n    ret.resize(min((int) ret.size(), n));\n    return ret;\n}\n\n//\
-    \ Find k-th element in linear recurrence: O(d^2 * logn)\n// Need faster code?\
-    \ See https://judge.yosupo.jp/problem/kth_term_of_linearly_recurrent_sequence\n\
+    // - (find_kth) https://cses.fi/problemset/task/2181/\n\n// Returns c1, ..., cd\n\
+    template<typename T>\nvector<T> berlekampMassey(vector<T> s) {\n    if (s.empty())\
+    \ return {};\n\n    int n = s.size(), L = 0, m = 0; // m = i - f\n    vector<T>\
+    \ C(n), D(n), oldC;\n    C[0] = D[0] = 1;\n    T df1 = 1;  // d(f+1)\n    for\
+    \ (int i = 0; i < n; i++) {\n        ++m;\n        // check if C(i) == a(i)\n\
+    \        // delta = s_i - sum( cj * s(i-j) ) = d(f+1)?\n        T delta = s[i];\n\
+    \        for (int j = 1; j <= L; j++) {\n            delta += C[j] * s[i-j]; \
+    \ // C(j) is already multiplied by -1\n        }\n        if (delta == 0) continue;\
+    \  // C(i) is correct\n\n        // Update c = c + d\n        oldC = C;\n    \
+    \    T coeff = delta * df1.inv();\n        for (int j = m; j < n; j++) {\n   \
+    \         C[j] -= coeff * D[j - m];  // prepend D with m zeroes, multiply by coeff\
+    \ and add to C\n        }\n        if (2*L > i) continue;\n        L = i + 1 -\
+    \ L, D = oldC, df1 = delta, m = 0;\n    }\n    C.resize(L + 1);\n    C.erase(C.begin());\n\
+    \    for (auto& x : C) x = -x;\n    return C;\n}\n\n// Helper function\ntemplate<typename\
+    \ T>\nvector<T> mul(const vector<T> &a, const vector<T> &b, const vector<T>& c)\
+    \ {\n    vector<T> ret(a.size() + b.size() - 1);\n    // ret = a * b\n    for\
+    \ (int i=0; i<(int)a.size(); i++)\n        for (int j=0; j<(int)b.size(); j++)\n\
+    \            ret[i+j] += a[i] * b[j];\n\n    int n = c.size();\n    // reducing\
+    \ ret mod f(x)\n    for (int i=(int)ret.size()-1; i>=n; i--)\n        for (int\
+    \ j=n-1; j>=0; j--)\n            ret[i-j-1] += ret[i] * c[j];\n    ret.resize(min((int)\
+    \ ret.size(), n));\n    return ret;\n}\n\n// Find k-th element in linear recurrence:\
+    \ O(d^2 * logn)\n// Need faster code? See https://judge.yosupo.jp/problem/kth_term_of_linearly_recurrent_sequence\n\
     //   (but usually not needed since bottleneck is BerlekampMassey\n//\n// Params:\n\
     // - c: as returned by berlekampMassey\n// - s: s0, s1, ..., s(N-1)\n// Returns:\
     \ s(k)\ntemplate<typename T>\nT solve(const vector<T> &c, const vector<T> &s,\
@@ -125,7 +125,7 @@ data:
   isVerificationFile: true
   path: Math/tests/berlekamp_massey.test.cpp
   requiredBy: []
-  timestamp: '2022-01-06 04:56:25+08:00'
+  timestamp: '2022-01-08 03:48:10+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Math/tests/berlekamp_massey.test.cpp

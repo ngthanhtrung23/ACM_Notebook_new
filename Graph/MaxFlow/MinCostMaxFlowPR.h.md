@@ -10,22 +10,25 @@ data:
     links:
     - http://vn.spoj.com/problems/MINCOST
     - https://codeforces.com/blog/entry/70740
+    - https://cses.fi/problemset/task/2131/
     - https://github.com/dacin21/dacin21_codebook/blob/master/flow/mincost_PRonly.cpp
     - https://open.kattis.com/problems/mincostmaxflow
     - https://www.infoarena.ro/problema/fmcm
   bundledCode: "#line 1 \"Graph/MaxFlow/MinCostMaxFlowPR.h\"\n// Source: https://github.com/dacin21/dacin21_codebook/blob/master/flow/mincost_PRonly.cpp\n\
     //\n// Notes:\n// - Index from 0\n// - Costs multiplied by N --> overflow when\
-    \ big cost?\n// - Does not work with floating point..\n//\n// Tested:\n// - https://www.infoarena.ro/problema/fmcm\n\
-    // - https://open.kattis.com/problems/mincostmaxflow\n// - http://vn.spoj.com/problems/MINCOST\
-    \  (trace)\n// - https://codeforces.com/blog/entry/70740\n\ntemplate<typename\
-    \ flow_t = int, typename cost_t = int>\nstruct MinCostFlow {\n    struct Edge\
-    \ {\n        cost_t c;\n        flow_t f;\n        int to, rev;\n        Edge(int\
-    \ _to, cost_t _c, flow_t _f, int _rev) : c(_c), f(_f), to(_to), rev(_rev) {}\n\
-    \    };\n\n    int N, S, T;\n    vector<vector<Edge> > G;\n    MinCostFlow(int\
-    \ _N, int _S, int _T) : N(_N), S(_S), T(_T), G(_N), eps(0) {}\n\n    void addEdge(int\
-    \ a, int b, flow_t cap, cost_t cost) {\n\t\tassert(cap >= 0);\n        assert(a\
-    \ >= 0 && a < N && b >= 0 && b < N);\n        if (a == b) { assert(cost >= 0);\
-    \ return; }\n        cost *= N;\n        eps = max(eps, abs(cost));\n        G[a].emplace_back(b,\
+    \ big cost?\n// - Does not work with floating point..\n// - DO NOT USE Edge.f\
+    \ DIRECTLY. Call getFlow(e)\n//\n// Tested:\n// - https://www.infoarena.ro/problema/fmcm\n\
+    // - https://open.kattis.com/problems/mincostmaxflow\n// - https://codeforces.com/blog/entry/70740\n\
+    // - (trace) http://vn.spoj.com/problems/MINCOST\n// - (trace) https://cses.fi/problemset/task/2131/\n\
+    \ntemplate<typename flow_t = int, typename cost_t = int>\nstruct MinCostFlow {\n\
+    \    struct Edge {\n        cost_t c;\n        flow_t f;  // DO NOT USE THIS DIRECTLY.\
+    \ SEE getFlow(Edge const& e)\n        int to, rev;\n        Edge(int _to, cost_t\
+    \ _c, flow_t _f, int _rev) : c(_c), f(_f), to(_to), rev(_rev) {}\n    };\n\n \
+    \   int N, S, T;\n    vector<vector<Edge> > G;\n    MinCostFlow(int _N, int _S,\
+    \ int _T) : N(_N), S(_S), T(_T), G(_N), eps(0) {}\n\n    void addEdge(int a, int\
+    \ b, flow_t cap, cost_t cost) {\n\t\tassert(cap >= 0);\n        assert(a >= 0\
+    \ && a < N && b >= 0 && b < N);\n        if (a == b) { assert(cost >= 0); return;\
+    \ }\n        cost *= N;\n        eps = max(eps, abs(cost));\n        G[a].emplace_back(b,\
     \ cost, cap, G[b].size());\n        G[b].emplace_back(a, -cost, 0, G[a].size()\
     \ - 1);\n    }\n\n    flow_t getFlow(Edge const &e) {\n        return G[e.to][e.rev].f;\n\
     \    }\n\n    pair<flow_t, cost_t> minCostMaxFlow() {\n        cost_t retCost\
@@ -91,17 +94,19 @@ data:
     \    }\n            }\n        }\n        return -ex[S];\n    }\n};\n"
   code: "// Source: https://github.com/dacin21/dacin21_codebook/blob/master/flow/mincost_PRonly.cpp\n\
     //\n// Notes:\n// - Index from 0\n// - Costs multiplied by N --> overflow when\
-    \ big cost?\n// - Does not work with floating point..\n//\n// Tested:\n// - https://www.infoarena.ro/problema/fmcm\n\
-    // - https://open.kattis.com/problems/mincostmaxflow\n// - http://vn.spoj.com/problems/MINCOST\
-    \  (trace)\n// - https://codeforces.com/blog/entry/70740\n\ntemplate<typename\
-    \ flow_t = int, typename cost_t = int>\nstruct MinCostFlow {\n    struct Edge\
-    \ {\n        cost_t c;\n        flow_t f;\n        int to, rev;\n        Edge(int\
-    \ _to, cost_t _c, flow_t _f, int _rev) : c(_c), f(_f), to(_to), rev(_rev) {}\n\
-    \    };\n\n    int N, S, T;\n    vector<vector<Edge> > G;\n    MinCostFlow(int\
-    \ _N, int _S, int _T) : N(_N), S(_S), T(_T), G(_N), eps(0) {}\n\n    void addEdge(int\
-    \ a, int b, flow_t cap, cost_t cost) {\n\t\tassert(cap >= 0);\n        assert(a\
-    \ >= 0 && a < N && b >= 0 && b < N);\n        if (a == b) { assert(cost >= 0);\
-    \ return; }\n        cost *= N;\n        eps = max(eps, abs(cost));\n        G[a].emplace_back(b,\
+    \ big cost?\n// - Does not work with floating point..\n// - DO NOT USE Edge.f\
+    \ DIRECTLY. Call getFlow(e)\n//\n// Tested:\n// - https://www.infoarena.ro/problema/fmcm\n\
+    // - https://open.kattis.com/problems/mincostmaxflow\n// - https://codeforces.com/blog/entry/70740\n\
+    // - (trace) http://vn.spoj.com/problems/MINCOST\n// - (trace) https://cses.fi/problemset/task/2131/\n\
+    \ntemplate<typename flow_t = int, typename cost_t = int>\nstruct MinCostFlow {\n\
+    \    struct Edge {\n        cost_t c;\n        flow_t f;  // DO NOT USE THIS DIRECTLY.\
+    \ SEE getFlow(Edge const& e)\n        int to, rev;\n        Edge(int _to, cost_t\
+    \ _c, flow_t _f, int _rev) : c(_c), f(_f), to(_to), rev(_rev) {}\n    };\n\n \
+    \   int N, S, T;\n    vector<vector<Edge> > G;\n    MinCostFlow(int _N, int _S,\
+    \ int _T) : N(_N), S(_S), T(_T), G(_N), eps(0) {}\n\n    void addEdge(int a, int\
+    \ b, flow_t cap, cost_t cost) {\n\t\tassert(cap >= 0);\n        assert(a >= 0\
+    \ && a < N && b >= 0 && b < N);\n        if (a == b) { assert(cost >= 0); return;\
+    \ }\n        cost *= N;\n        eps = max(eps, abs(cost));\n        G[a].emplace_back(b,\
     \ cost, cap, G[b].size());\n        G[b].emplace_back(a, -cost, 0, G[a].size()\
     \ - 1);\n    }\n\n    flow_t getFlow(Edge const &e) {\n        return G[e.to][e.rev].f;\n\
     \    }\n\n    pair<flow_t, cost_t> minCostMaxFlow() {\n        cost_t retCost\
@@ -169,7 +174,7 @@ data:
   isVerificationFile: false
   path: Graph/MaxFlow/MinCostMaxFlowPR.h
   requiredBy: []
-  timestamp: '2019-10-21 23:35:51+08:00'
+  timestamp: '2022-01-07 20:41:35+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Graph/MaxFlow/MinCostMaxFlowPR.h
