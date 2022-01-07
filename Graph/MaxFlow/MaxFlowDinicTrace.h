@@ -31,7 +31,7 @@ struct MaxFlow {
         }
     }
 
-    void addEdge(int a, int b, int cap, int id) {
+    void addEdge(int a, int b, int cap, int id) { // one-direction
         Edge e1 = { a, b, cap, 0, id };
         Edge e2 = { b, a, 0, 0, id };
         g[a].push_back( (int) e.size() );

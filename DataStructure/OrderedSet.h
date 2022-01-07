@@ -4,9 +4,12 @@
 // 
 // OrderedTree<int> set;
 // set.init(MAX_VALUE);  // Init set to store 0..n-1
+// set.upd(x, x, +1);    // normally can just upd x = val (val is just for mapping of values)
+// set.find_by_order(k)  // k from 1
 //
-// Example:
+// Tested:
 // - https://open.kattis.com/problems/lazylearner
+// - https://cses.fi/problemset/task/1076
 
 template<class num_t>
 struct OrderedTree {

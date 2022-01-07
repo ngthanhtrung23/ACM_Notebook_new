@@ -24,6 +24,7 @@
 // - (BM) https://judge.yosupo.jp/problem/find_linear_recurrence
 // - (BM + find_kth) https://oj.vnoi.info/problem/selfdiv
 // - (find_kth) https://oj.vnoi.info/problem/errichto_matexp_fibonacci
+// - (find_kth) https://cses.fi/problemset/task/2181/
 
 // Returns c1, ..., cd
 template<typename T>
