@@ -189,6 +189,9 @@ data:
     - icon: ':warning:'
       path: Graph/bfs_using_map.h
       title: Graph/bfs_using_map.h
+    - icon: ':warning:'
+      path: Graph/bipartite_coloring.h
+      title: Graph/bipartite_coloring.h
     - icon: ':heavy_check_mark:'
       path: Graph/bipartite_edge_coloring.h
       title: Graph/bipartite_edge_coloring.h
@@ -198,6 +201,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Graph/find_triangles.h
       title: Graph/find_triangles.h
+    - icon: ':warning:'
+      path: Graph/floyd.h
+      title: Graph/floyd.h
     - icon: ':warning:'
       path: Graph/topo_sort.h
       title: Graph/topo_sort.h

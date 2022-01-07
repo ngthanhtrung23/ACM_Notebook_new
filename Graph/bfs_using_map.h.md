@@ -28,7 +28,10 @@ data:
     \         for (const auto& v : g[u]) {\n                if (!dist.count(v)) {\n\
     \                    dist[v] = dist[u] + 1;\n                    trace[v] = u;\n\
     \                    qu.push(v);\n                }\n            }\n        }\n\
-    \n        return {-1, {}};\n    }\n\n// private:\n    map<T, vector<T>> g;\n};\n"
+    \n        return {-1, {}};\n    }\n\n// private:\n    map<T, vector<T>> g;\n};\n\
+    \n// For grid. Not sure where else to put lol\n/**\nconst vector< pair<int,int>\
+    \ > dirs = {\n    {-1, 0},  // down\n    {0, -1},  // left\n    {1, 0},   // up\n\
+    \    {0, 1},   // right\n};\n*/\n"
   code: "// BFS using map, so extra log factor\n//\n// Note:\n// - Can use unordered_map\
     \ for small speed improvement\n//   (see unordered_map_pair.h for how to implement\
     \ hash for other types)\n//\n// Tested:\n// - https://oj.vnoi.info/problem/vmunch\n\
@@ -47,12 +50,14 @@ data:
     \        if (!dist.count(v)) {\n                    dist[v] = dist[u] + 1;\n \
     \                   trace[v] = u;\n                    qu.push(v);\n         \
     \       }\n            }\n        }\n\n        return {-1, {}};\n    }\n\n// private:\n\
-    \    map<T, vector<T>> g;\n};\n"
+    \    map<T, vector<T>> g;\n};\n\n// For grid. Not sure where else to put lol\n\
+    /**\nconst vector< pair<int,int> > dirs = {\n    {-1, 0},  // down\n    {0, -1},\
+    \  // left\n    {1, 0},   // up\n    {0, 1},   // right\n};\n*/\n"
   dependsOn: []
   isVerificationFile: false
   path: Graph/bfs_using_map.h
   requiredBy: []
-  timestamp: '2022-01-07 13:20:04+08:00'
+  timestamp: '2022-01-07 15:25:45+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Graph/bfs_using_map.h
