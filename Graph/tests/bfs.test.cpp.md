@@ -17,23 +17,29 @@ data:
   bundledCode: "#line 1 \"Graph/tests/bfs.test.cpp\"\n#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_11_C\"\
     \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#line 1 \"Graph/bfs.h\"\n\
     // BFS\n// Index from 0\n// Directed\n//\n// Tested:\n// - https://oj.vnoi.info/problem/vmunch\n\
-    // - https://oj.vnoi.info/problem/vcoldwat\nstruct Graph {\n    Graph(int n) :\
-    \ g(n) {}\n\n    void add_edge(int u, int v) {\n        g[u].push_back(v);\n \
-    \   }\n\n    // return shortest distance from start -> target\n    // If no path\
-    \ -> returns -1\n    int bfs(int start, int target) {\n        auto dist = _bfs(start,\
-    \ target);\n        return dist[target];\n    }\n\n    // return: dist: vector<int>,\
-    \ dist[u] = shortest distance from start -> u\n    vector<int> bfs(int start)\
-    \ {\n        return _bfs(start, -1);\n    }\n\n// private:\n\n    // Start BFS\
-    \ from start, and stop when reaching target.\n    // Returns distance\n    vector<int>\
-    \ _bfs(int start, int target) {\n        queue<int> qu;\n        vector<int> dist(g.size(),\
-    \ -1);\n\n        dist[start] = 0;\n        qu.push(start);\n\n        while (!qu.empty())\
-    \ {\n            auto u = qu.front(); qu.pop();\n            if (u == target)\
-    \ {\n                break;\n            }\n\n            for (const auto& v :\
-    \ g[u]) {\n                if (dist[v] == -1) {\n                    dist[v] =\
-    \ dist[u] + 1;\n                    qu.push(v);\n                }\n         \
-    \   }\n        }\n\n        return dist;\n    }\n    vector<vector<int>> g;\n\
-    };\n#line 7 \"Graph/tests/bfs.test.cpp\"\n\n#define REP(i, a) for (int i = 0,\
-    \ _##i = (a); i < _##i; ++i)\n\nint main() {\n    int n; cin >> n;\n    Graph\
+    // - https://oj.vnoi.info/problem/vcoldwat\n// - (trace) https://cses.fi/problemset/task/1667/\n\
+    struct Graph {\n    Graph(int n) : g(n) {}\n\n    void add_edge(int u, int v)\
+    \ {\n        g[u].push_back(v);\n    }\n\n    // return\n    // - shortest distance\
+    \ from start -> target\n    // - path\n    // If no path -> returns -1\n    pair<int,\
+    \ vector<int>> bfs(int start, int target) {\n        auto [dist, trace] = _bfs(start,\
+    \ target);\n        if (dist[target] < 0) {\n            return {dist[target],\
+    \ {}};\n        }\n        vector<int> path;\n        for (int u = target; u !=\
+    \ start; u = trace[u]) {\n            path.push_back(u);\n        }\n        path.push_back(start);\n\
+    \        reverse(path.begin(), path.end());\n        return {dist[target], path};\n\
+    \    }\n\n    // return: dist: vector<int>, dist[u] = shortest distance from start\
+    \ -> u\n    vector<int> bfs(int start) {\n        return _bfs(start, -1).first;\n\
+    \    }\n\n// private:\n\n    // Start BFS from start, and stop when reaching target.\n\
+    \    // Returns {distance, trace}\n    pair<vector<int>, vector<int>> _bfs(int\
+    \ start, int target) {\n        queue<int> qu;\n        vector<int> dist(g.size(),\
+    \ -1);\n        vector<int> trace(g.size(), -1);\n\n        dist[start] = 0;\n\
+    \        qu.push(start);\n\n        while (!qu.empty()) {\n            auto u\
+    \ = qu.front(); qu.pop();\n            if (u == target) {\n                break;\n\
+    \            }\n\n            for (const auto& v : g[u]) {\n                if\
+    \ (dist[v] == -1) {\n                    dist[v] = dist[u] + 1;\n            \
+    \        trace[v] = u;\n                    qu.push(v);\n                }\n \
+    \           }\n        }\n\n        return {dist, trace};\n    }\n    vector<vector<int>>\
+    \ g;\n};\n#line 7 \"Graph/tests/bfs.test.cpp\"\n\n#define REP(i, a) for (int i\
+    \ = 0, _##i = (a); i < _##i; ++i)\n\nint main() {\n    int n; cin >> n;\n    Graph\
     \ g(n);\n\n    REP(i,n) {\n        int u, k; cin >> u >> k;\n        --u;\n  \
     \      while (k--) {\n            int v; cin >> v;\n            --v;\n       \
     \     g.add_edge(u, v);\n        }\n    }\n    auto dist = g.bfs(0);\n    REP(i,n)\
@@ -52,7 +58,7 @@ data:
   isVerificationFile: true
   path: Graph/tests/bfs.test.cpp
   requiredBy: []
-  timestamp: '2022-01-06 15:25:59+08:00'
+  timestamp: '2022-01-07 13:52:12+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Graph/tests/bfs.test.cpp
