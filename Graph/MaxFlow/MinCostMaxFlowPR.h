@@ -4,18 +4,20 @@
 // - Index from 0
 // - Costs multiplied by N --> overflow when big cost?
 // - Does not work with floating point..
+// - DO NOT USE Edge.f DIRECTLY. Call getFlow(e)
 //
 // Tested:
 // - https://www.infoarena.ro/problema/fmcm
 // - https://open.kattis.com/problems/mincostmaxflow
-// - http://vn.spoj.com/problems/MINCOST  (trace)
 // - https://codeforces.com/blog/entry/70740
+// - (trace) http://vn.spoj.com/problems/MINCOST
+// - (trace) https://cses.fi/problemset/task/2131/
 
 template<typename flow_t = int, typename cost_t = int>
 struct MinCostFlow {
     struct Edge {
         cost_t c;
-        flow_t f;
+        flow_t f;  // DO NOT USE THIS DIRECTLY. SEE getFlow(Edge const& e)
         int to, rev;
         Edge(int _to, cost_t _c, flow_t _f, int _rev) : c(_c), f(_f), to(_to), rev(_rev) {}
     };
