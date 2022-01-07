@@ -52,3 +52,13 @@ struct Graph {
 // private:
     map<T, vector<T>> g;
 };
+
+// For grid. Not sure where else to put lol
+/**
+const vector< pair<int,int> > dirs = {
+    {-1, 0},  // down
+    {0, -1},  // left
+    {1, 0},   // up
+    {0, 1},   // right
+};
+*/
