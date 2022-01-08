@@ -422,6 +422,9 @@ data:
       path: Misc/Rubik.h
       title: Misc/Rubik.h
     - icon: ':warning:'
+      path: Misc/left_nearest_smaller.h
+      title: Misc/left_nearest_smaller.h
+    - icon: ':warning:'
       path: Misc/local_search.cpp
       title: Misc/local_search.cpp
     - icon: ':warning:'
