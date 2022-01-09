@@ -71,6 +71,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/PersistentDSU.h
       title: DataStructure/PersistentDSU.h
+    - icon: ':warning:'
+      path: DataStructure/PersistentSegTree.h
+      title: DataStructure/PersistentSegTree.h
     - icon: ':heavy_check_mark:'
       path: DataStructure/RMQ.h
       title: DataStructure/RMQ.h
