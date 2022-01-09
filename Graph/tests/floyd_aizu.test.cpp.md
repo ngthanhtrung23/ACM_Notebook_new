@@ -41,8 +41,8 @@ data:
     \     if (f.c[i][i] < 0) {\n            cout << \"NEGATIVE CYCLE\" << endl;\n\
     \            return 0;\n        }\n    }\n    for (int i = 0; i < n; i++) {\n\
     \        for (int j = 0; j < n; j++) {\n            if (f.c[i][j] == INF) cout\
-    \ << \"INF\";\n            else cout << f.c[i][j];\n            cout << ' ';\n\
-    \        }\n        cout << endl;\n    }\n    return 0;\n}\n"
+    \ << \"INF\";\n            else cout << f.c[i][j];\n            cout << (j ==\
+    \ n-1 ? '\\n' : ' ');\n        }\n    }\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_C\"\
     \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../floyd.h\"\n\
     \nint main() {\n    int n, m; cin >> n >> m;\n    vector<vector<ll>> c(n, vector<ll>\
@@ -52,14 +52,14 @@ data:
     \     if (f.c[i][i] < 0) {\n            cout << \"NEGATIVE CYCLE\" << endl;\n\
     \            return 0;\n        }\n    }\n    for (int i = 0; i < n; i++) {\n\
     \        for (int j = 0; j < n; j++) {\n            if (f.c[i][j] == INF) cout\
-    \ << \"INF\";\n            else cout << f.c[i][j];\n            cout << ' ';\n\
-    \        }\n        cout << endl;\n    }\n    return 0;\n}\n"
+    \ << \"INF\";\n            else cout << f.c[i][j];\n            cout << (j ==\
+    \ n-1 ? '\\n' : ' ');\n        }\n    }\n    return 0;\n}\n"
   dependsOn:
   - Graph/floyd.h
   isVerificationFile: true
   path: Graph/tests/floyd_aizu.test.cpp
   requiredBy: []
-  timestamp: '2022-01-09 23:55:11+08:00'
+  timestamp: '2022-01-10 00:00:32+08:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: Graph/tests/floyd_aizu.test.cpp
