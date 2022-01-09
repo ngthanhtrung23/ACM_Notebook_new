@@ -40,6 +40,9 @@ data:
     title: String/minmove.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: DataStructure/test/binary_trie.test.cpp
+    title: DataStructure/test/binary_trie.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Graph/tests/articulation_points.test.cpp
     title: Graph/tests/articulation_points.test.cpp
   - icon: ':heavy_check_mark:'
@@ -123,6 +126,7 @@ data:
   timestamp: '2022-01-10 03:15:26+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - DataStructure/test/binary_trie.test.cpp
   - Graph/tests/articulation_points.test.cpp
   - Graph/tests/floyd_aizu.test.cpp
   - Math/tests/factorize_aizu.test.cpp

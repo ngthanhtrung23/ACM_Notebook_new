@@ -27,6 +27,9 @@ data:
   - name: DataStructure
     pages:
     - icon: ':heavy_check_mark:'
+      path: DataStructure/BinaryTrie.h
+      title: DataStructure/BinaryTrie.h
+    - icon: ':heavy_check_mark:'
       path: DataStructure/DSU_rollback.h
       title: DataStructure/DSU_rollback.h
     - icon: ':heavy_check_mark:'
@@ -493,6 +496,9 @@ data:
       title: DP/tests/dynamic_hull_lineaddgetmin.test.cpp
   - name: DataStructure/test
     pages:
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/test/binary_trie.test.cpp
+      title: DataStructure/test/binary_trie.test.cpp
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/dsu.test.cpp
       title: DataStructure/test/dsu.test.cpp
