@@ -59,33 +59,35 @@ data:
     \        }\n        path.push_back(start);\n        reverse(path.begin(), path.end());\n\
     \        return {c[start][target], path};\n    }\n\n    int n;\n    std::vector<std::vector<ll>>\
     \ c;\n    std::vector<std::vector<int>> trace;\n};\n\n#line 8 \"Graph/tests/floyd_aizu.test.cpp\"\
-    \n\nint main() {\n    int n, m; cin >> n >> m;\n    vector<vector<ll>> c(n, vector<ll>\
-    \ (n, INF));\n    for (int i = 0; i < n; i++) c[i][i] = 0;\n\n    while (m--)\
-    \ {\n        int u, v; ll cost; cin >> u >> v >> cost;\n        c[u][v] = min(c[u][v],\
-    \ cost);\n    }\n\n    Floyd f(n, c);\n    for (int i = 0; i < n; i++) {\n   \
-    \     if (f.c[i][i] < 0) {\n            cout << \"NEGATIVE CYCLE\" << endl;\n\
-    \            return 0;\n        }\n    }\n    for (int i = 0; i < n; i++) {\n\
-    \        for (int j = 0; j < n; j++) {\n            if (f.c[i][j] == INF) cout\
-    \ << \"INF\";\n            else cout << f.c[i][j];\n            cout << (j ==\
-    \ n-1 ? '\\n' : ' ');\n        }\n    }\n    return 0;\n}\n"
+    \n\nint main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n, m; cin\
+    \ >> n >> m;\n    vector<vector<ll>> c(n, vector<ll> (n, INF));\n    for (int\
+    \ i = 0; i < n; i++) c[i][i] = 0;\n\n    while (m--) {\n        int u, v; ll cost;\
+    \ cin >> u >> v >> cost;\n        c[u][v] = min(c[u][v], cost);\n    }\n\n   \
+    \ Floyd f(n, c);\n    for (int i = 0; i < n; i++) {\n        if (f.c[i][i] < 0)\
+    \ {\n            cout << \"NEGATIVE CYCLE\" << endl;\n            return 0;\n\
+    \        }\n    }\n    for (int i = 0; i < n; i++) {\n        for (int j = 0;\
+    \ j < n; j++) {\n            if (f.c[i][j] == INF) cout << \"INF\";\n        \
+    \    else cout << f.c[i][j];\n            cout << (j == n-1 ? '\\n' : ' ');\n\
+    \        }\n    }\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_C\"\
     \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../../template.h\"\
-    \n#include \"../floyd.h\"\n\nint main() {\n    int n, m; cin >> n >> m;\n    vector<vector<ll>>\
-    \ c(n, vector<ll> (n, INF));\n    for (int i = 0; i < n; i++) c[i][i] = 0;\n\n\
-    \    while (m--) {\n        int u, v; ll cost; cin >> u >> v >> cost;\n      \
-    \  c[u][v] = min(c[u][v], cost);\n    }\n\n    Floyd f(n, c);\n    for (int i\
-    \ = 0; i < n; i++) {\n        if (f.c[i][i] < 0) {\n            cout << \"NEGATIVE\
-    \ CYCLE\" << endl;\n            return 0;\n        }\n    }\n    for (int i =\
-    \ 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            if (f.c[i][j]\
-    \ == INF) cout << \"INF\";\n            else cout << f.c[i][j];\n            cout\
-    \ << (j == n-1 ? '\\n' : ' ');\n        }\n    }\n    return 0;\n}\n"
+    \n#include \"../floyd.h\"\n\nint main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n\
+    \    int n, m; cin >> n >> m;\n    vector<vector<ll>> c(n, vector<ll> (n, INF));\n\
+    \    for (int i = 0; i < n; i++) c[i][i] = 0;\n\n    while (m--) {\n        int\
+    \ u, v; ll cost; cin >> u >> v >> cost;\n        c[u][v] = min(c[u][v], cost);\n\
+    \    }\n\n    Floyd f(n, c);\n    for (int i = 0; i < n; i++) {\n        if (f.c[i][i]\
+    \ < 0) {\n            cout << \"NEGATIVE CYCLE\" << endl;\n            return\
+    \ 0;\n        }\n    }\n    for (int i = 0; i < n; i++) {\n        for (int j\
+    \ = 0; j < n; j++) {\n            if (f.c[i][j] == INF) cout << \"INF\";\n   \
+    \         else cout << f.c[i][j];\n            cout << (j == n-1 ? '\\n' : ' ');\n\
+    \        }\n    }\n    return 0;\n}\n"
   dependsOn:
   - template.h
   - Graph/floyd.h
   isVerificationFile: true
   path: Graph/tests/floyd_aizu.test.cpp
   requiredBy: []
-  timestamp: '2022-01-10 00:09:25+08:00'
+  timestamp: '2022-01-10 00:30:04+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Graph/tests/floyd_aizu.test.cpp

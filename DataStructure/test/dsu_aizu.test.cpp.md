@@ -25,20 +25,22 @@ data:
     \ true;\n    }\n\n    bool same_component(int u, int v) {\n        return getRoot(u)\
     \ == getRoot(v);\n    }\n\n    int component_size(int u) {\n        return -lab[getRoot(u)];\n\
     \    }\n};\n#line 7 \"DataStructure/test/dsu_aizu.test.cpp\"\n\nint main() {\n\
-    \    int n, q; cin >> n >> q;\n    DSU dsu(n);\n    while (q--) {\n        int\
-    \ typ, x, y; cin >> typ >> x >> y;\n        if (typ == 0) dsu.merge(x, y);\n \
-    \       else cout << dsu.same_component(x, y) << '\\n';\n    }\n}\n"
+    \    ios::sync_with_stdio(0); cin.tie(0);\n    int n, q; cin >> n >> q;\n    DSU\
+    \ dsu(n);\n    while (q--) {\n        int typ, x, y; cin >> typ >> x >> y;\n \
+    \       if (typ == 0) dsu.merge(x, y);\n        else cout << dsu.same_component(x,\
+    \ y) << '\\n';\n    }\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_1_A\"\
     \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../DisjointSet.h\"\
-    \n\nint main() {\n    int n, q; cin >> n >> q;\n    DSU dsu(n);\n    while (q--)\
-    \ {\n        int typ, x, y; cin >> typ >> x >> y;\n        if (typ == 0) dsu.merge(x,\
-    \ y);\n        else cout << dsu.same_component(x, y) << '\\n';\n    }\n}\n"
+    \n\nint main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n, q; cin\
+    \ >> n >> q;\n    DSU dsu(n);\n    while (q--) {\n        int typ, x, y; cin >>\
+    \ typ >> x >> y;\n        if (typ == 0) dsu.merge(x, y);\n        else cout <<\
+    \ dsu.same_component(x, y) << '\\n';\n    }\n}\n"
   dependsOn:
   - DataStructure/DisjointSet.h
   isVerificationFile: true
   path: DataStructure/test/dsu_aizu.test.cpp
   requiredBy: []
-  timestamp: '2022-01-07 04:54:04+08:00'
+  timestamp: '2022-01-10 00:30:04+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/dsu_aizu.test.cpp

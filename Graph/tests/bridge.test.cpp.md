@@ -41,27 +41,28 @@ data:
     \ low[v]);\n            } else if (v != parent[u])\n                low[u] = min(low[u],\
     \ num[v]);\n        }\n    }\n};\n#line 7 \"Graph/tests/bridge.test.cpp\"\n\n\
     #define REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)\n\nint main() {\n\
-    \    int n, m; cin >> n >> m;\n    vector<vector<int>> g(n);\n    REP(i,m) {\n\
-    \        int u, v; cin >> u >> v;\n        g[u].push_back(v);\n        g[v].push_back(u);\n\
-    \    }\n\n    UndirectedDfs tree(g);\n    auto bridges = tree.bridges;\n\n   \
-    \ for (auto& [u, v] : bridges) {\n        if (u > v) swap(u, v);\n    }\n    sort(bridges.begin(),\
-    \ bridges.end());\n\n    for (auto [u, v] : bridges) {\n        cout << u << '\
-    \ ' << v << endl;\n    }\n}\n"
+    \    ios::sync_with_stdio(0); cin.tie(0);\n    int n, m; cin >> n >> m;\n    vector<vector<int>>\
+    \ g(n);\n    REP(i,m) {\n        int u, v; cin >> u >> v;\n        g[u].push_back(v);\n\
+    \        g[v].push_back(u);\n    }\n\n    UndirectedDfs tree(g);\n    auto bridges\
+    \ = tree.bridges;\n\n    for (auto& [u, v] : bridges) {\n        if (u > v) swap(u,\
+    \ v);\n    }\n    sort(bridges.begin(), bridges.end());\n\n    for (auto [u, v]\
+    \ : bridges) {\n        cout << u << ' ' << v << endl;\n    }\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_B\"\
     \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../DfsTree/BridgeArticulation.h\"\
     \n\n#define REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)\n\nint main()\
-    \ {\n    int n, m; cin >> n >> m;\n    vector<vector<int>> g(n);\n    REP(i,m)\
-    \ {\n        int u, v; cin >> u >> v;\n        g[u].push_back(v);\n        g[v].push_back(u);\n\
-    \    }\n\n    UndirectedDfs tree(g);\n    auto bridges = tree.bridges;\n\n   \
-    \ for (auto& [u, v] : bridges) {\n        if (u > v) swap(u, v);\n    }\n    sort(bridges.begin(),\
-    \ bridges.end());\n\n    for (auto [u, v] : bridges) {\n        cout << u << '\
-    \ ' << v << endl;\n    }\n}\n"
+    \ {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n, m; cin >> n >> m;\n\
+    \    vector<vector<int>> g(n);\n    REP(i,m) {\n        int u, v; cin >> u >>\
+    \ v;\n        g[u].push_back(v);\n        g[v].push_back(u);\n    }\n\n    UndirectedDfs\
+    \ tree(g);\n    auto bridges = tree.bridges;\n\n    for (auto& [u, v] : bridges)\
+    \ {\n        if (u > v) swap(u, v);\n    }\n    sort(bridges.begin(), bridges.end());\n\
+    \n    for (auto [u, v] : bridges) {\n        cout << u << ' ' << v << endl;\n\
+    \    }\n}\n"
   dependsOn:
   - Graph/DfsTree/BridgeArticulation.h
   isVerificationFile: true
   path: Graph/tests/bridge.test.cpp
   requiredBy: []
-  timestamp: '2022-01-09 21:09:50+08:00'
+  timestamp: '2022-01-10 00:30:04+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Graph/tests/bridge.test.cpp

@@ -218,19 +218,19 @@ data:
     \     S {\n            (f.a * node->data.sum + f.b * node->data.sz) % MOD,\n \
     \           node->data.sz,\n        }\n    };\n}\nF composition(F f, F g) {\n\
     \    return F {\n        f.a * g.a % MOD,\n        (f.a * g.b + f.b) % MOD,\n\
-    \    };\n}\nF id() {\n    return F {1, 0};\n}\n\nint32_t main() {\n    int n,\
-    \ q; cin >> n >> q;\n    vector<int> keys(n);\n    for (auto& key : keys) cin\
-    \ >> key;\n\n    SplayTreeById<\n        int,\n        S,\n        op,\n     \
-    \   e,\n        F,\n        mapping,\n        composition,\n        id\n    >\
-    \ tree(keys);\n\n    while (q--) {\n        int typ; cin >> typ;\n        if (typ\
-    \ == 0) {\n            int pos, val; cin >> pos >> val;\n            tree.insert(pos,\
-    \ val);\n        } else if (typ == 1) {\n            int pos; cin >> pos;\n  \
-    \          tree.erase(pos);\n        } else if (typ == 2) {\n            int l,\
-    \ r; cin >> l >> r;\n            tree.reverse(l, r);\n        } else if (typ ==\
-    \ 3) {\n            int l, r, a, b; cin >> l >> r >> a >> b;\n            tree.apply(l,\
-    \ r, F{a, b});\n        } else {\n            assert(typ == 4);\n            int\
-    \ l, r; cin >> l >> r;\n            printf(\"%lld\\n\", tree.prod(l, r).sum);\n\
-    \        }\n    }\n    return 0;\n}\n"
+    \    };\n}\nF id() {\n    return F {1, 0};\n}\n\nint32_t main() {\n    ios::sync_with_stdio(0);\
+    \ cin.tie(0);\n    int n, q; cin >> n >> q;\n    vector<int> keys(n);\n    for\
+    \ (auto& key : keys) cin >> key;\n\n    SplayTreeById<\n        int,\n       \
+    \ S,\n        op,\n        e,\n        F,\n        mapping,\n        composition,\n\
+    \        id\n    > tree(keys);\n\n    while (q--) {\n        int typ; cin >> typ;\n\
+    \        if (typ == 0) {\n            int pos, val; cin >> pos >> val;\n     \
+    \       tree.insert(pos, val);\n        } else if (typ == 1) {\n            int\
+    \ pos; cin >> pos;\n            tree.erase(pos);\n        } else if (typ == 2)\
+    \ {\n            int l, r; cin >> l >> r;\n            tree.reverse(l, r);\n \
+    \       } else if (typ == 3) {\n            int l, r, a, b; cin >> l >> r >> a\
+    \ >> b;\n            tree.apply(l, r, F{a, b});\n        } else {\n          \
+    \  assert(typ == 4);\n            int l, r; cin >> l >> r;\n            printf(\"\
+    %lld\\n\", tree.prod(l, r).sum);\n        }\n    }\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/dynamic_sequence_range_affine_range_sum\"\
     \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../../Math/modulo_anta.h\"\
     \n#include \"../splay_tree.h\"\n\nusing modular = ModInt<998244353>;\nstd::ostream&\
@@ -245,26 +245,26 @@ data:
     \     S {\n            (f.a * node->data.sum + f.b * node->data.sz) % MOD,\n \
     \           node->data.sz,\n        }\n    };\n}\nF composition(F f, F g) {\n\
     \    return F {\n        f.a * g.a % MOD,\n        (f.a * g.b + f.b) % MOD,\n\
-    \    };\n}\nF id() {\n    return F {1, 0};\n}\n\nint32_t main() {\n    int n,\
-    \ q; cin >> n >> q;\n    vector<int> keys(n);\n    for (auto& key : keys) cin\
-    \ >> key;\n\n    SplayTreeById<\n        int,\n        S,\n        op,\n     \
-    \   e,\n        F,\n        mapping,\n        composition,\n        id\n    >\
-    \ tree(keys);\n\n    while (q--) {\n        int typ; cin >> typ;\n        if (typ\
-    \ == 0) {\n            int pos, val; cin >> pos >> val;\n            tree.insert(pos,\
-    \ val);\n        } else if (typ == 1) {\n            int pos; cin >> pos;\n  \
-    \          tree.erase(pos);\n        } else if (typ == 2) {\n            int l,\
-    \ r; cin >> l >> r;\n            tree.reverse(l, r);\n        } else if (typ ==\
-    \ 3) {\n            int l, r, a, b; cin >> l >> r >> a >> b;\n            tree.apply(l,\
-    \ r, F{a, b});\n        } else {\n            assert(typ == 4);\n            int\
-    \ l, r; cin >> l >> r;\n            printf(\"%lld\\n\", tree.prod(l, r).sum);\n\
-    \        }\n    }\n    return 0;\n}\n"
+    \    };\n}\nF id() {\n    return F {1, 0};\n}\n\nint32_t main() {\n    ios::sync_with_stdio(0);\
+    \ cin.tie(0);\n    int n, q; cin >> n >> q;\n    vector<int> keys(n);\n    for\
+    \ (auto& key : keys) cin >> key;\n\n    SplayTreeById<\n        int,\n       \
+    \ S,\n        op,\n        e,\n        F,\n        mapping,\n        composition,\n\
+    \        id\n    > tree(keys);\n\n    while (q--) {\n        int typ; cin >> typ;\n\
+    \        if (typ == 0) {\n            int pos, val; cin >> pos >> val;\n     \
+    \       tree.insert(pos, val);\n        } else if (typ == 1) {\n            int\
+    \ pos; cin >> pos;\n            tree.erase(pos);\n        } else if (typ == 2)\
+    \ {\n            int l, r; cin >> l >> r;\n            tree.reverse(l, r);\n \
+    \       } else if (typ == 3) {\n            int l, r, a, b; cin >> l >> r >> a\
+    \ >> b;\n            tree.apply(l, r, F{a, b});\n        } else {\n          \
+    \  assert(typ == 4);\n            int l, r; cin >> l >> r;\n            printf(\"\
+    %lld\\n\", tree.prod(l, r).sum);\n        }\n    }\n    return 0;\n}\n"
   dependsOn:
   - Math/modulo_anta.h
   - DataStructure/splay_tree.h
   isVerificationFile: true
   path: DataStructure/test/splay_tree.test.cpp
   requiredBy: []
-  timestamp: '2022-01-07 04:26:13+08:00'
+  timestamp: '2022-01-10 00:30:04+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/splay_tree.test.cpp

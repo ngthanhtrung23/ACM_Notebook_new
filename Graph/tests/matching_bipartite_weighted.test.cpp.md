@@ -52,22 +52,23 @@ data:
     \           findAugPath();\n            if (!finish) subx_addy();\n        }\n\
     \        enlarge();\n    }\n    long long res = 0;\n    FOR(i,1,N) res += c[i][mx[i]];\n\
     \    return res;\n}\n#line 12 \"Graph/tests/matching_bipartite_weighted.test.cpp\"\
-    \n\nint32_t main() {\n    cin >> N;\n    FOR(i,1,N) FOR(j,1,N) cin >> c[i][j];\n\
-    \    cout << mincost() << '\\n';\n    FOR(i,1,N) {\n        cout << mx[i] - 1\
-    \ << ' ';\n    }\n    cout << '\\n';\n    return 0;\n}\n"
+    \n\nint32_t main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n    cin >> N;\n\
+    \    FOR(i,1,N) FOR(j,1,N) cin >> c[i][j];\n    cout << mincost() << '\\n';\n\
+    \    FOR(i,1,N) {\n        cout << mx[i] - 1 << ' ';\n    }\n    cout << '\\n';\n\
+    \    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/assignment\"\n\n#include\
     \ <bits/stdc++.h>\nusing namespace std;\n\nconst int MN = 511;\nconst long long\
     \ inf = 1000111000111LL;\nint N;\n\n#define FOR(i, a, b) for (int i = (a), _##i\
     \ = (b); i <= _##i; ++i)\n#include \"../Matching/HungarianLMH.h\"\n\nint32_t main()\
-    \ {\n    cin >> N;\n    FOR(i,1,N) FOR(j,1,N) cin >> c[i][j];\n    cout << mincost()\
-    \ << '\\n';\n    FOR(i,1,N) {\n        cout << mx[i] - 1 << ' ';\n    }\n    cout\
-    \ << '\\n';\n    return 0;\n}\n"
+    \ {\n    ios::sync_with_stdio(0); cin.tie(0);\n    cin >> N;\n    FOR(i,1,N) FOR(j,1,N)\
+    \ cin >> c[i][j];\n    cout << mincost() << '\\n';\n    FOR(i,1,N) {\n       \
+    \ cout << mx[i] - 1 << ' ';\n    }\n    cout << '\\n';\n    return 0;\n}\n"
   dependsOn:
   - Graph/Matching/HungarianLMH.h
   isVerificationFile: true
   path: Graph/tests/matching_bipartite_weighted.test.cpp
   requiredBy: []
-  timestamp: '2022-01-06 04:03:40+08:00'
+  timestamp: '2022-01-10 00:30:04+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Graph/tests/matching_bipartite_weighted.test.cpp

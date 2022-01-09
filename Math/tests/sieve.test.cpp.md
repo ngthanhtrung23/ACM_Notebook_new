@@ -28,30 +28,32 @@ data:
     \ prime[nprime++] = i;\n}\n\nbool isPrime(uint n) {\n    if (n <= 1) return false;\n\
     \    if (n == 2) return true;\n    if (n % 2 == 0) return false;\n\n    if (gP(n))\
     \ return true;\n    return false;\n}\n#line 7 \"Math/tests/sieve.test.cpp\"\n\n\
-    int32_t main() {\n    int n, a, b; cin >> n >> a >> b;\n    sieve();\n\n    int\
-    \ cnt1 = 0;\n    for (int i = 0; i < nprime; i++) {\n        if (prime[i] > n)\
-    \ break;\n        ++cnt1;\n    }\n\n    int cnt2 = 0;\n    for (int i = 0; ; i++)\
-    \ {\n        int id = a*i + b;\n        if (id >= nprime || prime[id] > n) break;\n\
-    \n        ++cnt2;\n    }\n    cout << cnt1 << ' ' << cnt2 << '\\n';\n\n    for\
-    \ (int i = 0; ; i++) {\n        int id = a*i + b;\n        if (id >= nprime ||\
-    \ prime[id] > n) break;\n\n        cout << prime[id] << ' ';\n    }\n    cout\
-    \ << endl;\n    return 0;\n}\n"
+    int32_t main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n, a, b; cin\
+    \ >> n >> a >> b;\n    sieve();\n\n    int cnt1 = 0;\n    for (int i = 0; i <\
+    \ nprime; i++) {\n        if (prime[i] > n) break;\n        ++cnt1;\n    }\n\n\
+    \    int cnt2 = 0;\n    for (int i = 0; ; i++) {\n        int id = a*i + b;\n\
+    \        if (id >= nprime || prime[id] > n) break;\n\n        ++cnt2;\n    }\n\
+    \    cout << cnt1 << ' ' << cnt2 << '\\n';\n\n    for (int i = 0; ; i++) {\n \
+    \       int id = a*i + b;\n        if (id >= nprime || prime[id] > n) break;\n\
+    \n        cout << prime[id] << ' ';\n    }\n    cout << endl;\n    return 0;\n\
+    }\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/enumerate_primes\"\n\n\
     #include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../Prime/IterativeSieve.h\"\
-    \n\nint32_t main() {\n    int n, a, b; cin >> n >> a >> b;\n    sieve();\n\n \
-    \   int cnt1 = 0;\n    for (int i = 0; i < nprime; i++) {\n        if (prime[i]\
-    \ > n) break;\n        ++cnt1;\n    }\n\n    int cnt2 = 0;\n    for (int i = 0;\
-    \ ; i++) {\n        int id = a*i + b;\n        if (id >= nprime || prime[id] >\
-    \ n) break;\n\n        ++cnt2;\n    }\n    cout << cnt1 << ' ' << cnt2 << '\\\
-    n';\n\n    for (int i = 0; ; i++) {\n        int id = a*i + b;\n        if (id\
-    \ >= nprime || prime[id] > n) break;\n\n        cout << prime[id] << ' ';\n  \
-    \  }\n    cout << endl;\n    return 0;\n}\n"
+    \n\nint32_t main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n, a,\
+    \ b; cin >> n >> a >> b;\n    sieve();\n\n    int cnt1 = 0;\n    for (int i =\
+    \ 0; i < nprime; i++) {\n        if (prime[i] > n) break;\n        ++cnt1;\n \
+    \   }\n\n    int cnt2 = 0;\n    for (int i = 0; ; i++) {\n        int id = a*i\
+    \ + b;\n        if (id >= nprime || prime[id] > n) break;\n\n        ++cnt2;\n\
+    \    }\n    cout << cnt1 << ' ' << cnt2 << '\\n';\n\n    for (int i = 0; ; i++)\
+    \ {\n        int id = a*i + b;\n        if (id >= nprime || prime[id] > n) break;\n\
+    \n        cout << prime[id] << ' ';\n    }\n    cout << endl;\n    return 0;\n\
+    }\n"
   dependsOn:
   - Math/Prime/IterativeSieve.h
   isVerificationFile: true
   path: Math/tests/sieve.test.cpp
   requiredBy: []
-  timestamp: '2022-01-06 04:41:45+08:00'
+  timestamp: '2022-01-10 00:30:04+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Math/tests/sieve.test.cpp

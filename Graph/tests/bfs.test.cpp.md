@@ -48,26 +48,26 @@ data:
     \ = u;\n                    qu.push(v);\n                }\n            }\n  \
     \      }\n\n        return {dist, trace};\n    }\n\n    int n;\n    vector<vector<int>>\
     \ g;\n};\n#line 7 \"Graph/tests/bfs.test.cpp\"\n\n#define REP(i, a) for (int i\
-    \ = 0, _##i = (a); i < _##i; ++i)\n\nint main() {\n    int n; cin >> n;\n    Graph\
-    \ g(n);\n\n    REP(i,n) {\n        int u, k; cin >> u >> k;\n        --u;\n  \
-    \      while (k--) {\n            int v; cin >> v;\n            --v;\n       \
-    \     g.add_edge(u, v);\n        }\n    }\n    auto dist = g.bfs(0);\n    REP(i,n)\
-    \ {\n        cout << (i+1) << ' ' << dist[i] << '\\n';\n    }\n    return 0;\n\
-    }\n"
+    \ = 0, _##i = (a); i < _##i; ++i)\n\nint main() {\n    ios::sync_with_stdio(0);\
+    \ cin.tie(0);\n    int n; cin >> n;\n    Graph g(n);\n\n    REP(i,n) {\n     \
+    \   int u, k; cin >> u >> k;\n        --u;\n        while (k--) {\n          \
+    \  int v; cin >> v;\n            --v;\n            g.add_edge(u, v);\n       \
+    \ }\n    }\n    auto dist = g.bfs(0);\n    REP(i,n) {\n        cout << (i+1) <<\
+    \ ' ' << dist[i] << '\\n';\n    }\n    return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_11_C\"\
     \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../bfs.h\"\n\n\
     #define REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)\n\nint main() {\n\
-    \    int n; cin >> n;\n    Graph g(n);\n\n    REP(i,n) {\n        int u, k; cin\
-    \ >> u >> k;\n        --u;\n        while (k--) {\n            int v; cin >> v;\n\
-    \            --v;\n            g.add_edge(u, v);\n        }\n    }\n    auto dist\
-    \ = g.bfs(0);\n    REP(i,n) {\n        cout << (i+1) << ' ' << dist[i] << '\\\
-    n';\n    }\n    return 0;\n}\n"
+    \    ios::sync_with_stdio(0); cin.tie(0);\n    int n; cin >> n;\n    Graph g(n);\n\
+    \n    REP(i,n) {\n        int u, k; cin >> u >> k;\n        --u;\n        while\
+    \ (k--) {\n            int v; cin >> v;\n            --v;\n            g.add_edge(u,\
+    \ v);\n        }\n    }\n    auto dist = g.bfs(0);\n    REP(i,n) {\n        cout\
+    \ << (i+1) << ' ' << dist[i] << '\\n';\n    }\n    return 0;\n}\n"
   dependsOn:
   - Graph/bfs.h
   isVerificationFile: true
   path: Graph/tests/bfs.test.cpp
   requiredBy: []
-  timestamp: '2022-01-07 15:25:45+08:00'
+  timestamp: '2022-01-10 00:30:04+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Graph/tests/bfs.test.cpp

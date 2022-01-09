@@ -83,21 +83,22 @@ data:
     \ 3, 5, 7, 11, 13, 17, 19}) {\n        while(x % p == 0) {\n            x /= p;\n\
     \            ans.push_back(p);\n        }\n    }\n    if (x != 1) {\n        pollard(x,\
     \ ans);\n    }\n    sort(ans.begin(), ans.end());\n    return ans;\n}\n#line 8\
-    \ \"Math/tests/is_prime_yukicoder.test.cpp\"\n\nint main() {\n    int q; cin >>\
-    \ q;\n    while (q--) {\n        long long n;\n        cin >> n;\n        cout\
-    \ << n << ' ' << isPrime(n) << '\\n';\n    }\n}\n\n"
-  code: "#define PROBLEM \"https://yukicoder.me/problems/no/3030\"\n\n#include <bits/stdc++.h>\n\
-    using namespace std;\n\n#include \"../../template.h\"\n#include \"../NumberTheory/Pollard.h\"\
-    \n\nint main() {\n    int q; cin >> q;\n    while (q--) {\n        long long n;\n\
+    \ \"Math/tests/is_prime_yukicoder.test.cpp\"\n\nint main() {\n    ios::sync_with_stdio(0);\
+    \ cin.tie(0);\n    int q; cin >> q;\n    while (q--) {\n        long long n;\n\
     \        cin >> n;\n        cout << n << ' ' << isPrime(n) << '\\n';\n    }\n\
     }\n\n"
+  code: "#define PROBLEM \"https://yukicoder.me/problems/no/3030\"\n\n#include <bits/stdc++.h>\n\
+    using namespace std;\n\n#include \"../../template.h\"\n#include \"../NumberTheory/Pollard.h\"\
+    \n\nint main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int q; cin >>\
+    \ q;\n    while (q--) {\n        long long n;\n        cin >> n;\n        cout\
+    \ << n << ' ' << isPrime(n) << '\\n';\n    }\n}\n\n"
   dependsOn:
   - template.h
   - Math/NumberTheory/Pollard.h
   isVerificationFile: true
   path: Math/tests/is_prime_yukicoder.test.cpp
   requiredBy: []
-  timestamp: '2022-01-09 23:35:29+08:00'
+  timestamp: '2022-01-10 00:30:04+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Math/tests/is_prime_yukicoder.test.cpp

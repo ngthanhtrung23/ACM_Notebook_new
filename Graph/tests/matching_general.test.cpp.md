@@ -51,25 +51,26 @@ data:
     \                }\n            }\n        }\n        return 0;\n    }\n\nprivate:\n\
     \    vector<vector<int>> g;\n    int timer;\n    vector<int> label, parent, orig,\
     \ aux, q;\n};\n#line 7 \"Graph/tests/matching_general.test.cpp\"\n\nint32_t main()\
-    \ {\n    int n, m; cin >> n >> m;\n    GeneralMatching match(n);\n    while (m--)\
-    \ {\n        int a, b; cin >> a >> b;\n        match.add_edge(a, b);\n    }\n\
-    \    cout << match.get_match() << '\\n';\n    for (int i = 0; i < n; i++) {\n\
-    \        if (match.match[i] != -1 && match.match[i] > i) {\n            cout <<\
-    \ i << ' ' << match.match[i] << '\\n';\n        }\n    }\n    return 0;\n}\n"
+    \ {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n, m; cin >> n >> m;\n\
+    \    GeneralMatching match(n);\n    while (m--) {\n        int a, b; cin >> a\
+    \ >> b;\n        match.add_edge(a, b);\n    }\n    cout << match.get_match() <<\
+    \ '\\n';\n    for (int i = 0; i < n; i++) {\n        if (match.match[i] != -1\
+    \ && match.match[i] > i) {\n            cout << i << ' ' << match.match[i] <<\
+    \ '\\n';\n        }\n    }\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/general_matching\"\n\n\
     #include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../Matching/GeneralMatching.h\"\
-    \n\nint32_t main() {\n    int n, m; cin >> n >> m;\n    GeneralMatching match(n);\n\
-    \    while (m--) {\n        int a, b; cin >> a >> b;\n        match.add_edge(a,\
-    \ b);\n    }\n    cout << match.get_match() << '\\n';\n    for (int i = 0; i <\
-    \ n; i++) {\n        if (match.match[i] != -1 && match.match[i] > i) {\n     \
-    \       cout << i << ' ' << match.match[i] << '\\n';\n        }\n    }\n    return\
-    \ 0;\n}\n"
+    \n\nint32_t main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n, m;\
+    \ cin >> n >> m;\n    GeneralMatching match(n);\n    while (m--) {\n        int\
+    \ a, b; cin >> a >> b;\n        match.add_edge(a, b);\n    }\n    cout << match.get_match()\
+    \ << '\\n';\n    for (int i = 0; i < n; i++) {\n        if (match.match[i] !=\
+    \ -1 && match.match[i] > i) {\n            cout << i << ' ' << match.match[i]\
+    \ << '\\n';\n        }\n    }\n    return 0;\n}\n"
   dependsOn:
   - Graph/Matching/GeneralMatching.h
   isVerificationFile: true
   path: Graph/tests/matching_general.test.cpp
   requiredBy: []
-  timestamp: '2022-01-06 03:56:46+08:00'
+  timestamp: '2022-01-10 00:30:04+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Graph/tests/matching_general.test.cpp

@@ -65,25 +65,26 @@ data:
     \ t);\n}\n\nmt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());\n\
     long long get_rand(long long r) {\n    return uniform_int_distribution<long long>\
     \ (0, r-1)(rng);\n}\n#line 8 \"Graph/tests/articulation_points.test.cpp\"\n\n\
-    int main() {\n    int n, m; cin >> n >> m;\n    vector<vector<int>> g(n);\n  \
-    \  REP(i,m) {\n        int u, v; cin >> u >> v;\n        g[u].push_back(v);\n\
+    int main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n, m; cin >> n\
+    \ >> m;\n    vector<vector<int>> g(n);\n    REP(i,m) {\n        int u, v; cin\
+    \ >> u >> v;\n        g[u].push_back(v);\n        g[v].push_back(u);\n    }\n\n\
+    \    UndirectedDfs tree(g);\n    auto res = tree.articulation_points;\n    sort(res.begin(),\
+    \ res.end());\n    for (int r : res) cout << r << '\\n';\n}\n"
+  code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_A\"\
+    \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../DfsTree/BridgeArticulation.h\"\
+    \n#include \"../../template.h\"\n\nint main() {\n    ios::sync_with_stdio(0);\
+    \ cin.tie(0);\n    int n, m; cin >> n >> m;\n    vector<vector<int>> g(n);\n \
+    \   REP(i,m) {\n        int u, v; cin >> u >> v;\n        g[u].push_back(v);\n\
     \        g[v].push_back(u);\n    }\n\n    UndirectedDfs tree(g);\n    auto res\
     \ = tree.articulation_points;\n    sort(res.begin(), res.end());\n    for (int\
     \ r : res) cout << r << '\\n';\n}\n"
-  code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_A\"\
-    \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../DfsTree/BridgeArticulation.h\"\
-    \n#include \"../../template.h\"\n\nint main() {\n    int n, m; cin >> n >> m;\n\
-    \    vector<vector<int>> g(n);\n    REP(i,m) {\n        int u, v; cin >> u >>\
-    \ v;\n        g[u].push_back(v);\n        g[v].push_back(u);\n    }\n\n    UndirectedDfs\
-    \ tree(g);\n    auto res = tree.articulation_points;\n    sort(res.begin(), res.end());\n\
-    \    for (int r : res) cout << r << '\\n';\n}\n"
   dependsOn:
   - Graph/DfsTree/BridgeArticulation.h
   - template.h
   isVerificationFile: true
   path: Graph/tests/articulation_points.test.cpp
   requiredBy: []
-  timestamp: '2022-01-09 23:35:29+08:00'
+  timestamp: '2022-01-10 00:30:04+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Graph/tests/articulation_points.test.cpp

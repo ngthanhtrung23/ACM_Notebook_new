@@ -39,24 +39,26 @@ data:
     \ path;\n    for (int u = target; u != start; u = trace[u]) {\n        path.push_back(u);\n\
     \    }\n    path.push_back(start);\n    reverse(path.begin(), path.end());\n \
     \   return {f[target], path};\n}\n#line 7 \"Graph/tests/dijkstra_aizu.test.cpp\"\
-    \n\nint main() {\n    int n, m, start; cin >> n >> m >> start;\n    vector< vector<pair<int,\
-    \ ll>> > g(n);\n    while (m--) {\n        int u, v, c; cin >> u >> v >> c;\n\
-    \        g[u].push_back({v, c});\n    }\n    auto [dist, trace] = dijkstra(g,\
-    \ start);\n    for (auto d : dist) {\n        if (d == INF) cout << \"INF\\n\"\
-    ;\n        else cout << d << '\\n';\n    }\n    return 0;\n}\n"
+    \n\nint main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n, m, start;\
+    \ cin >> n >> m >> start;\n    vector< vector<pair<int, ll>> > g(n);\n    while\
+    \ (m--) {\n        int u, v, c; cin >> u >> v >> c;\n        g[u].push_back({v,\
+    \ c});\n    }\n    auto [dist, trace] = dijkstra(g, start);\n    for (auto d :\
+    \ dist) {\n        if (d == INF) cout << \"INF\\n\";\n        else cout << d <<\
+    \ '\\n';\n    }\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A\"\
     \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../dijkstra.h\"\
-    \n\nint main() {\n    int n, m, start; cin >> n >> m >> start;\n    vector< vector<pair<int,\
-    \ ll>> > g(n);\n    while (m--) {\n        int u, v, c; cin >> u >> v >> c;\n\
-    \        g[u].push_back({v, c});\n    }\n    auto [dist, trace] = dijkstra(g,\
-    \ start);\n    for (auto d : dist) {\n        if (d == INF) cout << \"INF\\n\"\
-    ;\n        else cout << d << '\\n';\n    }\n    return 0;\n}\n"
+    \n\nint main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n, m, start;\
+    \ cin >> n >> m >> start;\n    vector< vector<pair<int, ll>> > g(n);\n    while\
+    \ (m--) {\n        int u, v, c; cin >> u >> v >> c;\n        g[u].push_back({v,\
+    \ c});\n    }\n    auto [dist, trace] = dijkstra(g, start);\n    for (auto d :\
+    \ dist) {\n        if (d == INF) cout << \"INF\\n\";\n        else cout << d <<\
+    \ '\\n';\n    }\n    return 0;\n}\n"
   dependsOn:
   - Graph/dijkstra.h
   isVerificationFile: true
   path: Graph/tests/dijkstra_aizu.test.cpp
   requiredBy: []
-  timestamp: '2022-01-09 23:55:11+08:00'
+  timestamp: '2022-01-10 00:30:04+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Graph/tests/dijkstra_aizu.test.cpp

@@ -84,21 +84,23 @@ data:
     \ 3, 5, 7, 11, 13, 17, 19}) {\n        while(x % p == 0) {\n            x /= p;\n\
     \            ans.push_back(p);\n        }\n    }\n    if (x != 1) {\n        pollard(x,\
     \ ans);\n    }\n    sort(ans.begin(), ans.end());\n    return ans;\n}\n#line 8\
-    \ \"Math/tests/factorize_aizu.test.cpp\"\n\nint main() {\n    int n;\n    cin\
-    \ >> n;\n    auto facs = factorize(n);\n    cout << n << ':';\n    for (auto x\
-    \ : facs) cout << ' ' << x;\n    cout << '\\n';\n}\n"
+    \ \"Math/tests/factorize_aizu.test.cpp\"\n\nint main() {\n    ios::sync_with_stdio(0);\
+    \ cin.tie(0);\n    int n;\n    cin >> n;\n    auto facs = factorize(n);\n    cout\
+    \ << n << ':';\n    for (auto x : facs) cout << ' ' << x;\n    cout << '\\n';\n\
+    }\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_A\"\
     \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../../template.h\"\
-    \n#include \"../NumberTheory/Pollard.h\"\n\nint main() {\n    int n;\n    cin\
-    \ >> n;\n    auto facs = factorize(n);\n    cout << n << ':';\n    for (auto x\
-    \ : facs) cout << ' ' << x;\n    cout << '\\n';\n}\n"
+    \n#include \"../NumberTheory/Pollard.h\"\n\nint main() {\n    ios::sync_with_stdio(0);\
+    \ cin.tie(0);\n    int n;\n    cin >> n;\n    auto facs = factorize(n);\n    cout\
+    \ << n << ':';\n    for (auto x : facs) cout << ' ' << x;\n    cout << '\\n';\n\
+    }\n"
   dependsOn:
   - template.h
   - Math/NumberTheory/Pollard.h
   isVerificationFile: true
   path: Math/tests/factorize_aizu.test.cpp
   requiredBy: []
-  timestamp: '2022-01-09 23:35:29+08:00'
+  timestamp: '2022-01-10 00:30:04+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Math/tests/factorize_aizu.test.cpp

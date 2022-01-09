@@ -43,23 +43,24 @@ data:
     \ (q - 1) / 2, q) != 1) return -1;\n    if (q % 4 == 3) {\n        ll res = bin_pow(X,\
     \ (q + 1) / 4, q);\n        return min(res, q - res);\n    }\n    auto res = (Cipolla(X,\
     \ q) % q + q) % q;\n    return min(res, q-res);\n}\n#line 13 \"Math/tests/sqrt_mod.test.cpp\"\
-    \n\nint32_t main() {\n    int ntest; cin >> ntest;\n    while (ntest--) {\n  \
-    \      long long n, p; cin >> n >> p;\n        long long res = sqrtMod(n, p);\n\
-    \        cout << res << '\\n';\n    }\n    return 0;\n}\n"
+    \n\nint32_t main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int ntest;\
+    \ cin >> ntest;\n    while (ntest--) {\n        long long n, p; cin >> n >> p;\n\
+    \        long long res = sqrtMod(n, p);\n        cout << res << '\\n';\n    }\n\
+    \    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/sqrt_mod\"\n\n#include\
     \ <bits/stdc++.h>\nusing namespace std;\n\n// for 64-bit, use mt19937_64\nmt19937_64\
     \ rng(chrono::steady_clock::now().time_since_epoch().count());\nlong long get_rand(long\
     \ long r) {\n    return uniform_int_distribution<long long> (0, r-1)(rng);\n}\n\
-    \n#include \"../NumberTheory/SqrtMod.h\"\n\nint32_t main() {\n    int ntest; cin\
-    \ >> ntest;\n    while (ntest--) {\n        long long n, p; cin >> n >> p;\n \
-    \       long long res = sqrtMod(n, p);\n        cout << res << '\\n';\n    }\n\
-    \    return 0;\n}\n"
+    \n#include \"../NumberTheory/SqrtMod.h\"\n\nint32_t main() {\n    ios::sync_with_stdio(0);\
+    \ cin.tie(0);\n    int ntest; cin >> ntest;\n    while (ntest--) {\n        long\
+    \ long n, p; cin >> n >> p;\n        long long res = sqrtMod(n, p);\n        cout\
+    \ << res << '\\n';\n    }\n    return 0;\n}\n"
   dependsOn:
   - Math/NumberTheory/SqrtMod.h
   isVerificationFile: true
   path: Math/tests/sqrt_mod.test.cpp
   requiredBy: []
-  timestamp: '2022-01-06 04:47:02+08:00'
+  timestamp: '2022-01-10 00:30:04+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Math/tests/sqrt_mod.test.cpp

@@ -33,24 +33,24 @@ data:
     \ int v = S.back(); S.pop_back(); current[v] = 0;\n                scc.back().push_back(v);\n\
     \                comp_ids[v] = ((int) scc.size()) - 1;\n                if (u\
     \ == v) break;\n            }\n        }\n    }\n};\n#line 7 \"Graph/tests/strongly_connected_aizu.test.cpp\"\
-    \n\nint main() {\n    int n, m; cin >> n >> m;\n    vector<vector<int>> g(n);\n\
-    \    while (m--) {\n        int u, v; cin >> u >> v;\n        g[u].push_back(v);\n\
-    \    }\n    DirectedDfs tree(g);\n\n    int q; cin >> q;\n    while (q--) {\n\
-    \        int u, v; cin >> u >> v;\n        cout << (tree.comp_ids[u] == tree.comp_ids[v])\
-    \ << '\\n';\n    }\n}\n"
+    \n\nint main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n, m; cin\
+    \ >> n >> m;\n    vector<vector<int>> g(n);\n    while (m--) {\n        int u,\
+    \ v; cin >> u >> v;\n        g[u].push_back(v);\n    }\n    DirectedDfs tree(g);\n\
+    \n    int q; cin >> q;\n    while (q--) {\n        int u, v; cin >> u >> v;\n\
+    \        cout << (tree.comp_ids[u] == tree.comp_ids[v]) << '\\n';\n    }\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_C\"\
     \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../DfsTree/StronglyConnected.h\"\
-    \n\nint main() {\n    int n, m; cin >> n >> m;\n    vector<vector<int>> g(n);\n\
-    \    while (m--) {\n        int u, v; cin >> u >> v;\n        g[u].push_back(v);\n\
-    \    }\n    DirectedDfs tree(g);\n\n    int q; cin >> q;\n    while (q--) {\n\
-    \        int u, v; cin >> u >> v;\n        cout << (tree.comp_ids[u] == tree.comp_ids[v])\
-    \ << '\\n';\n    }\n}\n"
+    \n\nint main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n, m; cin\
+    \ >> n >> m;\n    vector<vector<int>> g(n);\n    while (m--) {\n        int u,\
+    \ v; cin >> u >> v;\n        g[u].push_back(v);\n    }\n    DirectedDfs tree(g);\n\
+    \n    int q; cin >> q;\n    while (q--) {\n        int u, v; cin >> u >> v;\n\
+    \        cout << (tree.comp_ids[u] == tree.comp_ids[v]) << '\\n';\n    }\n}\n"
   dependsOn:
   - Graph/DfsTree/StronglyConnected.h
   isVerificationFile: true
   path: Graph/tests/strongly_connected_aizu.test.cpp
   requiredBy: []
-  timestamp: '2022-01-09 22:41:11+08:00'
+  timestamp: '2022-01-10 00:30:04+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Graph/tests/strongly_connected_aizu.test.cpp

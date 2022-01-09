@@ -42,18 +42,19 @@ data:
     \ < l + 1) break;\n        ll t = 0;\n        for (int k = l + 1; k <= e; k++)\n\
     \            t += smalls[half(divide(M, roughs[k]))];\n        larges[0] += t\
     \ - (ll)(e - l) * (pc + l - 1);\n    }\n    return larges[0] + 1;\n}\n#line 7\
-    \ \"Math/tests/prime_pi.test.cpp\"\n\nint32_t main() {\n    long long n; cin >>\
-    \ n;\n    cout << prime_pi(n) << endl;\n    return 0;\n}\n"
+    \ \"Math/tests/prime_pi.test.cpp\"\n\nint32_t main() {\n    ios::sync_with_stdio(0);\
+    \ cin.tie(0);\n    long long n; cin >> n;\n    cout << prime_pi(n) << endl;\n\
+    \    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/counting_primes\"\n\n#include\
     \ <bits/stdc++.h>\nusing namespace std;\n\n#include \"../Prime/PrimePi.h\"\n\n\
-    int32_t main() {\n    long long n; cin >> n;\n    cout << prime_pi(n) << endl;\n\
-    \    return 0;\n}\n"
+    int32_t main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n    long long n; cin\
+    \ >> n;\n    cout << prime_pi(n) << endl;\n    return 0;\n}\n"
   dependsOn:
   - Math/Prime/PrimePi.h
   isVerificationFile: true
   path: Math/tests/prime_pi.test.cpp
   requiredBy: []
-  timestamp: '2022-01-06 04:34:09+08:00'
+  timestamp: '2022-01-10 00:30:04+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Math/tests/prime_pi.test.cpp

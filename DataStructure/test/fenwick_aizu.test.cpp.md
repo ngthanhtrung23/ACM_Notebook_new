@@ -30,22 +30,22 @@ data:
     \        if (l == r) return 0;  // empty\n        return get(r) - get(l);\n  \
     \  }\n\n    void reset() {\n        std::fill(f.begin(), f.end(), T(0));\n   \
     \ }\n\n    int n;\n    vector<T> f;\n};\n#line 7 \"DataStructure/test/fenwick_aizu.test.cpp\"\
-    \n\nint main() {\n    int n, q; cin >> n >> q;\n    Fenwick<long long> bit(n);\n\
-    \    while (q--) {\n        int typ, x, y; cin >> typ >> x >> y;\n        --x;\n\
-    \        if (typ == 0) bit.update(x, y);\n        else cout << bit.get(x, y) <<\
-    \ '\\n';\n    }\n}\n"
+    \n\nint main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n, q; cin\
+    \ >> n >> q;\n    Fenwick<long long> bit(n);\n    while (q--) {\n        int typ,\
+    \ x, y; cin >> typ >> x >> y;\n        --x;\n        if (typ == 0) bit.update(x,\
+    \ y);\n        else cout << bit.get(x, y) << '\\n';\n    }\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B\"\
     \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../Fenwick.h\"\
-    \n\nint main() {\n    int n, q; cin >> n >> q;\n    Fenwick<long long> bit(n);\n\
-    \    while (q--) {\n        int typ, x, y; cin >> typ >> x >> y;\n        --x;\n\
-    \        if (typ == 0) bit.update(x, y);\n        else cout << bit.get(x, y) <<\
-    \ '\\n';\n    }\n}\n"
+    \n\nint main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n, q; cin\
+    \ >> n >> q;\n    Fenwick<long long> bit(n);\n    while (q--) {\n        int typ,\
+    \ x, y; cin >> typ >> x >> y;\n        --x;\n        if (typ == 0) bit.update(x,\
+    \ y);\n        else cout << bit.get(x, y) << '\\n';\n    }\n}\n"
   dependsOn:
   - DataStructure/Fenwick.h
   isVerificationFile: true
   path: DataStructure/test/fenwick_aizu.test.cpp
   requiredBy: []
-  timestamp: '2022-01-06 15:39:49+08:00'
+  timestamp: '2022-01-10 00:30:04+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/fenwick_aizu.test.cpp
