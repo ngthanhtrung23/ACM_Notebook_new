@@ -196,7 +196,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Graph/find_triangles.h
       title: Graph/find_triangles.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/floyd.h
       title: Graph/floyd.h
     - icon: ':warning:'
@@ -603,7 +603,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Graph/tests/directed_mst.test.cpp
       title: Graph/tests/directed_mst.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/floyd_aizu.test.cpp
       title: Graph/tests/floyd_aizu.test.cpp
     - icon: ':heavy_check_mark:'
