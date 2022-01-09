@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: Graph/tests/mincost_flow.test.cpp
+    title: Graph/tests/mincost_flow.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - http://vn.spoj.com/problems/MINCOST
@@ -26,8 +29,8 @@ data:
     \ _c, flow_t _f, int _rev) : c(_c), f(_f), to(_to), rev(_rev) {}\n    };\n\n \
     \   int N, S, T;\n    vector<vector<Edge> > G;\n    MinCostFlow(int _N, int _S,\
     \ int _T) : N(_N), S(_S), T(_T), G(_N), eps(0) {}\n\n    void addEdge(int a, int\
-    \ b, flow_t cap, cost_t cost) {\n\t\tassert(cap >= 0);\n        assert(a >= 0\
-    \ && a < N && b >= 0 && b < N);\n        if (a == b) { assert(cost >= 0); return;\
+    \ b, flow_t cap, cost_t cost) {\n\tassert(cap >= 0);\n        assert(a >= 0 &&\
+    \ a < N && b >= 0 && b < N);\n        if (a == b) { assert(cost >= 0); return;\
     \ }\n        cost *= N;\n        eps = max(eps, abs(cost));\n        G[a].emplace_back(b,\
     \ cost, cap, G[b].size());\n        G[b].emplace_back(a, -cost, 0, G[a].size()\
     \ - 1);\n    }\n\n    flow_t getFlow(Edge const &e) {\n        return G[e.to][e.rev].f;\n\
@@ -104,8 +107,8 @@ data:
     \ _c, flow_t _f, int _rev) : c(_c), f(_f), to(_to), rev(_rev) {}\n    };\n\n \
     \   int N, S, T;\n    vector<vector<Edge> > G;\n    MinCostFlow(int _N, int _S,\
     \ int _T) : N(_N), S(_S), T(_T), G(_N), eps(0) {}\n\n    void addEdge(int a, int\
-    \ b, flow_t cap, cost_t cost) {\n\t\tassert(cap >= 0);\n        assert(a >= 0\
-    \ && a < N && b >= 0 && b < N);\n        if (a == b) { assert(cost >= 0); return;\
+    \ b, flow_t cap, cost_t cost) {\n\tassert(cap >= 0);\n        assert(a >= 0 &&\
+    \ a < N && b >= 0 && b < N);\n        if (a == b) { assert(cost >= 0); return;\
     \ }\n        cost *= N;\n        eps = max(eps, abs(cost));\n        G[a].emplace_back(b,\
     \ cost, cap, G[b].size());\n        G[b].emplace_back(a, -cost, 0, G[a].size()\
     \ - 1);\n    }\n\n    flow_t getFlow(Edge const &e) {\n        return G[e.to][e.rev].f;\n\
@@ -174,9 +177,10 @@ data:
   isVerificationFile: false
   path: Graph/MaxFlow/MinCostMaxFlowPR.h
   requiredBy: []
-  timestamp: '2022-01-07 20:41:35+08:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2022-01-10 00:42:12+08:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - Graph/tests/mincost_flow.test.cpp
 documentation_of: Graph/MaxFlow/MinCostMaxFlowPR.h
 layout: document
 redirect_from:

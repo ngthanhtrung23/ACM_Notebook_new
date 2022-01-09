@@ -253,10 +253,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: Graph/MaxFlow/MaxFlowPR.h
       title: Graph/MaxFlow/MaxFlowPR.h
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: Graph/MaxFlow/MinCostMaxFlowPR.h
       title: Graph/MaxFlow/MinCostMaxFlowPR.h
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: Graph/MaxFlow/MinCostMaxFlowSPFA.h
       title: Graph/MaxFlow/MinCostMaxFlowSPFA.h
     - icon: ':warning:'
@@ -627,6 +627,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: Graph/tests/maxflow_pr.test.cpp
       title: Graph/tests/maxflow_pr.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Graph/tests/mincost_flow.test.cpp
+      title: Graph/tests/mincost_flow.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Graph/tests/mincost_maxflow_spfa.test.cpp
+      title: Graph/tests/mincost_maxflow_spfa.test.cpp
     - icon: ':heavy_check_mark:'
       path: Graph/tests/strongly_connected.test.cpp
       title: Graph/tests/strongly_connected.test.cpp
