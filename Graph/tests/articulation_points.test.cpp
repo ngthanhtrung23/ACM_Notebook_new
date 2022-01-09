@@ -1,13 +1,9 @@
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_A"
 
-#include <bits/stdc++.h>
-using namespace std;
-
-#include "../DfsTree/BridgeArticulation.h"
 #include "../../template.h"
+#include "../DfsTree/BridgeArticulation.h"
 
-int main() {
-    ios::sync_with_stdio(0); cin.tie(0);
+void solve() {
     int n, m; cin >> n >> m;
     vector<vector<int>> g(n);
     REP(i,m) {

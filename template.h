@@ -1,3 +1,6 @@
+#include <bits/stdc++.h>
+using namespace std;
+
 #define FOR(i,a,b) for(int i=(a),_b=(b); i<=_b; i++)
 #define FORD(i,a,b) for(int i=(a),_b=(b); i>=_b; i--)
 #define REP(i,a) for(int i=0,_a=(a); i<_a; i++)
@@ -35,4 +38,12 @@ template<class ...U> ostream& operator << (ostream& out, const tuple<U...>& t) {
 mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());
 long long get_rand(long long r) {
     return uniform_int_distribution<long long> (0, r-1)(rng);
+}
+
+void solve();
+
+int main() {
+    ios::sync_with_stdio(0); cin.tie(0);
+    solve();
+    return 0;
 }

@@ -1,13 +1,9 @@
 #define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_C"
 
-#include <bits/stdc++.h>
-using namespace std;
-
 #include "../../template.h"
 #include "../floyd.h"
 
-int main() {
-    ios::sync_with_stdio(0); cin.tie(0);
+void solve() {
     int n, m; cin >> n >> m;
     vector<vector<ll>> c(n, vector<ll> (n, INF));
     for (int i = 0; i < n; i++) c[i][i] = 0;
@@ -21,7 +17,7 @@ int main() {
     for (int i = 0; i < n; i++) {
         if (f.c[i][i] < 0) {
             cout << "NEGATIVE CYCLE" << endl;
-            return 0;
+            return;
         }
     }
     for (int i = 0; i < n; i++) {
@@ -31,5 +27,4 @@ int main() {
             cout << (j == n-1 ? '\n' : ' ');
         }
     }
-    return 0;
 }
