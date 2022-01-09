@@ -14,14 +14,15 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"template.h\"\n#define FOR(i,a,b) for(int i=(a),_b=(b); i<=_b;\
-    \ i++)\n#define FORD(i,a,b) for(int i=(a),_b=(b); i>=_b; i--)\n#define REP(i,a)\
-    \ for(int i=0,_a=(a); i<_a; i++)\n#define EACH(it,a) for(__typeof(a.begin()) it\
-    \ = a.begin(); it != a.end(); ++it)\n\n#define DEBUG(x) { cout << #x << \" = \"\
-    ; cout << (x) << endl; }\n#define PR(a,n) { cout << #a << \" = \"; FOR(_,1,n)\
-    \ cout << a[_] << ' '; cout << endl; }\n#define PR0(a,n) { cout << #a << \" =\
-    \ \"; REP(_,n) cout << a[_] << ' '; cout << endl; }\n\n#define sqr(x) ((x) * (x))\n\
-    \n// For printing pair, container, etc.\n// Copied from https://quangloc99.github.io/2021/07/30/my-CP-debugging-template.html\n\
+  bundledCode: "#line 1 \"template.h\"\n#include <bits/stdc++.h>\nusing namespace\
+    \ std;\n\n#define FOR(i,a,b) for(int i=(a),_b=(b); i<=_b; i++)\n#define FORD(i,a,b)\
+    \ for(int i=(a),_b=(b); i>=_b; i--)\n#define REP(i,a) for(int i=0,_a=(a); i<_a;\
+    \ i++)\n#define EACH(it,a) for(__typeof(a.begin()) it = a.begin(); it != a.end();\
+    \ ++it)\n\n#define DEBUG(x) { cout << #x << \" = \"; cout << (x) << endl; }\n\
+    #define PR(a,n) { cout << #a << \" = \"; FOR(_,1,n) cout << a[_] << ' '; cout\
+    \ << endl; }\n#define PR0(a,n) { cout << #a << \" = \"; REP(_,n) cout << a[_]\
+    \ << ' '; cout << endl; }\n\n#define sqr(x) ((x) * (x))\n\n// For printing pair,\
+    \ container, etc.\n// Copied from https://quangloc99.github.io/2021/07/30/my-CP-debugging-template.html\n\
     template<class U, class V> ostream& operator << (ostream& out, const pair<U, V>&\
     \ p) {\n    return out << '(' << p.first << \", \" << p.second << ')';\n}\n\n\
     template<class Con, class = decltype(begin(declval<Con>()))>\ntypename enable_if<!is_same<Con,\
@@ -35,9 +36,10 @@ data:
     \ (ostream& out, const tuple<U...>& t) {\n    return print_tuple_utils<0, tuple<U...>>(out,\
     \ t);\n}\n\nmt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());\n\
     long long get_rand(long long r) {\n    return uniform_int_distribution<long long>\
-    \ (0, r-1)(rng);\n}\n#line 2 \"Math/Polynomial/VOJ_POST2.cpp\"\n\nconst int MN\
-    \ = 1000111;\n#line 1 \"Math/Polynomial/FFT.h\"\n// Let's just not use this inefficient\
-    \ code and use dacin21's code here:\n// https://github.com/dacin21/dacin21_codebook/blob/master/nt/polynomials_2.0.cpp\n\
+    \ (0, r-1)(rng);\n}\n\nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0);\
+    \ cin.tie(0);\n    solve();\n    return 0;\n}\n#line 2 \"Math/Polynomial/VOJ_POST2.cpp\"\
+    \n\nconst int MN = 1000111;\n#line 1 \"Math/Polynomial/FFT.h\"\n// Let's just\
+    \ not use this inefficient code and use dacin21's code here:\n// https://github.com/dacin21/dacin21_codebook/blob/master/nt/polynomials_2.0.cpp\n\
     //\n// Example with using Fft class directly (maybe it's easier to use dacin21's\
     \ class Polynomial):\n//\n// const int MOD = 1e9 + 7;\n// vector<int64_t> a, b;\n\
     // vector<int64_t> res;\n// \n// // res = a * b:\n// if (mod <= 5000) Fft<Complex<double>>::poly_mul_faster(res,\
@@ -92,7 +94,7 @@ data:
   isVerificationFile: false
   path: Math/Polynomial/VOJ_POST2.cpp
   requiredBy: []
-  timestamp: '2022-01-09 23:35:29+08:00'
+  timestamp: '2022-01-10 03:15:26+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Math/Polynomial/VOJ_POST2.cpp
