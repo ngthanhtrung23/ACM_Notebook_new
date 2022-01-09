@@ -26,9 +26,8 @@ int main() {
         for (int j = 0; j < n; j++) {
             if (f.c[i][j] == INF) cout << "INF";
             else cout << f.c[i][j];
-            cout << ' ';
+            cout << (j == n-1 ? '\n' : ' ');
         }
-        cout << endl;
     }
     return 0;
 }
