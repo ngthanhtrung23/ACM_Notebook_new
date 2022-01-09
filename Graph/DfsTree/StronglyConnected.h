@@ -8,16 +8,16 @@
 // Tested:
 // - (requires scc to be topo sorted) https://judge.yosupo.jp/problem/scc
 struct DirectedDfs {
-    vector<vector<int>> G;
-    int V;
+    vector<vector<int>> g;
+    int n;
     vector<int> num, low, current, S;
     int counter;
     vector<int> comp_ids;
     vector< vector<int> > scc;
 
-    DirectedDfs(const vector<vector<int>>& _G) : G(_G), V(G.size()),
-            num(V, -1), low(V, 0), current(V, 0), counter(0), comp_ids(V, -1) {
-        for (int i = 0; i < V; i++) {
+    DirectedDfs(const vector<vector<int>>& _g) : g(_g), n(g.size()),
+            num(n, -1), low(n, 0), current(n, 0), counter(0), comp_ids(n, -1) {
+        for (int i = 0; i < n; i++) {
             if (num[i] == -1) dfs(i);
         }
     }
@@ -26,7 +26,7 @@ struct DirectedDfs {
         low[u] = num[u] = counter++;
         S.push_back(u);
         current[u] = 1;
-        for (auto v : G[u]) {
+        for (auto v : g[u]) {
             if (num[v] == -1) dfs(v);
             if (current[v]) low[u] = min(low[u], low[v]);
         }
