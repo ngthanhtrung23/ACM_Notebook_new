@@ -34,6 +34,7 @@
 "Graph/tests/bridge_biconnected.test.cpp": "2022-01-09 21:09:50 +0800",
 "Graph/tests/clique_maxindependentset.test.cpp": "2022-01-06 04:21:41 +0800",
 "Graph/tests/dijkstra.test.cpp": "2022-01-06 03:02:41 +0800",
+"Graph/tests/dijkstra_aizu.test.cpp": "2022-01-09 23:55:11 +0800",
 "Graph/tests/directed_mst.test.cpp": "2022-01-06 04:18:39 +0800",
 "Graph/tests/matching_bipartite.test.cpp": "2022-01-06 03:56:46 +0800",
 "Graph/tests/matching_bipartite_weighted.test.cpp": "2022-01-06 04:03:40 +0800",
