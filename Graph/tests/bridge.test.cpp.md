@@ -26,17 +26,16 @@ data:
     \ _g) : g(_g), n(g.size()),\n            low(n, 0), num(n, -1), parent(n, 0),\
     \ is_articulation(n, false),\n            counter(0), children(0) {\n        for\
     \ (int u = 0; u < n; u++) {\n            for (int v : g[u]) {\n              \
-    \  cnt_edges[{u, v}] += 1;\n                cnt_edges[{v, u}] += 1;\n        \
-    \    }\n        }\n        for(int i = 0; i < n; ++i) if (num[i] == -1) {\n  \
-    \          root = i; children = 0;\n            dfs(i);\n            is_articulation[root]\
-    \ = (children > 1);\n        }\n        for(int i = 0; i < n; ++i)\n         \
-    \   if (is_articulation[i]) articulation_points.push_back(i);\n    }\nprivate:\n\
-    \    void dfs(int u) {\n        low[u] = num[u] = counter++;\n        for (int\
-    \ v : g[u]) {\n            if (num[v] == -1) {\n                parent[v] = u;\n\
-    \                if (u == root) children++;\n                dfs(v);\n       \
-    \         if (low[v] >= num[u])\n                    is_articulation[u] = true;\n\
-    \                if (low[v] > num[u]) {\n                    if (cnt_edges[{u,\
-    \ v}] == 2) {\n                        bridges.push_back(make_pair(u, v));\n \
+    \  cnt_edges[{u, v}] += 1;\n            }\n        }\n        for(int i = 0; i\
+    \ < n; ++i) if (num[i] == -1) {\n            root = i; children = 0;\n       \
+    \     dfs(i);\n            is_articulation[root] = (children > 1);\n        }\n\
+    \        for(int i = 0; i < n; ++i)\n            if (is_articulation[i]) articulation_points.push_back(i);\n\
+    \    }\nprivate:\n    void dfs(int u) {\n        low[u] = num[u] = counter++;\n\
+    \        for (int v : g[u]) {\n            if (num[v] == -1) {\n             \
+    \   parent[v] = u;\n                if (u == root) children++;\n             \
+    \   dfs(v);\n                if (low[v] >= num[u])\n                    is_articulation[u]\
+    \ = true;\n                if (low[v] > num[u]) {\n                    if (cnt_edges[{u,\
+    \ v}] == 1) {\n                        bridges.push_back(make_pair(u, v));\n \
     \                   }\n                }\n                low[u] = min(low[u],\
     \ low[v]);\n            } else if (v != parent[u])\n                low[u] = min(low[u],\
     \ num[v]);\n        }\n    }\n};\n#line 7 \"Graph/tests/bridge.test.cpp\"\n\n\
@@ -62,7 +61,7 @@ data:
   isVerificationFile: true
   path: Graph/tests/bridge.test.cpp
   requiredBy: []
-  timestamp: '2022-01-10 00:30:04+08:00'
+  timestamp: '2022-01-10 01:46:23+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Graph/tests/bridge.test.cpp
