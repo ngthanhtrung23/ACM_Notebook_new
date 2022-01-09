@@ -4,7 +4,7 @@ data:
   - icon: ':warning:'
     path: Graph/Misc/EulerPath.h
     title: Graph/Misc/EulerPath.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
