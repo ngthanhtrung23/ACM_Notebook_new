@@ -27,7 +27,7 @@ struct MinCostFlow {
     MinCostFlow(int _N, int _S, int _T) : N(_N), S(_S), T(_T), G(_N), eps(0) {}
 
     void addEdge(int a, int b, flow_t cap, cost_t cost) {
-		assert(cap >= 0);
+	assert(cap >= 0);
         assert(a >= 0 && a < N && b >= 0 && b < N);
         if (a == b) { assert(cost >= 0); return; }
         cost *= N;

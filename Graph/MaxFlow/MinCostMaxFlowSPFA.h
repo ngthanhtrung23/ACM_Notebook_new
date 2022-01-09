@@ -31,12 +31,12 @@ struct MinCostFlow {
         Flow cap;
         Cost cost;
         int next;
-        Edge(int to, Flow cap, Cost cost, int next) :
-                to(to), cap(cap), cost(cost), next(next) {}
+        Edge(int _to, Flow _cap, Cost _cost, int _next) :
+                to(_to), cap(_cap), cost(_cost), next(_next) {}
     };
     vector<Edge> edges;
 
-    MinCostFlow(int n) : n(n), t(0), totalFlow(0), totalCost(0), last(n, -1), visited(n, 0), dis(n, 0) {
+    MinCostFlow(int _n) : n(_n), t(0), totalFlow(0), totalCost(0), last(n, -1), visited(n, 0), dis(n, 0) {
         edges.clear();
     }
 
@@ -53,7 +53,7 @@ struct MinCostFlow {
         SPFA();
         while (1) {
             while (1) {
-                REP(i,n) visited[i] = 0;
+                std::fill(visited.begin(), visited.end(), 0);
                 if (!findFlow(S, INF_FLOW)) break;
             }
             if (!modifyLabel()) break;
@@ -63,7 +63,7 @@ struct MinCostFlow {
 
 private:
     void SPFA() {
-        REP(i,n) dis[i] = INF_COST;
+        std::fill(dis.begin(), dis.end(), INF_COST);
         priority_queue< pair<Cost,int> > Q;
         Q.push(make_pair(dis[S]=0, S));
         while (!Q.empty()) {
@@ -76,7 +76,10 @@ private:
                 if (edges[it].cap > 0 && dis[edges[it].to] > d + edges[it].cost)
                     Q.push(make_pair(-(dis[edges[it].to] = d + edges[it].cost), edges[it].to));
         }
-        Cost disT = dis[T]; REP(i,n) dis[i] = disT - dis[i];
+        Cost disT = dis[T];
+        for (int i = 0; i < n; i++) {
+            dis[i] = disT - dis[i];
+        }
     }
 
     Flow findFlow(int x, Flow flow) {
@@ -101,14 +104,14 @@ private:
 
     bool modifyLabel() {
         Cost d = INF_COST;
-        REP(i,n) if (visited[i])
+        for (int i = 0; i < n; i++) if (visited[i])
             for(int it = last[i]; it >= 0; it = edges[it].next)
                 if (edges[it].cap && !visited[edges[it].to])
                     d = min(d, dis[edges[it].to] + edges[it].cost - dis[i]);
 
         // For double: if (d > INF_COST / 10)     INF_COST = 1e20
         if (d == INF_COST) return false;
-        REP(i,n) if (visited[i])
+        for (int i = 0; i < n; i++) if (visited[i])
             dis[i] += d;
         return true;
     }
