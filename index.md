@@ -167,19 +167,11 @@ data:
     - icon: ':warning:'
       path: Geometry/voronoi.cpp
       title: Geometry/voronoi.cpp
-  - name: Graph/DfsTree
-    pages:
-    - icon: ':warning:'
-      path: Graph/DfsTree/BiconnectedComponent.h
-      title: Graph/DfsTree/BiconnectedComponent.h
-    - icon: ':heavy_check_mark:'
-      path: Graph/DfsTree/BridgeArticulation.h
-      title: Graph/DfsTree/BridgeArticulation.h
-    - icon: ':heavy_check_mark:'
-      path: Graph/DfsTree/StronglyConnected.h
-      title: Graph/DfsTree/StronglyConnected.h
   - name: Graph
     pages:
+    - icon: ':heavy_check_mark:'
+      path: Graph/2sat.h
+      title: Graph/2sat.h
     - icon: ':heavy_check_mark:'
       path: Graph/DirectedMST.h
       title: Graph/DirectedMST.h
@@ -216,6 +208,17 @@ data:
     - icon: ':heavy_check_mark:'
       path: Graph/tree_diameter.h
       title: Graph/tree_diameter.h
+  - name: Graph/DfsTree
+    pages:
+    - icon: ':warning:'
+      path: Graph/DfsTree/BiconnectedComponent.h
+      title: Graph/DfsTree/BiconnectedComponent.h
+    - icon: ':heavy_check_mark:'
+      path: Graph/DfsTree/BridgeArticulation.h
+      title: Graph/DfsTree/BridgeArticulation.h
+    - icon: ':heavy_check_mark:'
+      path: Graph/DfsTree/StronglyConnected.h
+      title: Graph/DfsTree/StronglyConnected.h
   - name: Graph/Matching
     pages:
     - icon: ':heavy_check_mark:'
@@ -261,9 +264,6 @@ data:
       title: Graph/MaxFlow/MinimumCut.h
   - name: Graph/Misc
     pages:
-    - icon: ':warning:'
-      path: Graph/Misc/2sat.cpp
-      title: Graph/Misc/2sat.cpp
     - icon: ':warning:'
       path: Graph/Misc/EulerPath.cpp
       title: Graph/Misc/EulerPath.cpp
@@ -624,6 +624,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Graph/tests/triangles.test.cpp
       title: Graph/tests/triangles.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Graph/tests/two_sat.test.cpp
+      title: Graph/tests/two_sat.test.cpp
   - name: Math/tests
     pages:
     - icon: ':heavy_check_mark:'
