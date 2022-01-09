@@ -47,7 +47,7 @@ data:
   isVerificationFile: true
   path: Graph/tests/bridge_biconnected.test.cpp
   requiredBy: []
-  timestamp: '2022-01-06 03:31:08+08:00'
+  timestamp: '2022-01-09 21:09:50+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Graph/tests/bridge_biconnected.test.cpp

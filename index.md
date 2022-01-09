@@ -482,7 +482,7 @@ data:
     - icon: ':warning:'
       path: debug.h
       title: debug.h
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: template.h
       title: template.h
   verificationCategories:
@@ -577,11 +577,17 @@ data:
   - name: Graph/tests
     pages:
     - icon: ':heavy_check_mark:'
+      path: Graph/tests/articulation_points.test.cpp
+      title: Graph/tests/articulation_points.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/bfs.test.cpp
       title: Graph/tests/bfs.test.cpp
     - icon: ':heavy_check_mark:'
       path: Graph/tests/bipartite_coloring.test.cpp
       title: Graph/tests/bipartite_coloring.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Graph/tests/bridge.test.cpp
+      title: Graph/tests/bridge.test.cpp
     - icon: ':heavy_check_mark:'
       path: Graph/tests/bridge_biconnected.test.cpp
       title: Graph/tests/bridge_biconnected.test.cpp
@@ -609,6 +615,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Graph/tests/strongly_connected.test.cpp
       title: Graph/tests/strongly_connected.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Graph/tests/strongly_connected_aizu.test.cpp
+      title: Graph/tests/strongly_connected_aizu.test.cpp
     - icon: ':heavy_check_mark:'
       path: Graph/tests/tree_diameter.test.cpp
       title: Graph/tests/tree_diameter.test.cpp

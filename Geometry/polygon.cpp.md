@@ -7,7 +7,7 @@ data:
   - icon: ':warning:'
     path: Geometry/polygon.h
     title: Geometry/polygon.h
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
@@ -17,15 +17,26 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"template.h\"\n#include <bits/stdc++.h>\n\n#define FOR(i,a,b)\
-    \ for(int i=(a),_b=(b); i<=_b; i++)\n#define FORD(i,a,b) for(int i=(a),_b=(b);\
-    \ i>=_b; i--)\n#define REP(i,a) for(int i=0,_a=(a); i<_a; i++)\n#define EACH(it,a)\
-    \ for(__typeof(a.begin()) it = a.begin(); it != a.end(); ++it)\n\n#define DEBUG(x)\
-    \ { cout << #x << \" = \"; cout << (x) << endl; }\n#define PR(a,n) { cout << #a\
-    \ << \" = \"; FOR(_,1,n) cout << a[_] << ' '; cout << endl; }\n#define PR0(a,n)\
-    \ { cout << #a << \" = \"; REP(_,n) cout << a[_] << ' '; cout << endl; }\n\n#define\
-    \ sqr(x) ((x) * (x))\nusing namespace std;\n\nint main() {\n    return 0;\n}\n\
-    \n#line 1 \"Geometry/basic.h\"\n#define EPS 1e-6\nconst double PI = acos(-1.0);\n\
+  bundledCode: "#line 1 \"template.h\"\n#define FOR(i,a,b) for(int i=(a),_b=(b); i<=_b;\
+    \ i++)\n#define FORD(i,a,b) for(int i=(a),_b=(b); i>=_b; i--)\n#define REP(i,a)\
+    \ for(int i=0,_a=(a); i<_a; i++)\n#define EACH(it,a) for(__typeof(a.begin()) it\
+    \ = a.begin(); it != a.end(); ++it)\n\n#define DEBUG(x) { cout << #x << \" = \"\
+    ; cout << (x) << endl; }\n#define PR(a,n) { cout << #a << \" = \"; FOR(_,1,n)\
+    \ cout << a[_] << ' '; cout << endl; }\n#define PR0(a,n) { cout << #a << \" =\
+    \ \"; REP(_,n) cout << a[_] << ' '; cout << endl; }\n\n#define sqr(x) ((x) * (x))\n\
+    \n// For printing pair, container, etc.\n// Copied from https://quangloc99.github.io/2021/07/30/my-CP-debugging-template.html\n\
+    template<class U, class V> ostream& operator << (ostream& out, const pair<U, V>&\
+    \ p) {\n    return out << '(' << p.first << \", \" << p.second << ')';\n}\n\n\
+    template<class Con, class = decltype(begin(declval<Con>()))>\ntypename enable_if<!is_same<Con,\
+    \ string>::value, ostream&>::type\noperator << (ostream& out, const Con& con)\
+    \ {\n    out << '{';\n    for (auto beg = con.begin(), it = beg; it != con.end();\
+    \ it++) {\n        out << (it == beg ? \"\" : \", \") << *it;\n    }\n    return\
+    \ out << '}';\n}\ntemplate<size_t i, class T> ostream& print_tuple_utils(ostream&\
+    \ out, const T& tup) {\n    if constexpr(i == tuple_size<T>::value) return out\
+    \ << \")\"; \n    else return print_tuple_utils<i + 1, T>(out << (i ? \", \" :\
+    \ \"(\") << get<i>(tup), tup); \n}\ntemplate<class ...U> ostream& operator <<\
+    \ (ostream& out, const tuple<U...>& t) {\n    return print_tuple_utils<0, tuple<U...>>(out,\
+    \ t);\n}\n#line 1 \"Geometry/basic.h\"\n#define EPS 1e-6\nconst double PI = acos(-1.0);\n\
     \ndouble DEG_to_RAD(double d) { return d * PI / 180.0; }\ndouble RAD_to_DEG(double\
     \ r) { return r * 180.0 / PI; }\n\ninline int cmp(double a, double b) {\n    return\
     \ (a < b - EPS) ? -1 : ((a > b + EPS) ? 1 : 0);\n}\n\nstruct Point {\n    double\
@@ -288,7 +299,7 @@ data:
   isVerificationFile: false
   path: Geometry/polygon.cpp
   requiredBy: []
-  timestamp: '2022-01-07 03:13:39+08:00'
+  timestamp: '2022-01-09 21:09:50+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Geometry/polygon.cpp
