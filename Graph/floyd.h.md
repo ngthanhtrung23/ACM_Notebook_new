@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: Graph/tests/floyd_aizu.test.cpp
+    title: Graph/tests/floyd_aizu.test.cpp
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://cses.fi/problemset/task/1672/
@@ -52,8 +55,9 @@ data:
   path: Graph/floyd.h
   requiredBy: []
   timestamp: '2022-01-07 15:25:45+08:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - Graph/tests/floyd_aizu.test.cpp
 documentation_of: Graph/floyd.h
 layout: document
 redirect_from:

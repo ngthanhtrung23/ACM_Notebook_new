@@ -6,6 +6,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Graph/tests/dijkstra.test.cpp
     title: Graph/tests/dijkstra.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Graph/tests/dijkstra_aizu.test.cpp
+    title: Graph/tests/dijkstra_aizu.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -65,6 +68,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Graph/tests/dijkstra.test.cpp
+  - Graph/tests/dijkstra_aizu.test.cpp
 documentation_of: Graph/dijkstra.h
 layout: document
 redirect_from:

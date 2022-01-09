@@ -196,7 +196,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Graph/find_triangles.h
       title: Graph/find_triangles.h
-    - icon: ':warning:'
+    - icon: ':x:'
       path: Graph/floyd.h
       title: Graph/floyd.h
     - icon: ':warning:'
@@ -598,8 +598,14 @@ data:
       path: Graph/tests/dijkstra.test.cpp
       title: Graph/tests/dijkstra.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Graph/tests/dijkstra_aizu.test.cpp
+      title: Graph/tests/dijkstra_aizu.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/directed_mst.test.cpp
       title: Graph/tests/directed_mst.test.cpp
+    - icon: ':x:'
+      path: Graph/tests/floyd_aizu.test.cpp
+      title: Graph/tests/floyd_aizu.test.cpp
     - icon: ':heavy_check_mark:'
       path: Graph/tests/matching_bipartite.test.cpp
       title: Graph/tests/matching_bipartite.test.cpp
