@@ -31,3 +31,8 @@ template<size_t i, class T> ostream& print_tuple_utils(ostream& out, const T& tu
 template<class ...U> ostream& operator << (ostream& out, const tuple<U...>& t) {
     return print_tuple_utils<0, tuple<U...>>(out, t);
 }
+
+mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());
+long long get_rand(long long r) {
+    return uniform_int_distribution<long long> (0, r-1)(rng);
+}
