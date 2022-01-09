@@ -23,7 +23,6 @@ struct UndirectedDfs {
         for (int u = 0; u < n; u++) {
             for (int v : g[u]) {
                 cnt_edges[{u, v}] += 1;
-                cnt_edges[{v, u}] += 1;
             }
         }
         for(int i = 0; i < n; ++i) if (num[i] == -1) {
@@ -45,7 +44,7 @@ private:
                 if (low[v] >= num[u])
                     is_articulation[u] = true;
                 if (low[v] > num[u]) {
-                    if (cnt_edges[{u, v}] == 2) {
+                    if (cnt_edges[{u, v}] == 1) {
                         bridges.push_back(make_pair(u, v));
                     }
                 }
