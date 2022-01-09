@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: Graph/tests/maxflow_pr.test.cpp
+    title: Graph/tests/maxflow_pr.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - http://vn.spoj.com/problems/FFLOW/
@@ -104,8 +107,9 @@ data:
   path: Graph/MaxFlow/MaxFlowPR.h
   requiredBy: []
   timestamp: '2021-12-17 23:12:55+08:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - Graph/tests/maxflow_pr.test.cpp
 documentation_of: Graph/MaxFlow/MaxFlowPR.h
 layout: document
 redirect_from:

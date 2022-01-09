@@ -241,16 +241,16 @@ data:
     - icon: ':warning:'
       path: Graph/MaxFlow/GomoryHu.h
       title: Graph/MaxFlow/GomoryHu.h
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: Graph/MaxFlow/MaxFlowDinic.h
       title: Graph/MaxFlow/MaxFlowDinic.h
     - icon: ':warning:'
       path: Graph/MaxFlow/MaxFlowDinicTrace.h
       title: Graph/MaxFlow/MaxFlowDinicTrace.h
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: Graph/MaxFlow/MaxFlowHLPP.h
       title: Graph/MaxFlow/MaxFlowHLPP.h
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: Graph/MaxFlow/MaxFlowPR.h
       title: Graph/MaxFlow/MaxFlowPR.h
     - icon: ':warning:'
@@ -618,6 +618,15 @@ data:
     - icon: ':heavy_check_mark:'
       path: Graph/tests/matching_general.test.cpp
       title: Graph/tests/matching_general.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Graph/tests/maxflow_dinic.test.cpp
+      title: Graph/tests/maxflow_dinic.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Graph/tests/maxflow_hlpp.test.cpp
+      title: Graph/tests/maxflow_hlpp.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Graph/tests/maxflow_pr.test.cpp
+      title: Graph/tests/maxflow_pr.test.cpp
     - icon: ':heavy_check_mark:'
       path: Graph/tests/strongly_connected.test.cpp
       title: Graph/tests/strongly_connected.test.cpp
