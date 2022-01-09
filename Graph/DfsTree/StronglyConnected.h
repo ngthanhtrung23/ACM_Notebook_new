@@ -12,10 +12,11 @@ struct DirectedDfs {
     int V;
     vector<int> num, low, current, S;
     int counter;
+    vector<int> comp_ids;
     vector< vector<int> > scc;
 
     DirectedDfs(const vector<vector<int>>& _G) : G(_G), V(G.size()),
-            num(V, -1), low(V, 0), current(V, 0), counter(0) {
+            num(V, -1), low(V, 0), current(V, 0), counter(0), comp_ids(V, -1) {
         for (int i = 0; i < V; i++) {
             if (num[i] == -1) dfs(i);
         }
@@ -34,6 +35,7 @@ struct DirectedDfs {
             while (1) {
                 int v = S.back(); S.pop_back(); current[v] = 0;
                 scc.back().push_back(v);
+                comp_ids[v] = ((int) scc.size()) - 1;
                 if (u == v) break;
             }
         }
