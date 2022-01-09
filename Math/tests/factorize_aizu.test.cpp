@@ -7,6 +7,7 @@ using namespace std;
 #include "../NumberTheory/Pollard.h"
 
 int main() {
+    ios::sync_with_stdio(0); cin.tie(0);
     int n;
     cin >> n;
     auto facs = factorize(n);

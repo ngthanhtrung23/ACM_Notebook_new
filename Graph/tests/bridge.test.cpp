@@ -8,6 +8,7 @@ using namespace std;
 #define REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)
 
 int main() {
+    ios::sync_with_stdio(0); cin.tie(0);
     int n, m; cin >> n >> m;
     vector<vector<int>> g(n);
     REP(i,m) {

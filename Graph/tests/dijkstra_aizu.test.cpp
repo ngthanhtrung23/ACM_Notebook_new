@@ -6,6 +6,7 @@ using namespace std;
 #include "../dijkstra.h"
 
 int main() {
+    ios::sync_with_stdio(0); cin.tie(0);
     int n, m, start; cin >> n >> m >> start;
     vector< vector<pair<int, ll>> > g(n);
     while (m--) {

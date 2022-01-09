@@ -12,6 +12,7 @@ long long get_rand(long long r) {
 #include "../NumberTheory/SqrtMod.h"
 
 int32_t main() {
+    ios::sync_with_stdio(0); cin.tie(0);
     int ntest; cin >> ntest;
     while (ntest--) {
         long long n, p; cin >> n >> p;

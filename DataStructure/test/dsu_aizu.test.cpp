@@ -6,6 +6,7 @@ using namespace std;
 #include "../DisjointSet.h"
 
 int main() {
+    ios::sync_with_stdio(0); cin.tie(0);
     int n, q; cin >> n >> q;
     DSU dsu(n);
     while (q--) {

@@ -9,6 +9,7 @@ using namespace std;
 #define FOR(i, a, b) for (int i = (a), _##i = (b); i <= _##i; ++i)
 
 int32_t main() {
+    ios::sync_with_stdio(0); cin.tie(0);
     int n = IO::get<int>();
     int q = IO::get<int>();
     vector<vector<int>> adj(n);

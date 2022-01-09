@@ -11,6 +11,7 @@ int N;
 #include "../Matching/HungarianLMH.h"
 
 int32_t main() {
+    ios::sync_with_stdio(0); cin.tie(0);
     cin >> N;
     FOR(i,1,N) FOR(j,1,N) cin >> c[i][j];
     cout << mincost() << '\n';
