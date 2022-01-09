@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Graph/DfsTree/BridgeArticulation.h
     title: Graph/DfsTree/BridgeArticulation.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
@@ -62,12 +62,14 @@ data:
     \ << \")\"; \n    else return print_tuple_utils<i + 1, T>(out << (i ? \", \" :\
     \ \"(\") << get<i>(tup), tup); \n}\ntemplate<class ...U> ostream& operator <<\
     \ (ostream& out, const tuple<U...>& t) {\n    return print_tuple_utils<0, tuple<U...>>(out,\
-    \ t);\n}\n#line 8 \"Graph/tests/articulation_points.test.cpp\"\n\nint main() {\n\
-    \    int n, m; cin >> n >> m;\n    vector<vector<int>> g(n);\n    REP(i,m) {\n\
-    \        int u, v; cin >> u >> v;\n        g[u].push_back(v);\n        g[v].push_back(u);\n\
-    \    }\n\n    UndirectedDfs tree(g);\n    auto res = tree.articulation_points;\n\
-    \    sort(res.begin(), res.end());\n    for (int r : res) cout << r << '\\n';\n\
-    }\n"
+    \ t);\n}\n\nmt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());\n\
+    long long get_rand(long long r) {\n    return uniform_int_distribution<long long>\
+    \ (0, r-1)(rng);\n}\n#line 8 \"Graph/tests/articulation_points.test.cpp\"\n\n\
+    int main() {\n    int n, m; cin >> n >> m;\n    vector<vector<int>> g(n);\n  \
+    \  REP(i,m) {\n        int u, v; cin >> u >> v;\n        g[u].push_back(v);\n\
+    \        g[v].push_back(u);\n    }\n\n    UndirectedDfs tree(g);\n    auto res\
+    \ = tree.articulation_points;\n    sort(res.begin(), res.end());\n    for (int\
+    \ r : res) cout << r << '\\n';\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_A\"\
     \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../DfsTree/BridgeArticulation.h\"\
     \n#include \"../../template.h\"\n\nint main() {\n    int n, m; cin >> n >> m;\n\
@@ -81,7 +83,7 @@ data:
   isVerificationFile: true
   path: Graph/tests/articulation_points.test.cpp
   requiredBy: []
-  timestamp: '2022-01-09 21:09:50+08:00'
+  timestamp: '2022-01-09 23:35:29+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Graph/tests/articulation_points.test.cpp

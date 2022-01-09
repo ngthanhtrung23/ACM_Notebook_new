@@ -4,23 +4,45 @@ data:
   - icon: ':question:'
     path: Math/NumberTheory/Pollard.h
     title: Math/NumberTheory/Pollard.h
+  - icon: ':question:'
+    path: template.h
+    title: template.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/factorize
+    PROBLEM: https://yukicoder.me/problems/no/3030
     links:
-    - https://judge.yosupo.jp/problem/factorize
-  bundledCode: "#line 1 \"Math/tests/factorize.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/factorize\"\
-    \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n// for 64-bit, use mt19937_64\n\
-    mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());\nlong\
-    \ long get_rand(long long r) {\n    return uniform_int_distribution<long long>\
-    \ (0, r-1)(rng);\n}\n\n#line 1 \"Math/NumberTheory/Pollard.h\"\n// Pollard\n//\
-    \ Copied from https://judge.yosupo.jp/submission/61447\n//\n// Tested:\n// - (up\
-    \ to 10^18) https://judge.yosupo.jp/problem/factorize\n// - https://oj.vnoi.info/problem/icpc21_beta_l\n\
+    - https://yukicoder.me/problems/no/3030
+  bundledCode: "#line 1 \"Math/tests/is_prime_yukicoder.test.cpp\"\n#define PROBLEM\
+    \ \"https://yukicoder.me/problems/no/3030\"\n\n#include <bits/stdc++.h>\nusing\
+    \ namespace std;\n\n#line 1 \"template.h\"\n#define FOR(i,a,b) for(int i=(a),_b=(b);\
+    \ i<=_b; i++)\n#define FORD(i,a,b) for(int i=(a),_b=(b); i>=_b; i--)\n#define\
+    \ REP(i,a) for(int i=0,_a=(a); i<_a; i++)\n#define EACH(it,a) for(__typeof(a.begin())\
+    \ it = a.begin(); it != a.end(); ++it)\n\n#define DEBUG(x) { cout << #x << \"\
+    \ = \"; cout << (x) << endl; }\n#define PR(a,n) { cout << #a << \" = \"; FOR(_,1,n)\
+    \ cout << a[_] << ' '; cout << endl; }\n#define PR0(a,n) { cout << #a << \" =\
+    \ \"; REP(_,n) cout << a[_] << ' '; cout << endl; }\n\n#define sqr(x) ((x) * (x))\n\
+    \n// For printing pair, container, etc.\n// Copied from https://quangloc99.github.io/2021/07/30/my-CP-debugging-template.html\n\
+    template<class U, class V> ostream& operator << (ostream& out, const pair<U, V>&\
+    \ p) {\n    return out << '(' << p.first << \", \" << p.second << ')';\n}\n\n\
+    template<class Con, class = decltype(begin(declval<Con>()))>\ntypename enable_if<!is_same<Con,\
+    \ string>::value, ostream&>::type\noperator << (ostream& out, const Con& con)\
+    \ {\n    out << '{';\n    for (auto beg = con.begin(), it = beg; it != con.end();\
+    \ it++) {\n        out << (it == beg ? \"\" : \", \") << *it;\n    }\n    return\
+    \ out << '}';\n}\ntemplate<size_t i, class T> ostream& print_tuple_utils(ostream&\
+    \ out, const T& tup) {\n    if constexpr(i == tuple_size<T>::value) return out\
+    \ << \")\"; \n    else return print_tuple_utils<i + 1, T>(out << (i ? \", \" :\
+    \ \"(\") << get<i>(tup), tup); \n}\ntemplate<class ...U> ostream& operator <<\
+    \ (ostream& out, const tuple<U...>& t) {\n    return print_tuple_utils<0, tuple<U...>>(out,\
+    \ t);\n}\n\nmt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());\n\
+    long long get_rand(long long r) {\n    return uniform_int_distribution<long long>\
+    \ (0, r-1)(rng);\n}\n#line 1 \"Math/NumberTheory/Pollard.h\"\n// Pollard\n// Copied\
+    \ from https://judge.yosupo.jp/submission/61447\n//\n// Tested:\n// - (up to 10^18)\
+    \ https://judge.yosupo.jp/problem/factorize\n// - https://oj.vnoi.info/problem/icpc21_beta_l\n\
     \nusing ll = long long;\nusing ull = unsigned long long;\nusing ld = long double;\n\
     ll mult(ll x, ll y, ll md) {\n    ull q = (ld)x * y / md;\n    ll res = ((ull)x\
     \ * y - q * md);\n    if (res >= md) res -= md;\n    if (res < 0) res += md;\n\
@@ -60,31 +82,28 @@ data:
     \  }\n}\nvector<ll> factorize(ll x) {\n    vector<ll> ans;\n    for (ll p : {2,\
     \ 3, 5, 7, 11, 13, 17, 19}) {\n        while(x % p == 0) {\n            x /= p;\n\
     \            ans.push_back(p);\n        }\n    }\n    if (x != 1) {\n        pollard(x,\
-    \ ans);\n    }\n    sort(ans.begin(), ans.end());\n    return ans;\n}\n#line 13\
-    \ \"Math/tests/factorize.test.cpp\"\n\nint32_t main() {\n    int ntest; cin >>\
-    \ ntest;\n    while (ntest--) {\n        long long n; cin >> n;\n        auto\
-    \ f = factorize(n);\n        cout << f.size();\n        for (auto x : f) cout\
-    \ << ' ' << x;\n        cout << '\\n';\n    }\n    return 0;\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/factorize\"\n\n#include\
-    \ <bits/stdc++.h>\nusing namespace std;\n\n// for 64-bit, use mt19937_64\nmt19937_64\
-    \ rng(chrono::steady_clock::now().time_since_epoch().count());\nlong long get_rand(long\
-    \ long r) {\n    return uniform_int_distribution<long long> (0, r-1)(rng);\n}\n\
-    \n#include \"../NumberTheory/Pollard.h\"\n\nint32_t main() {\n    int ntest; cin\
-    \ >> ntest;\n    while (ntest--) {\n        long long n; cin >> n;\n        auto\
-    \ f = factorize(n);\n        cout << f.size();\n        for (auto x : f) cout\
-    \ << ' ' << x;\n        cout << '\\n';\n    }\n    return 0;\n}\n"
+    \ ans);\n    }\n    sort(ans.begin(), ans.end());\n    return ans;\n}\n#line 8\
+    \ \"Math/tests/is_prime_yukicoder.test.cpp\"\n\nint main() {\n    int q; cin >>\
+    \ q;\n    while (q--) {\n        long long n;\n        cin >> n;\n        cout\
+    \ << n << ' ' << isPrime(n) << '\\n';\n    }\n}\n\n"
+  code: "#define PROBLEM \"https://yukicoder.me/problems/no/3030\"\n\n#include <bits/stdc++.h>\n\
+    using namespace std;\n\n#include \"../../template.h\"\n#include \"../NumberTheory/Pollard.h\"\
+    \n\nint main() {\n    int q; cin >> q;\n    while (q--) {\n        long long n;\n\
+    \        cin >> n;\n        cout << n << ' ' << isPrime(n) << '\\n';\n    }\n\
+    }\n\n"
   dependsOn:
+  - template.h
   - Math/NumberTheory/Pollard.h
   isVerificationFile: true
-  path: Math/tests/factorize.test.cpp
+  path: Math/tests/is_prime_yukicoder.test.cpp
   requiredBy: []
-  timestamp: '2022-01-06 04:41:45+08:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2022-01-09 23:35:29+08:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: Math/tests/factorize.test.cpp
+documentation_of: Math/tests/is_prime_yukicoder.test.cpp
 layout: document
 redirect_from:
-- /verify/Math/tests/factorize.test.cpp
-- /verify/Math/tests/factorize.test.cpp.html
-title: Math/tests/factorize.test.cpp
+- /verify/Math/tests/is_prime_yukicoder.test.cpp
+- /verify/Math/tests/is_prime_yukicoder.test.cpp.html
+title: Math/tests/is_prime_yukicoder.test.cpp
 ---

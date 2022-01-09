@@ -42,9 +42,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: Graph/tests/articulation_points.test.cpp
     title: Graph/tests/articulation_points.test.cpp
-  _isVerificationFailed: false
+  - icon: ':heavy_check_mark:'
+    path: Math/tests/factorize_aizu.test.cpp
+    title: Math/tests/factorize_aizu.test.cpp
+  - icon: ':x:'
+    path: Math/tests/is_prime_yukicoder.test.cpp
+    title: Math/tests/is_prime_yukicoder.test.cpp
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://quangloc99.github.io/2021/07/30/my-CP-debugging-template.html
@@ -67,7 +73,9 @@ data:
     \ << \")\"; \n    else return print_tuple_utils<i + 1, T>(out << (i ? \", \" :\
     \ \"(\") << get<i>(tup), tup); \n}\ntemplate<class ...U> ostream& operator <<\
     \ (ostream& out, const tuple<U...>& t) {\n    return print_tuple_utils<0, tuple<U...>>(out,\
-    \ t);\n}\n"
+    \ t);\n}\n\nmt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());\n\
+    long long get_rand(long long r) {\n    return uniform_int_distribution<long long>\
+    \ (0, r-1)(rng);\n}\n"
   code: "#define FOR(i,a,b) for(int i=(a),_b=(b); i<=_b; i++)\n#define FORD(i,a,b)\
     \ for(int i=(a),_b=(b); i>=_b; i--)\n#define REP(i,a) for(int i=0,_a=(a); i<_a;\
     \ i++)\n#define EACH(it,a) for(__typeof(a.begin()) it = a.begin(); it != a.end();\
@@ -87,7 +95,9 @@ data:
     \ << \")\"; \n    else return print_tuple_utils<i + 1, T>(out << (i ? \", \" :\
     \ \"(\") << get<i>(tup), tup); \n}\ntemplate<class ...U> ostream& operator <<\
     \ (ostream& out, const tuple<U...>& t) {\n    return print_tuple_utils<0, tuple<U...>>(out,\
-    \ t);\n}\n"
+    \ t);\n}\n\nmt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());\n\
+    long long get_rand(long long r) {\n    return uniform_int_distribution<long long>\
+    \ (0, r-1)(rng);\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: template.h
@@ -104,10 +114,12 @@ data:
   - String/eertree.cpp
   - String/minmove.cpp
   - String/lyndon.cpp
-  timestamp: '2022-01-09 21:09:50+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2022-01-09 23:35:29+08:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - Graph/tests/articulation_points.test.cpp
+  - Math/tests/factorize_aizu.test.cpp
+  - Math/tests/is_prime_yukicoder.test.cpp
 documentation_of: template.h
 layout: document
 redirect_from:

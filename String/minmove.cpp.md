@@ -4,7 +4,7 @@ data:
   - icon: ':warning:'
     path: String/minmove.h
     title: String/minmove.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
@@ -33,8 +33,10 @@ data:
     \ << \")\"; \n    else return print_tuple_utils<i + 1, T>(out << (i ? \", \" :\
     \ \"(\") << get<i>(tup), tup); \n}\ntemplate<class ...U> ostream& operator <<\
     \ (ostream& out, const tuple<U...>& t) {\n    return print_tuple_utils<0, tuple<U...>>(out,\
-    \ t);\n}\n#line 1 \"String/minmove.h\"\n// T\xEDnh v\u1ECB tr\xED c\u1EE7a x\xE2\
-    u xoay v\xF2ng c\xF3 th\u1EE9 t\u1EF1 t\u1EEB \u0111i\u1EC3n nh\u1ECF nh\u1EA5\
+    \ t);\n}\n\nmt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());\n\
+    long long get_rand(long long r) {\n    return uniform_int_distribution<long long>\
+    \ (0, r-1)(rng);\n}\n#line 1 \"String/minmove.h\"\n// T\xEDnh v\u1ECB tr\xED c\u1EE7\
+    a x\xE2u xoay v\xF2ng c\xF3 th\u1EE9 t\u1EF1 t\u1EEB \u0111i\u1EC3n nh\u1ECF nh\u1EA5\
     t c\u1EE7a x\xE2u s[]\n// Tested:\n// - https://cses.fi/problemset/task/1110/\n\
     int minmove(string s) {\n    int n = s.length();\n    int x, y, i, j, u, v; //\
     \ x is the smallest string before string y\n    for (x = 0, y = 1; y < n; ++ y)\
@@ -55,7 +57,7 @@ data:
   isVerificationFile: false
   path: String/minmove.cpp
   requiredBy: []
-  timestamp: '2022-01-09 21:09:50+08:00'
+  timestamp: '2022-01-09 23:35:29+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: String/minmove.cpp

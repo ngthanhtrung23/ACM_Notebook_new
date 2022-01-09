@@ -4,7 +4,7 @@ data:
   - icon: ':warning:'
     path: Misc/Die.h
     title: Misc/Die.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
@@ -33,13 +33,15 @@ data:
     \ << \")\"; \n    else return print_tuple_utils<i + 1, T>(out << (i ? \", \" :\
     \ \"(\") << get<i>(tup), tup); \n}\ntemplate<class ...U> ostream& operator <<\
     \ (ostream& out, const tuple<U...>& t) {\n    return print_tuple_utils<0, tuple<U...>>(out,\
-    \ t);\n}\n#line 1 \"Misc/Die.h\"\nconst int rotations[6][4] = {\n    {1, 4, 0,\
-    \ 5}, // left\n    {1, 5, 0, 4}, // right\n    {4, 3, 5, 2}, // up\n    {4, 2,\
-    \ 5, 3}, // down\n};\nstruct Die;\nmap<int, Die> dieMap;\nstruct Die {\n    int\
-    \ arr[6]; /* 0 right, 1 left, 2 forward, 3 backward, 4 top, 5 bottom */\n    Die(){\
-    \ REP(i,6) arr[i] = i; }\n    Die(int cipher) { // 0 -> 23\n        if (dieMap.empty())\
-    \ puts(\"Call openDie(die());\"); else (*this) = dieMap[cipher];\n    }\n    Die\
-    \ move(int dir) {\n        Die res = (*this);\n        int t = res.arr[rotations[dir][0]];\n\
+    \ t);\n}\n\nmt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());\n\
+    long long get_rand(long long r) {\n    return uniform_int_distribution<long long>\
+    \ (0, r-1)(rng);\n}\n#line 1 \"Misc/Die.h\"\nconst int rotations[6][4] = {\n \
+    \   {1, 4, 0, 5}, // left\n    {1, 5, 0, 4}, // right\n    {4, 3, 5, 2}, // up\n\
+    \    {4, 2, 5, 3}, // down\n};\nstruct Die;\nmap<int, Die> dieMap;\nstruct Die\
+    \ {\n    int arr[6]; /* 0 right, 1 left, 2 forward, 3 backward, 4 top, 5 bottom\
+    \ */\n    Die(){ REP(i,6) arr[i] = i; }\n    Die(int cipher) { // 0 -> 23\n  \
+    \      if (dieMap.empty()) puts(\"Call openDie(die());\"); else (*this) = dieMap[cipher];\n\
+    \    }\n    Die move(int dir) {\n        Die res = (*this);\n        int t = res.arr[rotations[dir][0]];\n\
     \        REP(i,3) res.arr[rotations[dir][i]] = res.arr[rotations[dir][i+1]];\n\
     \        res.arr[rotations[dir][3]] = t;\n        return res;\n    }\n    int\
     \ encrypt() { // 0 -> 23\n        int res = arr[0] * 4;\n        FOR(i,3,5) if\
@@ -61,7 +63,7 @@ data:
   isVerificationFile: false
   path: Misc/Die.cpp
   requiredBy: []
-  timestamp: '2022-01-09 21:09:50+08:00'
+  timestamp: '2022-01-09 23:35:29+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Misc/Die.cpp

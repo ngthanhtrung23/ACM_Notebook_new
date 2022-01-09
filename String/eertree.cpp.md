@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
@@ -30,16 +30,18 @@ data:
     \ << \")\"; \n    else return print_tuple_utils<i + 1, T>(out << (i ? \", \" :\
     \ \"(\") << get<i>(tup), tup); \n}\ntemplate<class ...U> ostream& operator <<\
     \ (ostream& out, const tuple<U...>& t) {\n    return print_tuple_utils<0, tuple<U...>>(out,\
-    \ t);\n}\n#line 2 \"String/eertree.cpp\"\n\nconst int MAXN = 105000;\n\nstruct\
-    \ node {\n\tint next[26];\n\tint len;\n\tint sufflink;\n};\n\nint len;\nchar s[MAXN];\n\
-    node tree[MAXN]; \nint num; \t\t\t// node 1 - root with len -1, node 2 - root\
-    \ with len 0\nint suff; \t\t\t// max suffix palindrome\n\nbool addLetter(int pos)\
-    \ {\n\tint cur = suff, curlen = 0;\n\tint let = s[pos] - 'a';\n\n\twhile (true)\
-    \ {\n\t\tcurlen = tree[cur].len;\n\t\tif (pos - 1 - curlen >= 0 && s[pos - 1 -\
-    \ curlen] == s[pos])    \t\n\t\t\tbreak;\t\n\t\tcur = tree[cur].sufflink;\n\t\
-    }\t\t\n\tif (tree[cur].next[let]) {\t\n\t\tsuff = tree[cur].next[let];\n\t\treturn\
-    \ false;\n\t}\n\n\tnum++;\n\tsuff = num;\n\ttree[num].len = tree[cur].len + 2;\n\
-    \ttree[cur].next[let] = num;\n\n\tif (tree[num].len == 1) {\n\t\ttree[num].sufflink\
+    \ t);\n}\n\nmt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());\n\
+    long long get_rand(long long r) {\n    return uniform_int_distribution<long long>\
+    \ (0, r-1)(rng);\n}\n#line 2 \"String/eertree.cpp\"\n\nconst int MAXN = 105000;\n\
+    \nstruct node {\n\tint next[26];\n\tint len;\n\tint sufflink;\n};\n\nint len;\n\
+    char s[MAXN];\nnode tree[MAXN]; \nint num; \t\t\t// node 1 - root with len -1,\
+    \ node 2 - root with len 0\nint suff; \t\t\t// max suffix palindrome\n\nbool addLetter(int\
+    \ pos) {\n\tint cur = suff, curlen = 0;\n\tint let = s[pos] - 'a';\n\n\twhile\
+    \ (true) {\n\t\tcurlen = tree[cur].len;\n\t\tif (pos - 1 - curlen >= 0 && s[pos\
+    \ - 1 - curlen] == s[pos])    \t\n\t\t\tbreak;\t\n\t\tcur = tree[cur].sufflink;\n\
+    \t}\t\t\n\tif (tree[cur].next[let]) {\t\n\t\tsuff = tree[cur].next[let];\n\t\t\
+    return false;\n\t}\n\n\tnum++;\n\tsuff = num;\n\ttree[num].len = tree[cur].len\
+    \ + 2;\n\ttree[cur].next[let] = num;\n\n\tif (tree[num].len == 1) {\n\t\ttree[num].sufflink\
     \ = 2;\n\t\treturn true;\n\t}\n\n\twhile (true) {\n\t\tcur = tree[cur].sufflink;\n\
     \t\tcurlen = tree[cur].len;\n\t\tif (pos - 1 - curlen >= 0 && s[pos - 1 - curlen]\
     \ == s[pos]) {\n\t\t\ttree[num].sufflink = tree[cur].next[let];\n\t\t\tbreak;\n\
@@ -71,7 +73,7 @@ data:
   isVerificationFile: false
   path: String/eertree.cpp
   requiredBy: []
-  timestamp: '2022-01-09 21:09:50+08:00'
+  timestamp: '2022-01-09 23:35:29+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: String/eertree.cpp

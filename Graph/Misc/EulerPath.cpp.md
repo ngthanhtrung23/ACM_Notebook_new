@@ -4,7 +4,7 @@ data:
   - icon: ':warning:'
     path: Graph/Misc/EulerPath.h
     title: Graph/Misc/EulerPath.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
@@ -33,10 +33,12 @@ data:
     \ << \")\"; \n    else return print_tuple_utils<i + 1, T>(out << (i ? \", \" :\
     \ \"(\") << get<i>(tup), tup); \n}\ntemplate<class ...U> ostream& operator <<\
     \ (ostream& out, const tuple<U...>& t) {\n    return print_tuple_utils<0, tuple<U...>>(out,\
-    \ t);\n}\n#line 1 \"Graph/Misc/EulerPath.h\"\n// NOTES:\n// - When choosing starting\
-    \ vertex (for calling find_path), make sure deg[start] > 0.\n// - If find Euler\
-    \ path, starting vertex must have odd degree.\n// - Check no solution: SZ(path)\
-    \ == nEdge + 1.\n//\n// Tested:\n// - https://open.kattis.com/problems/eulerianpath\
+    \ t);\n}\n\nmt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());\n\
+    long long get_rand(long long r) {\n    return uniform_int_distribution<long long>\
+    \ (0, r-1)(rng);\n}\n#line 1 \"Graph/Misc/EulerPath.h\"\n// NOTES:\n// - When\
+    \ choosing starting vertex (for calling find_path), make sure deg[start] > 0.\n\
+    // - If find Euler path, starting vertex must have odd degree.\n// - Check no\
+    \ solution: SZ(path) == nEdge + 1.\n//\n// Tested:\n// - https://open.kattis.com/problems/eulerianpath\
     \ (directed)\n// - SGU 101 (undirected).\n//\n// If directed:\n// - Edge --> int\n\
     // - add_edge(int a, int b) { adj[a].push_back(b); }\n// - Check for no solution:\n\
     // - - for all u, |in_deg[u] - out_deg[u]| <= 1\n// - - At most 1 vertex with\
@@ -63,7 +65,7 @@ data:
   isVerificationFile: false
   path: Graph/Misc/EulerPath.cpp
   requiredBy: []
-  timestamp: '2022-01-09 21:09:50+08:00'
+  timestamp: '2022-01-09 23:35:29+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Graph/Misc/EulerPath.cpp

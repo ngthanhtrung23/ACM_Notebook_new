@@ -4,7 +4,7 @@ data:
   - icon: ':warning:'
     path: Math/Polynomial/FFT.h
     title: Math/Polynomial/FFT.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
@@ -33,9 +33,11 @@ data:
     \ << \")\"; \n    else return print_tuple_utils<i + 1, T>(out << (i ? \", \" :\
     \ \"(\") << get<i>(tup), tup); \n}\ntemplate<class ...U> ostream& operator <<\
     \ (ostream& out, const tuple<U...>& t) {\n    return print_tuple_utils<0, tuple<U...>>(out,\
-    \ t);\n}\n#line 2 \"Math/Polynomial/VOJ_POST2.cpp\"\n\nconst int MN = 1000111;\n\
-    #line 1 \"Math/Polynomial/FFT.h\"\n// Let's just not use this inefficient code\
-    \ and use dacin21's code here:\n// https://github.com/dacin21/dacin21_codebook/blob/master/nt/polynomials_2.0.cpp\n\
+    \ t);\n}\n\nmt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());\n\
+    long long get_rand(long long r) {\n    return uniform_int_distribution<long long>\
+    \ (0, r-1)(rng);\n}\n#line 2 \"Math/Polynomial/VOJ_POST2.cpp\"\n\nconst int MN\
+    \ = 1000111;\n#line 1 \"Math/Polynomial/FFT.h\"\n// Let's just not use this inefficient\
+    \ code and use dacin21's code here:\n// https://github.com/dacin21/dacin21_codebook/blob/master/nt/polynomials_2.0.cpp\n\
     //\n// Example with using Fft class directly (maybe it's easier to use dacin21's\
     \ class Polynomial):\n//\n// const int MOD = 1e9 + 7;\n// vector<int64_t> a, b;\n\
     // vector<int64_t> res;\n// \n// // res = a * b:\n// if (mod <= 5000) Fft<Complex<double>>::poly_mul_faster(res,\
@@ -90,7 +92,7 @@ data:
   isVerificationFile: false
   path: Math/Polynomial/VOJ_POST2.cpp
   requiredBy: []
-  timestamp: '2022-01-09 21:09:50+08:00'
+  timestamp: '2022-01-09 23:35:29+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Math/Polynomial/VOJ_POST2.cpp

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
@@ -41,15 +41,17 @@ data:
     \ << \")\"; \n    else return print_tuple_utils<i + 1, T>(out << (i ? \", \" :\
     \ \"(\") << get<i>(tup), tup); \n}\ntemplate<class ...U> ostream& operator <<\
     \ (ostream& out, const tuple<U...>& t) {\n    return print_tuple_utils<0, tuple<U...>>(out,\
-    \ t);\n}\n#line 23 \"DP/knuth.cpp\"\n\nconst int MN = 2011;\nint a[MN], dp[MN][MN],\
-    \ C[MN][MN], A[MN][MN];\nint n;\n\nvoid solve() {\n    cin >> n; FOR(i,1,n) {\
-    \ cin >> a[i]; a[i] += a[i-1]; }\n    FOR(i,1,n) FOR(j,i,n) C[i][j] = a[j] - a[i-1];\n\
-    \n    FOR(i,1,n) dp[i][i] = 0, A[i][i] = i;\n\n    FOR(len,1,n-1)\n        FOR(i,1,n-len)\
-    \ {\n            int j = i + len;\n            dp[i][j] = 2000111000;\n      \
-    \      FOR(k,A[i][j-1],A[i+1][j]) {\n                int cur = dp[i][k-1] + dp[k][j]\
-    \ + C[i][j];\n                if (cur < dp[i][j]) {\n                    dp[i][j]\
-    \ = cur;\n                    A[i][j] = k;\n                }\n            }\n\
-    \        }\n    cout << dp[1][n] << endl;\n}\n"
+    \ t);\n}\n\nmt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());\n\
+    long long get_rand(long long r) {\n    return uniform_int_distribution<long long>\
+    \ (0, r-1)(rng);\n}\n#line 23 \"DP/knuth.cpp\"\n\nconst int MN = 2011;\nint a[MN],\
+    \ dp[MN][MN], C[MN][MN], A[MN][MN];\nint n;\n\nvoid solve() {\n    cin >> n; FOR(i,1,n)\
+    \ { cin >> a[i]; a[i] += a[i-1]; }\n    FOR(i,1,n) FOR(j,i,n) C[i][j] = a[j] -\
+    \ a[i-1];\n\n    FOR(i,1,n) dp[i][i] = 0, A[i][i] = i;\n\n    FOR(len,1,n-1)\n\
+    \        FOR(i,1,n-len) {\n            int j = i + len;\n            dp[i][j]\
+    \ = 2000111000;\n            FOR(k,A[i][j-1],A[i+1][j]) {\n                int\
+    \ cur = dp[i][k-1] + dp[k][j] + C[i][j];\n                if (cur < dp[i][j])\
+    \ {\n                    dp[i][j] = cur;\n                    A[i][j] = k;\n \
+    \               }\n            }\n        }\n    cout << dp[1][n] << endl;\n}\n"
   code: "// http://codeforces.com/blog/entry/8219\n// Original Recurrence:\n//   dp[i][j]\
     \ = min(dp[i][k] + dp[k][j]) + C[i][j]   for k = i+1..j-1\n// Necessary & Sufficient\
     \ Conditions:\n//   A[i][j-1] <= A[i][j] <= A[i+1][j]\n//   with A[i][j] = smallest\
@@ -73,7 +75,7 @@ data:
   isVerificationFile: false
   path: DP/knuth.cpp
   requiredBy: []
-  timestamp: '2022-01-09 21:09:50+08:00'
+  timestamp: '2022-01-09 23:35:29+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: DP/knuth.cpp

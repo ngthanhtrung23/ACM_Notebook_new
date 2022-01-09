@@ -341,7 +341,7 @@ data:
     - icon: ':warning:'
       path: Math/NumberTheory/FactorialMod.h
       title: Math/NumberTheory/FactorialMod.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Math/NumberTheory/Pollard.h
       title: Math/NumberTheory/Pollard.h
     - icon: ':warning:'
@@ -482,7 +482,7 @@ data:
     - icon: ':warning:'
       path: debug.h
       title: debug.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template.h
       title: template.h
   verificationCategories:
@@ -641,6 +641,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/tests/factorize.test.cpp
       title: Math/tests/factorize.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Math/tests/factorize_aizu.test.cpp
+      title: Math/tests/factorize_aizu.test.cpp
+    - icon: ':x:'
+      path: Math/tests/is_prime_yukicoder.test.cpp
+      title: Math/tests/is_prime_yukicoder.test.cpp
     - icon: ':heavy_check_mark:'
       path: Math/tests/matrix_det.test.cpp
       title: Math/tests/matrix_det.test.cpp
