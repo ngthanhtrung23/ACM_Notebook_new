@@ -16,7 +16,7 @@ struct Floyd {
         for (int k = 0; k < n; k++) {
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < n; j++) {
-                    if (c[i][j] > c[i][k] + c[k][j]) {
+                    if (c[i][k] != INF && c[k][j] != INF && c[i][j] > c[i][k] + c[k][j]) {
                         c[i][j] = c[i][k] + c[k][j];
                         trace[i][j] = trace[k][j];
                     }
@@ -27,7 +27,7 @@ struct Floyd {
 
     // Return {distance, path}
     // If no path -> returns {-1, {}}
-    std::pair<int, std::vector<int>> get_path(int start, int target) {
+    std::pair<ll, std::vector<int>> get_path(int start, int target) {
         if (trace[start][target] == -1) return {-1, {}};
 
         std::vector<int> path;
