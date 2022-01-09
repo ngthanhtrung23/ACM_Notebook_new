@@ -12,15 +12,15 @@
 // - https://loj.ac/p/127
 
 template <int MAXN, class T = int> struct MaxFlow {
-    MaxFlow(int _source = -1, int _sink = -1) : s(_source), t(_sink) {}
+    MaxFlow() {}
 
     const T INF = numeric_limits<T>::max();
     struct edge {
         int to, rev;
         T f;
     };
-    int s = -1, t = -1;
 
+    int t = -1;
     vector<edge> adj[MAXN];
     vector<int> lst[MAXN], gap[MAXN];
     T excess[MAXN];
@@ -87,7 +87,8 @@ template <int MAXN, class T = int> struct MaxFlow {
             }
         }
     }
-    T getMaxFlow(int heur_n = MAXN) {
+    T getMaxFlow(int s, int _t, int heur_n = MAXN) {
+        t = _t;
         assert(s >= 0 && t >= 0);
         fill(begin(excess), end(excess), 0);
         excess[s] = INF, excess[t] = -INF;
@@ -106,5 +107,3 @@ template <int MAXN, class T = int> struct MaxFlow {
         return excess[t] + INF;
     }
 };
-
-MaxFlow<5011, long long> flow;

@@ -24,7 +24,7 @@ struct MaxFlow {
 
     MaxFlow(int _n) : n(_n), d(_n), ptr(_n), q(_n), g(_n) {
         e.clear();
-        REP(i,n) {
+        for (int i = 0; i < n; i++) {
             g[i].clear();
             ptr[i] = 0;
         }
@@ -43,7 +43,7 @@ struct MaxFlow {
         int flow = 0;
         for (;;) {
             if (!bfs()) break;
-            REP(i,n) ptr[i] = 0;
+            std::fill(ptr.begin(), ptr.end(), 0);
             while (int pushed = dfs(s, INF))
                 flow += pushed;
         }
@@ -54,12 +54,12 @@ private:
     bool bfs() {
         int qh = 0, qt = 0;
         q[qt++] = s;
-        REP(i,n) d[i] = -1;
+        std::fill(d.begin(), d.end(), -1);
         d[s] = 0;
 
         while (qh < qt && d[t] == -1) {
             int v = q[qh++];
-            REP(i,g[v].size()) {
+            for (int i = 0; i < (int) g[v].size(); i++) {
                 int id = g[v][i], to = e[id].b;
                 if (d[to] == -1 && e[id].flow < e[id].cap) {
                     q[qt++] = to;
