@@ -27,15 +27,20 @@ data:
   - icon: ':heavy_check_mark:'
     path: Geometry/tests/polygon_is_convex.test.cpp
     title: Geometry/tests/polygon_is_convex.test.cpp
+  - icon: ':x:'
+    path: Geometry/tests/z_polygon_area.test.cpp
+    title: Geometry/tests/z_polygon_area.test.cpp
   - icon: ':heavy_check_mark:'
     path: Geometry/tests/z_polygon_convexhull.test.cpp
     title: Geometry/tests/z_polygon_convexhull.test.cpp
-  _isVerificationFailed: false
+  - icon: ':heavy_check_mark:'
+    path: Geometry/tests/z_polygon_is_convex.test.cpp
+    title: Geometry/tests/z_polygon_is_convex.test.cpp
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
-    - http://codeforces.com/contest/166/submission/1392387
     - https://open.kattis.com/problems/convexhull
     - https://open.kattis.com/problems/cuttingpolygon
     - https://open.kattis.com/problems/pointinpolygon
@@ -60,35 +65,35 @@ data:
     \ dn.pop_back();\n        dn.push_back(pts[i]);\n    }\n    if (dn.size() >= 3\
     \ && onSegment(dn.back(), dn[1], dn[0])) {\n        dn[0] = dn.back();\n     \
     \   dn.pop_back();\n    }\n    pts = dn;\n#endif\n}\n\n// Area, perimeter, centroid\n\
-    double signed_area(Polygon p) {\n    double area = 0;\n    for(int i = 0; i <\
-    \ (int) p.size(); i++) {\n        area += p[i] % p[(i + 1) % p.size()];\n    }\n\
-    \    return area / 2.0;\n}\ndouble area(const Polygon &p) {\n    return std::abs(signed_area(p));\n\
-    }\nPoint centroid(Polygon p) {\n    Point c(0,0);\n    double scale = 6.0 * signed_area(p);\n\
-    \    for (int i = 0; i < (int) p.size(); i++){\n        int j = (i+1) % p.size();\n\
-    \        c = c + (p[i]+p[j])*(p[i].x*p[j].y - p[j].x*p[i].y);\n    }\n    return\
-    \ c / scale;\n}\ndouble perimeter(Polygon p) {\n    double res = 0;\n    for(int\
-    \ i = 0; i < (int) p.size(); ++i) {\n        int j = (i + 1) % p.size();\n   \
-    \     res += (p[i] - p[j]).len();\n    }\n    return res;\n}\n\n// Is convex:\
-    \ checks if polygon is convex.\n// Return true for degen points (all vertices\
-    \ are collinear)\nbool is_convex(const Polygon &P) {\n    int sz = (int) P.size();\n\
-    \    int min_ccw = 2, max_ccw = -2;\n    for (int i = 0; i < sz; i++) {\n    \
-    \    int c = ccw(P[i], P[(i+1) % sz], P[(i+2) % sz]);\n        min_ccw = min(min_ccw,\
-    \ c);\n        max_ccw = max(max_ccw, c);\n    }\n    return min_ccw * max_ccw\
-    \ >= 0;\n}\n\n// Inside polygon: O(N). Works with any polygon\n// Tested:\n//\
-    \ - https://open.kattis.com/problems/pointinpolygon\n// - https://open.kattis.com/problems/cuttingpolygon\n\
-    enum PolygonLocation { OUT, ON, IN };\nPolygonLocation in_polygon(const Polygon\
-    \ &p, Point q) {\n    if ((int)p.size() == 0) return PolygonLocation::OUT;\n\n\
-    \    // Check if point is on edge.\n    int n = p.size();\n    REP(i,n) {\n  \
-    \      int j = (i + 1) % n;\n        Point u = p[i], v = p[j];\n\n        if (u\
-    \ > v) swap(u, v);\n\n        if (ccw(u, v, q) == 0 && u <= q && q <= v) return\
-    \ PolygonLocation::ON;\n    }\n\n    // Check if point is strictly inside.\n \
-    \   int c = 0;\n    for (int i = 0; i < n; i++) {\n        int j = (i + 1) % n;\n\
-    \        if (((p[i].y <= q.y && q.y < p[j].y)\n                    || (p[j].y\
-    \ <= q.y && q.y < p[i].y))\n                && q.x < p[i].x + (p[j].x - p[i].x)\
-    \ * (q.y - p[i].y) / (p[j].y - p[i].y)) {\n            c = !c;\n        }\n  \
-    \  }\n    return c ? PolygonLocation::IN : PolygonLocation::OUT;\n}\n\n// Check\
-    \ point in convex polygon, O(logN)\n// Source: http://codeforces.com/contest/166/submission/1392387\n\
-    #define Det(a,b,c) ((double)(b.x-a.x)*(double)(c.y-a.y)-(double)(b.y-a.y)*(c.x-a.x))\n\
+    template<typename T>\nT signed_area2(vector<P<T>> p) {\n    T area(0);\n    for(int\
+    \ i = 0; i < (int) p.size(); i++) {\n        area += p[i] % p[(i + 1) % p.size()];\n\
+    \    }\n    return area;\n}\ndouble area(const Polygon &p) {\n    return std::abs(signed_area2(p)\
+    \ / 2.0);\n}\nPoint centroid(Polygon p) {\n    Point c(0,0);\n    double scale\
+    \ = 3.0 * signed_area2(p);\n    for (int i = 0; i < (int) p.size(); i++){\n  \
+    \      int j = (i+1) % p.size();\n        c = c + (p[i]+p[j])*(p[i].x*p[j].y -\
+    \ p[j].x*p[i].y);\n    }\n    return c / scale;\n}\ndouble perimeter(Polygon p)\
+    \ {\n    double res = 0;\n    for(int i = 0; i < (int) p.size(); ++i) {\n    \
+    \    int j = (i + 1) % p.size();\n        res += (p[i] - p[j]).len();\n    }\n\
+    \    return res;\n}\n\n// Is convex: checks if polygon is convex.\n// Return true\
+    \ for degen points (all vertices are collinear)\ntemplate<typename T>\nbool is_convex(const\
+    \ vector<P<T>> &P) {\n    int sz = (int) P.size();\n    int min_ccw = 2, max_ccw\
+    \ = -2;\n    for (int i = 0; i < sz; i++) {\n        int c = ccw(P[i], P[(i+1)\
+    \ % sz], P[(i+2) % sz]);\n        min_ccw = min(min_ccw, c);\n        max_ccw\
+    \ = max(max_ccw, c);\n    }\n    return min_ccw * max_ccw >= 0;\n}\n\n// Inside\
+    \ polygon: O(N). Works with any polygon\n// Tested:\n// - https://open.kattis.com/problems/pointinpolygon\n\
+    // - https://open.kattis.com/problems/cuttingpolygon\nenum PolygonLocation { OUT,\
+    \ ON, IN };\nPolygonLocation in_polygon(const Polygon &p, Point q) {\n    if ((int)p.size()\
+    \ == 0) return PolygonLocation::OUT;\n\n    // Check if point is on edge.\n  \
+    \  int n = p.size();\n    REP(i,n) {\n        int j = (i + 1) % n;\n        Point\
+    \ u = p[i], v = p[j];\n\n        if (u > v) swap(u, v);\n\n        if (ccw(u,\
+    \ v, q) == 0 && u <= q && q <= v) return PolygonLocation::ON;\n    }\n\n    //\
+    \ Check if point is strictly inside.\n    int c = 0;\n    for (int i = 0; i <\
+    \ n; i++) {\n        int j = (i + 1) % n;\n        if (((p[i].y <= q.y && q.y\
+    \ < p[j].y)\n                    || (p[j].y <= q.y && q.y < p[i].y))\n       \
+    \         && q.x < p[i].x + (p[j].x - p[i].x) * (q.y - p[i].y) / (double) (p[j].y\
+    \ - p[i].y)) {\n            c = !c;\n        }\n    }\n    return c ? PolygonLocation::IN\
+    \ : PolygonLocation::OUT;\n}\n\n// Check point in convex polygon, O(logN)\n#define\
+    \ Det(a,b,c) ((double)(b.x-a.x)*(double)(c.y-a.y)-(double)(b.y-a.y)*(c.x-a.x))\n\
     PolygonLocation in_convex(vector<Point>& l, Point p){\n    int a = 1, b = l.size()-1,\
     \ c;\n    if (Det(l[0], l[a], l[b]) > 0) swap(a,b);\n\n    if (onSegment(l[0],\
     \ l[a], p)) return ON;\n    if (onSegment(l[0], l[b], p)) return ON;\n\n    if\
@@ -159,36 +164,36 @@ data:
     \        if (onSegment(dn[dn.size()-2], pts[i], dn.back())) dn.pop_back();\n \
     \       dn.push_back(pts[i]);\n    }\n    if (dn.size() >= 3 && onSegment(dn.back(),\
     \ dn[1], dn[0])) {\n        dn[0] = dn.back();\n        dn.pop_back();\n    }\n\
-    \    pts = dn;\n#endif\n}\n\n// Area, perimeter, centroid\ndouble signed_area(Polygon\
-    \ p) {\n    double area = 0;\n    for(int i = 0; i < (int) p.size(); i++) {\n\
-    \        area += p[i] % p[(i + 1) % p.size()];\n    }\n    return area / 2.0;\n\
-    }\ndouble area(const Polygon &p) {\n    return std::abs(signed_area(p));\n}\n\
-    Point centroid(Polygon p) {\n    Point c(0,0);\n    double scale = 6.0 * signed_area(p);\n\
-    \    for (int i = 0; i < (int) p.size(); i++){\n        int j = (i+1) % p.size();\n\
-    \        c = c + (p[i]+p[j])*(p[i].x*p[j].y - p[j].x*p[i].y);\n    }\n    return\
-    \ c / scale;\n}\ndouble perimeter(Polygon p) {\n    double res = 0;\n    for(int\
-    \ i = 0; i < (int) p.size(); ++i) {\n        int j = (i + 1) % p.size();\n   \
-    \     res += (p[i] - p[j]).len();\n    }\n    return res;\n}\n\n// Is convex:\
-    \ checks if polygon is convex.\n// Return true for degen points (all vertices\
-    \ are collinear)\nbool is_convex(const Polygon &P) {\n    int sz = (int) P.size();\n\
-    \    int min_ccw = 2, max_ccw = -2;\n    for (int i = 0; i < sz; i++) {\n    \
-    \    int c = ccw(P[i], P[(i+1) % sz], P[(i+2) % sz]);\n        min_ccw = min(min_ccw,\
-    \ c);\n        max_ccw = max(max_ccw, c);\n    }\n    return min_ccw * max_ccw\
-    \ >= 0;\n}\n\n// Inside polygon: O(N). Works with any polygon\n// Tested:\n//\
-    \ - https://open.kattis.com/problems/pointinpolygon\n// - https://open.kattis.com/problems/cuttingpolygon\n\
-    enum PolygonLocation { OUT, ON, IN };\nPolygonLocation in_polygon(const Polygon\
-    \ &p, Point q) {\n    if ((int)p.size() == 0) return PolygonLocation::OUT;\n\n\
-    \    // Check if point is on edge.\n    int n = p.size();\n    REP(i,n) {\n  \
-    \      int j = (i + 1) % n;\n        Point u = p[i], v = p[j];\n\n        if (u\
-    \ > v) swap(u, v);\n\n        if (ccw(u, v, q) == 0 && u <= q && q <= v) return\
-    \ PolygonLocation::ON;\n    }\n\n    // Check if point is strictly inside.\n \
-    \   int c = 0;\n    for (int i = 0; i < n; i++) {\n        int j = (i + 1) % n;\n\
-    \        if (((p[i].y <= q.y && q.y < p[j].y)\n                    || (p[j].y\
-    \ <= q.y && q.y < p[i].y))\n                && q.x < p[i].x + (p[j].x - p[i].x)\
-    \ * (q.y - p[i].y) / (p[j].y - p[i].y)) {\n            c = !c;\n        }\n  \
-    \  }\n    return c ? PolygonLocation::IN : PolygonLocation::OUT;\n}\n\n// Check\
-    \ point in convex polygon, O(logN)\n// Source: http://codeforces.com/contest/166/submission/1392387\n\
-    #define Det(a,b,c) ((double)(b.x-a.x)*(double)(c.y-a.y)-(double)(b.y-a.y)*(c.x-a.x))\n\
+    \    pts = dn;\n#endif\n}\n\n// Area, perimeter, centroid\ntemplate<typename T>\n\
+    T signed_area2(vector<P<T>> p) {\n    T area(0);\n    for(int i = 0; i < (int)\
+    \ p.size(); i++) {\n        area += p[i] % p[(i + 1) % p.size()];\n    }\n   \
+    \ return area;\n}\ndouble area(const Polygon &p) {\n    return std::abs(signed_area2(p)\
+    \ / 2.0);\n}\nPoint centroid(Polygon p) {\n    Point c(0,0);\n    double scale\
+    \ = 3.0 * signed_area2(p);\n    for (int i = 0; i < (int) p.size(); i++){\n  \
+    \      int j = (i+1) % p.size();\n        c = c + (p[i]+p[j])*(p[i].x*p[j].y -\
+    \ p[j].x*p[i].y);\n    }\n    return c / scale;\n}\ndouble perimeter(Polygon p)\
+    \ {\n    double res = 0;\n    for(int i = 0; i < (int) p.size(); ++i) {\n    \
+    \    int j = (i + 1) % p.size();\n        res += (p[i] - p[j]).len();\n    }\n\
+    \    return res;\n}\n\n// Is convex: checks if polygon is convex.\n// Return true\
+    \ for degen points (all vertices are collinear)\ntemplate<typename T>\nbool is_convex(const\
+    \ vector<P<T>> &P) {\n    int sz = (int) P.size();\n    int min_ccw = 2, max_ccw\
+    \ = -2;\n    for (int i = 0; i < sz; i++) {\n        int c = ccw(P[i], P[(i+1)\
+    \ % sz], P[(i+2) % sz]);\n        min_ccw = min(min_ccw, c);\n        max_ccw\
+    \ = max(max_ccw, c);\n    }\n    return min_ccw * max_ccw >= 0;\n}\n\n// Inside\
+    \ polygon: O(N). Works with any polygon\n// Tested:\n// - https://open.kattis.com/problems/pointinpolygon\n\
+    // - https://open.kattis.com/problems/cuttingpolygon\nenum PolygonLocation { OUT,\
+    \ ON, IN };\nPolygonLocation in_polygon(const Polygon &p, Point q) {\n    if ((int)p.size()\
+    \ == 0) return PolygonLocation::OUT;\n\n    // Check if point is on edge.\n  \
+    \  int n = p.size();\n    REP(i,n) {\n        int j = (i + 1) % n;\n        Point\
+    \ u = p[i], v = p[j];\n\n        if (u > v) swap(u, v);\n\n        if (ccw(u,\
+    \ v, q) == 0 && u <= q && q <= v) return PolygonLocation::ON;\n    }\n\n    //\
+    \ Check if point is strictly inside.\n    int c = 0;\n    for (int i = 0; i <\
+    \ n; i++) {\n        int j = (i + 1) % n;\n        if (((p[i].y <= q.y && q.y\
+    \ < p[j].y)\n                    || (p[j].y <= q.y && q.y < p[i].y))\n       \
+    \         && q.x < p[i].x + (p[j].x - p[i].x) * (q.y - p[i].y) / (double) (p[j].y\
+    \ - p[i].y)) {\n            c = !c;\n        }\n    }\n    return c ? PolygonLocation::IN\
+    \ : PolygonLocation::OUT;\n}\n\n// Check point in convex polygon, O(logN)\n#define\
+    \ Det(a,b,c) ((double)(b.x-a.x)*(double)(c.y-a.y)-(double)(b.y-a.y)*(c.x-a.x))\n\
     PolygonLocation in_convex(vector<Point>& l, Point p){\n    int a = 1, b = l.size()-1,\
     \ c;\n    if (Det(l[0], l[a], l[b]) > 0) swap(a,b);\n\n    if (onSegment(l[0],\
     \ l[a], p)) return ON;\n    if (onSegment(l[0], l[b], p)) return ON;\n\n    if\
@@ -244,16 +249,18 @@ data:
   path: Geometry/polygon.h
   requiredBy:
   - Geometry/polygon.cpp
-  timestamp: '2022-01-11 03:43:32+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2022-01-11 04:00:35+08:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - Geometry/tests/polygon_convex_hull.test.cpp
+  - Geometry/tests/z_polygon_area.test.cpp
   - Geometry/tests/polygon_in_convex.test.cpp
   - Geometry/tests/z_polygon_convexhull.test.cpp
   - Geometry/tests/polygon_in_polygon.test.cpp
   - Geometry/tests/polygon_is_convex.test.cpp
   - Geometry/tests/polygon_area.test.cpp
   - Geometry/tests/polygon_convex_cut.test.cpp
+  - Geometry/tests/z_polygon_is_convex.test.cpp
   - Geometry/tests/polygon_convex_diameter.test.cpp
 documentation_of: Geometry/polygon.h
 layout: document

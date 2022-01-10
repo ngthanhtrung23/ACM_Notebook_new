@@ -12,15 +12,15 @@ data:
     title: template.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A
     links:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A
-  bundledCode: "#line 1 \"Geometry/tests/polygon_area.test.cpp\"\n#define PROBLEM\
+  bundledCode: "#line 1 \"Geometry/tests/z_polygon_area.test.cpp\"\n#define PROBLEM\
     \ \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A\"\n\n#line\
     \ 1 \"template.h\"\n#include <bits/stdc++.h>\nusing namespace std;\n\n#define\
     \ FOR(i,a,b) for(int i=(a),_b=(b); i<=_b; i++)\n#define FORD(i,a,b) for(int i=(a),_b=(b);\
@@ -217,28 +217,29 @@ data:
     \ {maxd, std::minmax(maxi, maxj)}; /* farthest pair is (maxi, maxj). */\n}\n\n\
     // Pick theorem\n// Given non-intersecting polygon.\n// S = area\n// I = number\
     \ of integer points strictly Inside\n// B = number of points on sides of polygon\n\
-    // S = I + B/2 - 1\n#line 6 \"Geometry/tests/polygon_area.test.cpp\"\n\nvoid solve()\
-    \ {\n    int n; cin >> n;\n    Polygon P(n);\n    for (auto& p : P) cin >> p;\n\
-    \    cout << (fixed) << setprecision(1) << area(P) << endl;\n}\n"
+    // S = I + B/2 - 1\n#line 6 \"Geometry/tests/z_polygon_area.test.cpp\"\n\nvoid\
+    \ solve() {\n    int n; cin >> n;\n    vector<P<long long>> P(n);\n    for (auto&\
+    \ p : P) cin >> p;\n    long long res = signed_area2(P);\n    cout << (fixed)\
+    \ << setprecision(1) << std::abs(res / 2) << endl;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A\"\
     \n\n#include \"../../template.h\"\n#include \"../basic.h\"\n#include \"../polygon.h\"\
-    \n\nvoid solve() {\n    int n; cin >> n;\n    Polygon P(n);\n    for (auto& p\
-    \ : P) cin >> p;\n    cout << (fixed) << setprecision(1) << area(P) << endl;\n\
-    }\n"
+    \n\nvoid solve() {\n    int n; cin >> n;\n    vector<P<long long>> P(n);\n   \
+    \ for (auto& p : P) cin >> p;\n    long long res = signed_area2(P);\n    cout\
+    \ << (fixed) << setprecision(1) << std::abs(res / 2) << endl;\n}\n"
   dependsOn:
   - template.h
   - Geometry/basic.h
   - Geometry/polygon.h
   isVerificationFile: true
-  path: Geometry/tests/polygon_area.test.cpp
+  path: Geometry/tests/z_polygon_area.test.cpp
   requiredBy: []
   timestamp: '2022-01-11 04:00:35+08:00'
-  verificationStatus: TEST_ACCEPTED
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: Geometry/tests/polygon_area.test.cpp
+documentation_of: Geometry/tests/z_polygon_area.test.cpp
 layout: document
 redirect_from:
-- /verify/Geometry/tests/polygon_area.test.cpp
-- /verify/Geometry/tests/polygon_area.test.cpp.html
-title: Geometry/tests/polygon_area.test.cpp
+- /verify/Geometry/tests/z_polygon_area.test.cpp
+- /verify/Geometry/tests/z_polygon_area.test.cpp.html
+title: Geometry/tests/z_polygon_area.test.cpp
 ---

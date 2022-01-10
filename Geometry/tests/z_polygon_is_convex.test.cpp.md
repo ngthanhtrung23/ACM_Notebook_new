@@ -17,11 +17,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A
+    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_B
     links:
-    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A
-  bundledCode: "#line 1 \"Geometry/tests/polygon_area.test.cpp\"\n#define PROBLEM\
-    \ \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A\"\n\n#line\
+    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_B
+  bundledCode: "#line 1 \"Geometry/tests/z_polygon_is_convex.test.cpp\"\n#define PROBLEM\
+    \ \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_B\"\n\n#line\
     \ 1 \"template.h\"\n#include <bits/stdc++.h>\nusing namespace std;\n\n#define\
     \ FOR(i,a,b) for(int i=(a),_b=(b); i<=_b; i++)\n#define FORD(i,a,b) for(int i=(a),_b=(b);\
     \ i>=_b; i--)\n#define REP(i,a) for(int i=0,_a=(a); i<_a; i++)\n#define EACH(it,a)\
@@ -217,28 +217,27 @@ data:
     \ {maxd, std::minmax(maxi, maxj)}; /* farthest pair is (maxi, maxj). */\n}\n\n\
     // Pick theorem\n// Given non-intersecting polygon.\n// S = area\n// I = number\
     \ of integer points strictly Inside\n// B = number of points on sides of polygon\n\
-    // S = I + B/2 - 1\n#line 6 \"Geometry/tests/polygon_area.test.cpp\"\n\nvoid solve()\
-    \ {\n    int n; cin >> n;\n    Polygon P(n);\n    for (auto& p : P) cin >> p;\n\
-    \    cout << (fixed) << setprecision(1) << area(P) << endl;\n}\n"
-  code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A\"\
+    // S = I + B/2 - 1\n#line 6 \"Geometry/tests/z_polygon_is_convex.test.cpp\"\n\n\
+    void solve() {\n    int n; cin >> n;\n    vector<P<long long>> g(n);\n    for\
+    \ (auto& p : g) cin >> p;\n    cout << (is_convex(g) ? 1 : 0) << endl;\n}\n"
+  code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_B\"\
     \n\n#include \"../../template.h\"\n#include \"../basic.h\"\n#include \"../polygon.h\"\
-    \n\nvoid solve() {\n    int n; cin >> n;\n    Polygon P(n);\n    for (auto& p\
-    \ : P) cin >> p;\n    cout << (fixed) << setprecision(1) << area(P) << endl;\n\
-    }\n"
+    \n\nvoid solve() {\n    int n; cin >> n;\n    vector<P<long long>> g(n);\n   \
+    \ for (auto& p : g) cin >> p;\n    cout << (is_convex(g) ? 1 : 0) << endl;\n}\n"
   dependsOn:
   - template.h
   - Geometry/basic.h
   - Geometry/polygon.h
   isVerificationFile: true
-  path: Geometry/tests/polygon_area.test.cpp
+  path: Geometry/tests/z_polygon_is_convex.test.cpp
   requiredBy: []
   timestamp: '2022-01-11 04:00:35+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Geometry/tests/polygon_area.test.cpp
+documentation_of: Geometry/tests/z_polygon_is_convex.test.cpp
 layout: document
 redirect_from:
-- /verify/Geometry/tests/polygon_area.test.cpp
-- /verify/Geometry/tests/polygon_area.test.cpp.html
-title: Geometry/tests/polygon_area.test.cpp
+- /verify/Geometry/tests/z_polygon_is_convex.test.cpp
+- /verify/Geometry/tests/z_polygon_is_convex.test.cpp.html
+title: Geometry/tests/z_polygon_is_convex.test.cpp
 ---
