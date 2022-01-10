@@ -132,8 +132,8 @@ PolygonLocation in_convex(vector<Point>& l, Point p){
     int a = 1, b = l.size()-1, c;
     if (Det(l[0], l[a], l[b]) > 0) swap(a,b);
 
-    if (on_segment(l[0], l[a], p)) return ON;
-    if (on_segment(l[0], l[b], p)) return ON;
+    if (onSegment(l[0], l[a], p)) return ON;
+    if (onSegment(l[0], l[b], p)) return ON;
 
     if (Det(l[0], l[a], p) > 0 || Det(l[0], l[b], p) < 0) return OUT;
     while(abs(a-b) > 1) {
