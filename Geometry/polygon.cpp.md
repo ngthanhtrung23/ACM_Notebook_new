@@ -71,7 +71,7 @@ data:
   isVerificationFile: false
   path: Geometry/polygon.cpp
   requiredBy: []
-  timestamp: '2022-01-10 23:32:56+08:00'
+  timestamp: '2022-01-10 23:38:23+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Geometry/polygon.cpp

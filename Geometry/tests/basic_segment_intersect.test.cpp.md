@@ -37,7 +37,7 @@ data:
   isVerificationFile: true
   path: Geometry/tests/basic_segment_intersect.test.cpp
   requiredBy: []
-  timestamp: '2022-01-10 23:30:30+08:00'
+  timestamp: '2022-01-10 23:38:23+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Geometry/tests/basic_segment_intersect.test.cpp

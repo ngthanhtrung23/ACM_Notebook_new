@@ -43,25 +43,25 @@ data:
     , line 355, in update\n    raise BundleErrorAt(path, i + 1, \"found codes out\
     \ of include guard\")\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt:\
     \ Geometry/basic.h: line 4: found codes out of include guard\n"
-  code: "#ifndef EPS\n#define EPS 1e-6\n#endif\n\n#ifndef GEOMETRY_BASIC\n#define\
-    \ GEOMETRY_BASIC\nconst double PI = acos(-1.0);\n\ndouble DEG_to_RAD(double d)\
-    \ { return d * PI / 180.0; }\ndouble RAD_to_DEG(double r) { return r * 180.0 /\
-    \ PI; }\n\ninline int cmp(double a, double b) {\n    return (a < b - EPS) ? -1\
-    \ : ((a > b + EPS) ? 1 : 0);\n}\n\nstruct Point {\n    double x, y;\n    Point()\
-    \ { x = y = 0.0; }\n    Point(double _x, double _y) : x(_x), y(_y) {}\n\n    Point\
-    \ operator + (const Point& a) const { return Point(x+a.x, y+a.y); }\n    Point\
-    \ operator - (const Point& a) const { return Point(x-a.x, y-a.y); }\n    Point\
-    \ operator * (double k) const { return Point(x*k, y*k); }\n    Point operator\
-    \ / (double k) const { return Point(x/k, y/k); }\n\n    double operator * (const\
-    \ Point& a) const { return x*a.x + y*a.y; } // dot product\n    double operator\
-    \ % (const Point& a) const { return x*a.y - y*a.x; } // cross product\n\n    int\
-    \ cmp(Point q) const { if (int t = ::cmp(x,q.x)) return t; return ::cmp(y,q.y);\
-    \ }\n\n    #define Comp(x) bool operator x (Point q) const { return cmp(q) x 0;\
-    \ }\n    Comp(>) Comp(<) Comp(==) Comp(>=) Comp(<=) Comp(!=)\n    #undef Comp\n\
-    \n    Point conj() { return Point(x, -y); }\n    double norm() { return x*x +\
-    \ y*y; }\n\n    // Note: There are 2 ways for implementing len():\n    // 1. sqrt(norm())\
-    \ --> fast, but inaccurate (produce some values that are of order X^2)\n    //\
-    \ 2. hypot(x, y) --> slow, but much more accurate\n    double len() { return sqrt(norm());\
+  code: "#ifndef EPS\n#define EPS 1e-6\n#endif\n#ifndef GEOMETRY_BASIC\n#define GEOMETRY_BASIC\n\
+    const double PI = acos(-1.0);\n\ndouble DEG_to_RAD(double d) { return d * PI /\
+    \ 180.0; }\ndouble RAD_to_DEG(double r) { return r * 180.0 / PI; }\n\ninline int\
+    \ cmp(double a, double b) {\n    return (a < b - EPS) ? -1 : ((a > b + EPS) ?\
+    \ 1 : 0);\n}\n\nstruct Point {\n    double x, y;\n    Point() { x = y = 0.0; }\n\
+    \    Point(double _x, double _y) : x(_x), y(_y) {}\n\n    Point operator + (const\
+    \ Point& a) const { return Point(x+a.x, y+a.y); }\n    Point operator - (const\
+    \ Point& a) const { return Point(x-a.x, y-a.y); }\n    Point operator * (double\
+    \ k) const { return Point(x*k, y*k); }\n    Point operator / (double k) const\
+    \ { return Point(x/k, y/k); }\n\n    double operator * (const Point& a) const\
+    \ { return x*a.x + y*a.y; } // dot product\n    double operator % (const Point&\
+    \ a) const { return x*a.y - y*a.x; } // cross product\n\n    int cmp(Point q)\
+    \ const { if (int t = ::cmp(x,q.x)) return t; return ::cmp(y,q.y); }\n\n    #define\
+    \ Comp(x) bool operator x (Point q) const { return cmp(q) x 0; }\n    Comp(>)\
+    \ Comp(<) Comp(==) Comp(>=) Comp(<=) Comp(!=)\n    #undef Comp\n\n    Point conj()\
+    \ { return Point(x, -y); }\n    double norm() { return x*x + y*y; }\n\n    //\
+    \ Note: There are 2 ways for implementing len():\n    // 1. sqrt(norm()) --> fast,\
+    \ but inaccurate (produce some values that are of order X^2)\n    // 2. hypot(x,\
+    \ y) --> slow, but much more accurate\n    double len() { return sqrt(norm());\
     \ }\n\n    Point rotate(double alpha) {\n        double cosa = cos(alpha), sina\
     \ = sin(alpha);\n        return Point(x * cosa - y * sina, x * sina + y * cosa);\n\
     \    }\n};\n\nint ccw(Point a, Point b, Point c) {\n    return cmp((b-a)%(c-a),0);\n\
@@ -120,7 +120,7 @@ data:
   - Geometry/circle.cpp
   - Geometry/basic.cpp
   - Geometry/polygon.cpp
-  timestamp: '2022-01-10 23:30:30+08:00'
+  timestamp: '2022-01-10 23:38:23+08:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - Geometry/tests/polygon_in_convex.test.cpp
