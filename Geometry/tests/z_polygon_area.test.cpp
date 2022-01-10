@@ -9,5 +9,5 @@ void solve() {
     vector<P<long long>> P(n);
     for (auto& p : P) cin >> p;
     long long res = signed_area2(P);
-    cout << (fixed) << setprecision(1) << std::abs(res / 2) << endl;
+    cout << (fixed) << setprecision(1) << std::abs(res / 2.0) << endl;
 }
