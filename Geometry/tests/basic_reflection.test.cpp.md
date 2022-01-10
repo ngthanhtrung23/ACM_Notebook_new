@@ -1,19 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Geometry/basic.h
     title: Geometry/basic.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
+    ERROR: 1e-9
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_B
     links:
     - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_B
@@ -111,25 +112,27 @@ data:
     \ b, c)\n            || onSegment(a, b, d)\n            || onSegment(c, d, a)\n\
     \            || onSegment(c, d, b)) {\n        return true;\n    }\n\n    return\
     \ ccw(a, b, c) * ccw(a, b, d) < 0\n        && ccw(c, d, a) * ccw(c, d, b) < 0;\n\
-    }\n#line 5 \"Geometry/tests/basic_reflection.test.cpp\"\n\nvoid solve() {\n  \
-    \  cout << (fixed) << setprecision(10);\n    Point a, b; cin >> a >> b;\n    int\
-    \ q; cin >> q;\n    while (q--) {\n        Point p; cin >> p;\n        Point projection;\n\
-    \        distToLine(p, a, b, projection);\n        Point reflection = projection\
-    \ * 2 - p;\n        cout << reflection << '\\n';\n    }\n}\n"
+    }\n#line 5 \"Geometry/tests/basic_reflection.test.cpp\"\n\n#define ERROR 1e-9\n\
+    \nvoid solve() {\n    cout << (fixed) << setprecision(10);\n    Point a, b; cin\
+    \ >> a >> b;\n    int q; cin >> q;\n    while (q--) {\n        Point p; cin >>\
+    \ p;\n        Point projection;\n        distToLine(p, a, b, projection);\n  \
+    \      Point reflection = projection * 2 - p;\n        cout << reflection << '\\\
+    n';\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_B\"\
-    \n\n#include \"../../template.h\"\n#include \"../basic.h\"\n\nvoid solve() {\n\
-    \    cout << (fixed) << setprecision(10);\n    Point a, b; cin >> a >> b;\n  \
-    \  int q; cin >> q;\n    while (q--) {\n        Point p; cin >> p;\n        Point\
-    \ projection;\n        distToLine(p, a, b, projection);\n        Point reflection\
-    \ = projection * 2 - p;\n        cout << reflection << '\\n';\n    }\n}\n"
+    \n\n#include \"../../template.h\"\n#include \"../basic.h\"\n\n#define ERROR 1e-9\n\
+    \nvoid solve() {\n    cout << (fixed) << setprecision(10);\n    Point a, b; cin\
+    \ >> a >> b;\n    int q; cin >> q;\n    while (q--) {\n        Point p; cin >>\
+    \ p;\n        Point projection;\n        distToLine(p, a, b, projection);\n  \
+    \      Point reflection = projection * 2 - p;\n        cout << reflection << '\\\
+    n';\n    }\n}\n"
   dependsOn:
   - template.h
   - Geometry/basic.h
   isVerificationFile: true
   path: Geometry/tests/basic_reflection.test.cpp
   requiredBy: []
-  timestamp: '2022-01-11 00:03:27+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2022-01-11 00:11:14+08:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Geometry/tests/basic_reflection.test.cpp
 layout: document
