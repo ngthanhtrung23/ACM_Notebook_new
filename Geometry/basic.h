@@ -73,6 +73,7 @@ double directed_angle(Point a, Point o, Point b) { // angle AOB, in range [0, 2*
 }
 
 // Distance from p to Line ab (closest Point --> c)
+// i.e. c is projection of p on AB
 double distToLine(Point p, Point a, Point b, Point &c) {
     Point ap = p - a, ab = b - a;
     double u = (ap * ab) / ab.norm();
