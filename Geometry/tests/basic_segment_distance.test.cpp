@@ -5,7 +5,7 @@
 
 void solve() {
     int q; cin >> q;
-    cout << (fixed) << setprecision(9);
+    cout << (fixed) << setprecision(10);
     while (q--) {
         Point a, b; cin >> a >> b;
         Point c, d; cin >> c >> d;
