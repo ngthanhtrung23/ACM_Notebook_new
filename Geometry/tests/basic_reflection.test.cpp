@@ -3,6 +3,8 @@
 #include "../../template.h"
 #include "../basic.h"
 
+#define ERROR 1e-9
+
 void solve() {
     cout << (fixed) << setprecision(10);
     Point a, b; cin >> a >> b;
