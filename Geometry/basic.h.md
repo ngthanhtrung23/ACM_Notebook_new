@@ -18,7 +18,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Geometry/tests/basic_ccw.test.cpp
     title: Geometry/tests/basic_ccw.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Geometry/tests/basic_segment_distance.test.cpp
     title: Geometry/tests/basic_segment_distance.test.cpp
   - icon: ':heavy_check_mark:'
@@ -30,9 +30,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Geometry/tests/polygon_in_convex.test.cpp
     title: Geometry/tests/polygon_in_convex.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://cses.fi/problemset/task/2190/
@@ -183,7 +183,7 @@ data:
   - Geometry/basic.cpp
   - Geometry/polygon.cpp
   timestamp: '2022-01-10 23:46:01+08:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Geometry/tests/polygon_in_convex.test.cpp
   - Geometry/tests/basic_ccw.test.cpp

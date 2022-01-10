@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Geometry/basic.h
     title: Geometry/basic.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_D
@@ -114,8 +114,8 @@ data:
     }\n#line 5 \"Geometry/tests/basic_segment_distance.test.cpp\"\n\nvoid solve()\
     \ {\n    int q; cin >> q;\n    cout << (fixed) << setprecision(10);\n    while\
     \ (q--) {\n        Point a, b; cin >> a >> b;\n        Point c, d; cin >> c >>\
-    \ d;\n        Point t;\n\n        if (segmentIntersect(a, b, c, d)) cout << \"\
-    0\\n\";\n        else {\n            cout << min({\n                    distToLineSegment(a,\
+    \ d;\n        Point t;\n\n        if (segmentIntersect(a, b, c, d)) cout << 0.0\
+    \ << endl;\n        else {\n            cout << min({\n                    distToLineSegment(a,\
     \ c, d, t),\n                    distToLineSegment(b, c, d, t),\n            \
     \        distToLineSegment(c, a, b, t),\n                    distToLineSegment(d,\
     \ a, b, t)\n            }) << '\\n';\n        }\n    }\n}\n"
@@ -123,8 +123,8 @@ data:
     \n\n#include \"../../template.h\"\n#include \"../basic.h\"\n\nvoid solve() {\n\
     \    int q; cin >> q;\n    cout << (fixed) << setprecision(10);\n    while (q--)\
     \ {\n        Point a, b; cin >> a >> b;\n        Point c, d; cin >> c >> d;\n\
-    \        Point t;\n\n        if (segmentIntersect(a, b, c, d)) cout << \"0\\n\"\
-    ;\n        else {\n            cout << min({\n                    distToLineSegment(a,\
+    \        Point t;\n\n        if (segmentIntersect(a, b, c, d)) cout << 0.0 <<\
+    \ endl;\n        else {\n            cout << min({\n                    distToLineSegment(a,\
     \ c, d, t),\n                    distToLineSegment(b, c, d, t),\n            \
     \        distToLineSegment(c, a, b, t),\n                    distToLineSegment(d,\
     \ a, b, t)\n            }) << '\\n';\n        }\n    }\n}\n"
@@ -134,8 +134,8 @@ data:
   isVerificationFile: true
   path: Geometry/tests/basic_segment_distance.test.cpp
   requiredBy: []
-  timestamp: '2022-01-10 23:48:17+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2022-01-10 23:52:10+08:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Geometry/tests/basic_segment_distance.test.cpp
 layout: document
