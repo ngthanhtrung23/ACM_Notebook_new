@@ -48,19 +48,20 @@ void ConvexHull(vector<P<T>> &pts) {
 }
 
 // Area, perimeter, centroid
-double signed_area(Polygon p) {
-    double area = 0;
+template<typename T>
+T signed_area2(vector<P<T>> p) {
+    T area(0);
     for(int i = 0; i < (int) p.size(); i++) {
         area += p[i] % p[(i + 1) % p.size()];
     }
-    return area / 2.0;
+    return area;
 }
 double area(const Polygon &p) {
-    return std::abs(signed_area(p));
+    return std::abs(signed_area2(p) / 2.0);
 }
 Point centroid(Polygon p) {
     Point c(0,0);
-    double scale = 6.0 * signed_area(p);
+    double scale = 3.0 * signed_area2(p);
     for (int i = 0; i < (int) p.size(); i++){
         int j = (i+1) % p.size();
         c = c + (p[i]+p[j])*(p[i].x*p[j].y - p[j].x*p[i].y);
@@ -78,7 +79,8 @@ double perimeter(Polygon p) {
 
 // Is convex: checks if polygon is convex.
 // Return true for degen points (all vertices are collinear)
-bool is_convex(const Polygon &P) {
+template<typename T>
+bool is_convex(const vector<P<T>> &P) {
     int sz = (int) P.size();
     int min_ccw = 2, max_ccw = -2;
     for (int i = 0; i < sz; i++) {
@@ -114,7 +116,7 @@ PolygonLocation in_polygon(const Polygon &p, Point q) {
         int j = (i + 1) % n;
         if (((p[i].y <= q.y && q.y < p[j].y)
                     || (p[j].y <= q.y && q.y < p[i].y))
-                && q.x < p[i].x + (p[j].x - p[i].x) * (q.y - p[i].y) / (p[j].y - p[i].y)) {
+                && q.x < p[i].x + (p[j].x - p[i].x) * (q.y - p[i].y) / (double) (p[j].y - p[i].y)) {
             c = !c;
         }
     }
@@ -122,7 +124,6 @@ PolygonLocation in_polygon(const Polygon &p, Point q) {
 }
 
 // Check point in convex polygon, O(logN)
-// Source: http://codeforces.com/contest/166/submission/1392387
 #define Det(a,b,c) ((double)(b.x-a.x)*(double)(c.y-a.y)-(double)(b.y-a.y)*(c.x-a.x))
 PolygonLocation in_convex(vector<Point>& l, Point p){
     int a = 1, b = l.size()-1, c;
