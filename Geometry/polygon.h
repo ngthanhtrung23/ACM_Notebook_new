@@ -82,15 +82,18 @@ double perimeter(Polygon p) {
     }
     return res;
 }
-// Is convex: checks if polygon is convex. Assume there are no 3 collinear points
+
+// Is convex: checks if polygon is convex.
+// Return true for degen points (all vertices are collinear)
 bool is_convex(const Polygon &P) {
     int sz = (int) P.size();
-    if (sz <= 2) return false;
-    int isLeft = ccw(P[0], P[1], P[2]);
-    for (int i = 1; i < sz; i++)
-        if (ccw(P[i], P[(i+1) % sz], P[(i+2) % sz]) * isLeft < 0)
-            return false;
-    return true;
+    int min_ccw = 2, max_ccw = -2;
+    for (int i = 0; i < sz; i++) {
+        int c = ccw(P[i], P[(i+1) % sz], P[(i+2) % sz]);
+        min_ccw = min(min_ccw, c);
+        max_ccw = max(max_ccw, c);
+    }
+    return min_ccw * max_ccw >= 0;
 }
 
 // Inside polygon: O(N). Works with any polygon
