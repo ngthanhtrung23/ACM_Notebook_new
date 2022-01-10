@@ -13,6 +13,7 @@ inline int cmp(double a, double b) {
     return (a < b - EPS) ? -1 : ((a > b + EPS) ? 1 : 0);
 }
 
+// for int types
 template<typename T, typename std::enable_if<std::is_floating_point<T>::value>::type * = nullptr>
 inline int cmp(T a, T b) {
     return (a == b) ? 0 : (a < b) ? -1 : 1;
@@ -26,8 +27,8 @@ struct P {
 
     P operator + (const P& a) const { return P(x+a.x, y+a.y); }
     P operator - (const P& a) const { return P(x-a.x, y-a.y); }
-    P operator * (double k) const { return P(x*k, y*k); }
-    P operator / (double k) const { return P(x/k, y/k); }
+    P operator * (T k) const { return P(x*k, y*k); }
+    P<double> operator / (double k) const { return P(x/k, y/k); }
 
     T operator * (const P& a) const { return x*a.x + y*a.y; } // dot product
     T operator % (const P& a) const { return x*a.y - y*a.x; } // cross product
@@ -53,8 +54,9 @@ struct P {
 using Point = P<double>;
 
 // Compare points by (y, x)
-auto cmpy = [] (const Point& a, const Point& b) {
-    if (a.y != b.y) return a.y < b.y;
+template<typename T = double>
+bool cmpy(const P<T>& a, const P<T>& b) {
+    if (cmp(a.y, b.y)) return a.y < b.y;
     return a.x < b.x;
 };
 
@@ -166,17 +168,12 @@ void closestPoint(Line l, Point p, Point &ans) {
     areIntersect(l, perp, ans);
 }
 
-void reflectionPoint(Line l, Point p, Point &ans) {
-    Point b;
-    closestPoint(l, p, b);
-    ans = p + (b - p) * 2;
-}
-
 // Segment intersect
 // Tested:
 // - https://cses.fi/problemset/task/2190/
 // returns true if p is on segment [a, b]
-bool onSegment(Point a, Point b, Point p) {
+template<typename T>
+bool onSegment(const P<T>& a, const P<T>& b, const P<T>& p) {
     return ccw(a, b, p) == 0
         && min(a.x, b.x) <= p.x && p.x <= max(a.x, b.x)
         && min(a.y, b.y) <= p.y && p.y <= max(a.y, b.y);
@@ -184,7 +181,8 @@ bool onSegment(Point a, Point b, Point p) {
 
 // Returns true if segment [a, b] and [c, d] intersects
 // End point also returns true
-bool segmentIntersect(Point a, Point b, Point c, Point d) {
+template<typename T>
+bool segmentIntersect(const P<T>& a, const P<T>& b, const P<T>& c, const P<T>& d) {
     if (onSegment(a, b, c)
             || onSegment(a, b, d)
             || onSegment(c, d, a)

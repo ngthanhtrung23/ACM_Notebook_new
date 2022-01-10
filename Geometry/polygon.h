@@ -2,26 +2,20 @@ typedef vector< Point > Polygon;
 
 // Convex Hull:
 // If minimum point --> #define REMOVE_REDUNDANT
-// If maximum point --> need to change >= and <= to > and < (see Note).
 // Known issues:
 // - Max. point does not work when some points are the same.
 // Tested:
 // - https://open.kattis.com/problems/convexhull
-/*
-bool operator<(const Point &rhs) const { return make_pair(y,x) < make_pair(rhs.y,rhs.x); }
-bool operator==(const Point &rhs) const { return make_pair(y,x) == make_pair(rhs.y,rhs.x); }
- */
-double area2(Point a, Point b, Point c) { return a%b + b%c + c%a; }
-#ifdef REMOVE_REDUNDANT
-bool between(const Point &a, const Point &b, const Point &c) {
-    return (fabs(area2(a,b,c)) < EPS && (a.x-b.x)*(c.x-b.x) <= 0 && (a.y-b.y)*(c.y-b.y) <= 0);
-}
-#endif
 
-void ConvexHull(vector<Point> &pts) {
+// #define REMOVE_REDUNDANT
+template<typename T>
+T area2(P<T> a, P<T> b, P<T> c) { return a%b + b%c + c%a; }
+
+template<typename T>
+void ConvexHull(vector<P<T>> &pts) {
     sort(pts.begin(), pts.end());
     pts.erase(unique(pts.begin(), pts.end()), pts.end());
-    vector<Point> up, dn;
+    vector<P<T>> up, dn;
     for (int i = 0; i < (int) pts.size(); i++) {
 #ifdef REMOVE_REDUNDANT
         while (up.size() > 1 && area2(up[up.size()-2], up.back(), pts[i]) >= 0) up.pop_back();
@@ -42,10 +36,10 @@ void ConvexHull(vector<Point> &pts) {
     dn.push_back(pts[0]);
     dn.push_back(pts[1]);
     for (int i = 2; i < (int) pts.size(); i++) {
-        if (between(dn[dn.size()-2], dn[dn.size()-1], pts[i])) dn.pop_back();
+        if (onSegment(dn[dn.size()-2], pts[i], dn.back())) dn.pop_back();
         dn.push_back(pts[i]);
     }
-    if (dn.size() >= 3 && between(dn.back(), dn[0], dn[1])) {
+    if (dn.size() >= 3 && onSegment(dn.back(), dn[1], dn[0])) {
         dn[0] = dn.back();
         dn.pop_back();
     }
@@ -57,13 +51,12 @@ void ConvexHull(vector<Point> &pts) {
 double signed_area(Polygon p) {
     double area = 0;
     for(int i = 0; i < (int) p.size(); i++) {
-        int j = (i+1) % p.size();
-        area += p[i].x*p[j].y - p[j].x*p[i].y;
+        area += p[i] % p[(i + 1) % p.size()];
     }
     return area / 2.0;
 }
 double area(const Polygon &p) {
-    return fabs(signed_area(p));
+    return std::abs(signed_area(p));
 }
 Point centroid(Polygon p) {
     Point c(0,0);
