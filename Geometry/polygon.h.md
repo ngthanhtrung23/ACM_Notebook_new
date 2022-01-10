@@ -27,7 +27,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Geometry/tests/polygon_is_convex.test.cpp
     title: Geometry/tests/polygon_is_convex.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Geometry/tests/z_polygon_area.test.cpp
     title: Geometry/tests/z_polygon_area.test.cpp
   - icon: ':heavy_check_mark:'
@@ -36,9 +36,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Geometry/tests/z_polygon_is_convex.test.cpp
     title: Geometry/tests/z_polygon_is_convex.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://open.kattis.com/problems/convexhull
@@ -250,7 +250,7 @@ data:
   requiredBy:
   - Geometry/polygon.cpp
   timestamp: '2022-01-11 04:00:35+08:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Geometry/tests/polygon_convex_hull.test.cpp
   - Geometry/tests/z_polygon_area.test.cpp

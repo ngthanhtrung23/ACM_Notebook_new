@@ -131,7 +131,7 @@ data:
     - icon: ':warning:'
       path: Geometry/basic.cpp
       title: Geometry/basic.cpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Geometry/basic.h
       title: Geometry/basic.h
     - icon: ':warning:'
@@ -152,7 +152,7 @@ data:
     - icon: ':warning:'
       path: Geometry/polygon.cpp
       title: Geometry/polygon.cpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Geometry/polygon.h
       title: Geometry/polygon.h
     - icon: ':warning:'
@@ -471,7 +471,7 @@ data:
     - icon: ':warning:'
       path: debug.h
       title: debug.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template.h
       title: template.h
   verificationCategories:
@@ -613,7 +613,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Geometry/tests/z_basic_segment_intersect.test.cpp
       title: Geometry/tests/z_basic_segment_intersect.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Geometry/tests/z_polygon_area.test.cpp
       title: Geometry/tests/z_polygon_area.test.cpp
     - icon: ':heavy_check_mark:'

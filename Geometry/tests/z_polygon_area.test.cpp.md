@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Geometry/basic.h
     title: Geometry/basic.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Geometry/polygon.h
     title: Geometry/polygon.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A
@@ -220,12 +220,12 @@ data:
     // S = I + B/2 - 1\n#line 6 \"Geometry/tests/z_polygon_area.test.cpp\"\n\nvoid\
     \ solve() {\n    int n; cin >> n;\n    vector<P<long long>> P(n);\n    for (auto&\
     \ p : P) cin >> p;\n    long long res = signed_area2(P);\n    cout << (fixed)\
-    \ << setprecision(1) << std::abs(res / 2) << endl;\n}\n"
+    \ << setprecision(1) << std::abs(res / 2.0) << endl;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A\"\
     \n\n#include \"../../template.h\"\n#include \"../basic.h\"\n#include \"../polygon.h\"\
     \n\nvoid solve() {\n    int n; cin >> n;\n    vector<P<long long>> P(n);\n   \
     \ for (auto& p : P) cin >> p;\n    long long res = signed_area2(P);\n    cout\
-    \ << (fixed) << setprecision(1) << std::abs(res / 2) << endl;\n}\n"
+    \ << (fixed) << setprecision(1) << std::abs(res / 2.0) << endl;\n}\n"
   dependsOn:
   - template.h
   - Geometry/basic.h
@@ -233,8 +233,8 @@ data:
   isVerificationFile: true
   path: Geometry/tests/z_polygon_area.test.cpp
   requiredBy: []
-  timestamp: '2022-01-11 04:00:35+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2022-01-11 04:05:11+08:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Geometry/tests/z_polygon_area.test.cpp
 layout: document
