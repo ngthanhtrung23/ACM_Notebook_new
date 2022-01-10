@@ -29,6 +29,7 @@
 "DataStructure/test/wavelet_matrix_rangekthsmallest.test.cpp": "2022-01-06 20:02:32 +0800",
 "DataStructure/test/wavelet_matrix_staticrangefreq.test.cpp": "2022-01-06 02:48:27 +0800",
 "Geometry/tests/basic_ccw.test.cpp": "2022-01-10 23:46:01 +0800",
+"Geometry/tests/basic_segment_distance.test.cpp": "2022-01-10 23:52:10 +0800",
 "Geometry/tests/basic_segment_intersect.test.cpp": "2022-01-10 23:46:01 +0800",
 "Geometry/tests/polygon_area.test.cpp": "2022-01-10 23:46:01 +0800",
 "Geometry/tests/polygon_in_convex.test.cpp": "2022-01-10 23:46:01 +0800",
