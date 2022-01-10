@@ -1,6 +1,9 @@
 #ifndef EPS
 #define EPS 1e-6
 #endif
+
+#ifndef GEOMETRY_BASIC
+#define GEOMETRY_BASIC
 const double PI = acos(-1.0);
 
 double DEG_to_RAD(double d) { return d * PI / 180.0; }
@@ -92,13 +95,6 @@ double distToLineSegment(Point p, Point a, Point b, Point &c) {
     return distToLine(p, a, b, c);
 }
 
-// Returns true if p is on segment [a, b]
-bool on_segment(const Point& a, const Point& b, const Point& p) {
-    return ccw(p, a, b) == 0
-        && min(a.x, b.x) <= p.x && p.x <= max(a.x, b.x)
-        && min(a.y, b.y) <= p.y && p.y <= max(a.y, b.y);
-}
-
 // NOTE: WILL NOT WORK WHEN a = b = 0.
 struct Line {
     double a, b, c;
@@ -168,6 +164,8 @@ bool onSegment(Point a, Point b, Point p) {
         && min(a.y, b.y) <= p.y && p.y <= max(a.y, b.y);
 }
 
+// Returns true if segment [a, b] and [c, d] intersects
+// End point also returns true
 bool segmentIntersect(Point a, Point b, Point c, Point d) {
     if (onSegment(a, b, c)
             || onSegment(a, b, d)
@@ -179,3 +177,4 @@ bool segmentIntersect(Point a, Point b, Point c, Point d) {
     return ccw(a, b, c) * ccw(a, b, d) < 0
         && ccw(c, d, a) * ccw(c, d, b) < 0;
 }
+#endif
