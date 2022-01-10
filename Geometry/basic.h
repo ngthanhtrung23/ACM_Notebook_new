@@ -13,38 +13,44 @@ inline int cmp(double a, double b) {
     return (a < b - EPS) ? -1 : ((a > b + EPS) ? 1 : 0);
 }
 
-struct Point {
-    double x, y;
-    Point() { x = y = 0.0; }
-    Point(double _x, double _y) : x(_x), y(_y) {}
+template<typename T, typename std::enable_if<std::is_floating_point<T>::value>::type * = nullptr>
+inline int cmp(T a, T b) {
+    return (a == b) ? 0 : (a < b) ? -1 : 1;
+}
 
-    Point operator + (const Point& a) const { return Point(x+a.x, y+a.y); }
-    Point operator - (const Point& a) const { return Point(x-a.x, y-a.y); }
-    Point operator * (double k) const { return Point(x*k, y*k); }
-    Point operator / (double k) const { return Point(x/k, y/k); }
+template<typename T>
+struct P {
+    T x, y;
+    P() { x = y = T(0); }
+    P(T _x, T _y) : x(_x), y(_y) {}
 
-    double operator * (const Point& a) const { return x*a.x + y*a.y; } // dot product
-    double operator % (const Point& a) const { return x*a.y - y*a.x; } // cross product
+    P operator + (const P& a) const { return P(x+a.x, y+a.y); }
+    P operator - (const P& a) const { return P(x-a.x, y-a.y); }
+    P operator * (double k) const { return P(x*k, y*k); }
+    P operator / (double k) const { return P(x/k, y/k); }
 
-    int cmp(Point q) const { if (int t = ::cmp(x,q.x)) return t; return ::cmp(y,q.y); }
+    T operator * (const P& a) const { return x*a.x + y*a.y; } // dot product
+    T operator % (const P& a) const { return x*a.y - y*a.x; } // cross product
 
-    #define Comp(x) bool operator x (Point q) const { return cmp(q) x 0; }
+    int cmp(P q) const { if (int t = ::cmp(x,q.x)) return t; return ::cmp(y,q.y); }
+
+    #define Comp(x) bool operator x (P q) const { return cmp(q) x 0; }
     Comp(>) Comp(<) Comp(==) Comp(>=) Comp(<=) Comp(!=)
     #undef Comp
 
-    Point conj() { return Point(x, -y); }
-    double norm() { return x*x + y*y; }
+    T norm() { return x*x + y*y; }
 
     // Note: There are 2 ways for implementing len():
     // 1. sqrt(norm()) --> fast, but inaccurate (produce some values that are of order X^2)
     // 2. hypot(x, y) --> slow, but much more accurate
     double len() { return hypot(x, y); }
 
-    Point rotate(double alpha) {
+    P<double> rotate(double alpha) {
         double cosa = cos(alpha), sina = sin(alpha);
-        return Point(x * cosa - y * sina, x * sina + y * cosa);
+        return P(x * cosa - y * sina, x * sina + y * cosa);
     }
 };
+using Point = P<double>;
 
 // Compare points by (y, x)
 auto cmpy = [] (const Point& a, const Point& b) {
@@ -52,16 +58,21 @@ auto cmpy = [] (const Point& a, const Point& b) {
     return a.x < b.x;
 };
 
-int ccw(Point a, Point b, Point c) {
-    return cmp((b-a)%(c-a),0);
+template<typename T>
+int ccw(P<T> a, P<T> b, P<T> c) {
+    return cmp((b-a)%(c-a), T(0));
 }
+
 int RE_TRAI = ccw(Point(0, 0), Point(0, 1), Point(-1, 1));
 int RE_PHAI = ccw(Point(0, 0), Point(0, 1), Point(1, 1));
-istream& operator >> (istream& cin, Point& p) {
+
+template<typename T>
+istream& operator >> (istream& cin, P<T>& p) {
     cin >> p.x >> p.y;
     return cin;
 }
-ostream& operator << (ostream& cout, Point& p) {
+template<typename T>
+ostream& operator << (ostream& cout, P<T>& p) {
     cout << p.x << ' ' << p.y;
     return cout;
 }
