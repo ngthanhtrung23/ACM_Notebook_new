@@ -38,12 +38,18 @@ struct Point {
     // Note: There are 2 ways for implementing len():
     // 1. sqrt(norm()) --> fast, but inaccurate (produce some values that are of order X^2)
     // 2. hypot(x, y) --> slow, but much more accurate
-    double len() { return sqrt(norm()); }
+    double len() { return hypot(x, y); }
 
     Point rotate(double alpha) {
         double cosa = cos(alpha), sina = sin(alpha);
         return Point(x * cosa - y * sina, x * sina + y * cosa);
     }
+};
+
+// Compare points by (y, x)
+auto cmpy = [] (const Point& a, const Point& b) {
+    if (a.y != b.y) return a.y < b.y;
+    return a.x < b.x;
 };
 
 int ccw(Point a, Point b, Point c) {

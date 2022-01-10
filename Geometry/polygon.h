@@ -148,7 +148,7 @@ PolygonLocation in_convex(vector<Point>& l, Point p){
 }
 
 
-// Cut a polygon with a line. Returns one half.
+// Cut a polygon with a line. Returns half on left-hand-side.
 // To return the other half, reverse the direction of Line l (by negating l.a, l.b)
 // The line must be formed using 2 points
 Polygon polygon_cut(const Polygon& P, Line l) {
@@ -210,28 +210,30 @@ Polygon convex_intersect(Polygon P, Polygon Q) {
 }
 
 // Find the diameter of polygon.
-// Rotating callipers
-double convex_diameter(Polygon pt) {
-    const int n = pt.size();
+// Returns:
+// <diameter, <ids of 2 points>>
+pair<double, pair<int,int>> convex_diameter(const Polygon &p) {
+    const int n = p.size();
     int is = 0, js = 0;
     for (int i = 1; i < n; ++i) {
-        if (pt[i].y > pt[is].y) is = i;
-        if (pt[i].y < pt[js].y) js = i;
+        if (p[i].y > p[is].y) is = i;
+        if (p[i].y < p[js].y) js = i;
     }
-    double maxd = (pt[is]-pt[js]).norm();
+    double maxd = (p[is]-p[js]).len();
     int i, maxi, j, maxj;
     i = maxi = is;
     j = maxj = js;
     do {
-        int jj = j+1; if (jj == n) jj = 0;
-        if ((pt[i] - pt[jj]).norm() > (pt[i] - pt[j]).norm()) j = (j+1) % n;
-        else i = (i+1) % n;
-        if ((pt[i]-pt[j]).norm() > maxd) {
-            maxd = (pt[i]-pt[j]).norm();
-            maxi = i; maxj = j;
+        int ii = (i+1) % n, jj = (j+1) % n;
+        if ((p[ii] - p[i]) % (p[jj] - p[j]) >= 0) j = jj;
+        else i = ii;
+        if ((p[i] - p[j]).len() > maxd) {
+            maxd = (p[i] - p[j]).len();
+            maxi = i;
+            maxj = j;
         }
     } while (i != is || j != js);
-    return maxd; /* farthest pair is (maxi, maxj). */
+    return {maxd, std::minmax(maxi, maxj)}; /* farthest pair is (maxi, maxj). */
 }
 
 // Closest pair
@@ -245,9 +247,6 @@ double convex_diameter(Polygon pt) {
 #define upd_ans(x, y) {}
 #define MAXN 100
 double mindist = 1e20; // will be the result
-auto cmpy = [] (const Point& a, const Point& b) {
-    return a.y < b.y;
-};
 void rec(int l, int r, Point a[]) {
     if (r - l <= 3) {
         for (int i=l; i<=r; ++i)
