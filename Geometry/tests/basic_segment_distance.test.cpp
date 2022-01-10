@@ -11,7 +11,7 @@ void solve() {
         Point c, d; cin >> c >> d;
         Point t;
 
-        if (segmentIntersect(a, b, c, d)) cout << "0\n";
+        if (segmentIntersect(a, b, c, d)) cout << 0.0 << endl;
         else {
             cout << min({
                     distToLineSegment(a, c, d, t),
