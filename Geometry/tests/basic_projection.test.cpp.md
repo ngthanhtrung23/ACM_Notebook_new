@@ -14,13 +14,13 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_C
+    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_A
     links:
-    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_C
-  bundledCode: "#line 1 \"Geometry/tests/basic_ccw.test.cpp\"\n#define PROBLEM \"\
-    http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_C\"\n\n#line 1\
-    \ \"template.h\"\n#include <bits/stdc++.h>\nusing namespace std;\n\n#define FOR(i,a,b)\
-    \ for(int i=(a),_b=(b); i<=_b; i++)\n#define FORD(i,a,b) for(int i=(a),_b=(b);\
+    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_A
+  bundledCode: "#line 1 \"Geometry/tests/basic_projection.test.cpp\"\n#define PROBLEM\
+    \ \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_A\"\n\n#line\
+    \ 1 \"template.h\"\n#include <bits/stdc++.h>\nusing namespace std;\n\n#define\
+    \ FOR(i,a,b) for(int i=(a),_b=(b); i<=_b; i++)\n#define FORD(i,a,b) for(int i=(a),_b=(b);\
     \ i>=_b; i--)\n#define REP(i,a) for(int i=0,_a=(a); i<_a; i++)\n#define EACH(it,a)\
     \ for(__typeof(a.begin()) it = a.begin(); it != a.end(); ++it)\n\n#define DEBUG(x)\
     \ { cout << #x << \" = \"; cout << (x) << endl; }\n#define PR(a,n) { cout << #a\
@@ -111,34 +111,30 @@ data:
     \ b, c)\n            || onSegment(a, b, d)\n            || onSegment(c, d, a)\n\
     \            || onSegment(c, d, b)) {\n        return true;\n    }\n\n    return\
     \ ccw(a, b, c) * ccw(a, b, d) < 0\n        && ccw(c, d, a) * ccw(c, d, b) < 0;\n\
-    }\n#line 5 \"Geometry/tests/basic_ccw.test.cpp\"\n\nvoid solve() {\n    Point\
-    \ a, b; cin >> a >> b;\n    int q; cin >> q;\n    while (q--) {\n        Point\
-    \ c; cin >> c;\n        auto t = ccw(a, b, c);\n        if (t == 0) {\n      \
-    \      if (onSegment(a, b, c)) cout << \"ON_SEGMENT\\n\";\n            else if\
-    \ (onSegment(c, b, a)) cout << \"ONLINE_BACK\\n\";\n            else cout << \"\
-    ONLINE_FRONT\\n\";\n        } else if (t < 0) cout << \"CLOCKWISE\\n\";\n    \
-    \    else cout << \"COUNTER_CLOCKWISE\\n\";\n    }\n}\n"
-  code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_C\"\
+    }\n#line 5 \"Geometry/tests/basic_projection.test.cpp\"\n\nvoid solve() {\n  \
+    \  cout << (fixed) << setprecision(10);\n    Point a, b; cin >> a >> b;\n    int\
+    \ q; cin >> q;\n    while (q--) {\n        Point p; cin >> p;\n        Point projection;\n\
+    \        distToLine(p, a, b, projection);\n        cout << projection << '\\n';\n\
+    \    }\n}\n"
+  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_A\"\
     \n\n#include \"../../template.h\"\n#include \"../basic.h\"\n\nvoid solve() {\n\
-    \    Point a, b; cin >> a >> b;\n    int q; cin >> q;\n    while (q--) {\n   \
-    \     Point c; cin >> c;\n        auto t = ccw(a, b, c);\n        if (t == 0)\
-    \ {\n            if (onSegment(a, b, c)) cout << \"ON_SEGMENT\\n\";\n        \
-    \    else if (onSegment(c, b, a)) cout << \"ONLINE_BACK\\n\";\n            else\
-    \ cout << \"ONLINE_FRONT\\n\";\n        } else if (t < 0) cout << \"CLOCKWISE\\\
-    n\";\n        else cout << \"COUNTER_CLOCKWISE\\n\";\n    }\n}\n"
+    \    cout << (fixed) << setprecision(10);\n    Point a, b; cin >> a >> b;\n  \
+    \  int q; cin >> q;\n    while (q--) {\n        Point p; cin >> p;\n        Point\
+    \ projection;\n        distToLine(p, a, b, projection);\n        cout << projection\
+    \ << '\\n';\n    }\n}\n"
   dependsOn:
   - template.h
   - Geometry/basic.h
   isVerificationFile: true
-  path: Geometry/tests/basic_ccw.test.cpp
+  path: Geometry/tests/basic_projection.test.cpp
   requiredBy: []
   timestamp: '2022-01-11 00:03:27+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Geometry/tests/basic_ccw.test.cpp
+documentation_of: Geometry/tests/basic_projection.test.cpp
 layout: document
 redirect_from:
-- /verify/Geometry/tests/basic_ccw.test.cpp
-- /verify/Geometry/tests/basic_ccw.test.cpp.html
-title: Geometry/tests/basic_ccw.test.cpp
+- /verify/Geometry/tests/basic_projection.test.cpp
+- /verify/Geometry/tests/basic_projection.test.cpp.html
+title: Geometry/tests/basic_projection.test.cpp
 ---

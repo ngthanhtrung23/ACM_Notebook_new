@@ -131,7 +131,7 @@ data:
     - icon: ':warning:'
       path: Geometry/basic.cpp
       title: Geometry/basic.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Geometry/basic.h
       title: Geometry/basic.h
     - icon: ':warning:'
@@ -468,7 +468,7 @@ data:
     - icon: ':warning:'
       path: debug.h
       title: debug.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template.h
       title: template.h
   verificationCategories:
@@ -568,6 +568,15 @@ data:
     - icon: ':heavy_check_mark:'
       path: Geometry/tests/basic_ccw.test.cpp
       title: Geometry/tests/basic_ccw.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Geometry/tests/basic_line_intersection.test.cpp
+      title: Geometry/tests/basic_line_intersection.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Geometry/tests/basic_projection.test.cpp
+      title: Geometry/tests/basic_projection.test.cpp
+    - icon: ':x:'
+      path: Geometry/tests/basic_reflection.test.cpp
+      title: Geometry/tests/basic_reflection.test.cpp
     - icon: ':heavy_check_mark:'
       path: Geometry/tests/basic_segment_distance.test.cpp
       title: Geometry/tests/basic_segment_distance.test.cpp

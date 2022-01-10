@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Geometry/basic.h
     title: Geometry/basic.h
   - icon: ':heavy_check_mark:'
     path: Geometry/polygon.h
     title: Geometry/polygon.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
@@ -77,33 +77,33 @@ data:
     }\n\ndouble directed_angle(Point a, Point o, Point b) { // angle AOB, in range\
     \ [0, 2*PI)\n    double t = -atan2(a.y - o.y, a.x - o.x)\n            + atan2(b.y\
     \ - o.y, b.x - o.x);\n    while (t < 0) t += 2*PI;\n    return t;\n}\n\n// Distance\
-    \ from p to Line ab (closest Point --> c)\ndouble distToLine(Point p, Point a,\
-    \ Point b, Point &c) {\n    Point ap = p - a, ab = b - a;\n    double u = (ap\
-    \ * ab) / ab.norm();\n    c = a + (ab * u);\n    return (p-c).len();\n}\n\n//\
-    \ Distance from p to segment ab (closest Point --> c)\ndouble distToLineSegment(Point\
-    \ p, Point a, Point b, Point &c) {\n    Point ap = p - a, ab = b - a;\n    double\
-    \ u = (ap * ab) / ab.norm();\n    if (u < 0.0) {\n        c = Point(a.x, a.y);\n\
-    \        return (p - a).len();\n    }\n    if (u > 1.0) {\n        c = Point(b.x,\
-    \ b.y);\n        return (p - b).len();\n    }\n    return distToLine(p, a, b,\
-    \ c);\n}\n\n// NOTE: WILL NOT WORK WHEN a = b = 0.\nstruct Line {\n    double\
-    \ a, b, c;\n    Point A, B; // Added for polygon intersect line. Do not rely on\
-    \ assumption that these are valid\n\n    Line(double _a, double _b, double _c)\
-    \ : a(_a), b(_b), c(_c) {} \n\n    Line(Point _A, Point _B) : A(_A), B(_B) {\n\
-    \        a = B.y - A.y;\n        b = A.x - B.x;\n        c = - (a * A.x + b *\
-    \ A.y);\n    }\n    Line(Point P, double m) {\n        a = -m; b = 1;\n      \
-    \  c = -((a * P.x) + (b * P.y));\n    }\n    double f(Point p) {\n        return\
-    \ a*p.x + b*p.y + c;\n    }\n};\n\nbool areParallel(Line l1, Line l2) {\n    return\
-    \ cmp(l1.a*l2.b, l1.b*l2.a) == 0;\n}\n\nbool areSame(Line l1, Line l2) {\n   \
-    \ return areParallel(l1 ,l2) && cmp(l1.c*l2.a, l2.c*l1.a) == 0\n             \
-    \   && cmp(l1.c*l2.b, l1.b*l2.c) == 0;\n}\n\nbool areIntersect(Line l1, Line l2,\
-    \ Point &p) {\n    if (areParallel(l1, l2)) return false;\n    double dx = l1.b*l2.c\
-    \ - l2.b*l1.c;\n    double dy = l1.c*l2.a - l2.c*l1.a;\n    double d  = l1.a*l2.b\
-    \ - l2.a*l1.b;\n    p = Point(dx/d, dy/d);\n    return true;\n}\n\n// closest\
-    \ point from p in line l.\nvoid closestPoint(Line l, Point p, Point &ans) {\n\
-    \    if (fabs(l.b) < EPS) {\n        ans.x = -(l.c) / l.a; ans.y = p.y;\n    \
-    \    return;\n    }\n    if (fabs(l.a) < EPS) {\n        ans.x = p.x; ans.y =\
-    \ -(l.c) / l.b;\n        return;\n    }\n    Line perp(l.b, -l.a, - (l.b*p.x -\
-    \ l.a*p.y));\n    areIntersect(l, perp, ans);\n}\n\nvoid reflectionPoint(Line\
+    \ from p to Line ab (closest Point --> c)\n// i.e. c is projection of p on AB\n\
+    double distToLine(Point p, Point a, Point b, Point &c) {\n    Point ap = p - a,\
+    \ ab = b - a;\n    double u = (ap * ab) / ab.norm();\n    c = a + (ab * u);\n\
+    \    return (p-c).len();\n}\n\n// Distance from p to segment ab (closest Point\
+    \ --> c)\ndouble distToLineSegment(Point p, Point a, Point b, Point &c) {\n  \
+    \  Point ap = p - a, ab = b - a;\n    double u = (ap * ab) / ab.norm();\n    if\
+    \ (u < 0.0) {\n        c = Point(a.x, a.y);\n        return (p - a).len();\n \
+    \   }\n    if (u > 1.0) {\n        c = Point(b.x, b.y);\n        return (p - b).len();\n\
+    \    }\n    return distToLine(p, a, b, c);\n}\n\n// NOTE: WILL NOT WORK WHEN a\
+    \ = b = 0.\nstruct Line {\n    double a, b, c;\n    Point A, B; // Added for polygon\
+    \ intersect line. Do not rely on assumption that these are valid\n\n    Line(double\
+    \ _a, double _b, double _c) : a(_a), b(_b), c(_c) {} \n\n    Line(Point _A, Point\
+    \ _B) : A(_A), B(_B) {\n        a = B.y - A.y;\n        b = A.x - B.x;\n     \
+    \   c = - (a * A.x + b * A.y);\n    }\n    Line(Point P, double m) {\n       \
+    \ a = -m; b = 1;\n        c = -((a * P.x) + (b * P.y));\n    }\n    double f(Point\
+    \ p) {\n        return a*p.x + b*p.y + c;\n    }\n};\n\nbool areParallel(Line\
+    \ l1, Line l2) {\n    return cmp(l1.a*l2.b, l1.b*l2.a) == 0;\n}\n\nbool areSame(Line\
+    \ l1, Line l2) {\n    return areParallel(l1 ,l2) && cmp(l1.c*l2.a, l2.c*l1.a)\
+    \ == 0\n                && cmp(l1.c*l2.b, l1.b*l2.c) == 0;\n}\n\nbool areIntersect(Line\
+    \ l1, Line l2, Point &p) {\n    if (areParallel(l1, l2)) return false;\n    double\
+    \ dx = l1.b*l2.c - l2.b*l1.c;\n    double dy = l1.c*l2.a - l2.c*l1.a;\n    double\
+    \ d  = l1.a*l2.b - l2.a*l1.b;\n    p = Point(dx/d, dy/d);\n    return true;\n\
+    }\n\n// closest point from p in line l.\nvoid closestPoint(Line l, Point p, Point\
+    \ &ans) {\n    if (fabs(l.b) < EPS) {\n        ans.x = -(l.c) / l.a; ans.y = p.y;\n\
+    \        return;\n    }\n    if (fabs(l.a) < EPS) {\n        ans.x = p.x; ans.y\
+    \ = -(l.c) / l.b;\n        return;\n    }\n    Line perp(l.b, -l.a, - (l.b*p.x\
+    \ - l.a*p.y));\n    areIntersect(l, perp, ans);\n}\n\nvoid reflectionPoint(Line\
     \ l, Point p, Point &ans) {\n    Point b;\n    closestPoint(l, p, b);\n    ans\
     \ = p + (b - p) * 2;\n}\n\n// Segment intersect\n// Tested:\n// - https://cses.fi/problemset/task/2190/\n\
     // returns true if p is on segment [a, b]\nbool onSegment(Point a, Point b, Point\
@@ -246,7 +246,7 @@ data:
   isVerificationFile: true
   path: Geometry/tests/polygon_in_convex.test.cpp
   requiredBy: []
-  timestamp: '2022-01-10 23:46:01+08:00'
+  timestamp: '2022-01-11 00:03:27+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Geometry/tests/polygon_in_convex.test.cpp
