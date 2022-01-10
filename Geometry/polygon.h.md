@@ -15,12 +15,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: Geometry/tests/polygon_in_polygon.test.cpp
     title: Geometry/tests/polygon_in_polygon.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Geometry/tests/polygon_is_convex.test.cpp
     title: Geometry/tests/polygon_is_convex.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - http://codeforces.com/contest/166/submission/1392387
@@ -64,12 +64,13 @@ data:
     \ - p[j].x*p[i].y);\n    }\n    return c / scale;\n}\ndouble perimeter(Polygon\
     \ p) {\n    double res = 0;\n    for(int i = 0; i < (int) p.size(); ++i) {\n \
     \       int j = (i + 1) % p.size();\n        res += (p[i] - p[j]).len();\n   \
-    \ }\n    return res;\n}\n// Is convex: checks if polygon is convex. Assume there\
-    \ are no 3 collinear points\nbool is_convex(const Polygon &P) {\n    int sz =\
-    \ (int) P.size();\n    if (sz <= 2) return false;\n    int isLeft = ccw(P[0],\
-    \ P[1], P[2]);\n    for (int i = 1; i < sz; i++)\n        if (ccw(P[i], P[(i+1)\
-    \ % sz], P[(i+2) % sz]) * isLeft < 0)\n            return false;\n    return true;\n\
-    }\n\n// Inside polygon: O(N). Works with any polygon\n// Tested:\n// - https://open.kattis.com/problems/pointinpolygon\n\
+    \ }\n    return res;\n}\n\n// Is convex: checks if polygon is convex.\n// Return\
+    \ true for degen points (all vertices are collinear)\nbool is_convex(const Polygon\
+    \ &P) {\n    int sz = (int) P.size();\n    int min_ccw = 2, max_ccw = -2;\n  \
+    \  for (int i = 0; i < sz; i++) {\n        int c = ccw(P[i], P[(i+1) % sz], P[(i+2)\
+    \ % sz]);\n        min_ccw = min(min_ccw, c);\n        max_ccw = max(max_ccw,\
+    \ c);\n    }\n    return min_ccw * max_ccw >= 0;\n}\n\n// Inside polygon: O(N).\
+    \ Works with any polygon\n// Tested:\n// - https://open.kattis.com/problems/pointinpolygon\n\
     // - https://open.kattis.com/problems/cuttingpolygon\nenum PolygonLocation { OUT,\
     \ ON, IN };\nPolygonLocation in_polygon(const Polygon &p, Point q) {\n    if ((int)p.size()\
     \ == 0) return PolygonLocation::OUT;\n\n    // Check if point is on edge.\n  \
@@ -179,13 +180,13 @@ data:
     \  c = c + (p[i]+p[j])*(p[i].x*p[j].y - p[j].x*p[i].y);\n    }\n    return c /\
     \ scale;\n}\ndouble perimeter(Polygon p) {\n    double res = 0;\n    for(int i\
     \ = 0; i < (int) p.size(); ++i) {\n        int j = (i + 1) % p.size();\n     \
-    \   res += (p[i] - p[j]).len();\n    }\n    return res;\n}\n// Is convex: checks\
-    \ if polygon is convex. Assume there are no 3 collinear points\nbool is_convex(const\
-    \ Polygon &P) {\n    int sz = (int) P.size();\n    if (sz <= 2) return false;\n\
-    \    int isLeft = ccw(P[0], P[1], P[2]);\n    for (int i = 1; i < sz; i++)\n \
-    \       if (ccw(P[i], P[(i+1) % sz], P[(i+2) % sz]) * isLeft < 0)\n          \
-    \  return false;\n    return true;\n}\n\n// Inside polygon: O(N). Works with any\
-    \ polygon\n// Tested:\n// - https://open.kattis.com/problems/pointinpolygon\n\
+    \   res += (p[i] - p[j]).len();\n    }\n    return res;\n}\n\n// Is convex: checks\
+    \ if polygon is convex.\n// Return true for degen points (all vertices are collinear)\n\
+    bool is_convex(const Polygon &P) {\n    int sz = (int) P.size();\n    int min_ccw\
+    \ = 2, max_ccw = -2;\n    for (int i = 0; i < sz; i++) {\n        int c = ccw(P[i],\
+    \ P[(i+1) % sz], P[(i+2) % sz]);\n        min_ccw = min(min_ccw, c);\n       \
+    \ max_ccw = max(max_ccw, c);\n    }\n    return min_ccw * max_ccw >= 0;\n}\n\n\
+    // Inside polygon: O(N). Works with any polygon\n// Tested:\n// - https://open.kattis.com/problems/pointinpolygon\n\
     // - https://open.kattis.com/problems/cuttingpolygon\nenum PolygonLocation { OUT,\
     \ ON, IN };\nPolygonLocation in_polygon(const Polygon &p, Point q) {\n    if ((int)p.size()\
     \ == 0) return PolygonLocation::OUT;\n\n    // Check if point is on edge.\n  \
@@ -266,8 +267,8 @@ data:
   path: Geometry/polygon.h
   requiredBy:
   - Geometry/polygon.cpp
-  timestamp: '2022-01-11 00:18:26+08:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2022-01-11 00:36:21+08:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Geometry/tests/polygon_in_convex.test.cpp
   - Geometry/tests/polygon_in_polygon.test.cpp

@@ -42,12 +42,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: Geometry/tests/polygon_in_polygon.test.cpp
     title: Geometry/tests/polygon_in_polygon.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Geometry/tests/polygon_is_convex.test.cpp
     title: Geometry/tests/polygon_is_convex.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://cses.fi/problemset/task/2190/
@@ -199,7 +199,7 @@ data:
   - Geometry/basic.cpp
   - Geometry/polygon.cpp
   timestamp: '2022-01-11 00:03:27+08:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Geometry/tests/basic_line_intersection.test.cpp
   - Geometry/tests/polygon_in_convex.test.cpp
