@@ -97,8 +97,9 @@ bool is_convex(const Polygon &P) {
 // Tested:
 // - https://open.kattis.com/problems/pointinpolygon
 // - https://open.kattis.com/problems/cuttingpolygon
-bool in_polygon(const Polygon &p, Point q) {
-    if ((int)p.size() == 0) return false;
+enum PolygonLocation { OUT, ON, IN };
+PolygonLocation in_polygon(const Polygon &p, Point q) {
+    if ((int)p.size() == 0) return PolygonLocation::OUT;
 
     // Check if point is on edge.
     int n = p.size();
@@ -108,7 +109,7 @@ bool in_polygon(const Polygon &p, Point q) {
 
         if (u > v) swap(u, v);
 
-        if (ccw(u, v, q) == 0 && u <= q && q <= v) return true;
+        if (ccw(u, v, q) == 0 && u <= q && q <= v) return PolygonLocation::ON;
     }
 
     // Check if point is strictly inside.
@@ -121,13 +122,12 @@ bool in_polygon(const Polygon &p, Point q) {
             c = !c;
         }
     }
-    return c;
+    return c ? PolygonLocation::IN : PolygonLocation::OUT;
 }
 
 // Check point in convex polygon, O(logN)
 // Source: http://codeforces.com/contest/166/submission/1392387
 #define Det(a,b,c) ((double)(b.x-a.x)*(double)(c.y-a.y)-(double)(b.y-a.y)*(c.x-a.x))
-enum PolygonLocation { OUT, ON, IN };
 PolygonLocation in_convex(vector<Point>& l, Point p){
     int a = 1, b = l.size()-1, c;
     if (Det(l[0], l[a], l[b]) > 0) swap(a,b);
