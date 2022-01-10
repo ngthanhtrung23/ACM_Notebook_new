@@ -1,8 +1,9 @@
-#ifndef EPS
+#pragma once
+
+#ifndef EPS  // allow test files to overwrite EPS
 #define EPS 1e-6
 #endif
-#ifndef GEOMETRY_BASIC
-#define GEOMETRY_BASIC
+
 const double PI = acos(-1.0);
 
 double DEG_to_RAD(double d) { return d * PI / 180.0; }
@@ -176,4 +177,3 @@ bool segmentIntersect(Point a, Point b, Point c, Point d) {
     return ccw(a, b, c) * ccw(a, b, d) < 0
         && ccw(c, d, a) * ccw(c, d, b) < 0;
 }
-#endif
