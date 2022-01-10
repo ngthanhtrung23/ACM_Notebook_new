@@ -1,4 +1,6 @@
+#ifndef EPS
 #define EPS 1e-6
+#endif
 const double PI = acos(-1.0);
 
 double DEG_to_RAD(double d) { return d * PI / 180.0; }
@@ -88,6 +90,13 @@ double distToLineSegment(Point p, Point a, Point b, Point &c) {
         return (p - b).len();
     }
     return distToLine(p, a, b, c);
+}
+
+// Returns true if p is on segment [a, b]
+bool on_segment(const Point& a, const Point& b, const Point& p) {
+    return ccw(p, a, b) == 0
+        && min(a.x, b.x) <= p.x && p.x <= max(a.x, b.x)
+        && min(a.y, b.y) <= p.y && p.y <= max(a.y, b.y);
 }
 
 // NOTE: WILL NOT WORK WHEN a = b = 0.

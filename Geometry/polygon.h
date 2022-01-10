@@ -56,7 +56,7 @@ void ConvexHull(vector<Point> &pts) {
 // Area, perimeter, centroid
 double signed_area(Polygon p) {
     double area = 0;
-    for(int i = 0; i < p.size(); i++) {
+    for(int i = 0; i < (int) p.size(); i++) {
         int j = (i+1) % p.size();
         area += p[i].x*p[j].y - p[j].x*p[i].y;
     }
@@ -68,17 +68,17 @@ double area(const Polygon &p) {
 Point centroid(Polygon p) {
     Point c(0,0);
     double scale = 6.0 * signed_area(p);
-    for (int i = 0; i < p.size(); i++){
+    for (int i = 0; i < (int) p.size(); i++){
         int j = (i+1) % p.size();
         c = c + (p[i]+p[j])*(p[i].x*p[j].y - p[j].x*p[i].y);
     }
     return c / scale;
 }
-double perimeter(Polygon P) {
+double perimeter(Polygon p) {
     double res = 0;
-    for(int i = 0; i < P.size(); ++i) {
-        int j = (i + 1) % P.size();
-        res += (P[i] - P[j]).len();
+    for(int i = 0; i < (int) p.size(); ++i) {
+        int j = (i + 1) % p.size();
+        res += (p[i] - p[j]).len();
     }
     return res;
 }
@@ -101,7 +101,7 @@ bool in_polygon(const Polygon &p, Point q) {
     if ((int)p.size() == 0) return false;
 
     // Check if point is on edge.
-    int n = SZ(p);
+    int n = p.size();
     REP(i,n) {
         int j = (i + 1) % n;
         Point u = p[i], v = p[j];
@@ -115,26 +115,33 @@ bool in_polygon(const Polygon &p, Point q) {
     int c = 0;
     for (int i = 0; i < n; i++) {
         int j = (i + 1) % n;
-        if ((p[i].y <= q.y && q.y < p[j].y || p[j].y <= q.y && q.y < p[i].y) && q.x < p[i].x + (p[j].x - p[i].x) * (q.y - p[i].y) / (p[j].y - p[i].y)) c = !c;
+        if (((p[i].y <= q.y && q.y < p[j].y)
+                    || (p[j].y <= q.y && q.y < p[i].y))
+                && q.x < p[i].x + (p[j].x - p[i].x) * (q.y - p[i].y) / (p[j].y - p[i].y)) {
+            c = !c;
+        }
     }
     return c;
 }
 
 // Check point in convex polygon, O(logN)
 // Source: http://codeforces.com/contest/166/submission/1392387
-// On edge --> false
 #define Det(a,b,c) ((double)(b.x-a.x)*(double)(c.y-a.y)-(double)(b.y-a.y)*(c.x-a.x))
-bool in_convex(vector<Point>& l, Point p){
+enum PolygonLocation { OUT, ON, IN };
+PolygonLocation in_convex(vector<Point>& l, Point p){
     int a = 1, b = l.size()-1, c;
     if (Det(l[0], l[a], l[b]) > 0) swap(a,b);
-    // Allow on edge --> if (Det... > 0 || Det ... < 0)
-    if (Det(l[0], l[a], p) >= 0 || Det(l[0], l[b], p) <= 0) return false;
+
+    if (on_segment(l[0], l[a], p)) return ON;
+    if (on_segment(l[0], l[b], p)) return ON;
+
+    if (Det(l[0], l[a], p) > 0 || Det(l[0], l[b], p) < 0) return OUT;
     while(abs(a-b) > 1) {
         c = (a+b)/2;
         if (Det(l[0], l[c], p) > 0) b = c; else a = c;
     }
-    // Alow on edge --> return Det... <= 0
-    return Det(l[a], l[b], p) < 0;
+    int t = cmp(Det(l[a], l[b], p), 0);
+    return (t == 0) ? ON : (t < 0) ? IN : OUT;
 }
 
 
@@ -143,8 +150,8 @@ bool in_convex(vector<Point>& l, Point p){
 // The line must be formed using 2 points
 Polygon polygon_cut(const Polygon& P, Line l) {
     Polygon Q;
-    for(int i = 0; i < P.size(); ++i) {
-        Point A = P[i], B = (i == P.size()-1) ? P[0] : P[i+1];
+    for(int i = 0; i < (int) P.size(); ++i) {
+        Point A = P[i], B = (i == ((int) P.size())-1) ? P[0] : P[i+1];
         if (ccw(l.A, l.B, A) != -1) Q.push_back(A);
         if (ccw(l.A, l.B, A)*ccw(l.A, l.B, B) < 0) {
             Point p; areIntersect(Line(A, B), l, p);
@@ -235,12 +242,15 @@ double convex_diameter(Polygon pt) {
 #define upd_ans(x, y) {}
 #define MAXN 100
 double mindist = 1e20; // will be the result
+auto cmpy = [] (const Point& a, const Point& b) {
+    return a.y < b.y;
+};
 void rec(int l, int r, Point a[]) {
     if (r - l <= 3) {
         for (int i=l; i<=r; ++i)
             for (int j=i+1; j<=r; ++j)
                     upd_ans(a[i], a[j]);
-        sort(a+l, a+r+1, cmpy); // compare by y
+        sort(a+l, a+r+1, cmpy);
         return;
     }
 
@@ -248,7 +258,7 @@ void rec(int l, int r, Point a[]) {
     int midx = a[m].x;
     rec(l, m, a), rec(m+1, r, a);
     static Point t[MAXN];
-    merge(a+l, a+m+1, a+m+1, a+r+1, t, cmpy); // compare by y
+    merge(a+l, a+m+1, a+m+1, a+r+1, t, cmpy);
     copy(t, t+r-l+1, a+l);
 
     int tsz = 0;
@@ -266,10 +276,3 @@ void rec(int l, int r, Point a[]) {
 // I = number of integer points strictly Inside
 // B = number of points on sides of polygon
 // S = I + B/2 - 1
-
-// Check if we can form triangle with edges x, y, z.
-bool isSquare(long long x) { /* */ }
-bool isIntegerCoordinates(int x, int y, int z) {
-    long long s=(long long)(x+y+z)*(x+y-z)*(x+z-y)*(y+z-x);
-    return (s%4==0 && isSquare(s/4));
-}
