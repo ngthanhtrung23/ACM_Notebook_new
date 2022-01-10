@@ -13,9 +13,12 @@ void solve() {
 
         if (segmentIntersect(a, b, c, d)) cout << "0\n";
         else {
-            cout << min(
+            cout << min({
                     distToLineSegment(a, c, d, t),
-                    distToLineSegment(b, c, d, t)) << '\n';
+                    distToLineSegment(b, c, d, t),
+                    distToLineSegment(c, a, b, t),
+                    distToLineSegment(d, a, b, t)
+            }) << '\n';
         }
     }
 }
