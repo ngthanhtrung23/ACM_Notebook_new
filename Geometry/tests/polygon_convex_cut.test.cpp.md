@@ -17,11 +17,12 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_C
+    ERROR: 1e-6
+    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_C
     links:
-    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_C
-  bundledCode: "#line 1 \"Geometry/tests/polygon_in_polygon.test.cpp\"\n#define PROBLEM\
-    \ \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_C\"\n\n#line\
+    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_C
+  bundledCode: "#line 1 \"Geometry/tests/polygon_convex_cut.test.cpp\"\n#define PROBLEM\
+    \ \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_C\"\n\n#line\
     \ 1 \"template.h\"\n#include <bits/stdc++.h>\nusing namespace std;\n\n#define\
     \ FOR(i,a,b) for(int i=(a),_b=(b); i<=_b; i++)\n#define FORD(i,a,b) for(int i=(a),_b=(b);\
     \ i>=_b; i--)\n#define REP(i,a) for(int i=0,_a=(a); i<_a; i++)\n#define EACH(it,a)\
@@ -232,31 +233,31 @@ data:
     \ --j)\n                upd_ans(a[i], t[j]);\n            t[tsz++] = a[i];\n \
     \       }\n}\n\n// Pick theorem\n// Given non-intersecting polygon.\n// S = area\n\
     // I = number of integer points strictly Inside\n// B = number of points on sides\
-    \ of polygon\n// S = I + B/2 - 1\n#line 6 \"Geometry/tests/polygon_in_polygon.test.cpp\"\
-    \n\nvoid solve() {\n    int n; cin >> n;\n    Polygon g(n);\n    for (auto& p\
-    \ : g) cin >> p;\n\n    int q; cin >> q;\n    while (q--) {\n        Point p;\
-    \ cin >> p;\n        auto res = in_polygon(g, p);\n        cout << res << '\\\
-    n';\n    }\n}\n"
-  code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_C\"\
+    \ of polygon\n// S = I + B/2 - 1\n#line 6 \"Geometry/tests/polygon_convex_cut.test.cpp\"\
+    \n\n#define ERROR 1e-6\n\nvoid solve() {\n    int n; cin >> n;\n    Polygon p(n);\n\
+    \    REP(i,n) cin >> p[i];\n\n    cout << (fixed) << setprecision(10);\n    int\
+    \ q; cin >> q;\n    while (q--) {\n        Point a, b; cin >> a >> b;\n      \
+    \  Line l(a, b);\n        cout << area(polygon_cut(p, l)) << '\\n';\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_C\"\
     \n\n#include \"../../template.h\"\n#include \"../basic.h\"\n#include \"../polygon.h\"\
-    \n\nvoid solve() {\n    int n; cin >> n;\n    Polygon g(n);\n    for (auto& p\
-    \ : g) cin >> p;\n\n    int q; cin >> q;\n    while (q--) {\n        Point p;\
-    \ cin >> p;\n        auto res = in_polygon(g, p);\n        cout << res << '\\\
-    n';\n    }\n}\n"
+    \n\n#define ERROR 1e-6\n\nvoid solve() {\n    int n; cin >> n;\n    Polygon p(n);\n\
+    \    REP(i,n) cin >> p[i];\n\n    cout << (fixed) << setprecision(10);\n    int\
+    \ q; cin >> q;\n    while (q--) {\n        Point a, b; cin >> a >> b;\n      \
+    \  Line l(a, b);\n        cout << area(polygon_cut(p, l)) << '\\n';\n    }\n}\n"
   dependsOn:
   - template.h
   - Geometry/basic.h
   - Geometry/polygon.h
   isVerificationFile: true
-  path: Geometry/tests/polygon_in_polygon.test.cpp
+  path: Geometry/tests/polygon_convex_cut.test.cpp
   requiredBy: []
   timestamp: '2022-01-11 01:06:49+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Geometry/tests/polygon_in_polygon.test.cpp
+documentation_of: Geometry/tests/polygon_convex_cut.test.cpp
 layout: document
 redirect_from:
-- /verify/Geometry/tests/polygon_in_polygon.test.cpp
-- /verify/Geometry/tests/polygon_in_polygon.test.cpp.html
-title: Geometry/tests/polygon_in_polygon.test.cpp
+- /verify/Geometry/tests/polygon_convex_cut.test.cpp
+- /verify/Geometry/tests/polygon_convex_cut.test.cpp.html
+title: Geometry/tests/polygon_convex_cut.test.cpp
 ---

@@ -587,6 +587,15 @@ data:
       path: Geometry/tests/polygon_area.test.cpp
       title: Geometry/tests/polygon_area.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Geometry/tests/polygon_convex_cut.test.cpp
+      title: Geometry/tests/polygon_convex_cut.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Geometry/tests/polygon_convex_diameter.test.cpp
+      title: Geometry/tests/polygon_convex_diameter.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Geometry/tests/polygon_convex_hull.test.cpp
+      title: Geometry/tests/polygon_convex_hull.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Geometry/tests/polygon_in_convex.test.cpp
       title: Geometry/tests/polygon_in_convex.test.cpp
     - icon: ':heavy_check_mark:'

@@ -17,23 +17,24 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_C
+    ERROR: 1e-6
+    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_B
     links:
-    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_C
-  bundledCode: "#line 1 \"Geometry/tests/polygon_in_polygon.test.cpp\"\n#define PROBLEM\
-    \ \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_C\"\n\n#line\
-    \ 1 \"template.h\"\n#include <bits/stdc++.h>\nusing namespace std;\n\n#define\
-    \ FOR(i,a,b) for(int i=(a),_b=(b); i<=_b; i++)\n#define FORD(i,a,b) for(int i=(a),_b=(b);\
-    \ i>=_b; i--)\n#define REP(i,a) for(int i=0,_a=(a); i<_a; i++)\n#define EACH(it,a)\
-    \ for(__typeof(a.begin()) it = a.begin(); it != a.end(); ++it)\n\n#define DEBUG(x)\
-    \ { cout << #x << \" = \"; cout << (x) << endl; }\n#define PR(a,n) { cout << #a\
-    \ << \" = \"; FOR(_,1,n) cout << a[_] << ' '; cout << endl; }\n#define PR0(a,n)\
-    \ { cout << #a << \" = \"; REP(_,n) cout << a[_] << ' '; cout << endl; }\n\n#define\
-    \ sqr(x) ((x) * (x))\n\n// For printing pair, container, etc.\n// Copied from\
-    \ https://quangloc99.github.io/2021/07/30/my-CP-debugging-template.html\ntemplate<class\
-    \ U, class V> ostream& operator << (ostream& out, const pair<U, V>& p) {\n   \
-    \ return out << '(' << p.first << \", \" << p.second << ')';\n}\n\ntemplate<class\
-    \ Con, class = decltype(begin(declval<Con>()))>\ntypename enable_if<!is_same<Con,\
+    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_B
+  bundledCode: "#line 1 \"Geometry/tests/polygon_convex_diameter.test.cpp\"\n#define\
+    \ PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_B\"\
+    \n\n#line 1 \"template.h\"\n#include <bits/stdc++.h>\nusing namespace std;\n\n\
+    #define FOR(i,a,b) for(int i=(a),_b=(b); i<=_b; i++)\n#define FORD(i,a,b) for(int\
+    \ i=(a),_b=(b); i>=_b; i--)\n#define REP(i,a) for(int i=0,_a=(a); i<_a; i++)\n\
+    #define EACH(it,a) for(__typeof(a.begin()) it = a.begin(); it != a.end(); ++it)\n\
+    \n#define DEBUG(x) { cout << #x << \" = \"; cout << (x) << endl; }\n#define PR(a,n)\
+    \ { cout << #a << \" = \"; FOR(_,1,n) cout << a[_] << ' '; cout << endl; }\n#define\
+    \ PR0(a,n) { cout << #a << \" = \"; REP(_,n) cout << a[_] << ' '; cout << endl;\
+    \ }\n\n#define sqr(x) ((x) * (x))\n\n// For printing pair, container, etc.\n//\
+    \ Copied from https://quangloc99.github.io/2021/07/30/my-CP-debugging-template.html\n\
+    template<class U, class V> ostream& operator << (ostream& out, const pair<U, V>&\
+    \ p) {\n    return out << '(' << p.first << \", \" << p.second << ')';\n}\n\n\
+    template<class Con, class = decltype(begin(declval<Con>()))>\ntypename enable_if<!is_same<Con,\
     \ string>::value, ostream&>::type\noperator << (ostream& out, const Con& con)\
     \ {\n    out << '{';\n    for (auto beg = con.begin(), it = beg; it != con.end();\
     \ it++) {\n        out << (it == beg ? \"\" : \", \") << *it;\n    }\n    return\
@@ -232,31 +233,29 @@ data:
     \ --j)\n                upd_ans(a[i], t[j]);\n            t[tsz++] = a[i];\n \
     \       }\n}\n\n// Pick theorem\n// Given non-intersecting polygon.\n// S = area\n\
     // I = number of integer points strictly Inside\n// B = number of points on sides\
-    \ of polygon\n// S = I + B/2 - 1\n#line 6 \"Geometry/tests/polygon_in_polygon.test.cpp\"\
-    \n\nvoid solve() {\n    int n; cin >> n;\n    Polygon g(n);\n    for (auto& p\
-    \ : g) cin >> p;\n\n    int q; cin >> q;\n    while (q--) {\n        Point p;\
-    \ cin >> p;\n        auto res = in_polygon(g, p);\n        cout << res << '\\\
-    n';\n    }\n}\n"
-  code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_C\"\
+    \ of polygon\n// S = I + B/2 - 1\n#line 6 \"Geometry/tests/polygon_convex_diameter.test.cpp\"\
+    \n\n#define ERROR 1e-6\n\nvoid solve() {\n    int n; cin >> n;\n    Polygon a(n);\n\
+    \    REP(i,n) cin >> a[i];\n\n    cout << (fixed) << setprecision(10) << convex_diameter(a).first\
+    \ << endl;\n}\n"
+  code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_B\"\
     \n\n#include \"../../template.h\"\n#include \"../basic.h\"\n#include \"../polygon.h\"\
-    \n\nvoid solve() {\n    int n; cin >> n;\n    Polygon g(n);\n    for (auto& p\
-    \ : g) cin >> p;\n\n    int q; cin >> q;\n    while (q--) {\n        Point p;\
-    \ cin >> p;\n        auto res = in_polygon(g, p);\n        cout << res << '\\\
-    n';\n    }\n}\n"
+    \n\n#define ERROR 1e-6\n\nvoid solve() {\n    int n; cin >> n;\n    Polygon a(n);\n\
+    \    REP(i,n) cin >> a[i];\n\n    cout << (fixed) << setprecision(10) << convex_diameter(a).first\
+    \ << endl;\n}\n"
   dependsOn:
   - template.h
   - Geometry/basic.h
   - Geometry/polygon.h
   isVerificationFile: true
-  path: Geometry/tests/polygon_in_polygon.test.cpp
+  path: Geometry/tests/polygon_convex_diameter.test.cpp
   requiredBy: []
   timestamp: '2022-01-11 01:06:49+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Geometry/tests/polygon_in_polygon.test.cpp
+documentation_of: Geometry/tests/polygon_convex_diameter.test.cpp
 layout: document
 redirect_from:
-- /verify/Geometry/tests/polygon_in_polygon.test.cpp
-- /verify/Geometry/tests/polygon_in_polygon.test.cpp.html
-title: Geometry/tests/polygon_in_polygon.test.cpp
+- /verify/Geometry/tests/polygon_convex_diameter.test.cpp
+- /verify/Geometry/tests/polygon_convex_diameter.test.cpp.html
+title: Geometry/tests/polygon_convex_diameter.test.cpp
 ---

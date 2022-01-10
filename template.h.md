@@ -64,6 +64,15 @@ data:
     path: Geometry/tests/polygon_area.test.cpp
     title: Geometry/tests/polygon_area.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Geometry/tests/polygon_convex_cut.test.cpp
+    title: Geometry/tests/polygon_convex_cut.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Geometry/tests/polygon_convex_diameter.test.cpp
+    title: Geometry/tests/polygon_convex_diameter.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Geometry/tests/polygon_convex_hull.test.cpp
+    title: Geometry/tests/polygon_convex_hull.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Geometry/tests/polygon_in_convex.test.cpp
     title: Geometry/tests/polygon_in_convex.test.cpp
   - icon: ':heavy_check_mark:'
@@ -157,6 +166,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/binary_trie.test.cpp
+  - Geometry/tests/polygon_convex_hull.test.cpp
   - Geometry/tests/basic_line_intersection.test.cpp
   - Geometry/tests/polygon_in_convex.test.cpp
   - Geometry/tests/polygon_in_polygon.test.cpp
@@ -166,7 +176,9 @@ data:
   - Geometry/tests/basic_segment_distance.test.cpp
   - Geometry/tests/basic_segment_intersect.test.cpp
   - Geometry/tests/basic_projection.test.cpp
+  - Geometry/tests/polygon_convex_cut.test.cpp
   - Geometry/tests/basic_reflection.test.cpp
+  - Geometry/tests/polygon_convex_diameter.test.cpp
   - Graph/tests/articulation_points.test.cpp
   - Graph/tests/floyd_aizu.test.cpp
   - Math/tests/factorize_aizu.test.cpp

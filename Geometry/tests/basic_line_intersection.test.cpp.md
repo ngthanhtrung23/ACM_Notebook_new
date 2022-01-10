@@ -61,11 +61,13 @@ data:
     \ { return Point(x, -y); }\n    double norm() { return x*x + y*y; }\n\n    //\
     \ Note: There are 2 ways for implementing len():\n    // 1. sqrt(norm()) --> fast,\
     \ but inaccurate (produce some values that are of order X^2)\n    // 2. hypot(x,\
-    \ y) --> slow, but much more accurate\n    double len() { return sqrt(norm());\
+    \ y) --> slow, but much more accurate\n    double len() { return hypot(x, y);\
     \ }\n\n    Point rotate(double alpha) {\n        double cosa = cos(alpha), sina\
     \ = sin(alpha);\n        return Point(x * cosa - y * sina, x * sina + y * cosa);\n\
-    \    }\n};\n\nint ccw(Point a, Point b, Point c) {\n    return cmp((b-a)%(c-a),0);\n\
-    }\nint RE_TRAI = ccw(Point(0, 0), Point(0, 1), Point(-1, 1));\nint RE_PHAI = ccw(Point(0,\
+    \    }\n};\n\n// Compare points by (y, x)\nauto cmpy = [] (const Point& a, const\
+    \ Point& b) {\n    if (a.y != b.y) return a.y < b.y;\n    return a.x < b.x;\n\
+    };\n\nint ccw(Point a, Point b, Point c) {\n    return cmp((b-a)%(c-a),0);\n}\n\
+    int RE_TRAI = ccw(Point(0, 0), Point(0, 1), Point(-1, 1));\nint RE_PHAI = ccw(Point(0,\
     \ 0), Point(0, 1), Point(1, 1));\nistream& operator >> (istream& cin, Point& p)\
     \ {\n    cin >> p.x >> p.y;\n    return cin;\n}\nostream& operator << (ostream&\
     \ cout, Point& p) {\n    cout << p.x << ' ' << p.y;\n    return cout;\n}\n\ndouble\
@@ -134,7 +136,7 @@ data:
   isVerificationFile: true
   path: Geometry/tests/basic_line_intersection.test.cpp
   requiredBy: []
-  timestamp: '2022-01-11 00:03:27+08:00'
+  timestamp: '2022-01-11 01:06:49+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Geometry/tests/basic_line_intersection.test.cpp
