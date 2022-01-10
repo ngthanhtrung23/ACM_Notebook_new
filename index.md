@@ -131,7 +131,7 @@ data:
     - icon: ':warning:'
       path: Geometry/basic.cpp
       title: Geometry/basic.cpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: Geometry/basic.h
       title: Geometry/basic.h
     - icon: ':warning:'
@@ -149,7 +149,7 @@ data:
     - icon: ':warning:'
       path: Geometry/polygon.cpp
       title: Geometry/polygon.cpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: Geometry/polygon.h
       title: Geometry/polygon.h
     - icon: ':warning:'
@@ -580,6 +580,17 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/wavelet_matrix_staticrangefreq.test.cpp
       title: DataStructure/test/wavelet_matrix_staticrangefreq.test.cpp
+  - name: Geometry/tests
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Geometry/tests/basic_ccw.test.cpp
+      title: Geometry/tests/basic_ccw.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Geometry/tests/polygon_area.test.cpp
+      title: Geometry/tests/polygon_area.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Geometry/tests/polygon_in_convex.test.cpp
+      title: Geometry/tests/polygon_in_convex.test.cpp
   - name: Graph/tests
     pages:
     - icon: ':heavy_check_mark:'

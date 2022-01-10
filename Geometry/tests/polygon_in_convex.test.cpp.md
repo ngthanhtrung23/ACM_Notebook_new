@@ -4,9 +4,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Geometry/basic.h
     title: Geometry/basic.h
-  - icon: ':warning:'
-    path: Geometry/circle.h
-    title: Geometry/circle.h
+  - icon: ':heavy_check_mark:'
+    path: Geometry/polygon.h
+    title: Geometry/polygon.h
   - icon: ':heavy_check_mark:'
     path: template.h
     title: template.h
@@ -14,9 +14,12 @@ data:
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links: []
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0412
+    links:
+    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0412
   bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.10.1/x64/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/opt/hostedtoolcache/Python/3.10.1/x64/lib/python3.10/site-packages/onlinejudge_verify/languages/cplusplus.py\"\
@@ -26,28 +29,26 @@ data:
     , line 355, in update\n    raise BundleErrorAt(path, i + 1, \"found codes out\
     \ of include guard\")\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt:\
     \ Geometry/basic.h: line 4: found codes out of include guard\n"
-  code: "#include \"../template.h\"\n#include \"basic.h\"\n#include \"circle.h\"\n\
-    \nint main() {\n    // Example: Check point inside circle\n    Circle C1(2, 2,\
-    \ 7);\n    assert(cmp((C1 - Point(8, 2)).norm(), C1.r * C1.r) < 0);\n    assert(cmp((C1\
-    \ - Point(9, 2)).norm(), C1.r * C1.r) == 0);\n    assert(cmp((C1 - Point(10, 2)).norm(),\
-    \ C1.r * C1.r) > 0);\n\n    // Find common tangents\n    Circle c2(1, 2, sqrt(5.0));\n\
-    \    Circle c3(5, 0, 0);\n\n    vector<Line> t = tangents(c2, c3);\n    assert(t.size()\
-    \ == 2);\n    assert(cmp(t[0].f(Point(5, 0)), 0) == 0);\n    assert(cmp(t[1].f(Point(5,\
-    \ 0)), 0) == 0);\n    cout << \"All tests passed\" << endl;\n}\n"
+  code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0412\"\
+    \n\n#include \"../../template.h\"\n#include \"../basic.h\"\n#include \"../polygon.h\"\
+    \n\nvoid solve() {\n    int n; cin >> n;\n    Polygon g(n);\n    for (auto& p\
+    \ : g) cin >> p;\n\n    int q; cin >> q;\n    while (q--) {\n        Point p;\
+    \ cin >> p;\n        p = p - (p / 10000.0);\n        cout << (in_convex(g, p)\
+    \ ? 1 : 0) << '\\n';\n    }\n}\n"
   dependsOn:
   - template.h
   - Geometry/basic.h
-  - Geometry/circle.h
-  isVerificationFile: false
-  path: Geometry/circle.cpp
+  - Geometry/polygon.h
+  isVerificationFile: true
+  path: Geometry/tests/polygon_in_convex.test.cpp
   requiredBy: []
   timestamp: '2022-01-10 23:17:53+08:00'
-  verificationStatus: LIBRARY_NO_TESTS
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Geometry/circle.cpp
+documentation_of: Geometry/tests/polygon_in_convex.test.cpp
 layout: document
 redirect_from:
-- /library/Geometry/circle.cpp
-- /library/Geometry/circle.cpp.html
-title: Geometry/circle.cpp
+- /verify/Geometry/tests/polygon_in_convex.test.cpp
+- /verify/Geometry/tests/polygon_in_convex.test.cpp.html
+title: Geometry/tests/polygon_in_convex.test.cpp
 ---
