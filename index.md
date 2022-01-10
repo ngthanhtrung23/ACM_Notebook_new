@@ -131,7 +131,7 @@ data:
     - icon: ':warning:'
       path: Geometry/basic.cpp
       title: Geometry/basic.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Geometry/basic.h
       title: Geometry/basic.h
     - icon: ':warning:'
@@ -149,7 +149,7 @@ data:
     - icon: ':warning:'
       path: Geometry/polygon.cpp
       title: Geometry/polygon.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: Geometry/polygon.h
       title: Geometry/polygon.h
     - icon: ':warning:'
@@ -273,23 +273,6 @@ data:
     - icon: ':warning:'
       path: Graph/Misc/EulerPath.h
       title: Graph/Misc/EulerPath.h
-  - name: Java
-    pages:
-    - icon: ':warning:'
-      path: Java/BigMath.java
-      title: Java/BigMath.java
-    - icon: ':warning:'
-      path: Java/InputReader.java
-      title: Java/InputReader.java
-    - icon: ':warning:'
-      path: Java/JS.java
-      title: Java/JS.java
-    - icon: ':warning:'
-      path: Java/Rational.java
-      title: Java/Rational.java
-    - icon: ':warning:'
-      path: Java/RegexTest.java
-      title: Java/RegexTest.java
   - name: Math
     pages:
     - icon: ':warning:'
@@ -485,7 +468,7 @@ data:
     - icon: ':warning:'
       path: debug.h
       title: debug.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template.h
       title: template.h
   verificationCategories:
@@ -585,10 +568,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: Geometry/tests/basic_ccw.test.cpp
       title: Geometry/tests/basic_ccw.test.cpp
+    - icon: ':x:'
+      path: Geometry/tests/basic_segment_distance.test.cpp
+      title: Geometry/tests/basic_segment_distance.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Geometry/tests/basic_segment_intersect.test.cpp
+      title: Geometry/tests/basic_segment_intersect.test.cpp
+    - icon: ':x:'
       path: Geometry/tests/polygon_area.test.cpp
       title: Geometry/tests/polygon_area.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: Geometry/tests/polygon_in_convex.test.cpp
       title: Geometry/tests/polygon_in_convex.test.cpp
   - name: Graph/tests

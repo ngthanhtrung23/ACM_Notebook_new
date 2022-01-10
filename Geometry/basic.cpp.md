@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Geometry/basic.h
     title: Geometry/basic.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
@@ -76,7 +76,7 @@ data:
   isVerificationFile: false
   path: Geometry/basic.cpp
   requiredBy: []
-  timestamp: '2022-01-10 23:17:53+08:00'
+  timestamp: '2022-01-10 23:30:30+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Geometry/basic.cpp

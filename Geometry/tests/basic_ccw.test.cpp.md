@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Geometry/basic.h
     title: Geometry/basic.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
@@ -30,8 +30,8 @@ data:
     \n\n#include \"../../template.h\"\n#include \"../basic.h\"\n\nvoid solve() {\n\
     \    Point a, b; cin >> a >> b;\n    int q; cin >> q;\n    while (q--) {\n   \
     \     Point c; cin >> c;\n        auto t = ccw(a, b, c);\n        if (t == 0)\
-    \ {\n            if (on_segment(a, b, c)) cout << \"ON_SEGMENT\\n\";\n       \
-    \     else if (on_segment(c, b, a)) cout << \"ONLINE_BACK\\n\";\n            else\
+    \ {\n            if (onSegment(a, b, c)) cout << \"ON_SEGMENT\\n\";\n        \
+    \    else if (onSegment(c, b, a)) cout << \"ONLINE_BACK\\n\";\n            else\
     \ cout << \"ONLINE_FRONT\\n\";\n        } else if (t < 0) cout << \"CLOCKWISE\\\
     n\";\n        else cout << \"COUNTER_CLOCKWISE\\n\";\n    }\n}\n"
   dependsOn:
@@ -40,7 +40,7 @@ data:
   isVerificationFile: true
   path: Geometry/tests/basic_ccw.test.cpp
   requiredBy: []
-  timestamp: '2022-01-10 23:17:53+08:00'
+  timestamp: '2022-01-10 23:30:30+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Geometry/tests/basic_ccw.test.cpp

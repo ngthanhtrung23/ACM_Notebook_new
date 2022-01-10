@@ -45,10 +45,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: Geometry/tests/basic_ccw.test.cpp
     title: Geometry/tests/basic_ccw.test.cpp
+  - icon: ':x:'
+    path: Geometry/tests/basic_segment_distance.test.cpp
+    title: Geometry/tests/basic_segment_distance.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Geometry/tests/basic_segment_intersect.test.cpp
+    title: Geometry/tests/basic_segment_intersect.test.cpp
+  - icon: ':x:'
     path: Geometry/tests/polygon_area.test.cpp
     title: Geometry/tests/polygon_area.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Geometry/tests/polygon_in_convex.test.cpp
     title: Geometry/tests/polygon_in_convex.test.cpp
   - icon: ':heavy_check_mark:'
@@ -63,9 +69,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Math/tests/is_prime_yukicoder.test.cpp
     title: Math/tests/is_prime_yukicoder.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://quangloc99.github.io/2021/07/30/my-CP-debugging-template.html
@@ -133,12 +139,14 @@ data:
   - String/minmove.cpp
   - String/lyndon.cpp
   timestamp: '2022-01-10 03:15:26+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - DataStructure/test/binary_trie.test.cpp
   - Geometry/tests/polygon_in_convex.test.cpp
   - Geometry/tests/basic_ccw.test.cpp
   - Geometry/tests/polygon_area.test.cpp
+  - Geometry/tests/basic_segment_distance.test.cpp
+  - Geometry/tests/basic_segment_intersect.test.cpp
   - Graph/tests/articulation_points.test.cpp
   - Graph/tests/floyd_aizu.test.cpp
   - Math/tests/factorize_aizu.test.cpp

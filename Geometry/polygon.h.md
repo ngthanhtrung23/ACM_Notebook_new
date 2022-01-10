@@ -6,15 +6,15 @@ data:
     path: Geometry/polygon.cpp
     title: Geometry/polygon.cpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Geometry/tests/polygon_area.test.cpp
     title: Geometry/tests/polygon_area.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Geometry/tests/polygon_in_convex.test.cpp
     title: Geometry/tests/polygon_in_convex.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - http://codeforces.com/contest/166/submission/1392387
@@ -259,7 +259,7 @@ data:
   requiredBy:
   - Geometry/polygon.cpp
   timestamp: '2022-01-10 23:17:53+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - Geometry/tests/polygon_in_convex.test.cpp
   - Geometry/tests/polygon_area.test.cpp
