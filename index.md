@@ -141,6 +141,9 @@ data:
       path: Geometry/circle.h
       title: Geometry/circle.h
     - icon: ':warning:'
+      path: Geometry/closest_pair.h
+      title: Geometry/closest_pair.h
+    - icon: ':warning:'
       path: Geometry/geometry_int.h
       title: Geometry/geometry_int.h
     - icon: ':warning:'

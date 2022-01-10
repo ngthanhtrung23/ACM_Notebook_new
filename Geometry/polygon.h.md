@@ -33,8 +33,6 @@ data:
   attributes:
     links:
     - http://codeforces.com/contest/166/submission/1392387
-    - https://open.kattis.com/problems/closestpair1
-    - https://open.kattis.com/problems/closestpair2
     - https://open.kattis.com/problems/convexhull
     - https://open.kattis.com/problems/cuttingpolygon
     - https://open.kattis.com/problems/pointinpolygon
@@ -141,21 +139,9 @@ data:
     \ > maxd) {\n            maxd = (p[i] - p[j]).len();\n            maxi = i;\n\
     \            maxj = j;\n        }\n    } while (i != is || j != js);\n    return\
     \ {maxd, std::minmax(maxi, maxj)}; /* farthest pair is (maxi, maxj). */\n}\n\n\
-    // Closest pair\n// Source: e-maxx.ru\n// Tested:\n// - https://open.kattis.com/problems/closestpair2\n\
-    // - https://open.kattis.com/problems/closestpair1\n// Notes:\n// - Sort by X\
-    \ first\n// - Implement compare by Y\n#define upd_ans(x, y) {}\n#define MAXN 100\n\
-    double mindist = 1e20; // will be the result\nvoid rec(int l, int r, Point a[])\
-    \ {\n    if (r - l <= 3) {\n        for (int i=l; i<=r; ++i)\n            for\
-    \ (int j=i+1; j<=r; ++j)\n                    upd_ans(a[i], a[j]);\n        sort(a+l,\
-    \ a+r+1, cmpy);\n        return;\n    }\n\n    int m = (l + r) >> 1;\n    int\
-    \ midx = a[m].x;\n    rec(l, m, a), rec(m+1, r, a);\n    static Point t[MAXN];\n\
-    \    merge(a+l, a+m+1, a+m+1, a+r+1, t, cmpy);\n    copy(t, t+r-l+1, a+l);\n\n\
-    \    int tsz = 0;\n    for (int i=l; i<=r; ++i)\n        if (fabs(a[i].x - midx)\
-    \ < mindist) {\n            for (int j=tsz-1; j>=0 && a[i].y - t[j].y < mindist;\
-    \ --j)\n                upd_ans(a[i], t[j]);\n            t[tsz++] = a[i];\n \
-    \       }\n}\n\n// Pick theorem\n// Given non-intersecting polygon.\n// S = area\n\
-    // I = number of integer points strictly Inside\n// B = number of points on sides\
-    \ of polygon\n// S = I + B/2 - 1\n"
+    // Pick theorem\n// Given non-intersecting polygon.\n// S = area\n// I = number\
+    \ of integer points strictly Inside\n// B = number of points on sides of polygon\n\
+    // S = I + B/2 - 1\n"
   code: "typedef vector< Point > Polygon;\n\n// Convex Hull:\n// If minimum point\
     \ --> #define REMOVE_REDUNDANT\n// If maximum point --> need to change >= and\
     \ <= to > and < (see Note).\n// Known issues:\n// - Max. point does not work when\
@@ -258,27 +244,15 @@ data:
     \ > maxd) {\n            maxd = (p[i] - p[j]).len();\n            maxi = i;\n\
     \            maxj = j;\n        }\n    } while (i != is || j != js);\n    return\
     \ {maxd, std::minmax(maxi, maxj)}; /* farthest pair is (maxi, maxj). */\n}\n\n\
-    // Closest pair\n// Source: e-maxx.ru\n// Tested:\n// - https://open.kattis.com/problems/closestpair2\n\
-    // - https://open.kattis.com/problems/closestpair1\n// Notes:\n// - Sort by X\
-    \ first\n// - Implement compare by Y\n#define upd_ans(x, y) {}\n#define MAXN 100\n\
-    double mindist = 1e20; // will be the result\nvoid rec(int l, int r, Point a[])\
-    \ {\n    if (r - l <= 3) {\n        for (int i=l; i<=r; ++i)\n            for\
-    \ (int j=i+1; j<=r; ++j)\n                    upd_ans(a[i], a[j]);\n        sort(a+l,\
-    \ a+r+1, cmpy);\n        return;\n    }\n\n    int m = (l + r) >> 1;\n    int\
-    \ midx = a[m].x;\n    rec(l, m, a), rec(m+1, r, a);\n    static Point t[MAXN];\n\
-    \    merge(a+l, a+m+1, a+m+1, a+r+1, t, cmpy);\n    copy(t, t+r-l+1, a+l);\n\n\
-    \    int tsz = 0;\n    for (int i=l; i<=r; ++i)\n        if (fabs(a[i].x - midx)\
-    \ < mindist) {\n            for (int j=tsz-1; j>=0 && a[i].y - t[j].y < mindist;\
-    \ --j)\n                upd_ans(a[i], t[j]);\n            t[tsz++] = a[i];\n \
-    \       }\n}\n\n// Pick theorem\n// Given non-intersecting polygon.\n// S = area\n\
-    // I = number of integer points strictly Inside\n// B = number of points on sides\
-    \ of polygon\n// S = I + B/2 - 1\n"
+    // Pick theorem\n// Given non-intersecting polygon.\n// S = area\n// I = number\
+    \ of integer points strictly Inside\n// B = number of points on sides of polygon\n\
+    // S = I + B/2 - 1\n"
   dependsOn: []
   isVerificationFile: false
   path: Geometry/polygon.h
   requiredBy:
   - Geometry/polygon.cpp
-  timestamp: '2022-01-11 01:06:49+08:00'
+  timestamp: '2022-01-11 02:50:07+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Geometry/tests/polygon_convex_hull.test.cpp
