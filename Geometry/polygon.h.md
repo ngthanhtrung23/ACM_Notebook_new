@@ -12,9 +12,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: Geometry/tests/polygon_in_convex.test.cpp
     title: Geometry/tests/polygon_in_convex.test.cpp
-  _isVerificationFailed: false
+  - icon: ':heavy_check_mark:'
+    path: Geometry/tests/polygon_in_polygon.test.cpp
+    title: Geometry/tests/polygon_in_polygon.test.cpp
+  - icon: ':x:'
+    path: Geometry/tests/polygon_is_convex.test.cpp
+    title: Geometry/tests/polygon_is_convex.test.cpp
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - http://codeforces.com/contest/166/submission/1392387
@@ -64,51 +70,52 @@ data:
     \ P[1], P[2]);\n    for (int i = 1; i < sz; i++)\n        if (ccw(P[i], P[(i+1)\
     \ % sz], P[(i+2) % sz]) * isLeft < 0)\n            return false;\n    return true;\n\
     }\n\n// Inside polygon: O(N). Works with any polygon\n// Tested:\n// - https://open.kattis.com/problems/pointinpolygon\n\
-    // - https://open.kattis.com/problems/cuttingpolygon\nbool in_polygon(const Polygon\
-    \ &p, Point q) {\n    if ((int)p.size() == 0) return false;\n\n    // Check if\
-    \ point is on edge.\n    int n = p.size();\n    REP(i,n) {\n        int j = (i\
-    \ + 1) % n;\n        Point u = p[i], v = p[j];\n\n        if (u > v) swap(u, v);\n\
-    \n        if (ccw(u, v, q) == 0 && u <= q && q <= v) return true;\n    }\n\n \
-    \   // Check if point is strictly inside.\n    int c = 0;\n    for (int i = 0;\
-    \ i < n; i++) {\n        int j = (i + 1) % n;\n        if (((p[i].y <= q.y &&\
-    \ q.y < p[j].y)\n                    || (p[j].y <= q.y && q.y < p[i].y))\n   \
-    \             && q.x < p[i].x + (p[j].x - p[i].x) * (q.y - p[i].y) / (p[j].y -\
-    \ p[i].y)) {\n            c = !c;\n        }\n    }\n    return c;\n}\n\n// Check\
-    \ point in convex polygon, O(logN)\n// Source: http://codeforces.com/contest/166/submission/1392387\n\
-    #define Det(a,b,c) ((double)(b.x-a.x)*(double)(c.y-a.y)-(double)(b.y-a.y)*(c.x-a.x))\n\
-    enum PolygonLocation { OUT, ON, IN };\nPolygonLocation in_convex(vector<Point>&\
-    \ l, Point p){\n    int a = 1, b = l.size()-1, c;\n    if (Det(l[0], l[a], l[b])\
-    \ > 0) swap(a,b);\n\n    if (onSegment(l[0], l[a], p)) return ON;\n    if (onSegment(l[0],\
-    \ l[b], p)) return ON;\n\n    if (Det(l[0], l[a], p) > 0 || Det(l[0], l[b], p)\
-    \ < 0) return OUT;\n    while(abs(a-b) > 1) {\n        c = (a+b)/2;\n        if\
-    \ (Det(l[0], l[c], p) > 0) b = c; else a = c;\n    }\n    int t = cmp(Det(l[a],\
-    \ l[b], p), 0);\n    return (t == 0) ? ON : (t < 0) ? IN : OUT;\n}\n\n\n// Cut\
-    \ a polygon with a line. Returns one half.\n// To return the other half, reverse\
-    \ the direction of Line l (by negating l.a, l.b)\n// The line must be formed using\
-    \ 2 points\nPolygon polygon_cut(const Polygon& P, Line l) {\n    Polygon Q;\n\
-    \    for(int i = 0; i < (int) P.size(); ++i) {\n        Point A = P[i], B = (i\
-    \ == ((int) P.size())-1) ? P[0] : P[i+1];\n        if (ccw(l.A, l.B, A) != -1)\
-    \ Q.push_back(A);\n        if (ccw(l.A, l.B, A)*ccw(l.A, l.B, B) < 0) {\n    \
-    \        Point p; areIntersect(Line(A, B), l, p);\n            Q.push_back(p);\n\
-    \        }\n    }\n    return Q;\n}\n\n// Find intersection of 2 convex polygons\n\
-    // Helper method\nbool intersect_1pt(Point a, Point b,\n    Point c, Point d,\
-    \ Point &r) {\n    double D =  (b - a) % (d - c);\n    if (cmp(D, 0) == 0) return\
-    \ false;\n    double t =  ((c - a) % (d - c)) / D;\n    double s = -((a - c) %\
-    \ (b - a)) / D;\n    r = a + (b - a) * t;\n    return cmp(t, 0) >= 0 && cmp(t,\
-    \ 1) <= 0 && cmp(s, 0) >= 0 && cmp(s, 1) <= 0;\n}\nPolygon convex_intersect(Polygon\
-    \ P, Polygon Q) {\n    const int n = P.size(), m = Q.size();\n    int a = 0, b\
-    \ = 0, aa = 0, ba = 0;\n    enum { Pin, Qin, Unknown } in = Unknown;\n    Polygon\
-    \ R;\n    do {\n        int a1 = (a+n-1) % n, b1 = (b+m-1) % m;\n        double\
-    \ C = (P[a] - P[a1]) % (Q[b] - Q[b1]);\n        double A = (P[a1] - Q[b]) % (P[a]\
-    \ - Q[b]);\n        double B = (Q[b1] - P[a]) % (Q[b] - P[a]);\n        Point\
-    \ r;\n        if (intersect_1pt(P[a1], P[a], Q[b1], Q[b], r)) {\n            if\
-    \ (in == Unknown) aa = ba = 0;\n            R.push_back( r );\n            in\
-    \ = B > 0 ? Pin : A > 0 ? Qin : in;\n        }\n        if (C == 0 && B == 0 &&\
-    \ A == 0) {\n            if (in == Pin) { b = (b + 1) % m; ++ba; }\n         \
-    \   else            { a = (a + 1) % m; ++aa; }\n        } else if (C >= 0) {\n\
-    \            if (A > 0) { if (in == Pin) R.push_back(P[a]); a = (a+1)%n; ++aa;\
-    \ }\n            else       { if (in == Qin) R.push_back(Q[b]); b = (b+1)%m; ++ba;\
-    \ }\n        } else {\n            if (B > 0) { if (in == Qin) R.push_back(Q[b]);\
+    // - https://open.kattis.com/problems/cuttingpolygon\nenum PolygonLocation { OUT,\
+    \ ON, IN };\nPolygonLocation in_polygon(const Polygon &p, Point q) {\n    if ((int)p.size()\
+    \ == 0) return PolygonLocation::OUT;\n\n    // Check if point is on edge.\n  \
+    \  int n = p.size();\n    REP(i,n) {\n        int j = (i + 1) % n;\n        Point\
+    \ u = p[i], v = p[j];\n\n        if (u > v) swap(u, v);\n\n        if (ccw(u,\
+    \ v, q) == 0 && u <= q && q <= v) return PolygonLocation::ON;\n    }\n\n    //\
+    \ Check if point is strictly inside.\n    int c = 0;\n    for (int i = 0; i <\
+    \ n; i++) {\n        int j = (i + 1) % n;\n        if (((p[i].y <= q.y && q.y\
+    \ < p[j].y)\n                    || (p[j].y <= q.y && q.y < p[i].y))\n       \
+    \         && q.x < p[i].x + (p[j].x - p[i].x) * (q.y - p[i].y) / (p[j].y - p[i].y))\
+    \ {\n            c = !c;\n        }\n    }\n    return c ? PolygonLocation::IN\
+    \ : PolygonLocation::OUT;\n}\n\n// Check point in convex polygon, O(logN)\n//\
+    \ Source: http://codeforces.com/contest/166/submission/1392387\n#define Det(a,b,c)\
+    \ ((double)(b.x-a.x)*(double)(c.y-a.y)-(double)(b.y-a.y)*(c.x-a.x))\nPolygonLocation\
+    \ in_convex(vector<Point>& l, Point p){\n    int a = 1, b = l.size()-1, c;\n \
+    \   if (Det(l[0], l[a], l[b]) > 0) swap(a,b);\n\n    if (onSegment(l[0], l[a],\
+    \ p)) return ON;\n    if (onSegment(l[0], l[b], p)) return ON;\n\n    if (Det(l[0],\
+    \ l[a], p) > 0 || Det(l[0], l[b], p) < 0) return OUT;\n    while(abs(a-b) > 1)\
+    \ {\n        c = (a+b)/2;\n        if (Det(l[0], l[c], p) > 0) b = c; else a =\
+    \ c;\n    }\n    int t = cmp(Det(l[a], l[b], p), 0);\n    return (t == 0) ? ON\
+    \ : (t < 0) ? IN : OUT;\n}\n\n\n// Cut a polygon with a line. Returns one half.\n\
+    // To return the other half, reverse the direction of Line l (by negating l.a,\
+    \ l.b)\n// The line must be formed using 2 points\nPolygon polygon_cut(const Polygon&\
+    \ P, Line l) {\n    Polygon Q;\n    for(int i = 0; i < (int) P.size(); ++i) {\n\
+    \        Point A = P[i], B = (i == ((int) P.size())-1) ? P[0] : P[i+1];\n    \
+    \    if (ccw(l.A, l.B, A) != -1) Q.push_back(A);\n        if (ccw(l.A, l.B, A)*ccw(l.A,\
+    \ l.B, B) < 0) {\n            Point p; areIntersect(Line(A, B), l, p);\n     \
+    \       Q.push_back(p);\n        }\n    }\n    return Q;\n}\n\n// Find intersection\
+    \ of 2 convex polygons\n// Helper method\nbool intersect_1pt(Point a, Point b,\n\
+    \    Point c, Point d, Point &r) {\n    double D =  (b - a) % (d - c);\n    if\
+    \ (cmp(D, 0) == 0) return false;\n    double t =  ((c - a) % (d - c)) / D;\n \
+    \   double s = -((a - c) % (b - a)) / D;\n    r = a + (b - a) * t;\n    return\
+    \ cmp(t, 0) >= 0 && cmp(t, 1) <= 0 && cmp(s, 0) >= 0 && cmp(s, 1) <= 0;\n}\nPolygon\
+    \ convex_intersect(Polygon P, Polygon Q) {\n    const int n = P.size(), m = Q.size();\n\
+    \    int a = 0, b = 0, aa = 0, ba = 0;\n    enum { Pin, Qin, Unknown } in = Unknown;\n\
+    \    Polygon R;\n    do {\n        int a1 = (a+n-1) % n, b1 = (b+m-1) % m;\n \
+    \       double C = (P[a] - P[a1]) % (Q[b] - Q[b1]);\n        double A = (P[a1]\
+    \ - Q[b]) % (P[a] - Q[b]);\n        double B = (Q[b1] - P[a]) % (Q[b] - P[a]);\n\
+    \        Point r;\n        if (intersect_1pt(P[a1], P[a], Q[b1], Q[b], r)) {\n\
+    \            if (in == Unknown) aa = ba = 0;\n            R.push_back( r );\n\
+    \            in = B > 0 ? Pin : A > 0 ? Qin : in;\n        }\n        if (C ==\
+    \ 0 && B == 0 && A == 0) {\n            if (in == Pin) { b = (b + 1) % m; ++ba;\
+    \ }\n            else            { a = (a + 1) % m; ++aa; }\n        } else if\
+    \ (C >= 0) {\n            if (A > 0) { if (in == Pin) R.push_back(P[a]); a = (a+1)%n;\
+    \ ++aa; }\n            else       { if (in == Qin) R.push_back(Q[b]); b = (b+1)%m;\
+    \ ++ba; }\n        } else {\n            if (B > 0) { if (in == Qin) R.push_back(Q[b]);\
     \ b = (b+1)%m; ++ba; }\n            else       { if (in == Pin) R.push_back(P[a]);\
     \ a = (a+1)%n; ++aa; }\n        }\n    } while ( (aa < n || ba < m) && aa < 2*n\
     \ && ba < 2*m );\n    if (in == Unknown) {\n        if (in_convex(Q, P[0])) return\
@@ -179,51 +186,52 @@ data:
     \       if (ccw(P[i], P[(i+1) % sz], P[(i+2) % sz]) * isLeft < 0)\n          \
     \  return false;\n    return true;\n}\n\n// Inside polygon: O(N). Works with any\
     \ polygon\n// Tested:\n// - https://open.kattis.com/problems/pointinpolygon\n\
-    // - https://open.kattis.com/problems/cuttingpolygon\nbool in_polygon(const Polygon\
-    \ &p, Point q) {\n    if ((int)p.size() == 0) return false;\n\n    // Check if\
-    \ point is on edge.\n    int n = p.size();\n    REP(i,n) {\n        int j = (i\
-    \ + 1) % n;\n        Point u = p[i], v = p[j];\n\n        if (u > v) swap(u, v);\n\
-    \n        if (ccw(u, v, q) == 0 && u <= q && q <= v) return true;\n    }\n\n \
-    \   // Check if point is strictly inside.\n    int c = 0;\n    for (int i = 0;\
-    \ i < n; i++) {\n        int j = (i + 1) % n;\n        if (((p[i].y <= q.y &&\
-    \ q.y < p[j].y)\n                    || (p[j].y <= q.y && q.y < p[i].y))\n   \
-    \             && q.x < p[i].x + (p[j].x - p[i].x) * (q.y - p[i].y) / (p[j].y -\
-    \ p[i].y)) {\n            c = !c;\n        }\n    }\n    return c;\n}\n\n// Check\
-    \ point in convex polygon, O(logN)\n// Source: http://codeforces.com/contest/166/submission/1392387\n\
-    #define Det(a,b,c) ((double)(b.x-a.x)*(double)(c.y-a.y)-(double)(b.y-a.y)*(c.x-a.x))\n\
-    enum PolygonLocation { OUT, ON, IN };\nPolygonLocation in_convex(vector<Point>&\
-    \ l, Point p){\n    int a = 1, b = l.size()-1, c;\n    if (Det(l[0], l[a], l[b])\
-    \ > 0) swap(a,b);\n\n    if (onSegment(l[0], l[a], p)) return ON;\n    if (onSegment(l[0],\
-    \ l[b], p)) return ON;\n\n    if (Det(l[0], l[a], p) > 0 || Det(l[0], l[b], p)\
-    \ < 0) return OUT;\n    while(abs(a-b) > 1) {\n        c = (a+b)/2;\n        if\
-    \ (Det(l[0], l[c], p) > 0) b = c; else a = c;\n    }\n    int t = cmp(Det(l[a],\
-    \ l[b], p), 0);\n    return (t == 0) ? ON : (t < 0) ? IN : OUT;\n}\n\n\n// Cut\
-    \ a polygon with a line. Returns one half.\n// To return the other half, reverse\
-    \ the direction of Line l (by negating l.a, l.b)\n// The line must be formed using\
-    \ 2 points\nPolygon polygon_cut(const Polygon& P, Line l) {\n    Polygon Q;\n\
-    \    for(int i = 0; i < (int) P.size(); ++i) {\n        Point A = P[i], B = (i\
-    \ == ((int) P.size())-1) ? P[0] : P[i+1];\n        if (ccw(l.A, l.B, A) != -1)\
-    \ Q.push_back(A);\n        if (ccw(l.A, l.B, A)*ccw(l.A, l.B, B) < 0) {\n    \
-    \        Point p; areIntersect(Line(A, B), l, p);\n            Q.push_back(p);\n\
-    \        }\n    }\n    return Q;\n}\n\n// Find intersection of 2 convex polygons\n\
-    // Helper method\nbool intersect_1pt(Point a, Point b,\n    Point c, Point d,\
-    \ Point &r) {\n    double D =  (b - a) % (d - c);\n    if (cmp(D, 0) == 0) return\
-    \ false;\n    double t =  ((c - a) % (d - c)) / D;\n    double s = -((a - c) %\
-    \ (b - a)) / D;\n    r = a + (b - a) * t;\n    return cmp(t, 0) >= 0 && cmp(t,\
-    \ 1) <= 0 && cmp(s, 0) >= 0 && cmp(s, 1) <= 0;\n}\nPolygon convex_intersect(Polygon\
-    \ P, Polygon Q) {\n    const int n = P.size(), m = Q.size();\n    int a = 0, b\
-    \ = 0, aa = 0, ba = 0;\n    enum { Pin, Qin, Unknown } in = Unknown;\n    Polygon\
-    \ R;\n    do {\n        int a1 = (a+n-1) % n, b1 = (b+m-1) % m;\n        double\
-    \ C = (P[a] - P[a1]) % (Q[b] - Q[b1]);\n        double A = (P[a1] - Q[b]) % (P[a]\
-    \ - Q[b]);\n        double B = (Q[b1] - P[a]) % (Q[b] - P[a]);\n        Point\
-    \ r;\n        if (intersect_1pt(P[a1], P[a], Q[b1], Q[b], r)) {\n            if\
-    \ (in == Unknown) aa = ba = 0;\n            R.push_back( r );\n            in\
-    \ = B > 0 ? Pin : A > 0 ? Qin : in;\n        }\n        if (C == 0 && B == 0 &&\
-    \ A == 0) {\n            if (in == Pin) { b = (b + 1) % m; ++ba; }\n         \
-    \   else            { a = (a + 1) % m; ++aa; }\n        } else if (C >= 0) {\n\
-    \            if (A > 0) { if (in == Pin) R.push_back(P[a]); a = (a+1)%n; ++aa;\
-    \ }\n            else       { if (in == Qin) R.push_back(Q[b]); b = (b+1)%m; ++ba;\
-    \ }\n        } else {\n            if (B > 0) { if (in == Qin) R.push_back(Q[b]);\
+    // - https://open.kattis.com/problems/cuttingpolygon\nenum PolygonLocation { OUT,\
+    \ ON, IN };\nPolygonLocation in_polygon(const Polygon &p, Point q) {\n    if ((int)p.size()\
+    \ == 0) return PolygonLocation::OUT;\n\n    // Check if point is on edge.\n  \
+    \  int n = p.size();\n    REP(i,n) {\n        int j = (i + 1) % n;\n        Point\
+    \ u = p[i], v = p[j];\n\n        if (u > v) swap(u, v);\n\n        if (ccw(u,\
+    \ v, q) == 0 && u <= q && q <= v) return PolygonLocation::ON;\n    }\n\n    //\
+    \ Check if point is strictly inside.\n    int c = 0;\n    for (int i = 0; i <\
+    \ n; i++) {\n        int j = (i + 1) % n;\n        if (((p[i].y <= q.y && q.y\
+    \ < p[j].y)\n                    || (p[j].y <= q.y && q.y < p[i].y))\n       \
+    \         && q.x < p[i].x + (p[j].x - p[i].x) * (q.y - p[i].y) / (p[j].y - p[i].y))\
+    \ {\n            c = !c;\n        }\n    }\n    return c ? PolygonLocation::IN\
+    \ : PolygonLocation::OUT;\n}\n\n// Check point in convex polygon, O(logN)\n//\
+    \ Source: http://codeforces.com/contest/166/submission/1392387\n#define Det(a,b,c)\
+    \ ((double)(b.x-a.x)*(double)(c.y-a.y)-(double)(b.y-a.y)*(c.x-a.x))\nPolygonLocation\
+    \ in_convex(vector<Point>& l, Point p){\n    int a = 1, b = l.size()-1, c;\n \
+    \   if (Det(l[0], l[a], l[b]) > 0) swap(a,b);\n\n    if (onSegment(l[0], l[a],\
+    \ p)) return ON;\n    if (onSegment(l[0], l[b], p)) return ON;\n\n    if (Det(l[0],\
+    \ l[a], p) > 0 || Det(l[0], l[b], p) < 0) return OUT;\n    while(abs(a-b) > 1)\
+    \ {\n        c = (a+b)/2;\n        if (Det(l[0], l[c], p) > 0) b = c; else a =\
+    \ c;\n    }\n    int t = cmp(Det(l[a], l[b], p), 0);\n    return (t == 0) ? ON\
+    \ : (t < 0) ? IN : OUT;\n}\n\n\n// Cut a polygon with a line. Returns one half.\n\
+    // To return the other half, reverse the direction of Line l (by negating l.a,\
+    \ l.b)\n// The line must be formed using 2 points\nPolygon polygon_cut(const Polygon&\
+    \ P, Line l) {\n    Polygon Q;\n    for(int i = 0; i < (int) P.size(); ++i) {\n\
+    \        Point A = P[i], B = (i == ((int) P.size())-1) ? P[0] : P[i+1];\n    \
+    \    if (ccw(l.A, l.B, A) != -1) Q.push_back(A);\n        if (ccw(l.A, l.B, A)*ccw(l.A,\
+    \ l.B, B) < 0) {\n            Point p; areIntersect(Line(A, B), l, p);\n     \
+    \       Q.push_back(p);\n        }\n    }\n    return Q;\n}\n\n// Find intersection\
+    \ of 2 convex polygons\n// Helper method\nbool intersect_1pt(Point a, Point b,\n\
+    \    Point c, Point d, Point &r) {\n    double D =  (b - a) % (d - c);\n    if\
+    \ (cmp(D, 0) == 0) return false;\n    double t =  ((c - a) % (d - c)) / D;\n \
+    \   double s = -((a - c) % (b - a)) / D;\n    r = a + (b - a) * t;\n    return\
+    \ cmp(t, 0) >= 0 && cmp(t, 1) <= 0 && cmp(s, 0) >= 0 && cmp(s, 1) <= 0;\n}\nPolygon\
+    \ convex_intersect(Polygon P, Polygon Q) {\n    const int n = P.size(), m = Q.size();\n\
+    \    int a = 0, b = 0, aa = 0, ba = 0;\n    enum { Pin, Qin, Unknown } in = Unknown;\n\
+    \    Polygon R;\n    do {\n        int a1 = (a+n-1) % n, b1 = (b+m-1) % m;\n \
+    \       double C = (P[a] - P[a1]) % (Q[b] - Q[b1]);\n        double A = (P[a1]\
+    \ - Q[b]) % (P[a] - Q[b]);\n        double B = (Q[b1] - P[a]) % (Q[b] - P[a]);\n\
+    \        Point r;\n        if (intersect_1pt(P[a1], P[a], Q[b1], Q[b], r)) {\n\
+    \            if (in == Unknown) aa = ba = 0;\n            R.push_back( r );\n\
+    \            in = B > 0 ? Pin : A > 0 ? Qin : in;\n        }\n        if (C ==\
+    \ 0 && B == 0 && A == 0) {\n            if (in == Pin) { b = (b + 1) % m; ++ba;\
+    \ }\n            else            { a = (a + 1) % m; ++aa; }\n        } else if\
+    \ (C >= 0) {\n            if (A > 0) { if (in == Pin) R.push_back(P[a]); a = (a+1)%n;\
+    \ ++aa; }\n            else       { if (in == Qin) R.push_back(Q[b]); b = (b+1)%m;\
+    \ ++ba; }\n        } else {\n            if (B > 0) { if (in == Qin) R.push_back(Q[b]);\
     \ b = (b+1)%m; ++ba; }\n            else       { if (in == Pin) R.push_back(P[a]);\
     \ a = (a+1)%n; ++aa; }\n        }\n    } while ( (aa < n || ba < m) && aa < 2*n\
     \ && ba < 2*m );\n    if (in == Unknown) {\n        if (in_convex(Q, P[0])) return\
@@ -258,10 +266,12 @@ data:
   path: Geometry/polygon.h
   requiredBy:
   - Geometry/polygon.cpp
-  timestamp: '2022-01-10 23:32:56+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2022-01-11 00:18:26+08:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - Geometry/tests/polygon_in_convex.test.cpp
+  - Geometry/tests/polygon_in_polygon.test.cpp
+  - Geometry/tests/polygon_is_convex.test.cpp
   - Geometry/tests/polygon_area.test.cpp
 documentation_of: Geometry/polygon.h
 layout: document

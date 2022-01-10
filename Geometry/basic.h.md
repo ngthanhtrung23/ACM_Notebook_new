@@ -39,9 +39,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: Geometry/tests/polygon_in_convex.test.cpp
     title: Geometry/tests/polygon_in_convex.test.cpp
-  _isVerificationFailed: false
+  - icon: ':heavy_check_mark:'
+    path: Geometry/tests/polygon_in_polygon.test.cpp
+    title: Geometry/tests/polygon_in_polygon.test.cpp
+  - icon: ':x:'
+    path: Geometry/tests/polygon_is_convex.test.cpp
+    title: Geometry/tests/polygon_is_convex.test.cpp
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://cses.fi/problemset/task/2190/
@@ -193,10 +199,12 @@ data:
   - Geometry/basic.cpp
   - Geometry/polygon.cpp
   timestamp: '2022-01-11 00:03:27+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - Geometry/tests/basic_line_intersection.test.cpp
   - Geometry/tests/polygon_in_convex.test.cpp
+  - Geometry/tests/polygon_in_polygon.test.cpp
+  - Geometry/tests/polygon_is_convex.test.cpp
   - Geometry/tests/basic_ccw.test.cpp
   - Geometry/tests/polygon_area.test.cpp
   - Geometry/tests/basic_segment_distance.test.cpp

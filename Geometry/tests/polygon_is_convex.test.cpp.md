@@ -12,23 +12,28 @@ data:
     title: template.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
-    links: []
-  bundledCode: "#line 1 \"template.h\"\n#include <bits/stdc++.h>\nusing namespace\
-    \ std;\n\n#define FOR(i,a,b) for(int i=(a),_b=(b); i<=_b; i++)\n#define FORD(i,a,b)\
-    \ for(int i=(a),_b=(b); i>=_b; i--)\n#define REP(i,a) for(int i=0,_a=(a); i<_a;\
-    \ i++)\n#define EACH(it,a) for(__typeof(a.begin()) it = a.begin(); it != a.end();\
-    \ ++it)\n\n#define DEBUG(x) { cout << #x << \" = \"; cout << (x) << endl; }\n\
-    #define PR(a,n) { cout << #a << \" = \"; FOR(_,1,n) cout << a[_] << ' '; cout\
-    \ << endl; }\n#define PR0(a,n) { cout << #a << \" = \"; REP(_,n) cout << a[_]\
-    \ << ' '; cout << endl; }\n\n#define sqr(x) ((x) * (x))\n\n// For printing pair,\
-    \ container, etc.\n// Copied from https://quangloc99.github.io/2021/07/30/my-CP-debugging-template.html\n\
-    template<class U, class V> ostream& operator << (ostream& out, const pair<U, V>&\
-    \ p) {\n    return out << '(' << p.first << \", \" << p.second << ')';\n}\n\n\
-    template<class Con, class = decltype(begin(declval<Con>()))>\ntypename enable_if<!is_same<Con,\
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_B
+    links:
+    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_B
+  bundledCode: "#line 1 \"Geometry/tests/polygon_is_convex.test.cpp\"\n#define PROBLEM\
+    \ \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_B\"\n\n#line\
+    \ 1 \"template.h\"\n#include <bits/stdc++.h>\nusing namespace std;\n\n#define\
+    \ FOR(i,a,b) for(int i=(a),_b=(b); i<=_b; i++)\n#define FORD(i,a,b) for(int i=(a),_b=(b);\
+    \ i>=_b; i--)\n#define REP(i,a) for(int i=0,_a=(a); i<_a; i++)\n#define EACH(it,a)\
+    \ for(__typeof(a.begin()) it = a.begin(); it != a.end(); ++it)\n\n#define DEBUG(x)\
+    \ { cout << #x << \" = \"; cout << (x) << endl; }\n#define PR(a,n) { cout << #a\
+    \ << \" = \"; FOR(_,1,n) cout << a[_] << ' '; cout << endl; }\n#define PR0(a,n)\
+    \ { cout << #a << \" = \"; REP(_,n) cout << a[_] << ' '; cout << endl; }\n\n#define\
+    \ sqr(x) ((x) * (x))\n\n// For printing pair, container, etc.\n// Copied from\
+    \ https://quangloc99.github.io/2021/07/30/my-CP-debugging-template.html\ntemplate<class\
+    \ U, class V> ostream& operator << (ostream& out, const pair<U, V>& p) {\n   \
+    \ return out << '(' << p.first << \", \" << p.second << ')';\n}\n\ntemplate<class\
+    \ Con, class = decltype(begin(declval<Con>()))>\ntypename enable_if<!is_same<Con,\
     \ string>::value, ostream&>::type\noperator << (ostream& out, const Con& con)\
     \ {\n    out << '{';\n    for (auto beg = con.begin(), it = beg; it != con.end();\
     \ it++) {\n        out << (it == beg ? \"\" : \", \") << *it;\n    }\n    return\
@@ -224,96 +229,27 @@ data:
     \ && a[i].y - t[j].y < mindist; --j)\n                upd_ans(a[i], t[j]);\n \
     \           t[tsz++] = a[i];\n        }\n}\n\n// Pick theorem\n// Given non-intersecting\
     \ polygon.\n// S = area\n// I = number of integer points strictly Inside\n// B\
-    \ = number of points on sides of polygon\n// S = I + B/2 - 1\n#line 4 \"Geometry/polygon.cpp\"\
-    \n\nint main() {\n    cout << (fixed) << setprecision(9);\n    Polygon P;\n  \
-    \  P.push_back(Point(1, 1));\n    P.push_back(Point(3, 3));\n    P.push_back(Point(9,\
-    \ 1));\n    P.push_back(Point(12, 4));\n    P.push_back(Point(9, 7));\n    P.push_back(Point(1,\
-    \ 7));\n\n    // Basic methods\n    assert(cmp(perimeter(P), 31.638263819) ==\
-    \ 0);\n    assert(cmp(area(P), 49.00) == 0);\n    assert(!is_convex(P));\n\n \
-    \   // in_polygon\n    //7 P5--------------P4\n    //6 |                  \\\n\
-    \    //5 |                    \\\n    //4 |   P7                P3\n    //3 |\
-    \   P1___            /\n    //2 | / P6    \\ ___    /\n    //1 P0            \
-    \  P2\n    //0 1 2 3 4 5 6 7 8 9 101112\n\n    assert(in_polygon(P, Point(3, 4)));\n\
-    \    assert(!in_polygon(P, Point(3, 2)));\n\n    // Polygon cutting\n    //7 P5--------------P4\n\
-    \    //6 |               |  \\\n    //5 |               |    \\\n    //4 |   \
-    \            |     P3\n    //3 |   P1___       |    /\n    //2 | /       \\ ___\
-    \ |  /\n    //1 P0              P2\n    //0 1 2 3 4 5 6 7 8 9 101112\n    // new\
-    \ polygon (notice the index are different now):\n    //7 P4--------------P3\n\
-    \    //6 |               |\n    //5 |               |\n    //4 |             \
-    \  |\n    //3 |   P1___       |\n    //2 | /       \\ ___ |\n    //1 P0      \
-    \        P2\n    //0 1 2 3 4 5 6 7 8 9\n\n    P = polygon_cut(P, Line(P[2], P[4]));\n\
-    \    assert(cmp(perimeter(P), 29.152982445) == 0);\n    assert(cmp(area(P), 40.00)\
-    \ == 0);\n\n    // convex hull\n    //7 P3--------------P2\n    //6 |        \
-    \       |\n    //5 |               |\n    //4 |   P7          |\n    //3 |   \
-    \            |\n    //2 |               |\n    //1 P0--------------P1\n    //0\
-    \ 1 2 3 4 5 6 7 8 9\n\n    P = convex_hull(P);\n    assert(cmp(perimeter(P), 28.00)\
-    \ == 0);\n    assert(cmp(area(P), 48.00) == 0);\n    assert(is_convex(P));\n \
-    \   assert(in_convex(P, Point(3, 4)));\n    assert(in_convex(P, Point(3, 2)));\n\
-    \    assert(!in_convex(P, Point(3, 1)));\n    assert(!in_convex(P, Point(3, 0)));\n\
-    \n    assert(in_polygon(P, Point(3, 4)));\n    assert(in_polygon(P, Point(3, 2)));\n\
-    \    assert(!in_polygon(P, Point(3, 0)));\n\n    P.clear();\n    for(int i = 0;\
-    \ i < 10; ++i)\n        for(int j = 0; j < 10; ++j)\n            for(int turn\
-    \ = 0; turn < 3; ++turn)\n                P.push_back(Point(i, j));\n    P = convex_hull(P);\n\
-    \    assert(P.size() == 4);\n    assert(P[0] == Point(0, 0));\n    assert(P[1]\
-    \ == Point(0, 9));\n    assert(P[2] == Point(9, 9));\n    assert(P[3] == Point(9,\
-    \ 0));\n\n    P.clear();\n    for(int i = 0; i < 10; ++i)\n        P.push_back(Point(7,\
-    \ 7 * i));\n    P = convex_hull(P);\n    assert(P.size() == 2);\n    assert(P[0]\
-    \ == Point(7, 0));\n    assert(P[1] == Point(7, 63));\n\n    P.clear();\n    for(int\
-    \ i = 0; i < 10; ++i)\n        P.push_back(Point(7, 7));\n    P = convex_hull(P);\n\
-    \    assert(P.size() == 1);\n    assert(P[0] == Point(7, 7));\n    cout << \"\
-    All test passed \" << endl;\n\n    return 0;\n}\n"
-  code: "#include \"../template.h\"\n#include \"basic.h\"\n#include \"polygon.h\"\n\
-    \nint main() {\n    cout << (fixed) << setprecision(9);\n    Polygon P;\n    P.push_back(Point(1,\
-    \ 1));\n    P.push_back(Point(3, 3));\n    P.push_back(Point(9, 1));\n    P.push_back(Point(12,\
-    \ 4));\n    P.push_back(Point(9, 7));\n    P.push_back(Point(1, 7));\n\n    //\
-    \ Basic methods\n    assert(cmp(perimeter(P), 31.638263819) == 0);\n    assert(cmp(area(P),\
-    \ 49.00) == 0);\n    assert(!is_convex(P));\n\n    // in_polygon\n    //7 P5--------------P4\n\
-    \    //6 |                  \\\n    //5 |                    \\\n    //4 |   P7\
-    \                P3\n    //3 |   P1___            /\n    //2 | / P6    \\ ___\
-    \    /\n    //1 P0              P2\n    //0 1 2 3 4 5 6 7 8 9 101112\n\n    assert(in_polygon(P,\
-    \ Point(3, 4)));\n    assert(!in_polygon(P, Point(3, 2)));\n\n    // Polygon cutting\n\
-    \    //7 P5--------------P4\n    //6 |               |  \\\n    //5 |        \
-    \       |    \\\n    //4 |               |     P3\n    //3 |   P1___       | \
-    \   /\n    //2 | /       \\ ___ |  /\n    //1 P0              P2\n    //0 1 2\
-    \ 3 4 5 6 7 8 9 101112\n    // new polygon (notice the index are different now):\n\
-    \    //7 P4--------------P3\n    //6 |               |\n    //5 |            \
-    \   |\n    //4 |               |\n    //3 |   P1___       |\n    //2 | /     \
-    \  \\ ___ |\n    //1 P0              P2\n    //0 1 2 3 4 5 6 7 8 9\n\n    P =\
-    \ polygon_cut(P, Line(P[2], P[4]));\n    assert(cmp(perimeter(P), 29.152982445)\
-    \ == 0);\n    assert(cmp(area(P), 40.00) == 0);\n\n    // convex hull\n    //7\
-    \ P3--------------P2\n    //6 |               |\n    //5 |               |\n \
-    \   //4 |   P7          |\n    //3 |               |\n    //2 |              \
-    \ |\n    //1 P0--------------P1\n    //0 1 2 3 4 5 6 7 8 9\n\n    P = convex_hull(P);\n\
-    \    assert(cmp(perimeter(P), 28.00) == 0);\n    assert(cmp(area(P), 48.00) ==\
-    \ 0);\n    assert(is_convex(P));\n    assert(in_convex(P, Point(3, 4)));\n   \
-    \ assert(in_convex(P, Point(3, 2)));\n    assert(!in_convex(P, Point(3, 1)));\n\
-    \    assert(!in_convex(P, Point(3, 0)));\n\n    assert(in_polygon(P, Point(3,\
-    \ 4)));\n    assert(in_polygon(P, Point(3, 2)));\n    assert(!in_polygon(P, Point(3,\
-    \ 0)));\n\n    P.clear();\n    for(int i = 0; i < 10; ++i)\n        for(int j\
-    \ = 0; j < 10; ++j)\n            for(int turn = 0; turn < 3; ++turn)\n       \
-    \         P.push_back(Point(i, j));\n    P = convex_hull(P);\n    assert(P.size()\
-    \ == 4);\n    assert(P[0] == Point(0, 0));\n    assert(P[1] == Point(0, 9));\n\
-    \    assert(P[2] == Point(9, 9));\n    assert(P[3] == Point(9, 0));\n\n    P.clear();\n\
-    \    for(int i = 0; i < 10; ++i)\n        P.push_back(Point(7, 7 * i));\n    P\
-    \ = convex_hull(P);\n    assert(P.size() == 2);\n    assert(P[0] == Point(7, 0));\n\
-    \    assert(P[1] == Point(7, 63));\n\n    P.clear();\n    for(int i = 0; i < 10;\
-    \ ++i)\n        P.push_back(Point(7, 7));\n    P = convex_hull(P);\n    assert(P.size()\
-    \ == 1);\n    assert(P[0] == Point(7, 7));\n    cout << \"All test passed \" <<\
-    \ endl;\n\n    return 0;\n}\n"
+    \ = number of points on sides of polygon\n// S = I + B/2 - 1\n#line 6 \"Geometry/tests/polygon_is_convex.test.cpp\"\
+    \n\nvoid solve() {\n    int n; cin >> n;\n    Polygon g(n);\n    for (auto& p\
+    \ : g) cin >> p;\n    cout << (is_convex(g) ? 1 : 0) << endl;\n}\n"
+  code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_B\"\
+    \n\n#include \"../../template.h\"\n#include \"../basic.h\"\n#include \"../polygon.h\"\
+    \n\nvoid solve() {\n    int n; cin >> n;\n    Polygon g(n);\n    for (auto& p\
+    \ : g) cin >> p;\n    cout << (is_convex(g) ? 1 : 0) << endl;\n}\n"
   dependsOn:
   - template.h
   - Geometry/basic.h
   - Geometry/polygon.h
-  isVerificationFile: false
-  path: Geometry/polygon.cpp
+  isVerificationFile: true
+  path: Geometry/tests/polygon_is_convex.test.cpp
   requiredBy: []
   timestamp: '2022-01-11 00:18:26+08:00'
-  verificationStatus: LIBRARY_NO_TESTS
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: Geometry/polygon.cpp
+documentation_of: Geometry/tests/polygon_is_convex.test.cpp
 layout: document
 redirect_from:
-- /library/Geometry/polygon.cpp
-- /library/Geometry/polygon.cpp.html
-title: Geometry/polygon.cpp
+- /verify/Geometry/tests/polygon_is_convex.test.cpp
+- /verify/Geometry/tests/polygon_is_convex.test.cpp.html
+title: Geometry/tests/polygon_is_convex.test.cpp
 ---
