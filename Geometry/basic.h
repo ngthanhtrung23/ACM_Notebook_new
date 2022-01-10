@@ -1,7 +1,6 @@
 #ifndef EPS
 #define EPS 1e-6
 #endif
-
 #ifndef GEOMETRY_BASIC
 #define GEOMETRY_BASIC
 const double PI = acos(-1.0);
