@@ -51,10 +51,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: Geometry/tests/basic_segment_intersect.test.cpp
     title: Geometry/tests/basic_segment_intersect.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Geometry/tests/polygon_area.test.cpp
     title: Geometry/tests/polygon_area.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Geometry/tests/polygon_in_convex.test.cpp
     title: Geometry/tests/polygon_in_convex.test.cpp
   - icon: ':heavy_check_mark:'

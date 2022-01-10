@@ -4,7 +4,7 @@ data:
   - icon: ':question:'
     path: Geometry/basic.h
     title: Geometry/basic.h
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Geometry/polygon.h
     title: Geometry/polygon.h
   - icon: ':question:'
@@ -71,7 +71,7 @@ data:
   isVerificationFile: false
   path: Geometry/polygon.cpp
   requiredBy: []
-  timestamp: '2022-01-10 23:30:30+08:00'
+  timestamp: '2022-01-10 23:32:56+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Geometry/polygon.cpp

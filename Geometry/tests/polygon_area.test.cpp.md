@@ -4,7 +4,7 @@ data:
   - icon: ':question:'
     path: Geometry/basic.h
     title: Geometry/basic.h
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Geometry/polygon.h
     title: Geometry/polygon.h
   - icon: ':question:'
@@ -12,9 +12,9 @@ data:
     title: template.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A
@@ -41,8 +41,8 @@ data:
   isVerificationFile: true
   path: Geometry/tests/polygon_area.test.cpp
   requiredBy: []
-  timestamp: '2022-01-10 23:30:30+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2022-01-10 23:32:56+08:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Geometry/tests/polygon_area.test.cpp
 layout: document
