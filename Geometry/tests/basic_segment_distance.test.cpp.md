@@ -112,7 +112,7 @@ data:
     \            || onSegment(c, d, b)) {\n        return true;\n    }\n\n    return\
     \ ccw(a, b, c) * ccw(a, b, d) < 0\n        && ccw(c, d, a) * ccw(c, d, b) < 0;\n\
     }\n#line 5 \"Geometry/tests/basic_segment_distance.test.cpp\"\n\nvoid solve()\
-    \ {\n    int q; cin >> q;\n    cout << (fixed) << setprecision(9);\n    while\
+    \ {\n    int q; cin >> q;\n    cout << (fixed) << setprecision(10);\n    while\
     \ (q--) {\n        Point a, b; cin >> a >> b;\n        Point c, d; cin >> c >>\
     \ d;\n        Point t;\n\n        if (segmentIntersect(a, b, c, d)) cout << \"\
     0\\n\";\n        else {\n            cout << min({\n                    distToLineSegment(a,\
@@ -121,7 +121,7 @@ data:
     \ a, b, t)\n            }) << '\\n';\n        }\n    }\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_D\"\
     \n\n#include \"../../template.h\"\n#include \"../basic.h\"\n\nvoid solve() {\n\
-    \    int q; cin >> q;\n    cout << (fixed) << setprecision(9);\n    while (q--)\
+    \    int q; cin >> q;\n    cout << (fixed) << setprecision(10);\n    while (q--)\
     \ {\n        Point a, b; cin >> a >> b;\n        Point c, d; cin >> c >> d;\n\
     \        Point t;\n\n        if (segmentIntersect(a, b, c, d)) cout << \"0\\n\"\
     ;\n        else {\n            cout << min({\n                    distToLineSegment(a,\
@@ -134,7 +134,7 @@ data:
   isVerificationFile: true
   path: Geometry/tests/basic_segment_distance.test.cpp
   requiredBy: []
-  timestamp: '2022-01-10 23:46:01+08:00'
+  timestamp: '2022-01-10 23:48:17+08:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: Geometry/tests/basic_segment_distance.test.cpp
