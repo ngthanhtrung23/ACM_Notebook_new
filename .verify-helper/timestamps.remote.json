@@ -43,6 +43,7 @@
 "Geometry/tests/polygon_is_convex.test.cpp": "2022-01-11 04:00:35 +0800",
 "Geometry/tests/z_basic_ccw.test.cpp": "2022-01-11 03:43:32 +0800",
 "Geometry/tests/z_basic_segment_intersect.test.cpp": "2022-01-11 03:43:32 +0800",
+"Geometry/tests/z_polygon_area.test.cpp": "2022-01-11 04:05:11 +0800",
 "Geometry/tests/z_polygon_convexhull.test.cpp": "2022-01-11 04:00:35 +0800",
 "Geometry/tests/z_polygon_is_convex.test.cpp": "2022-01-11 04:00:35 +0800",
 "Graph/tests/articulation_points.test.cpp": "2022-01-10 03:15:26 +0800",
