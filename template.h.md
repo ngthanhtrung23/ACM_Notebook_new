@@ -82,6 +82,15 @@ data:
     path: Geometry/tests/polygon_is_convex.test.cpp
     title: Geometry/tests/polygon_is_convex.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Geometry/tests/z_basic_ccw.test.cpp
+    title: Geometry/tests/z_basic_ccw.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Geometry/tests/z_basic_segment_intersect.test.cpp
+    title: Geometry/tests/z_basic_segment_intersect.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Geometry/tests/z_polygon_convexhull.test.cpp
+    title: Geometry/tests/z_polygon_convexhull.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Graph/tests/articulation_points.test.cpp
     title: Graph/tests/articulation_points.test.cpp
   - icon: ':heavy_check_mark:'
@@ -169,14 +178,17 @@ data:
   - Geometry/tests/polygon_convex_hull.test.cpp
   - Geometry/tests/basic_line_intersection.test.cpp
   - Geometry/tests/polygon_in_convex.test.cpp
+  - Geometry/tests/z_polygon_convexhull.test.cpp
   - Geometry/tests/polygon_in_polygon.test.cpp
   - Geometry/tests/polygon_is_convex.test.cpp
   - Geometry/tests/basic_ccw.test.cpp
   - Geometry/tests/polygon_area.test.cpp
+  - Geometry/tests/z_basic_ccw.test.cpp
   - Geometry/tests/basic_segment_distance.test.cpp
   - Geometry/tests/basic_segment_intersect.test.cpp
   - Geometry/tests/basic_projection.test.cpp
   - Geometry/tests/polygon_convex_cut.test.cpp
+  - Geometry/tests/z_basic_segment_intersect.test.cpp
   - Geometry/tests/basic_reflection.test.cpp
   - Geometry/tests/polygon_convex_diameter.test.cpp
   - Graph/tests/articulation_points.test.cpp

@@ -607,6 +607,15 @@ data:
     - icon: ':heavy_check_mark:'
       path: Geometry/tests/polygon_is_convex.test.cpp
       title: Geometry/tests/polygon_is_convex.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Geometry/tests/z_basic_ccw.test.cpp
+      title: Geometry/tests/z_basic_ccw.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Geometry/tests/z_basic_segment_intersect.test.cpp
+      title: Geometry/tests/z_basic_segment_intersect.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Geometry/tests/z_polygon_convexhull.test.cpp
+      title: Geometry/tests/z_polygon_convexhull.test.cpp
   - name: Graph/tests
     pages:
     - icon: ':heavy_check_mark:'

@@ -17,23 +17,23 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0412
+    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_A
     links:
-    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0412
-  bundledCode: "#line 1 \"Geometry/tests/polygon_in_convex.test.cpp\"\n#define PROBLEM\
-    \ \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0412\"\n\n#line 1\
-    \ \"template.h\"\n#include <bits/stdc++.h>\nusing namespace std;\n\n#define FOR(i,a,b)\
-    \ for(int i=(a),_b=(b); i<=_b; i++)\n#define FORD(i,a,b) for(int i=(a),_b=(b);\
-    \ i>=_b; i--)\n#define REP(i,a) for(int i=0,_a=(a); i<_a; i++)\n#define EACH(it,a)\
-    \ for(__typeof(a.begin()) it = a.begin(); it != a.end(); ++it)\n\n#define DEBUG(x)\
-    \ { cout << #x << \" = \"; cout << (x) << endl; }\n#define PR(a,n) { cout << #a\
-    \ << \" = \"; FOR(_,1,n) cout << a[_] << ' '; cout << endl; }\n#define PR0(a,n)\
-    \ { cout << #a << \" = \"; REP(_,n) cout << a[_] << ' '; cout << endl; }\n\n#define\
-    \ sqr(x) ((x) * (x))\n\n// For printing pair, container, etc.\n// Copied from\
-    \ https://quangloc99.github.io/2021/07/30/my-CP-debugging-template.html\ntemplate<class\
-    \ U, class V> ostream& operator << (ostream& out, const pair<U, V>& p) {\n   \
-    \ return out << '(' << p.first << \", \" << p.second << ')';\n}\n\ntemplate<class\
-    \ Con, class = decltype(begin(declval<Con>()))>\ntypename enable_if<!is_same<Con,\
+    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_A
+  bundledCode: "#line 1 \"Geometry/tests/z_polygon_convexhull.test.cpp\"\n#define\
+    \ PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_A\"\
+    \n\n#line 1 \"template.h\"\n#include <bits/stdc++.h>\nusing namespace std;\n\n\
+    #define FOR(i,a,b) for(int i=(a),_b=(b); i<=_b; i++)\n#define FORD(i,a,b) for(int\
+    \ i=(a),_b=(b); i>=_b; i--)\n#define REP(i,a) for(int i=0,_a=(a); i<_a; i++)\n\
+    #define EACH(it,a) for(__typeof(a.begin()) it = a.begin(); it != a.end(); ++it)\n\
+    \n#define DEBUG(x) { cout << #x << \" = \"; cout << (x) << endl; }\n#define PR(a,n)\
+    \ { cout << #a << \" = \"; FOR(_,1,n) cout << a[_] << ' '; cout << endl; }\n#define\
+    \ PR0(a,n) { cout << #a << \" = \"; REP(_,n) cout << a[_] << ' '; cout << endl;\
+    \ }\n\n#define sqr(x) ((x) * (x))\n\n// For printing pair, container, etc.\n//\
+    \ Copied from https://quangloc99.github.io/2021/07/30/my-CP-debugging-template.html\n\
+    template<class U, class V> ostream& operator << (ostream& out, const pair<U, V>&\
+    \ p) {\n    return out << '(' << p.first << \", \" << p.second << ')';\n}\n\n\
+    template<class Con, class = decltype(begin(declval<Con>()))>\ntypename enable_if<!is_same<Con,\
     \ string>::value, ostream&>::type\noperator << (ostream& out, const Con& con)\
     \ {\n    out << '{';\n    for (auto beg = con.begin(), it = beg; it != con.end();\
     \ it++) {\n        out << (it == beg ? \"\" : \", \") << *it;\n    }\n    return\
@@ -217,31 +217,31 @@ data:
     \ {maxd, std::minmax(maxi, maxj)}; /* farthest pair is (maxi, maxj). */\n}\n\n\
     // Pick theorem\n// Given non-intersecting polygon.\n// S = area\n// I = number\
     \ of integer points strictly Inside\n// B = number of points on sides of polygon\n\
-    // S = I + B/2 - 1\n#line 6 \"Geometry/tests/polygon_in_convex.test.cpp\"\n\n\
-    void solve() {\n    int n; cin >> n;\n    Polygon g(n);\n    for (auto& p : g)\
-    \ cin >> p;\n\n    int q; cin >> q;\n    while (q--) {\n        Point p; cin >>\
-    \ p;\n        p = p - (p / 10000.0);\n        cout << (in_convex(g, p) ? 1 : 0)\
-    \ << '\\n';\n    }\n}\n"
-  code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0412\"\
+    // S = I + B/2 - 1\n#line 6 \"Geometry/tests/z_polygon_convexhull.test.cpp\"\n\
+    \nvoid solve() {\n    int n; cin >> n;\n    vector<P<long long>> g(n);\n    for\
+    \ (auto& p : g) cin >> p;\n    ConvexHull(g);\n    int idx = 0;\n    FOR(i,1,n-1)\
+    \ if (cmpy(g[i], g[idx])) idx = i;\n\n    cout << g.size() << endl;\n    REP(i,g.size())\
+    \ cout << (fixed) << setprecision(0) << g[(idx + i) % g.size()] << '\\n';\n}\n"
+  code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_A\"\
     \n\n#include \"../../template.h\"\n#include \"../basic.h\"\n#include \"../polygon.h\"\
-    \n\nvoid solve() {\n    int n; cin >> n;\n    Polygon g(n);\n    for (auto& p\
-    \ : g) cin >> p;\n\n    int q; cin >> q;\n    while (q--) {\n        Point p;\
-    \ cin >> p;\n        p = p - (p / 10000.0);\n        cout << (in_convex(g, p)\
-    \ ? 1 : 0) << '\\n';\n    }\n}\n"
+    \n\nvoid solve() {\n    int n; cin >> n;\n    vector<P<long long>> g(n);\n   \
+    \ for (auto& p : g) cin >> p;\n    ConvexHull(g);\n    int idx = 0;\n    FOR(i,1,n-1)\
+    \ if (cmpy(g[i], g[idx])) idx = i;\n\n    cout << g.size() << endl;\n    REP(i,g.size())\
+    \ cout << (fixed) << setprecision(0) << g[(idx + i) % g.size()] << '\\n';\n}\n"
   dependsOn:
   - template.h
   - Geometry/basic.h
   - Geometry/polygon.h
   isVerificationFile: true
-  path: Geometry/tests/polygon_in_convex.test.cpp
+  path: Geometry/tests/z_polygon_convexhull.test.cpp
   requiredBy: []
   timestamp: '2022-01-11 03:43:32+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Geometry/tests/polygon_in_convex.test.cpp
+documentation_of: Geometry/tests/z_polygon_convexhull.test.cpp
 layout: document
 redirect_from:
-- /verify/Geometry/tests/polygon_in_convex.test.cpp
-- /verify/Geometry/tests/polygon_in_convex.test.cpp.html
-title: Geometry/tests/polygon_in_convex.test.cpp
+- /verify/Geometry/tests/z_polygon_convexhull.test.cpp
+- /verify/Geometry/tests/z_polygon_convexhull.test.cpp.html
+title: Geometry/tests/z_polygon_convexhull.test.cpp
 ---

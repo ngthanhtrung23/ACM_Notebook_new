@@ -17,7 +17,7 @@ data:
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_B
     links:
     - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_B
-  bundledCode: "#line 1 \"Geometry/tests/basic_segment_intersect.test.cpp\"\n#define\
+  bundledCode: "#line 1 \"Geometry/tests/z_basic_segment_intersect.test.cpp\"\n#define\
     \ PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_B\"\
     \n\n#line 1 \"template.h\"\n#include <bits/stdc++.h>\nusing namespace std;\n\n\
     #define FOR(i,a,b) for(int i=(a),_b=(b); i<=_b; i++)\n#define FORD(i,a,b) for(int\
@@ -115,28 +115,28 @@ data:
     \ b, c)\n            || onSegment(a, b, d)\n            || onSegment(c, d, a)\n\
     \            || onSegment(c, d, b)) {\n        return true;\n    }\n\n    return\
     \ ccw(a, b, c) * ccw(a, b, d) < 0\n        && ccw(c, d, a) * ccw(c, d, b) < 0;\n\
-    }\n#line 5 \"Geometry/tests/basic_segment_intersect.test.cpp\"\n\nvoid solve()\
-    \ {\n    int q; cin >> q;\n    while (q--) {\n        Point a, b; cin >> a >>\
-    \ b;\n        Point c, d; cin >> c >> d;\n        cout << (segmentIntersect(a,\
+    }\n#line 5 \"Geometry/tests/z_basic_segment_intersect.test.cpp\"\n\nvoid solve()\
+    \ {\n    int q; cin >> q;\n    while (q--) {\n        P<long long> a, b; cin >>\
+    \ a >> b;\n        P<long long> c, d; cin >> c >> d;\n        cout << (segmentIntersect(a,\
     \ b, c, d) ? 1 : 0) << '\\n';\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_B\"\
     \n\n#include \"../../template.h\"\n#include \"../basic.h\"\n\nvoid solve() {\n\
-    \    int q; cin >> q;\n    while (q--) {\n        Point a, b; cin >> a >> b;\n\
-    \        Point c, d; cin >> c >> d;\n        cout << (segmentIntersect(a, b, c,\
-    \ d) ? 1 : 0) << '\\n';\n    }\n}\n"
+    \    int q; cin >> q;\n    while (q--) {\n        P<long long> a, b; cin >> a\
+    \ >> b;\n        P<long long> c, d; cin >> c >> d;\n        cout << (segmentIntersect(a,\
+    \ b, c, d) ? 1 : 0) << '\\n';\n    }\n}\n"
   dependsOn:
   - template.h
   - Geometry/basic.h
   isVerificationFile: true
-  path: Geometry/tests/basic_segment_intersect.test.cpp
+  path: Geometry/tests/z_basic_segment_intersect.test.cpp
   requiredBy: []
   timestamp: '2022-01-11 03:43:32+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Geometry/tests/basic_segment_intersect.test.cpp
+documentation_of: Geometry/tests/z_basic_segment_intersect.test.cpp
 layout: document
 redirect_from:
-- /verify/Geometry/tests/basic_segment_intersect.test.cpp
-- /verify/Geometry/tests/basic_segment_intersect.test.cpp.html
-title: Geometry/tests/basic_segment_intersect.test.cpp
+- /verify/Geometry/tests/z_basic_segment_intersect.test.cpp
+- /verify/Geometry/tests/z_basic_segment_intersect.test.cpp.html
+title: Geometry/tests/z_basic_segment_intersect.test.cpp
 ---

@@ -50,15 +50,15 @@ data:
     const double PI = acos(-1.0);\n\ndouble DEG_to_RAD(double d) { return d * PI /\
     \ 180.0; }\ndouble RAD_to_DEG(double r) { return r * 180.0 / PI; }\n\ninline int\
     \ cmp(double a, double b) {\n    return (a < b - EPS) ? -1 : ((a > b + EPS) ?\
-    \ 1 : 0);\n}\n\ntemplate<typename T, typename std::enable_if<std::is_floating_point<T>::value>::type\
+    \ 1 : 0);\n}\n\n// for int types\ntemplate<typename T, typename std::enable_if<std::is_floating_point<T>::value>::type\
     \ * = nullptr>\ninline int cmp(T a, T b) {\n    return (a == b) ? 0 : (a < b)\
     \ ? -1 : 1;\n}\n\ntemplate<typename T>\nstruct P {\n    T x, y;\n    P() { x =\
     \ y = T(0); }\n    P(T _x, T _y) : x(_x), y(_y) {}\n\n    P operator + (const\
     \ P& a) const { return P(x+a.x, y+a.y); }\n    P operator - (const P& a) const\
-    \ { return P(x-a.x, y-a.y); }\n    P operator * (double k) const { return P(x*k,\
-    \ y*k); }\n    P operator / (double k) const { return P(x/k, y/k); }\n\n    T\
-    \ operator * (const P& a) const { return x*a.x + y*a.y; } // dot product\n   \
-    \ T operator % (const P& a) const { return x*a.y - y*a.x; } // cross product\n\
+    \ { return P(x-a.x, y-a.y); }\n    P operator * (T k) const { return P(x*k, y*k);\
+    \ }\n    P<double> operator / (double k) const { return P(x/k, y/k); }\n\n   \
+    \ T operator * (const P& a) const { return x*a.x + y*a.y; } // dot product\n \
+    \   T operator % (const P& a) const { return x*a.y - y*a.x; } // cross product\n\
     \n    int cmp(P q) const { if (int t = ::cmp(x,q.x)) return t; return ::cmp(y,q.y);\
     \ }\n\n    #define Comp(x) bool operator x (P q) const { return cmp(q) x 0; }\n\
     \    Comp(>) Comp(<) Comp(==) Comp(>=) Comp(<=) Comp(!=)\n    #undef Comp\n\n\
@@ -68,68 +68,64 @@ data:
     \    double len() { return hypot(x, y); }\n\n    P<double> rotate(double alpha)\
     \ {\n        double cosa = cos(alpha), sina = sin(alpha);\n        return P(x\
     \ * cosa - y * sina, x * sina + y * cosa);\n    }\n};\nusing Point = P<double>;\n\
-    \n// Compare points by (y, x)\nauto cmpy = [] (const Point& a, const Point& b)\
-    \ {\n    if (a.y != b.y) return a.y < b.y;\n    return a.x < b.x;\n};\n\ntemplate<typename\
-    \ T>\nint ccw(P<T> a, P<T> b, P<T> c) {\n    return cmp((b-a)%(c-a), T(0));\n\
-    }\n\nint RE_TRAI = ccw(Point(0, 0), Point(0, 1), Point(-1, 1));\nint RE_PHAI =\
-    \ ccw(Point(0, 0), Point(0, 1), Point(1, 1));\n\ntemplate<typename T>\nistream&\
-    \ operator >> (istream& cin, P<T>& p) {\n    cin >> p.x >> p.y;\n    return cin;\n\
-    }\ntemplate<typename T>\nostream& operator << (ostream& cout, P<T>& p) {\n   \
-    \ cout << p.x << ' ' << p.y;\n    return cout;\n}\n\ndouble angle(Point a, Point\
-    \ o, Point b) { // min of directed angle AOB & BOA\n    a = a - o; b = b - o;\n\
-    \    return acos((a * b) / sqrt(a.norm()) / sqrt(b.norm()));\n}\n\ndouble directed_angle(Point\
-    \ a, Point o, Point b) { // angle AOB, in range [0, 2*PI)\n    double t = -atan2(a.y\
-    \ - o.y, a.x - o.x)\n            + atan2(b.y - o.y, b.x - o.x);\n    while (t\
-    \ < 0) t += 2*PI;\n    return t;\n}\n\n// Distance from p to Line ab (closest\
-    \ Point --> c)\n// i.e. c is projection of p on AB\ndouble distToLine(Point p,\
-    \ Point a, Point b, Point &c) {\n    Point ap = p - a, ab = b - a;\n    double\
-    \ u = (ap * ab) / ab.norm();\n    c = a + (ab * u);\n    return (p-c).len();\n\
-    }\n\n// Distance from p to segment ab (closest Point --> c)\ndouble distToLineSegment(Point\
-    \ p, Point a, Point b, Point &c) {\n    Point ap = p - a, ab = b - a;\n    double\
-    \ u = (ap * ab) / ab.norm();\n    if (u < 0.0) {\n        c = Point(a.x, a.y);\n\
-    \        return (p - a).len();\n    }\n    if (u > 1.0) {\n        c = Point(b.x,\
-    \ b.y);\n        return (p - b).len();\n    }\n    return distToLine(p, a, b,\
-    \ c);\n}\n\n// NOTE: WILL NOT WORK WHEN a = b = 0.\nstruct Line {\n    double\
-    \ a, b, c;\n    Point A, B; // Added for polygon intersect line. Do not rely on\
-    \ assumption that these are valid\n\n    Line(double _a, double _b, double _c)\
-    \ : a(_a), b(_b), c(_c) {} \n\n    Line(Point _A, Point _B) : A(_A), B(_B) {\n\
-    \        a = B.y - A.y;\n        b = A.x - B.x;\n        c = - (a * A.x + b *\
-    \ A.y);\n    }\n    Line(Point P, double m) {\n        a = -m; b = 1;\n      \
-    \  c = -((a * P.x) + (b * P.y));\n    }\n    double f(Point p) {\n        return\
-    \ a*p.x + b*p.y + c;\n    }\n};\n\nbool areParallel(Line l1, Line l2) {\n    return\
-    \ cmp(l1.a*l2.b, l1.b*l2.a) == 0;\n}\n\nbool areSame(Line l1, Line l2) {\n   \
-    \ return areParallel(l1 ,l2) && cmp(l1.c*l2.a, l2.c*l1.a) == 0\n             \
-    \   && cmp(l1.c*l2.b, l1.b*l2.c) == 0;\n}\n\nbool areIntersect(Line l1, Line l2,\
-    \ Point &p) {\n    if (areParallel(l1, l2)) return false;\n    double dx = l1.b*l2.c\
-    \ - l2.b*l1.c;\n    double dy = l1.c*l2.a - l2.c*l1.a;\n    double d  = l1.a*l2.b\
-    \ - l2.a*l1.b;\n    p = Point(dx/d, dy/d);\n    return true;\n}\n\n// closest\
-    \ point from p in line l.\nvoid closestPoint(Line l, Point p, Point &ans) {\n\
-    \    if (fabs(l.b) < EPS) {\n        ans.x = -(l.c) / l.a; ans.y = p.y;\n    \
-    \    return;\n    }\n    if (fabs(l.a) < EPS) {\n        ans.x = p.x; ans.y =\
-    \ -(l.c) / l.b;\n        return;\n    }\n    Line perp(l.b, -l.a, - (l.b*p.x -\
-    \ l.a*p.y));\n    areIntersect(l, perp, ans);\n}\n\nvoid reflectionPoint(Line\
-    \ l, Point p, Point &ans) {\n    Point b;\n    closestPoint(l, p, b);\n    ans\
-    \ = p + (b - p) * 2;\n}\n\n// Segment intersect\n// Tested:\n// - https://cses.fi/problemset/task/2190/\n\
-    // returns true if p is on segment [a, b]\nbool onSegment(Point a, Point b, Point\
-    \ p) {\n    return ccw(a, b, p) == 0\n        && min(a.x, b.x) <= p.x && p.x <=\
-    \ max(a.x, b.x)\n        && min(a.y, b.y) <= p.y && p.y <= max(a.y, b.y);\n}\n\
-    \n// Returns true if segment [a, b] and [c, d] intersects\n// End point also returns\
-    \ true\nbool segmentIntersect(Point a, Point b, Point c, Point d) {\n    if (onSegment(a,\
+    \n// Compare points by (y, x)\ntemplate<typename T = double>\nbool cmpy(const\
+    \ P<T>& a, const P<T>& b) {\n    if (cmp(a.y, b.y)) return a.y < b.y;\n    return\
+    \ a.x < b.x;\n};\n\ntemplate<typename T>\nint ccw(P<T> a, P<T> b, P<T> c) {\n\
+    \    return cmp((b-a)%(c-a), T(0));\n}\n\nint RE_TRAI = ccw(Point(0, 0), Point(0,\
+    \ 1), Point(-1, 1));\nint RE_PHAI = ccw(Point(0, 0), Point(0, 1), Point(1, 1));\n\
+    \ntemplate<typename T>\nistream& operator >> (istream& cin, P<T>& p) {\n    cin\
+    \ >> p.x >> p.y;\n    return cin;\n}\ntemplate<typename T>\nostream& operator\
+    \ << (ostream& cout, P<T>& p) {\n    cout << p.x << ' ' << p.y;\n    return cout;\n\
+    }\n\ndouble angle(Point a, Point o, Point b) { // min of directed angle AOB &\
+    \ BOA\n    a = a - o; b = b - o;\n    return acos((a * b) / sqrt(a.norm()) / sqrt(b.norm()));\n\
+    }\n\ndouble directed_angle(Point a, Point o, Point b) { // angle AOB, in range\
+    \ [0, 2*PI)\n    double t = -atan2(a.y - o.y, a.x - o.x)\n            + atan2(b.y\
+    \ - o.y, b.x - o.x);\n    while (t < 0) t += 2*PI;\n    return t;\n}\n\n// Distance\
+    \ from p to Line ab (closest Point --> c)\n// i.e. c is projection of p on AB\n\
+    double distToLine(Point p, Point a, Point b, Point &c) {\n    Point ap = p - a,\
+    \ ab = b - a;\n    double u = (ap * ab) / ab.norm();\n    c = a + (ab * u);\n\
+    \    return (p-c).len();\n}\n\n// Distance from p to segment ab (closest Point\
+    \ --> c)\ndouble distToLineSegment(Point p, Point a, Point b, Point &c) {\n  \
+    \  Point ap = p - a, ab = b - a;\n    double u = (ap * ab) / ab.norm();\n    if\
+    \ (u < 0.0) {\n        c = Point(a.x, a.y);\n        return (p - a).len();\n \
+    \   }\n    if (u > 1.0) {\n        c = Point(b.x, b.y);\n        return (p - b).len();\n\
+    \    }\n    return distToLine(p, a, b, c);\n}\n\n// NOTE: WILL NOT WORK WHEN a\
+    \ = b = 0.\nstruct Line {\n    double a, b, c;\n    Point A, B; // Added for polygon\
+    \ intersect line. Do not rely on assumption that these are valid\n\n    Line(double\
+    \ _a, double _b, double _c) : a(_a), b(_b), c(_c) {} \n\n    Line(Point _A, Point\
+    \ _B) : A(_A), B(_B) {\n        a = B.y - A.y;\n        b = A.x - B.x;\n     \
+    \   c = - (a * A.x + b * A.y);\n    }\n    Line(Point P, double m) {\n       \
+    \ a = -m; b = 1;\n        c = -((a * P.x) + (b * P.y));\n    }\n    double f(Point\
+    \ p) {\n        return a*p.x + b*p.y + c;\n    }\n};\n\nbool areParallel(Line\
+    \ l1, Line l2) {\n    return cmp(l1.a*l2.b, l1.b*l2.a) == 0;\n}\n\nbool areSame(Line\
+    \ l1, Line l2) {\n    return areParallel(l1 ,l2) && cmp(l1.c*l2.a, l2.c*l1.a)\
+    \ == 0\n                && cmp(l1.c*l2.b, l1.b*l2.c) == 0;\n}\n\nbool areIntersect(Line\
+    \ l1, Line l2, Point &p) {\n    if (areParallel(l1, l2)) return false;\n    double\
+    \ dx = l1.b*l2.c - l2.b*l1.c;\n    double dy = l1.c*l2.a - l2.c*l1.a;\n    double\
+    \ d  = l1.a*l2.b - l2.a*l1.b;\n    p = Point(dx/d, dy/d);\n    return true;\n\
+    }\n\n// closest point from p in line l.\nvoid closestPoint(Line l, Point p, Point\
+    \ &ans) {\n    if (fabs(l.b) < EPS) {\n        ans.x = -(l.c) / l.a; ans.y = p.y;\n\
+    \        return;\n    }\n    if (fabs(l.a) < EPS) {\n        ans.x = p.x; ans.y\
+    \ = -(l.c) / l.b;\n        return;\n    }\n    Line perp(l.b, -l.a, - (l.b*p.x\
+    \ - l.a*p.y));\n    areIntersect(l, perp, ans);\n}\n\n// Segment intersect\n//\
+    \ Tested:\n// - https://cses.fi/problemset/task/2190/\n// returns true if p is\
+    \ on segment [a, b]\ntemplate<typename T>\nbool onSegment(const P<T>& a, const\
+    \ P<T>& b, const P<T>& p) {\n    return ccw(a, b, p) == 0\n        && min(a.x,\
+    \ b.x) <= p.x && p.x <= max(a.x, b.x)\n        && min(a.y, b.y) <= p.y && p.y\
+    \ <= max(a.y, b.y);\n}\n\n// Returns true if segment [a, b] and [c, d] intersects\n\
+    // End point also returns true\ntemplate<typename T>\nbool segmentIntersect(const\
+    \ P<T>& a, const P<T>& b, const P<T>& c, const P<T>& d) {\n    if (onSegment(a,\
     \ b, c)\n            || onSegment(a, b, d)\n            || onSegment(c, d, a)\n\
     \            || onSegment(c, d, b)) {\n        return true;\n    }\n\n    return\
     \ ccw(a, b, c) * ccw(a, b, d) < 0\n        && ccw(c, d, a) * ccw(c, d, b) < 0;\n\
     }\n#line 1 \"Geometry/polygon.h\"\ntypedef vector< Point > Polygon;\n\n// Convex\
-    \ Hull:\n// If minimum point --> #define REMOVE_REDUNDANT\n// If maximum point\
-    \ --> need to change >= and <= to > and < (see Note).\n// Known issues:\n// -\
-    \ Max. point does not work when some points are the same.\n// Tested:\n// - https://open.kattis.com/problems/convexhull\n\
-    /*\nbool operator<(const Point &rhs) const { return make_pair(y,x) < make_pair(rhs.y,rhs.x);\
-    \ }\nbool operator==(const Point &rhs) const { return make_pair(y,x) == make_pair(rhs.y,rhs.x);\
-    \ }\n */\ndouble area2(Point a, Point b, Point c) { return a%b + b%c + c%a; }\n\
-    #ifdef REMOVE_REDUNDANT\nbool between(const Point &a, const Point &b, const Point\
-    \ &c) {\n    return (fabs(area2(a,b,c)) < EPS && (a.x-b.x)*(c.x-b.x) <= 0 && (a.y-b.y)*(c.y-b.y)\
-    \ <= 0);\n}\n#endif\n\nvoid ConvexHull(vector<Point> &pts) {\n    sort(pts.begin(),\
+    \ Hull:\n// If minimum point --> #define REMOVE_REDUNDANT\n// Known issues:\n\
+    // - Max. point does not work when some points are the same.\n// Tested:\n// -\
+    \ https://open.kattis.com/problems/convexhull\n\n// #define REMOVE_REDUNDANT\n\
+    template<typename T>\nT area2(P<T> a, P<T> b, P<T> c) { return a%b + b%c + c%a;\
+    \ }\n\ntemplate<typename T>\nvoid ConvexHull(vector<P<T>> &pts) {\n    sort(pts.begin(),\
     \ pts.end());\n    pts.erase(unique(pts.begin(), pts.end()), pts.end());\n   \
-    \ vector<Point> up, dn;\n    for (int i = 0; i < (int) pts.size(); i++) {\n#ifdef\
+    \ vector<P<T>> up, dn;\n    for (int i = 0; i < (int) pts.size(); i++) {\n#ifdef\
     \ REMOVE_REDUNDANT\n        while (up.size() > 1 && area2(up[up.size()-2], up.back(),\
     \ pts[i]) >= 0) up.pop_back();\n        while (dn.size() > 1 && area2(dn[dn.size()-2],\
     \ dn.back(), pts[i]) <= 0) dn.pop_back();\n#else\n        while (up.size() > 1\
@@ -139,48 +135,47 @@ data:
     \    pts = dn;\n    for (int i = (int) up.size() - 2; i >= 1; i--) pts.push_back(up[i]);\n\
     \    \n#ifdef REMOVE_REDUNDANT\n    if (pts.size() <= 2) return;\n    dn.clear();\n\
     \    dn.push_back(pts[0]);\n    dn.push_back(pts[1]);\n    for (int i = 2; i <\
-    \ (int) pts.size(); i++) {\n        if (between(dn[dn.size()-2], dn[dn.size()-1],\
-    \ pts[i])) dn.pop_back();\n        dn.push_back(pts[i]);\n    }\n    if (dn.size()\
-    \ >= 3 && between(dn.back(), dn[0], dn[1])) {\n        dn[0] = dn.back();\n  \
-    \      dn.pop_back();\n    }\n    pts = dn;\n#endif\n}\n\n// Area, perimeter,\
-    \ centroid\ndouble signed_area(Polygon p) {\n    double area = 0;\n    for(int\
-    \ i = 0; i < (int) p.size(); i++) {\n        int j = (i+1) % p.size();\n     \
-    \   area += p[i].x*p[j].y - p[j].x*p[i].y;\n    }\n    return area / 2.0;\n}\n\
-    double area(const Polygon &p) {\n    return fabs(signed_area(p));\n}\nPoint centroid(Polygon\
-    \ p) {\n    Point c(0,0);\n    double scale = 6.0 * signed_area(p);\n    for (int\
-    \ i = 0; i < (int) p.size(); i++){\n        int j = (i+1) % p.size();\n      \
-    \  c = c + (p[i]+p[j])*(p[i].x*p[j].y - p[j].x*p[i].y);\n    }\n    return c /\
-    \ scale;\n}\ndouble perimeter(Polygon p) {\n    double res = 0;\n    for(int i\
-    \ = 0; i < (int) p.size(); ++i) {\n        int j = (i + 1) % p.size();\n     \
-    \   res += (p[i] - p[j]).len();\n    }\n    return res;\n}\n\n// Is convex: checks\
-    \ if polygon is convex.\n// Return true for degen points (all vertices are collinear)\n\
-    bool is_convex(const Polygon &P) {\n    int sz = (int) P.size();\n    int min_ccw\
-    \ = 2, max_ccw = -2;\n    for (int i = 0; i < sz; i++) {\n        int c = ccw(P[i],\
-    \ P[(i+1) % sz], P[(i+2) % sz]);\n        min_ccw = min(min_ccw, c);\n       \
-    \ max_ccw = max(max_ccw, c);\n    }\n    return min_ccw * max_ccw >= 0;\n}\n\n\
-    // Inside polygon: O(N). Works with any polygon\n// Tested:\n// - https://open.kattis.com/problems/pointinpolygon\n\
-    // - https://open.kattis.com/problems/cuttingpolygon\nenum PolygonLocation { OUT,\
-    \ ON, IN };\nPolygonLocation in_polygon(const Polygon &p, Point q) {\n    if ((int)p.size()\
-    \ == 0) return PolygonLocation::OUT;\n\n    // Check if point is on edge.\n  \
-    \  int n = p.size();\n    REP(i,n) {\n        int j = (i + 1) % n;\n        Point\
-    \ u = p[i], v = p[j];\n\n        if (u > v) swap(u, v);\n\n        if (ccw(u,\
-    \ v, q) == 0 && u <= q && q <= v) return PolygonLocation::ON;\n    }\n\n    //\
-    \ Check if point is strictly inside.\n    int c = 0;\n    for (int i = 0; i <\
-    \ n; i++) {\n        int j = (i + 1) % n;\n        if (((p[i].y <= q.y && q.y\
-    \ < p[j].y)\n                    || (p[j].y <= q.y && q.y < p[i].y))\n       \
-    \         && q.x < p[i].x + (p[j].x - p[i].x) * (q.y - p[i].y) / (p[j].y - p[i].y))\
-    \ {\n            c = !c;\n        }\n    }\n    return c ? PolygonLocation::IN\
-    \ : PolygonLocation::OUT;\n}\n\n// Check point in convex polygon, O(logN)\n//\
-    \ Source: http://codeforces.com/contest/166/submission/1392387\n#define Det(a,b,c)\
-    \ ((double)(b.x-a.x)*(double)(c.y-a.y)-(double)(b.y-a.y)*(c.x-a.x))\nPolygonLocation\
-    \ in_convex(vector<Point>& l, Point p){\n    int a = 1, b = l.size()-1, c;\n \
-    \   if (Det(l[0], l[a], l[b]) > 0) swap(a,b);\n\n    if (onSegment(l[0], l[a],\
-    \ p)) return ON;\n    if (onSegment(l[0], l[b], p)) return ON;\n\n    if (Det(l[0],\
-    \ l[a], p) > 0 || Det(l[0], l[b], p) < 0) return OUT;\n    while(abs(a-b) > 1)\
-    \ {\n        c = (a+b)/2;\n        if (Det(l[0], l[c], p) > 0) b = c; else a =\
-    \ c;\n    }\n    int t = cmp(Det(l[a], l[b], p), 0);\n    return (t == 0) ? ON\
-    \ : (t < 0) ? IN : OUT;\n}\n\n\n// Cut a polygon with a line. Returns half on\
-    \ left-hand-side.\n// To return the other half, reverse the direction of Line\
+    \ (int) pts.size(); i++) {\n        if (onSegment(dn[dn.size()-2], pts[i], dn.back()))\
+    \ dn.pop_back();\n        dn.push_back(pts[i]);\n    }\n    if (dn.size() >= 3\
+    \ && onSegment(dn.back(), dn[1], dn[0])) {\n        dn[0] = dn.back();\n     \
+    \   dn.pop_back();\n    }\n    pts = dn;\n#endif\n}\n\n// Area, perimeter, centroid\n\
+    double signed_area(Polygon p) {\n    double area = 0;\n    for(int i = 0; i <\
+    \ (int) p.size(); i++) {\n        area += p[i] % p[(i + 1) % p.size()];\n    }\n\
+    \    return area / 2.0;\n}\ndouble area(const Polygon &p) {\n    return std::abs(signed_area(p));\n\
+    }\nPoint centroid(Polygon p) {\n    Point c(0,0);\n    double scale = 6.0 * signed_area(p);\n\
+    \    for (int i = 0; i < (int) p.size(); i++){\n        int j = (i+1) % p.size();\n\
+    \        c = c + (p[i]+p[j])*(p[i].x*p[j].y - p[j].x*p[i].y);\n    }\n    return\
+    \ c / scale;\n}\ndouble perimeter(Polygon p) {\n    double res = 0;\n    for(int\
+    \ i = 0; i < (int) p.size(); ++i) {\n        int j = (i + 1) % p.size();\n   \
+    \     res += (p[i] - p[j]).len();\n    }\n    return res;\n}\n\n// Is convex:\
+    \ checks if polygon is convex.\n// Return true for degen points (all vertices\
+    \ are collinear)\nbool is_convex(const Polygon &P) {\n    int sz = (int) P.size();\n\
+    \    int min_ccw = 2, max_ccw = -2;\n    for (int i = 0; i < sz; i++) {\n    \
+    \    int c = ccw(P[i], P[(i+1) % sz], P[(i+2) % sz]);\n        min_ccw = min(min_ccw,\
+    \ c);\n        max_ccw = max(max_ccw, c);\n    }\n    return min_ccw * max_ccw\
+    \ >= 0;\n}\n\n// Inside polygon: O(N). Works with any polygon\n// Tested:\n//\
+    \ - https://open.kattis.com/problems/pointinpolygon\n// - https://open.kattis.com/problems/cuttingpolygon\n\
+    enum PolygonLocation { OUT, ON, IN };\nPolygonLocation in_polygon(const Polygon\
+    \ &p, Point q) {\n    if ((int)p.size() == 0) return PolygonLocation::OUT;\n\n\
+    \    // Check if point is on edge.\n    int n = p.size();\n    REP(i,n) {\n  \
+    \      int j = (i + 1) % n;\n        Point u = p[i], v = p[j];\n\n        if (u\
+    \ > v) swap(u, v);\n\n        if (ccw(u, v, q) == 0 && u <= q && q <= v) return\
+    \ PolygonLocation::ON;\n    }\n\n    // Check if point is strictly inside.\n \
+    \   int c = 0;\n    for (int i = 0; i < n; i++) {\n        int j = (i + 1) % n;\n\
+    \        if (((p[i].y <= q.y && q.y < p[j].y)\n                    || (p[j].y\
+    \ <= q.y && q.y < p[i].y))\n                && q.x < p[i].x + (p[j].x - p[i].x)\
+    \ * (q.y - p[i].y) / (p[j].y - p[i].y)) {\n            c = !c;\n        }\n  \
+    \  }\n    return c ? PolygonLocation::IN : PolygonLocation::OUT;\n}\n\n// Check\
+    \ point in convex polygon, O(logN)\n// Source: http://codeforces.com/contest/166/submission/1392387\n\
+    #define Det(a,b,c) ((double)(b.x-a.x)*(double)(c.y-a.y)-(double)(b.y-a.y)*(c.x-a.x))\n\
+    PolygonLocation in_convex(vector<Point>& l, Point p){\n    int a = 1, b = l.size()-1,\
+    \ c;\n    if (Det(l[0], l[a], l[b]) > 0) swap(a,b);\n\n    if (onSegment(l[0],\
+    \ l[a], p)) return ON;\n    if (onSegment(l[0], l[b], p)) return ON;\n\n    if\
+    \ (Det(l[0], l[a], p) > 0 || Det(l[0], l[b], p) < 0) return OUT;\n    while(abs(a-b)\
+    \ > 1) {\n        c = (a+b)/2;\n        if (Det(l[0], l[c], p) > 0) b = c; else\
+    \ a = c;\n    }\n    int t = cmp(Det(l[a], l[b], p), 0);\n    return (t == 0)\
+    \ ? ON : (t < 0) ? IN : OUT;\n}\n\n\n// Cut a polygon with a line. Returns half\
+    \ on left-hand-side.\n// To return the other half, reverse the direction of Line\
     \ l (by negating l.a, l.b)\n// The line must be formed using 2 points\nPolygon\
     \ polygon_cut(const Polygon& P, Line l) {\n    Polygon Q;\n    for(int i = 0;\
     \ i < (int) P.size(); ++i) {\n        Point A = P[i], B = (i == ((int) P.size())-1)\
@@ -240,7 +235,7 @@ data:
   isVerificationFile: true
   path: Geometry/tests/polygon_in_polygon.test.cpp
   requiredBy: []
-  timestamp: '2022-01-11 02:50:07+08:00'
+  timestamp: '2022-01-11 03:43:32+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Geometry/tests/polygon_in_polygon.test.cpp
