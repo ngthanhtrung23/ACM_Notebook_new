@@ -373,8 +373,8 @@ struct BigInt {
         return res;
     }
 
-    void fft(vector<complex<double> > & a, bool invert) const {
-        int n = (int) a.size();
+    void fft(vector<complex<double> > &x, bool invert) const {
+        int n = (int) x.size();
 
         for (int i = 1, j = 0; i < n; ++i) {
             int bit = n >> 1;
@@ -382,7 +382,7 @@ struct BigInt {
                 j -= bit;
             j += bit;
             if (i < j)
-                swap(a[i], a[j]);
+                swap(x[i], x[j]);
         }
 
         for (int len = 2; len <= n; len <<= 1) {
@@ -391,24 +391,24 @@ struct BigInt {
             for (int i = 0; i < n; i += len) {
                 complex<double> w(1);
                 for (int j = 0; j < len / 2; ++j) {
-                    complex<double> u = a[i + j];
-                    complex<double> v = a[i + j + len / 2] * w;
-                    a[i + j] = u + v;
-                    a[i + j + len / 2] = u - v;
+                    complex<double> u = x[i + j];
+                    complex<double> v = x[i + j + len / 2] * w;
+                    x[i + j] = u + v;
+                    x[i + j + len / 2] = u - v;
                     w *= wlen;
                 }
             }
         }
         if (invert)
             for (int i = 0; i < n; ++i)
-                a[i] /= n;
+                x[i] /= n;
     }
 
-    void multiply_fft(const vector<int> &a, const vector<int> &b, vector<int> &res) const {
-        vector<complex<double> > fa(a.begin(), a.end());
-        vector<complex<double> > fb(b.begin(), b.end());
+    void multiply_fft(const vector<int> &x, const vector<int> &y, vector<int> &res) const {
+        vector<complex<double> > fa(x.begin(), x.end());
+        vector<complex<double> > fb(y.begin(), y.end());
         int n = 1;
-        while (n < (int) max(a.size(), b.size()))
+        while (n < (int) max(x.size(), y.size()))
             n <<= 1;
         n <<= 1;
         fa.resize(n);
@@ -486,17 +486,17 @@ struct BigInt {
     }
 
     BigInt mul_karatsuba(const BigInt &v) const {
-        vector<int> a6 = convert_base(this->a, BASE_DIGITS, 6);
-        vector<int> b6 = convert_base(v.a, BASE_DIGITS, 6);
-        vll a(a6.begin(), a6.end());
-        vll b(b6.begin(), b6.end());
-        while (a.size() < b.size())
-            a.push_back(0);
-        while (b.size() < a.size())
-            b.push_back(0);
-        while (a.size() & (a.size() - 1))
-            a.push_back(0), b.push_back(0);
-        vll c = karatsubaMultiply(a, b);
+        vector<int> x6 = convert_base(this->a, BASE_DIGITS, 6);
+        vector<int> y6 = convert_base(v.a, BASE_DIGITS, 6);
+        vll x(x6.begin(), x6.end());
+        vll y(y6.begin(), y6.end());
+        while (x.size() < y.size())
+            x.push_back(0);
+        while (y.size() < x.size())
+            y.push_back(0);
+        while (x.size() & (x.size() - 1))
+            x.push_back(0), y.push_back(0);
+        vll c = karatsubaMultiply(x, y);
         BigInt res;
         res.sign = sign * v.sign;
         long long carry = 0;
