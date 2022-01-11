@@ -55,6 +55,9 @@ data:
     path: Geometry/tests/aizu_cgl_4_c_polygon_convex_cut.test.cpp
     title: Geometry/tests/aizu_cgl_4_c_polygon_convex_cut.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Geometry/tests/aizu_cgl_5_a_closest_pair.test.cpp
+    title: Geometry/tests/aizu_cgl_5_a_closest_pair.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Geometry/tests/aizu_cgl_7_a_cicle_tangents.test.cpp
     title: Geometry/tests/aizu_cgl_7_a_cicle_tangents.test.cpp
   - icon: ':heavy_check_mark:'
@@ -286,6 +289,7 @@ data:
   - Geometry/tests/aizu_cgl_2_b_basic_segment_intersect.test.cpp
   - Geometry/tests/aizu_cgl_1_a_basic_projection.test.cpp
   - Geometry/tests/aizu_cgl_2_d_basic_segment_distance.test.cpp
+  - Geometry/tests/aizu_cgl_5_a_closest_pair.test.cpp
   - Geometry/tests/z_polygon_is_convex.test.cpp
   - Geometry/tests/z_basic_segment_intersect.test.cpp
   - Geometry/tests/aizu_cgl_7_f_circle_tangent_points.test.cpp

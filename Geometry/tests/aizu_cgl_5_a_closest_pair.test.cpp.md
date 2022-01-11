@@ -1,17 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
+    path: Geometry/basic.h
+    title: Geometry/basic.h
+  - icon: ':heavy_check_mark:'
     path: Geometry/closest_pair.h
     title: Geometry/closest_pair.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     ERROR: 1e-6
@@ -43,46 +46,125 @@ data:
     \ t);\n}\n\nmt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());\n\
     long long get_rand(long long r) {\n    return uniform_int_distribution<long long>\
     \ (0, r-1)(rng);\n}\n\nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0);\
-    \ cin.tie(0);\n    solve();\n    return 0;\n}\n#line 1 \"Geometry/closest_pair.h\"\
-    \n// Closest pair\n//\n// Tested:\n// - https://open.kattis.com/problems/closestpair1\n\
-    // - https://open.kattis.com/problems/closestpair2\n//\n// Returns: {dist, 2 points}\n\
-    //\n// If need point ids -> add ID to struct P\n// If need exact square dist ->\
-    \ can compute from returned points\ntemplate<typename T>\nstd::pair<double, std::pair<P<T>,\
-    \ P<T>>> closest_pair(vector<P<T>> a) {\n    int n = a.size();\n    assert(n >=\
-    \ 2);\n    double mindist = 1e20;\n    std::pair<P<T>, P<T>> best_pair;\n    std::vector<P<T>>\
-    \ t(n);\n    sort(a.begin(), a.end());\n\n    auto upd_ans = [&] (const P<T>&\
-    \ u, const P<T>& v) {\n        double cur = (u - v).len();\n        if (cur <\
-    \ mindist) {\n            mindist = cur;\n            best_pair = {u, v};\n  \
-    \      }\n    };\n\n    std::function<void(int,int)> rec = [&] (int l, int r)\
-    \ {\n        if (r - l <= 3) {\n            for (int i = l; i < r; ++i) {\n  \
-    \              for (int j = i + 1; j < r; ++j) {\n                    upd_ans(a[i],\
-    \ a[j]);\n                }\n            }\n            sort(a.begin() + l, a.begin()\
-    \ + r, cmpy<T>);\n            return;\n        }\n\n        int m = (l + r) >>\
-    \ 1;\n        T midx = a[m].x;\n        rec(l, m);\n        rec(m, r);\n\n   \
-    \     std::merge(a.begin() + l, a.begin() + m, a.begin() + m, a.begin() + r, t.begin(),\
-    \ cmpy<T>);\n        std::copy(t.begin(), t.begin() + r - l, a.begin() + l);\n\
-    \n        int tsz = 0;\n        for (int i = l; i < r; ++i) {\n            if\
-    \ (abs(a[i].x - midx) < mindist) {\n                for (int j = tsz - 1; j >=\
-    \ 0 && a[i].y - t[j].y < mindist; --j)\n                    upd_ans(a[i], t[j]);\n\
-    \                t[tsz++] = a[i];\n            }\n        }\n    };\n    rec(0,\
-    \ n);\n\n    return {mindist, best_pair};\n}\n#line 5 \"Geometry/tests/aizu_cgl_5_a_closest_pair.test.cpp\"\
+    \ cin.tie(0);\n    solve();\n    return 0;\n}\n#line 2 \"Geometry/basic.h\"\n\n\
+    // Basic geometry objects: Point, Line, Segment\n// Works with both integers and\
+    \ floating points\n// Unless the problem has precision issue, can use Point, which\
+    \ uses double\n// and has more functionalities.\n// For integers, can use P<long\
+    \ long>\n\n#ifndef EPS  // allow test files to overwrite EPS\n#define EPS 1e-6\n\
+    #endif\n\nconst double PI = acos(-1.0);\n\ndouble DEG_to_RAD(double d) { return\
+    \ d * PI / 180.0; }\ndouble RAD_to_DEG(double r) { return r * 180.0 / PI; }\n\n\
+    inline int cmp(double a, double b) {\n    return (a < b - EPS) ? -1 : ((a > b\
+    \ + EPS) ? 1 : 0);\n}\n\n// for int types\ntemplate<typename T, typename std::enable_if<std::is_floating_point<T>::value>::type\
+    \ * = nullptr>\ninline int cmp(T a, T b) {\n    return (a == b) ? 0 : (a < b)\
+    \ ? -1 : 1;\n}\n\ntemplate<typename T>\nstruct P {\n    T x, y;\n    P() { x =\
+    \ y = T(0); }\n    P(T _x, T _y) : x(_x), y(_y) {}\n\n    P operator + (const\
+    \ P& a) const { return P(x+a.x, y+a.y); }\n    P operator - (const P& a) const\
+    \ { return P(x-a.x, y-a.y); }\n    P operator * (T k) const { return P(x*k, y*k);\
+    \ }\n    P<double> operator / (double k) const { return P(x/k, y/k); }\n\n   \
+    \ T operator * (const P& a) const { return x*a.x + y*a.y; } // dot product\n \
+    \   T operator % (const P& a) const { return x*a.y - y*a.x; } // cross product\n\
+    \n    int cmp(const P<T>& q) const { if (int t = ::cmp(x,q.x)) return t; return\
+    \ ::cmp(y,q.y); }\n\n    #define Comp(x) bool operator x (const P& q) const {\
+    \ return cmp(q) x 0; }\n    Comp(>) Comp(<) Comp(==) Comp(>=) Comp(<=) Comp(!=)\n\
+    \    #undef Comp\n\n    T norm() { return x*x + y*y; }\n\n    // Note: There are\
+    \ 2 ways for implementing len():\n    // 1. sqrt(norm()) --> fast, but inaccurate\
+    \ (produce some values that are of order X^2)\n    // 2. hypot(x, y) --> slow,\
+    \ but much more accurate\n    double len() { return hypot(x, y); }\n\n    P<double>\
+    \ rotate(double alpha) {\n        double cosa = cos(alpha), sina = sin(alpha);\n\
+    \        return P(x * cosa - y * sina, x * sina + y * cosa);\n    }\n};\nusing\
+    \ Point = P<double>;\n\n// Compare points by (y, x)\ntemplate<typename T = double>\n\
+    bool cmpy(const P<T>& a, const P<T>& b) {\n    if (cmp(a.y, b.y)) return a.y <\
+    \ b.y;\n    return a.x < b.x;\n};\n\ntemplate<typename T>\nint ccw(P<T> a, P<T>\
+    \ b, P<T> c) {\n    return cmp((b-a)%(c-a), T(0));\n}\n\nint RE_TRAI = ccw(Point(0,\
+    \ 0), Point(0, 1), Point(-1, 1));\nint RE_PHAI = ccw(Point(0, 0), Point(0, 1),\
+    \ Point(1, 1));\n\ntemplate<typename T>\nistream& operator >> (istream& cin, P<T>&\
+    \ p) {\n    cin >> p.x >> p.y;\n    return cin;\n}\ntemplate<typename T>\nostream&\
+    \ operator << (ostream& cout, const P<T>& p) {\n    cout << p.x << ' ' << p.y;\n\
+    \    return cout;\n}\n\ndouble angle(Point a, Point o, Point b) { // min of directed\
+    \ angle AOB & BOA\n    a = a - o; b = b - o;\n    return acos((a * b) / sqrt(a.norm())\
+    \ / sqrt(b.norm()));\n}\n\ndouble directed_angle(Point a, Point o, Point b) {\
+    \ // angle AOB, in range [0, 2*PI)\n    double t = -atan2(a.y - o.y, a.x - o.x)\n\
+    \            + atan2(b.y - o.y, b.x - o.x);\n    while (t < 0) t += 2*PI;\n  \
+    \  return t;\n}\n\n// Distance from p to Line ab (closest Point --> c)\n// i.e.\
+    \ c is projection of p on AB\ndouble distToLine(Point p, Point a, Point b, Point\
+    \ &c) {\n    Point ap = p - a, ab = b - a;\n    double u = (ap * ab) / ab.norm();\n\
+    \    c = a + (ab * u);\n    return (p-c).len();\n}\n\n// Distance from p to segment\
+    \ ab (closest Point --> c)\ndouble distToLineSegment(Point p, Point a, Point b,\
+    \ Point &c) {\n    Point ap = p - a, ab = b - a;\n    double u = (ap * ab) / ab.norm();\n\
+    \    if (u < 0.0) {\n        c = Point(a.x, a.y);\n        return (p - a).len();\n\
+    \    }\n    if (u > 1.0) {\n        c = Point(b.x, b.y);\n        return (p -\
+    \ b).len();\n    }\n    return distToLine(p, a, b, c);\n}\n\n// NOTE: WILL NOT\
+    \ WORK WHEN a = b = 0.\nstruct Line {\n    double a, b, c;  // ax + by + c = 0\n\
+    \    Point A, B;  // Added for polygon intersect line. Do not rely on assumption\
+    \ that these are valid\n\n    Line(double _a, double _b, double _c) : a(_a), b(_b),\
+    \ c(_c) {} \n\n    Line(Point _A, Point _B) : A(_A), B(_B) {\n        a = B.y\
+    \ - A.y;\n        b = A.x - B.x;\n        c = - (a * A.x + b * A.y);\n    }\n\
+    \    Line(Point P, double m) {\n        a = -m; b = 1;\n        c = -((a * P.x)\
+    \ + (b * P.y));\n    }\n    double f(Point p) {\n        return a*p.x + b*p.y\
+    \ + c;\n    }\n};\nostream& operator >> (ostream& cout, const Line& l) {\n   \
+    \ cout << l.a << \"*x + \" << l.b << \"*y + \" << l.c;\n    return cout;\n}\n\n\
+    bool areParallel(Line l1, Line l2) {\n    return cmp(l1.a*l2.b, l1.b*l2.a) ==\
+    \ 0;\n}\n\nbool areSame(Line l1, Line l2) {\n    return areParallel(l1 ,l2) &&\
+    \ cmp(l1.c*l2.a, l2.c*l1.a) == 0\n                && cmp(l1.c*l2.b, l1.b*l2.c)\
+    \ == 0;\n}\n\nbool areIntersect(Line l1, Line l2, Point &p) {\n    if (areParallel(l1,\
+    \ l2)) return false;\n    double dx = l1.b*l2.c - l2.b*l1.c;\n    double dy =\
+    \ l1.c*l2.a - l2.c*l1.a;\n    double d  = l1.a*l2.b - l2.a*l1.b;\n    p = Point(dx/d,\
+    \ dy/d);\n    return true;\n}\n\n// closest point from p in line l.\nvoid closestPoint(Line\
+    \ l, Point p, Point &ans) {\n    if (fabs(l.b) < EPS) {\n        ans.x = -(l.c)\
+    \ / l.a; ans.y = p.y;\n        return;\n    }\n    if (fabs(l.a) < EPS) {\n  \
+    \      ans.x = p.x; ans.y = -(l.c) / l.b;\n        return;\n    }\n    Line perp(l.b,\
+    \ -l.a, - (l.b*p.x - l.a*p.y));\n    areIntersect(l, perp, ans);\n}\n\n// Segment\
+    \ intersect\n// Tested:\n// - https://cses.fi/problemset/task/2190/\n// returns\
+    \ true if p is on segment [a, b]\ntemplate<typename T>\nbool onSegment(const P<T>&\
+    \ a, const P<T>& b, const P<T>& p) {\n    return ccw(a, b, p) == 0\n        &&\
+    \ min(a.x, b.x) <= p.x && p.x <= max(a.x, b.x)\n        && min(a.y, b.y) <= p.y\
+    \ && p.y <= max(a.y, b.y);\n}\n\n// Returns true if segment [a, b] and [c, d]\
+    \ intersects\n// End point also returns true\ntemplate<typename T>\nbool segmentIntersect(const\
+    \ P<T>& a, const P<T>& b, const P<T>& c, const P<T>& d) {\n    if (onSegment(a,\
+    \ b, c)\n            || onSegment(a, b, d)\n            || onSegment(c, d, a)\n\
+    \            || onSegment(c, d, b)) {\n        return true;\n    }\n\n    return\
+    \ ccw(a, b, c) * ccw(a, b, d) < 0\n        && ccw(c, d, a) * ccw(c, d, b) < 0;\n\
+    }\n#line 1 \"Geometry/closest_pair.h\"\n// Closest pair\n//\n// Tested:\n// -\
+    \ https://open.kattis.com/problems/closestpair1\n// - https://open.kattis.com/problems/closestpair2\n\
+    //\n// Returns: {dist, 2 points}\n//\n// If need point ids -> add ID to struct\
+    \ P\n// If need exact square dist -> can compute from returned points\ntemplate<typename\
+    \ T>\nstd::pair<double, std::pair<P<T>, P<T>>> closest_pair(vector<P<T>> a) {\n\
+    \    int n = a.size();\n    assert(n >= 2);\n    double mindist = 1e20;\n    std::pair<P<T>,\
+    \ P<T>> best_pair;\n    std::vector<P<T>> t(n);\n    sort(a.begin(), a.end());\n\
+    \n    auto upd_ans = [&] (const P<T>& u, const P<T>& v) {\n        double cur\
+    \ = (u - v).len();\n        if (cur < mindist) {\n            mindist = cur;\n\
+    \            best_pair = {u, v};\n        }\n    };\n\n    std::function<void(int,int)>\
+    \ rec = [&] (int l, int r) {\n        if (r - l <= 3) {\n            for (int\
+    \ i = l; i < r; ++i) {\n                for (int j = i + 1; j < r; ++j) {\n  \
+    \                  upd_ans(a[i], a[j]);\n                }\n            }\n  \
+    \          sort(a.begin() + l, a.begin() + r, cmpy<T>);\n            return;\n\
+    \        }\n\n        int m = (l + r) >> 1;\n        T midx = a[m].x;\n      \
+    \  rec(l, m);\n        rec(m, r);\n\n        std::merge(a.begin() + l, a.begin()\
+    \ + m, a.begin() + m, a.begin() + r, t.begin(), cmpy<T>);\n        std::copy(t.begin(),\
+    \ t.begin() + r - l, a.begin() + l);\n\n        int tsz = 0;\n        for (int\
+    \ i = l; i < r; ++i) {\n            if (abs(a[i].x - midx) < mindist) {\n    \
+    \            for (int j = tsz - 1; j >= 0 && a[i].y - t[j].y < mindist; --j)\n\
+    \                    upd_ans(a[i], t[j]);\n                t[tsz++] = a[i];\n\
+    \            }\n        }\n    };\n    rec(0, n);\n\n    return {mindist, best_pair};\n\
+    }\n#line 6 \"Geometry/tests/aizu_cgl_5_a_closest_pair.test.cpp\"\n\n#define ERROR\
+    \ 1e-6\n\nvoid solve() {\n    cout << (fixed) << setprecision(10);\n    int n;\
+    \ cin >> n;\n    vector<P<double>> a(n);\n    for (auto& p : a) cin >> p;\n\n\
+    \    auto [dist, ps] = closest_pair(a);\n    cout << dist << endl;\n}\n"
+  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_5_A\"\
+    \n\n#include \"../../template.h\"\n#include \"../basic.h\"\n#include \"../closest_pair.h\"\
     \n\n#define ERROR 1e-6\n\nvoid solve() {\n    cout << (fixed) << setprecision(10);\n\
     \    int n; cin >> n;\n    vector<P<double>> a(n);\n    for (auto& p : a) cin\
     \ >> p;\n\n    auto [dist, ps] = closest_pair(a);\n    cout << dist << endl;\n\
     }\n"
-  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_5_A\"\
-    \n\n#include \"../../template.h\"\n#include \"../closest_pair.h\"\n\n#define ERROR\
-    \ 1e-6\n\nvoid solve() {\n    cout << (fixed) << setprecision(10);\n    int n;\
-    \ cin >> n;\n    vector<P<double>> a(n);\n    for (auto& p : a) cin >> p;\n\n\
-    \    auto [dist, ps] = closest_pair(a);\n    cout << dist << endl;\n}\n"
   dependsOn:
   - template.h
+  - Geometry/basic.h
   - Geometry/closest_pair.h
   isVerificationFile: true
   path: Geometry/tests/aizu_cgl_5_a_closest_pair.test.cpp
   requiredBy: []
-  timestamp: '2022-01-12 00:40:19+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2022-01-12 00:56:21+08:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Geometry/tests/aizu_cgl_5_a_closest_pair.test.cpp
 layout: document

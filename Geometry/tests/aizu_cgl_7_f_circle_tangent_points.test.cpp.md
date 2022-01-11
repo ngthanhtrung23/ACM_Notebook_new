@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Geometry/circle.h
     title: Geometry/circle.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []

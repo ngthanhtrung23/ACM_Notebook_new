@@ -29,6 +29,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/BinaryTrie.h
       title: DataStructure/BinaryTrie.h
+    - icon: ':warning:'
+      path: DataStructure/DSU_partially_persistent.h
+      title: DataStructure/DSU_partially_persistent.h
     - icon: ':heavy_check_mark:'
       path: DataStructure/DSU_rollback.h
       title: DataStructure/DSU_rollback.h
@@ -140,7 +143,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Geometry/circle.h
       title: Geometry/circle.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Geometry/closest_pair.h
       title: Geometry/closest_pair.h
     - icon: ':warning:'
@@ -416,7 +419,7 @@ data:
     - icon: ':warning:'
       path: Misc/Rubik.h
       title: Misc/Rubik.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Misc/left_nearest_smaller.h
       title: Misc/left_nearest_smaller.h
     - icon: ':warning:'
@@ -474,7 +477,7 @@ data:
     - icon: ':warning:'
       path: debug.h
       title: debug.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template.h
       title: template.h
   verificationCategories:
@@ -649,7 +652,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Geometry/tests/aizu_cgl_4_c_polygon_convex_cut.test.cpp
       title: Geometry/tests/aizu_cgl_4_c_polygon_convex_cut.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Geometry/tests/aizu_cgl_5_a_closest_pair.test.cpp
       title: Geometry/tests/aizu_cgl_5_a_closest_pair.test.cpp
     - icon: ':heavy_check_mark:'
@@ -862,10 +865,10 @@ data:
       title: Math/tests/sumdiv.test.cpp
   - name: Misc/tests
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Misc/tests/aizu_dpl_3_b_largest_01_rectangle.test.cpp
       title: Misc/tests/aizu_dpl_3_b_largest_01_rectangle.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Misc/tests/aizu_dpl_3_c_largest_histogram.test.cpp
       title: Misc/tests/aizu_dpl_3_c_largest_histogram.test.cpp
   - name: String/tests

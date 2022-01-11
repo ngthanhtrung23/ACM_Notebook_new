@@ -1,24 +1,24 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Misc/left_nearest_smaller.h
     title: Misc/left_nearest_smaller.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_3_C
+    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_3_B
     links:
-    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_3_C
+    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_3_B
   bundledCode: "#line 1 \"Misc/tests/aizu_dpl_3_b_largest_01_rectangle.test.cpp\"\n\
-    #define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_3_C\"\
+    #define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_3_B\"\
     \n\n#line 1 \"template.h\"\n#include <bits/stdc++.h>\nusing namespace std;\n\n\
     #define FOR(i,a,b) for(int i=(a),_b=(b); i<=_b; i++)\n#define FORD(i,a,b) for(int\
     \ i=(a),_b=(b); i>=_b; i--)\n#define REP(i,a) for(int i=0,_a=(a); i<_a; i++)\n\
@@ -70,7 +70,7 @@ data:
     \ c++) {\n                if (a[r][c]) a[r][c] = a[r-1][c] + 1;\n            \
     \    else a[r][c] = 0;\n            }\n        }\n        res = max(res, largestHistogram(a[r]));\n\
     \    }\n    cout << res << endl;\n}\n"
-  code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_3_C\"\
+  code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_3_B\"\
     \n\n#include \"../../template.h\"\n#include \"../left_nearest_smaller.h\"\n\n\
     long long largestHistogram(const vector<int>& a) {\n    int n = a.size();\n  \
     \  auto left = leftNearestSmaller(a);\n    auto right = rightNearestSmaller(a);\n\
@@ -90,8 +90,8 @@ data:
   isVerificationFile: true
   path: Misc/tests/aizu_dpl_3_b_largest_01_rectangle.test.cpp
   requiredBy: []
-  timestamp: '2022-01-12 00:40:19+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2022-01-12 00:54:38+08:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Misc/tests/aizu_dpl_3_b_largest_01_rectangle.test.cpp
 layout: document
