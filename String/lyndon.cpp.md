@@ -4,7 +4,7 @@ data:
   - icon: ':warning:'
     path: String/lyndon.h
     title: String/lyndon.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []

@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/SegTree2D.h
     title: DataStructure/SegTree2D.h
   _extendedVerifiedWith:
@@ -12,9 +12,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/aizu_dsl_2_b_segment_tree_sum.test.cpp
     title: DataStructure/test/aizu_dsl_2_b_segment_tree_sum.test.cpp
-  - icon: ':x:'
-    path: DataStructure/test/aizu_dsl_2_c_segtree_2d.test.cpp
-    title: DataStructure/test/aizu_dsl_2_c_segtree_2d.test.cpp
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/aizu_grl_5_d_hld_edge.test.cpp
     title: DataStructure/test/aizu_grl_5_d_hld_edge.test.cpp
@@ -39,9 +36,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/segment_tree_staticrmq.test.cpp
     title: DataStructure/test/segment_tree_staticrmq.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://atcoder.github.io/ac-library/master/document_en/segtree.html
@@ -184,7 +181,7 @@ data:
   requiredBy:
   - DataStructure/SegTree2D.h
   timestamp: '2022-01-05 23:36:58+08:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
   - DataStructure/test/aizu_dsl_2_a_segment_tree_rmq_update.test.cpp
@@ -193,7 +190,6 @@ data:
   - DataStructure/test/segment_tree_pointaddrangesum.test.cpp
   - DataStructure/test/segment_tree_staticrmq.test.cpp
   - DataStructure/test/aizu_grl_5_d_hld_edge.test.cpp
-  - DataStructure/test/aizu_dsl_2_c_segtree_2d.test.cpp
   - DataStructure/test/hld_vertexaddsubtreesum.test.cpp
   - DataStructure/test/segment_tree_2d_pointaddrectsum.test.cpp
   - DataStructure/test/aizu_dsl_2_b_segment_tree_sum.test.cpp

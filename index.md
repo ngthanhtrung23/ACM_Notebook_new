@@ -86,10 +86,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/RMQ.h
       title: DataStructure/RMQ.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/SegTree.h
       title: DataStructure/SegTree.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/SegTree2D.h
       title: DataStructure/SegTree2D.h
     - icon: ':warning:'
@@ -477,7 +477,7 @@ data:
     - icon: ':warning:'
       path: debug.h
       title: debug.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template.h
       title: template.h
   verificationCategories:
@@ -506,9 +506,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/aizu_dsl_2_b_segment_tree_sum.test.cpp
       title: DataStructure/test/aizu_dsl_2_b_segment_tree_sum.test.cpp
-    - icon: ':x:'
-      path: DataStructure/test/aizu_dsl_2_c_segtree_2d.test.cpp
-      title: DataStructure/test/aizu_dsl_2_c_segtree_2d.test.cpp
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/aizu_dsl_2_d_segment_tree_rangeset.test.cpp
       title: DataStructure/test/aizu_dsl_2_d_segment_tree_rangeset.test.cpp

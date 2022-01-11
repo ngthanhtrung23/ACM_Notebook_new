@@ -1,20 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/SegTree.h
     title: DataStructure/SegTree.h
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
-    path: DataStructure/test/aizu_dsl_2_c_segtree_2d.test.cpp
-    title: DataStructure/test/aizu_dsl_2_c_segtree_2d.test.cpp
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/segment_tree_2d_pointaddrectsum.test.cpp
     title: DataStructure/test/segment_tree_2d_pointaddrectsum.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"DataStructure/SegTree2D.h\"\n// 2D segment tree\n#line 1\
@@ -165,9 +162,8 @@ data:
   path: DataStructure/SegTree2D.h
   requiredBy: []
   timestamp: '2022-01-12 02:22:14+08:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - DataStructure/test/aizu_dsl_2_c_segtree_2d.test.cpp
   - DataStructure/test/segment_tree_2d_pointaddrectsum.test.cpp
 documentation_of: DataStructure/SegTree2D.h
 layout: document
