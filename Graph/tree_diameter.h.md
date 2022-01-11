@@ -3,15 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
+  - icon: ':x:'
+    path: Graph/tests/aizu_grl_5_a_tree_diameter.test.cpp
+    title: Graph/tests/aizu_grl_5_a_tree_diameter.test.cpp
   - icon: ':heavy_check_mark:'
     path: Graph/tests/tree_diameter.test.cpp
     title: Graph/tests/tree_diameter.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Graph/tests/tree_diameter_aizu.test.cpp
-    title: Graph/tests/tree_diameter_aizu.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://judge.yosupo.jp/problem/tree_diameter
@@ -44,9 +44,9 @@ data:
   path: Graph/tree_diameter.h
   requiredBy: []
   timestamp: '2021-12-31 14:19:54+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - Graph/tests/tree_diameter_aizu.test.cpp
+  - Graph/tests/aizu_grl_5_a_tree_diameter.test.cpp
   - Graph/tests/tree_diameter.test.cpp
 documentation_of: Graph/tree_diameter.h
 layout: document

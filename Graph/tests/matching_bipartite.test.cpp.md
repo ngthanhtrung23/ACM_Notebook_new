@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Graph/Matching/BipartiteMatching.h
     title: Graph/Matching/BipartiteMatching.h
   _extendedRequiredBy: []

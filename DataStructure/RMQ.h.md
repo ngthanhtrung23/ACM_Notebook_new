@@ -4,11 +4,11 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: DataStructure/test/aizu_grl_5_c_lca.test.cpp
+    title: DataStructure/test/aizu_grl_5_c_lca.test.cpp
+  - icon: ':heavy_check_mark:'
     path: DataStructure/test/lca.test.cpp
     title: DataStructure/test/lca.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: DataStructure/test/lca_aizu.test.cpp
-    title: DataStructure/test/lca_aizu.test.cpp
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/rmq.test.cpp
     title: DataStructure/test/rmq.test.cpp
@@ -50,8 +50,8 @@ data:
   timestamp: '2022-01-07 17:45:15+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - DataStructure/test/lca_aizu.test.cpp
   - DataStructure/test/lca.test.cpp
+  - DataStructure/test/aizu_grl_5_c_lca.test.cpp
   - DataStructure/test/rmq.test.cpp
 documentation_of: DataStructure/RMQ.h
 layout: document

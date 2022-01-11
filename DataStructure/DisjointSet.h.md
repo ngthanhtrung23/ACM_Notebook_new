@@ -7,14 +7,14 @@ data:
     title: Graph/mst.h
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: DataStructure/test/aizu_dsl_1_a_dsu_aizu.test.cpp
+    title: DataStructure/test/aizu_dsl_1_a_dsu_aizu.test.cpp
+  - icon: ':heavy_check_mark:'
     path: DataStructure/test/dsu.test.cpp
     title: DataStructure/test/dsu.test.cpp
   - icon: ':heavy_check_mark:'
-    path: DataStructure/test/dsu_aizu.test.cpp
-    title: DataStructure/test/dsu_aizu.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Graph/tests/mst.test.cpp
-    title: Graph/tests/mst.test.cpp
+    path: Graph/tests/aizu_grl_2_a_mst.test.cpp
+    title: Graph/tests/aizu_grl_2_a_mst.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -45,9 +45,9 @@ data:
   timestamp: '2022-01-07 04:54:04+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - DataStructure/test/aizu_dsl_1_a_dsu_aizu.test.cpp
   - DataStructure/test/dsu.test.cpp
-  - DataStructure/test/dsu_aizu.test.cpp
-  - Graph/tests/mst.test.cpp
+  - Graph/tests/aizu_grl_2_a_mst.test.cpp
 documentation_of: DataStructure/DisjointSet.h
 layout: document
 redirect_from:

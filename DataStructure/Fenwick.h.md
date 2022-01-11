@@ -4,11 +4,11 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: DataStructure/test/aizu_dsl_2_b_fenwick_aizu.test.cpp
+    title: DataStructure/test/aizu_dsl_2_b_fenwick_aizu.test.cpp
+  - icon: ':heavy_check_mark:'
     path: DataStructure/test/fenwick.test.cpp
     title: DataStructure/test/fenwick.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: DataStructure/test/fenwick_aizu.test.cpp
-    title: DataStructure/test/fenwick_aizu.test.cpp
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/fenwick_pointaddrangesum.test.cpp
     title: DataStructure/test/fenwick_pointaddrangesum.test.cpp
@@ -52,8 +52,8 @@ data:
   timestamp: '2021-12-30 02:18:43+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - DataStructure/test/fenwick_aizu.test.cpp
   - DataStructure/test/fenwick.test.cpp
+  - DataStructure/test/aizu_dsl_2_b_fenwick_aizu.test.cpp
   - DataStructure/test/fenwick_pointaddrangesum.test.cpp
 documentation_of: DataStructure/Fenwick.h
 layout: document

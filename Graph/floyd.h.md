@@ -4,8 +4,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: Graph/tests/floyd_aizu.test.cpp
-    title: Graph/tests/floyd_aizu.test.cpp
+    path: Graph/tests/aizu_grl_1_c_floyd.test.cpp
+    title: Graph/tests/aizu_grl_1_c_floyd.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -58,7 +58,7 @@ data:
   timestamp: '2022-01-10 00:09:25+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Graph/tests/floyd_aizu.test.cpp
+  - Graph/tests/aizu_grl_1_c_floyd.test.cpp
 documentation_of: Graph/floyd.h
 layout: document
 redirect_from:

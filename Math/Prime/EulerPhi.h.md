@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: Math/tests/euler_phi.test.cpp
-    title: Math/tests/euler_phi.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: Math/tests/aizu_ntl_1_d_euler_phi.test.cpp
+    title: Math/tests/aizu_ntl_1_d_euler_phi.test.cpp
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 1 \"Math/Prime/EulerPhi.h\"\nlong long eulerPhi(long long n)\
@@ -37,9 +37,9 @@ data:
   path: Math/Prime/EulerPhi.h
   requiredBy: []
   timestamp: '2022-01-11 20:18:36+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - Math/tests/euler_phi.test.cpp
+  - Math/tests/aizu_ntl_1_d_euler_phi.test.cpp
 documentation_of: Math/Prime/EulerPhi.h
 layout: document
 redirect_from:

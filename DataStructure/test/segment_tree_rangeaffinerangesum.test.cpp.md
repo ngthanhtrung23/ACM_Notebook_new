@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/LazySegTree.h
     title: DataStructure/LazySegTree.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Math/modulo_anta.h
     title: Math/modulo_anta.h
   - icon: ':heavy_check_mark:'
@@ -56,7 +56,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
   requiredBy: []
-  timestamp: '2022-01-11 20:18:36+08:00'
+  timestamp: '2022-01-11 21:46:03+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp

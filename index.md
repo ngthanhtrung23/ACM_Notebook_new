@@ -18,9 +18,9 @@ data:
     - icon: ':warning:'
       path: DP/knuth.cpp
       title: DP/knuth.cpp
-    - icon: ':warning:'
-      path: DP/lis.cpp
-      title: DP/lis.cpp
+    - icon: ':heavy_check_mark:'
+      path: DP/lis.h
+      title: DP/lis.h
     - icon: ':warning:'
       path: DP/reroot_tree_dp.cpp
       title: DP/reroot_tree_dp.cpp
@@ -214,7 +214,7 @@ data:
     - icon: ':warning:'
       path: Graph/topo_sort.h
       title: Graph/topo_sort.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Graph/tree_diameter.h
       title: Graph/tree_diameter.h
   - name: Graph/DfsTree
@@ -225,12 +225,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: Graph/DfsTree/BridgeArticulation.h
       title: Graph/DfsTree/BridgeArticulation.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Graph/DfsTree/StronglyConnected.h
       title: Graph/DfsTree/StronglyConnected.h
   - name: Graph/Matching
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Graph/Matching/BipartiteMatching.h
       title: Graph/Matching/BipartiteMatching.h
     - icon: ':heavy_check_mark:'
@@ -250,22 +250,22 @@ data:
     - icon: ':warning:'
       path: Graph/MaxFlow/GomoryHu.h
       title: Graph/MaxFlow/GomoryHu.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: Graph/MaxFlow/MaxFlowDinic.h
       title: Graph/MaxFlow/MaxFlowDinic.h
     - icon: ':warning:'
       path: Graph/MaxFlow/MaxFlowDinicTrace.h
       title: Graph/MaxFlow/MaxFlowDinicTrace.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: Graph/MaxFlow/MaxFlowHLPP.h
       title: Graph/MaxFlow/MaxFlowHLPP.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: Graph/MaxFlow/MaxFlowPR.h
       title: Graph/MaxFlow/MaxFlowPR.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: Graph/MaxFlow/MinCostMaxFlowPR.h
       title: Graph/MaxFlow/MinCostMaxFlowPR.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: Graph/MaxFlow/MinCostMaxFlowSPFA.h
       title: Graph/MaxFlow/MinCostMaxFlowSPFA.h
     - icon: ':warning:'
@@ -296,13 +296,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/SumDiv_SumMod.h
       title: Math/SumDiv_SumMod.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: Math/bigint.h
       title: Math/bigint.h
     - icon: ':warning:'
       path: Math/modulo.h
       title: Math/modulo.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Math/modulo_anta.h
       title: Math/modulo_anta.h
     - icon: ':warning:'
@@ -327,13 +327,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/NumberTheory/ChineseRemainder.h
       title: Math/NumberTheory/ChineseRemainder.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Math/NumberTheory/ExtendedEuclid.h
       title: Math/NumberTheory/ExtendedEuclid.h
     - icon: ':warning:'
       path: Math/NumberTheory/FactorialMod.h
       title: Math/NumberTheory/FactorialMod.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Math/NumberTheory/Pollard.h
       title: Math/NumberTheory/Pollard.h
     - icon: ':warning:'
@@ -370,7 +370,7 @@ data:
       title: Math/Polynomial/xorFFT.h
   - name: Math/Prime
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: Math/Prime/EulerPhi.h
       title: Math/Prime/EulerPhi.h
     - icon: ':heavy_check_mark:'
@@ -474,26 +474,68 @@ data:
     - icon: ':warning:'
       path: debug.h
       title: debug.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template.h
       title: template.h
   verificationCategories:
   - name: DP/tests
     pages:
     - icon: ':heavy_check_mark:'
+      path: DP/tests/aizu_dpl_1_d_lis.test.cpp
+      title: DP/tests/aizu_dpl_1_d_lis.test.cpp
+    - icon: ':heavy_check_mark:'
       path: DP/tests/dynamic_hull_lineaddgetmin.test.cpp
       title: DP/tests/dynamic_hull_lineaddgetmin.test.cpp
   - name: DataStructure/test
     pages:
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/test/aizu_dsl_1_a_dsu_aizu.test.cpp
+      title: DataStructure/test/aizu_dsl_1_a_dsu_aizu.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/test/aizu_dsl_2_a_segment_tree_rmq_update.test.cpp
+      title: DataStructure/test/aizu_dsl_2_a_segment_tree_rmq_update.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/test/aizu_dsl_2_b_fenwick_aizu.test.cpp
+      title: DataStructure/test/aizu_dsl_2_b_fenwick_aizu.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/test/aizu_dsl_2_b_segment_tree_sum.test.cpp
+      title: DataStructure/test/aizu_dsl_2_b_segment_tree_sum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/test/aizu_dsl_2_d_segment_tree_rangeset.test.cpp
+      title: DataStructure/test/aizu_dsl_2_d_segment_tree_rangeset.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/test/aizu_dsl_2_e_segment_tree_rangeadd.test.cpp
+      title: DataStructure/test/aizu_dsl_2_e_segment_tree_rangeadd.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/test/aizu_dsl_2_f_segment_tree_rangesetmin.test.cpp
+      title: DataStructure/test/aizu_dsl_2_f_segment_tree_rangesetmin.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/test/aizu_dsl_2_g_segment_tree_rangeaddsum.test.cpp
+      title: DataStructure/test/aizu_dsl_2_g_segment_tree_rangeaddsum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/test/aizu_dsl_2_h_segment_tree_rangeaddmin.test.cpp
+      title: DataStructure/test/aizu_dsl_2_h_segment_tree_rangeaddmin.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/test/aizu_dsl_2_i_segment_tree_rangesetsum.test.cpp
+      title: DataStructure/test/aizu_dsl_2_i_segment_tree_rangesetsum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/test/aizu_grl_5_c_hld_lca.test.cpp
+      title: DataStructure/test/aizu_grl_5_c_hld_lca.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/test/aizu_grl_5_c_lca.test.cpp
+      title: DataStructure/test/aizu_grl_5_c_lca.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/test/aizu_grl_5_d_hld_edge.test.cpp
+      title: DataStructure/test/aizu_grl_5_d_hld_edge.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/test/aizu_grl_5_e_hld_edge.test.cpp
+      title: DataStructure/test/aizu_grl_5_e_hld_edge.test.cpp
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/binary_trie.test.cpp
       title: DataStructure/test/binary_trie.test.cpp
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/dsu.test.cpp
       title: DataStructure/test/dsu.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: DataStructure/test/dsu_aizu.test.cpp
-      title: DataStructure/test/dsu_aizu.test.cpp
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/fenwick.test.cpp
       title: DataStructure/test/fenwick.test.cpp
@@ -504,23 +546,11 @@ data:
       path: DataStructure/test/fenwick_2d_rectsum.test.cpp
       title: DataStructure/test/fenwick_2d_rectsum.test.cpp
     - icon: ':heavy_check_mark:'
-      path: DataStructure/test/fenwick_aizu.test.cpp
-      title: DataStructure/test/fenwick_aizu.test.cpp
-    - icon: ':heavy_check_mark:'
       path: DataStructure/test/fenwick_pointaddrangesum.test.cpp
       title: DataStructure/test/fenwick_pointaddrangesum.test.cpp
     - icon: ':heavy_check_mark:'
-      path: DataStructure/test/hld_edge_aizu.test.cpp
-      title: DataStructure/test/hld_edge_aizu.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: DataStructure/test/hld_edge_aizu_2.test.cpp
-      title: DataStructure/test/hld_edge_aizu_2.test.cpp
-    - icon: ':heavy_check_mark:'
       path: DataStructure/test/hld_lca.test.cpp
       title: DataStructure/test/hld_lca.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: DataStructure/test/hld_lca_aizu.test.cpp
-      title: DataStructure/test/hld_lca_aizu.test.cpp
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/hld_vertexaddpathsum.test.cpp
       title: DataStructure/test/hld_vertexaddpathsum.test.cpp
@@ -533,9 +563,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/lca.test.cpp
       title: DataStructure/test/lca.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: DataStructure/test/lca_aizu.test.cpp
-      title: DataStructure/test/lca_aizu.test.cpp
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/li_chao_seg_tree_lineaddgetmin.test.cpp
       title: DataStructure/test/li_chao_seg_tree_lineaddgetmin.test.cpp
@@ -584,62 +611,62 @@ data:
   - name: Geometry/tests
     pages:
     - icon: ':heavy_check_mark:'
-      path: Geometry/tests/basic_ccw.test.cpp
-      title: Geometry/tests/basic_ccw.test.cpp
+      path: Geometry/tests/aizu_cgl_1_a_basic_projection.test.cpp
+      title: Geometry/tests/aizu_cgl_1_a_basic_projection.test.cpp
     - icon: ':heavy_check_mark:'
-      path: Geometry/tests/basic_line_intersection.test.cpp
-      title: Geometry/tests/basic_line_intersection.test.cpp
+      path: Geometry/tests/aizu_cgl_1_b_basic_reflection.test.cpp
+      title: Geometry/tests/aizu_cgl_1_b_basic_reflection.test.cpp
     - icon: ':heavy_check_mark:'
-      path: Geometry/tests/basic_projection.test.cpp
-      title: Geometry/tests/basic_projection.test.cpp
+      path: Geometry/tests/aizu_cgl_1_c_basic_ccw.test.cpp
+      title: Geometry/tests/aizu_cgl_1_c_basic_ccw.test.cpp
     - icon: ':heavy_check_mark:'
-      path: Geometry/tests/basic_reflection.test.cpp
-      title: Geometry/tests/basic_reflection.test.cpp
+      path: Geometry/tests/aizu_cgl_2_b_basic_segment_intersect.test.cpp
+      title: Geometry/tests/aizu_cgl_2_b_basic_segment_intersect.test.cpp
     - icon: ':heavy_check_mark:'
-      path: Geometry/tests/basic_segment_distance.test.cpp
-      title: Geometry/tests/basic_segment_distance.test.cpp
+      path: Geometry/tests/aizu_cgl_2_c_basic_line_intersection.test.cpp
+      title: Geometry/tests/aizu_cgl_2_c_basic_line_intersection.test.cpp
     - icon: ':heavy_check_mark:'
-      path: Geometry/tests/basic_segment_intersect.test.cpp
-      title: Geometry/tests/basic_segment_intersect.test.cpp
+      path: Geometry/tests/aizu_cgl_2_d_basic_segment_distance.test.cpp
+      title: Geometry/tests/aizu_cgl_2_d_basic_segment_distance.test.cpp
     - icon: ':heavy_check_mark:'
-      path: Geometry/tests/cicle_tangents.test.cpp
-      title: Geometry/tests/cicle_tangents.test.cpp
+      path: Geometry/tests/aizu_cgl_3_a_polygon_area.test.cpp
+      title: Geometry/tests/aizu_cgl_3_a_polygon_area.test.cpp
     - icon: ':heavy_check_mark:'
-      path: Geometry/tests/circle_circle_intersection.test.cpp
-      title: Geometry/tests/circle_circle_intersection.test.cpp
+      path: Geometry/tests/aizu_cgl_3_b_polygon_is_convex.test.cpp
+      title: Geometry/tests/aizu_cgl_3_b_polygon_is_convex.test.cpp
     - icon: ':heavy_check_mark:'
-      path: Geometry/tests/circle_circle_tangent_points.test.cpp
-      title: Geometry/tests/circle_circle_tangent_points.test.cpp
+      path: Geometry/tests/aizu_cgl_3_c_polygon_in_polygon.test.cpp
+      title: Geometry/tests/aizu_cgl_3_c_polygon_in_polygon.test.cpp
     - icon: ':heavy_check_mark:'
-      path: Geometry/tests/circle_common_area.test.cpp
-      title: Geometry/tests/circle_common_area.test.cpp
+      path: Geometry/tests/aizu_cgl_4_a_polygon_convex_hull.test.cpp
+      title: Geometry/tests/aizu_cgl_4_a_polygon_convex_hull.test.cpp
     - icon: ':heavy_check_mark:'
-      path: Geometry/tests/circle_line_intersection.test.cpp
-      title: Geometry/tests/circle_line_intersection.test.cpp
+      path: Geometry/tests/aizu_cgl_4_b_polygon_convex_diameter.test.cpp
+      title: Geometry/tests/aizu_cgl_4_b_polygon_convex_diameter.test.cpp
     - icon: ':heavy_check_mark:'
-      path: Geometry/tests/circle_tangent_points.test.cpp
-      title: Geometry/tests/circle_tangent_points.test.cpp
+      path: Geometry/tests/aizu_cgl_4_c_polygon_convex_cut.test.cpp
+      title: Geometry/tests/aizu_cgl_4_c_polygon_convex_cut.test.cpp
     - icon: ':heavy_check_mark:'
-      path: Geometry/tests/polygon_area.test.cpp
-      title: Geometry/tests/polygon_area.test.cpp
+      path: Geometry/tests/aizu_cgl_7_a_cicle_tangents.test.cpp
+      title: Geometry/tests/aizu_cgl_7_a_cicle_tangents.test.cpp
     - icon: ':heavy_check_mark:'
-      path: Geometry/tests/polygon_convex_cut.test.cpp
-      title: Geometry/tests/polygon_convex_cut.test.cpp
+      path: Geometry/tests/aizu_cgl_7_d_circle_line_intersection.test.cpp
+      title: Geometry/tests/aizu_cgl_7_d_circle_line_intersection.test.cpp
     - icon: ':heavy_check_mark:'
-      path: Geometry/tests/polygon_convex_diameter.test.cpp
-      title: Geometry/tests/polygon_convex_diameter.test.cpp
+      path: Geometry/tests/aizu_cgl_7_e_circle_circle_intersection.test.cpp
+      title: Geometry/tests/aizu_cgl_7_e_circle_circle_intersection.test.cpp
     - icon: ':heavy_check_mark:'
-      path: Geometry/tests/polygon_convex_hull.test.cpp
-      title: Geometry/tests/polygon_convex_hull.test.cpp
+      path: Geometry/tests/aizu_cgl_7_f_circle_tangent_points.test.cpp
+      title: Geometry/tests/aizu_cgl_7_f_circle_tangent_points.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Geometry/tests/aizu_cgl_7_g_circle_circle_tangent_points.test.cpp
+      title: Geometry/tests/aizu_cgl_7_g_circle_circle_tangent_points.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Geometry/tests/aizu_cgl_7_i_circle_common_area.test.cpp
+      title: Geometry/tests/aizu_cgl_7_i_circle_common_area.test.cpp
     - icon: ':heavy_check_mark:'
       path: Geometry/tests/polygon_in_convex.test.cpp
       title: Geometry/tests/polygon_in_convex.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: Geometry/tests/polygon_in_polygon.test.cpp
-      title: Geometry/tests/polygon_in_polygon.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: Geometry/tests/polygon_is_convex.test.cpp
-      title: Geometry/tests/polygon_is_convex.test.cpp
     - icon: ':heavy_check_mark:'
       path: Geometry/tests/z_basic_ccw.test.cpp
       title: Geometry/tests/z_basic_ccw.test.cpp
@@ -658,17 +685,56 @@ data:
   - name: Graph/tests
     pages:
     - icon: ':heavy_check_mark:'
-      path: Graph/tests/articulation_points.test.cpp
-      title: Graph/tests/articulation_points.test.cpp
+      path: Graph/tests/aizu_alds1_11_c_bfs.test.cpp
+      title: Graph/tests/aizu_alds1_11_c_bfs.test.cpp
     - icon: ':heavy_check_mark:'
-      path: Graph/tests/bfs.test.cpp
-      title: Graph/tests/bfs.test.cpp
+      path: Graph/tests/aizu_grl_1_a_dijkstra_aizu.test.cpp
+      title: Graph/tests/aizu_grl_1_a_dijkstra_aizu.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Graph/tests/aizu_grl_1_c_floyd.test.cpp
+      title: Graph/tests/aizu_grl_1_c_floyd.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Graph/tests/aizu_grl_2_a_mst.test.cpp
+      title: Graph/tests/aizu_grl_2_a_mst.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Graph/tests/aizu_grl_2_b_directed_mst.test.cpp
+      title: Graph/tests/aizu_grl_2_b_directed_mst.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Graph/tests/aizu_grl_3_a_articulation_points.test.cpp
+      title: Graph/tests/aizu_grl_3_a_articulation_points.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Graph/tests/aizu_grl_3_b_bridge.test.cpp
+      title: Graph/tests/aizu_grl_3_b_bridge.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Graph/tests/aizu_grl_3_c_strongly_connected.test.cpp
+      title: Graph/tests/aizu_grl_3_c_strongly_connected.test.cpp
+    - icon: ':x:'
+      path: Graph/tests/aizu_grl_4_a_strongly_connected_cycle_check.test.cpp
+      title: Graph/tests/aizu_grl_4_a_strongly_connected_cycle_check.test.cpp
+    - icon: ':x:'
+      path: Graph/tests/aizu_grl_5_a_tree_diameter.test.cpp
+      title: Graph/tests/aizu_grl_5_a_tree_diameter.test.cpp
+    - icon: ':x:'
+      path: Graph/tests/aizu_grl_6_a_maxflow_dinic.test.cpp
+      title: Graph/tests/aizu_grl_6_a_maxflow_dinic.test.cpp
+    - icon: ':x:'
+      path: Graph/tests/aizu_grl_6_a_maxflow_hlpp.test.cpp
+      title: Graph/tests/aizu_grl_6_a_maxflow_hlpp.test.cpp
+    - icon: ':x:'
+      path: Graph/tests/aizu_grl_6_a_maxflow_pr.test.cpp
+      title: Graph/tests/aizu_grl_6_a_maxflow_pr.test.cpp
+    - icon: ':x:'
+      path: Graph/tests/aizu_grl_6_b_mincost_maxflow.test.cpp
+      title: Graph/tests/aizu_grl_6_b_mincost_maxflow.test.cpp
+    - icon: ':x:'
+      path: Graph/tests/aizu_grl_6_b_mincost_maxflow_spfa.test.cpp
+      title: Graph/tests/aizu_grl_6_b_mincost_maxflow_spfa.test.cpp
+    - icon: ':x:'
+      path: Graph/tests/aizu_grl_7_a_matching_bipartite.test.cpp
+      title: Graph/tests/aizu_grl_7_a_matching_bipartite.test.cpp
     - icon: ':heavy_check_mark:'
       path: Graph/tests/bipartite_coloring.test.cpp
       title: Graph/tests/bipartite_coloring.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: Graph/tests/bridge.test.cpp
-      title: Graph/tests/bridge.test.cpp
     - icon: ':heavy_check_mark:'
       path: Graph/tests/bridge_biconnected.test.cpp
       title: Graph/tests/bridge_biconnected.test.cpp
@@ -679,23 +745,11 @@ data:
       path: Graph/tests/dijkstra.test.cpp
       title: Graph/tests/dijkstra.test.cpp
     - icon: ':heavy_check_mark:'
-      path: Graph/tests/dijkstra_aizu.test.cpp
-      title: Graph/tests/dijkstra_aizu.test.cpp
-    - icon: ':heavy_check_mark:'
       path: Graph/tests/directed_mst.test.cpp
       title: Graph/tests/directed_mst.test.cpp
     - icon: ':heavy_check_mark:'
-      path: Graph/tests/directed_mst_aizu.test.cpp
-      title: Graph/tests/directed_mst_aizu.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: Graph/tests/floyd_aizu.test.cpp
-      title: Graph/tests/floyd_aizu.test.cpp
-    - icon: ':heavy_check_mark:'
       path: Graph/tests/matching_bipartite.test.cpp
       title: Graph/tests/matching_bipartite.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: Graph/tests/matching_bipartite_aizu.test.cpp
-      title: Graph/tests/matching_bipartite_aizu.test.cpp
     - icon: ':heavy_check_mark:'
       path: Graph/tests/matching_bipartite_weighted.test.cpp
       title: Graph/tests/matching_bipartite_weighted.test.cpp
@@ -706,38 +760,11 @@ data:
       path: Graph/tests/matching_general.test.cpp
       title: Graph/tests/matching_general.test.cpp
     - icon: ':heavy_check_mark:'
-      path: Graph/tests/maxflow_dinic.test.cpp
-      title: Graph/tests/maxflow_dinic.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: Graph/tests/maxflow_hlpp.test.cpp
-      title: Graph/tests/maxflow_hlpp.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: Graph/tests/maxflow_pr.test.cpp
-      title: Graph/tests/maxflow_pr.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: Graph/tests/mincost_flow.test.cpp
-      title: Graph/tests/mincost_flow.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: Graph/tests/mincost_maxflow_spfa.test.cpp
-      title: Graph/tests/mincost_maxflow_spfa.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: Graph/tests/mst.test.cpp
-      title: Graph/tests/mst.test.cpp
-    - icon: ':heavy_check_mark:'
       path: Graph/tests/strongly_connected.test.cpp
       title: Graph/tests/strongly_connected.test.cpp
     - icon: ':heavy_check_mark:'
-      path: Graph/tests/strongly_connected_aizu.test.cpp
-      title: Graph/tests/strongly_connected_aizu.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: Graph/tests/strongly_connected_cycle_check.test.cpp
-      title: Graph/tests/strongly_connected_cycle_check.test.cpp
-    - icon: ':heavy_check_mark:'
       path: Graph/tests/tree_diameter.test.cpp
       title: Graph/tests/tree_diameter.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: Graph/tests/tree_diameter_aizu.test.cpp
-      title: Graph/tests/tree_diameter_aizu.test.cpp
     - icon: ':heavy_check_mark:'
       path: Graph/tests/triangles.test.cpp
       title: Graph/tests/triangles.test.cpp
@@ -746,30 +773,42 @@ data:
       title: Graph/tests/two_sat.test.cpp
   - name: Math/tests
     pages:
+    - icon: ':x:'
+      path: Math/tests/aizu_ntl_1_a_factorize.test.cpp
+      title: Math/tests/aizu_ntl_1_a_factorize.test.cpp
+    - icon: ':x:'
+      path: Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp
+      title: Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp
+    - icon: ':x:'
+      path: Math/tests/aizu_ntl_1_d_euler_phi.test.cpp
+      title: Math/tests/aizu_ntl_1_d_euler_phi.test.cpp
+    - icon: ':x:'
+      path: Math/tests/aizu_ntl_1_e_extended_euclid.test.cpp
+      title: Math/tests/aizu_ntl_1_e_extended_euclid.test.cpp
+    - icon: ':x:'
+      path: Math/tests/aizu_ntl_2_a_bigint_add.test.cpp
+      title: Math/tests/aizu_ntl_2_a_bigint_add.test.cpp
+    - icon: ':x:'
+      path: Math/tests/aizu_ntl_2_b_bigint_sub.test.cpp
+      title: Math/tests/aizu_ntl_2_b_bigint_sub.test.cpp
+    - icon: ':x:'
+      path: Math/tests/aizu_ntl_2_c_bigint_mul.test.cpp
+      title: Math/tests/aizu_ntl_2_c_bigint_mul.test.cpp
+    - icon: ':x:'
+      path: Math/tests/aizu_ntl_2_c_bigint_mul_karatsuba.test.cpp
+      title: Math/tests/aizu_ntl_2_c_bigint_mul_karatsuba.test.cpp
+    - icon: ':x:'
+      path: Math/tests/aizu_ntl_2_d_bigint_div.test.cpp
+      title: Math/tests/aizu_ntl_2_d_bigint_div.test.cpp
+    - icon: ':x:'
+      path: Math/tests/aizu_ntl_2_e_bigint_mod.test.cpp
+      title: Math/tests/aizu_ntl_2_e_bigint_mod.test.cpp
+    - icon: ':x:'
+      path: Math/tests/aizu_ntl_2_f_bigint_mul_fft.test.cpp
+      title: Math/tests/aizu_ntl_2_f_bigint_mul_fft.test.cpp
     - icon: ':heavy_check_mark:'
       path: Math/tests/berlekamp_massey.test.cpp
       title: Math/tests/berlekamp_massey.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: Math/tests/bigint_add.test.cpp
-      title: Math/tests/bigint_add.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: Math/tests/bigint_div.test.cpp
-      title: Math/tests/bigint_div.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: Math/tests/bigint_mod.test.cpp
-      title: Math/tests/bigint_mod.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: Math/tests/bigint_mul.test.cpp
-      title: Math/tests/bigint_mul.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: Math/tests/bigint_mul_fft.test.cpp
-      title: Math/tests/bigint_mul_fft.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: Math/tests/bigint_mul_karatsuba.test.cpp
-      title: Math/tests/bigint_mul_karatsuba.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: Math/tests/bigint_sub.test.cpp
-      title: Math/tests/bigint_sub.test.cpp
     - icon: ':heavy_check_mark:'
       path: Math/tests/convolution_and.test.cpp
       title: Math/tests/convolution_and.test.cpp
@@ -777,17 +816,8 @@ data:
       path: Math/tests/convolution_xor.test.cpp
       title: Math/tests/convolution_xor.test.cpp
     - icon: ':heavy_check_mark:'
-      path: Math/tests/euler_phi.test.cpp
-      title: Math/tests/euler_phi.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: Math/tests/extended_euclid.test.cpp
-      title: Math/tests/extended_euclid.test.cpp
-    - icon: ':heavy_check_mark:'
       path: Math/tests/factorize.test.cpp
       title: Math/tests/factorize.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: Math/tests/factorize_aizu.test.cpp
-      title: Math/tests/factorize_aizu.test.cpp
     - icon: ':heavy_check_mark:'
       path: Math/tests/is_prime_yukicoder.test.cpp
       title: Math/tests/is_prime_yukicoder.test.cpp
@@ -800,9 +830,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/tests/matrix_mult.test.cpp
       title: Math/tests/matrix_mult.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: Math/tests/modulo_pow.test.cpp
-      title: Math/tests/modulo_pow.test.cpp
     - icon: ':heavy_check_mark:'
       path: Math/tests/nimber.test.cpp
       title: Math/tests/nimber.test.cpp

@@ -4,20 +4,20 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Graph/tests/aizu_grl_3_c_strongly_connected.test.cpp
+    title: Graph/tests/aizu_grl_3_c_strongly_connected.test.cpp
+  - icon: ':x:'
+    path: Graph/tests/aizu_grl_4_a_strongly_connected_cycle_check.test.cpp
+    title: Graph/tests/aizu_grl_4_a_strongly_connected_cycle_check.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Graph/tests/strongly_connected.test.cpp
     title: Graph/tests/strongly_connected.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Graph/tests/strongly_connected_aizu.test.cpp
-    title: Graph/tests/strongly_connected_aizu.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Graph/tests/strongly_connected_cycle_check.test.cpp
-    title: Graph/tests/strongly_connected_cycle_check.test.cpp
-  - icon: ':heavy_check_mark:'
     path: Graph/tests/two_sat.test.cpp
     title: Graph/tests/two_sat.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://judge.yosupo.jp/problem/scc
@@ -59,12 +59,12 @@ data:
   path: Graph/DfsTree/StronglyConnected.h
   requiredBy: []
   timestamp: '2022-01-09 22:41:11+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - Graph/tests/strongly_connected_aizu.test.cpp
   - Graph/tests/two_sat.test.cpp
   - Graph/tests/strongly_connected.test.cpp
-  - Graph/tests/strongly_connected_cycle_check.test.cpp
+  - Graph/tests/aizu_grl_4_a_strongly_connected_cycle_check.test.cpp
+  - Graph/tests/aizu_grl_3_c_strongly_connected.test.cpp
 documentation_of: Graph/DfsTree/StronglyConnected.h
 layout: document
 redirect_from:

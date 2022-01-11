@@ -4,17 +4,17 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: DataStructure/test/hld_edge_aizu.test.cpp
-    title: DataStructure/test/hld_edge_aizu.test.cpp
+    path: DataStructure/test/aizu_grl_5_c_hld_lca.test.cpp
+    title: DataStructure/test/aizu_grl_5_c_hld_lca.test.cpp
   - icon: ':heavy_check_mark:'
-    path: DataStructure/test/hld_edge_aizu_2.test.cpp
-    title: DataStructure/test/hld_edge_aizu_2.test.cpp
+    path: DataStructure/test/aizu_grl_5_d_hld_edge.test.cpp
+    title: DataStructure/test/aizu_grl_5_d_hld_edge.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: DataStructure/test/aizu_grl_5_e_hld_edge.test.cpp
+    title: DataStructure/test/aizu_grl_5_e_hld_edge.test.cpp
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/hld_lca.test.cpp
     title: DataStructure/test/hld_lca.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: DataStructure/test/hld_lca_aizu.test.cpp
-    title: DataStructure/test/hld_lca_aizu.test.cpp
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/hld_vertexaddpathsum.test.cpp
     title: DataStructure/test/hld_vertexaddpathsum.test.cpp
@@ -223,12 +223,12 @@ data:
   timestamp: '2022-01-11 19:24:58+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - DataStructure/test/aizu_grl_5_c_hld_lca.test.cpp
   - DataStructure/test/hld_vertexsetpathcomposite.test.cpp
-  - DataStructure/test/hld_edge_aizu.test.cpp
+  - DataStructure/test/aizu_grl_5_e_hld_edge.test.cpp
   - DataStructure/test/hld_vertexaddpathsum.test.cpp
+  - DataStructure/test/aizu_grl_5_d_hld_edge.test.cpp
   - DataStructure/test/hld_lca.test.cpp
-  - DataStructure/test/hld_lca_aizu.test.cpp
-  - DataStructure/test/hld_edge_aizu_2.test.cpp
   - DataStructure/test/hld_vertexaddsubtreesum.test.cpp
 documentation_of: DataStructure/HeavyLight_adamant.h
 layout: document

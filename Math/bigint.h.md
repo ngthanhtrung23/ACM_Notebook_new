@@ -3,30 +3,30 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: Math/tests/bigint_add.test.cpp
-    title: Math/tests/bigint_add.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Math/tests/bigint_div.test.cpp
-    title: Math/tests/bigint_div.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Math/tests/bigint_mod.test.cpp
-    title: Math/tests/bigint_mod.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Math/tests/bigint_mul.test.cpp
-    title: Math/tests/bigint_mul.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Math/tests/bigint_mul_fft.test.cpp
-    title: Math/tests/bigint_mul_fft.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Math/tests/bigint_mul_karatsuba.test.cpp
-    title: Math/tests/bigint_mul_karatsuba.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Math/tests/bigint_sub.test.cpp
-    title: Math/tests/bigint_sub.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: Math/tests/aizu_ntl_2_a_bigint_add.test.cpp
+    title: Math/tests/aizu_ntl_2_a_bigint_add.test.cpp
+  - icon: ':x:'
+    path: Math/tests/aizu_ntl_2_b_bigint_sub.test.cpp
+    title: Math/tests/aizu_ntl_2_b_bigint_sub.test.cpp
+  - icon: ':x:'
+    path: Math/tests/aizu_ntl_2_c_bigint_mul.test.cpp
+    title: Math/tests/aizu_ntl_2_c_bigint_mul.test.cpp
+  - icon: ':x:'
+    path: Math/tests/aizu_ntl_2_c_bigint_mul_karatsuba.test.cpp
+    title: Math/tests/aizu_ntl_2_c_bigint_mul_karatsuba.test.cpp
+  - icon: ':x:'
+    path: Math/tests/aizu_ntl_2_d_bigint_div.test.cpp
+    title: Math/tests/aizu_ntl_2_d_bigint_div.test.cpp
+  - icon: ':x:'
+    path: Math/tests/aizu_ntl_2_e_bigint_mod.test.cpp
+    title: Math/tests/aizu_ntl_2_e_bigint_mod.test.cpp
+  - icon: ':x:'
+    path: Math/tests/aizu_ntl_2_f_bigint_mul_fft.test.cpp
+    title: Math/tests/aizu_ntl_2_f_bigint_mul_fft.test.cpp
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://stackoverflow.com/questions/13166079/move-semantics-and-pass-by-rvalue-reference-in-overloaded-arithmetic
@@ -522,15 +522,15 @@ data:
   path: Math/bigint.h
   requiredBy: []
   timestamp: '2022-01-11 20:04:16+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - Math/tests/bigint_mul.test.cpp
-  - Math/tests/bigint_add.test.cpp
-  - Math/tests/bigint_mul_karatsuba.test.cpp
-  - Math/tests/bigint_mul_fft.test.cpp
-  - Math/tests/bigint_div.test.cpp
-  - Math/tests/bigint_sub.test.cpp
-  - Math/tests/bigint_mod.test.cpp
+  - Math/tests/aizu_ntl_2_c_bigint_mul_karatsuba.test.cpp
+  - Math/tests/aizu_ntl_2_a_bigint_add.test.cpp
+  - Math/tests/aizu_ntl_2_e_bigint_mod.test.cpp
+  - Math/tests/aizu_ntl_2_d_bigint_div.test.cpp
+  - Math/tests/aizu_ntl_2_c_bigint_mul.test.cpp
+  - Math/tests/aizu_ntl_2_f_bigint_mul_fft.test.cpp
+  - Math/tests/aizu_ntl_2_b_bigint_sub.test.cpp
 documentation_of: Math/bigint.h
 layout: document
 redirect_from:

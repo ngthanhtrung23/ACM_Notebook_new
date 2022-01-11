@@ -7,8 +7,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: Graph/tests/mst.test.cpp
-    title: Graph/tests/mst.test.cpp
+    path: Graph/tests/aizu_grl_2_a_mst.test.cpp
+    title: Graph/tests/aizu_grl_2_a_mst.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -50,7 +50,7 @@ data:
   timestamp: '2022-01-11 13:11:25+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Graph/tests/mst.test.cpp
+  - Graph/tests/aizu_grl_2_a_mst.test.cpp
 documentation_of: Graph/mst.h
 layout: document
 redirect_from:

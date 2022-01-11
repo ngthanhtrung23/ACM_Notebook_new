@@ -4,8 +4,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: Graph/tests/bfs.test.cpp
-    title: Graph/tests/bfs.test.cpp
+    path: Graph/tests/aizu_alds1_11_c_bfs.test.cpp
+    title: Graph/tests/aizu_alds1_11_c_bfs.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -86,7 +86,7 @@ data:
   timestamp: '2022-01-07 15:25:45+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Graph/tests/bfs.test.cpp
+  - Graph/tests/aizu_alds1_11_c_bfs.test.cpp
 documentation_of: Graph/bfs.h
 layout: document
 redirect_from:

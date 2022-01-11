@@ -4,11 +4,11 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Graph/tests/aizu_grl_1_a_dijkstra_aizu.test.cpp
+    title: Graph/tests/aizu_grl_1_a_dijkstra_aizu.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Graph/tests/dijkstra.test.cpp
     title: Graph/tests/dijkstra.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Graph/tests/dijkstra_aizu.test.cpp
-    title: Graph/tests/dijkstra_aizu.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -67,8 +67,8 @@ data:
   timestamp: '2022-01-06 03:02:41+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Graph/tests/aizu_grl_1_a_dijkstra_aizu.test.cpp
   - Graph/tests/dijkstra.test.cpp
-  - Graph/tests/dijkstra_aizu.test.cpp
 documentation_of: Graph/dijkstra.h
 layout: document
 redirect_from:

@@ -4,8 +4,26 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: DataStructure/test/hld_edge_aizu_2.test.cpp
-    title: DataStructure/test/hld_edge_aizu_2.test.cpp
+    path: DataStructure/test/aizu_dsl_2_d_segment_tree_rangeset.test.cpp
+    title: DataStructure/test/aizu_dsl_2_d_segment_tree_rangeset.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: DataStructure/test/aizu_dsl_2_e_segment_tree_rangeadd.test.cpp
+    title: DataStructure/test/aizu_dsl_2_e_segment_tree_rangeadd.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: DataStructure/test/aizu_dsl_2_f_segment_tree_rangesetmin.test.cpp
+    title: DataStructure/test/aizu_dsl_2_f_segment_tree_rangesetmin.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: DataStructure/test/aizu_dsl_2_g_segment_tree_rangeaddsum.test.cpp
+    title: DataStructure/test/aizu_dsl_2_g_segment_tree_rangeaddsum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: DataStructure/test/aizu_dsl_2_h_segment_tree_rangeaddmin.test.cpp
+    title: DataStructure/test/aizu_dsl_2_h_segment_tree_rangeaddmin.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: DataStructure/test/aizu_dsl_2_i_segment_tree_rangesetsum.test.cpp
+    title: DataStructure/test/aizu_dsl_2_i_segment_tree_rangesetsum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: DataStructure/test/aizu_grl_5_e_hld_edge.test.cpp
+    title: DataStructure/test/aizu_grl_5_e_hld_edge.test.cpp
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
     title: DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
@@ -22,6 +40,12 @@ data:
     - https://oj.vnoi.info/problem/qmax2
     - https://oj.vnoi.info/problem/segtree_itladder
     - https://oj.vnoi.info/problem/segtree_itmix
+    - https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_D
+    - https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_E
+    - https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_F
+    - https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_G
+    - https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_H
+    - https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_I
   bundledCode: "#line 1 \"DataStructure/LazySegTree.h\"\n// Lazy Segment Tree, copied\
     \ from AtCoder\n// Source: https://github.com/atcoder/ac-library/blob/master/atcoder/lazysegtree.hpp\n\
     // Doc: https://atcoder.github.io/ac-library/master/document_en/lazysegtree.html\n\
@@ -104,12 +128,24 @@ data:
     \ k) {\n        d[k] = op(d[2*k], d[2*k+1]);\n    }\n    void all_apply(int k,\
     \ F f) {\n        d[k] = mapping(f, d[k]);\n        if (k < size) lz[k] = composition(f,\
     \ lz[k]);\n    }\n    void push(int k) {\n        all_apply(2*k, lz[k]);\n   \
-    \     all_apply(2*k+1, lz[k]);\n        lz[k] = id();\n    }\n};\n\nstruct MaxAddSegTreeOp\
-    \ {\n    static int op(int x, int y) { return max(x, y); }\n    static int e()\
-    \ { return 0; }  // correct for this problem because initial value are 0 and add\
-    \ > 0\n\n    // lazy\n    static int apply(int tag, int value) {\n        return\
-    \ value + tag;\n    }\n    static int combine(int x, int y) {\n        return\
-    \ x + y;\n    }\n    static int id() {\n        return 0;\n    }\n};\n"
+    \     all_apply(2*k+1, lz[k]);\n        lz[k] = id();\n    }\n};\n\n//////////\
+    \ BELOW: EXAMPLES\n// https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_D\n\
+    // https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_E\n// https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_F\n\
+    // https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_G\n// https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_H\n\
+    // https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_I\n// supports:\n\
+    // - set a(l -> r) to val; val > NOT_SET\n// - add a(l -> r) += val\n// - find\
+    \ sum a(l -> r)\n// - find min a(l -> r)\nstruct RangeSetAddMinSumOps {\n    struct\
+    \ S { long long sum, min, sz; };\n    static S op(S l, S r) { return S { l.sum\
+    \ + r.sum, min(l.min, r.min), l.sz + r.sz }; }\n    static S e() { return S {0LL,\
+    \ INT_MAX, 0}; }\n\n    static const long long NOT_SET = -1000111000;\n    struct\
+    \ F { long long set, add; };\n\n    static S mapping(F f, S s) {\n        if (f.set\
+    \ == NOT_SET) {\n            return S {\n                s.sum + f.add * s.sz,\n\
+    \                s.min + f.add,\n                s.sz,\n            };\n     \
+    \   }\n        return S {\n            (f.set + f.add) * s.sz,\n            f.set\
+    \ + f.add,\n            s.sz,\n        };\n    }\n    static F composition(F f,\
+    \ F g) {\n        if (f.set == NOT_SET) {\n            return F { g.set, g.add\
+    \ + f.add };\n        }\n        return f;\n    }\n    static F id() {\n     \
+    \   return F { NOT_SET, 0 };\n    }\n};\n"
   code: "// Lazy Segment Tree, copied from AtCoder\n// Source: https://github.com/atcoder/ac-library/blob/master/atcoder/lazysegtree.hpp\n\
     // Doc: https://atcoder.github.io/ac-library/master/document_en/lazysegtree.html\n\
     //\n// Notes:\n// - Index of elements from 0\n// - Range queries are [l, r-1]\n\
@@ -191,21 +227,39 @@ data:
     \ k) {\n        d[k] = op(d[2*k], d[2*k+1]);\n    }\n    void all_apply(int k,\
     \ F f) {\n        d[k] = mapping(f, d[k]);\n        if (k < size) lz[k] = composition(f,\
     \ lz[k]);\n    }\n    void push(int k) {\n        all_apply(2*k, lz[k]);\n   \
-    \     all_apply(2*k+1, lz[k]);\n        lz[k] = id();\n    }\n};\n\nstruct MaxAddSegTreeOp\
-    \ {\n    static int op(int x, int y) { return max(x, y); }\n    static int e()\
-    \ { return 0; }  // correct for this problem because initial value are 0 and add\
-    \ > 0\n\n    // lazy\n    static int apply(int tag, int value) {\n        return\
-    \ value + tag;\n    }\n    static int combine(int x, int y) {\n        return\
-    \ x + y;\n    }\n    static int id() {\n        return 0;\n    }\n};\n"
+    \     all_apply(2*k+1, lz[k]);\n        lz[k] = id();\n    }\n};\n\n//////////\
+    \ BELOW: EXAMPLES\n// https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_D\n\
+    // https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_E\n// https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_F\n\
+    // https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_G\n// https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_H\n\
+    // https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_I\n// supports:\n\
+    // - set a(l -> r) to val; val > NOT_SET\n// - add a(l -> r) += val\n// - find\
+    \ sum a(l -> r)\n// - find min a(l -> r)\nstruct RangeSetAddMinSumOps {\n    struct\
+    \ S { long long sum, min, sz; };\n    static S op(S l, S r) { return S { l.sum\
+    \ + r.sum, min(l.min, r.min), l.sz + r.sz }; }\n    static S e() { return S {0LL,\
+    \ INT_MAX, 0}; }\n\n    static const long long NOT_SET = -1000111000;\n    struct\
+    \ F { long long set, add; };\n\n    static S mapping(F f, S s) {\n        if (f.set\
+    \ == NOT_SET) {\n            return S {\n                s.sum + f.add * s.sz,\n\
+    \                s.min + f.add,\n                s.sz,\n            };\n     \
+    \   }\n        return S {\n            (f.set + f.add) * s.sz,\n            f.set\
+    \ + f.add,\n            s.sz,\n        };\n    }\n    static F composition(F f,\
+    \ F g) {\n        if (f.set == NOT_SET) {\n            return F { g.set, g.add\
+    \ + f.add };\n        }\n        return f;\n    }\n    static F id() {\n     \
+    \   return F { NOT_SET, 0 };\n    }\n};\n"
   dependsOn: []
   isVerificationFile: false
   path: DataStructure/LazySegTree.h
   requiredBy: []
-  timestamp: '2022-01-11 19:24:58+08:00'
+  timestamp: '2022-01-11 21:46:03+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - DataStructure/test/aizu_grl_5_e_hld_edge.test.cpp
+  - DataStructure/test/aizu_dsl_2_h_segment_tree_rangeaddmin.test.cpp
+  - DataStructure/test/aizu_dsl_2_f_segment_tree_rangesetmin.test.cpp
   - DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
-  - DataStructure/test/hld_edge_aizu_2.test.cpp
+  - DataStructure/test/aizu_dsl_2_i_segment_tree_rangesetsum.test.cpp
+  - DataStructure/test/aizu_dsl_2_d_segment_tree_rangeset.test.cpp
+  - DataStructure/test/aizu_dsl_2_e_segment_tree_rangeadd.test.cpp
+  - DataStructure/test/aizu_dsl_2_g_segment_tree_rangeaddsum.test.cpp
 documentation_of: DataStructure/LazySegTree.h
 layout: document
 redirect_from:
