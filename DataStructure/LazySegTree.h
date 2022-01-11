@@ -233,7 +233,7 @@ struct RangeSetAddMinSumOps {
     static S e() { return S {0LL, INT_MAX, 0}; }
 
     static const long long NOT_SET = -1000111000;
-    struct F { long long set, add; }
+    struct F { long long set, add; };
 
     static S mapping(F f, S s) {
         if (f.set == NOT_SET) {
@@ -244,7 +244,7 @@ struct RangeSetAddMinSumOps {
             };
         }
         return S {
-            (f.set + f.add) * f.sz,
+            (f.set + f.add) * s.sz,
             f.set + f.add,
             s.sz,
         };
@@ -255,7 +255,7 @@ struct RangeSetAddMinSumOps {
         }
         return f;
     }
-    static long long id() {
+    static F id() {
         return F { NOT_SET, 0 };
     }
 };
