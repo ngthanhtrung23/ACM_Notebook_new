@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/HeavyLight_adamant.h
     title: DataStructure/HeavyLight_adamant.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/SegTree.h
     title: DataStructure/SegTree.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_D
@@ -204,11 +204,11 @@ data:
     \ st(n);\n\n    int q; cin >> q;\n    while (q--) {\n        int typ; cin >> typ;\n\
     \        if (typ == 0) {\n            int u, val; cin >> u >> val;\n         \
     \   hld.apply_path(u, hld.parent[u], true, [&] (int l, int r) {\n            \
-    \    st.set(l, val);\n            });\n        } else {\n            int u; cin\
-    \ >> u;\n            cout << hld.prod_path_commutative<ll, SumSegTreeOp::op, SumSegTreeOp::e>(\n\
-    \                    0, u, true, [&] (int l, int r) {\n                      \
-    \  return st.prod(l, r+1);\n                    }) << '\\n';\n        }\n    }\n\
-    }\n"
+    \    st.set(l, st.get(l) + val);\n            });\n        } else {\n        \
+    \    int u; cin >> u;\n            cout << hld.prod_path_commutative<ll, SumSegTreeOp::op,\
+    \ SumSegTreeOp::e>(\n                    0, u, true, [&] (int l, int r) {\n  \
+    \                      return st.prod(l, r+1);\n                    }) << '\\\
+    n';\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_D\"\
     \n\n#include \"../../template.h\"\n#include \"../SegTree.h\"\n#include \"../HeavyLight_adamant.h\"\
     \n\nusing ll = long long;\n\nvoid solve() {\n    int n; cin >> n;\n    vector<vector<int>>\
@@ -218,11 +218,11 @@ data:
     \ st(n);\n\n    int q; cin >> q;\n    while (q--) {\n        int typ; cin >> typ;\n\
     \        if (typ == 0) {\n            int u, val; cin >> u >> val;\n         \
     \   hld.apply_path(u, hld.parent[u], true, [&] (int l, int r) {\n            \
-    \    st.set(l, val);\n            });\n        } else {\n            int u; cin\
-    \ >> u;\n            cout << hld.prod_path_commutative<ll, SumSegTreeOp::op, SumSegTreeOp::e>(\n\
-    \                    0, u, true, [&] (int l, int r) {\n                      \
-    \  return st.prod(l, r+1);\n                    }) << '\\n';\n        }\n    }\n\
-    }\n"
+    \    st.set(l, st.get(l) + val);\n            });\n        } else {\n        \
+    \    int u; cin >> u;\n            cout << hld.prod_path_commutative<ll, SumSegTreeOp::op,\
+    \ SumSegTreeOp::e>(\n                    0, u, true, [&] (int l, int r) {\n  \
+    \                      return st.prod(l, r+1);\n                    }) << '\\\
+    n';\n        }\n    }\n}\n"
   dependsOn:
   - template.h
   - DataStructure/SegTree.h
@@ -230,8 +230,8 @@ data:
   isVerificationFile: true
   path: DataStructure/test/hld_edge_aizu.test.cpp
   requiredBy: []
-  timestamp: '2022-01-11 19:24:58+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2022-01-11 19:31:53+08:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/hld_edge_aizu.test.cpp
 layout: document

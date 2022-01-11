@@ -44,7 +44,7 @@ data:
     - icon: ':warning:'
       path: DataStructure/HeavyLight.cpp
       title: DataStructure/HeavyLight.cpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/HeavyLight_adamant.h
       title: DataStructure/HeavyLight_adamant.h
     - icon: ':warning:'
@@ -80,7 +80,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/RMQ.h
       title: DataStructure/RMQ.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/SegTree.h
       title: DataStructure/SegTree.h
     - icon: ':heavy_check_mark:'
@@ -474,7 +474,7 @@ data:
     - icon: ':warning:'
       path: debug.h
       title: debug.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template.h
       title: template.h
   verificationCategories:
@@ -509,7 +509,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/fenwick_pointaddrangesum.test.cpp
       title: DataStructure/test/fenwick_pointaddrangesum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/test/hld_edge_aizu.test.cpp
       title: DataStructure/test/hld_edge_aizu.test.cpp
     - icon: ':heavy_check_mark:'
@@ -693,6 +693,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Graph/tests/matching_bipartite.test.cpp
       title: Graph/tests/matching_bipartite.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Graph/tests/matching_bipartite_aizu.test.cpp
+      title: Graph/tests/matching_bipartite_aizu.test.cpp
     - icon: ':heavy_check_mark:'
       path: Graph/tests/matching_bipartite_weighted.test.cpp
       title: Graph/tests/matching_bipartite_weighted.test.cpp

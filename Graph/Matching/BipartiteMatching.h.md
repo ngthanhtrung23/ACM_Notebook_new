@@ -6,6 +6,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Graph/tests/matching_bipartite.test.cpp
     title: Graph/tests/matching_bipartite.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Graph/tests/matching_bipartite_aizu.test.cpp
+    title: Graph/tests/matching_bipartite_aizu.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -75,6 +78,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Graph/tests/matching_bipartite.test.cpp
+  - Graph/tests/matching_bipartite_aizu.test.cpp
 documentation_of: Graph/Matching/BipartiteMatching.h
 layout: document
 redirect_from:
