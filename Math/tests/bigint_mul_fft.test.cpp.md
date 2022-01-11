@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Math/bigint.h
     title: Math/bigint.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
@@ -148,62 +148,63 @@ data:
     \ * b1.sign;\n        r.sign = a1.sign;\n        q.trim();\n        r.trim();\n\
     \        auto res = make_pair(q, r / norm);\n        if (res.second < 0) res.second\
     \ += b1;\n        return res;\n    }\n    BigInt operator/(const BigInt &v) const\
-    \ {\n        return divmod(*this, v).first;\n    }\n\n    BigInt operator%(const\
-    \ BigInt &v) const {\n        return divmod(*this, v).second;\n    }\n\n    void\
-    \ operator/=(int v) {\n        assert(v > 0);  // operator / not well-defined\
-    \ for v <= 0.\n        if (llabs(v) >= BASE) {\n            *this /= BigInt(v);\n\
+    \ {\n        if (v < 0) return divmod(-*this, -v).first;\n        return divmod(*this,\
+    \ v).first;\n    }\n\n    BigInt operator%(const BigInt &v) const {\n        return\
+    \ divmod(*this, v).second;\n    }\n\n    void operator/=(int v) {\n        assert(v\
+    \ > 0);  // operator / not well-defined for v <= 0.\n        if (llabs(v) >= BASE)\
+    \ {\n            *this /= BigInt(v);\n            return ;\n        }\n      \
+    \  if (v < 0)\n            sign = -sign, v = -v;\n        for (int i = (int) a.size()\
+    \ - 1, rem = 0; i >= 0; --i) {\n            long long cur = a[i] + rem * (long\
+    \ long) BASE;\n            a[i] = (int) (cur / v);\n            rem = (int) (cur\
+    \ % v);\n        }\n        trim();\n    }\n\n    BigInt operator/(int v) const\
+    \ {\n        assert(v > 0);  // operator / not well-defined for v <= 0.\n\n  \
+    \      if (llabs(v) >= BASE) {\n            return *this / BigInt(v);\n      \
+    \  }\n        BigInt res = *this;\n        res /= v;\n        return res;\n  \
+    \  }\n    void operator/=(const BigInt &v) {\n        *this = *this / v;\n   \
+    \ }\n\n    long long operator%(long long v) const {\n        assert(v > 0);  //\
+    \ operator / not well-defined for v <= 0.\n        assert(v < BASE);\n       \
+    \ int m = 0;\n        for (int i = a.size() - 1; i >= 0; --i)\n            m =\
+    \ (a[i] + m * (long long) BASE) % v;\n        return m * sign;\n    }\n\n    void\
+    \ operator*=(int v) {\n        if (llabs(v) >= BASE) {\n            *this *= BigInt(v);\n\
     \            return ;\n        }\n        if (v < 0)\n            sign = -sign,\
-    \ v = -v;\n        for (int i = (int) a.size() - 1, rem = 0; i >= 0; --i) {\n\
-    \            long long cur = a[i] + rem * (long long) BASE;\n            a[i]\
-    \ = (int) (cur / v);\n            rem = (int) (cur % v);\n        }\n        trim();\n\
-    \    }\n\n    BigInt operator/(int v) const {\n        assert(v > 0);  // operator\
-    \ / not well-defined for v <= 0.\n\n        if (llabs(v) >= BASE) {\n        \
-    \    return *this / BigInt(v);\n        }\n        BigInt res = *this;\n     \
-    \   res /= v;\n        return res;\n    }\n    void operator/=(const BigInt &v)\
-    \ {\n        *this = *this / v;\n    }\n\n    long long operator%(long long v)\
-    \ const {\n        assert(v > 0);  // operator / not well-defined for v <= 0.\n\
-    \        assert(v < BASE);\n        int m = 0;\n        for (int i = a.size()\
-    \ - 1; i >= 0; --i)\n            m = (a[i] + m * (long long) BASE) % v;\n    \
-    \    return m * sign;\n    }\n\n    void operator*=(int v) {\n        if (llabs(v)\
-    \ >= BASE) {\n            *this *= BigInt(v);\n            return ;\n        }\n\
-    \        if (v < 0)\n            sign = -sign, v = -v;\n        for (int i = 0,\
-    \ carry = 0; i < (int) a.size() || carry; ++i) {\n            if (i == (int) a.size())\n\
-    \                a.push_back(0);\n            long long cur = a[i] * (long long)\
-    \ v + carry;\n            carry = (int) (cur / BASE);\n            a[i] = (int)\
-    \ (cur % BASE);\n            //asm(\"divl %%ecx\" : \"=a\"(carry), \"=d\"(a[i])\
-    \ : \"A\"(cur), \"c\"(base));\n            /*\n             int val;\n       \
-    \      __asm {\n             lea esi, cur\n             mov eax, [esi]\n     \
-    \        mov edx, [esi+4]\n             mov ecx, base\n             div ecx\n\
-    \             mov carry, eax\n             mov val, edx;\n             }\n   \
-    \          a[i] = val;\n             */\n        }\n        trim();\n    }\n\n\
-    \    BigInt operator*(int v) const {\n        if (llabs(v) >= BASE) {\n      \
-    \      return *this * BigInt(v);\n        }\n        BigInt res = *this;\n   \
-    \     res *= v;\n        return res;\n    }\n\n    // Convert BASE 10^old -->\
-    \ 10^new.\n    static vector<int> convert_base(const vector<int> &a, int old_digits,\
-    \ int new_digits) {\n        vector<long long> p(max(old_digits, new_digits) +\
-    \ 1);\n        p[0] = 1;\n        for (int i = 1; i < (int) p.size(); i++)\n \
-    \           p[i] = p[i - 1] * 10;\n        vector<int> res;\n        long long\
-    \ cur = 0;\n        int cur_digits = 0;\n        for (int i = 0; i < (int) a.size();\
-    \ i++) {\n            cur += a[i] * p[cur_digits];\n            cur_digits +=\
-    \ old_digits;\n            while (cur_digits >= new_digits) {\n              \
-    \  res.push_back((long long)(cur % p[new_digits]));\n                cur /= p[new_digits];\n\
-    \                cur_digits -= new_digits;\n            }\n        }\n       \
-    \ res.push_back((int) cur);\n        while (!res.empty() && !res.back())\n   \
-    \         res.pop_back();\n        return res;\n    }\n\n    void fft(vector<complex<double>\
-    \ > &x, bool invert) const {\n        int n = (int) x.size();\n\n        for (int\
-    \ i = 1, j = 0; i < n; ++i) {\n            int bit = n >> 1;\n            for\
-    \ (; j >= bit; bit >>= 1)\n                j -= bit;\n            j += bit;\n\
-    \            if (i < j)\n                swap(x[i], x[j]);\n        }\n\n    \
-    \    for (int len = 2; len <= n; len <<= 1) {\n            double ang = 2 * 3.14159265358979323846\
-    \ / len * (invert ? -1 : 1);\n            complex<double> wlen(cos(ang), sin(ang));\n\
-    \            for (int i = 0; i < n; i += len) {\n                complex<double>\
-    \ w(1);\n                for (int j = 0; j < len / 2; ++j) {\n               \
-    \     complex<double> u = x[i + j];\n                    complex<double> v = x[i\
-    \ + j + len / 2] * w;\n                    x[i + j] = u + v;\n               \
-    \     x[i + j + len / 2] = u - v;\n                    w *= wlen;\n          \
-    \      }\n            }\n        }\n        if (invert)\n            for (int\
-    \ i = 0; i < n; ++i)\n                x[i] /= n;\n    }\n\n    void multiply_fft(const\
-    \ vector<int> &x, const vector<int> &y, vector<int> &res) const {\n        vector<complex<double>\
+    \ v = -v;\n        for (int i = 0, carry = 0; i < (int) a.size() || carry; ++i)\
+    \ {\n            if (i == (int) a.size())\n                a.push_back(0);\n \
+    \           long long cur = a[i] * (long long) v + carry;\n            carry =\
+    \ (int) (cur / BASE);\n            a[i] = (int) (cur % BASE);\n            //asm(\"\
+    divl %%ecx\" : \"=a\"(carry), \"=d\"(a[i]) : \"A\"(cur), \"c\"(base));\n     \
+    \       /*\n             int val;\n             __asm {\n             lea esi,\
+    \ cur\n             mov eax, [esi]\n             mov edx, [esi+4]\n          \
+    \   mov ecx, base\n             div ecx\n             mov carry, eax\n       \
+    \      mov val, edx;\n             }\n             a[i] = val;\n             */\n\
+    \        }\n        trim();\n    }\n\n    BigInt operator*(int v) const {\n  \
+    \      if (llabs(v) >= BASE) {\n            return *this * BigInt(v);\n      \
+    \  }\n        BigInt res = *this;\n        res *= v;\n        return res;\n  \
+    \  }\n\n    // Convert BASE 10^old --> 10^new.\n    static vector<int> convert_base(const\
+    \ vector<int> &a, int old_digits, int new_digits) {\n        vector<long long>\
+    \ p(max(old_digits, new_digits) + 1);\n        p[0] = 1;\n        for (int i =\
+    \ 1; i < (int) p.size(); i++)\n            p[i] = p[i - 1] * 10;\n        vector<int>\
+    \ res;\n        long long cur = 0;\n        int cur_digits = 0;\n        for (int\
+    \ i = 0; i < (int) a.size(); i++) {\n            cur += a[i] * p[cur_digits];\n\
+    \            cur_digits += old_digits;\n            while (cur_digits >= new_digits)\
+    \ {\n                res.push_back((long long)(cur % p[new_digits]));\n      \
+    \          cur /= p[new_digits];\n                cur_digits -= new_digits;\n\
+    \            }\n        }\n        res.push_back((int) cur);\n        while (!res.empty()\
+    \ && !res.back())\n            res.pop_back();\n        return res;\n    }\n\n\
+    \    void fft(vector<complex<double> > &x, bool invert) const {\n        int n\
+    \ = (int) x.size();\n\n        for (int i = 1, j = 0; i < n; ++i) {\n        \
+    \    int bit = n >> 1;\n            for (; j >= bit; bit >>= 1)\n            \
+    \    j -= bit;\n            j += bit;\n            if (i < j)\n              \
+    \  swap(x[i], x[j]);\n        }\n\n        for (int len = 2; len <= n; len <<=\
+    \ 1) {\n            double ang = 2 * 3.14159265358979323846 / len * (invert ?\
+    \ -1 : 1);\n            complex<double> wlen(cos(ang), sin(ang));\n          \
+    \  for (int i = 0; i < n; i += len) {\n                complex<double> w(1);\n\
+    \                for (int j = 0; j < len / 2; ++j) {\n                    complex<double>\
+    \ u = x[i + j];\n                    complex<double> v = x[i + j + len / 2] *\
+    \ w;\n                    x[i + j] = u + v;\n                    x[i + j + len\
+    \ / 2] = u - v;\n                    w *= wlen;\n                }\n         \
+    \   }\n        }\n        if (invert)\n            for (int i = 0; i < n; ++i)\n\
+    \                x[i] /= n;\n    }\n\n    void multiply_fft(const vector<int>\
+    \ &x, const vector<int> &y, vector<int> &res) const {\n        vector<complex<double>\
     \ > fa(x.begin(), x.end());\n        vector<complex<double> > fb(y.begin(), y.end());\n\
     \        int n = 1;\n        while (n < (int) max(x.size(), y.size()))\n     \
     \       n <<= 1;\n        n <<= 1;\n        fa.resize(n);\n        fb.resize(n);\n\
@@ -292,7 +293,7 @@ data:
   isVerificationFile: true
   path: Math/tests/bigint_mul_fft.test.cpp
   requiredBy: []
-  timestamp: '2022-01-11 19:59:38+08:00'
+  timestamp: '2022-01-11 20:04:16+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Math/tests/bigint_mul_fft.test.cpp

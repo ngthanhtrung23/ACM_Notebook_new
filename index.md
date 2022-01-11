@@ -296,7 +296,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/SumDiv_SumMod.h
       title: Math/SumDiv_SumMod.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Math/bigint.h
       title: Math/bigint.h
     - icon: ':warning:'
@@ -474,7 +474,7 @@ data:
     - icon: ':warning:'
       path: debug.h
       title: debug.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template.h
       title: template.h
   verificationCategories:
@@ -752,7 +752,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/tests/bigint_add.test.cpp
       title: Math/tests/bigint_add.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/bigint_div.test.cpp
       title: Math/tests/bigint_div.test.cpp
     - icon: ':heavy_check_mark:'

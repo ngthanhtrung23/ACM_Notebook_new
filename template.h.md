@@ -144,7 +144,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Math/tests/bigint_add.test.cpp
     title: Math/tests/bigint_add.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/bigint_div.test.cpp
     title: Math/tests/bigint_div.test.cpp
   - icon: ':heavy_check_mark:'
@@ -168,9 +168,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Math/tests/is_prime_yukicoder.test.cpp
     title: Math/tests/is_prime_yukicoder.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://quangloc99.github.io/2021/07/30/my-CP-debugging-template.html
@@ -238,7 +238,7 @@ data:
   - String/minmove.cpp
   - String/lyndon.cpp
   timestamp: '2022-01-10 03:15:26+08:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/lca_aizu.test.cpp
   - DataStructure/test/binary_trie.test.cpp
