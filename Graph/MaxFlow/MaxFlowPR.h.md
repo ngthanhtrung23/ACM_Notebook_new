@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Graph/tests/aizu_grl_6_a_maxflow_pr.test.cpp
     title: Graph/tests/aizu_grl_6_a_maxflow_pr.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - http://vn.spoj.com/problems/FFLOW/
@@ -107,7 +107,7 @@ data:
   path: Graph/MaxFlow/MaxFlowPR.h
   requiredBy: []
   timestamp: '2021-12-17 23:12:55+08:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Graph/tests/aizu_grl_6_a_maxflow_pr.test.cpp
 documentation_of: Graph/MaxFlow/MaxFlowPR.h

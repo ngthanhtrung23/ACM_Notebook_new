@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Math/NumberTheory/ChineseRemainder.h
     title: Math/NumberTheory/ChineseRemainder.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Math/NumberTheory/ExtendedEuclid.h
     title: Math/NumberTheory/ExtendedEuclid.h
   - icon: ':heavy_check_mark:'

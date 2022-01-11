@@ -18,15 +18,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/splay_tree.test.cpp
     title: DataStructure/test/splay_tree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp
     title: Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp
   - icon: ':heavy_check_mark:'
     path: Math/tests/berlekamp_massey.test.cpp
     title: Math/tests/berlekamp_massey.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://codeforces.com/gym/101383
@@ -112,7 +112,7 @@ data:
   path: Math/modulo_anta.h
   requiredBy: []
   timestamp: '2022-01-11 20:18:36+08:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
   - DataStructure/test/hld_vertexsetpathcomposite.test.cpp

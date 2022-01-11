@@ -14,11 +14,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_C
+    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_A
     links:
-    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_C
-  bundledCode: "#line 1 \"Geometry/tests/aizu_cgl_1_c_basic_ccw.test.cpp\"\n#define\
-    \ PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_C\"\
+    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_A
+  bundledCode: "#line 1 \"Geometry/tests/aizu_cgl_2_a_basic_line.test.cpp\"\n#define\
+    \ PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_A\"\
     \n\n#line 1 \"template.h\"\n#include <bits/stdc++.h>\nusing namespace std;\n\n\
     #define FOR(i,a,b) for(int i=(a),_b=(b); i<=_b; i++)\n#define FORD(i,a,b) for(int\
     \ i=(a),_b=(b); i>=_b; i--)\n#define REP(i,a) for(int i=0,_a=(a); i<_a; i++)\n\
@@ -120,34 +120,34 @@ data:
     \ b, c)\n            || onSegment(a, b, d)\n            || onSegment(c, d, a)\n\
     \            || onSegment(c, d, b)) {\n        return true;\n    }\n\n    return\
     \ ccw(a, b, c) * ccw(a, b, d) < 0\n        && ccw(c, d, a) * ccw(c, d, b) < 0;\n\
-    }\n#line 5 \"Geometry/tests/aizu_cgl_1_c_basic_ccw.test.cpp\"\n\nvoid solve()\
-    \ {\n    Point a, b; cin >> a >> b;\n    int q; cin >> q;\n    while (q--) {\n\
-    \        Point c; cin >> c;\n        auto t = ccw(a, b, c);\n        if (t ==\
-    \ 0) {\n            if (onSegment(a, b, c)) cout << \"ON_SEGMENT\\n\";\n     \
-    \       else if (onSegment(c, b, a)) cout << \"ONLINE_BACK\\n\";\n           \
-    \ else cout << \"ONLINE_FRONT\\n\";\n        } else if (t < 0) cout << \"CLOCKWISE\\\
-    n\";\n        else cout << \"COUNTER_CLOCKWISE\\n\";\n    }\n}\n"
-  code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_C\"\
-    \n\n#include \"../../template.h\"\n#include \"../basic.h\"\n\nvoid solve() {\n\
-    \    Point a, b; cin >> a >> b;\n    int q; cin >> q;\n    while (q--) {\n   \
-    \     Point c; cin >> c;\n        auto t = ccw(a, b, c);\n        if (t == 0)\
-    \ {\n            if (onSegment(a, b, c)) cout << \"ON_SEGMENT\\n\";\n        \
-    \    else if (onSegment(c, b, a)) cout << \"ONLINE_BACK\\n\";\n            else\
-    \ cout << \"ONLINE_FRONT\\n\";\n        } else if (t < 0) cout << \"CLOCKWISE\\\
-    n\";\n        else cout << \"COUNTER_CLOCKWISE\\n\";\n    }\n}\n"
+    }\n#line 5 \"Geometry/tests/aizu_cgl_2_a_basic_line.test.cpp\"\n\nbool orthogonal(const\
+    \ Line& l1, const Line& l2) {\n    Point a(l1.a, l1.b);\n    Point b(l2.a, l2.b);\n\
+    \    return cmp(a * b, 0) == 0;\n}\n\nvoid solve() {\n    int q; cin >> q;\n \
+    \   while (q--) {\n        Point a, b, c, d; cin >> a >> b >> c >> d;\n      \
+    \  Line l1(a, b), l2(c, d);\n\n        if (areParallel(l1, l2)) cout << 2;\n \
+    \       else if (orthogonal(l1, l2)) cout << 1;\n        else cout << 0;\n   \
+    \     cout << endl;\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_A\"\
+    \n\n#include \"../../template.h\"\n#include \"../basic.h\"\n\nbool orthogonal(const\
+    \ Line& l1, const Line& l2) {\n    Point a(l1.a, l1.b);\n    Point b(l2.a, l2.b);\n\
+    \    return cmp(a * b, 0) == 0;\n}\n\nvoid solve() {\n    int q; cin >> q;\n \
+    \   while (q--) {\n        Point a, b, c, d; cin >> a >> b >> c >> d;\n      \
+    \  Line l1(a, b), l2(c, d);\n\n        if (areParallel(l1, l2)) cout << 2;\n \
+    \       else if (orthogonal(l1, l2)) cout << 1;\n        else cout << 0;\n   \
+    \     cout << endl;\n    }\n}\n"
   dependsOn:
   - template.h
   - Geometry/basic.h
   isVerificationFile: true
-  path: Geometry/tests/aizu_cgl_1_c_basic_ccw.test.cpp
+  path: Geometry/tests/aizu_cgl_2_a_basic_line.test.cpp
   requiredBy: []
   timestamp: '2022-01-12 00:40:19+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Geometry/tests/aizu_cgl_1_c_basic_ccw.test.cpp
+documentation_of: Geometry/tests/aizu_cgl_2_a_basic_line.test.cpp
 layout: document
 redirect_from:
-- /verify/Geometry/tests/aizu_cgl_1_c_basic_ccw.test.cpp
-- /verify/Geometry/tests/aizu_cgl_1_c_basic_ccw.test.cpp.html
-title: Geometry/tests/aizu_cgl_1_c_basic_ccw.test.cpp
+- /verify/Geometry/tests/aizu_cgl_2_a_basic_line.test.cpp
+- /verify/Geometry/tests/aizu_cgl_2_a_basic_line.test.cpp.html
+title: Geometry/tests/aizu_cgl_2_a_basic_line.test.cpp
 ---

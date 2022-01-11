@@ -91,6 +91,9 @@ data:
     path: Geometry/tests/aizu_cgl_1_c_basic_ccw.test.cpp
     title: Geometry/tests/aizu_cgl_1_c_basic_ccw.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Geometry/tests/aizu_cgl_2_a_basic_line.test.cpp
+    title: Geometry/tests/aizu_cgl_2_a_basic_line.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Geometry/tests/aizu_cgl_2_b_basic_segment_intersect.test.cpp
     title: Geometry/tests/aizu_cgl_2_b_basic_segment_intersect.test.cpp
   - icon: ':heavy_check_mark:'
@@ -117,6 +120,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Geometry/tests/aizu_cgl_4_c_polygon_convex_cut.test.cpp
     title: Geometry/tests/aizu_cgl_4_c_polygon_convex_cut.test.cpp
+  - icon: ':x:'
+    path: Geometry/tests/aizu_cgl_5_a_closest_pair.test.cpp
+    title: Geometry/tests/aizu_cgl_5_a_closest_pair.test.cpp
   - icon: ':heavy_check_mark:'
     path: Geometry/tests/aizu_cgl_7_a_cicle_tangents.test.cpp
     title: Geometry/tests/aizu_cgl_7_a_cicle_tangents.test.cpp
@@ -162,48 +168,54 @@ data:
   - icon: ':heavy_check_mark:'
     path: Graph/tests/aizu_grl_3_a_articulation_points.test.cpp
     title: Graph/tests/aizu_grl_3_a_articulation_points.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Graph/tests/aizu_grl_4_a_strongly_connected_cycle_check.test.cpp
     title: Graph/tests/aizu_grl_4_a_strongly_connected_cycle_check.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Graph/tests/aizu_grl_5_a_tree_diameter.test.cpp
     title: Graph/tests/aizu_grl_5_a_tree_diameter.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/aizu_ntl_1_a_factorize.test.cpp
     title: Math/tests/aizu_ntl_1_a_factorize.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp
     title: Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/aizu_ntl_1_d_euler_phi.test.cpp
     title: Math/tests/aizu_ntl_1_d_euler_phi.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/aizu_ntl_1_e_extended_euclid.test.cpp
     title: Math/tests/aizu_ntl_1_e_extended_euclid.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/aizu_ntl_2_a_bigint_add.test.cpp
     title: Math/tests/aizu_ntl_2_a_bigint_add.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/aizu_ntl_2_b_bigint_sub.test.cpp
     title: Math/tests/aizu_ntl_2_b_bigint_sub.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/aizu_ntl_2_c_bigint_mul.test.cpp
     title: Math/tests/aizu_ntl_2_c_bigint_mul.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/aizu_ntl_2_c_bigint_mul_karatsuba.test.cpp
     title: Math/tests/aizu_ntl_2_c_bigint_mul_karatsuba.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/aizu_ntl_2_d_bigint_div.test.cpp
     title: Math/tests/aizu_ntl_2_d_bigint_div.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/aizu_ntl_2_e_bigint_mod.test.cpp
     title: Math/tests/aizu_ntl_2_e_bigint_mod.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/aizu_ntl_2_f_bigint_mul_fft.test.cpp
     title: Math/tests/aizu_ntl_2_f_bigint_mul_fft.test.cpp
   - icon: ':heavy_check_mark:'
     path: Math/tests/is_prime_yukicoder.test.cpp
     title: Math/tests/is_prime_yukicoder.test.cpp
+  - icon: ':x:'
+    path: Misc/tests/aizu_dpl_3_b_largest_01_rectangle.test.cpp
+    title: Misc/tests/aizu_dpl_3_b_largest_01_rectangle.test.cpp
+  - icon: ':x:'
+    path: Misc/tests/aizu_dpl_3_c_largest_histogram.test.cpp
+    title: Misc/tests/aizu_dpl_3_c_largest_histogram.test.cpp
   _isVerificationFailed: true
   _pathExtension: h
   _verificationStatusIcon: ':question:'
@@ -276,6 +288,8 @@ data:
   timestamp: '2022-01-10 03:15:26+08:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - Misc/tests/aizu_dpl_3_b_largest_01_rectangle.test.cpp
+  - Misc/tests/aizu_dpl_3_c_largest_histogram.test.cpp
   - DataStructure/test/aizu_grl_5_c_hld_lca.test.cpp
   - DataStructure/test/aizu_dsl_2_a_segment_tree_rmq_update.test.cpp
   - DataStructure/test/binary_trie.test.cpp
@@ -306,11 +320,13 @@ data:
   - Geometry/tests/z_basic_ccw.test.cpp
   - Geometry/tests/aizu_cgl_7_g_circle_circle_tangent_points.test.cpp
   - Geometry/tests/aizu_cgl_3_a_polygon_area.test.cpp
+  - Geometry/tests/aizu_cgl_2_a_basic_line.test.cpp
   - Geometry/tests/aizu_cgl_3_b_polygon_is_convex.test.cpp
   - Geometry/tests/aizu_cgl_7_a_cicle_tangents.test.cpp
   - Geometry/tests/aizu_cgl_2_b_basic_segment_intersect.test.cpp
   - Geometry/tests/aizu_cgl_1_a_basic_projection.test.cpp
   - Geometry/tests/aizu_cgl_2_d_basic_segment_distance.test.cpp
+  - Geometry/tests/aizu_cgl_5_a_closest_pair.test.cpp
   - Geometry/tests/z_polygon_is_convex.test.cpp
   - Geometry/tests/z_basic_segment_intersect.test.cpp
   - Geometry/tests/aizu_cgl_7_f_circle_tangent_points.test.cpp

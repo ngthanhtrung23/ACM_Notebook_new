@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Graph/MaxFlow/MinCostMaxFlowPR.h
     title: Graph/MaxFlow/MinCostMaxFlowPR.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_6_B
@@ -116,7 +116,7 @@ data:
   path: Graph/tests/aizu_grl_6_b_mincost_maxflow.test.cpp
   requiredBy: []
   timestamp: '2022-01-11 21:41:41+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Graph/tests/aizu_grl_6_b_mincost_maxflow.test.cpp
 layout: document

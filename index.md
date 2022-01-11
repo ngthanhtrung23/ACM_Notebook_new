@@ -140,7 +140,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Geometry/circle.h
       title: Geometry/circle.h
-    - icon: ':warning:'
+    - icon: ':x:'
       path: Geometry/closest_pair.h
       title: Geometry/closest_pair.h
     - icon: ':warning:'
@@ -214,7 +214,7 @@ data:
     - icon: ':warning:'
       path: Graph/topo_sort.h
       title: Graph/topo_sort.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Graph/tree_diameter.h
       title: Graph/tree_diameter.h
   - name: Graph/DfsTree
@@ -225,12 +225,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: Graph/DfsTree/BridgeArticulation.h
       title: Graph/DfsTree/BridgeArticulation.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Graph/DfsTree/StronglyConnected.h
       title: Graph/DfsTree/StronglyConnected.h
   - name: Graph/Matching
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Graph/Matching/BipartiteMatching.h
       title: Graph/Matching/BipartiteMatching.h
     - icon: ':heavy_check_mark:'
@@ -250,22 +250,22 @@ data:
     - icon: ':warning:'
       path: Graph/MaxFlow/GomoryHu.h
       title: Graph/MaxFlow/GomoryHu.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/MaxFlow/MaxFlowDinic.h
       title: Graph/MaxFlow/MaxFlowDinic.h
     - icon: ':warning:'
       path: Graph/MaxFlow/MaxFlowDinicTrace.h
       title: Graph/MaxFlow/MaxFlowDinicTrace.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/MaxFlow/MaxFlowHLPP.h
       title: Graph/MaxFlow/MaxFlowHLPP.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/MaxFlow/MaxFlowPR.h
       title: Graph/MaxFlow/MaxFlowPR.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/MaxFlow/MinCostMaxFlowPR.h
       title: Graph/MaxFlow/MinCostMaxFlowPR.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/MaxFlow/MinCostMaxFlowSPFA.h
       title: Graph/MaxFlow/MinCostMaxFlowSPFA.h
     - icon: ':warning:'
@@ -296,13 +296,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/SumDiv_SumMod.h
       title: Math/SumDiv_SumMod.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/bigint.h
       title: Math/bigint.h
     - icon: ':warning:'
       path: Math/modulo.h
       title: Math/modulo.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Math/modulo_anta.h
       title: Math/modulo_anta.h
     - icon: ':warning:'
@@ -327,13 +327,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/NumberTheory/ChineseRemainder.h
       title: Math/NumberTheory/ChineseRemainder.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Math/NumberTheory/ExtendedEuclid.h
       title: Math/NumberTheory/ExtendedEuclid.h
     - icon: ':warning:'
       path: Math/NumberTheory/FactorialMod.h
       title: Math/NumberTheory/FactorialMod.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Math/NumberTheory/Pollard.h
       title: Math/NumberTheory/Pollard.h
     - icon: ':warning:'
@@ -370,7 +370,7 @@ data:
       title: Math/Polynomial/xorFFT.h
   - name: Math/Prime
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/Prime/EulerPhi.h
       title: Math/Prime/EulerPhi.h
     - icon: ':heavy_check_mark:'
@@ -416,7 +416,7 @@ data:
     - icon: ':warning:'
       path: Misc/Rubik.h
       title: Misc/Rubik.h
-    - icon: ':warning:'
+    - icon: ':x:'
       path: Misc/left_nearest_smaller.h
       title: Misc/left_nearest_smaller.h
     - icon: ':warning:'
@@ -620,6 +620,9 @@ data:
       path: Geometry/tests/aizu_cgl_1_c_basic_ccw.test.cpp
       title: Geometry/tests/aizu_cgl_1_c_basic_ccw.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Geometry/tests/aizu_cgl_2_a_basic_line.test.cpp
+      title: Geometry/tests/aizu_cgl_2_a_basic_line.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Geometry/tests/aizu_cgl_2_b_basic_segment_intersect.test.cpp
       title: Geometry/tests/aizu_cgl_2_b_basic_segment_intersect.test.cpp
     - icon: ':heavy_check_mark:'
@@ -646,6 +649,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Geometry/tests/aizu_cgl_4_c_polygon_convex_cut.test.cpp
       title: Geometry/tests/aizu_cgl_4_c_polygon_convex_cut.test.cpp
+    - icon: ':x:'
+      path: Geometry/tests/aizu_cgl_5_a_closest_pair.test.cpp
+      title: Geometry/tests/aizu_cgl_5_a_closest_pair.test.cpp
     - icon: ':heavy_check_mark:'
       path: Geometry/tests/aizu_cgl_7_a_cicle_tangents.test.cpp
       title: Geometry/tests/aizu_cgl_7_a_cicle_tangents.test.cpp
@@ -708,28 +714,28 @@ data:
     - icon: ':heavy_check_mark:'
       path: Graph/tests/aizu_grl_3_c_strongly_connected.test.cpp
       title: Graph/tests/aizu_grl_3_c_strongly_connected.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/aizu_grl_4_a_strongly_connected_cycle_check.test.cpp
       title: Graph/tests/aizu_grl_4_a_strongly_connected_cycle_check.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/aizu_grl_5_a_tree_diameter.test.cpp
       title: Graph/tests/aizu_grl_5_a_tree_diameter.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/aizu_grl_6_a_maxflow_dinic.test.cpp
       title: Graph/tests/aizu_grl_6_a_maxflow_dinic.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/aizu_grl_6_a_maxflow_hlpp.test.cpp
       title: Graph/tests/aizu_grl_6_a_maxflow_hlpp.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/aizu_grl_6_a_maxflow_pr.test.cpp
       title: Graph/tests/aizu_grl_6_a_maxflow_pr.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/aizu_grl_6_b_mincost_maxflow.test.cpp
       title: Graph/tests/aizu_grl_6_b_mincost_maxflow.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/aizu_grl_6_b_mincost_maxflow_spfa.test.cpp
       title: Graph/tests/aizu_grl_6_b_mincost_maxflow_spfa.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/aizu_grl_7_a_matching_bipartite.test.cpp
       title: Graph/tests/aizu_grl_7_a_matching_bipartite.test.cpp
     - icon: ':heavy_check_mark:'
@@ -773,37 +779,37 @@ data:
       title: Graph/tests/two_sat.test.cpp
   - name: Math/tests
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/aizu_ntl_1_a_factorize.test.cpp
       title: Math/tests/aizu_ntl_1_a_factorize.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp
       title: Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/aizu_ntl_1_d_euler_phi.test.cpp
       title: Math/tests/aizu_ntl_1_d_euler_phi.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/aizu_ntl_1_e_extended_euclid.test.cpp
       title: Math/tests/aizu_ntl_1_e_extended_euclid.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/aizu_ntl_2_a_bigint_add.test.cpp
       title: Math/tests/aizu_ntl_2_a_bigint_add.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/aizu_ntl_2_b_bigint_sub.test.cpp
       title: Math/tests/aizu_ntl_2_b_bigint_sub.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/aizu_ntl_2_c_bigint_mul.test.cpp
       title: Math/tests/aizu_ntl_2_c_bigint_mul.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/aizu_ntl_2_c_bigint_mul_karatsuba.test.cpp
       title: Math/tests/aizu_ntl_2_c_bigint_mul_karatsuba.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/aizu_ntl_2_d_bigint_div.test.cpp
       title: Math/tests/aizu_ntl_2_d_bigint_div.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/aizu_ntl_2_e_bigint_mod.test.cpp
       title: Math/tests/aizu_ntl_2_e_bigint_mod.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/aizu_ntl_2_f_bigint_mul_fft.test.cpp
       title: Math/tests/aizu_ntl_2_f_bigint_mul_fft.test.cpp
     - icon: ':heavy_check_mark:'
@@ -854,6 +860,14 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/tests/sumdiv.test.cpp
       title: Math/tests/sumdiv.test.cpp
+  - name: Misc/tests
+    pages:
+    - icon: ':x:'
+      path: Misc/tests/aizu_dpl_3_b_largest_01_rectangle.test.cpp
+      title: Misc/tests/aizu_dpl_3_b_largest_01_rectangle.test.cpp
+    - icon: ':x:'
+      path: Misc/tests/aizu_dpl_3_c_largest_histogram.test.cpp
+      title: Misc/tests/aizu_dpl_3_c_largest_histogram.test.cpp
   - name: String/tests
     pages:
     - icon: ':heavy_check_mark:'
