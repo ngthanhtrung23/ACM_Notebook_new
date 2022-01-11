@@ -5,6 +5,9 @@ data:
     path: Geometry/basic.h
     title: Geometry/basic.h
   - icon: ':heavy_check_mark:'
+    path: Geometry/circle.h
+    title: Geometry/circle.h
+  - icon: ':heavy_check_mark:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
@@ -14,13 +17,15 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_D
+    ERROR: 1e-6
+    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_G
     links:
-    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_D
-  bundledCode: "#line 1 \"Geometry/tests/basic_segment_distance.test.cpp\"\n#define\
-    \ PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_D\"\
-    \n\n#line 1 \"template.h\"\n#include <bits/stdc++.h>\nusing namespace std;\n\n\
-    #define FOR(i,a,b) for(int i=(a),_b=(b); i<=_b; i++)\n#define FORD(i,a,b) for(int\
+    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_G
+  bundledCode: "#line 1 \"Geometry/tests/circle_circle_tangent_points.test.cpp\"\n\
+    #define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_G\"\
+    \n\n// Given 2 circles. Find all common tangents, and print tangent points on\
+    \ c1\n\n#line 1 \"template.h\"\n#include <bits/stdc++.h>\nusing namespace std;\n\
+    \n#define FOR(i,a,b) for(int i=(a),_b=(b); i<=_b; i++)\n#define FORD(i,a,b) for(int\
     \ i=(a),_b=(b); i>=_b; i--)\n#define REP(i,a) for(int i=0,_a=(a); i<_a; i++)\n\
     #define EACH(it,a) for(__typeof(a.begin()) it = a.begin(); it != a.end(); ++it)\n\
     \n#define DEBUG(x) { cout << #x << \" = \"; cout << (x) << endl; }\n#define PR(a,n)\
@@ -120,36 +125,93 @@ data:
     \ b, c)\n            || onSegment(a, b, d)\n            || onSegment(c, d, a)\n\
     \            || onSegment(c, d, b)) {\n        return true;\n    }\n\n    return\
     \ ccw(a, b, c) * ccw(a, b, d) < 0\n        && ccw(c, d, a) * ccw(c, d, b) < 0;\n\
-    }\n#line 5 \"Geometry/tests/basic_segment_distance.test.cpp\"\n\nvoid solve()\
-    \ {\n    int q; cin >> q;\n    cout << (fixed) << setprecision(10);\n    while\
-    \ (q--) {\n        Point a, b; cin >> a >> b;\n        Point c, d; cin >> c >>\
-    \ d;\n        Point t;\n\n        if (segmentIntersect(a, b, c, d)) cout << 0.0\
-    \ << endl;\n        else {\n            cout << min({\n                    distToLineSegment(a,\
-    \ c, d, t),\n                    distToLineSegment(b, c, d, t),\n            \
-    \        distToLineSegment(c, a, b, t),\n                    distToLineSegment(d,\
-    \ a, b, t)\n            }) << '\\n';\n        }\n    }\n}\n"
-  code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_D\"\
-    \n\n#include \"../../template.h\"\n#include \"../basic.h\"\n\nvoid solve() {\n\
-    \    int q; cin >> q;\n    cout << (fixed) << setprecision(10);\n    while (q--)\
-    \ {\n        Point a, b; cin >> a >> b;\n        Point c, d; cin >> c >> d;\n\
-    \        Point t;\n\n        if (segmentIntersect(a, b, c, d)) cout << 0.0 <<\
-    \ endl;\n        else {\n            cout << min({\n                    distToLineSegment(a,\
-    \ c, d, t),\n                    distToLineSegment(b, c, d, t),\n            \
-    \        distToLineSegment(c, a, b, t),\n                    distToLineSegment(d,\
-    \ a, b, t)\n            }) << '\\n';\n        }\n    }\n}\n"
+    }\n#line 1 \"Geometry/circle.h\"\nstruct Circle : Point {\n    double r;\n   \
+    \ Circle(double _x = 0, double _y = 0, double _r = 0) : Point(_x, _y), r(_r) {}\n\
+    \    Circle(Point p, double _r) : Point(p), r(_r) {}\n    \n    bool contains(Point\
+    \ p) { return (*this - p).len() <= r + EPS; }\n\n    double area() const { return\
+    \ r*r*M_PI; }\n\n    // definitions in https://en.wikipedia.org/wiki/Circle\n\
+    \    // assumption: 0 <= theta <= 2*PI\n    // theta: angle in radian\n    double\
+    \ sector_area(double theta) const {\n        return 0.5 * r * r * theta;\n   \
+    \ }\n\n    // assumption: 0 <= theta <= 2*PI\n    // theta: angle in radian\n\
+    \    double segment_area(double theta) const {\n        return 0.5 * r * r * (theta\
+    \ - sin(theta));\n    }\n};\nistream& operator >> (istream& cin, Circle& c) {\n\
+    \    cin >> c.x >> c.y >> c.r;\n    return cin;\n}\nostream& operator << (ostream&\
+    \ cout, const Circle& c) {\n    cout << '(' << c.x << \", \" << c.y << \") \"\
+    \ << c.r;\n    return cout;\n}\n\n// Find common tangents to 2 circles\n// Tested:\n\
+    // - http://codeforces.com/gym/100803/ - H\n// Helper method\nvoid tangents(Point\
+    \ c, double r1, double r2, vector<Line> & ans) {\n    double r = r2 - r1;\n  \
+    \  double z = sqr(c.x) + sqr(c.y);\n    double d = z - sqr(r);\n    if (d < -EPS)\
+    \  return;\n    d = sqrt(fabs(d));\n    Line l((c.x * r + c.y * d) / z,\n    \
+    \        (c.y * r - c.x * d) / z,\n            r1);\n    ans.push_back(l);\n}\n\
+    // Actual method: returns vector containing all common tangents\nvector<Line>\
+    \ tangents(Circle a, Circle b) {\n    vector<Line> ans; ans.clear();\n    for\
+    \ (int i=-1; i<=1; i+=2)\n        for (int j=-1; j<=1; j+=2)\n            tangents(b-a,\
+    \ a.r*i, b.r*j, ans);\n    for(int i = 0; i < (int) ans.size(); ++i)\n       \
+    \ ans[i].c -= ans[i].a * a.x + ans[i].b * a.y;\n\n    vector<Line> ret;\n    for(int\
+    \ i = 0; i < (int) ans.size(); ++i) {\n        if (std::none_of(ret.begin(), ret.end(),\
+    \ [&] (Line l) { return areSame(l, ans[i]); })) {\n            ret.push_back(ans[i]);\n\
+    \        }\n    }\n    return ret;\n}\n\n// Circle & line intersection\n// Tested:\n\
+    // - http://codeforces.com/gym/100803/ - H\nvector<Point> intersection(Line l,\
+    \ Circle cir) {\n    double r = cir.r, a = l.a, b = l.b, c = l.c + l.a*cir.x +\
+    \ l.b*cir.y;\n    vector<Point> res;\n\n    double x0 = -a*c/(a*a+b*b),  y0 =\
+    \ -b*c/(a*a+b*b);\n    if (c*c > r*r*(a*a+b*b)+EPS) return res;\n    else if (fabs(c*c\
+    \ - r*r*(a*a+b*b)) < EPS) {\n        res.push_back(Point(x0, y0) + Point(cir.x,\
+    \ cir.y));\n        return res;\n    } else {\n        double d = r*r - c*c/(a*a+b*b);\n\
+    \        double mult = sqrt (d / (a*a+b*b));\n        double ax,ay,bx,by;\n  \
+    \      ax = x0 + b * mult;\n        bx = x0 - b * mult;\n        ay = y0 - a *\
+    \ mult;\n        by = y0 + a * mult;\n\n        res.push_back(Point(ax, ay) +\
+    \ Point(cir.x, cir.y));\n        res.push_back(Point(bx, by) + Point(cir.x, cir.y));\n\
+    \        return res;\n    }\n}\n\n// helper functions for commonCircleArea\ndouble\
+    \ cir_area_solve(double a, double b, double c) {\n    return acos((a*a + b*b -\
+    \ c*c) / 2 / a / b);\n}\ndouble cir_area_cut(double a, double r) {\n    double\
+    \ s1 = a * r * r / 2;\n    double s2 = sin(a) * r * r / 2;\n    return s1 - s2;\n\
+    }\n// Tested: http://codeforces.com/contest/600/problem/D\ndouble commonCircleArea(Circle\
+    \ c1, Circle c2) { //return the common area of two circle\n    if (c1.r < c2.r)\
+    \ swap(c1, c2);\n    double d = (c1 - c2).len();\n    if (d + c2.r <= c1.r + EPS)\
+    \ return c2.r*c2.r*M_PI;\n    if (d >= c1.r + c2.r - EPS) return 0.0;\n    double\
+    \ a1 = cir_area_solve(d, c1.r, c2.r);\n    double a2 = cir_area_solve(d, c2.r,\
+    \ c1.r);\n    return cir_area_cut(a1*2, c1.r) + cir_area_cut(a2*2, c2.r);\n}\n\
+    \n// Check if 2 circle intersects. Return true if 2 circles touch\nbool areIntersect(Circle\
+    \ u, Circle v) {\n    if (cmp((u - v).len(), u.r + v.r) > 0) return false;\n \
+    \   if (cmp((u - v).len() + v.r, u.r) < 0) return false;\n    if (cmp((u - v).len()\
+    \ + u.r, v.r) < 0) return false;\n    return true;\n}\n\n// If 2 circle touches,\
+    \ will return 2 (same) points\n// If 2 circle are same --> be careful\n// Tested:\n\
+    // - http://codeforces.com/gym/100803/ - H\n// - http://codeforces.com/gym/100820/\
+    \ - I\nvector<Point> circleIntersect(Circle u, Circle v) {\n    vector<Point>\
+    \ res;\n    if (!areIntersect(u, v)) return res;\n    double d = (u - v).len();\n\
+    \    double alpha = acos((u.r * u.r + d*d - v.r * v.r) / 2.0 / u.r / d);\n\n \
+    \   Point p1 = (v - u).rotate(alpha);\n    Point p2 = (v - u).rotate(-alpha);\n\
+    \    res.push_back(p1 / p1.len() * u.r + u);\n    res.push_back(p2 / p2.len()\
+    \ * u.r + u);\n    return res;\n}\n#line 8 \"Geometry/tests/circle_circle_tangent_points.test.cpp\"\
+    \n\n#define ERROR 1e-6\n\nvoid solve() {\n    cout << (fixed) << setprecision(10);\n\
+    \    Circle c1, c2; cin >> c1 >> c2;\n    auto ts = tangents(c1, c2);\n    vector<Point>\
+    \ ps;\n\n    for (auto t : ts) {\n        auto cur = intersection(t, c1);\n  \
+    \      assert(!cur.empty());\n        ps.insert(ps.end(), cur.begin(), cur.end());\n\
+    \    }\n    sort(ps.begin(), ps.end());\n    ps.erase(unique(ps.begin(), ps.end()),\
+    \ ps.end());\n\n    for (auto p : ps) cout << p << endl;\n}\n"
+  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_G\"\
+    \n\n// Given 2 circles. Find all common tangents, and print tangent points on\
+    \ c1\n\n#include \"../../template.h\"\n#include \"../basic.h\"\n#include \"../circle.h\"\
+    \n\n#define ERROR 1e-6\n\nvoid solve() {\n    cout << (fixed) << setprecision(10);\n\
+    \    Circle c1, c2; cin >> c1 >> c2;\n    auto ts = tangents(c1, c2);\n    vector<Point>\
+    \ ps;\n\n    for (auto t : ts) {\n        auto cur = intersection(t, c1);\n  \
+    \      assert(!cur.empty());\n        ps.insert(ps.end(), cur.begin(), cur.end());\n\
+    \    }\n    sort(ps.begin(), ps.end());\n    ps.erase(unique(ps.begin(), ps.end()),\
+    \ ps.end());\n\n    for (auto p : ps) cout << p << endl;\n}\n"
   dependsOn:
   - template.h
   - Geometry/basic.h
+  - Geometry/circle.h
   isVerificationFile: true
-  path: Geometry/tests/basic_segment_distance.test.cpp
+  path: Geometry/tests/circle_circle_tangent_points.test.cpp
   requiredBy: []
   timestamp: '2022-01-11 12:26:06+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Geometry/tests/basic_segment_distance.test.cpp
+documentation_of: Geometry/tests/circle_circle_tangent_points.test.cpp
 layout: document
 redirect_from:
-- /verify/Geometry/tests/basic_segment_distance.test.cpp
-- /verify/Geometry/tests/basic_segment_distance.test.cpp.html
-title: Geometry/tests/basic_segment_distance.test.cpp
+- /verify/Geometry/tests/circle_circle_tangent_points.test.cpp
+- /verify/Geometry/tests/circle_circle_tangent_points.test.cpp.html
+title: Geometry/tests/circle_circle_tangent_points.test.cpp
 ---

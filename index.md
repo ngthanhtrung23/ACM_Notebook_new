@@ -137,7 +137,7 @@ data:
     - icon: ':warning:'
       path: Geometry/circle.cpp
       title: Geometry/circle.cpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: Geometry/circle.h
       title: Geometry/circle.h
     - icon: ':warning:'
@@ -586,6 +586,24 @@ data:
     - icon: ':heavy_check_mark:'
       path: Geometry/tests/basic_segment_intersect.test.cpp
       title: Geometry/tests/basic_segment_intersect.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Geometry/tests/cicle_tangents.test.cpp
+      title: Geometry/tests/cicle_tangents.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Geometry/tests/circle_circle_intersection.test.cpp
+      title: Geometry/tests/circle_circle_intersection.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Geometry/tests/circle_circle_tangent_points.test.cpp
+      title: Geometry/tests/circle_circle_tangent_points.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Geometry/tests/circle_common_area.test.cpp
+      title: Geometry/tests/circle_common_area.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Geometry/tests/circle_line_intersection.test.cpp
+      title: Geometry/tests/circle_line_intersection.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Geometry/tests/circle_tangent_points.test.cpp
+      title: Geometry/tests/circle_tangent_points.test.cpp
     - icon: ':heavy_check_mark:'
       path: Geometry/tests/polygon_area.test.cpp
       title: Geometry/tests/polygon_area.test.cpp

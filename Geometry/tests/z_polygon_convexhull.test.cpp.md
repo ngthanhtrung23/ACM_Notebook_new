@@ -46,11 +46,14 @@ data:
     long long get_rand(long long r) {\n    return uniform_int_distribution<long long>\
     \ (0, r-1)(rng);\n}\n\nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0);\
     \ cin.tie(0);\n    solve();\n    return 0;\n}\n#line 2 \"Geometry/basic.h\"\n\n\
-    #ifndef EPS  // allow test files to overwrite EPS\n#define EPS 1e-6\n#endif\n\n\
-    const double PI = acos(-1.0);\n\ndouble DEG_to_RAD(double d) { return d * PI /\
-    \ 180.0; }\ndouble RAD_to_DEG(double r) { return r * 180.0 / PI; }\n\ninline int\
-    \ cmp(double a, double b) {\n    return (a < b - EPS) ? -1 : ((a > b + EPS) ?\
-    \ 1 : 0);\n}\n\n// for int types\ntemplate<typename T, typename std::enable_if<std::is_floating_point<T>::value>::type\
+    // Basic geometry objects: Point, Line, Segment\n// Works with both integers and\
+    \ floating points\n// Unless the problem has precision issue, can use Point, which\
+    \ uses double\n// and has more functionalities.\n// For integers, can use P<long\
+    \ long>\n\n#ifndef EPS  // allow test files to overwrite EPS\n#define EPS 1e-6\n\
+    #endif\n\nconst double PI = acos(-1.0);\n\ndouble DEG_to_RAD(double d) { return\
+    \ d * PI / 180.0; }\ndouble RAD_to_DEG(double r) { return r * 180.0 / PI; }\n\n\
+    inline int cmp(double a, double b) {\n    return (a < b - EPS) ? -1 : ((a > b\
+    \ + EPS) ? 1 : 0);\n}\n\n// for int types\ntemplate<typename T, typename std::enable_if<std::is_floating_point<T>::value>::type\
     \ * = nullptr>\ninline int cmp(T a, T b) {\n    return (a == b) ? 0 : (a < b)\
     \ ? -1 : 1;\n}\n\ntemplate<typename T>\nstruct P {\n    T x, y;\n    P() { x =\
     \ y = T(0); }\n    P(T _x, T _y) : x(_x), y(_y) {}\n\n    P operator + (const\
@@ -90,13 +93,15 @@ data:
     \ (u < 0.0) {\n        c = Point(a.x, a.y);\n        return (p - a).len();\n \
     \   }\n    if (u > 1.0) {\n        c = Point(b.x, b.y);\n        return (p - b).len();\n\
     \    }\n    return distToLine(p, a, b, c);\n}\n\n// NOTE: WILL NOT WORK WHEN a\
-    \ = b = 0.\nstruct Line {\n    double a, b, c;\n    Point A, B; // Added for polygon\
-    \ intersect line. Do not rely on assumption that these are valid\n\n    Line(double\
-    \ _a, double _b, double _c) : a(_a), b(_b), c(_c) {} \n\n    Line(Point _A, Point\
-    \ _B) : A(_A), B(_B) {\n        a = B.y - A.y;\n        b = A.x - B.x;\n     \
-    \   c = - (a * A.x + b * A.y);\n    }\n    Line(Point P, double m) {\n       \
-    \ a = -m; b = 1;\n        c = -((a * P.x) + (b * P.y));\n    }\n    double f(Point\
-    \ p) {\n        return a*p.x + b*p.y + c;\n    }\n};\n\nbool areParallel(Line\
+    \ = b = 0.\nstruct Line {\n    double a, b, c;  // ax + by + c = 0\n    Point\
+    \ A, B;  // Added for polygon intersect line. Do not rely on assumption that these\
+    \ are valid\n\n    Line(double _a, double _b, double _c) : a(_a), b(_b), c(_c)\
+    \ {} \n\n    Line(Point _A, Point _B) : A(_A), B(_B) {\n        a = B.y - A.y;\n\
+    \        b = A.x - B.x;\n        c = - (a * A.x + b * A.y);\n    }\n    Line(Point\
+    \ P, double m) {\n        a = -m; b = 1;\n        c = -((a * P.x) + (b * P.y));\n\
+    \    }\n    double f(Point p) {\n        return a*p.x + b*p.y + c;\n    }\n};\n\
+    ostream& operator >> (ostream& cout, const Line& l) {\n    cout << l.a << \"*x\
+    \ + \" << l.b << \"*y + \" << l.c;\n    return cout;\n}\n\nbool areParallel(Line\
     \ l1, Line l2) {\n    return cmp(l1.a*l2.b, l1.b*l2.a) == 0;\n}\n\nbool areSame(Line\
     \ l1, Line l2) {\n    return areParallel(l1 ,l2) && cmp(l1.c*l2.a, l2.c*l1.a)\
     \ == 0\n                && cmp(l1.c*l2.b, l1.b*l2.c) == 0;\n}\n\nbool areIntersect(Line\
@@ -118,30 +123,33 @@ data:
     \ b, c)\n            || onSegment(a, b, d)\n            || onSegment(c, d, a)\n\
     \            || onSegment(c, d, b)) {\n        return true;\n    }\n\n    return\
     \ ccw(a, b, c) * ccw(a, b, d) < 0\n        && ccw(c, d, a) * ccw(c, d, b) < 0;\n\
-    }\n#line 1 \"Geometry/polygon.h\"\ntypedef vector< Point > Polygon;\n\n// Convex\
-    \ Hull:\n// If minimum point --> #define REMOVE_REDUNDANT\n// Known issues:\n\
-    // - Max. point does not work when some points are the same.\n// Tested:\n// -\
-    \ https://open.kattis.com/problems/convexhull\n\n// #define REMOVE_REDUNDANT\n\
-    template<typename T>\nT area2(P<T> a, P<T> b, P<T> c) { return a%b + b%c + c%a;\
-    \ }\n\ntemplate<typename T>\nvoid ConvexHull(vector<P<T>> &pts) {\n    sort(pts.begin(),\
-    \ pts.end());\n    pts.erase(unique(pts.begin(), pts.end()), pts.end());\n   \
-    \ vector<P<T>> up, dn;\n    for (int i = 0; i < (int) pts.size(); i++) {\n#ifdef\
-    \ REMOVE_REDUNDANT\n        while (up.size() > 1 && area2(up[up.size()-2], up.back(),\
-    \ pts[i]) >= 0) up.pop_back();\n        while (dn.size() > 1 && area2(dn[dn.size()-2],\
-    \ dn.back(), pts[i]) <= 0) dn.pop_back();\n#else\n        while (up.size() > 1\
-    \ && area2(up[up.size()-2], up.back(), pts[i]) > 0) up.pop_back();\n        while\
-    \ (dn.size() > 1 && area2(dn[dn.size()-2], dn.back(), pts[i]) < 0) dn.pop_back();\n\
-    #endif\n        up.push_back(pts[i]);\n        dn.push_back(pts[i]);\n    }\n\
-    \    pts = dn;\n    for (int i = (int) up.size() - 2; i >= 1; i--) pts.push_back(up[i]);\n\
-    \    \n#ifdef REMOVE_REDUNDANT\n    if (pts.size() <= 2) return;\n    dn.clear();\n\
-    \    dn.push_back(pts[0]);\n    dn.push_back(pts[1]);\n    for (int i = 2; i <\
-    \ (int) pts.size(); i++) {\n        if (onSegment(dn[dn.size()-2], pts[i], dn.back()))\
-    \ dn.pop_back();\n        dn.push_back(pts[i]);\n    }\n    if (dn.size() >= 3\
-    \ && onSegment(dn.back(), dn[1], dn[0])) {\n        dn[0] = dn.back();\n     \
-    \   dn.pop_back();\n    }\n    pts = dn;\n#endif\n}\n\n// Area, perimeter, centroid\n\
-    template<typename T>\nT signed_area2(vector<P<T>> p) {\n    T area(0);\n    for(int\
-    \ i = 0; i < (int) p.size(); i++) {\n        area += p[i] % p[(i + 1) % p.size()];\n\
-    \    }\n    return area;\n}\ndouble area(const Polygon &p) {\n    return std::abs(signed_area2(p)\
+    }\n#line 1 \"Geometry/polygon.h\"\n// Polygon: convex hull, in polygon, convex\
+    \ diameter ..\n// Functions with param vector<P<T>> works with both integers and\
+    \ floating points\n// Functions with param Polygon works with floating points\
+    \ only.\n\ntypedef vector< Point > Polygon;\n\n// Convex Hull:\n// If minimum\
+    \ point --> #define REMOVE_REDUNDANT\n// Known issues:\n// - Max. point does not\
+    \ work when some points are the same.\n// Tested:\n// - https://open.kattis.com/problems/convexhull\n\
+    \n// #define REMOVE_REDUNDANT\ntemplate<typename T>\nT area2(P<T> a, P<T> b, P<T>\
+    \ c) { return a%b + b%c + c%a; }\n\ntemplate<typename T>\nvoid ConvexHull(vector<P<T>>\
+    \ &pts) {\n    sort(pts.begin(), pts.end());\n    pts.erase(unique(pts.begin(),\
+    \ pts.end()), pts.end());\n    vector<P<T>> up, dn;\n    for (int i = 0; i < (int)\
+    \ pts.size(); i++) {\n#ifdef REMOVE_REDUNDANT\n        while (up.size() > 1 &&\
+    \ area2(up[up.size()-2], up.back(), pts[i]) >= 0) up.pop_back();\n        while\
+    \ (dn.size() > 1 && area2(dn[dn.size()-2], dn.back(), pts[i]) <= 0) dn.pop_back();\n\
+    #else\n        while (up.size() > 1 && area2(up[up.size()-2], up.back(), pts[i])\
+    \ > 0) up.pop_back();\n        while (dn.size() > 1 && area2(dn[dn.size()-2],\
+    \ dn.back(), pts[i]) < 0) dn.pop_back();\n#endif\n        up.push_back(pts[i]);\n\
+    \        dn.push_back(pts[i]);\n    }\n    pts = dn;\n    for (int i = (int) up.size()\
+    \ - 2; i >= 1; i--) pts.push_back(up[i]);\n    \n#ifdef REMOVE_REDUNDANT\n   \
+    \ if (pts.size() <= 2) return;\n    dn.clear();\n    dn.push_back(pts[0]);\n \
+    \   dn.push_back(pts[1]);\n    for (int i = 2; i < (int) pts.size(); i++) {\n\
+    \        if (onSegment(dn[dn.size()-2], pts[i], dn.back())) dn.pop_back();\n \
+    \       dn.push_back(pts[i]);\n    }\n    if (dn.size() >= 3 && onSegment(dn.back(),\
+    \ dn[1], dn[0])) {\n        dn[0] = dn.back();\n        dn.pop_back();\n    }\n\
+    \    pts = dn;\n#endif\n}\n\n// Area, perimeter, centroid\ntemplate<typename T>\n\
+    T signed_area2(vector<P<T>> p) {\n    T area(0);\n    for(int i = 0; i < (int)\
+    \ p.size(); i++) {\n        area += p[i] % p[(i + 1) % p.size()];\n    }\n   \
+    \ return area;\n}\ndouble area(const Polygon &p) {\n    return std::abs(signed_area2(p)\
     \ / 2.0);\n}\nPoint centroid(Polygon p) {\n    Point c(0,0);\n    double scale\
     \ = 3.0 * signed_area2(p);\n    for (int i = 0; i < (int) p.size(); i++){\n  \
     \      int j = (i+1) % p.size();\n        c = c + (p[i]+p[j])*(p[i].x*p[j].y -\
@@ -235,7 +243,7 @@ data:
   isVerificationFile: true
   path: Geometry/tests/z_polygon_convexhull.test.cpp
   requiredBy: []
-  timestamp: '2022-01-11 04:00:35+08:00'
+  timestamp: '2022-01-11 12:26:06+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Geometry/tests/z_polygon_convexhull.test.cpp

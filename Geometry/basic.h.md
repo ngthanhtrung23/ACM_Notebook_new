@@ -34,6 +34,24 @@ data:
     path: Geometry/tests/basic_segment_intersect.test.cpp
     title: Geometry/tests/basic_segment_intersect.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Geometry/tests/cicle_tangents.test.cpp
+    title: Geometry/tests/cicle_tangents.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Geometry/tests/circle_circle_intersection.test.cpp
+    title: Geometry/tests/circle_circle_intersection.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Geometry/tests/circle_circle_tangent_points.test.cpp
+    title: Geometry/tests/circle_circle_tangent_points.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Geometry/tests/circle_common_area.test.cpp
+    title: Geometry/tests/circle_common_area.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Geometry/tests/circle_line_intersection.test.cpp
+    title: Geometry/tests/circle_line_intersection.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Geometry/tests/circle_tangent_points.test.cpp
+    title: Geometry/tests/circle_tangent_points.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Geometry/tests/polygon_area.test.cpp
     title: Geometry/tests/polygon_area.test.cpp
   - icon: ':heavy_check_mark:'
@@ -75,9 +93,12 @@ data:
   attributes:
     links:
     - https://cses.fi/problemset/task/2190/
-  bundledCode: "#line 2 \"Geometry/basic.h\"\n\n#ifndef EPS  // allow test files to\
-    \ overwrite EPS\n#define EPS 1e-6\n#endif\n\nconst double PI = acos(-1.0);\n\n\
-    double DEG_to_RAD(double d) { return d * PI / 180.0; }\ndouble RAD_to_DEG(double\
+  bundledCode: "#line 2 \"Geometry/basic.h\"\n\n// Basic geometry objects: Point,\
+    \ Line, Segment\n// Works with both integers and floating points\n// Unless the\
+    \ problem has precision issue, can use Point, which uses double\n// and has more\
+    \ functionalities.\n// For integers, can use P<long long>\n\n#ifndef EPS  // allow\
+    \ test files to overwrite EPS\n#define EPS 1e-6\n#endif\n\nconst double PI = acos(-1.0);\n\
+    \ndouble DEG_to_RAD(double d) { return d * PI / 180.0; }\ndouble RAD_to_DEG(double\
     \ r) { return r * 180.0 / PI; }\n\ninline int cmp(double a, double b) {\n    return\
     \ (a < b - EPS) ? -1 : ((a > b + EPS) ? 1 : 0);\n}\n\n// for int types\ntemplate<typename\
     \ T, typename std::enable_if<std::is_floating_point<T>::value>::type * = nullptr>\n\
@@ -120,13 +141,15 @@ data:
     \        return (p - a).len();\n    }\n    if (u > 1.0) {\n        c = Point(b.x,\
     \ b.y);\n        return (p - b).len();\n    }\n    return distToLine(p, a, b,\
     \ c);\n}\n\n// NOTE: WILL NOT WORK WHEN a = b = 0.\nstruct Line {\n    double\
-    \ a, b, c;\n    Point A, B; // Added for polygon intersect line. Do not rely on\
-    \ assumption that these are valid\n\n    Line(double _a, double _b, double _c)\
-    \ : a(_a), b(_b), c(_c) {} \n\n    Line(Point _A, Point _B) : A(_A), B(_B) {\n\
-    \        a = B.y - A.y;\n        b = A.x - B.x;\n        c = - (a * A.x + b *\
-    \ A.y);\n    }\n    Line(Point P, double m) {\n        a = -m; b = 1;\n      \
-    \  c = -((a * P.x) + (b * P.y));\n    }\n    double f(Point p) {\n        return\
-    \ a*p.x + b*p.y + c;\n    }\n};\n\nbool areParallel(Line l1, Line l2) {\n    return\
+    \ a, b, c;  // ax + by + c = 0\n    Point A, B;  // Added for polygon intersect\
+    \ line. Do not rely on assumption that these are valid\n\n    Line(double _a,\
+    \ double _b, double _c) : a(_a), b(_b), c(_c) {} \n\n    Line(Point _A, Point\
+    \ _B) : A(_A), B(_B) {\n        a = B.y - A.y;\n        b = A.x - B.x;\n     \
+    \   c = - (a * A.x + b * A.y);\n    }\n    Line(Point P, double m) {\n       \
+    \ a = -m; b = 1;\n        c = -((a * P.x) + (b * P.y));\n    }\n    double f(Point\
+    \ p) {\n        return a*p.x + b*p.y + c;\n    }\n};\nostream& operator >> (ostream&\
+    \ cout, const Line& l) {\n    cout << l.a << \"*x + \" << l.b << \"*y + \" <<\
+    \ l.c;\n    return cout;\n}\n\nbool areParallel(Line l1, Line l2) {\n    return\
     \ cmp(l1.a*l2.b, l1.b*l2.a) == 0;\n}\n\nbool areSame(Line l1, Line l2) {\n   \
     \ return areParallel(l1 ,l2) && cmp(l1.c*l2.a, l2.c*l1.a) == 0\n             \
     \   && cmp(l1.c*l2.b, l1.b*l2.c) == 0;\n}\n\nbool areIntersect(Line l1, Line l2,\
@@ -148,8 +171,11 @@ data:
     \       || onSegment(a, b, d)\n            || onSegment(c, d, a)\n           \
     \ || onSegment(c, d, b)) {\n        return true;\n    }\n\n    return ccw(a, b,\
     \ c) * ccw(a, b, d) < 0\n        && ccw(c, d, a) * ccw(c, d, b) < 0;\n}\n"
-  code: "#pragma once\n\n#ifndef EPS  // allow test files to overwrite EPS\n#define\
-    \ EPS 1e-6\n#endif\n\nconst double PI = acos(-1.0);\n\ndouble DEG_to_RAD(double\
+  code: "#pragma once\n\n// Basic geometry objects: Point, Line, Segment\n// Works\
+    \ with both integers and floating points\n// Unless the problem has precision\
+    \ issue, can use Point, which uses double\n// and has more functionalities.\n\
+    // For integers, can use P<long long>\n\n#ifndef EPS  // allow test files to overwrite\
+    \ EPS\n#define EPS 1e-6\n#endif\n\nconst double PI = acos(-1.0);\n\ndouble DEG_to_RAD(double\
     \ d) { return d * PI / 180.0; }\ndouble RAD_to_DEG(double r) { return r * 180.0\
     \ / PI; }\n\ninline int cmp(double a, double b) {\n    return (a < b - EPS) ?\
     \ -1 : ((a > b + EPS) ? 1 : 0);\n}\n\n// for int types\ntemplate<typename T, typename\
@@ -193,13 +219,15 @@ data:
     \        return (p - a).len();\n    }\n    if (u > 1.0) {\n        c = Point(b.x,\
     \ b.y);\n        return (p - b).len();\n    }\n    return distToLine(p, a, b,\
     \ c);\n}\n\n// NOTE: WILL NOT WORK WHEN a = b = 0.\nstruct Line {\n    double\
-    \ a, b, c;\n    Point A, B; // Added for polygon intersect line. Do not rely on\
-    \ assumption that these are valid\n\n    Line(double _a, double _b, double _c)\
-    \ : a(_a), b(_b), c(_c) {} \n\n    Line(Point _A, Point _B) : A(_A), B(_B) {\n\
-    \        a = B.y - A.y;\n        b = A.x - B.x;\n        c = - (a * A.x + b *\
-    \ A.y);\n    }\n    Line(Point P, double m) {\n        a = -m; b = 1;\n      \
-    \  c = -((a * P.x) + (b * P.y));\n    }\n    double f(Point p) {\n        return\
-    \ a*p.x + b*p.y + c;\n    }\n};\n\nbool areParallel(Line l1, Line l2) {\n    return\
+    \ a, b, c;  // ax + by + c = 0\n    Point A, B;  // Added for polygon intersect\
+    \ line. Do not rely on assumption that these are valid\n\n    Line(double _a,\
+    \ double _b, double _c) : a(_a), b(_b), c(_c) {} \n\n    Line(Point _A, Point\
+    \ _B) : A(_A), B(_B) {\n        a = B.y - A.y;\n        b = A.x - B.x;\n     \
+    \   c = - (a * A.x + b * A.y);\n    }\n    Line(Point P, double m) {\n       \
+    \ a = -m; b = 1;\n        c = -((a * P.x) + (b * P.y));\n    }\n    double f(Point\
+    \ p) {\n        return a*p.x + b*p.y + c;\n    }\n};\nostream& operator >> (ostream&\
+    \ cout, const Line& l) {\n    cout << l.a << \"*x + \" << l.b << \"*y + \" <<\
+    \ l.c;\n    return cout;\n}\n\nbool areParallel(Line l1, Line l2) {\n    return\
     \ cmp(l1.a*l2.b, l1.b*l2.a) == 0;\n}\n\nbool areSame(Line l1, Line l2) {\n   \
     \ return areParallel(l1 ,l2) && cmp(l1.c*l2.a, l2.c*l1.a) == 0\n             \
     \   && cmp(l1.c*l2.b, l1.b*l2.c) == 0;\n}\n\nbool areIntersect(Line l1, Line l2,\
@@ -229,26 +257,32 @@ data:
   - Geometry/circle.cpp
   - Geometry/basic.cpp
   - Geometry/polygon.cpp
-  timestamp: '2022-01-11 03:43:32+08:00'
+  timestamp: '2022-01-11 12:26:06+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Geometry/tests/polygon_convex_hull.test.cpp
+  - Geometry/tests/circle_circle_tangent_points.test.cpp
   - Geometry/tests/z_polygon_area.test.cpp
   - Geometry/tests/basic_line_intersection.test.cpp
   - Geometry/tests/polygon_in_convex.test.cpp
   - Geometry/tests/z_polygon_convexhull.test.cpp
+  - Geometry/tests/circle_circle_intersection.test.cpp
   - Geometry/tests/polygon_in_polygon.test.cpp
+  - Geometry/tests/circle_common_area.test.cpp
   - Geometry/tests/polygon_is_convex.test.cpp
   - Geometry/tests/basic_ccw.test.cpp
   - Geometry/tests/polygon_area.test.cpp
   - Geometry/tests/z_basic_ccw.test.cpp
   - Geometry/tests/basic_segment_distance.test.cpp
   - Geometry/tests/basic_segment_intersect.test.cpp
+  - Geometry/tests/circle_line_intersection.test.cpp
+  - Geometry/tests/circle_tangent_points.test.cpp
   - Geometry/tests/basic_projection.test.cpp
   - Geometry/tests/polygon_convex_cut.test.cpp
   - Geometry/tests/z_polygon_is_convex.test.cpp
   - Geometry/tests/z_basic_segment_intersect.test.cpp
   - Geometry/tests/basic_reflection.test.cpp
+  - Geometry/tests/cicle_tangents.test.cpp
   - Geometry/tests/polygon_convex_diameter.test.cpp
 documentation_of: Geometry/basic.h
 layout: document

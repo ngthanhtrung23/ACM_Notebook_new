@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Geometry/basic.h
     title: Geometry/basic.h
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: Geometry/circle.h
     title: Geometry/circle.h
   - icon: ':heavy_check_mark:'
@@ -41,11 +41,14 @@ data:
     long long get_rand(long long r) {\n    return uniform_int_distribution<long long>\
     \ (0, r-1)(rng);\n}\n\nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0);\
     \ cin.tie(0);\n    solve();\n    return 0;\n}\n#line 2 \"Geometry/basic.h\"\n\n\
-    #ifndef EPS  // allow test files to overwrite EPS\n#define EPS 1e-6\n#endif\n\n\
-    const double PI = acos(-1.0);\n\ndouble DEG_to_RAD(double d) { return d * PI /\
-    \ 180.0; }\ndouble RAD_to_DEG(double r) { return r * 180.0 / PI; }\n\ninline int\
-    \ cmp(double a, double b) {\n    return (a < b - EPS) ? -1 : ((a > b + EPS) ?\
-    \ 1 : 0);\n}\n\n// for int types\ntemplate<typename T, typename std::enable_if<std::is_floating_point<T>::value>::type\
+    // Basic geometry objects: Point, Line, Segment\n// Works with both integers and\
+    \ floating points\n// Unless the problem has precision issue, can use Point, which\
+    \ uses double\n// and has more functionalities.\n// For integers, can use P<long\
+    \ long>\n\n#ifndef EPS  // allow test files to overwrite EPS\n#define EPS 1e-6\n\
+    #endif\n\nconst double PI = acos(-1.0);\n\ndouble DEG_to_RAD(double d) { return\
+    \ d * PI / 180.0; }\ndouble RAD_to_DEG(double r) { return r * 180.0 / PI; }\n\n\
+    inline int cmp(double a, double b) {\n    return (a < b - EPS) ? -1 : ((a > b\
+    \ + EPS) ? 1 : 0);\n}\n\n// for int types\ntemplate<typename T, typename std::enable_if<std::is_floating_point<T>::value>::type\
     \ * = nullptr>\ninline int cmp(T a, T b) {\n    return (a == b) ? 0 : (a < b)\
     \ ? -1 : 1;\n}\n\ntemplate<typename T>\nstruct P {\n    T x, y;\n    P() { x =\
     \ y = T(0); }\n    P(T _x, T _y) : x(_x), y(_y) {}\n\n    P operator + (const\
@@ -85,13 +88,15 @@ data:
     \ (u < 0.0) {\n        c = Point(a.x, a.y);\n        return (p - a).len();\n \
     \   }\n    if (u > 1.0) {\n        c = Point(b.x, b.y);\n        return (p - b).len();\n\
     \    }\n    return distToLine(p, a, b, c);\n}\n\n// NOTE: WILL NOT WORK WHEN a\
-    \ = b = 0.\nstruct Line {\n    double a, b, c;\n    Point A, B; // Added for polygon\
-    \ intersect line. Do not rely on assumption that these are valid\n\n    Line(double\
-    \ _a, double _b, double _c) : a(_a), b(_b), c(_c) {} \n\n    Line(Point _A, Point\
-    \ _B) : A(_A), B(_B) {\n        a = B.y - A.y;\n        b = A.x - B.x;\n     \
-    \   c = - (a * A.x + b * A.y);\n    }\n    Line(Point P, double m) {\n       \
-    \ a = -m; b = 1;\n        c = -((a * P.x) + (b * P.y));\n    }\n    double f(Point\
-    \ p) {\n        return a*p.x + b*p.y + c;\n    }\n};\n\nbool areParallel(Line\
+    \ = b = 0.\nstruct Line {\n    double a, b, c;  // ax + by + c = 0\n    Point\
+    \ A, B;  // Added for polygon intersect line. Do not rely on assumption that these\
+    \ are valid\n\n    Line(double _a, double _b, double _c) : a(_a), b(_b), c(_c)\
+    \ {} \n\n    Line(Point _A, Point _B) : A(_A), B(_B) {\n        a = B.y - A.y;\n\
+    \        b = A.x - B.x;\n        c = - (a * A.x + b * A.y);\n    }\n    Line(Point\
+    \ P, double m) {\n        a = -m; b = 1;\n        c = -((a * P.x) + (b * P.y));\n\
+    \    }\n    double f(Point p) {\n        return a*p.x + b*p.y + c;\n    }\n};\n\
+    ostream& operator >> (ostream& cout, const Line& l) {\n    cout << l.a << \"*x\
+    \ + \" << l.b << \"*y + \" << l.c;\n    return cout;\n}\n\nbool areParallel(Line\
     \ l1, Line l2) {\n    return cmp(l1.a*l2.b, l1.b*l2.a) == 0;\n}\n\nbool areSame(Line\
     \ l1, Line l2) {\n    return areParallel(l1 ,l2) && cmp(l1.c*l2.a, l2.c*l1.a)\
     \ == 0\n                && cmp(l1.c*l2.b, l1.b*l2.c) == 0;\n}\n\nbool areIntersect(Line\
@@ -122,7 +127,10 @@ data:
     \ sector_area(double theta) const {\n        return 0.5 * r * r * theta;\n   \
     \ }\n\n    // assumption: 0 <= theta <= 2*PI\n    // theta: angle in radian\n\
     \    double segment_area(double theta) const {\n        return 0.5 * r * r * (theta\
-    \ - sin(theta));\n    }\n};\n\n// Find common tangents to 2 circles\n// Tested:\n\
+    \ - sin(theta));\n    }\n};\nistream& operator >> (istream& cin, Circle& c) {\n\
+    \    cin >> c.x >> c.y >> c.r;\n    return cin;\n}\nostream& operator << (ostream&\
+    \ cout, const Circle& c) {\n    cout << '(' << c.x << \", \" << c.y << \") \"\
+    \ << c.r;\n    return cout;\n}\n\n// Find common tangents to 2 circles\n// Tested:\n\
     // - http://codeforces.com/gym/100803/ - H\n// Helper method\nvoid tangents(Point\
     \ c, double r1, double r2, vector<Line> & ans) {\n    double r = r2 - r1;\n  \
     \  double z = sqr(c.x) + sqr(c.y);\n    double d = z - sqr(r);\n    if (d < -EPS)\
@@ -131,18 +139,17 @@ data:
     // Actual method: returns vector containing all common tangents\nvector<Line>\
     \ tangents(Circle a, Circle b) {\n    vector<Line> ans; ans.clear();\n    for\
     \ (int i=-1; i<=1; i+=2)\n        for (int j=-1; j<=1; j+=2)\n            tangents(b-a,\
-    \ a.r*i, b.r*j, ans);\n    for(int i = 0; i < ans.size(); ++i)\n        ans[i].c\
-    \ -= ans[i].a * a.x + ans[i].b * a.y;\n\n    vector<Line> ret;\n    for(int i\
-    \ = 0; i < (int) ans.size(); ++i) {\n        bool ok = true;\n        for(int\
-    \ j = 0; j < i; ++j)\n            if (areSame(ret[j], ans[i])) {\n           \
-    \     ok = false;\n                break;\n            }\n        if (ok) ret.push_back(ans[i]);\n\
-    \    }\n    return ret;\n}\n\n// Circle & line intersection\n// Tested:\n// -\
-    \ http://codeforces.com/gym/100803/ - H\nvector<Point> intersection(Line l, Circle\
-    \ cir) {\n    double r = cir.r, a = l.a, b = l.b, c = l.c + l.a*cir.x + l.b*cir.y;\n\
-    \    vector<Point> res;\n\n    double x0 = -a*c/(a*a+b*b),  y0 = -b*c/(a*a+b*b);\n\
-    \    if (c*c > r*r*(a*a+b*b)+EPS) return res;\n    else if (fabs(c*c - r*r*(a*a+b*b))\
-    \ < EPS) {\n        res.push_back(Point(x0, y0) + Point(cir.x, cir.y));\n    \
-    \    return res;\n    }\n    else {\n        double d = r*r - c*c/(a*a+b*b);\n\
+    \ a.r*i, b.r*j, ans);\n    for(int i = 0; i < (int) ans.size(); ++i)\n       \
+    \ ans[i].c -= ans[i].a * a.x + ans[i].b * a.y;\n\n    vector<Line> ret;\n    for(int\
+    \ i = 0; i < (int) ans.size(); ++i) {\n        if (std::none_of(ret.begin(), ret.end(),\
+    \ [&] (Line l) { return areSame(l, ans[i]); })) {\n            ret.push_back(ans[i]);\n\
+    \        }\n    }\n    return ret;\n}\n\n// Circle & line intersection\n// Tested:\n\
+    // - http://codeforces.com/gym/100803/ - H\nvector<Point> intersection(Line l,\
+    \ Circle cir) {\n    double r = cir.r, a = l.a, b = l.b, c = l.c + l.a*cir.x +\
+    \ l.b*cir.y;\n    vector<Point> res;\n\n    double x0 = -a*c/(a*a+b*b),  y0 =\
+    \ -b*c/(a*a+b*b);\n    if (c*c > r*r*(a*a+b*b)+EPS) return res;\n    else if (fabs(c*c\
+    \ - r*r*(a*a+b*b)) < EPS) {\n        res.push_back(Point(x0, y0) + Point(cir.x,\
+    \ cir.y));\n        return res;\n    } else {\n        double d = r*r - c*c/(a*a+b*b);\n\
     \        double mult = sqrt (d / (a*a+b*b));\n        double ax,ay,bx,by;\n  \
     \      ax = x0 + b * mult;\n        bx = x0 - b * mult;\n        ay = y0 - a *\
     \ mult;\n        by = y0 + a * mult;\n\n        res.push_back(Point(ax, ay) +\
@@ -191,7 +198,7 @@ data:
   isVerificationFile: false
   path: Geometry/circle.cpp
   requiredBy: []
-  timestamp: '2022-01-11 03:43:32+08:00'
+  timestamp: '2022-01-11 12:26:06+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Geometry/circle.cpp

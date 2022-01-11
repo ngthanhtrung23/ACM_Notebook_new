@@ -61,6 +61,24 @@ data:
     path: Geometry/tests/basic_segment_intersect.test.cpp
     title: Geometry/tests/basic_segment_intersect.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Geometry/tests/cicle_tangents.test.cpp
+    title: Geometry/tests/cicle_tangents.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Geometry/tests/circle_circle_intersection.test.cpp
+    title: Geometry/tests/circle_circle_intersection.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Geometry/tests/circle_circle_tangent_points.test.cpp
+    title: Geometry/tests/circle_circle_tangent_points.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Geometry/tests/circle_common_area.test.cpp
+    title: Geometry/tests/circle_common_area.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Geometry/tests/circle_line_intersection.test.cpp
+    title: Geometry/tests/circle_line_intersection.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Geometry/tests/circle_tangent_points.test.cpp
+    title: Geometry/tests/circle_tangent_points.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Geometry/tests/polygon_area.test.cpp
     title: Geometry/tests/polygon_area.test.cpp
   - icon: ':heavy_check_mark:'
@@ -182,22 +200,28 @@ data:
   verifiedWith:
   - DataStructure/test/binary_trie.test.cpp
   - Geometry/tests/polygon_convex_hull.test.cpp
+  - Geometry/tests/circle_circle_tangent_points.test.cpp
   - Geometry/tests/z_polygon_area.test.cpp
   - Geometry/tests/basic_line_intersection.test.cpp
   - Geometry/tests/polygon_in_convex.test.cpp
   - Geometry/tests/z_polygon_convexhull.test.cpp
+  - Geometry/tests/circle_circle_intersection.test.cpp
   - Geometry/tests/polygon_in_polygon.test.cpp
+  - Geometry/tests/circle_common_area.test.cpp
   - Geometry/tests/polygon_is_convex.test.cpp
   - Geometry/tests/basic_ccw.test.cpp
   - Geometry/tests/polygon_area.test.cpp
   - Geometry/tests/z_basic_ccw.test.cpp
   - Geometry/tests/basic_segment_distance.test.cpp
   - Geometry/tests/basic_segment_intersect.test.cpp
+  - Geometry/tests/circle_line_intersection.test.cpp
+  - Geometry/tests/circle_tangent_points.test.cpp
   - Geometry/tests/basic_projection.test.cpp
   - Geometry/tests/polygon_convex_cut.test.cpp
   - Geometry/tests/z_polygon_is_convex.test.cpp
   - Geometry/tests/z_basic_segment_intersect.test.cpp
   - Geometry/tests/basic_reflection.test.cpp
+  - Geometry/tests/cicle_tangents.test.cpp
   - Geometry/tests/polygon_convex_diameter.test.cpp
   - Graph/tests/articulation_points.test.cpp
   - Graph/tests/floyd_aizu.test.cpp
