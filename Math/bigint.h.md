@@ -2,10 +2,31 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: Math/tests/bigint_add.test.cpp
+    title: Math/tests/bigint_add.test.cpp
+  - icon: ':x:'
+    path: Math/tests/bigint_div.test.cpp
+    title: Math/tests/bigint_div.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Math/tests/bigint_mod.test.cpp
+    title: Math/tests/bigint_mod.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Math/tests/bigint_mul.test.cpp
+    title: Math/tests/bigint_mul.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Math/tests/bigint_mul_fft.test.cpp
+    title: Math/tests/bigint_mul_fft.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Math/tests/bigint_mul_karatsuba.test.cpp
+    title: Math/tests/bigint_mul_karatsuba.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Math/tests/bigint_sub.test.cpp
+    title: Math/tests/bigint_sub.test.cpp
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://stackoverflow.com/questions/13166079/move-semantics-and-pass-by-rvalue-reference-in-overloaded-arithmetic
@@ -165,22 +186,22 @@ data:
     \                cur_digits -= new_digits;\n            }\n        }\n       \
     \ res.push_back((int) cur);\n        while (!res.empty() && !res.back())\n   \
     \         res.pop_back();\n        return res;\n    }\n\n    void fft(vector<complex<double>\
-    \ > & a, bool invert) const {\n        int n = (int) a.size();\n\n        for\
-    \ (int i = 1, j = 0; i < n; ++i) {\n            int bit = n >> 1;\n          \
-    \  for (; j >= bit; bit >>= 1)\n                j -= bit;\n            j += bit;\n\
-    \            if (i < j)\n                swap(a[i], a[j]);\n        }\n\n    \
+    \ > &x, bool invert) const {\n        int n = (int) x.size();\n\n        for (int\
+    \ i = 1, j = 0; i < n; ++i) {\n            int bit = n >> 1;\n            for\
+    \ (; j >= bit; bit >>= 1)\n                j -= bit;\n            j += bit;\n\
+    \            if (i < j)\n                swap(x[i], x[j]);\n        }\n\n    \
     \    for (int len = 2; len <= n; len <<= 1) {\n            double ang = 2 * 3.14159265358979323846\
     \ / len * (invert ? -1 : 1);\n            complex<double> wlen(cos(ang), sin(ang));\n\
     \            for (int i = 0; i < n; i += len) {\n                complex<double>\
     \ w(1);\n                for (int j = 0; j < len / 2; ++j) {\n               \
-    \     complex<double> u = a[i + j];\n                    complex<double> v = a[i\
-    \ + j + len / 2] * w;\n                    a[i + j] = u + v;\n               \
-    \     a[i + j + len / 2] = u - v;\n                    w *= wlen;\n          \
+    \     complex<double> u = x[i + j];\n                    complex<double> v = x[i\
+    \ + j + len / 2] * w;\n                    x[i + j] = u + v;\n               \
+    \     x[i + j + len / 2] = u - v;\n                    w *= wlen;\n          \
     \      }\n            }\n        }\n        if (invert)\n            for (int\
-    \ i = 0; i < n; ++i)\n                a[i] /= n;\n    }\n\n    void multiply_fft(const\
-    \ vector<int> &a, const vector<int> &b, vector<int> &res) const {\n        vector<complex<double>\
-    \ > fa(a.begin(), a.end());\n        vector<complex<double> > fb(b.begin(), b.end());\n\
-    \        int n = 1;\n        while (n < (int) max(a.size(), b.size()))\n     \
+    \ i = 0; i < n; ++i)\n                x[i] /= n;\n    }\n\n    void multiply_fft(const\
+    \ vector<int> &x, const vector<int> &y, vector<int> &res) const {\n        vector<complex<double>\
+    \ > fa(x.begin(), x.end());\n        vector<complex<double> > fb(y.begin(), y.end());\n\
+    \        int n = 1;\n        while (n < (int) max(x.size(), y.size()))\n     \
     \       n <<= 1;\n        n <<= 1;\n        fa.resize(n);\n        fb.resize(n);\n\
     \n        fft(fa, false);\n        fft(fb, false);\n        for (int i = 0; i\
     \ < n; ++i)\n            fa[i] *= fb[i];\n        fft(fa, true);\n\n        res.resize(n);\n\
@@ -211,13 +232,13 @@ data:
     \ r[i];\n        for (int i = 0; i < (int) a1b1.size(); i++)\n            res[i]\
     \ += a1b1[i];\n        for (int i = 0; i < (int) a2b2.size(); i++)\n         \
     \   res[i + n] += a2b2[i];\n        return res;\n    }\n\n    BigInt mul_karatsuba(const\
-    \ BigInt &v) const {\n        vector<int> a6 = convert_base(this->a, BASE_DIGITS,\
-    \ 6);\n        vector<int> b6 = convert_base(v.a, BASE_DIGITS, 6);\n        vll\
-    \ a(a6.begin(), a6.end());\n        vll b(b6.begin(), b6.end());\n        while\
-    \ (a.size() < b.size())\n            a.push_back(0);\n        while (b.size()\
-    \ < a.size())\n            b.push_back(0);\n        while (a.size() & (a.size()\
-    \ - 1))\n            a.push_back(0), b.push_back(0);\n        vll c = karatsubaMultiply(a,\
-    \ b);\n        BigInt res;\n        res.sign = sign * v.sign;\n        long long\
+    \ BigInt &v) const {\n        vector<int> x6 = convert_base(this->a, BASE_DIGITS,\
+    \ 6);\n        vector<int> y6 = convert_base(v.a, BASE_DIGITS, 6);\n        vll\
+    \ x(x6.begin(), x6.end());\n        vll y(y6.begin(), y6.end());\n        while\
+    \ (x.size() < y.size())\n            x.push_back(0);\n        while (y.size()\
+    \ < x.size())\n            y.push_back(0);\n        while (x.size() & (x.size()\
+    \ - 1))\n            x.push_back(0), y.push_back(0);\n        vll c = karatsubaMultiply(x,\
+    \ y);\n        BigInt res;\n        res.sign = sign * v.sign;\n        long long\
     \ carry = 0;\n        for (int i = 0; i < (int) c.size(); i++) {\n           \
     \ long long cur = c[i] + carry;\n            res.a.push_back((int) (cur % 1000000));\n\
     \            carry = cur / 1000000;\n        }\n        res.a = convert_base(res.a,\
@@ -403,22 +424,22 @@ data:
     \                cur_digits -= new_digits;\n            }\n        }\n       \
     \ res.push_back((int) cur);\n        while (!res.empty() && !res.back())\n   \
     \         res.pop_back();\n        return res;\n    }\n\n    void fft(vector<complex<double>\
-    \ > & a, bool invert) const {\n        int n = (int) a.size();\n\n        for\
-    \ (int i = 1, j = 0; i < n; ++i) {\n            int bit = n >> 1;\n          \
-    \  for (; j >= bit; bit >>= 1)\n                j -= bit;\n            j += bit;\n\
-    \            if (i < j)\n                swap(a[i], a[j]);\n        }\n\n    \
+    \ > &x, bool invert) const {\n        int n = (int) x.size();\n\n        for (int\
+    \ i = 1, j = 0; i < n; ++i) {\n            int bit = n >> 1;\n            for\
+    \ (; j >= bit; bit >>= 1)\n                j -= bit;\n            j += bit;\n\
+    \            if (i < j)\n                swap(x[i], x[j]);\n        }\n\n    \
     \    for (int len = 2; len <= n; len <<= 1) {\n            double ang = 2 * 3.14159265358979323846\
     \ / len * (invert ? -1 : 1);\n            complex<double> wlen(cos(ang), sin(ang));\n\
     \            for (int i = 0; i < n; i += len) {\n                complex<double>\
     \ w(1);\n                for (int j = 0; j < len / 2; ++j) {\n               \
-    \     complex<double> u = a[i + j];\n                    complex<double> v = a[i\
-    \ + j + len / 2] * w;\n                    a[i + j] = u + v;\n               \
-    \     a[i + j + len / 2] = u - v;\n                    w *= wlen;\n          \
+    \     complex<double> u = x[i + j];\n                    complex<double> v = x[i\
+    \ + j + len / 2] * w;\n                    x[i + j] = u + v;\n               \
+    \     x[i + j + len / 2] = u - v;\n                    w *= wlen;\n          \
     \      }\n            }\n        }\n        if (invert)\n            for (int\
-    \ i = 0; i < n; ++i)\n                a[i] /= n;\n    }\n\n    void multiply_fft(const\
-    \ vector<int> &a, const vector<int> &b, vector<int> &res) const {\n        vector<complex<double>\
-    \ > fa(a.begin(), a.end());\n        vector<complex<double> > fb(b.begin(), b.end());\n\
-    \        int n = 1;\n        while (n < (int) max(a.size(), b.size()))\n     \
+    \ i = 0; i < n; ++i)\n                x[i] /= n;\n    }\n\n    void multiply_fft(const\
+    \ vector<int> &x, const vector<int> &y, vector<int> &res) const {\n        vector<complex<double>\
+    \ > fa(x.begin(), x.end());\n        vector<complex<double> > fb(y.begin(), y.end());\n\
+    \        int n = 1;\n        while (n < (int) max(x.size(), y.size()))\n     \
     \       n <<= 1;\n        n <<= 1;\n        fa.resize(n);\n        fb.resize(n);\n\
     \n        fft(fa, false);\n        fft(fb, false);\n        for (int i = 0; i\
     \ < n; ++i)\n            fa[i] *= fb[i];\n        fft(fa, true);\n\n        res.resize(n);\n\
@@ -449,13 +470,13 @@ data:
     \ r[i];\n        for (int i = 0; i < (int) a1b1.size(); i++)\n            res[i]\
     \ += a1b1[i];\n        for (int i = 0; i < (int) a2b2.size(); i++)\n         \
     \   res[i + n] += a2b2[i];\n        return res;\n    }\n\n    BigInt mul_karatsuba(const\
-    \ BigInt &v) const {\n        vector<int> a6 = convert_base(this->a, BASE_DIGITS,\
-    \ 6);\n        vector<int> b6 = convert_base(v.a, BASE_DIGITS, 6);\n        vll\
-    \ a(a6.begin(), a6.end());\n        vll b(b6.begin(), b6.end());\n        while\
-    \ (a.size() < b.size())\n            a.push_back(0);\n        while (b.size()\
-    \ < a.size())\n            b.push_back(0);\n        while (a.size() & (a.size()\
-    \ - 1))\n            a.push_back(0), b.push_back(0);\n        vll c = karatsubaMultiply(a,\
-    \ b);\n        BigInt res;\n        res.sign = sign * v.sign;\n        long long\
+    \ BigInt &v) const {\n        vector<int> x6 = convert_base(this->a, BASE_DIGITS,\
+    \ 6);\n        vector<int> y6 = convert_base(v.a, BASE_DIGITS, 6);\n        vll\
+    \ x(x6.begin(), x6.end());\n        vll y(y6.begin(), y6.end());\n        while\
+    \ (x.size() < y.size())\n            x.push_back(0);\n        while (y.size()\
+    \ < x.size())\n            y.push_back(0);\n        while (x.size() & (x.size()\
+    \ - 1))\n            x.push_back(0), y.push_back(0);\n        vll c = karatsubaMultiply(x,\
+    \ y);\n        BigInt res;\n        res.sign = sign * v.sign;\n        long long\
     \ carry = 0;\n        for (int i = 0; i < (int) c.size(); i++) {\n           \
     \ long long cur = c[i] + carry;\n            res.a.push_back((int) (cur % 1000000));\n\
     \            carry = cur / 1000000;\n        }\n        res.a = convert_base(res.a,\
@@ -498,9 +519,16 @@ data:
   isVerificationFile: false
   path: Math/bigint.h
   requiredBy: []
-  timestamp: '2019-04-07 23:01:07+08:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2022-01-11 19:59:38+08:00'
+  verificationStatus: LIBRARY_SOME_WA
+  verifiedWith:
+  - Math/tests/bigint_mul.test.cpp
+  - Math/tests/bigint_add.test.cpp
+  - Math/tests/bigint_mul_karatsuba.test.cpp
+  - Math/tests/bigint_mul_fft.test.cpp
+  - Math/tests/bigint_div.test.cpp
+  - Math/tests/bigint_sub.test.cpp
+  - Math/tests/bigint_mod.test.cpp
 documentation_of: Math/bigint.h
 layout: document
 redirect_from:

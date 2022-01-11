@@ -296,7 +296,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/SumDiv_SumMod.h
       title: Math/SumDiv_SumMod.h
-    - icon: ':warning:'
+    - icon: ':question:'
       path: Math/bigint.h
       title: Math/bigint.h
     - icon: ':warning:'
@@ -474,7 +474,7 @@ data:
     - icon: ':warning:'
       path: debug.h
       title: debug.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template.h
       title: template.h
   verificationCategories:
@@ -749,6 +749,27 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/tests/berlekamp_massey.test.cpp
       title: Math/tests/berlekamp_massey.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Math/tests/bigint_add.test.cpp
+      title: Math/tests/bigint_add.test.cpp
+    - icon: ':x:'
+      path: Math/tests/bigint_div.test.cpp
+      title: Math/tests/bigint_div.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Math/tests/bigint_mod.test.cpp
+      title: Math/tests/bigint_mod.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Math/tests/bigint_mul.test.cpp
+      title: Math/tests/bigint_mul.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Math/tests/bigint_mul_fft.test.cpp
+      title: Math/tests/bigint_mul_fft.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Math/tests/bigint_mul_karatsuba.test.cpp
+      title: Math/tests/bigint_mul_karatsuba.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Math/tests/bigint_sub.test.cpp
+      title: Math/tests/bigint_sub.test.cpp
     - icon: ':heavy_check_mark:'
       path: Math/tests/convolution_and.test.cpp
       title: Math/tests/convolution_and.test.cpp
