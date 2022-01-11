@@ -27,7 +27,7 @@ void solve() {
         if (typ == 0) {
             int u, val; cin >> u >> val;
             hld.apply_path(u, hld.parent[u], true, [&] (int l, int r) {
-                st.set(l, val);
+                st.set(l, st.get(l) + val);
             });
         } else {
             int u; cin >> u;
