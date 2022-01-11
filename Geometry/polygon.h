@@ -9,8 +9,8 @@ typedef vector< Point > Polygon;
 // Known issues:
 // - Max. point does not work when some points are the same.
 // Tested:
-// - https://open.kattis.com/problems/convexhull
-// - https://cses.fi/problemset/task/2195
+// - (min points) https://open.kattis.com/problems/convexhull
+// - (max points) https://cses.fi/problemset/task/2195
 
 // #define REMOVE_REDUNDANT
 template<typename T>
