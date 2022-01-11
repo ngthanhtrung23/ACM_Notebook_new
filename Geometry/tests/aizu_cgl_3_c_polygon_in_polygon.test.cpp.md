@@ -128,28 +128,28 @@ data:
     \ floating points\n// Functions with param Polygon works with floating points\
     \ only.\n\ntypedef vector< Point > Polygon;\n\n// Convex Hull:\n// If minimum\
     \ point --> #define REMOVE_REDUNDANT\n// Known issues:\n// - Max. point does not\
-    \ work when some points are the same.\n// Tested:\n// - https://open.kattis.com/problems/convexhull\n\
-    \n// #define REMOVE_REDUNDANT\ntemplate<typename T>\nT area2(P<T> a, P<T> b, P<T>\
-    \ c) { return a%b + b%c + c%a; }\n\ntemplate<typename T>\nvoid ConvexHull(vector<P<T>>\
-    \ &pts) {\n    sort(pts.begin(), pts.end());\n    pts.erase(unique(pts.begin(),\
-    \ pts.end()), pts.end());\n    vector<P<T>> up, dn;\n    for (int i = 0; i < (int)\
-    \ pts.size(); i++) {\n#ifdef REMOVE_REDUNDANT\n        while (up.size() > 1 &&\
-    \ area2(up[up.size()-2], up.back(), pts[i]) >= 0) up.pop_back();\n        while\
-    \ (dn.size() > 1 && area2(dn[dn.size()-2], dn.back(), pts[i]) <= 0) dn.pop_back();\n\
-    #else\n        while (up.size() > 1 && area2(up[up.size()-2], up.back(), pts[i])\
-    \ > 0) up.pop_back();\n        while (dn.size() > 1 && area2(dn[dn.size()-2],\
-    \ dn.back(), pts[i]) < 0) dn.pop_back();\n#endif\n        up.push_back(pts[i]);\n\
-    \        dn.push_back(pts[i]);\n    }\n    pts = dn;\n    for (int i = (int) up.size()\
-    \ - 2; i >= 1; i--) pts.push_back(up[i]);\n    \n#ifdef REMOVE_REDUNDANT\n   \
-    \ if (pts.size() <= 2) return;\n    dn.clear();\n    dn.push_back(pts[0]);\n \
-    \   dn.push_back(pts[1]);\n    for (int i = 2; i < (int) pts.size(); i++) {\n\
-    \        if (onSegment(dn[dn.size()-2], pts[i], dn.back())) dn.pop_back();\n \
-    \       dn.push_back(pts[i]);\n    }\n    if (dn.size() >= 3 && onSegment(dn.back(),\
-    \ dn[1], dn[0])) {\n        dn[0] = dn.back();\n        dn.pop_back();\n    }\n\
-    \    pts = dn;\n#endif\n}\n\n// Area, perimeter, centroid\ntemplate<typename T>\n\
-    T signed_area2(vector<P<T>> p) {\n    T area(0);\n    for(int i = 0; i < (int)\
-    \ p.size(); i++) {\n        area += p[i] % p[(i + 1) % p.size()];\n    }\n   \
-    \ return area;\n}\ndouble area(const Polygon &p) {\n    return std::abs(signed_area2(p)\
+    \ work when some points are the same.\n// Tested:\n// - (min points) https://open.kattis.com/problems/convexhull\n\
+    // - (max points) https://cses.fi/problemset/task/2195\n\n// #define REMOVE_REDUNDANT\n\
+    template<typename T>\nT area2(P<T> a, P<T> b, P<T> c) { return a%b + b%c + c%a;\
+    \ }\n\ntemplate<typename T>\nvoid ConvexHull(vector<P<T>> &pts) {\n    sort(pts.begin(),\
+    \ pts.end());\n    pts.erase(unique(pts.begin(), pts.end()), pts.end());\n   \
+    \ vector<P<T>> up, dn;\n    for (int i = 0; i < (int) pts.size(); i++) {\n#ifdef\
+    \ REMOVE_REDUNDANT\n        while (up.size() > 1 && area2(up[up.size()-2], up.back(),\
+    \ pts[i]) >= 0) up.pop_back();\n        while (dn.size() > 1 && area2(dn[dn.size()-2],\
+    \ dn.back(), pts[i]) <= 0) dn.pop_back();\n#else\n        while (up.size() > 1\
+    \ && area2(up[up.size()-2], up.back(), pts[i]) > 0) up.pop_back();\n        while\
+    \ (dn.size() > 1 && area2(dn[dn.size()-2], dn.back(), pts[i]) < 0) dn.pop_back();\n\
+    #endif\n        up.push_back(pts[i]);\n        dn.push_back(pts[i]);\n    }\n\
+    \    pts = dn;\n    for (int i = (int) up.size() - 2; i >= 1; i--) pts.push_back(up[i]);\n\
+    \    \n#ifdef REMOVE_REDUNDANT\n    if (pts.size() <= 2) return;\n    dn.clear();\n\
+    \    dn.push_back(pts[0]);\n    dn.push_back(pts[1]);\n    for (int i = 2; i <\
+    \ (int) pts.size(); i++) {\n        if (onSegment(dn[dn.size()-2], pts[i], dn.back()))\
+    \ dn.pop_back();\n        dn.push_back(pts[i]);\n    }\n    if (dn.size() >= 3\
+    \ && onSegment(dn.back(), dn[1], dn[0])) {\n        dn[0] = dn.back();\n     \
+    \   dn.pop_back();\n    }\n    pts = dn;\n#endif\n}\n\n// Area, perimeter, centroid\n\
+    template<typename T>\nT signed_area2(vector<P<T>> p) {\n    T area(0);\n    for(int\
+    \ i = 0; i < (int) p.size(); i++) {\n        area += p[i] % p[(i + 1) % p.size()];\n\
+    \    }\n    return area;\n}\ndouble area(const Polygon &p) {\n    return std::abs(signed_area2(p)\
     \ / 2.0);\n}\nPoint centroid(Polygon p) {\n    Point c(0,0);\n    double scale\
     \ = 3.0 * signed_area2(p);\n    for (int i = 0; i < (int) p.size(); i++){\n  \
     \      int j = (i+1) % p.size();\n        c = c + (p[i]+p[j])*(p[i].x*p[j].y -\
@@ -243,7 +243,7 @@ data:
   isVerificationFile: true
   path: Geometry/tests/aizu_cgl_3_c_polygon_in_polygon.test.cpp
   requiredBy: []
-  timestamp: '2022-01-12 00:40:19+08:00'
+  timestamp: '2022-01-12 01:07:11+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Geometry/tests/aizu_cgl_3_c_polygon_in_polygon.test.cpp

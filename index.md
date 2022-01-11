@@ -147,9 +147,6 @@ data:
       path: Geometry/closest_pair.h
       title: Geometry/closest_pair.h
     - icon: ':warning:'
-      path: Geometry/geometry_int.h
-      title: Geometry/geometry_int.h
-    - icon: ':warning:'
       path: Geometry/n_segment_intersects.h
       title: Geometry/n_segment_intersects.h
     - icon: ':warning:'
