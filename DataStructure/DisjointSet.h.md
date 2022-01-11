@@ -1,7 +1,10 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: Graph/mst.h
+    title: Graph/mst.h
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/dsu.test.cpp
@@ -9,6 +12,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/dsu_aizu.test.cpp
     title: DataStructure/test/dsu_aizu.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Graph/tests/mst.test.cpp
+    title: Graph/tests/mst.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -34,12 +40,14 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: DataStructure/DisjointSet.h
-  requiredBy: []
+  requiredBy:
+  - Graph/mst.h
   timestamp: '2022-01-07 04:54:04+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/dsu.test.cpp
   - DataStructure/test/dsu_aizu.test.cpp
+  - Graph/tests/mst.test.cpp
 documentation_of: DataStructure/DisjointSet.h
 layout: document
 redirect_from:

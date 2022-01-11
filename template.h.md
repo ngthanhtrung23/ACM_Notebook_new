@@ -121,6 +121,9 @@ data:
     path: Graph/tests/floyd_aizu.test.cpp
     title: Graph/tests/floyd_aizu.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Graph/tests/mst.test.cpp
+    title: Graph/tests/mst.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Math/tests/factorize_aizu.test.cpp
     title: Math/tests/factorize_aizu.test.cpp
   - icon: ':heavy_check_mark:'
@@ -225,6 +228,7 @@ data:
   - Geometry/tests/polygon_convex_diameter.test.cpp
   - Graph/tests/articulation_points.test.cpp
   - Graph/tests/floyd_aizu.test.cpp
+  - Graph/tests/mst.test.cpp
   - Math/tests/factorize_aizu.test.cpp
   - Math/tests/is_prime_yukicoder.test.cpp
 documentation_of: template.h

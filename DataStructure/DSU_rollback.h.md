@@ -6,6 +6,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Graph/tests/directed_mst.test.cpp
     title: Graph/tests/directed_mst.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Graph/tests/directed_mst_aizu.test.cpp
+    title: Graph/tests/directed_mst_aizu.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -54,6 +57,7 @@ data:
   timestamp: '2022-01-06 04:18:39+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Graph/tests/directed_mst_aizu.test.cpp
   - Graph/tests/directed_mst.test.cpp
 documentation_of: DataStructure/DSU_rollback.h
 layout: document

@@ -208,6 +208,9 @@ data:
     - icon: ':warning:'
       path: Graph/ford_bellman.h
       title: Graph/ford_bellman.h
+    - icon: ':heavy_check_mark:'
+      path: Graph/mst.h
+      title: Graph/mst.h
     - icon: ':warning:'
       path: Graph/topo_sort.h
       title: Graph/topo_sort.h
@@ -670,6 +673,9 @@ data:
       path: Graph/tests/directed_mst.test.cpp
       title: Graph/tests/directed_mst.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Graph/tests/directed_mst_aizu.test.cpp
+      title: Graph/tests/directed_mst_aizu.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/floyd_aizu.test.cpp
       title: Graph/tests/floyd_aizu.test.cpp
     - icon: ':heavy_check_mark:'
@@ -699,6 +705,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Graph/tests/mincost_maxflow_spfa.test.cpp
       title: Graph/tests/mincost_maxflow_spfa.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Graph/tests/mst.test.cpp
+      title: Graph/tests/mst.test.cpp
     - icon: ':heavy_check_mark:'
       path: Graph/tests/strongly_connected.test.cpp
       title: Graph/tests/strongly_connected.test.cpp
