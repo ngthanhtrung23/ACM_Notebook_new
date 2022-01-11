@@ -263,6 +263,7 @@ struct BigInt {
         return res;
     }
     BigInt operator/(const BigInt &v) const {
+        if (v < 0) return divmod(-*this, -v).first;
         return divmod(*this, v).first;
     }
 
