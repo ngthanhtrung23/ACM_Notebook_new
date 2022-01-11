@@ -44,7 +44,7 @@ data:
     - icon: ':warning:'
       path: DataStructure/HeavyLight.cpp
       title: DataStructure/HeavyLight.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: DataStructure/HeavyLight_adamant.h
       title: DataStructure/HeavyLight_adamant.h
     - icon: ':warning:'
@@ -80,7 +80,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/RMQ.h
       title: DataStructure/RMQ.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: DataStructure/SegTree.h
       title: DataStructure/SegTree.h
     - icon: ':heavy_check_mark:'
@@ -474,7 +474,7 @@ data:
     - icon: ':warning:'
       path: debug.h
       title: debug.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template.h
       title: template.h
   verificationCategories:
@@ -509,6 +509,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/fenwick_pointaddrangesum.test.cpp
       title: DataStructure/test/fenwick_pointaddrangesum.test.cpp
+    - icon: ':x:'
+      path: DataStructure/test/hld_edge_aizu.test.cpp
+      title: DataStructure/test/hld_edge_aizu.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/test/hld_edge_aizu_2.test.cpp
+      title: DataStructure/test/hld_edge_aizu_2.test.cpp
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/hld_lca.test.cpp
       title: DataStructure/test/hld_lca.test.cpp

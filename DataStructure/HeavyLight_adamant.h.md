@@ -3,6 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
+  - icon: ':x:'
+    path: DataStructure/test/hld_edge_aizu.test.cpp
+    title: DataStructure/test/hld_edge_aizu.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: DataStructure/test/hld_edge_aizu_2.test.cpp
+    title: DataStructure/test/hld_edge_aizu_2.test.cpp
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/hld_lca.test.cpp
     title: DataStructure/test/hld_lca.test.cpp
@@ -18,9 +24,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/hld_vertexsetpathcomposite.test.cpp
     title: DataStructure/test/hld_vertexsetpathcomposite.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://cses.fi/problemset/task/1687
@@ -76,43 +82,45 @@ data:
     \    if (u == v && edge) return;\n\n        while (true) {\n            if (in[u]\
     \ > in[v]) swap(u, v); // in[u] <= in[v]\n            if (nxt[u] == nxt[v]) break;\n\
     \            f(in[nxt[v]], in[v]);\n            v = parent[nxt[v]];\n        }\n\
-    \        f(in[u] + edge, in[v]);\n    }\n\n    // get prod of path u -> v\n  \
-    \  // edge = true -> get on edges\n    //\n    // f(l, r) should query segment\
-    \ tree [l, r] INCLUSIVE\n    // f must be commutative. For non-commutative, use\
-    \ getSegments below\n    template<class S, S (*op) (S, S), S (*e)()>\n    S prod_path_commutative(\n\
-    \            int u, int v, bool edge,\n            const function<S(int, int)>&\
-    \ f) const {\n        assert(0 <= u && u < n);\n        assert(0 <= v && v < n);\n\
-    \        if (u == v && edge) {\n            return e();\n        }\n        S\
-    \ su = e(), sv = e();\n        while (true) {\n            if (in[u] > in[v])\
-    \ { swap(u, v); swap(su, sv); }\n            if (nxt[u] == nxt[v]) break;\n  \
-    \          sv = op(sv, f(in[nxt[v]], in[v]));\n            v = parent[nxt[v]];\n\
-    \        }\n        return op(su, op(sv, f(in[u] + edge, in[v])));\n    }\n\n\
-    \    // f(l, r) modify seg_tree [l, r] INCLUSIVE\n    void apply_subtree(int u,\
-    \ bool edge, const function<void(int, int)>& f) {\n        assert(0 <= u && u\
-    \ < n);\n        f(in[u] + edge, out[u] - 1);\n    }\n\n    // f(l, r) queries\
-    \ seg_tree [l, r] INCLUSIVE\n    template<class S>\n    S prod_subtree_commutative(int\
-    \ u, bool edge, const function<S(S, S)>& f) {\n        assert(0 <= u && u < n);\n\
-    \        return f(in[u] + edge, out[u] - 1);\n    }\n\n    // Useful when functions\
-    \ are non-commutative\n    // Return all segments on path from u -> v\n    //\
-    \ For this problem, the order (u -> v is different from v -> u)\n    vector< pair<int,int>\
-    \ > getSegments(int u, int v) const {\n        assert(0 <= u && u < n);\n    \
-    \    assert(0 <= v && v < n);\n        vector< pair<int,int> > upFromU, upFromV;\n\
-    \n        int fu = nxt[u], fv = nxt[v];\n        while (fu != fv) {  // u and\
-    \ v are on different chains\n            if (depth[fu] >= depth[fv]) { // move\
-    \ u up\n                upFromU.push_back({u, fu});\n                u = parent[fu];\n\
-    \                fu = nxt[u];\n            } else { // move v up\n           \
-    \     upFromV.push_back({fv, v});\n                v = parent[fv];\n         \
-    \       fv = nxt[v];\n            }\n        }\n        upFromU.push_back({u,\
-    \ v});\n        reverse(upFromV.begin(), upFromV.end());\n        upFromU.insert(upFromU.end(),\
-    \ upFromV.begin(), upFromV.end());\n        return upFromU;\n    }\n\n    // return\
-    \ true if u is ancestor\n    bool isAncestor(int u, int v) {\n        return in[u]\
-    \ <= in[v] && out[v] <= out[u];\n    }\n\n// private:\n    int n;\n    vector<vector<int>>\
-    \ g;\n    vector<int> parent;   // par[u] = parent of u. par[root] = -1\n    vector<int>\
-    \ depth;    // depth[u] = distance from root -> u\n    vector<int> sz;       //\
-    \ sz[u] = size of subtree rooted at u\n    int dfs_number;\n    vector<int> nxt;\
-    \      // nxt[u] = vertex on heavy path of u, nearest to root\n    vector<int>\
-    \ in, out;  // subtree(u) is in range [in[u], out[u]-1]\n    vector<int> order;\
-    \    // euler tour\n\n    void dfs_sz(int u, int fu) {\n        parent[u] = fu;\n\
+    \        if (u == v && edge) return;\n        f(in[u] + edge, in[v]);\n    }\n\
+    \n    // get prod of path u -> v\n    // edge = true -> get on edges\n    //\n\
+    \    // f(l, r) should query segment tree [l, r] INCLUSIVE\n    // f must be commutative.\
+    \ For non-commutative, use getSegments below\n    template<class S, S (*op) (S,\
+    \ S), S (*e)()>\n    S prod_path_commutative(\n            int u, int v, bool\
+    \ edge,\n            const function<S(int, int)>& f) const {\n        assert(0\
+    \ <= u && u < n);\n        assert(0 <= v && v < n);\n        if (u == v && edge)\
+    \ {\n            return e();\n        }\n        S su = e(), sv = e();\n     \
+    \   while (true) {\n            if (in[u] > in[v]) { swap(u, v); swap(su, sv);\
+    \ }\n            if (nxt[u] == nxt[v]) break;\n            sv = op(sv, f(in[nxt[v]],\
+    \ in[v]));\n            v = parent[nxt[v]];\n        }\n        if (u == v &&\
+    \ edge) {\n            return op(su, sv);\n        } else {\n            return\
+    \ op(su, op(sv, f(in[u] + edge, in[v])));\n        }\n    }\n\n    // f(l, r)\
+    \ modify seg_tree [l, r] INCLUSIVE\n    void apply_subtree(int u, bool edge, const\
+    \ function<void(int, int)>& f) {\n        assert(0 <= u && u < n);\n        f(in[u]\
+    \ + edge, out[u] - 1);\n    }\n\n    // f(l, r) queries seg_tree [l, r] INCLUSIVE\n\
+    \    template<class S>\n    S prod_subtree_commutative(int u, bool edge, const\
+    \ function<S(S, S)>& f) {\n        assert(0 <= u && u < n);\n        return f(in[u]\
+    \ + edge, out[u] - 1);\n    }\n\n    // Useful when functions are non-commutative\n\
+    \    // Return all segments on path from u -> v\n    // For this problem, the\
+    \ order (u -> v is different from v -> u)\n    vector< pair<int,int> > getSegments(int\
+    \ u, int v) const {\n        assert(0 <= u && u < n);\n        assert(0 <= v &&\
+    \ v < n);\n        vector< pair<int,int> > upFromU, upFromV;\n\n        int fu\
+    \ = nxt[u], fv = nxt[v];\n        while (fu != fv) {  // u and v are on different\
+    \ chains\n            if (depth[fu] >= depth[fv]) { // move u up\n           \
+    \     upFromU.push_back({u, fu});\n                u = parent[fu];\n         \
+    \       fu = nxt[u];\n            } else { // move v up\n                upFromV.push_back({fv,\
+    \ v});\n                v = parent[fv];\n                fv = nxt[v];\n      \
+    \      }\n        }\n        upFromU.push_back({u, v});\n        reverse(upFromV.begin(),\
+    \ upFromV.end());\n        upFromU.insert(upFromU.end(), upFromV.begin(), upFromV.end());\n\
+    \        return upFromU;\n    }\n\n    // return true if u is ancestor\n    bool\
+    \ isAncestor(int u, int v) {\n        return in[u] <= in[v] && out[v] <= out[u];\n\
+    \    }\n\n// private:\n    int n;\n    vector<vector<int>> g;\n    vector<int>\
+    \ parent;   // par[u] = parent of u. par[root] = -1\n    vector<int> depth;  \
+    \  // depth[u] = distance from root -> u\n    vector<int> sz;       // sz[u] =\
+    \ size of subtree rooted at u\n    int dfs_number;\n    vector<int> nxt;     \
+    \ // nxt[u] = vertex on heavy path of u, nearest to root\n    vector<int> in,\
+    \ out;  // subtree(u) is in range [in[u], out[u]-1]\n    vector<int> order;  \
+    \  // euler tour\n\n    void dfs_sz(int u, int fu) {\n        parent[u] = fu;\n\
     \        sz[u] = 1;\n        // remove parent from adjacency list\n        auto\
     \ it = std::find(g[u].begin(), g[u].end(), fu);\n        if (it != g[u].end())\
     \ g[u].erase(it);\n\n        for (int& v : g[u]) {\n            depth[v] = depth[u]\
@@ -161,43 +169,45 @@ data:
     \    if (u == v && edge) return;\n\n        while (true) {\n            if (in[u]\
     \ > in[v]) swap(u, v); // in[u] <= in[v]\n            if (nxt[u] == nxt[v]) break;\n\
     \            f(in[nxt[v]], in[v]);\n            v = parent[nxt[v]];\n        }\n\
-    \        f(in[u] + edge, in[v]);\n    }\n\n    // get prod of path u -> v\n  \
-    \  // edge = true -> get on edges\n    //\n    // f(l, r) should query segment\
-    \ tree [l, r] INCLUSIVE\n    // f must be commutative. For non-commutative, use\
-    \ getSegments below\n    template<class S, S (*op) (S, S), S (*e)()>\n    S prod_path_commutative(\n\
-    \            int u, int v, bool edge,\n            const function<S(int, int)>&\
-    \ f) const {\n        assert(0 <= u && u < n);\n        assert(0 <= v && v < n);\n\
-    \        if (u == v && edge) {\n            return e();\n        }\n        S\
-    \ su = e(), sv = e();\n        while (true) {\n            if (in[u] > in[v])\
-    \ { swap(u, v); swap(su, sv); }\n            if (nxt[u] == nxt[v]) break;\n  \
-    \          sv = op(sv, f(in[nxt[v]], in[v]));\n            v = parent[nxt[v]];\n\
-    \        }\n        return op(su, op(sv, f(in[u] + edge, in[v])));\n    }\n\n\
-    \    // f(l, r) modify seg_tree [l, r] INCLUSIVE\n    void apply_subtree(int u,\
-    \ bool edge, const function<void(int, int)>& f) {\n        assert(0 <= u && u\
-    \ < n);\n        f(in[u] + edge, out[u] - 1);\n    }\n\n    // f(l, r) queries\
-    \ seg_tree [l, r] INCLUSIVE\n    template<class S>\n    S prod_subtree_commutative(int\
-    \ u, bool edge, const function<S(S, S)>& f) {\n        assert(0 <= u && u < n);\n\
-    \        return f(in[u] + edge, out[u] - 1);\n    }\n\n    // Useful when functions\
-    \ are non-commutative\n    // Return all segments on path from u -> v\n    //\
-    \ For this problem, the order (u -> v is different from v -> u)\n    vector< pair<int,int>\
-    \ > getSegments(int u, int v) const {\n        assert(0 <= u && u < n);\n    \
-    \    assert(0 <= v && v < n);\n        vector< pair<int,int> > upFromU, upFromV;\n\
-    \n        int fu = nxt[u], fv = nxt[v];\n        while (fu != fv) {  // u and\
-    \ v are on different chains\n            if (depth[fu] >= depth[fv]) { // move\
-    \ u up\n                upFromU.push_back({u, fu});\n                u = parent[fu];\n\
-    \                fu = nxt[u];\n            } else { // move v up\n           \
-    \     upFromV.push_back({fv, v});\n                v = parent[fv];\n         \
-    \       fv = nxt[v];\n            }\n        }\n        upFromU.push_back({u,\
-    \ v});\n        reverse(upFromV.begin(), upFromV.end());\n        upFromU.insert(upFromU.end(),\
-    \ upFromV.begin(), upFromV.end());\n        return upFromU;\n    }\n\n    // return\
-    \ true if u is ancestor\n    bool isAncestor(int u, int v) {\n        return in[u]\
-    \ <= in[v] && out[v] <= out[u];\n    }\n\n// private:\n    int n;\n    vector<vector<int>>\
-    \ g;\n    vector<int> parent;   // par[u] = parent of u. par[root] = -1\n    vector<int>\
-    \ depth;    // depth[u] = distance from root -> u\n    vector<int> sz;       //\
-    \ sz[u] = size of subtree rooted at u\n    int dfs_number;\n    vector<int> nxt;\
-    \      // nxt[u] = vertex on heavy path of u, nearest to root\n    vector<int>\
-    \ in, out;  // subtree(u) is in range [in[u], out[u]-1]\n    vector<int> order;\
-    \    // euler tour\n\n    void dfs_sz(int u, int fu) {\n        parent[u] = fu;\n\
+    \        if (u == v && edge) return;\n        f(in[u] + edge, in[v]);\n    }\n\
+    \n    // get prod of path u -> v\n    // edge = true -> get on edges\n    //\n\
+    \    // f(l, r) should query segment tree [l, r] INCLUSIVE\n    // f must be commutative.\
+    \ For non-commutative, use getSegments below\n    template<class S, S (*op) (S,\
+    \ S), S (*e)()>\n    S prod_path_commutative(\n            int u, int v, bool\
+    \ edge,\n            const function<S(int, int)>& f) const {\n        assert(0\
+    \ <= u && u < n);\n        assert(0 <= v && v < n);\n        if (u == v && edge)\
+    \ {\n            return e();\n        }\n        S su = e(), sv = e();\n     \
+    \   while (true) {\n            if (in[u] > in[v]) { swap(u, v); swap(su, sv);\
+    \ }\n            if (nxt[u] == nxt[v]) break;\n            sv = op(sv, f(in[nxt[v]],\
+    \ in[v]));\n            v = parent[nxt[v]];\n        }\n        if (u == v &&\
+    \ edge) {\n            return op(su, sv);\n        } else {\n            return\
+    \ op(su, op(sv, f(in[u] + edge, in[v])));\n        }\n    }\n\n    // f(l, r)\
+    \ modify seg_tree [l, r] INCLUSIVE\n    void apply_subtree(int u, bool edge, const\
+    \ function<void(int, int)>& f) {\n        assert(0 <= u && u < n);\n        f(in[u]\
+    \ + edge, out[u] - 1);\n    }\n\n    // f(l, r) queries seg_tree [l, r] INCLUSIVE\n\
+    \    template<class S>\n    S prod_subtree_commutative(int u, bool edge, const\
+    \ function<S(S, S)>& f) {\n        assert(0 <= u && u < n);\n        return f(in[u]\
+    \ + edge, out[u] - 1);\n    }\n\n    // Useful when functions are non-commutative\n\
+    \    // Return all segments on path from u -> v\n    // For this problem, the\
+    \ order (u -> v is different from v -> u)\n    vector< pair<int,int> > getSegments(int\
+    \ u, int v) const {\n        assert(0 <= u && u < n);\n        assert(0 <= v &&\
+    \ v < n);\n        vector< pair<int,int> > upFromU, upFromV;\n\n        int fu\
+    \ = nxt[u], fv = nxt[v];\n        while (fu != fv) {  // u and v are on different\
+    \ chains\n            if (depth[fu] >= depth[fv]) { // move u up\n           \
+    \     upFromU.push_back({u, fu});\n                u = parent[fu];\n         \
+    \       fu = nxt[u];\n            } else { // move v up\n                upFromV.push_back({fv,\
+    \ v});\n                v = parent[fv];\n                fv = nxt[v];\n      \
+    \      }\n        }\n        upFromU.push_back({u, v});\n        reverse(upFromV.begin(),\
+    \ upFromV.end());\n        upFromU.insert(upFromU.end(), upFromV.begin(), upFromV.end());\n\
+    \        return upFromU;\n    }\n\n    // return true if u is ancestor\n    bool\
+    \ isAncestor(int u, int v) {\n        return in[u] <= in[v] && out[v] <= out[u];\n\
+    \    }\n\n// private:\n    int n;\n    vector<vector<int>> g;\n    vector<int>\
+    \ parent;   // par[u] = parent of u. par[root] = -1\n    vector<int> depth;  \
+    \  // depth[u] = distance from root -> u\n    vector<int> sz;       // sz[u] =\
+    \ size of subtree rooted at u\n    int dfs_number;\n    vector<int> nxt;     \
+    \ // nxt[u] = vertex on heavy path of u, nearest to root\n    vector<int> in,\
+    \ out;  // subtree(u) is in range [in[u], out[u]-1]\n    vector<int> order;  \
+    \  // euler tour\n\n    void dfs_sz(int u, int fu) {\n        parent[u] = fu;\n\
     \        sz[u] = 1;\n        // remove parent from adjacency list\n        auto\
     \ it = std::find(g[u].begin(), g[u].end(), fu);\n        if (it != g[u].end())\
     \ g[u].erase(it);\n\n        for (int& v : g[u]) {\n            depth[v] = depth[u]\
@@ -210,13 +220,15 @@ data:
   isVerificationFile: false
   path: DataStructure/HeavyLight_adamant.h
   requiredBy: []
-  timestamp: '2022-01-07 02:16:16+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2022-01-11 19:24:58+08:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - DataStructure/test/hld_vertexsetpathcomposite.test.cpp
+  - DataStructure/test/hld_edge_aizu.test.cpp
   - DataStructure/test/hld_vertexaddpathsum.test.cpp
   - DataStructure/test/hld_lca.test.cpp
   - DataStructure/test/hld_lca_aizu.test.cpp
+  - DataStructure/test/hld_edge_aizu_2.test.cpp
   - DataStructure/test/hld_vertexaddsubtreesum.test.cpp
 documentation_of: DataStructure/HeavyLight_adamant.h
 layout: document

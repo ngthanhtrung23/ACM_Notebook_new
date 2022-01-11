@@ -4,6 +4,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: DataStructure/test/hld_edge_aizu_2.test.cpp
+    title: DataStructure/test/hld_edge_aizu_2.test.cpp
+  - icon: ':heavy_check_mark:'
     path: DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
     title: DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
   _isVerificationFailed: false
@@ -106,7 +109,7 @@ data:
     \ { return 0; }  // correct for this problem because initial value are 0 and add\
     \ > 0\n\n    // lazy\n    static int apply(int tag, int value) {\n        return\
     \ value + tag;\n    }\n    static int combine(int x, int y) {\n        return\
-    \ x + y;\n    }\n    static int id() {\n        return 0;\n    }\n};\n\n"
+    \ x + y;\n    }\n    static int id() {\n        return 0;\n    }\n};\n"
   code: "// Lazy Segment Tree, copied from AtCoder\n// Source: https://github.com/atcoder/ac-library/blob/master/atcoder/lazysegtree.hpp\n\
     // Doc: https://atcoder.github.io/ac-library/master/document_en/lazysegtree.html\n\
     //\n// Notes:\n// - Index of elements from 0\n// - Range queries are [l, r-1]\n\
@@ -193,15 +196,16 @@ data:
     \ { return 0; }  // correct for this problem because initial value are 0 and add\
     \ > 0\n\n    // lazy\n    static int apply(int tag, int value) {\n        return\
     \ value + tag;\n    }\n    static int combine(int x, int y) {\n        return\
-    \ x + y;\n    }\n    static int id() {\n        return 0;\n    }\n};\n\n"
+    \ x + y;\n    }\n    static int id() {\n        return 0;\n    }\n};\n"
   dependsOn: []
   isVerificationFile: false
   path: DataStructure/LazySegTree.h
   requiredBy: []
-  timestamp: '2021-12-21 14:25:18+08:00'
+  timestamp: '2022-01-11 19:24:58+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
+  - DataStructure/test/hld_edge_aizu_2.test.cpp
 documentation_of: DataStructure/LazySegTree.h
 layout: document
 redirect_from:

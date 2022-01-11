@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: DataStructure/HeavyLight_adamant.h
     title: DataStructure/HeavyLight_adamant.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: DataStructure/SegTree.h
     title: DataStructure/SegTree.h
   - icon: ':heavy_check_mark:'
@@ -65,7 +65,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/hld_vertexsetpathcomposite.test.cpp
   requiredBy: []
-  timestamp: '2022-01-07 02:16:16+08:00'
+  timestamp: '2022-01-11 19:24:58+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/hld_vertexsetpathcomposite.test.cpp
