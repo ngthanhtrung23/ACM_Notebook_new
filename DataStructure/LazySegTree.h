@@ -215,18 +215,47 @@ private:
     }
 };
 
-struct MaxAddSegTreeOp {
-    static int op(int x, int y) { return max(x, y); }
-    static int e() { return 0; }  // correct for this problem because initial value are 0 and add > 0
+////////// BELOW: EXAMPLES
+// https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_D
+// https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_E
+// https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_F
+// https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_G
+// https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_H
+// https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_I
+// supports:
+// - set a(l -> r) to val; val > NOT_SET
+// - add a(l -> r) += val
+// - find sum a(l -> r)
+// - find min a(l -> r)
+struct RangeSetAddMinSumOps {
+    struct S { long long sum, min, sz; };
+    static S op(S l, S r) { return S { l.sum + r.sum, min(l.min, r.min), l.sz + r.sz }; }
+    static S e() { return S {0LL, INT_MAX, 0}; }
 
-    // lazy
-    static int apply(int tag, int value) {
-        return value + tag;
+    static const long long NOT_SET = -1000111000;
+    struct F { long long set, add; }
+
+    static S mapping(F f, S s) {
+        if (f.set == NOT_SET) {
+            return S {
+                s.sum + f.add * s.sz,
+                s.min + f.add,
+                s.sz,
+            };
+        }
+        return S {
+            (f.set + f.add) * f.sz,
+            f.set + f.add,
+            s.sz,
+        };
     }
-    static int combine(int x, int y) {
-        return x + y;
+    static F composition(F f, F g) {
+        if (f.set == NOT_SET) {
+            return F { g.set, g.add + f.add };
+        }
+        return f;
     }
-    static int id() {
-        return 0;
+    static long long id() {
+        return F { NOT_SET, 0 };
     }
 };

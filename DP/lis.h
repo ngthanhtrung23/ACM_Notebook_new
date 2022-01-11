@@ -27,13 +27,13 @@ int lis_strict(const vector<int>& a) {
     return s.size();
 }
 
-// Trace
+// Trace - not tested
 vector<int> lis_trace(const vector<int>& a) {
     int n = (int) a.size();
-    vector<int> b(n+1, 0);
+    vector<int> b(n+1, 0), f(n, 0);
     int answer = 0;
     for (int i = 0; i < n; i++) {
-        f[i] = lower_bound(b+1, b+answer+1, a[i]) - b;
+        f[i] = lower_bound(b.begin() + 1, b.begin()+answer+1, a[i]) - b.begin();
         answer = max(answer, f[i]);
         b[f[i]] = a[i];
     }
