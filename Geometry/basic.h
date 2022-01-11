@@ -39,9 +39,9 @@ struct P {
     T operator * (const P& a) const { return x*a.x + y*a.y; } // dot product
     T operator % (const P& a) const { return x*a.y - y*a.x; } // cross product
 
-    int cmp(P q) const { if (int t = ::cmp(x,q.x)) return t; return ::cmp(y,q.y); }
+    int cmp(const P<T>& q) const { if (int t = ::cmp(x,q.x)) return t; return ::cmp(y,q.y); }
 
-    #define Comp(x) bool operator x (P q) const { return cmp(q) x 0; }
+    #define Comp(x) bool operator x (const P& q) const { return cmp(q) x 0; }
     Comp(>) Comp(<) Comp(==) Comp(>=) Comp(<=) Comp(!=)
     #undef Comp
 
@@ -80,7 +80,7 @@ istream& operator >> (istream& cin, P<T>& p) {
     return cin;
 }
 template<typename T>
-ostream& operator << (ostream& cout, P<T>& p) {
+ostream& operator << (ostream& cout, const P<T>& p) {
     cout << p.x << ' ' << p.y;
     return cout;
 }
