@@ -1,5 +1,5 @@
 // 2D segment tree
-// Requires SegTree.h
+#include "SegTree.h"
 template<
     class S,        // aggregate data type
     S (*op) (S, S), // combine aggregate data

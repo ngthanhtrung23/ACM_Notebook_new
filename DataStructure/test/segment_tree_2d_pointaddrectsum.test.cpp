@@ -4,7 +4,6 @@
 using namespace std;
 
 #include "../../buffered_reader.h"
-#include "../SegTree.h"
 #include "../SegTree2D.h"
 
 #define REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)
