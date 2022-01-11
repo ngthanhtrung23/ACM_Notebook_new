@@ -1,5 +1,11 @@
 #pragma once
 
+// Basic geometry objects: Point, Line, Segment
+// Works with both integers and floating points
+// Unless the problem has precision issue, can use Point, which uses double
+// and has more functionalities.
+// For integers, can use P<long long>
+
 #ifndef EPS  // allow test files to overwrite EPS
 #define EPS 1e-6
 #endif
@@ -117,8 +123,8 @@ double distToLineSegment(Point p, Point a, Point b, Point &c) {
 
 // NOTE: WILL NOT WORK WHEN a = b = 0.
 struct Line {
-    double a, b, c;
-    Point A, B; // Added for polygon intersect line. Do not rely on assumption that these are valid
+    double a, b, c;  // ax + by + c = 0
+    Point A, B;  // Added for polygon intersect line. Do not rely on assumption that these are valid
 
     Line(double _a, double _b, double _c) : a(_a), b(_b), c(_c) {} 
 
@@ -135,6 +141,10 @@ struct Line {
         return a*p.x + b*p.y + c;
     }
 };
+ostream& operator >> (ostream& cout, const Line& l) {
+    cout << l.a << "*x + " << l.b << "*y + " << l.c;
+    return cout;
+}
 
 bool areParallel(Line l1, Line l2) {
     return cmp(l1.a*l2.b, l1.b*l2.a) == 0;

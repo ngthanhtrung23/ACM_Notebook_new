@@ -20,6 +20,14 @@ struct Circle : Point {
         return 0.5 * r * r * (theta - sin(theta));
     }
 };
+istream& operator >> (istream& cin, Circle& c) {
+    cin >> c.x >> c.y >> c.r;
+    return cin;
+}
+ostream& operator << (ostream& cout, const Circle& c) {
+    cout << '(' << c.x << ", " << c.y << ") " << c.r;
+    return cout;
+}
 
 // Find common tangents to 2 circles
 // Tested:
@@ -42,18 +50,14 @@ vector<Line> tangents(Circle a, Circle b) {
     for (int i=-1; i<=1; i+=2)
         for (int j=-1; j<=1; j+=2)
             tangents(b-a, a.r*i, b.r*j, ans);
-    for(int i = 0; i < ans.size(); ++i)
+    for(int i = 0; i < (int) ans.size(); ++i)
         ans[i].c -= ans[i].a * a.x + ans[i].b * a.y;
 
     vector<Line> ret;
     for(int i = 0; i < (int) ans.size(); ++i) {
-        bool ok = true;
-        for(int j = 0; j < i; ++j)
-            if (areSame(ret[j], ans[i])) {
-                ok = false;
-                break;
-            }
-        if (ok) ret.push_back(ans[i]);
+        if (std::none_of(ret.begin(), ret.end(), [&] (Line l) { return areSame(l, ans[i]); })) {
+            ret.push_back(ans[i]);
+        }
     }
     return ret;
 }
@@ -70,8 +74,7 @@ vector<Point> intersection(Line l, Circle cir) {
     else if (fabs(c*c - r*r*(a*a+b*b)) < EPS) {
         res.push_back(Point(x0, y0) + Point(cir.x, cir.y));
         return res;
-    }
-    else {
+    } else {
         double d = r*r - c*c/(a*a+b*b);
         double mult = sqrt (d / (a*a+b*b));
         double ax,ay,bx,by;

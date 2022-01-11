@@ -1,3 +1,7 @@
+// Polygon: convex hull, in polygon, convex diameter ..
+// Functions with param vector<P<T>> works with both integers and floating points
+// Functions with param Polygon works with floating points only.
+
 typedef vector< Point > Polygon;
 
 // Convex Hull:
