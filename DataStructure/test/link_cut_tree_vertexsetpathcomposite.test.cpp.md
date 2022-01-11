@@ -58,7 +58,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp
   requiredBy: []
-  timestamp: '2022-01-06 04:56:25+08:00'
+  timestamp: '2022-01-11 20:18:36+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp

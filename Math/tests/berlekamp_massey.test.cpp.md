@@ -49,17 +49,20 @@ data:
     \  t = ax - bx*q;\n            ax = bx; bx = t;\n        }\n        assert(a ==\
     \ 1);\n        if (ax < 0) ax += MOD;\n        return ax;\n    }\n    ModInt&\
     \ operator /= (ModInt m) { return (*this) *= m.inv(); }\n    ModInt operator /\
-    \ (ModInt that) const { return ModInt(*this) /= that; }\n};\n\n/* Example:\nconst\
-    \ int MOD = 1e9 + 7;\nusing modular = ModInt<MOD>;\n\nstd::ostream& operator <<\
-    \ (std::ostream& cout, const modular& m) {\n    cout << m.x;\n    return cout;\n\
-    }\nstd::istream& operator >> (std::istream& cin, modular& m) {\n    cin >> m.x;\n\
-    \    return cin;\n}\n*/\n#line 7 \"Math/tests/berlekamp_massey.test.cpp\"\n\n\
-    using modular = ModInt<998244353>;\nstd::ostream& operator << (std::ostream& cout,\
-    \ const modular& m) {\n    cout << m.x;\n    return cout;\n}\nstd::istream& operator\
-    \ >> (std::istream& cin, modular& m) {\n    cin >> m.x;\n    return cin;\n}\n\n\
-    #line 1 \"Math/LinearRecurrence_BerlekampMassey.h\"\n// Berlekamp Massey\n// Given\
-    \ sequence s0, ..., s(N-1)\n// Find sequence c1, ..., cd with minimum d (d >=\
-    \ 0), such that:\n//   si = sum(s(i-j) * c(j), for j = 1..d)\n//\n// Tutorial:\
+    \ (ModInt that) const { return ModInt(*this) /= that; }\n};\n\ntemplate<int MOD>\n\
+    ModInt<MOD> power(ModInt<MOD> n, long long k) {\n    if (k == 0) return ModInt<MOD>\
+    \ (1);\n    ModInt<MOD> res(1);\n    while (k > 0) {\n        if (k & 1) res =\
+    \ res * n;\n        n = n * n;\n        k >>= 1;\n    }\n    return res;\n}\n\n\
+    /* Example:\nconst int MOD = 1e9 + 7;\nusing modular = ModInt<MOD>;\n\nstd::ostream&\
+    \ operator << (std::ostream& cout, const modular& m) {\n    cout << m.x;\n   \
+    \ return cout;\n}\nstd::istream& operator >> (std::istream& cin, modular& m) {\n\
+    \    cin >> m.x;\n    return cin;\n}\n*/\n#line 7 \"Math/tests/berlekamp_massey.test.cpp\"\
+    \n\nusing modular = ModInt<998244353>;\nstd::ostream& operator << (std::ostream&\
+    \ cout, const modular& m) {\n    cout << m.x;\n    return cout;\n}\nstd::istream&\
+    \ operator >> (std::istream& cin, modular& m) {\n    cin >> m.x;\n    return cin;\n\
+    }\n\n#line 1 \"Math/LinearRecurrence_BerlekampMassey.h\"\n// Berlekamp Massey\n\
+    // Given sequence s0, ..., s(N-1)\n// Find sequence c1, ..., cd with minimum d\
+    \ (d >= 0), such that:\n//   si = sum(s(i-j) * c(j), for j = 1..d)\n//\n// Tutorial:\
     \ https://mzhang2021.github.io/cp-blog/berlekamp-massey/\n// If we have the linear\
     \ recurrence, we can compute s(n):\n// - O(n*d) naively\n// - O(d^3 * log(n))\
     \ with matrix exponentiation\n// - O(d*log(d)*log(k)) with generating function\
@@ -125,7 +128,7 @@ data:
   isVerificationFile: true
   path: Math/tests/berlekamp_massey.test.cpp
   requiredBy: []
-  timestamp: '2022-01-08 03:48:10+08:00'
+  timestamp: '2022-01-11 20:18:36+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Math/tests/berlekamp_massey.test.cpp

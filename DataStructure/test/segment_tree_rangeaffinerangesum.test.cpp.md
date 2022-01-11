@@ -56,7 +56,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
   requiredBy: []
-  timestamp: '2022-01-11 19:24:58+08:00'
+  timestamp: '2022-01-11 20:18:36+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp

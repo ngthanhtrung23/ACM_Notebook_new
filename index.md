@@ -370,7 +370,7 @@ data:
       title: Math/Polynomial/xorFFT.h
   - name: Math/Prime
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: Math/Prime/EulerPhi.h
       title: Math/Prime/EulerPhi.h
     - icon: ':heavy_check_mark:'
@@ -777,6 +777,12 @@ data:
       path: Math/tests/convolution_xor.test.cpp
       title: Math/tests/convolution_xor.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Math/tests/euler_phi.test.cpp
+      title: Math/tests/euler_phi.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Math/tests/extended_euclid.test.cpp
+      title: Math/tests/extended_euclid.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Math/tests/factorize.test.cpp
       title: Math/tests/factorize.test.cpp
     - icon: ':heavy_check_mark:'
@@ -794,6 +800,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/tests/matrix_mult.test.cpp
       title: Math/tests/matrix_mult.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Math/tests/modulo_pow.test.cpp
+      title: Math/tests/modulo_pow.test.cpp
     - icon: ':heavy_check_mark:'
       path: Math/tests/nimber.test.cpp
       title: Math/tests/nimber.test.cpp

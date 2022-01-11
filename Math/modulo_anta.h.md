@@ -21,6 +21,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Math/tests/berlekamp_massey.test.cpp
     title: Math/tests/berlekamp_massey.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Math/tests/modulo_pow.test.cpp
+    title: Math/tests/modulo_pow.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -58,11 +61,14 @@ data:
     \  t = ax - bx*q;\n            ax = bx; bx = t;\n        }\n        assert(a ==\
     \ 1);\n        if (ax < 0) ax += MOD;\n        return ax;\n    }\n    ModInt&\
     \ operator /= (ModInt m) { return (*this) *= m.inv(); }\n    ModInt operator /\
-    \ (ModInt that) const { return ModInt(*this) /= that; }\n};\n\n/* Example:\nconst\
-    \ int MOD = 1e9 + 7;\nusing modular = ModInt<MOD>;\n\nstd::ostream& operator <<\
-    \ (std::ostream& cout, const modular& m) {\n    cout << m.x;\n    return cout;\n\
-    }\nstd::istream& operator >> (std::istream& cin, modular& m) {\n    cin >> m.x;\n\
-    \    return cin;\n}\n*/\n"
+    \ (ModInt that) const { return ModInt(*this) /= that; }\n};\n\ntemplate<int MOD>\n\
+    ModInt<MOD> power(ModInt<MOD> n, long long k) {\n    if (k == 0) return ModInt<MOD>\
+    \ (1);\n    ModInt<MOD> res(1);\n    while (k > 0) {\n        if (k & 1) res =\
+    \ res * n;\n        n = n * n;\n        k >>= 1;\n    }\n    return res;\n}\n\n\
+    /* Example:\nconst int MOD = 1e9 + 7;\nusing modular = ModInt<MOD>;\n\nstd::ostream&\
+    \ operator << (std::ostream& cout, const modular& m) {\n    cout << m.x;\n   \
+    \ return cout;\n}\nstd::istream& operator >> (std::istream& cin, modular& m) {\n\
+    \    cin >> m.x;\n    return cin;\n}\n*/\n"
   code: "// Modified from anta's code\n// Not tested with MOD > 10^9 + 7.\n// Slow?\n\
     //\n// Tested:\n// - https://codeforces.com/gym/101383 - F (MOD = 1e9+7, +, *)\n\
     \n// ??? somehow this is 2.5x slower on https://judge.yosupo.jp/problem/matrix_product\n\
@@ -93,16 +99,19 @@ data:
     \  t = ax - bx*q;\n            ax = bx; bx = t;\n        }\n        assert(a ==\
     \ 1);\n        if (ax < 0) ax += MOD;\n        return ax;\n    }\n    ModInt&\
     \ operator /= (ModInt m) { return (*this) *= m.inv(); }\n    ModInt operator /\
-    \ (ModInt that) const { return ModInt(*this) /= that; }\n};\n\n/* Example:\nconst\
-    \ int MOD = 1e9 + 7;\nusing modular = ModInt<MOD>;\n\nstd::ostream& operator <<\
-    \ (std::ostream& cout, const modular& m) {\n    cout << m.x;\n    return cout;\n\
-    }\nstd::istream& operator >> (std::istream& cin, modular& m) {\n    cin >> m.x;\n\
-    \    return cin;\n}\n*/\n"
+    \ (ModInt that) const { return ModInt(*this) /= that; }\n};\n\ntemplate<int MOD>\n\
+    ModInt<MOD> power(ModInt<MOD> n, long long k) {\n    if (k == 0) return ModInt<MOD>\
+    \ (1);\n    ModInt<MOD> res(1);\n    while (k > 0) {\n        if (k & 1) res =\
+    \ res * n;\n        n = n * n;\n        k >>= 1;\n    }\n    return res;\n}\n\n\
+    /* Example:\nconst int MOD = 1e9 + 7;\nusing modular = ModInt<MOD>;\n\nstd::ostream&\
+    \ operator << (std::ostream& cout, const modular& m) {\n    cout << m.x;\n   \
+    \ return cout;\n}\nstd::istream& operator >> (std::istream& cin, modular& m) {\n\
+    \    cin >> m.x;\n    return cin;\n}\n*/\n"
   dependsOn: []
   isVerificationFile: false
   path: Math/modulo_anta.h
   requiredBy: []
-  timestamp: '2022-01-06 04:56:25+08:00'
+  timestamp: '2022-01-11 20:18:36+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
@@ -111,6 +120,7 @@ data:
   - DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp
   - DataStructure/test/splay_tree.test.cpp
   - Math/tests/berlekamp_massey.test.cpp
+  - Math/tests/modulo_pow.test.cpp
 documentation_of: Math/modulo_anta.h
 layout: document
 redirect_from:

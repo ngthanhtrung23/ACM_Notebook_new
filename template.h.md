@@ -163,11 +163,20 @@ data:
     path: Math/tests/bigint_sub.test.cpp
     title: Math/tests/bigint_sub.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Math/tests/euler_phi.test.cpp
+    title: Math/tests/euler_phi.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Math/tests/extended_euclid.test.cpp
+    title: Math/tests/extended_euclid.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Math/tests/factorize_aizu.test.cpp
     title: Math/tests/factorize_aizu.test.cpp
   - icon: ':heavy_check_mark:'
     path: Math/tests/is_prime_yukicoder.test.cpp
     title: Math/tests/is_prime_yukicoder.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Math/tests/modulo_pow.test.cpp
+    title: Math/tests/modulo_pow.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -275,6 +284,8 @@ data:
   - Graph/tests/strongly_connected_cycle_check.test.cpp
   - Graph/tests/mst.test.cpp
   - Math/tests/bigint_mul.test.cpp
+  - Math/tests/extended_euclid.test.cpp
+  - Math/tests/euler_phi.test.cpp
   - Math/tests/bigint_add.test.cpp
   - Math/tests/factorize_aizu.test.cpp
   - Math/tests/bigint_mul_karatsuba.test.cpp
@@ -282,6 +293,7 @@ data:
   - Math/tests/bigint_div.test.cpp
   - Math/tests/bigint_sub.test.cpp
   - Math/tests/is_prime_yukicoder.test.cpp
+  - Math/tests/modulo_pow.test.cpp
   - Math/tests/bigint_mod.test.cpp
 documentation_of: template.h
 layout: document
