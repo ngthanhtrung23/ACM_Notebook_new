@@ -99,6 +99,7 @@ struct HLD {
             f(in[nxt[v]], in[v]);
             v = parent[nxt[v]];
         }
+        if (u == v && edge) return;
         f(in[u] + edge, in[v]);
     }
 
@@ -123,7 +124,11 @@ struct HLD {
             sv = op(sv, f(in[nxt[v]], in[v]));
             v = parent[nxt[v]];
         }
-        return op(su, op(sv, f(in[u] + edge, in[v])));
+        if (u == v && edge) {
+            return op(su, sv);
+        } else {
+            return op(su, op(sv, f(in[u] + edge, in[v])));
+        }
     }
 
     // f(l, r) modify seg_tree [l, r] INCLUSIVE

@@ -230,4 +230,3 @@ struct MaxAddSegTreeOp {
         return 0;
     }
 };
-
