@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: DataStructure/SegTree.h
     title: DataStructure/SegTree.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: DataStructure/SegTree2D.h
     title: DataStructure/SegTree2D.h
   - icon: ':heavy_check_mark:'
@@ -34,8 +34,8 @@ data:
     \ { neg = 1; }\n        else res = c - '0';\n\n        c = get_char();\n     \
     \   while (std::isdigit(c)) {\n            res = res * 10 + (c - '0');\n     \
     \       c = get_char();\n        }\n        return neg ? -res : res;\n    }\n\
-    };\n#line 1 \"DataStructure/SegTree.h\"\n// SegTree, copied from AtCoder library\n\
-    // AtCoder doc: https://atcoder.github.io/ac-library/master/document_en/segtree.html\n\
+    };\n#line 1 \"DataStructure/SegTree2D.h\"\n// 2D segment tree\n#line 1 \"DataStructure/SegTree.h\"\
+    \n// SegTree, copied from AtCoder library\n// AtCoder doc: https://atcoder.github.io/ac-library/master/document_en/segtree.html\n\
     //\n// Notes:\n// - Index of elements from 0 -> n-1\n// - Range queries are [l,\
     \ r-1]\n//\n// Tested:\n// - (binary search) https://atcoder.jp/contests/practice2/tasks/practice2_j\n\
     // - https://oj.vnoi.info/problem/gss\n// - https://oj.vnoi.info/problem/nklineup\n\
@@ -97,38 +97,37 @@ data:
     \ static long long op(long long x, long long y) {\n        return x + y;\n   \
     \ }\n    static long long e() {\n        return 0;\n    }\n};\n\n// Example\n\
     // SegTree<int, MaxSegTreeOp::f, MaxSegTreeOp::e> seg_tree(a);\n// SegTree<int,\
-    \ MinSegTreeOp::f, MinSegTreeOp::e> seg_tree(a);\n#line 1 \"DataStructure/SegTree2D.h\"\
-    \n// 2D segment tree\n// Requires SegTree.h\ntemplate<\n    class S,        //\
-    \ aggregate data type\n    S (*op) (S, S), // combine aggregate data\n    S (*e)\
-    \ (),      // empty element\n    class Coord     // for x and y coordinates\n\
-    > struct SegTree2D {\n    using P = pair<Coord, Coord>;\n\n    // _points must\
-    \ contains all add queries\n    SegTree2D(const vector<P>& _points) : points(_points)\
-    \ {\n        sort(points.begin(), points.end());\n        points.erase(unique(points.begin(),\
-    \ points.end()), points.end());\n        n = points.size();\n\n        // init\
-    \ segtrees\n        coords.resize(n * 2);\n        for (int i = 0; i < n; i++)\
-    \ {\n            coords[n + i] = {{points[i].second, points[i].first}};\n    \
-    \    }\n        for (int i = n-1; i > 0; i--) {\n            std::merge(coords[i*2].begin(),\
-    \ coords[i*2].end(),\n                       coords[i*2+1].begin(), coords[i*2+1].end(),\n\
-    \                       std::back_inserter(coords[i]));\n            coords[i].erase(unique(coords[i].begin(),\
-    \ coords[i].end()), coords[i].end());\n        }\n        for (const auto& c :\
-    \ coords) {\n            segs.emplace_back(SegTree<S, op, e>(c.size()));\n   \
-    \     }\n    }\n\n    // Set value(p) = val\n    void set(P p, S val) {\n    \
-    \    int i = lower_bound(points.begin(), points.end(), p) - points.begin();\n\
-    \        assert(i < n && points[i] == p);\n        for (i += n; i; i >>= 1) {\n\
-    \            int j = lower_bound(coords[i].begin(), coords[i].end(), P{p.second,\
-    \ p.first}) - coords[i].begin();\n            segs[i].set(j, val);\n        }\n\
-    \    }\n\n    // Get value at p\n    S get(P p) const {\n        return prod(p,\
-    \ P{p.first + 1, p.second + 1});\n    }\n\n    // Get sum of points in rectangles,\
-    \ given bottom-left and top-right\n    // [low.x, high.x - 1] * [low.y, high.y\
-    \ - 1]\n    S prod(P low, P high) const {\n        assert(low.first <= high.first);\n\
-    \        assert(low.second <= high.second);\n        if (low.first == high.first)\
-    \ return e();\n        if (low.second == high.second) return e();\n\n        int\
-    \ l = n + (lower_bound(points.begin(), points.end(), low, cmpFirst) - points.begin());\n\
-    \        int r = n + (lower_bound(points.begin(), points.end(), high, cmpFirst)\
-    \ - points.begin());\n        S res = e();\n        while (l < r) {\n        \
-    \    if (l & 1) res = op(res, prod_1d(l++, low.second, high.second));\n      \
-    \      if (r & 1) res = op(res, prod_1d(--r, low.second, high.second));\n    \
-    \        l >>= 1; r >>= 1;\n        }\n        return res;\n    }\n\n// private:\n\
+    \ MinSegTreeOp::f, MinSegTreeOp::e> seg_tree(a);\n#line 3 \"DataStructure/SegTree2D.h\"\
+    \ntemplate<\n    class S,        // aggregate data type\n    S (*op) (S, S), //\
+    \ combine aggregate data\n    S (*e) (),      // empty element\n    class Coord\
+    \     // for x and y coordinates\n> struct SegTree2D {\n    using P = pair<Coord,\
+    \ Coord>;\n\n    // _points must contains all add queries\n    SegTree2D(const\
+    \ vector<P>& _points) : points(_points) {\n        sort(points.begin(), points.end());\n\
+    \        points.erase(unique(points.begin(), points.end()), points.end());\n \
+    \       n = points.size();\n\n        // init segtrees\n        coords.resize(n\
+    \ * 2);\n        for (int i = 0; i < n; i++) {\n            coords[n + i] = {{points[i].second,\
+    \ points[i].first}};\n        }\n        for (int i = n-1; i > 0; i--) {\n   \
+    \         std::merge(coords[i*2].begin(), coords[i*2].end(),\n               \
+    \        coords[i*2+1].begin(), coords[i*2+1].end(),\n                       std::back_inserter(coords[i]));\n\
+    \            coords[i].erase(unique(coords[i].begin(), coords[i].end()), coords[i].end());\n\
+    \        }\n        for (const auto& c : coords) {\n            segs.emplace_back(SegTree<S,\
+    \ op, e>(c.size()));\n        }\n    }\n\n    // Set value(p) = val\n    void\
+    \ set(P p, S val) {\n        int i = lower_bound(points.begin(), points.end(),\
+    \ p) - points.begin();\n        assert(i < n && points[i] == p);\n        for\
+    \ (i += n; i; i >>= 1) {\n            int j = lower_bound(coords[i].begin(), coords[i].end(),\
+    \ P{p.second, p.first}) - coords[i].begin();\n            segs[i].set(j, val);\n\
+    \        }\n    }\n\n    // Get value at p\n    S get(P p) const {\n        return\
+    \ prod(p, P{p.first + 1, p.second + 1});\n    }\n\n    // Get sum of points in\
+    \ rectangles, given bottom-left and top-right\n    // [low.x, high.x - 1] * [low.y,\
+    \ high.y - 1]\n    S prod(P low, P high) const {\n        assert(low.first <=\
+    \ high.first);\n        assert(low.second <= high.second);\n        if (low.first\
+    \ == high.first) return e();\n        if (low.second == high.second) return e();\n\
+    \n        int l = n + (lower_bound(points.begin(), points.end(), low, cmpFirst)\
+    \ - points.begin());\n        int r = n + (lower_bound(points.begin(), points.end(),\
+    \ high, cmpFirst) - points.begin());\n        S res = e();\n        while (l <\
+    \ r) {\n            if (l & 1) res = op(res, prod_1d(l++, low.second, high.second));\n\
+    \            if (r & 1) res = op(res, prod_1d(--r, low.second, high.second));\n\
+    \            l >>= 1; r >>= 1;\n        }\n        return res;\n    }\n\n// private:\n\
     \    S prod_1d(int x, Coord l, Coord r) const {\n        auto il = lower_bound(coords[x].begin(),\
     \ coords[x].end(), P{l, l}, cmpFirst) - coords[x].begin();\n        auto ir =\
     \ lower_bound(coords[x].begin(), coords[x].end(), P{r, r}, cmpFirst) - coords[x].begin();\n\
@@ -136,7 +135,7 @@ data:
     \ P& u, const P& v) {\n        return u.first < v.first;\n    }\n\n    int n;\n\
     \    vector<P> points;\n\n    // segtrees, outer layer by x-coordinate\n    vector<vector<P>>\
     \ coords;  // coords[i] stores all points maintained by i-th node in ST\n    vector<SegTree<S,\
-    \ op, e>> segs;\n};\n#line 9 \"DataStructure/test/segment_tree_2d_pointaddrectsum.test.cpp\"\
+    \ op, e>> segs;\n};\n#line 8 \"DataStructure/test/segment_tree_2d_pointaddrectsum.test.cpp\"\
     \n\n#define REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)\n\ntemplate<typename\
     \ T>\nstruct Query {\n    static const int ADD = 0;\n    static const int QUERY\
     \ = 1;\n\n    int typ;  // ADD or QUERY\n    int x, y;\n    int x2, y2;  // for\
@@ -161,18 +160,17 @@ data:
     \ query.y2}) << '\\n';\n        }\n    }\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_rectangle_sum\"\
     \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../../buffered_reader.h\"\
-    \n#include \"../SegTree.h\"\n#include \"../SegTree2D.h\"\n\n#define REP(i, a)\
-    \ for (int i = 0, _##i = (a); i < _##i; ++i)\n\ntemplate<typename T>\nstruct Query\
-    \ {\n    static const int ADD = 0;\n    static const int QUERY = 1;\n\n    int\
-    \ typ;  // ADD or QUERY\n    int x, y;\n    int x2, y2;  // for QUERY: [x1, x2-1]\
-    \ * [y1, y2-1]\n\n    T weight;\n};\n\nint32_t main() {\n    ios::sync_with_stdio(0);\
-    \ cin.tie(0);\n    int n = IO::get<int>();\n    int q = IO::get<int>();\n\n  \
-    \  using ll = long long;\n    vector<Query<ll>> queries;\n    REP(i,n) {\n   \
-    \     int x = IO::get<int>();\n        int y = IO::get<int>();\n        ll val\
-    \ = IO::get<ll>();\n        queries.push_back({Query<ll>::ADD, x, y, -1, -1, val});\n\
-    \    }\n\n    REP(i,q) {\n        int typ = IO::get<int>();\n        if (typ ==\
-    \ 0) {\n            int x = IO::get<int>();\n            int y = IO::get<int>();\n\
-    \            ll val = IO::get<ll>();\n            queries.push_back({Query<ll>::ADD,\
+    \n#include \"../SegTree2D.h\"\n\n#define REP(i, a) for (int i = 0, _##i = (a);\
+    \ i < _##i; ++i)\n\ntemplate<typename T>\nstruct Query {\n    static const int\
+    \ ADD = 0;\n    static const int QUERY = 1;\n\n    int typ;  // ADD or QUERY\n\
+    \    int x, y;\n    int x2, y2;  // for QUERY: [x1, x2-1] * [y1, y2-1]\n\n   \
+    \ T weight;\n};\n\nint32_t main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n\
+    \    int n = IO::get<int>();\n    int q = IO::get<int>();\n\n    using ll = long\
+    \ long;\n    vector<Query<ll>> queries;\n    REP(i,n) {\n        int x = IO::get<int>();\n\
+    \        int y = IO::get<int>();\n        ll val = IO::get<ll>();\n        queries.push_back({Query<ll>::ADD,\
+    \ x, y, -1, -1, val});\n    }\n\n    REP(i,q) {\n        int typ = IO::get<int>();\n\
+    \        if (typ == 0) {\n            int x = IO::get<int>();\n            int\
+    \ y = IO::get<int>();\n            ll val = IO::get<ll>();\n            queries.push_back({Query<ll>::ADD,\
     \ x, y, -1, -1, val});\n        } else {\n            int x = IO::get<int>();\n\
     \            int y = IO::get<int>();\n            int x2 = IO::get<int>();\n \
     \           int y2 = IO::get<int>();\n            queries.push_back({Query<ll>::QUERY,\
@@ -186,12 +184,12 @@ data:
     \ query.y2}) << '\\n';\n        }\n    }\n    return 0;\n}\n"
   dependsOn:
   - buffered_reader.h
-  - DataStructure/SegTree.h
   - DataStructure/SegTree2D.h
+  - DataStructure/SegTree.h
   isVerificationFile: true
   path: DataStructure/test/segment_tree_2d_pointaddrectsum.test.cpp
   requiredBy: []
-  timestamp: '2022-01-06 20:43:29+08:00'
+  timestamp: '2022-01-12 02:22:14+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/segment_tree_2d_pointaddrectsum.test.cpp

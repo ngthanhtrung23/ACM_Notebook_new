@@ -36,6 +36,9 @@ data:
       path: DataStructure/DSU_rollback.h
       title: DataStructure/DSU_rollback.h
     - icon: ':heavy_check_mark:'
+      path: DataStructure/DSU_weighted.h
+      title: DataStructure/DSU_weighted.h
+    - icon: ':heavy_check_mark:'
       path: DataStructure/DisjointSet.h
       title: DataStructure/DisjointSet.h
     - icon: ':heavy_check_mark:'
@@ -83,10 +86,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/RMQ.h
       title: DataStructure/RMQ.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: DataStructure/SegTree.h
       title: DataStructure/SegTree.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: DataStructure/SegTree2D.h
       title: DataStructure/SegTree2D.h
     - icon: ':warning:'
@@ -474,7 +477,7 @@ data:
     - icon: ':warning:'
       path: debug.h
       title: debug.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template.h
       title: template.h
   verificationCategories:
@@ -489,8 +492,11 @@ data:
   - name: DataStructure/test
     pages:
     - icon: ':heavy_check_mark:'
-      path: DataStructure/test/aizu_dsl_1_a_dsu_aizu.test.cpp
-      title: DataStructure/test/aizu_dsl_1_a_dsu_aizu.test.cpp
+      path: DataStructure/test/aizu_dsl_1_a_dsu.test.cpp
+      title: DataStructure/test/aizu_dsl_1_a_dsu.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/test/aizu_dsl_1_b_dsu_weighted.test.cpp
+      title: DataStructure/test/aizu_dsl_1_b_dsu_weighted.test.cpp
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/aizu_dsl_2_a_segment_tree_rmq_update.test.cpp
       title: DataStructure/test/aizu_dsl_2_a_segment_tree_rmq_update.test.cpp
@@ -500,6 +506,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/aizu_dsl_2_b_segment_tree_sum.test.cpp
       title: DataStructure/test/aizu_dsl_2_b_segment_tree_sum.test.cpp
+    - icon: ':x:'
+      path: DataStructure/test/aizu_dsl_2_c_segtree_2d.test.cpp
+      title: DataStructure/test/aizu_dsl_2_c_segtree_2d.test.cpp
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/aizu_dsl_2_d_segment_tree_rangeset.test.cpp
       title: DataStructure/test/aizu_dsl_2_d_segment_tree_rangeset.test.cpp

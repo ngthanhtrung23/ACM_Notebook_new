@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/HeavyLight_adamant.h
     title: DataStructure/HeavyLight_adamant.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: DataStructure/SegTree.h
     title: DataStructure/SegTree.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []

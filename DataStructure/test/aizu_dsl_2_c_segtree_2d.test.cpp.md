@@ -5,20 +5,23 @@ data:
     path: DataStructure/SegTree.h
     title: DataStructure/SegTree.h
   - icon: ':question:'
+    path: DataStructure/SegTree2D.h
+    title: DataStructure/SegTree2D.h
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_A
+    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_C
     links:
-    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_A
-  bundledCode: "#line 1 \"DataStructure/test/aizu_dsl_2_a_segment_tree_rmq_update.test.cpp\"\
-    \n#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_A\"\
+    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_C
+  bundledCode: "#line 1 \"DataStructure/test/aizu_dsl_2_c_segtree_2d.test.cpp\"\n\
+    #define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_C\"\
     \n\n#line 1 \"template.h\"\n#include <bits/stdc++.h>\nusing namespace std;\n\n\
     #define FOR(i,a,b) for(int i=(a),_b=(b); i<=_b; i++)\n#define FORD(i,a,b) for(int\
     \ i=(a),_b=(b); i>=_b; i--)\n#define REP(i,a) for(int i=0,_a=(a); i<_a; i++)\n\
@@ -42,8 +45,9 @@ data:
     \ t);\n}\n\nmt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());\n\
     long long get_rand(long long r) {\n    return uniform_int_distribution<long long>\
     \ (0, r-1)(rng);\n}\n\nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0);\
-    \ cin.tie(0);\n    solve();\n    return 0;\n}\n#line 1 \"DataStructure/SegTree.h\"\
-    \n// SegTree, copied from AtCoder library\n// AtCoder doc: https://atcoder.github.io/ac-library/master/document_en/segtree.html\n\
+    \ cin.tie(0);\n    solve();\n    return 0;\n}\n#line 1 \"DataStructure/SegTree2D.h\"\
+    \n// 2D segment tree\n#line 1 \"DataStructure/SegTree.h\"\n// SegTree, copied\
+    \ from AtCoder library\n// AtCoder doc: https://atcoder.github.io/ac-library/master/document_en/segtree.html\n\
     //\n// Notes:\n// - Index of elements from 0 -> n-1\n// - Range queries are [l,\
     \ r-1]\n//\n// Tested:\n// - (binary search) https://atcoder.jp/contests/practice2/tasks/practice2_j\n\
     // - https://oj.vnoi.info/problem/gss\n// - https://oj.vnoi.info/problem/nklineup\n\
@@ -105,32 +109,73 @@ data:
     \ static long long op(long long x, long long y) {\n        return x + y;\n   \
     \ }\n    static long long e() {\n        return 0;\n    }\n};\n\n// Example\n\
     // SegTree<int, MaxSegTreeOp::f, MaxSegTreeOp::e> seg_tree(a);\n// SegTree<int,\
-    \ MinSegTreeOp::f, MinSegTreeOp::e> seg_tree(a);\n#line 5 \"DataStructure/test/aizu_dsl_2_a_segment_tree_rmq_update.test.cpp\"\
-    \n\nvoid solve() {\n    int n, q; cin >> n >> q;\n    SegTree<int, MinSegTreeOp::op,\
-    \ MinSegTreeOp::e> st(n);\n    while (q--) {\n        int typ; cin >> typ;\n \
-    \       if (typ == 0) {\n            int pos, val; cin >> pos >> val;\n      \
-    \      st.set(pos, val);\n        } else {\n            int l, r; cin >> l >>\
-    \ r;\n            cout << st.prod(l, r+1) << '\\n';\n        }\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_A\"\
-    \n\n#include \"../../template.h\"\n#include \"../SegTree.h\"\n\nvoid solve() {\n\
-    \    int n, q; cin >> n >> q;\n    SegTree<int, MinSegTreeOp::op, MinSegTreeOp::e>\
-    \ st(n);\n    while (q--) {\n        int typ; cin >> typ;\n        if (typ ==\
-    \ 0) {\n            int pos, val; cin >> pos >> val;\n            st.set(pos,\
-    \ val);\n        } else {\n            int l, r; cin >> l >> r;\n            cout\
-    \ << st.prod(l, r+1) << '\\n';\n        }\n    }\n}\n"
+    \ MinSegTreeOp::f, MinSegTreeOp::e> seg_tree(a);\n#line 3 \"DataStructure/SegTree2D.h\"\
+    \ntemplate<\n    class S,        // aggregate data type\n    S (*op) (S, S), //\
+    \ combine aggregate data\n    S (*e) (),      // empty element\n    class Coord\
+    \     // for x and y coordinates\n> struct SegTree2D {\n    using P = pair<Coord,\
+    \ Coord>;\n\n    // _points must contains all add queries\n    SegTree2D(const\
+    \ vector<P>& _points) : points(_points) {\n        sort(points.begin(), points.end());\n\
+    \        points.erase(unique(points.begin(), points.end()), points.end());\n \
+    \       n = points.size();\n\n        // init segtrees\n        coords.resize(n\
+    \ * 2);\n        for (int i = 0; i < n; i++) {\n            coords[n + i] = {{points[i].second,\
+    \ points[i].first}};\n        }\n        for (int i = n-1; i > 0; i--) {\n   \
+    \         std::merge(coords[i*2].begin(), coords[i*2].end(),\n               \
+    \        coords[i*2+1].begin(), coords[i*2+1].end(),\n                       std::back_inserter(coords[i]));\n\
+    \            coords[i].erase(unique(coords[i].begin(), coords[i].end()), coords[i].end());\n\
+    \        }\n        for (const auto& c : coords) {\n            segs.emplace_back(SegTree<S,\
+    \ op, e>(c.size()));\n        }\n    }\n\n    // Set value(p) = val\n    void\
+    \ set(P p, S val) {\n        int i = lower_bound(points.begin(), points.end(),\
+    \ p) - points.begin();\n        assert(i < n && points[i] == p);\n        for\
+    \ (i += n; i; i >>= 1) {\n            int j = lower_bound(coords[i].begin(), coords[i].end(),\
+    \ P{p.second, p.first}) - coords[i].begin();\n            segs[i].set(j, val);\n\
+    \        }\n    }\n\n    // Get value at p\n    S get(P p) const {\n        return\
+    \ prod(p, P{p.first + 1, p.second + 1});\n    }\n\n    // Get sum of points in\
+    \ rectangles, given bottom-left and top-right\n    // [low.x, high.x - 1] * [low.y,\
+    \ high.y - 1]\n    S prod(P low, P high) const {\n        assert(low.first <=\
+    \ high.first);\n        assert(low.second <= high.second);\n        if (low.first\
+    \ == high.first) return e();\n        if (low.second == high.second) return e();\n\
+    \n        int l = n + (lower_bound(points.begin(), points.end(), low, cmpFirst)\
+    \ - points.begin());\n        int r = n + (lower_bound(points.begin(), points.end(),\
+    \ high, cmpFirst) - points.begin());\n        S res = e();\n        while (l <\
+    \ r) {\n            if (l & 1) res = op(res, prod_1d(l++, low.second, high.second));\n\
+    \            if (r & 1) res = op(res, prod_1d(--r, low.second, high.second));\n\
+    \            l >>= 1; r >>= 1;\n        }\n        return res;\n    }\n\n// private:\n\
+    \    S prod_1d(int x, Coord l, Coord r) const {\n        auto il = lower_bound(coords[x].begin(),\
+    \ coords[x].end(), P{l, l}, cmpFirst) - coords[x].begin();\n        auto ir =\
+    \ lower_bound(coords[x].begin(), coords[x].end(), P{r, r}, cmpFirst) - coords[x].begin();\n\
+    \        return segs[x].prod(il, ir);\n    }\n\n    static bool cmpFirst(const\
+    \ P& u, const P& v) {\n        return u.first < v.first;\n    }\n\n    int n;\n\
+    \    vector<P> points;\n\n    // segtrees, outer layer by x-coordinate\n    vector<vector<P>>\
+    \ coords;  // coords[i] stores all points maintained by i-th node in ST\n    vector<SegTree<S,\
+    \ op, e>> segs;\n};\n#line 5 \"DataStructure/test/aizu_dsl_2_c_segtree_2d.test.cpp\"\
+    \n\nvoid solve() {\n    int n; cin >> n;\n    vector<pair<int,int>> a(n);\n  \
+    \  for (auto& [x, y] : a) cin >> x >> y;\n\n    SegTree2D<long long, SumSegTreeOp::op,\
+    \ SumSegTreeOp::e, int> st(a);\n\n    for (auto p : a) st.set(p, 1);\n\n    int\
+    \ q; cin >> q;\n    while (q--) {\n        pair<int,int> lo, hi;\n        cin\
+    \ >> lo.first >> hi.first >> lo.second >> hi.second;\n        ++hi.first;\n  \
+    \      ++hi.second;\n        cout << st.prod(lo, hi) << '\\n';\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_C\"\
+    \n\n#include \"../../template.h\"\n#include \"../SegTree2D.h\"\n\nvoid solve()\
+    \ {\n    int n; cin >> n;\n    vector<pair<int,int>> a(n);\n    for (auto& [x,\
+    \ y] : a) cin >> x >> y;\n\n    SegTree2D<long long, SumSegTreeOp::op, SumSegTreeOp::e,\
+    \ int> st(a);\n\n    for (auto p : a) st.set(p, 1);\n\n    int q; cin >> q;\n\
+    \    while (q--) {\n        pair<int,int> lo, hi;\n        cin >> lo.first >>\
+    \ hi.first >> lo.second >> hi.second;\n        ++hi.first;\n        ++hi.second;\n\
+    \        cout << st.prod(lo, hi) << '\\n';\n    }\n}\n"
   dependsOn:
   - template.h
+  - DataStructure/SegTree2D.h
   - DataStructure/SegTree.h
   isVerificationFile: true
-  path: DataStructure/test/aizu_dsl_2_a_segment_tree_rmq_update.test.cpp
+  path: DataStructure/test/aizu_dsl_2_c_segtree_2d.test.cpp
   requiredBy: []
-  timestamp: '2022-01-11 21:41:41+08:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2022-01-12 02:22:14+08:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: DataStructure/test/aizu_dsl_2_a_segment_tree_rmq_update.test.cpp
+documentation_of: DataStructure/test/aizu_dsl_2_c_segtree_2d.test.cpp
 layout: document
 redirect_from:
-- /verify/DataStructure/test/aizu_dsl_2_a_segment_tree_rmq_update.test.cpp
-- /verify/DataStructure/test/aizu_dsl_2_a_segment_tree_rmq_update.test.cpp.html
-title: DataStructure/test/aizu_dsl_2_a_segment_tree_rmq_update.test.cpp
+- /verify/DataStructure/test/aizu_dsl_2_c_segtree_2d.test.cpp
+- /verify/DataStructure/test/aizu_dsl_2_c_segtree_2d.test.cpp.html
+title: DataStructure/test/aizu_dsl_2_c_segtree_2d.test.cpp
 ---

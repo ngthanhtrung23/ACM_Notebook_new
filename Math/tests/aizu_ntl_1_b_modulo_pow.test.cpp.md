@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Math/modulo_anta.h
     title: Math/modulo_anta.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []

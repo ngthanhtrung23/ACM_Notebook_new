@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Geometry/closest_pair.h
     title: Geometry/closest_pair.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []

@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Math/NumberTheory/ExtendedEuclid.h
     title: Math/NumberTheory/ExtendedEuclid.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
