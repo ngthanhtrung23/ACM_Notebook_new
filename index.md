@@ -513,6 +513,9 @@ data:
       path: DataStructure/test/hld_lca.test.cpp
       title: DataStructure/test/hld_lca.test.cpp
     - icon: ':heavy_check_mark:'
+      path: DataStructure/test/hld_lca_aizu.test.cpp
+      title: DataStructure/test/hld_lca_aizu.test.cpp
+    - icon: ':heavy_check_mark:'
       path: DataStructure/test/hld_vertexaddpathsum.test.cpp
       title: DataStructure/test/hld_vertexaddpathsum.test.cpp
     - icon: ':heavy_check_mark:'
@@ -524,6 +527,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/lca.test.cpp
       title: DataStructure/test/lca.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/test/lca_aizu.test.cpp
+      title: DataStructure/test/lca_aizu.test.cpp
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/li_chao_seg_tree_lineaddgetmin.test.cpp
       title: DataStructure/test/li_chao_seg_tree_lineaddgetmin.test.cpp
@@ -715,8 +721,14 @@ data:
       path: Graph/tests/strongly_connected_aizu.test.cpp
       title: Graph/tests/strongly_connected_aizu.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Graph/tests/strongly_connected_cycle_check.test.cpp
+      title: Graph/tests/strongly_connected_cycle_check.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/tree_diameter.test.cpp
       title: Graph/tests/tree_diameter.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Graph/tests/tree_diameter_aizu.test.cpp
+      title: Graph/tests/tree_diameter_aizu.test.cpp
     - icon: ':heavy_check_mark:'
       path: Graph/tests/triangles.test.cpp
       title: Graph/tests/triangles.test.cpp

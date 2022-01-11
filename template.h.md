@@ -43,6 +43,12 @@ data:
     path: DataStructure/test/binary_trie.test.cpp
     title: DataStructure/test/binary_trie.test.cpp
   - icon: ':heavy_check_mark:'
+    path: DataStructure/test/hld_lca_aizu.test.cpp
+    title: DataStructure/test/hld_lca_aizu.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: DataStructure/test/lca_aizu.test.cpp
+    title: DataStructure/test/lca_aizu.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Geometry/tests/basic_ccw.test.cpp
     title: Geometry/tests/basic_ccw.test.cpp
   - icon: ':heavy_check_mark:'
@@ -124,6 +130,12 @@ data:
     path: Graph/tests/mst.test.cpp
     title: Graph/tests/mst.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Graph/tests/strongly_connected_cycle_check.test.cpp
+    title: Graph/tests/strongly_connected_cycle_check.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Graph/tests/tree_diameter_aizu.test.cpp
+    title: Graph/tests/tree_diameter_aizu.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Math/tests/factorize_aizu.test.cpp
     title: Math/tests/factorize_aizu.test.cpp
   - icon: ':heavy_check_mark:'
@@ -201,7 +213,9 @@ data:
   timestamp: '2022-01-10 03:15:26+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - DataStructure/test/lca_aizu.test.cpp
   - DataStructure/test/binary_trie.test.cpp
+  - DataStructure/test/hld_lca_aizu.test.cpp
   - Geometry/tests/polygon_convex_hull.test.cpp
   - Geometry/tests/circle_circle_tangent_points.test.cpp
   - Geometry/tests/z_polygon_area.test.cpp
@@ -226,8 +240,10 @@ data:
   - Geometry/tests/basic_reflection.test.cpp
   - Geometry/tests/cicle_tangents.test.cpp
   - Geometry/tests/polygon_convex_diameter.test.cpp
+  - Graph/tests/tree_diameter_aizu.test.cpp
   - Graph/tests/articulation_points.test.cpp
   - Graph/tests/floyd_aizu.test.cpp
+  - Graph/tests/strongly_connected_cycle_check.test.cpp
   - Graph/tests/mst.test.cpp
   - Math/tests/factorize_aizu.test.cpp
   - Math/tests/is_prime_yukicoder.test.cpp

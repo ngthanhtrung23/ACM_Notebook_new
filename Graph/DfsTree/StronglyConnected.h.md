@@ -10,6 +10,9 @@ data:
     path: Graph/tests/strongly_connected_aizu.test.cpp
     title: Graph/tests/strongly_connected_aizu.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Graph/tests/strongly_connected_cycle_check.test.cpp
+    title: Graph/tests/strongly_connected_cycle_check.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Graph/tests/two_sat.test.cpp
     title: Graph/tests/two_sat.test.cpp
   _isVerificationFailed: false
@@ -61,6 +64,7 @@ data:
   - Graph/tests/strongly_connected_aizu.test.cpp
   - Graph/tests/two_sat.test.cpp
   - Graph/tests/strongly_connected.test.cpp
+  - Graph/tests/strongly_connected_cycle_check.test.cpp
 documentation_of: Graph/DfsTree/StronglyConnected.h
 layout: document
 redirect_from:

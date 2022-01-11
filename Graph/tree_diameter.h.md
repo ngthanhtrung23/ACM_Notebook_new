@@ -6,6 +6,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Graph/tests/tree_diameter.test.cpp
     title: Graph/tests/tree_diameter.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Graph/tests/tree_diameter_aizu.test.cpp
+    title: Graph/tests/tree_diameter_aizu.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -43,6 +46,7 @@ data:
   timestamp: '2021-12-31 14:19:54+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Graph/tests/tree_diameter_aizu.test.cpp
   - Graph/tests/tree_diameter.test.cpp
 documentation_of: Graph/tree_diameter.h
 layout: document

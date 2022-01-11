@@ -6,6 +6,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/lca.test.cpp
     title: DataStructure/test/lca.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: DataStructure/test/lca_aizu.test.cpp
+    title: DataStructure/test/lca_aizu.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -51,6 +54,7 @@ data:
   timestamp: '2021-12-29 18:21:32+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - DataStructure/test/lca_aizu.test.cpp
   - DataStructure/test/lca.test.cpp
 documentation_of: DataStructure/LCA.h
 layout: document
