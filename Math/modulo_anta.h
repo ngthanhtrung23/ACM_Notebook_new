@@ -72,6 +72,18 @@ struct ModInt {
     ModInt operator / (ModInt that) const { return ModInt(*this) /= that; }
 };
 
+template<int MOD>
+ModInt<MOD> power(ModInt<MOD> n, long long k) {
+    if (k == 0) return ModInt<MOD> (1);
+    ModInt<MOD> res(1);
+    while (k > 0) {
+        if (k & 1) res = res * n;
+        n = n * n;
+        k >>= 1;
+    }
+    return res;
+}
+
 /* Example:
 const int MOD = 1e9 + 7;
 using modular = ModInt<MOD>;

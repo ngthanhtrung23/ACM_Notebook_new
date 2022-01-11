@@ -1,6 +1,6 @@
-int eulerPhi(int n) { // = n (1-1/p1) ... (1-1/pn)
+long long eulerPhi(long long n) { // = n (1-1/p1) ... (1-1/pn)
     if (n == 0) return 0;
-    int ans = n;
+    long long ans = n;
     for (int x = 2; x*x <= n; ++x) {
         if (n % x == 0) {
             ans -= ans / x;
@@ -12,7 +12,7 @@ int eulerPhi(int n) { // = n (1-1/p1) ... (1-1/pn)
 }
 // LookUp Version
 const int N = 1000000;
-int eulerPhi(int n) {
+int eulerPhi_lookup(int n) {
     static int lookup = 0, p[N], f[N];
     if (!lookup) {
         REP(i,N) p[i] = 1, f[i] = i;
