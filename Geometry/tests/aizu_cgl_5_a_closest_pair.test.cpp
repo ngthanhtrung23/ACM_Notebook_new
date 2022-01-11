@@ -1,6 +1,7 @@
 #define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_5_A"
 
 #include "../../template.h"
+#include "../basic.h"
 #include "../closest_pair.h"
 
 #define ERROR 1e-6
