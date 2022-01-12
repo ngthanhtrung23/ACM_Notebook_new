@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/shortest_path"
 
-#include "bits/stdc++.h"
+#include <bits/stdc++.h>
 using namespace std;
 
 #include "../dijkstra.h"

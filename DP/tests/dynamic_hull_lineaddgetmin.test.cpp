@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/line_add_get_min"
 
-#include "bits/stdc++.h"
+#include <bits/stdc++.h>
 using namespace std;
 
 #include "../dynamic_hull.h"
