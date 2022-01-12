@@ -11,6 +11,7 @@ template
 
 # Gen test
 gentest*
+*.test
 
 # IDE
 *.sublime-project
