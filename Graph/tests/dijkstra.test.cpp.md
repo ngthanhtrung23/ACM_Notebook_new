@@ -14,17 +14,41 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/shortest_path
     links:
     - https://judge.yosupo.jp/problem/shortest_path
-  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.10.1/x64/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
-    , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/opt/hostedtoolcache/Python/3.10.1/x64/lib/python3.10/site-packages/onlinejudge_verify/languages/cplusplus.py\"\
-    , line 187, in bundle\n    bundler.update(path)\n  File \"/opt/hostedtoolcache/Python/3.10.1/x64/lib/python3.10/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
-    , line 401, in update\n    self.update(self._resolve(pathlib.Path(included), included_from=path))\n\
-    \  File \"/opt/hostedtoolcache/Python/3.10.1/x64/lib/python3.10/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
-    , line 260, in _resolve\n    raise BundleErrorAt(path, -1, \"no such header\"\
-    )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: bits/stdc++.h:\
-    \ line -1: no such header\n"
+  bundledCode: "#line 1 \"Graph/tests/dijkstra.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/shortest_path\"\
+    \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#line 1 \"Graph/dijkstra.h\"\
+    \n// Dijkstra\n//\n// Notes:\n// - Index from 0\n//\n// Tested:\n// - https://judge.yosupo.jp/problem/shortest_path\n\
+    //\n// Param:\n// - g[u] = pair<v, cost>, adjacency list\n// - start = start vertex\n\
+    // Returns:\n// - distances from start. If unreachable -> dist = INF\n// - previous\
+    \ vertex. Previous[start] = start. If unreachable -> trace = -1\nusing ll = long\
+    \ long;\nconst ll INF = 1e18;  // must be greater than maximum possible path\n\
+    pair<vector<ll>, vector<int>> dijkstra(const vector<vector<pair<int, ll>>>& g,\
+    \ int start) {\n    int n = g.size();\n    vector<ll> f(n, INF);\n    vector<int>\
+    \ trace(n, -1);\n    f[start] = 0;\n    trace[start] = start;\n    using P = pair<ll,\
+    \ int>;  // <distance, vertex>\n\n    // priority_queue should be faster than\
+    \ set?\n    priority_queue<P, vector<P>, greater<P>> all;\n    all.push(P{0LL,\
+    \ start});\n    while (!all.empty()) {\n        auto [dist, u] = all.top();\n\
+    \        all.pop();\n        if (dist != f[u]) continue;\n\n        for (auto\
+    \ [v, c] : g[u]) {\n            if (f[v] > f[u] + c) {\n                f[v] =\
+    \ f[u] + c;\n                trace[v] = u;\n                all.push(P{f[v], v});\n\
+    \            }\n        }\n    }\n\n    return {f, trace};\n}\n\n// Dijkstra from\
+    \ start -> target\n// Returns:\n// - distance. If unreachable -> INF\n// - path.\
+    \ If unreachable -> {}\npair<ll, vector<int>> dijkstra(const vector<vector<pair<int,\
+    \ ll>>>& g, int start, int target) {\n    auto [f, trace] = dijkstra(g, start);\n\
+    \    if (trace[target] < 0) {\n        return {INF, {}};\n    }\n\n    vector<int>\
+    \ path;\n    for (int u = target; u != start; u = trace[u]) {\n        path.push_back(u);\n\
+    \    }\n    path.push_back(start);\n    reverse(path.begin(), path.end());\n \
+    \   return {f[target], path};\n}\n#line 7 \"Graph/tests/dijkstra.test.cpp\"\n\n\
+    #define SZ(x) ((int)(x).size())\n#define REP(i, a) for (int i = 0, _##i = (a);\
+    \ i < _##i; ++i)\n\nint32_t main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n\
+    \    int n, m, s, t; cin >> n >> m >> s >> t;\n\n    // read edges\n    vector<vector<pair<int,ll>>>\
+    \ g(n);\n    while (m--) {\n        int u, v, c; cin >> u >> v >> c;\n       \
+    \ g[u].push_back({v, c});\n    }\n\n    // output\n    auto [dist, path] = dijkstra(g,\
+    \ s, t);\n    if (dist == INF) {\n        cout << -1 << endl;\n        return\
+    \ 0;\n    }\n\n    cout << dist << ' ' << SZ(path) - 1 << '\\n';\n    REP(i,SZ(path)-1)\
+    \ {\n        cout << path[i] << ' ' << path[i+1] << '\\n';\n    }\n    return\
+    \ 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/shortest_path\"\n\n#include\
-    \ \"bits/stdc++.h\"\nusing namespace std;\n\n#include \"../dijkstra.h\"\n\n#define\
+    \ <bits/stdc++.h>\nusing namespace std;\n\n#include \"../dijkstra.h\"\n\n#define\
     \ SZ(x) ((int)(x).size())\n#define REP(i, a) for (int i = 0, _##i = (a); i < _##i;\
     \ ++i)\n\nint32_t main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int\
     \ n, m, s, t; cin >> n >> m >> s >> t;\n\n    // read edges\n    vector<vector<pair<int,ll>>>\
@@ -39,7 +63,7 @@ data:
   isVerificationFile: true
   path: Graph/tests/dijkstra.test.cpp
   requiredBy: []
-  timestamp: '2022-01-06 03:02:41+08:00'
+  timestamp: '2022-01-12 13:12:33+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Graph/tests/dijkstra.test.cpp
