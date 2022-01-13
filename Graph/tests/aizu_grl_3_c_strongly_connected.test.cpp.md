@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Graph/DfsTree/StronglyConnected.h
     title: Graph/DfsTree/StronglyConnected.h
   _extendedRequiredBy: []

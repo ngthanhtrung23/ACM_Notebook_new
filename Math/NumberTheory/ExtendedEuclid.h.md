@@ -3,15 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/aizu_ntl_1_e_extended_euclid.test.cpp
     title: Math/tests/aizu_ntl_1_e_extended_euclid.test.cpp
   - icon: ':heavy_check_mark:'
     path: Math/tests/ntt_any_mod_2.test.cpp
     title: Math/tests/ntt_any_mod_2.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"Math/NumberTheory/ExtendedEuclid.h\"\n// D\xF9ng Extended\
@@ -36,7 +36,7 @@ data:
   path: Math/NumberTheory/ExtendedEuclid.h
   requiredBy: []
   timestamp: '2022-01-06 17:46:09+08:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Math/tests/ntt_any_mod_2.test.cpp
   - Math/tests/aizu_ntl_1_e_extended_euclid.test.cpp

@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Graph/2sat.h
     title: Graph/2sat.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Graph/DfsTree/StronglyConnected.h
     title: Graph/DfsTree/StronglyConnected.h
   _extendedRequiredBy: []

@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Geometry/basic.h
     title: Geometry/basic.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Geometry/polygon.h
     title: Geometry/polygon.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_A
@@ -231,13 +231,13 @@ data:
     \nvoid solve() {\n    int n; cin >> n;\n    vector<P<long long>> g(n);\n    for\
     \ (auto& p : g) cin >> p;\n    ConvexHull(g);\n    int idx = 0;\n    FOR(i,1,n-1)\
     \ if (cmpy(g[i], g[idx])) idx = i;\n\n    cout << g.size() << endl;\n    REP(i,g.size())\
-    \ cout << (fixed) << setprecision(0) << g[(idx + i) % g.size()] << '\\n';\n}\n"
+    \ cout << (fixed) << setprecision(0) << g[(idx + i) % g.size()] << endl;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_A\"\
     \n\n#include \"../../template.h\"\n#include \"../basic.h\"\n#include \"../polygon.h\"\
     \n\nvoid solve() {\n    int n; cin >> n;\n    vector<P<long long>> g(n);\n   \
     \ for (auto& p : g) cin >> p;\n    ConvexHull(g);\n    int idx = 0;\n    FOR(i,1,n-1)\
     \ if (cmpy(g[i], g[idx])) idx = i;\n\n    cout << g.size() << endl;\n    REP(i,g.size())\
-    \ cout << (fixed) << setprecision(0) << g[(idx + i) % g.size()] << '\\n';\n}\n"
+    \ cout << (fixed) << setprecision(0) << g[(idx + i) % g.size()] << endl;\n}\n"
   dependsOn:
   - template.h
   - Geometry/basic.h
@@ -245,8 +245,8 @@ data:
   isVerificationFile: true
   path: Geometry/tests/z_polygon_convexhull.test.cpp
   requiredBy: []
-  timestamp: '2022-01-13 13:16:22+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2022-01-13 13:38:12+08:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Geometry/tests/z_polygon_convexhull.test.cpp
 layout: document

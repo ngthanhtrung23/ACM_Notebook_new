@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Graph/tree_diameter.h
     title: Graph/tree_diameter.h
   _extendedRequiredBy: []

@@ -6,7 +6,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Graph/tests/aizu_grl_3_c_strongly_connected.test.cpp
     title: Graph/tests/aizu_grl_3_c_strongly_connected.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Graph/tests/aizu_grl_4_a_strongly_connected_cycle_check.test.cpp
     title: Graph/tests/aizu_grl_4_a_strongly_connected_cycle_check.test.cpp
   - icon: ':heavy_check_mark:'
@@ -15,9 +15,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Graph/tests/two_sat.test.cpp
     title: Graph/tests/two_sat.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://judge.yosupo.jp/problem/scc
@@ -59,7 +59,7 @@ data:
   path: Graph/DfsTree/StronglyConnected.h
   requiredBy: []
   timestamp: '2022-01-09 22:41:11+08:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Graph/tests/two_sat.test.cpp
   - Graph/tests/strongly_connected.test.cpp

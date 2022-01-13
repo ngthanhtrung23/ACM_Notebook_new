@@ -3,18 +3,18 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/aizu_ntl_1_a_factorize.test.cpp
     title: Math/tests/aizu_ntl_1_a_factorize.test.cpp
   - icon: ':heavy_check_mark:'
     path: Math/tests/factorize.test.cpp
     title: Math/tests/factorize.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/is_prime_yukicoder.test.cpp
     title: Math/tests/is_prime_yukicoder.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://judge.yosupo.jp/problem/factorize
@@ -111,7 +111,7 @@ data:
   path: Math/NumberTheory/Pollard.h
   requiredBy: []
   timestamp: '2021-12-19 02:05:12+08:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Math/tests/aizu_ntl_1_a_factorize.test.cpp
   - Math/tests/is_prime_yukicoder.test.cpp
