@@ -40,6 +40,13 @@ long long get_rand(long long r) {
     return uniform_int_distribution<long long> (0, r-1)(rng);
 }
 
+template<typename T>
+vector<T> read_vector(int n) {
+    vector<T> res(n);
+    for (int& x : res) cin >> x;
+    return res;
+}
+
 void solve();
 
 int main() {
