@@ -1,8 +1,14 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: DP/count_inversions.h
+    title: DP/count_inversions.h
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: DP/tests/aizu_alds1_5_d_count_inversions.test.cpp
+    title: DP/tests/aizu_alds1_5_d_count_inversions.test.cpp
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/aizu_dsl_2_b_fenwick_aizu.test.cpp
     title: DataStructure/test/aizu_dsl_2_b_fenwick_aizu.test.cpp
@@ -48,13 +54,15 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: DataStructure/Fenwick.h
-  requiredBy: []
+  requiredBy:
+  - DP/count_inversions.h
   timestamp: '2021-12-30 02:18:43+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/fenwick.test.cpp
   - DataStructure/test/aizu_dsl_2_b_fenwick_aizu.test.cpp
   - DataStructure/test/fenwick_pointaddrangesum.test.cpp
+  - DP/tests/aizu_alds1_5_d_count_inversions.test.cpp
 documentation_of: DataStructure/Fenwick.h
 layout: document
 redirect_from:

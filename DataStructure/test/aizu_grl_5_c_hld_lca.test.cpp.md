@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/HeavyLight_adamant.h
     title: DataStructure/HeavyLight_adamant.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
@@ -41,10 +41,12 @@ data:
     \ (ostream& out, const tuple<U...>& t) {\n    return print_tuple_utils<0, tuple<U...>>(out,\
     \ t);\n}\n\nmt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());\n\
     long long get_rand(long long r) {\n    return uniform_int_distribution<long long>\
-    \ (0, r-1)(rng);\n}\n\nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0);\
-    \ cin.tie(0);\n    solve();\n    return 0;\n}\n#line 1 \"DataStructure/HeavyLight_adamant.h\"\
-    \n// HeavyLight\n// Index from 0\n// Best used with SegTree.h\n//\n// Usage:\n\
-    // HLD hld(g, root);\n// // build segment tree. Note that we must use hld.order[i]\n\
+    \ (0, r-1)(rng);\n}\n\ntemplate<typename T>\nvector<T> read_vector(int n) {\n\
+    \    vector<T> res(n);\n    for (int& x : res) cin >> x;\n    return res;\n}\n\
+    \nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n  \
+    \  solve();\n    return 0;\n}\n#line 1 \"DataStructure/HeavyLight_adamant.h\"\n\
+    // HeavyLight\n// Index from 0\n// Best used with SegTree.h\n//\n// Usage:\n//\
+    \ HLD hld(g, root);\n// // build segment tree. Note that we must use hld.order[i]\n\
     // vector<T> nodes;\n// for (int i = 0; i < n; i++)\n//   nodes.push_back(initial_value[hld.order[i]])\n\
     // SegTree<S, op, e> st(nodes);\n//\n// // Update path\n// hld.apply_path(from,\
     \ to, is_edge_or_vertex, [&] (int l, int r) {\n//   st.apply(l, r+1, F);\n// });\n\
@@ -151,7 +153,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/aizu_grl_5_c_hld_lca.test.cpp
   requiredBy: []
-  timestamp: '2022-01-11 21:41:41+08:00'
+  timestamp: '2022-01-13 13:16:22+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/aizu_grl_5_c_hld_lca.test.cpp

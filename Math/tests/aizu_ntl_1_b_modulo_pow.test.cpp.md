@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Math/modulo_anta.h
     title: Math/modulo_anta.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_B
@@ -41,16 +41,18 @@ data:
     \ (ostream& out, const tuple<U...>& t) {\n    return print_tuple_utils<0, tuple<U...>>(out,\
     \ t);\n}\n\nmt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());\n\
     long long get_rand(long long r) {\n    return uniform_int_distribution<long long>\
-    \ (0, r-1)(rng);\n}\n\nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0);\
-    \ cin.tie(0);\n    solve();\n    return 0;\n}\n#line 1 \"Math/modulo_anta.h\"\n\
-    // Modified from anta's code\n// Not tested with MOD > 10^9 + 7.\n// Slow?\n//\n\
-    // Tested:\n// - https://codeforces.com/gym/101383 - F (MOD = 1e9+7, +, *)\n\n\
-    // ??? somehow this is 2.5x slower on https://judge.yosupo.jp/problem/matrix_product\n\
-    inline void fasterLLDivMod(unsigned long long x, unsigned y, unsigned &out_d,\
-    \ unsigned &out_m) {\n    unsigned xh = (unsigned)(x >> 32), xl = (unsigned)x,\
-    \ d, m;\n#ifdef __GNUC__\n    asm(\n        \"divl %4; \\n\\t\"\n        : \"\
-    =a\" (d), \"=d\" (m)\n        : \"d\" (xh), \"a\" (xl), \"r\" (y)\n    );\n#else\n\
-    \    __asm {\n        mov edx, dword ptr[xh];\n        mov eax, dword ptr[xl];\n\
+    \ (0, r-1)(rng);\n}\n\ntemplate<typename T>\nvector<T> read_vector(int n) {\n\
+    \    vector<T> res(n);\n    for (int& x : res) cin >> x;\n    return res;\n}\n\
+    \nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n  \
+    \  solve();\n    return 0;\n}\n#line 1 \"Math/modulo_anta.h\"\n// Modified from\
+    \ anta's code\n// Not tested with MOD > 10^9 + 7.\n// Slow?\n//\n// Tested:\n\
+    // - https://codeforces.com/gym/101383 - F (MOD = 1e9+7, +, *)\n\n// ??? somehow\
+    \ this is 2.5x slower on https://judge.yosupo.jp/problem/matrix_product\ninline\
+    \ void fasterLLDivMod(unsigned long long x, unsigned y, unsigned &out_d, unsigned\
+    \ &out_m) {\n    unsigned xh = (unsigned)(x >> 32), xl = (unsigned)x, d, m;\n\
+    #ifdef __GNUC__\n    asm(\n        \"divl %4; \\n\\t\"\n        : \"=a\" (d),\
+    \ \"=d\" (m)\n        : \"d\" (xh), \"a\" (xl), \"r\" (y)\n    );\n#else\n   \
+    \ __asm {\n        mov edx, dword ptr[xh];\n        mov eax, dword ptr[xl];\n\
     \        div dword ptr[y];\n        mov dword ptr[d], eax;\n        mov dword\
     \ ptr[m], edx;\n    };\n#endif\n    out_d = d; out_m = m;\n}\n\ntemplate<int MOD>\n\
     struct ModInt {\n    unsigned x;\n\n    constexpr ModInt() : x(0) { }\n    constexpr\
@@ -99,8 +101,8 @@ data:
   isVerificationFile: true
   path: Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp
   requiredBy: []
-  timestamp: '2022-01-11 21:41:41+08:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2022-01-13 13:16:22+08:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp
 layout: document

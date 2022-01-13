@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Graph/floyd.h
     title: Graph/floyd.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_C
@@ -41,36 +41,37 @@ data:
     \ (ostream& out, const tuple<U...>& t) {\n    return print_tuple_utils<0, tuple<U...>>(out,\
     \ t);\n}\n\nmt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());\n\
     long long get_rand(long long r) {\n    return uniform_int_distribution<long long>\
-    \ (0, r-1)(rng);\n}\n\nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0);\
-    \ cin.tie(0);\n    solve();\n    return 0;\n}\n#line 1 \"Graph/floyd.h\"\n// Tested:\n\
-    // - https://cses.fi/problemset/task/1672/\n// - (trace) https://oj.vnoi.info/problem/floyd\n\
-    using ll = long long;\nconst ll INF = 4e18;\nstruct Floyd {\n    Floyd(int _n,\
-    \ const std::vector<std::vector<ll>> _c) : n(_n), c(_c), trace(n) {\n        for\
-    \ (int i = 0; i < n; i++) {\n            trace[i] = std::vector<int> (n, -1);\n\
-    \            for (int j = 0; j < n; j++) {\n                if (c[i][j] == INF)\
-    \ trace[i][j] = -1;\n                else trace[i][j] = i;\n            }\n  \
-    \      }\n\n        for (int k = 0; k < n; k++) {\n            for (int i = 0;\
-    \ i < n; i++) {\n                for (int j = 0; j < n; j++) {\n             \
-    \       if (c[i][k] != INF && c[k][j] != INF && c[i][j] > c[i][k] + c[k][j]) {\n\
-    \                        c[i][j] = c[i][k] + c[k][j];\n                      \
-    \  trace[i][j] = trace[k][j];\n                    }\n                }\n    \
-    \        }\n        }\n    }\n\n    // Return {distance, path}\n    // If no path\
-    \ -> returns {-1, {}}\n    std::pair<ll, std::vector<int>> get_path(int start,\
-    \ int target) {\n        if (trace[start][target] == -1) return {-1, {}};\n\n\
-    \        std::vector<int> path;\n        for (int u = target; u != start; u =\
-    \ trace[start][u]) {\n            path.push_back(u);\n        }\n        path.push_back(start);\n\
-    \        reverse(path.begin(), path.end());\n        return {c[start][target],\
-    \ path};\n    }\n\n    int n;\n    std::vector<std::vector<ll>> c;\n    std::vector<std::vector<int>>\
-    \ trace;\n};\n\n#line 5 \"Graph/tests/aizu_grl_1_c_floyd.test.cpp\"\n\nvoid solve()\
-    \ {\n    int n, m; cin >> n >> m;\n    vector<vector<ll>> c(n, vector<ll> (n,\
-    \ INF));\n    for (int i = 0; i < n; i++) c[i][i] = 0;\n\n    while (m--) {\n\
-    \        int u, v; ll cost; cin >> u >> v >> cost;\n        c[u][v] = min(c[u][v],\
-    \ cost);\n    }\n\n    Floyd f(n, c);\n    for (int i = 0; i < n; i++) {\n   \
-    \     if (f.c[i][i] < 0) {\n            cout << \"NEGATIVE CYCLE\" << endl;\n\
-    \            return;\n        }\n    }\n    for (int i = 0; i < n; i++) {\n  \
-    \      for (int j = 0; j < n; j++) {\n            if (f.c[i][j] == INF) cout <<\
-    \ \"INF\";\n            else cout << f.c[i][j];\n            cout << (j == n-1\
-    \ ? '\\n' : ' ');\n        }\n    }\n}\n"
+    \ (0, r-1)(rng);\n}\n\ntemplate<typename T>\nvector<T> read_vector(int n) {\n\
+    \    vector<T> res(n);\n    for (int& x : res) cin >> x;\n    return res;\n}\n\
+    \nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n  \
+    \  solve();\n    return 0;\n}\n#line 1 \"Graph/floyd.h\"\n// Tested:\n// - https://cses.fi/problemset/task/1672/\n\
+    // - (trace) https://oj.vnoi.info/problem/floyd\nusing ll = long long;\nconst\
+    \ ll INF = 4e18;\nstruct Floyd {\n    Floyd(int _n, const std::vector<std::vector<ll>>\
+    \ _c) : n(_n), c(_c), trace(n) {\n        for (int i = 0; i < n; i++) {\n    \
+    \        trace[i] = std::vector<int> (n, -1);\n            for (int j = 0; j <\
+    \ n; j++) {\n                if (c[i][j] == INF) trace[i][j] = -1;\n         \
+    \       else trace[i][j] = i;\n            }\n        }\n\n        for (int k\
+    \ = 0; k < n; k++) {\n            for (int i = 0; i < n; i++) {\n            \
+    \    for (int j = 0; j < n; j++) {\n                    if (c[i][k] != INF &&\
+    \ c[k][j] != INF && c[i][j] > c[i][k] + c[k][j]) {\n                        c[i][j]\
+    \ = c[i][k] + c[k][j];\n                        trace[i][j] = trace[k][j];\n \
+    \                   }\n                }\n            }\n        }\n    }\n\n\
+    \    // Return {distance, path}\n    // If no path -> returns {-1, {}}\n    std::pair<ll,\
+    \ std::vector<int>> get_path(int start, int target) {\n        if (trace[start][target]\
+    \ == -1) return {-1, {}};\n\n        std::vector<int> path;\n        for (int\
+    \ u = target; u != start; u = trace[start][u]) {\n            path.push_back(u);\n\
+    \        }\n        path.push_back(start);\n        reverse(path.begin(), path.end());\n\
+    \        return {c[start][target], path};\n    }\n\n    int n;\n    std::vector<std::vector<ll>>\
+    \ c;\n    std::vector<std::vector<int>> trace;\n};\n\n#line 5 \"Graph/tests/aizu_grl_1_c_floyd.test.cpp\"\
+    \n\nvoid solve() {\n    int n, m; cin >> n >> m;\n    vector<vector<ll>> c(n,\
+    \ vector<ll> (n, INF));\n    for (int i = 0; i < n; i++) c[i][i] = 0;\n\n    while\
+    \ (m--) {\n        int u, v; ll cost; cin >> u >> v >> cost;\n        c[u][v]\
+    \ = min(c[u][v], cost);\n    }\n\n    Floyd f(n, c);\n    for (int i = 0; i <\
+    \ n; i++) {\n        if (f.c[i][i] < 0) {\n            cout << \"NEGATIVE CYCLE\"\
+    \ << endl;\n            return;\n        }\n    }\n    for (int i = 0; i < n;\
+    \ i++) {\n        for (int j = 0; j < n; j++) {\n            if (f.c[i][j] ==\
+    \ INF) cout << \"INF\";\n            else cout << f.c[i][j];\n            cout\
+    \ << (j == n-1 ? '\\n' : ' ');\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_C\"\
     \n\n#include \"../../template.h\"\n#include \"../floyd.h\"\n\nvoid solve() {\n\
     \    int n, m; cin >> n >> m;\n    vector<vector<ll>> c(n, vector<ll> (n, INF));\n\
@@ -88,8 +89,8 @@ data:
   isVerificationFile: true
   path: Graph/tests/aizu_grl_1_c_floyd.test.cpp
   requiredBy: []
-  timestamp: '2022-01-11 21:41:41+08:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2022-01-13 13:16:22+08:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: Graph/tests/aizu_grl_1_c_floyd.test.cpp
 layout: document

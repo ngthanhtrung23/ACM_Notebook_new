@@ -4,7 +4,7 @@ data:
   - icon: ':warning:'
     path: String/minmove.h
     title: String/minmove.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
@@ -36,20 +36,22 @@ data:
     \ (ostream& out, const tuple<U...>& t) {\n    return print_tuple_utils<0, tuple<U...>>(out,\
     \ t);\n}\n\nmt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());\n\
     long long get_rand(long long r) {\n    return uniform_int_distribution<long long>\
-    \ (0, r-1)(rng);\n}\n\nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0);\
-    \ cin.tie(0);\n    solve();\n    return 0;\n}\n#line 1 \"String/minmove.h\"\n\
-    // T\xEDnh v\u1ECB tr\xED c\u1EE7a x\xE2u xoay v\xF2ng c\xF3 th\u1EE9 t\u1EF1\
-    \ t\u1EEB \u0111i\u1EC3n nh\u1ECF nh\u1EA5t c\u1EE7a x\xE2u s[]\n// Tested:\n\
-    // - https://cses.fi/problemset/task/1110/\nint minmove(string s) {\n    int n\
-    \ = s.length();\n    int x, y, i, j, u, v; // x is the smallest string before\
-    \ string y\n    for (x = 0, y = 1; y < n; ++ y) {\n        i = u = x;\n      \
-    \  j = v = y;\n        while (s[i] == s[j]) {\n            ++ u; ++ v;\n     \
-    \       if (++ i == n) i = 0;\n            if (++ j == n) j = 0;\n           \
-    \ if (i == x) break; // All strings are equal\n        }\n        if (s[i] <=\
-    \ s[j]) y = v;\n        else {\n            x = y;\n            if (u > y) y =\
-    \ u;\n        }\n    }\n    return x;\n}\n#line 3 \"String/minmove.cpp\"\n\nint\
-    \ main() {\n    cout << minmove(\"mississippi\") << endl; // 10\n    cout << minmove(\"\
-    cdefab\") << endl; // 4\n    cout << minmove(\"zzzzzz\") << endl; // 0\n}\n"
+    \ (0, r-1)(rng);\n}\n\ntemplate<typename T>\nvector<T> read_vector(int n) {\n\
+    \    vector<T> res(n);\n    for (int& x : res) cin >> x;\n    return res;\n}\n\
+    \nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n  \
+    \  solve();\n    return 0;\n}\n#line 1 \"String/minmove.h\"\n// T\xEDnh v\u1ECB\
+    \ tr\xED c\u1EE7a x\xE2u xoay v\xF2ng c\xF3 th\u1EE9 t\u1EF1 t\u1EEB \u0111i\u1EC3\
+    n nh\u1ECF nh\u1EA5t c\u1EE7a x\xE2u s[]\n// Tested:\n// - https://cses.fi/problemset/task/1110/\n\
+    int minmove(string s) {\n    int n = s.length();\n    int x, y, i, j, u, v; //\
+    \ x is the smallest string before string y\n    for (x = 0, y = 1; y < n; ++ y)\
+    \ {\n        i = u = x;\n        j = v = y;\n        while (s[i] == s[j]) {\n\
+    \            ++ u; ++ v;\n            if (++ i == n) i = 0;\n            if (++\
+    \ j == n) j = 0;\n            if (i == x) break; // All strings are equal\n  \
+    \      }\n        if (s[i] <= s[j]) y = v;\n        else {\n            x = y;\n\
+    \            if (u > y) y = u;\n        }\n    }\n    return x;\n}\n#line 3 \"\
+    String/minmove.cpp\"\n\nint main() {\n    cout << minmove(\"mississippi\") <<\
+    \ endl; // 10\n    cout << minmove(\"cdefab\") << endl; // 4\n    cout << minmove(\"\
+    zzzzzz\") << endl; // 0\n}\n"
   code: "#include \"../template.h\"\n#include \"minmove.h\"\n\nint main() {\n    cout\
     \ << minmove(\"mississippi\") << endl; // 10\n    cout << minmove(\"cdefab\")\
     \ << endl; // 4\n    cout << minmove(\"zzzzzz\") << endl; // 0\n}\n"
@@ -59,7 +61,7 @@ data:
   isVerificationFile: false
   path: String/minmove.cpp
   requiredBy: []
-  timestamp: '2022-01-10 03:15:26+08:00'
+  timestamp: '2022-01-13 13:16:22+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: String/minmove.cpp

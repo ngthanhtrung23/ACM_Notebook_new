@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Math/NumberTheory/Pollard.h
     title: Math/NumberTheory/Pollard.h
   _extendedRequiredBy: []

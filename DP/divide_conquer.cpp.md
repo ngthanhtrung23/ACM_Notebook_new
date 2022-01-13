@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
@@ -44,21 +44,22 @@ data:
     \ (ostream& out, const tuple<U...>& t) {\n    return print_tuple_utils<0, tuple<U...>>(out,\
     \ t);\n}\n\nmt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());\n\
     long long get_rand(long long r) {\n    return uniform_int_distribution<long long>\
-    \ (0, r-1)(rng);\n}\n\nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0);\
-    \ cin.tie(0);\n    solve();\n    return 0;\n}\n#line 18 \"DP/divide_conquer.cpp\"\
-    \n\nconst int MN = 4011;\nconst int inf = 1000111000;\nint n, k, cost[MN][MN],\
-    \ dp[811][MN];\n\ninline int getCost(int i, int j) {\n    return cost[j][j] -\
-    \ cost[j][i-1] - cost[i-1][j] + cost[i-1][i-1];\n}\n\nvoid compute(int i, int\
-    \ L, int R, int optL, int optR) {\n    if (L > R) return ;\n\n    int mid = (L\
-    \ + R) >> 1, savek = optL;\n    dp[i][mid] = inf;\n    FOR(k,optL,min(mid-1, optR))\
-    \ {\n        int cur = dp[i-1][k] + getCost(k+1, mid);\n        if (cur < dp[i][mid])\
-    \ {\n            dp[i][mid] = cur;\n            savek = k;\n        }\n    }\n\
-    \    compute(i, L, mid-1, optL, savek);\n    compute(i, mid+1, R, savek, optR);\n\
-    }\n\nvoid solve() {\n    cin >> n >> k;\n    FOR(i,1,n) FOR(j,1,n) {\n       \
-    \ cin >> cost[i][j];\n        cost[i][j] = cost[i-1][j] + cost[i][j-1] - cost[i-1][j-1]\
-    \ + cost[i][j];\n    }\n    dp[0][0] = 0;\n    FOR(i,1,n) dp[0][i] = inf;\n\n\
-    \    FOR(i,1,k) {\n        compute(i, 1, n, 0, n);\n    }\n    cout << dp[k][n]\
-    \ / 2 << endl;\n}\n"
+    \ (0, r-1)(rng);\n}\n\ntemplate<typename T>\nvector<T> read_vector(int n) {\n\
+    \    vector<T> res(n);\n    for (int& x : res) cin >> x;\n    return res;\n}\n\
+    \nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n  \
+    \  solve();\n    return 0;\n}\n#line 18 \"DP/divide_conquer.cpp\"\n\nconst int\
+    \ MN = 4011;\nconst int inf = 1000111000;\nint n, k, cost[MN][MN], dp[811][MN];\n\
+    \ninline int getCost(int i, int j) {\n    return cost[j][j] - cost[j][i-1] - cost[i-1][j]\
+    \ + cost[i-1][i-1];\n}\n\nvoid compute(int i, int L, int R, int optL, int optR)\
+    \ {\n    if (L > R) return ;\n\n    int mid = (L + R) >> 1, savek = optL;\n  \
+    \  dp[i][mid] = inf;\n    FOR(k,optL,min(mid-1, optR)) {\n        int cur = dp[i-1][k]\
+    \ + getCost(k+1, mid);\n        if (cur < dp[i][mid]) {\n            dp[i][mid]\
+    \ = cur;\n            savek = k;\n        }\n    }\n    compute(i, L, mid-1, optL,\
+    \ savek);\n    compute(i, mid+1, R, savek, optR);\n}\n\nvoid solve() {\n    cin\
+    \ >> n >> k;\n    FOR(i,1,n) FOR(j,1,n) {\n        cin >> cost[i][j];\n      \
+    \  cost[i][j] = cost[i-1][j] + cost[i][j-1] - cost[i-1][j-1] + cost[i][j];\n \
+    \   }\n    dp[0][0] = 0;\n    FOR(i,1,n) dp[0][i] = inf;\n\n    FOR(i,1,k) {\n\
+    \        compute(i, 1, n, 0, n);\n    }\n    cout << dp[k][n] / 2 << endl;\n}\n"
   code: "// http://codeforces.com/blog/entry/8219\n// Divide and conquer optimization:\n\
     // Original Recurrence\n//   dp[i][j] = min(dp[i-1][k] + C[k][j]) for k < j\n\
     // Sufficient condition:\n//   A[i][j] <= A[i][j+1]\n//   where A[i][j] = smallest\
@@ -85,7 +86,7 @@ data:
   isVerificationFile: false
   path: DP/divide_conquer.cpp
   requiredBy: []
-  timestamp: '2022-01-10 03:15:26+08:00'
+  timestamp: '2022-01-13 13:16:22+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: DP/divide_conquer.cpp

@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Math/NumberTheory/ExtendedEuclid.h
     title: Math/NumberTheory/ExtendedEuclid.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_E
@@ -41,15 +41,17 @@ data:
     \ (ostream& out, const tuple<U...>& t) {\n    return print_tuple_utils<0, tuple<U...>>(out,\
     \ t);\n}\n\nmt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());\n\
     long long get_rand(long long r) {\n    return uniform_int_distribution<long long>\
-    \ (0, r-1)(rng);\n}\n\nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0);\
-    \ cin.tie(0);\n    solve();\n    return 0;\n}\n#line 1 \"Math/NumberTheory/ExtendedEuclid.h\"\
-    \n// D\xF9ng Extended Euclid \u0111\u1EC3 t\xECm nghi\u1EC7m c\u1EE7a ph\u01B0\
-    \u01A1ng tr\xECnh ax + by = gcd(a, b).\n// Gi\u1EA3 s\u1EED k\u1EBFt qu\u1EA3\
-    \ tr\u1EA3 v\u1EC1 l\xE0 (x0, y0), h\u1ECD nghi\u1EC7m c\u1EE7a ph\u01B0\u01A1\
-    ng tr\xECnh s\u1EBD l\xE0 (x_0+kb/d,y_0-ka/d) v\u1EDBi k\u2208Z.\n// Ph\u01B0\u01A1\
-    ng tr\xECnh t\u1ED5ng qu\xE1t ax + by = d ch\u1EC9 c\xF3 nghi\u1EC7m khi d chia\
-    \ h\u1EBFt cho gcd(a, b).\n// a x + b y = gcd(a, b)\ntemplate<typename T>\nT extgcd(T\
-    \ a, T b, T &x, T &y) {\n    T g = a; x = 1; y = 0;\n    if (b != 0) g = extgcd(b,\
+    \ (0, r-1)(rng);\n}\n\ntemplate<typename T>\nvector<T> read_vector(int n) {\n\
+    \    vector<T> res(n);\n    for (int& x : res) cin >> x;\n    return res;\n}\n\
+    \nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n  \
+    \  solve();\n    return 0;\n}\n#line 1 \"Math/NumberTheory/ExtendedEuclid.h\"\n\
+    // D\xF9ng Extended Euclid \u0111\u1EC3 t\xECm nghi\u1EC7m c\u1EE7a ph\u01B0\u01A1\
+    ng tr\xECnh ax + by = gcd(a, b).\n// Gi\u1EA3 s\u1EED k\u1EBFt qu\u1EA3 tr\u1EA3\
+    \ v\u1EC1 l\xE0 (x0, y0), h\u1ECD nghi\u1EC7m c\u1EE7a ph\u01B0\u01A1ng tr\xEC\
+    nh s\u1EBD l\xE0 (x_0+kb/d,y_0-ka/d) v\u1EDBi k\u2208Z.\n// Ph\u01B0\u01A1ng tr\xEC\
+    nh t\u1ED5ng qu\xE1t ax + by = d ch\u1EC9 c\xF3 nghi\u1EC7m khi d chia h\u1EBF\
+    t cho gcd(a, b).\n// a x + b y = gcd(a, b)\ntemplate<typename T>\nT extgcd(T a,\
+    \ T b, T &x, T &y) {\n    T g = a; x = 1; y = 0;\n    if (b != 0) g = extgcd(b,\
     \ a % b, y, x), y -= (a / b) * x;\n    return g;\n}\n#line 5 \"Math/tests/aizu_ntl_1_e_extended_euclid.test.cpp\"\
     \n\nusing ll = long long;\nvoid solve() {\n    ll a, b; cin >> a >> b;\n    ll\
     \ x, y;\n    extgcd(a, b, x, y);\n    cout << x << ' ' << y << endl;\n}\n"
@@ -63,8 +65,8 @@ data:
   isVerificationFile: true
   path: Math/tests/aizu_ntl_1_e_extended_euclid.test.cpp
   requiredBy: []
-  timestamp: '2022-01-11 21:41:41+08:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2022-01-13 13:16:22+08:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: Math/tests/aizu_ntl_1_e_extended_euclid.test.cpp
 layout: document

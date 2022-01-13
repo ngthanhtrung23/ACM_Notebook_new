@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/DSU_weighted.h
     title: DataStructure/DSU_weighted.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
@@ -41,11 +41,13 @@ data:
     \ (ostream& out, const tuple<U...>& t) {\n    return print_tuple_utils<0, tuple<U...>>(out,\
     \ t);\n}\n\nmt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());\n\
     long long get_rand(long long r) {\n    return uniform_int_distribution<long long>\
-    \ (0, r-1)(rng);\n}\n\nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0);\
-    \ cin.tie(0);\n    solve();\n    return 0;\n}\n#line 1 \"DataStructure/DSU_weighted.h\"\
-    \ntemplate<class S>\nstruct WeightedDSU {\n    std::vector<int> lab;\n    std::vector<S>\
-    \ w;  // relative to parent\n\n    WeightedDSU(int n) : lab(n, -1), w(n) {}\n\n\
-    \    int getRoot(int u) {\n        if (lab[u] < 0) return u;\n        return getRoot(lab[u]);\n\
+    \ (0, r-1)(rng);\n}\n\ntemplate<typename T>\nvector<T> read_vector(int n) {\n\
+    \    vector<T> res(n);\n    for (int& x : res) cin >> x;\n    return res;\n}\n\
+    \nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n  \
+    \  solve();\n    return 0;\n}\n#line 1 \"DataStructure/DSU_weighted.h\"\ntemplate<class\
+    \ S>\nstruct WeightedDSU {\n    std::vector<int> lab;\n    std::vector<S> w; \
+    \ // relative to parent\n\n    WeightedDSU(int n) : lab(n, -1), w(n) {}\n\n  \
+    \  int getRoot(int u) {\n        if (lab[u] < 0) return u;\n        return getRoot(lab[u]);\n\
     \    }\n\n    int weight(int u) {\n        if (lab[u] < 0) return w[u];\n    \
     \    return w[u] + weight(lab[u]);\n    }\n\n    // weight(t) = weight(s) + diff\n\
     \    // returns false if contradicts\n    bool merge(int s, int t, S diff) {\n\
@@ -76,7 +78,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/aizu_dsl_1_b_dsu_weighted.test.cpp
   requiredBy: []
-  timestamp: '2022-01-12 02:22:14+08:00'
+  timestamp: '2022-01-13 13:16:22+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/aizu_dsl_1_b_dsu_weighted.test.cpp

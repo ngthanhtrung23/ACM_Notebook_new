@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Geometry/basic.h
     title: Geometry/basic.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Geometry/polygon.h
     title: Geometry/polygon.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
@@ -44,16 +44,18 @@ data:
     \ (ostream& out, const tuple<U...>& t) {\n    return print_tuple_utils<0, tuple<U...>>(out,\
     \ t);\n}\n\nmt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());\n\
     long long get_rand(long long r) {\n    return uniform_int_distribution<long long>\
-    \ (0, r-1)(rng);\n}\n\nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0);\
-    \ cin.tie(0);\n    solve();\n    return 0;\n}\n#line 2 \"Geometry/basic.h\"\n\n\
-    // Basic geometry objects: Point, Line, Segment\n// Works with both integers and\
-    \ floating points\n// Unless the problem has precision issue, can use Point, which\
-    \ uses double\n// and has more functionalities.\n// For integers, can use P<long\
-    \ long>\n\n#ifndef EPS  // allow test files to overwrite EPS\n#define EPS 1e-6\n\
-    #endif\n\nconst double PI = acos(-1.0);\n\ndouble DEG_to_RAD(double d) { return\
-    \ d * PI / 180.0; }\ndouble RAD_to_DEG(double r) { return r * 180.0 / PI; }\n\n\
-    inline int cmp(double a, double b) {\n    return (a < b - EPS) ? -1 : ((a > b\
-    \ + EPS) ? 1 : 0);\n}\n\n// for int types\ntemplate<typename T, typename std::enable_if<std::is_floating_point<T>::value>::type\
+    \ (0, r-1)(rng);\n}\n\ntemplate<typename T>\nvector<T> read_vector(int n) {\n\
+    \    vector<T> res(n);\n    for (int& x : res) cin >> x;\n    return res;\n}\n\
+    \nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n  \
+    \  solve();\n    return 0;\n}\n#line 2 \"Geometry/basic.h\"\n\n// Basic geometry\
+    \ objects: Point, Line, Segment\n// Works with both integers and floating points\n\
+    // Unless the problem has precision issue, can use Point, which uses double\n\
+    // and has more functionalities.\n// For integers, can use P<long long>\n\n#ifndef\
+    \ EPS  // allow test files to overwrite EPS\n#define EPS 1e-6\n#endif\n\nconst\
+    \ double PI = acos(-1.0);\n\ndouble DEG_to_RAD(double d) { return d * PI / 180.0;\
+    \ }\ndouble RAD_to_DEG(double r) { return r * 180.0 / PI; }\n\ninline int cmp(double\
+    \ a, double b) {\n    return (a < b - EPS) ? -1 : ((a > b + EPS) ? 1 : 0);\n}\n\
+    \n// for int types\ntemplate<typename T, typename std::enable_if<std::is_floating_point<T>::value>::type\
     \ * = nullptr>\ninline int cmp(T a, T b) {\n    return (a == b) ? 0 : (a < b)\
     \ ? -1 : 1;\n}\n\ntemplate<typename T>\nstruct P {\n    T x, y;\n    P() { x =\
     \ y = T(0); }\n    P(T _x, T _y) : x(_x), y(_y) {}\n\n    P operator + (const\
@@ -243,7 +245,7 @@ data:
   isVerificationFile: true
   path: Geometry/tests/polygon_in_convex.test.cpp
   requiredBy: []
-  timestamp: '2022-01-12 01:07:11+08:00'
+  timestamp: '2022-01-13 13:16:22+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Geometry/tests/polygon_in_convex.test.cpp

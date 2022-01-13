@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/bigint.h
     title: Math/bigint.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_2_A
@@ -41,10 +41,12 @@ data:
     \ (ostream& out, const tuple<U...>& t) {\n    return print_tuple_utils<0, tuple<U...>>(out,\
     \ t);\n}\n\nmt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());\n\
     long long get_rand(long long r) {\n    return uniform_int_distribution<long long>\
-    \ (0, r-1)(rng);\n}\n\nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0);\
-    \ cin.tie(0);\n    solve();\n    return 0;\n}\n#line 1 \"Math/bigint.h\"\n// NOTE:\n\
-    // This code contains various bug fixes compared to the original version from\n\
-    // indy256 (github.com/indy256/codelibrary/blob/master/cpp/numbertheory/bigint-full.cpp),\n\
+    \ (0, r-1)(rng);\n}\n\ntemplate<typename T>\nvector<T> read_vector(int n) {\n\
+    \    vector<T> res(n);\n    for (int& x : res) cin >> x;\n    return res;\n}\n\
+    \nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n  \
+    \  solve();\n    return 0;\n}\n#line 1 \"Math/bigint.h\"\n// NOTE:\n// This code\
+    \ contains various bug fixes compared to the original version from\n// indy256\
+    \ (github.com/indy256/codelibrary/blob/master/cpp/numbertheory/bigint-full.cpp),\n\
     // including:\n// - Fix overflow bug in mul_karatsuba.\n// - Fix overflow bug\
     \ in fft.\n// - Fix bug in initialization from long long.\n// - Optimized operators\
     \ + - *.\n//\n// Tested:\n// - https://www.e-olymp.com/en/problems/266: Comparison\n\
@@ -293,8 +295,8 @@ data:
   isVerificationFile: true
   path: Math/tests/aizu_ntl_2_a_bigint_add.test.cpp
   requiredBy: []
-  timestamp: '2022-01-11 21:41:41+08:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2022-01-13 13:16:22+08:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: Math/tests/aizu_ntl_2_a_bigint_add.test.cpp
 layout: document

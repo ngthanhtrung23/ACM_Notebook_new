@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Graph/DfsTree/BridgeArticulation.h
     title: Graph/DfsTree/BridgeArticulation.h
   _extendedRequiredBy: []

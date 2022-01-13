@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: DataStructure/DisjointSet.h
     title: DataStructure/DisjointSet.h
   _extendedRequiredBy: []

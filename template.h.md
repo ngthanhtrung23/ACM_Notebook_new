@@ -40,6 +40,9 @@ data:
     title: String/minmove.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: DP/tests/aizu_alds1_5_d_count_inversions.test.cpp
+    title: DP/tests/aizu_alds1_5_d_count_inversions.test.cpp
+  - icon: ':heavy_check_mark:'
     path: DP/tests/aizu_dpl_1_d_lis.test.cpp
     title: DP/tests/aizu_dpl_1_d_lis.test.cpp
   - icon: ':heavy_check_mark:'
@@ -156,72 +159,72 @@ data:
   - icon: ':heavy_check_mark:'
     path: Geometry/tests/z_polygon_area.test.cpp
     title: Geometry/tests/z_polygon_area.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Geometry/tests/z_polygon_convexhull.test.cpp
     title: Geometry/tests/z_polygon_convexhull.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Geometry/tests/z_polygon_is_convex.test.cpp
     title: Geometry/tests/z_polygon_is_convex.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Graph/tests/aizu_grl_1_c_floyd.test.cpp
     title: Graph/tests/aizu_grl_1_c_floyd.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Graph/tests/aizu_grl_2_a_mst.test.cpp
     title: Graph/tests/aizu_grl_2_a_mst.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Graph/tests/aizu_grl_3_a_articulation_points.test.cpp
     title: Graph/tests/aizu_grl_3_a_articulation_points.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Graph/tests/aizu_grl_4_a_strongly_connected_cycle_check.test.cpp
     title: Graph/tests/aizu_grl_4_a_strongly_connected_cycle_check.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Graph/tests/aizu_grl_5_a_tree_diameter.test.cpp
     title: Graph/tests/aizu_grl_5_a_tree_diameter.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/aizu_ntl_1_a_factorize.test.cpp
     title: Math/tests/aizu_ntl_1_a_factorize.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp
     title: Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/aizu_ntl_1_d_euler_phi.test.cpp
     title: Math/tests/aizu_ntl_1_d_euler_phi.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/aizu_ntl_1_e_extended_euclid.test.cpp
     title: Math/tests/aizu_ntl_1_e_extended_euclid.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/aizu_ntl_2_a_bigint_add.test.cpp
     title: Math/tests/aizu_ntl_2_a_bigint_add.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/aizu_ntl_2_b_bigint_sub.test.cpp
     title: Math/tests/aizu_ntl_2_b_bigint_sub.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/aizu_ntl_2_c_bigint_mul.test.cpp
     title: Math/tests/aizu_ntl_2_c_bigint_mul.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/aizu_ntl_2_c_bigint_mul_karatsuba.test.cpp
     title: Math/tests/aizu_ntl_2_c_bigint_mul_karatsuba.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/aizu_ntl_2_d_bigint_div.test.cpp
     title: Math/tests/aizu_ntl_2_d_bigint_div.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/aizu_ntl_2_e_bigint_mod.test.cpp
     title: Math/tests/aizu_ntl_2_e_bigint_mod.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/aizu_ntl_2_f_bigint_mul_fft.test.cpp
     title: Math/tests/aizu_ntl_2_f_bigint_mul_fft.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/is_prime_yukicoder.test.cpp
     title: Math/tests/is_prime_yukicoder.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Misc/tests/aizu_dpl_3_b_largest_01_rectangle.test.cpp
     title: Misc/tests/aizu_dpl_3_b_largest_01_rectangle.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Misc/tests/aizu_dpl_3_c_largest_histogram.test.cpp
     title: Misc/tests/aizu_dpl_3_c_largest_histogram.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://quangloc99.github.io/2021/07/30/my-CP-debugging-template.html
@@ -247,8 +250,10 @@ data:
     \ (ostream& out, const tuple<U...>& t) {\n    return print_tuple_utils<0, tuple<U...>>(out,\
     \ t);\n}\n\nmt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());\n\
     long long get_rand(long long r) {\n    return uniform_int_distribution<long long>\
-    \ (0, r-1)(rng);\n}\n\nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0);\
-    \ cin.tie(0);\n    solve();\n    return 0;\n}\n"
+    \ (0, r-1)(rng);\n}\n\ntemplate<typename T>\nvector<T> read_vector(int n) {\n\
+    \    vector<T> res(n);\n    for (int& x : res) cin >> x;\n    return res;\n}\n\
+    \nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n  \
+    \  solve();\n    return 0;\n}\n"
   code: "#include <bits/stdc++.h>\nusing namespace std;\n\n#define FOR(i,a,b) for(int\
     \ i=(a),_b=(b); i<=_b; i++)\n#define FORD(i,a,b) for(int i=(a),_b=(b); i>=_b;\
     \ i--)\n#define REP(i,a) for(int i=0,_a=(a); i<_a; i++)\n#define EACH(it,a) for(__typeof(a.begin())\
@@ -270,8 +275,10 @@ data:
     \ (ostream& out, const tuple<U...>& t) {\n    return print_tuple_utils<0, tuple<U...>>(out,\
     \ t);\n}\n\nmt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());\n\
     long long get_rand(long long r) {\n    return uniform_int_distribution<long long>\
-    \ (0, r-1)(rng);\n}\n\nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0);\
-    \ cin.tie(0);\n    solve();\n    return 0;\n}\n"
+    \ (0, r-1)(rng);\n}\n\ntemplate<typename T>\nvector<T> read_vector(int n) {\n\
+    \    vector<T> res(n);\n    for (int& x : res) cin >> x;\n    return res;\n}\n\
+    \nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n  \
+    \  solve();\n    return 0;\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: template.h
@@ -288,8 +295,8 @@ data:
   - String/eertree.cpp
   - String/minmove.cpp
   - String/lyndon.cpp
-  timestamp: '2022-01-10 03:15:26+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2022-01-13 13:16:22+08:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - Misc/tests/aizu_dpl_3_b_largest_01_rectangle.test.cpp
   - Misc/tests/aizu_dpl_3_c_largest_histogram.test.cpp
@@ -308,6 +315,7 @@ data:
   - DataStructure/test/aizu_dsl_2_b_segment_tree_sum.test.cpp
   - DataStructure/test/aizu_dsl_2_g_segment_tree_rangeaddsum.test.cpp
   - DP/tests/aizu_dpl_1_d_lis.test.cpp
+  - DP/tests/aizu_alds1_5_d_count_inversions.test.cpp
   - Geometry/tests/aizu_cgl_4_a_polygon_convex_hull.test.cpp
   - Geometry/tests/aizu_cgl_1_b_basic_reflection.test.cpp
   - Geometry/tests/z_polygon_area.test.cpp

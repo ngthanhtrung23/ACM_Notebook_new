@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/RMQ.h
     title: DataStructure/RMQ.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
@@ -44,20 +44,22 @@ data:
     \ (ostream& out, const tuple<U...>& t) {\n    return print_tuple_utils<0, tuple<U...>>(out,\
     \ t);\n}\n\nmt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());\n\
     long long get_rand(long long r) {\n    return uniform_int_distribution<long long>\
-    \ (0, r-1)(rng);\n}\n\nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0);\
-    \ cin.tie(0);\n    solve();\n    return 0;\n}\n#line 1 \"DataStructure/RMQ.h\"\
-    \n// Sparse table\n// Usage:\n// RMQ<int, _min> st(v);\n//\n// Note:\n// - doesn't\
-    \ work for empty range\n//\n// Tested:\n// - https://judge.yosupo.jp/problem/staticrmq\n\
-    template<class T, T (*op) (T, T)> struct RMQ {\n    RMQ() = default;\n    RMQ(const\
-    \ vector<T>& v) : t{v}, n{(int) v.size()} {\n        for (int k = 1; (1<<k) <=\
-    \ n; ++k) {\n            t.emplace_back(n - (1<<k) + 1);\n            for (int\
-    \ i = 0; i + (1<<k) <= n; ++i) {\n                t[k][i] = op(t[k-1][i], t[k-1][i\
-    \ + (1<<(k-1))]);\n            }\n        }\n    }\n\n    // get range [l, r-1]\n\
-    \    // doesn't work for empty range\n    T get(int l, int r) const {\n      \
-    \  assert(0 <= l && l < r && r <= n);\n        int k = __lg(r - l);\n        return\
-    \ op(t[k][l], t[k][r - (1<<k)]);\n    }\n\nprivate:\n    vector<vector<T>> t;\n\
-    \    int n;\n};\ntemplate<class T> T _min(T a, T b) { return b < a ? b : a; }\n\
-    template<class T> T _max(T a, T b) { return a < b ? b : a; }\n#line 1 \"DataStructure/LCA.h\"\
+    \ (0, r-1)(rng);\n}\n\ntemplate<typename T>\nvector<T> read_vector(int n) {\n\
+    \    vector<T> res(n);\n    for (int& x : res) cin >> x;\n    return res;\n}\n\
+    \nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n  \
+    \  solve();\n    return 0;\n}\n#line 1 \"DataStructure/RMQ.h\"\n// Sparse table\n\
+    // Usage:\n// RMQ<int, _min> st(v);\n//\n// Note:\n// - doesn't work for empty\
+    \ range\n//\n// Tested:\n// - https://judge.yosupo.jp/problem/staticrmq\ntemplate<class\
+    \ T, T (*op) (T, T)> struct RMQ {\n    RMQ() = default;\n    RMQ(const vector<T>&\
+    \ v) : t{v}, n{(int) v.size()} {\n        for (int k = 1; (1<<k) <= n; ++k) {\n\
+    \            t.emplace_back(n - (1<<k) + 1);\n            for (int i = 0; i +\
+    \ (1<<k) <= n; ++i) {\n                t[k][i] = op(t[k-1][i], t[k-1][i + (1<<(k-1))]);\n\
+    \            }\n        }\n    }\n\n    // get range [l, r-1]\n    // doesn't\
+    \ work for empty range\n    T get(int l, int r) const {\n        assert(0 <= l\
+    \ && l < r && r <= n);\n        int k = __lg(r - l);\n        return op(t[k][l],\
+    \ t[k][r - (1<<k)]);\n    }\n\nprivate:\n    vector<vector<T>> t;\n    int n;\n\
+    };\ntemplate<class T> T _min(T a, T b) { return b < a ? b : a; }\ntemplate<class\
+    \ T> T _max(T a, T b) { return a < b ? b : a; }\n#line 1 \"DataStructure/LCA.h\"\
     \n// LCA\n// Notes:\n// - Index from 0\n// - Cannot use for queries like min edge\
     \ in path u -> v\n//\n// Tested:\n// - https://judge.yosupo.jp/problem/lca\nstruct\
     \ LCA {\n    const int n;\n    vector<vector<int>> adj;\n    const int root;\n\
@@ -95,7 +97,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/aizu_grl_5_c_lca.test.cpp
   requiredBy: []
-  timestamp: '2022-01-11 21:41:41+08:00'
+  timestamp: '2022-01-13 13:16:22+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/aizu_grl_5_c_lca.test.cpp
