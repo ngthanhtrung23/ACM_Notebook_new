@@ -13,5 +13,5 @@ void solve() {
     FOR(i,1,n-1) if (cmpy(g[i], g[idx])) idx = i;
 
     cout << g.size() << endl;
-    REP(i,g.size()) cout << (fixed) << setprecision(0) << g[(idx + i) % g.size()] << '\n';
+    REP(i,g.size()) cout << (fixed) << setprecision(0) << g[(idx + i) % g.size()] << endl;
 }
