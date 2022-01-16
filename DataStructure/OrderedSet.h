@@ -35,6 +35,7 @@ struct OrderedTree {
         }
     }
 
+    // 1 <= k <= tot  (tot = number of elements)
     num_t find_by_order(num_t k) {
         assert(0 <= k && k <= tot);
         if (!k) return -1;

@@ -4,6 +4,11 @@
 // - get min / max / kth element
 // - given K, find x: x^K is min / max / kth
 //
+// Notes:
+// - high mem usage. If just need kth_element
+//   -> use OrderedSet.h if MAX_VALUE is ~10^6
+//   -> use STL/order_statistic.cpp if MAX_VALUE is big / custom type
+//
 // Tested:
 // - (insert, remove, min xor) https://judge.yosupo.jp/problem/set_xor_min
 // - (insert, max xor) https://cses.fi/problemset/task/1655/
