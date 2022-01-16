@@ -1,5 +1,0 @@
-This is a Brave Rewards publisher verification file.
-
-Domain: ngthanhtrung23.github.io
-Token: 645faba1316de2588506466b17832a24752c5e1fd0509cc63a2b8f18064ae082
-

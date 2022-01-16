@@ -524,13 +524,13 @@ data:
   timestamp: '2022-01-11 20:04:16+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Math/tests/aizu_ntl_2_c_bigint_mul_karatsuba.test.cpp
-  - Math/tests/aizu_ntl_2_a_bigint_add.test.cpp
   - Math/tests/aizu_ntl_2_e_bigint_mod.test.cpp
+  - Math/tests/aizu_ntl_2_b_bigint_sub.test.cpp
   - Math/tests/aizu_ntl_2_d_bigint_div.test.cpp
   - Math/tests/aizu_ntl_2_c_bigint_mul.test.cpp
+  - Math/tests/aizu_ntl_2_c_bigint_mul_karatsuba.test.cpp
   - Math/tests/aizu_ntl_2_f_bigint_mul_fft.test.cpp
-  - Math/tests/aizu_ntl_2_b_bigint_sub.test.cpp
+  - Math/tests/aizu_ntl_2_a_bigint_add.test.cpp
 documentation_of: Math/bigint.h
 layout: document
 redirect_from:

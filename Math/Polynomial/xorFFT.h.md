@@ -157,8 +157,8 @@ data:
   timestamp: '2022-01-06 05:27:57+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Math/tests/convolution_and.test.cpp
   - Math/tests/convolution_xor.test.cpp
+  - Math/tests/convolution_and.test.cpp
 documentation_of: Math/Polynomial/xorFFT.h
 layout: document
 redirect_from:

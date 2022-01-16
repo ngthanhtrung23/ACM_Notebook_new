@@ -46,7 +46,9 @@ data:
     \  solve();\n    return 0;\n}\n#line 1 \"DataStructure/BinaryTrie.h\"\n// Binary\
     \ Trie\n// Based on https://judge.yosupo.jp/submission/72657\n// Supports:\n//\
     \ - get min / max / kth element\n// - given K, find x: x^K is min / max / kth\n\
-    //\n// Tested:\n// - (insert, remove, min xor) https://judge.yosupo.jp/problem/set_xor_min\n\
+    //\n// Notes:\n// - high mem usage. If just need kth_element\n//   -> use OrderedSet.h\
+    \ if MAX_VALUE is ~10^6\n//   -> use STL/order_statistic.cpp if MAX_VALUE is big\
+    \ / custom type\n//\n// Tested:\n// - (insert, remove, min xor) https://judge.yosupo.jp/problem/set_xor_min\n\
     // - (insert, max xor) https://cses.fi/problemset/task/1655/\ntemplate<\n    class\
     \ Val = long long,   // values stored in Trie\n    class Count = long long, //\
     \ frequency of values\n    int B = (sizeof(Val) * 8 - 2)  // max number of bit\n\
@@ -103,7 +105,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/binary_trie.test.cpp
   requiredBy: []
-  timestamp: '2022-01-13 13:16:22+08:00'
+  timestamp: '2022-01-17 03:27:26+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/binary_trie.test.cpp

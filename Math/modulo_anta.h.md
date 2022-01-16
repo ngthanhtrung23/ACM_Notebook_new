@@ -115,12 +115,12 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
-  - DataStructure/test/hld_vertexsetpathcomposite.test.cpp
-  - DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
   - DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp
+  - DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
+  - DataStructure/test/hld_vertexsetpathcomposite.test.cpp
   - DataStructure/test/splay_tree.test.cpp
-  - Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp
   - Math/tests/berlekamp_massey.test.cpp
+  - Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp
 documentation_of: Math/modulo_anta.h
 layout: document
 redirect_from:
