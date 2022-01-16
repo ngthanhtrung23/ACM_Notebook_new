@@ -13,7 +13,7 @@ jobs:
       uses: actions/setup-python@v1
 
     - name: Install dependencies
-      run: pip3 install -U online-judge-verify-helper
+      run: pip3 install -U git+https://github.com/ngthanhtrung23/verification-helper.git@master
 
     - name: Run tests
       env:
