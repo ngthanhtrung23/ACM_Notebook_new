@@ -183,16 +183,16 @@ data:
   timestamp: '2022-01-05 23:36:58+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - DataStructure/test/segment_tree_2d_pointaddrectsum.test.cpp
+  - DataStructure/test/hld_vertexsetpathcomposite.test.cpp
   - DataStructure/test/hld_vertexaddpathsum.test.cpp
+  - DataStructure/test/segment_tree_pointaddrangesum.test.cpp
+  - DataStructure/test/aizu_dsl_2_b_segment_tree_sum.test.cpp
+  - DataStructure/test/aizu_grl_5_d_hld_edge.test.cpp
+  - DataStructure/test/hld_vertexaddsubtreesum.test.cpp
+  - DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
   - DataStructure/test/aizu_dsl_2_a_segment_tree_rmq_update.test.cpp
   - DataStructure/test/segment_tree_staticrmq.test.cpp
-  - DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
-  - DataStructure/test/aizu_grl_5_d_hld_edge.test.cpp
-  - DataStructure/test/hld_vertexsetpathcomposite.test.cpp
-  - DataStructure/test/aizu_dsl_2_b_segment_tree_sum.test.cpp
-  - DataStructure/test/segment_tree_2d_pointaddrectsum.test.cpp
-  - DataStructure/test/segment_tree_pointaddrangesum.test.cpp
-  - DataStructure/test/hld_vertexaddsubtreesum.test.cpp
 documentation_of: DataStructure/SegTree.h
 layout: document
 redirect_from:

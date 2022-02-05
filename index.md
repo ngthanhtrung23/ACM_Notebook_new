@@ -285,6 +285,11 @@ data:
     - icon: ':warning:'
       path: Graph/Misc/EulerPath.h
       title: Graph/Misc/EulerPath.h
+  - name: ML
+    pages:
+    - icon: ':warning:'
+      path: ML/lightbgm_example.py
+      title: ML/lightbgm_example.py
   - name: Math
     pages:
     - icon: ':warning:'

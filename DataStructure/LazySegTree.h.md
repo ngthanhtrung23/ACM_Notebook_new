@@ -252,14 +252,14 @@ data:
   timestamp: '2022-01-11 21:46:03+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
-  - DataStructure/test/aizu_dsl_2_d_segment_tree_rangeset.test.cpp
-  - DataStructure/test/aizu_dsl_2_e_segment_tree_rangeadd.test.cpp
-  - DataStructure/test/aizu_dsl_2_g_segment_tree_rangeaddsum.test.cpp
-  - DataStructure/test/aizu_grl_5_e_hld_edge.test.cpp
-  - DataStructure/test/aizu_dsl_2_h_segment_tree_rangeaddmin.test.cpp
   - DataStructure/test/aizu_dsl_2_f_segment_tree_rangesetmin.test.cpp
+  - DataStructure/test/aizu_grl_5_e_hld_edge.test.cpp
+  - DataStructure/test/aizu_dsl_2_g_segment_tree_rangeaddsum.test.cpp
+  - DataStructure/test/aizu_dsl_2_e_segment_tree_rangeadd.test.cpp
+  - DataStructure/test/aizu_dsl_2_d_segment_tree_rangeset.test.cpp
+  - DataStructure/test/aizu_dsl_2_h_segment_tree_rangeaddmin.test.cpp
   - DataStructure/test/aizu_dsl_2_i_segment_tree_rangesetsum.test.cpp
+  - DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
 documentation_of: DataStructure/LazySegTree.h
 layout: document
 redirect_from:

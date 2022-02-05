@@ -164,8 +164,8 @@ data:
   timestamp: '2022-01-06 01:46:37+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp
   - DataStructure/test/link_cut_tree_vertexaddsubtreesum.test.cpp
+  - DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp
   - DataStructure/test/link_cut_tree_addpathsum.test.cpp
 documentation_of: DataStructure/LinkCutTree.h
 layout: document

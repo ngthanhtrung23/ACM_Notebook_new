@@ -51,8 +51,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/aizu_grl_5_c_lca.test.cpp
-  - DataStructure/test/lca.test.cpp
   - DataStructure/test/rmq.test.cpp
+  - DataStructure/test/lca.test.cpp
 documentation_of: DataStructure/RMQ.h
 layout: document
 redirect_from:

@@ -126,8 +126,8 @@ data:
   timestamp: '2022-01-03 02:31:11+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - DataStructure/test/li_chao_seg_tree_lineaddgetmin.test.cpp
   - DataStructure/test/li_chao_seg_tree_segaddgetmin.test.cpp
+  - DataStructure/test/li_chao_seg_tree_lineaddgetmin.test.cpp
 documentation_of: DataStructure/LiChaoSegTree.h
 layout: document
 redirect_from:
