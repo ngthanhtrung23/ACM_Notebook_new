@@ -20,7 +20,7 @@ inline int cmp(double a, double b) {
 }
 
 // for int types
-template<typename T, typename std::enable_if<std::is_floating_point<T>::value>::type * = nullptr>
+template<typename T, typename std::enable_if<!std::is_floating_point<T>::value>::type * = nullptr>
 inline int cmp(T a, T b) {
     return (a == b) ? 0 : (a < b) ? -1 : 1;
 }
