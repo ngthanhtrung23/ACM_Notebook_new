@@ -78,7 +78,10 @@ data:
     \ n, -1);\n        for (int i = 0; i < n; i++) c[i] = fa[i];\n    }\n};\n\n/*\
     \ Examples\nconst int MOD0 = 1004535809; //2^21 * 479 + 1\nconst int MOD1 = 1012924417;\
     \ //2^21 * 483 + 1\nconst int MOD2 = 998244353;  //2^20 * 476 + 1\nNTT<MOD0, 1\
-    \ << 21> ntt0;\nNTT<MOD1, 1 << 21> ntt1;\n*/\n#line 1 \"Math/NumberTheory/ExtendedEuclid.h\"\
+    \ << 21> ntt0;\nNTT<MOD1, 1 << 21> ntt1;\n*/\n#line 1 \"Math/NumberTheory/ChineseRemainder.h\"\
+    \n// Solve linear congruences equation:\n// - a[i] * x = b[i] MOD m[i] (mi don't\
+    \ need to be co-prime)\n// Tested:\n// - https://open.kattis.com/problems/generalchineseremainder\n\
+    // - https://oj.vnoi.info/problem/icpc21_mt_d\n#line 1 \"Math/NumberTheory/ExtendedEuclid.h\"\
     \n// D\xF9ng Extended Euclid \u0111\u1EC3 t\xECm nghi\u1EC7m c\u1EE7a ph\u01B0\
     \u01A1ng tr\xECnh ax + by = gcd(a, b).\n// Gi\u1EA3 s\u1EED k\u1EBFt qu\u1EA3\
     \ tr\u1EA3 v\u1EC1 l\xE0 (x0, y0), h\u1ECD nghi\u1EC7m c\u1EE7a ph\u01B0\u01A1\
@@ -86,31 +89,14 @@ data:
     ng tr\xECnh t\u1ED5ng qu\xE1t ax + by = d ch\u1EC9 c\xF3 nghi\u1EC7m khi d chia\
     \ h\u1EBFt cho gcd(a, b).\n// a x + b y = gcd(a, b)\ntemplate<typename T>\nT extgcd(T\
     \ a, T b, T &x, T &y) {\n    T g = a; x = 1; y = 0;\n    if (b != 0) g = extgcd(b,\
-    \ a % b, y, x), y -= (a / b) * x;\n    return g;\n}\n#line 1 \"Math/NumberTheory/ChineseRemainder.h\"\
-    \n// Solve linear congruences equation:\n// - a[i] * x = b[i] MOD m[i] (mi don't\
-    \ need to be co-prime)\n// Tested:\n// - https://open.kattis.com/problems/generalchineseremainder\n\
-    // - https://oj.vnoi.info/problem/icpc21_mt_d\ntemplate<typename T>\nbool linearCongruences(\n\
-    \        const vector<T> &a,\n        const vector<T> &b,\n        const vector<T>\
-    \ &m,\n        T &x,\n        T &M\n) {\n    int n = a.size();\n    x = 0; M =\
-    \ 1;\n    for (int i = 0; i < n; i++) {\n        T a_ = a[i] * M, b_ = b[i] -\
-    \ a[i] * x, m_ = m[i];\n        T y, t, g = extgcd<T>(a_, m_, y, t);\n       \
-    \ if (b_ % g) return false;\n        b_ /= g; m_ /= g;\n        x += M * (y *\
-    \ b_ % m_);\n        M *= m_;\n    }\n    x = (x + M) % M;\n    return true;\n\
-    }\n#line 9 \"Math/tests/ntt_any_mod_2.test.cpp\"\n\nconst int MOD0 = 167772161;\n\
-    const int MOD1 = 469762049;\nconst int MOD2 = 754974721;\nNTT<MOD0, 1 << 20> ntt0;\n\
-    NTT<MOD1, 1 << 20> ntt1;\nNTT<MOD2, 1 << 20> ntt2;\n\n#define REP(i, a) for (int\
-    \ i = 0, _##i = (a); i < _##i; ++i)\n\nint32_t main() {\n    ios::sync_with_stdio(0);\
-    \ cin.tie(0);\n    int n, m; cin >> n >> m;\n    vector<int> a(n); REP(i,n) cin\
-    \ >> a[i];\n    vector<int> b(m); REP(i,m) cin >> b[i];\n\n    auto c0 = ntt0.multiply(a,\
-    \ b);\n    auto c1 = ntt1.multiply(a, b);\n    auto c2 = ntt2.multiply(a, b);\n\
-    \n    const int MOD = 1e9 + 7;\n    REP(i,n+m-1) {\n        __int128_t x, _m;\n\
-    \        linearCongruences<__int128_t> (\n                {1, 1, 1},\n       \
-    \         {c0[i], c1[i], c2[i]},\n                {MOD0, MOD1, MOD2},\n      \
-    \          x,\n                _m);\n        cout << (int) (x % MOD) << ' ';\n\
-    \    }\n    cout << endl;\n    return 0;\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod_1000000007\"\
-    \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../Polynomial/NTT.h\"\
-    \n#include \"../NumberTheory/ExtendedEuclid.h\"\n#include \"../NumberTheory/ChineseRemainder.h\"\
+    \ a % b, y, x), y -= (a / b) * x;\n    return g;\n}\n#line 7 \"Math/NumberTheory/ChineseRemainder.h\"\
+    \ntemplate<typename T>\nbool linearCongruences(\n        const vector<T> &a,\n\
+    \        const vector<T> &b,\n        const vector<T> &m,\n        T &x,\n   \
+    \     T &M\n) {\n    int n = a.size();\n    x = 0; M = 1;\n    for (int i = 0;\
+    \ i < n; i++) {\n        T a_ = a[i] * M, b_ = b[i] - a[i] * x, m_ = m[i];\n \
+    \       T y, t, g = extgcd<T>(a_, m_, y, t);\n        if (b_ % g) return false;\n\
+    \        b_ /= g; m_ /= g;\n        x += M * (y * b_ % m_);\n        M *= m_;\n\
+    \    }\n    x = (x + M) % M;\n    return true;\n}\n#line 8 \"Math/tests/ntt_any_mod_2.test.cpp\"\
     \n\nconst int MOD0 = 167772161;\nconst int MOD1 = 469762049;\nconst int MOD2 =\
     \ 754974721;\nNTT<MOD0, 1 << 20> ntt0;\nNTT<MOD1, 1 << 20> ntt1;\nNTT<MOD2, 1\
     \ << 20> ntt2;\n\n#define REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)\n\
@@ -123,14 +109,28 @@ data:
     \            {MOD0, MOD1, MOD2},\n                x,\n                _m);\n \
     \       cout << (int) (x % MOD) << ' ';\n    }\n    cout << endl;\n    return\
     \ 0;\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod_1000000007\"\
+    \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../Polynomial/NTT.h\"\
+    \n#include \"../NumberTheory/ChineseRemainder.h\"\n\nconst int MOD0 = 167772161;\n\
+    const int MOD1 = 469762049;\nconst int MOD2 = 754974721;\nNTT<MOD0, 1 << 20> ntt0;\n\
+    NTT<MOD1, 1 << 20> ntt1;\nNTT<MOD2, 1 << 20> ntt2;\n\n#define REP(i, a) for (int\
+    \ i = 0, _##i = (a); i < _##i; ++i)\n\nint32_t main() {\n    ios::sync_with_stdio(0);\
+    \ cin.tie(0);\n    int n, m; cin >> n >> m;\n    vector<int> a(n); REP(i,n) cin\
+    \ >> a[i];\n    vector<int> b(m); REP(i,m) cin >> b[i];\n\n    auto c0 = ntt0.multiply(a,\
+    \ b);\n    auto c1 = ntt1.multiply(a, b);\n    auto c2 = ntt2.multiply(a, b);\n\
+    \n    const int MOD = 1e9 + 7;\n    REP(i,n+m-1) {\n        __int128_t x, _m;\n\
+    \        linearCongruences<__int128_t> (\n                {1, 1, 1},\n       \
+    \         {c0[i], c1[i], c2[i]},\n                {MOD0, MOD1, MOD2},\n      \
+    \          x,\n                _m);\n        cout << (int) (x % MOD) << ' ';\n\
+    \    }\n    cout << endl;\n    return 0;\n}\n"
   dependsOn:
   - Math/Polynomial/NTT.h
-  - Math/NumberTheory/ExtendedEuclid.h
   - Math/NumberTheory/ChineseRemainder.h
+  - Math/NumberTheory/ExtendedEuclid.h
   isVerificationFile: true
   path: Math/tests/ntt_any_mod_2.test.cpp
   requiredBy: []
-  timestamp: '2022-01-06 17:46:09+08:00'
+  timestamp: '2022-02-06 13:20:09+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Math/tests/ntt_any_mod_2.test.cpp

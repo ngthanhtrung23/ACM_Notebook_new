@@ -1,7 +1,10 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: Graph/2sat.h
+    title: Graph/2sat.h
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Graph/tests/aizu_grl_3_c_strongly_connected.test.cpp
@@ -57,7 +60,8 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: Graph/DfsTree/StronglyConnected.h
-  requiredBy: []
+  requiredBy:
+  - Graph/2sat.h
   timestamp: '2022-01-09 22:41:11+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
