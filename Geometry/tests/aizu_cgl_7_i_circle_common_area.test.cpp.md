@@ -56,7 +56,7 @@ data:
     \ double PI = acos(-1.0);\n\ndouble DEG_to_RAD(double d) { return d * PI / 180.0;\
     \ }\ndouble RAD_to_DEG(double r) { return r * 180.0 / PI; }\n\ninline int cmp(double\
     \ a, double b) {\n    return (a < b - EPS) ? -1 : ((a > b + EPS) ? 1 : 0);\n}\n\
-    \n// for int types\ntemplate<typename T, typename std::enable_if<std::is_floating_point<T>::value>::type\
+    \n// for int types\ntemplate<typename T, typename std::enable_if<!std::is_floating_point<T>::value>::type\
     \ * = nullptr>\ninline int cmp(T a, T b) {\n    return (a == b) ? 0 : (a < b)\
     \ ? -1 : 1;\n}\n\ntemplate<typename T>\nstruct P {\n    T x, y;\n    P() { x =\
     \ y = T(0); }\n    P(T _x, T _y) : x(_x), y(_y) {}\n\n    P operator + (const\
@@ -199,7 +199,7 @@ data:
   isVerificationFile: true
   path: Geometry/tests/aizu_cgl_7_i_circle_common_area.test.cpp
   requiredBy: []
-  timestamp: '2022-01-13 13:16:22+08:00'
+  timestamp: '2022-02-06 13:43:52+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Geometry/tests/aizu_cgl_7_i_circle_common_area.test.cpp

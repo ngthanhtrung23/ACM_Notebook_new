@@ -107,7 +107,7 @@ data:
     \ndouble DEG_to_RAD(double d) { return d * PI / 180.0; }\ndouble RAD_to_DEG(double\
     \ r) { return r * 180.0 / PI; }\n\ninline int cmp(double a, double b) {\n    return\
     \ (a < b - EPS) ? -1 : ((a > b + EPS) ? 1 : 0);\n}\n\n// for int types\ntemplate<typename\
-    \ T, typename std::enable_if<std::is_floating_point<T>::value>::type * = nullptr>\n\
+    \ T, typename std::enable_if<!std::is_floating_point<T>::value>::type * = nullptr>\n\
     inline int cmp(T a, T b) {\n    return (a == b) ? 0 : (a < b) ? -1 : 1;\n}\n\n\
     template<typename T>\nstruct P {\n    T x, y;\n    P() { x = y = T(0); }\n   \
     \ P(T _x, T _y) : x(_x), y(_y) {}\n\n    P operator + (const P& a) const { return\
@@ -186,7 +186,7 @@ data:
     \ d) { return d * PI / 180.0; }\ndouble RAD_to_DEG(double r) { return r * 180.0\
     \ / PI; }\n\ninline int cmp(double a, double b) {\n    return (a < b - EPS) ?\
     \ -1 : ((a > b + EPS) ? 1 : 0);\n}\n\n// for int types\ntemplate<typename T, typename\
-    \ std::enable_if<std::is_floating_point<T>::value>::type * = nullptr>\ninline\
+    \ std::enable_if<!std::is_floating_point<T>::value>::type * = nullptr>\ninline\
     \ int cmp(T a, T b) {\n    return (a == b) ? 0 : (a < b) ? -1 : 1;\n}\n\ntemplate<typename\
     \ T>\nstruct P {\n    T x, y;\n    P() { x = y = T(0); }\n    P(T _x, T _y) :\
     \ x(_x), y(_y) {}\n\n    P operator + (const P& a) const { return P(x+a.x, y+a.y);\
@@ -264,7 +264,7 @@ data:
   - Geometry/polygon.cpp
   - Geometry/basic.cpp
   - Geometry/circle.cpp
-  timestamp: '2022-01-12 00:40:19+08:00'
+  timestamp: '2022-02-06 13:43:52+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Geometry/tests/polygon_in_convex.test.cpp
