@@ -3,7 +3,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#include "../PersistentArray.h"
 #include "../PersistentDSU.h"
 
 int32_t main() {

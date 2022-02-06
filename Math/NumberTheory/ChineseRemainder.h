@@ -3,6 +3,7 @@
 // Tested:
 // - https://open.kattis.com/problems/generalchineseremainder
 // - https://oj.vnoi.info/problem/icpc21_mt_d
+#include "ExtendedEuclid.h"
 template<typename T>
 bool linearCongruences(
         const vector<T> &a,

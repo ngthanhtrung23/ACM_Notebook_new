@@ -3,7 +3,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#include "../DfsTree/StronglyConnected.h"
 #include "../2sat.h"
 
 #define REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)

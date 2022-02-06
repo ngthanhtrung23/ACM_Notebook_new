@@ -4,7 +4,6 @@
 using namespace std;
 
 #include "../Polynomial/NTT.h"
-#include "../NumberTheory/ExtendedEuclid.h"
 #include "../NumberTheory/ChineseRemainder.h"
 
 const int MOD0 = 167772161;
