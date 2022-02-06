@@ -1,7 +1,6 @@
 #define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_C"
 
 #include "../../template.h"
-#include "../RMQ.h"
 #include "../LCA.h"
 
 void solve() {

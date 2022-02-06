@@ -3,7 +3,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#include "../RMQ.h"
 #include "../LCA.h"
 #include "../../buffered_reader.h"
 

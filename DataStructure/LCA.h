@@ -5,6 +5,7 @@
 //
 // Tested:
 // - https://judge.yosupo.jp/problem/lca
+#include "RMQ.h"
 struct LCA {
     const int n;
     vector<vector<int>> adj;
