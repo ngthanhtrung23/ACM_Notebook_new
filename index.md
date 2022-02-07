@@ -36,6 +36,9 @@ data:
       path: DataStructure/DSU_partially_persistent.h
       title: DataStructure/DSU_partially_persistent.h
     - icon: ':heavy_check_mark:'
+      path: DataStructure/DSU_persistent.h
+      title: DataStructure/DSU_persistent.h
+    - icon: ':heavy_check_mark:'
       path: DataStructure/DSU_rollback.h
       title: DataStructure/DSU_rollback.h
     - icon: ':heavy_check_mark:'
@@ -80,9 +83,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/PersistentArray.h
       title: DataStructure/PersistentArray.h
-    - icon: ':heavy_check_mark:'
-      path: DataStructure/PersistentDSU.h
-      title: DataStructure/PersistentDSU.h
     - icon: ':warning:'
       path: DataStructure/PersistentSegTree.h
       title: DataStructure/PersistentSegTree.h

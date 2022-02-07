@@ -16,7 +16,7 @@ data:
     links:
     - https://judge.yosupo.jp/problem/persistent_unionfind
     - https://oj.vnoi.info/problem/hello22_schoolplan)
-  bundledCode: "#line 1 \"DataStructure/PersistentDSU.h\"\n// PersistentDSU\n//\n\
+  bundledCode: "#line 1 \"DataStructure/DSU_persistent.h\"\n// PersistentDSU\n//\n\
     // Notes:\n// - this doesn't support delete edge operation, so isn't enough to\n\
     //   solve dynamic connectivity problem.\n// - it has high mem and time usage,\
     \ so be careful (both TLE and MLE on\n//   https://oj.vnoi.info/problem/hello22_schoolplan)\n\
@@ -39,7 +39,7 @@ data:
     \   return t;\n    }\n\n    // init a persistent array and return root node\n\
     \    Node* build(const vector<T>& v) {\n        Node* root = NULL;\n        for\
     \ (int i = 0; i < (int) v.size(); i++) {\n            root = set(root, i, v[i]);\n\
-    \        }\n        return root;\n    }\n};\n#line 12 \"DataStructure/PersistentDSU.h\"\
+    \        }\n        return root;\n    }\n};\n#line 12 \"DataStructure/DSU_persistent.h\"\
     \nstruct PersistentDSU {\n    int n;\n    using Arr = PersistentArray<int>;\n\n\
     \    PersistentDSU(int _n) : n(_n) {\n        roots.emplace_back(A.build(std::vector<int>\
     \ (n, -1)));\n    }\n\n    int find(int version, int u) {\n        // Note that\
@@ -79,16 +79,16 @@ data:
   dependsOn:
   - DataStructure/PersistentArray.h
   isVerificationFile: false
-  path: DataStructure/PersistentDSU.h
+  path: DataStructure/DSU_persistent.h
   requiredBy: []
-  timestamp: '2022-02-06 13:20:09+08:00'
+  timestamp: '2022-02-08 04:18:33+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/persistent_dsu.test.cpp
-documentation_of: DataStructure/PersistentDSU.h
+documentation_of: DataStructure/DSU_persistent.h
 layout: document
 redirect_from:
-- /library/DataStructure/PersistentDSU.h
-- /library/DataStructure/PersistentDSU.h.html
-title: DataStructure/PersistentDSU.h
+- /library/DataStructure/DSU_persistent.h
+- /library/DataStructure/DSU_persistent.h.html
+title: DataStructure/DSU_persistent.h
 ---
