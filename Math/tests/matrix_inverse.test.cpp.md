@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/Matrix.h
     title: Math/Matrix.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: buffered_reader.h
     title: buffered_reader.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/inverse_matrix
@@ -250,33 +250,31 @@ data:
     \           for (int j = 0; j < n_col; j++) {\n                res[j][i] = this->get(i,\
     \ j);\n            }\n        }\n        return res;\n    }\n\n    Matrix& operator\
     \ *= (const Matrix& r) { return *this = *this * r; }\n    Matrix operator * (const\
-    \ Matrix& r) const {\n        assert(n_col == r.n_row);\n        auto rt = r.transpose();\n\
-    \        Matrix res(n_row, r.n_col);\n\n        for (int i = 0; i < n_row; i++)\
-    \ {\n            for (int j = 0; j < rt.n_row; j++) {\n                res[i][j]\
-    \ = std::inner_product(\n                        this->x.begin() + n_col*i,\n\
-    \                        this->x.begin() + n_col*(i+1),\n                    \
-    \    rt.x.begin() + rt.n_col*j,\n                        T(0));\n            }\n\
-    \        }\n        return res;\n    }\n\n    Matrix pow(long long n) const {\n\
-    \        assert(n_row == n_col);\n        Matrix res = identity(n_row);\n    \
-    \    if (n == 0) return res;\n\n        bool res_is_id = true;\n        for (int\
-    \ i = 63 - __builtin_clzll(n); i >= 0; i--) {\n            if (!res_is_id) res\
-    \ *= res;\n            if ((n >> i) & 1) res *= (*this), res_is_id = false;\n\
-    \        }\n        return res;\n    }\n\n    // Gauss\n    template <typename\
-    \ T2, typename std::enable_if<std::is_floating_point<T2>::value>::type * = nullptr>\n\
-    \    static int choose_pivot(const Matrix<T2> &mtr, int h, int c) noexcept {\n\
-    \        int piv = -1;\n        for (int j = h; j < mtr.n_row; j++) {\n      \
-    \      if (mtr.get(j, c) and (piv < 0 or std::abs(mtr.get(j, c)) > std::abs(mtr.get(piv,\
-    \ c)))) piv = j;\n        }\n        return piv;\n    }\n    template <typename\
-    \ T2, typename std::enable_if<!std::is_floating_point<T2>::value>::type * = nullptr>\n\
-    \    static int choose_pivot(const Matrix<T2> &mtr, int h, int c) noexcept {\n\
-    \        for (int j = h; j < mtr.n_row; j++) {\n            if (mtr.get(j, c)\
-    \ != T(0)) return j;\n        }\n        return -1;\n    }\n\n    // return upper\
-    \ triangle matrix\n    Matrix gauss() const {\n        int c = 0;\n        Matrix\
-    \ mtr(*this);\n        vector<int> ws;\n        ws.reserve(n_col);\n\n       \
-    \ for (int h = 0; h < n_row; h++) {\n            if (c == n_col) break;\n    \
-    \        int piv = choose_pivot(mtr, h, c);\n            if (piv == -1) {\n  \
-    \              c++;\n                h--;\n                continue;\n       \
-    \     }\n            if (h != piv) {\n                for (int w = 0; w < n_col;\
+    \ Matrix& r) const {\n        assert(n_col == r.n_row);\n        Matrix res(n_row,\
+    \ r.n_col);\n\n        for (int i = 0; i < n_row; i++) {\n            for (int\
+    \ k = 0; k < n_col; k++) {\n                for (int j = 0; j < rt.n_row; j++)\
+    \ {\n                    res[i][j] += this->get(i, k) * r.get(k, j);\n       \
+    \         }\n            }\n        }\n        return res;\n    }\n\n    Matrix\
+    \ pow(long long n) const {\n        assert(n_row == n_col);\n        Matrix res\
+    \ = identity(n_row);\n        if (n == 0) return res;\n\n        bool res_is_id\
+    \ = true;\n        for (int i = 63 - __builtin_clzll(n); i >= 0; i--) {\n    \
+    \        if (!res_is_id) res *= res;\n            if ((n >> i) & 1) res *= (*this),\
+    \ res_is_id = false;\n        }\n        return res;\n    }\n\n    // Gauss\n\
+    \    template <typename T2, typename std::enable_if<std::is_floating_point<T2>::value>::type\
+    \ * = nullptr>\n    static int choose_pivot(const Matrix<T2> &mtr, int h, int\
+    \ c) noexcept {\n        int piv = -1;\n        for (int j = h; j < mtr.n_row;\
+    \ j++) {\n            if (mtr.get(j, c) and (piv < 0 or std::abs(mtr.get(j, c))\
+    \ > std::abs(mtr.get(piv, c)))) piv = j;\n        }\n        return piv;\n   \
+    \ }\n    template <typename T2, typename std::enable_if<!std::is_floating_point<T2>::value>::type\
+    \ * = nullptr>\n    static int choose_pivot(const Matrix<T2> &mtr, int h, int\
+    \ c) noexcept {\n        for (int j = h; j < mtr.n_row; j++) {\n            if\
+    \ (mtr.get(j, c) != T(0)) return j;\n        }\n        return -1;\n    }\n\n\
+    \    // return upper triangle matrix\n    Matrix gauss() const {\n        int\
+    \ c = 0;\n        Matrix mtr(*this);\n        vector<int> ws;\n        ws.reserve(n_col);\n\
+    \n        for (int h = 0; h < n_row; h++) {\n            if (c == n_col) break;\n\
+    \            int piv = choose_pivot(mtr, h, c);\n            if (piv == -1) {\n\
+    \                c++;\n                h--;\n                continue;\n     \
+    \       }\n            if (h != piv) {\n                for (int w = 0; w < n_col;\
     \ w++) {\n                    swap(mtr[piv][w], mtr[h][w]);\n                \
     \    mtr[piv][w] *= -1; // for determinant\n                }\n            }\n\
     \            ws.clear();\n            for (int w = c; w < n_col; w++) {\n    \
@@ -336,8 +334,8 @@ data:
   isVerificationFile: true
   path: Math/tests/matrix_inverse.test.cpp
   requiredBy: []
-  timestamp: '2022-01-06 20:02:32+08:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2022-02-12 22:37:20+08:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: Math/tests/matrix_inverse.test.cpp
 layout: document

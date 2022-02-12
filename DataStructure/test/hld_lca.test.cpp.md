@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/HeavyLight_adamant.h
     title: DataStructure/HeavyLight_adamant.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: buffered_reader.h
     title: buffered_reader.h
   _extendedRequiredBy: []

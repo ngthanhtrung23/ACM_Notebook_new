@@ -33,18 +33,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/wavelet_matrix_rangekthsmallest.test.cpp
     title: DataStructure/test/wavelet_matrix_rangekthsmallest.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/matrix_det.test.cpp
     title: Math/tests/matrix_det.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/matrix_inverse.test.cpp
     title: Math/tests/matrix_inverse.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/matrix_mult.test.cpp
     title: Math/tests/matrix_mult.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"buffered_reader.h\"\nnamespace IO {\n    const int BUFSIZE\
@@ -76,7 +76,7 @@ data:
   path: buffered_reader.h
   requiredBy: []
   timestamp: '2022-01-06 20:02:32+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - Math/tests/matrix_mult.test.cpp
   - Math/tests/matrix_det.test.cpp
