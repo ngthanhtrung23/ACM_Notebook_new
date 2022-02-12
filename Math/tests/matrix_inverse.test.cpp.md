@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/Matrix.h
     title: Math/Matrix.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: buffered_reader.h
     title: buffered_reader.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/inverse_matrix
@@ -252,7 +252,7 @@ data:
     \ *= (const Matrix& r) { return *this = *this * r; }\n    Matrix operator * (const\
     \ Matrix& r) const {\n        assert(n_col == r.n_row);\n        Matrix res(n_row,\
     \ r.n_col);\n\n        for (int i = 0; i < n_row; i++) {\n            for (int\
-    \ k = 0; k < n_col; k++) {\n                for (int j = 0; j < rt.n_row; j++)\
+    \ k = 0; k < n_col; k++) {\n                for (int j = 0; j < r.n_col; j++)\
     \ {\n                    res[i][j] += this->get(i, k) * r.get(k, j);\n       \
     \         }\n            }\n        }\n        return res;\n    }\n\n    Matrix\
     \ pow(long long n) const {\n        assert(n_row == n_col);\n        Matrix res\
@@ -334,8 +334,8 @@ data:
   isVerificationFile: true
   path: Math/tests/matrix_inverse.test.cpp
   requiredBy: []
-  timestamp: '2022-02-12 22:37:20+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2022-02-12 22:40:17+08:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Math/tests/matrix_inverse.test.cpp
 layout: document

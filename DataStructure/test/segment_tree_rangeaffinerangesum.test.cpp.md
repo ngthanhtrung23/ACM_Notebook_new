@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Math/modulo_anta.h
     title: Math/modulo_anta.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: buffered_reader.h
     title: buffered_reader.h
   _extendedRequiredBy: []

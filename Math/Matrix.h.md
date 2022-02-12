@@ -3,18 +3,18 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/matrix_det.test.cpp
     title: Math/tests/matrix_det.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/matrix_inverse.test.cpp
     title: Math/tests/matrix_inverse.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/matrix_mult.test.cpp
     title: Math/tests/matrix_mult.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://judge.yosupo.jp/problem/inverse_matrix
@@ -52,7 +52,7 @@ data:
     \ *= (const Matrix& r) { return *this = *this * r; }\n    Matrix operator * (const\
     \ Matrix& r) const {\n        assert(n_col == r.n_row);\n        Matrix res(n_row,\
     \ r.n_col);\n\n        for (int i = 0; i < n_row; i++) {\n            for (int\
-    \ k = 0; k < n_col; k++) {\n                for (int j = 0; j < rt.n_row; j++)\
+    \ k = 0; k < n_col; k++) {\n                for (int j = 0; j < r.n_col; j++)\
     \ {\n                    res[i][j] += this->get(i, k) * r.get(k, j);\n       \
     \         }\n            }\n        }\n        return res;\n    }\n\n    Matrix\
     \ pow(long long n) const {\n        assert(n_row == n_col);\n        Matrix res\
@@ -125,7 +125,7 @@ data:
     \ *= (const Matrix& r) { return *this = *this * r; }\n    Matrix operator * (const\
     \ Matrix& r) const {\n        assert(n_col == r.n_row);\n        Matrix res(n_row,\
     \ r.n_col);\n\n        for (int i = 0; i < n_row; i++) {\n            for (int\
-    \ k = 0; k < n_col; k++) {\n                for (int j = 0; j < rt.n_row; j++)\
+    \ k = 0; k < n_col; k++) {\n                for (int j = 0; j < r.n_col; j++)\
     \ {\n                    res[i][j] += this->get(i, k) * r.get(k, j);\n       \
     \         }\n            }\n        }\n        return res;\n    }\n\n    Matrix\
     \ pow(long long n) const {\n        assert(n_row == n_col);\n        Matrix res\
@@ -176,8 +176,8 @@ data:
   isVerificationFile: false
   path: Math/Matrix.h
   requiredBy: []
-  timestamp: '2022-02-12 22:37:20+08:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2022-02-12 22:40:17+08:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Math/tests/matrix_mult.test.cpp
   - Math/tests/matrix_det.test.cpp

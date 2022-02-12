@@ -298,7 +298,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/LinearRecurrence_BerlekampMassey.h
       title: Math/LinearRecurrence_BerlekampMassey.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/Matrix.h
       title: Math/Matrix.h
     - icon: ':warning:'
@@ -482,7 +482,7 @@ data:
       title: String/zfunc.h
   - name: .
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: buffered_reader.h
       title: buffered_reader.h
     - icon: ':warning:'
@@ -847,13 +847,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/tests/is_prime_yukicoder.test.cpp
       title: Math/tests/is_prime_yukicoder.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/matrix_det.test.cpp
       title: Math/tests/matrix_det.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/matrix_inverse.test.cpp
       title: Math/tests/matrix_inverse.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/matrix_mult.test.cpp
       title: Math/tests/matrix_mult.test.cpp
     - icon: ':heavy_check_mark:'
