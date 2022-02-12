@@ -61,16 +61,13 @@ struct Matrix {
     Matrix& operator *= (const Matrix& r) { return *this = *this * r; }
     Matrix operator * (const Matrix& r) const {
         assert(n_col == r.n_row);
-        auto rt = r.transpose();
         Matrix res(n_row, r.n_col);
 
         for (int i = 0; i < n_row; i++) {
-            for (int j = 0; j < rt.n_row; j++) {
-                res[i][j] = std::inner_product(
-                        this->x.begin() + n_col*i,
-                        this->x.begin() + n_col*(i+1),
-                        rt.x.begin() + rt.n_col*j,
-                        T(0));
+            for (int k = 0; k < n_col; k++) {
+                for (int j = 0; j < rt.n_row; j++) {
+                    res[i][j] += this->get(i, k) * r.get(k, j);
+                }
             }
         }
         return res;
