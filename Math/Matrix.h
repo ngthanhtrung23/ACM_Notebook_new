@@ -65,7 +65,7 @@ struct Matrix {
 
         for (int i = 0; i < n_row; i++) {
             for (int k = 0; k < n_col; k++) {
-                for (int j = 0; j < rt.n_row; j++) {
+                for (int j = 0; j < r.n_col; j++) {
                     res[i][j] += this->get(i, k) * r.get(k, j);
                 }
             }
