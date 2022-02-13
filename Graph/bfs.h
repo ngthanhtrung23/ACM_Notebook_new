@@ -21,7 +21,7 @@ struct Graph {
     // - shortest distance from start -> target
     // - path
     // If no path -> returns -1
-    pair<int, vector<int>> bfs(int start, int target) {
+    pair<int, vector<int>> bfs(int start, int target) const {
         assert(0 <= start && start < n);
         assert(0 <= target && target < n);
 
@@ -39,14 +39,14 @@ struct Graph {
     }
 
     // return: dist: vector<int>, dist[u] = shortest distance from start -> u
-    vector<int> bfs(int start) {
+    vector<int> bfs(int start) const {
         assert(0 <= start && start < n);
         return _bfs({start}, -1).first;
     }
 
     // multi-source BFS
     // Return: dist[u] = shortest distance from any source -> u
-    vector<int> bfs(vector<int> starts) {
+    vector<int> bfs(vector<int> starts) const {
         return _bfs(starts, -1).first;
     }
 
@@ -55,7 +55,7 @@ struct Graph {
     // Start BFS from start, and stop when reaching target.
     // Start = -1 -> BFS whole graph
     // Returns {distance, trace}
-    pair<vector<int>, vector<int>> _bfs(vector<int> starts, int target) {
+    pair<vector<int>, vector<int>> _bfs(vector<int> starts, int target) const {
         assert(-1 <= target && target < n);
 
         queue<int> qu;
