@@ -12,8 +12,9 @@
 struct Graph {
     Graph(int _n) : n(_n), g(n) {}
 
-    void add_edge(int u, int v) {
+    void add_edge(int u, int v, bool bi_directional = false) {
         g[u].push_back(v);
+        if (bi_directional) g[v].push_back(u);
     }
 
     // return
