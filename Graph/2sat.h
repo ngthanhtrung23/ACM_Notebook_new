@@ -12,6 +12,7 @@
 // - https://oj.vnoi.info/problem/elect
 // - https://open.kattis.com/problems/cleaningpipes
 // - https://oj.vnoi.info/problem/icpc21_mt_i
+// - https://cses.fi/problemset/task/1684/
 #include "DfsTree/StronglyConnected.h"
 struct TwoSatSolver {
     TwoSatSolver(int _n_vars) : n_vars(_n_vars), g(2*n_vars) {}

@@ -7,6 +7,7 @@
 //
 // Tested:
 // - (requires scc to be topo sorted) https://judge.yosupo.jp/problem/scc
+// - https://cses.fi/problemset/task/1686/
 struct DirectedDfs {
     vector<vector<int>> g;
     int n;
@@ -39,5 +40,21 @@ struct DirectedDfs {
                 if (u == v) break;
             }
         }
+    }
+
+    // build DAG of strongly connected components
+    // Returns: adjacency list of DAG
+    std::vector<std::vector<int>> build_scc_dag() {
+        std::vector<std::vector<int>> dag(scc.size());
+        for (int u = 0; u < n; u++) {
+            int x = comp_ids[u];
+            for (int v : g[u]) {
+                int y = comp_ids[v];
+                if (x != y) {
+                    dag[x].push_back(y);
+                }
+            }
+        }
+        return dag;
     }
 };
