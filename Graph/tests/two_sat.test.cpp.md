@@ -26,9 +26,10 @@ data:
     \n// Variables: 0 -> n-1\n// Tested:\n// - https://judge.yosupo.jp/problem/two_sat\n\
     // - https://oj.vnoi.info/problem/twosat\n// - https://oj.vnoi.info/problem/elect\n\
     // - https://open.kattis.com/problems/cleaningpipes\n// - https://oj.vnoi.info/problem/icpc21_mt_i\n\
-    #line 1 \"Graph/DfsTree/StronglyConnected.h\"\n// Index from 0\n// Usage:\n//\
-    \ DirectedDfs tree;\n// Now you can use tree.scc\n//\n// Note: reverse(tree.scc)\
-    \ is topo sorted\n//\n// Tested:\n// - (requires scc to be topo sorted) https://judge.yosupo.jp/problem/scc\n\
+    // - https://cses.fi/problemset/task/1684/\n#line 1 \"Graph/DfsTree/StronglyConnected.h\"\
+    \n// Index from 0\n// Usage:\n// DirectedDfs tree;\n// Now you can use tree.scc\n\
+    //\n// Note: reverse(tree.scc) is topo sorted\n//\n// Tested:\n// - (requires\
+    \ scc to be topo sorted) https://judge.yosupo.jp/problem/scc\n// - https://cses.fi/problemset/task/1686/\n\
     struct DirectedDfs {\n    vector<vector<int>> g;\n    int n;\n    vector<int>\
     \ num, low, current, S;\n    int counter;\n    vector<int> comp_ids;\n    vector<\
     \ vector<int> > scc;\n\n    DirectedDfs(const vector<vector<int>>& _g) : g(_g),\
@@ -41,9 +42,15 @@ data:
     \ == num[u]) {\n            scc.push_back(vector<int>());\n            while (1)\
     \ {\n                int v = S.back(); S.pop_back(); current[v] = 0;\n       \
     \         scc.back().push_back(v);\n                comp_ids[v] = ((int) scc.size())\
-    \ - 1;\n                if (u == v) break;\n            }\n        }\n    }\n\
-    };\n#line 16 \"Graph/2sat.h\"\nstruct TwoSatSolver {\n    TwoSatSolver(int _n_vars)\
-    \ : n_vars(_n_vars), g(2*n_vars) {}\n\n    void x_or_y_constraint(bool is_x_true,\
+    \ - 1;\n                if (u == v) break;\n            }\n        }\n    }\n\n\
+    \    // build DAG of strongly connected components\n    // Returns: adjacency\
+    \ list of DAG\n    std::vector<std::vector<int>> build_scc_dag() {\n        std::vector<std::vector<int>>\
+    \ dag(scc.size());\n        for (int u = 0; u < n; u++) {\n            int x =\
+    \ comp_ids[u];\n            for (int v : g[u]) {\n                int y = comp_ids[v];\n\
+    \                if (x != y) {\n                    dag[x].push_back(y);\n   \
+    \             }\n            }\n        }\n        return dag;\n    }\n};\n#line\
+    \ 17 \"Graph/2sat.h\"\nstruct TwoSatSolver {\n    TwoSatSolver(int _n_vars) :\
+    \ n_vars(_n_vars), g(2*n_vars) {}\n\n    void x_or_y_constraint(bool is_x_true,\
     \ int x, bool is_y_true, int y) {\n        assert(x >= 0 && x < n_vars);\n   \
     \     assert(y >= 0 && y < n_vars);\n        if (!is_x_true) x += n_vars;\n  \
     \      if (!is_y_true) y += n_vars;\n        // x || y\n        // !x -> y\n \
@@ -88,7 +95,7 @@ data:
   isVerificationFile: true
   path: Graph/tests/two_sat.test.cpp
   requiredBy: []
-  timestamp: '2022-02-06 13:20:09+08:00'
+  timestamp: '2022-03-04 04:16:35+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Graph/tests/two_sat.test.cpp
