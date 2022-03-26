@@ -25,7 +25,7 @@ struct PolygonRegion {  // everything is 0-based index
         assert(a != b);
         if (a > b) swap(a, b);
         assert(a + 1 != b);
-        if (a == n) assert(b != 1);
+        if (a == n-1) assert(b != 0);
 
         diagonals.emplace_back(b - a, a);
     }
