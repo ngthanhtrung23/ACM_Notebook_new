@@ -19,8 +19,8 @@ data:
     \    vector< vector<int> > regions;\n\n    PolygonRegion(int n) : n(n) {\n   \
     \     vertices.clear();\n        REP(i,n) vertices.insert(i);\n        diagonals.clear();\n\
     \    }\n\n    void addEdge(int a, int b) {\n        assert(a != b);\n        if\
-    \ (a > b) swap(a, b);\n        assert(a + 1 != b);\n        if (a == n) assert(b\
-    \ != 1);\n\n        diagonals.emplace_back(b - a, a);\n    }\n\n    void init()\
+    \ (a > b) swap(a, b);\n        assert(a + 1 != b);\n        if (a == n-1) assert(b\
+    \ != 0);\n\n        diagonals.emplace_back(b - a, a);\n    }\n\n    void init()\
     \ {\n        diagonals.emplace_back(n-1, 0);\n        regions.clear();\n\n   \
     \     REP(i,n+1) ke[i].clear();\n\n        sort(diagonals.begin(), diagonals.end());\n\
     \        REP(idiag,SZ(diagonals)) {\n            auto diagonal = diagonals[idiag];\n\
@@ -46,7 +46,7 @@ data:
     \ n) : n(n) {\n        vertices.clear();\n        REP(i,n) vertices.insert(i);\n\
     \        diagonals.clear();\n    }\n\n    void addEdge(int a, int b) {\n     \
     \   assert(a != b);\n        if (a > b) swap(a, b);\n        assert(a + 1 != b);\n\
-    \        if (a == n) assert(b != 1);\n\n        diagonals.emplace_back(b - a,\
+    \        if (a == n-1) assert(b != 0);\n\n        diagonals.emplace_back(b - a,\
     \ a);\n    }\n\n    void init() {\n        diagonals.emplace_back(n-1, 0);\n \
     \       regions.clear();\n\n        REP(i,n+1) ke[i].clear();\n\n        sort(diagonals.begin(),\
     \ diagonals.end());\n        REP(idiag,SZ(diagonals)) {\n            auto diagonal\
@@ -66,7 +66,7 @@ data:
   isVerificationFile: false
   path: Geometry/polygon_region.h
   requiredBy: []
-  timestamp: '2017-03-05 18:38:51+08:00'
+  timestamp: '2022-03-26 22:17:20+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Geometry/polygon_region.h
