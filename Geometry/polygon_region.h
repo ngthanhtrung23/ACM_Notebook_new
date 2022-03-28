@@ -6,7 +6,9 @@
 // PolygonRegion a(n);
 // for (auto p : diagonals) a.addEdge(p.first - 1, p.second - 1);
 // a.init();
-// Tested: http://codeforces.com/contest/776/problem/F
+// Tested:
+// - http://codeforces.com/contest/776/problem/F
+// - https://oj.vnoi.info/problem/icpc21_regional_c
 const int MN = 300111;
 vector<int> ke[MN];  // 0-based index
 struct PolygonRegion {  // everything is 0-based index
