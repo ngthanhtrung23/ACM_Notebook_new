@@ -71,8 +71,8 @@ data:
   timestamp: '2022-02-06 13:33:55+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - DataStructure/test/aizu_grl_5_c_lca.test.cpp
   - DataStructure/test/lca.test.cpp
+  - DataStructure/test/aizu_grl_5_c_lca.test.cpp
 documentation_of: DataStructure/LCA.h
 layout: document
 redirect_from:
