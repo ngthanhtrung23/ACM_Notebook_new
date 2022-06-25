@@ -170,5 +170,5 @@ struct SumSegTreeOp {
 };
 
 // Example
-// SegTree<int, MaxSegTreeOp::f, MaxSegTreeOp::e> seg_tree(a);
-// SegTree<int, MinSegTreeOp::f, MinSegTreeOp::e> seg_tree(a);
+// SegTree<int, MaxSegTreeOp::op, MaxSegTreeOp::e> seg_tree(a);
+// SegTree<int, MinSegTreeOp::op, MinSegTreeOp::e> seg_tree(a);
