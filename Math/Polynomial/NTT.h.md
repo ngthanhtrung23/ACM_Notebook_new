@@ -140,9 +140,9 @@ data:
   timestamp: '2022-01-06 05:06:40+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Math/tests/ntt_any_mod_2.test.cpp
-  - Math/tests/ntt.test.cpp
   - Math/tests/ntt_any_mod.test.cpp
+  - Math/tests/ntt.test.cpp
+  - Math/tests/ntt_any_mod_2.test.cpp
 documentation_of: Math/Polynomial/NTT.h
 layout: document
 redirect_from:

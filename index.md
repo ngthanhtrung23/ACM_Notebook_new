@@ -35,6 +35,9 @@ data:
     - icon: ':warning:'
       path: DataStructure/DSU_partially_persistent.h
       title: DataStructure/DSU_partially_persistent.h
+    - icon: ':warning:'
+      path: DataStructure/DSU_partially_persistent_with_color.h
+      title: DataStructure/DSU_partially_persistent_with_color.h
     - icon: ':heavy_check_mark:'
       path: DataStructure/DSU_persistent.h
       title: DataStructure/DSU_persistent.h

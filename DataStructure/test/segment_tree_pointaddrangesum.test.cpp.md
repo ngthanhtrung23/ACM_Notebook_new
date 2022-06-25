@@ -81,8 +81,8 @@ data:
     \ int e() {\n        return INT_MAX;\n    }\n};\n\nstruct SumSegTreeOp {\n   \
     \ static long long op(long long x, long long y) {\n        return x + y;\n   \
     \ }\n    static long long e() {\n        return 0;\n    }\n};\n\n// Example\n\
-    // SegTree<int, MaxSegTreeOp::f, MaxSegTreeOp::e> seg_tree(a);\n// SegTree<int,\
-    \ MinSegTreeOp::f, MinSegTreeOp::e> seg_tree(a);\n#line 2 \"buffered_reader.h\"\
+    // SegTree<int, MaxSegTreeOp::op, MaxSegTreeOp::e> seg_tree(a);\n// SegTree<int,\
+    \ MinSegTreeOp::op, MinSegTreeOp::e> seg_tree(a);\n#line 2 \"buffered_reader.h\"\
     \nnamespace IO {\n    const int BUFSIZE = 1<<14;\n    char buf[BUFSIZE + 1], *inp\
     \ = buf;\n\n    bool reacheof;\n    char get_char() {\n        if (!*inp && !reacheof)\
     \ {\n            memset(buf, 0, sizeof buf);\n            int tmp = fread(buf,\
@@ -119,7 +119,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/segment_tree_pointaddrangesum.test.cpp
   requiredBy: []
-  timestamp: '2022-01-12 13:12:33+08:00'
+  timestamp: '2022-06-25 23:45:44+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/segment_tree_pointaddrangesum.test.cpp

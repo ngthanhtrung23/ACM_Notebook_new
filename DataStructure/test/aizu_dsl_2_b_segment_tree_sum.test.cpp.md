@@ -106,8 +106,8 @@ data:
     \ int e() {\n        return INT_MAX;\n    }\n};\n\nstruct SumSegTreeOp {\n   \
     \ static long long op(long long x, long long y) {\n        return x + y;\n   \
     \ }\n    static long long e() {\n        return 0;\n    }\n};\n\n// Example\n\
-    // SegTree<int, MaxSegTreeOp::f, MaxSegTreeOp::e> seg_tree(a);\n// SegTree<int,\
-    \ MinSegTreeOp::f, MinSegTreeOp::e> seg_tree(a);\n#line 5 \"DataStructure/test/aizu_dsl_2_b_segment_tree_sum.test.cpp\"\
+    // SegTree<int, MaxSegTreeOp::op, MaxSegTreeOp::e> seg_tree(a);\n// SegTree<int,\
+    \ MinSegTreeOp::op, MinSegTreeOp::e> seg_tree(a);\n#line 5 \"DataStructure/test/aizu_dsl_2_b_segment_tree_sum.test.cpp\"\
     \n\nvoid solve() {\n    int n, q; cin >> n >> q;\n    SegTree<long long, SumSegTreeOp::op,\
     \ SumSegTreeOp::e> st(n);\n    while (q--) {\n        int typ; cin >> typ;\n \
     \       if (typ == 0) {\n            int pos, val; cin >> pos >> val;\n      \
@@ -128,7 +128,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/aizu_dsl_2_b_segment_tree_sum.test.cpp
   requiredBy: []
-  timestamp: '2022-01-13 13:16:22+08:00'
+  timestamp: '2022-06-25 23:45:44+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/aizu_dsl_2_b_segment_tree_sum.test.cpp

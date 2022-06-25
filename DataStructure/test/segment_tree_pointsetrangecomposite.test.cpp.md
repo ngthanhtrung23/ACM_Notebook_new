@@ -84,8 +84,8 @@ data:
     \ int e() {\n        return INT_MAX;\n    }\n};\n\nstruct SumSegTreeOp {\n   \
     \ static long long op(long long x, long long y) {\n        return x + y;\n   \
     \ }\n    static long long e() {\n        return 0;\n    }\n};\n\n// Example\n\
-    // SegTree<int, MaxSegTreeOp::f, MaxSegTreeOp::e> seg_tree(a);\n// SegTree<int,\
-    \ MinSegTreeOp::f, MinSegTreeOp::e> seg_tree(a);\n#line 1 \"Math/modulo_anta.h\"\
+    // SegTree<int, MaxSegTreeOp::op, MaxSegTreeOp::e> seg_tree(a);\n// SegTree<int,\
+    \ MinSegTreeOp::op, MinSegTreeOp::e> seg_tree(a);\n#line 1 \"Math/modulo_anta.h\"\
     \n// Modified from anta's code\n// Not tested with MOD > 10^9 + 7.\n// Slow?\n\
     //\n// Tested:\n// - https://codeforces.com/gym/101383 - F (MOD = 1e9+7, +, *)\n\
     \n// ??? somehow this is 2.5x slower on https://judge.yosupo.jp/problem/matrix_product\n\
@@ -178,7 +178,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
   requiredBy: []
-  timestamp: '2022-01-12 13:12:33+08:00'
+  timestamp: '2022-06-25 23:45:44+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp

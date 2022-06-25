@@ -110,8 +110,8 @@ data:
     \ int e() {\n        return INT_MAX;\n    }\n};\n\nstruct SumSegTreeOp {\n   \
     \ static long long op(long long x, long long y) {\n        return x + y;\n   \
     \ }\n    static long long e() {\n        return 0;\n    }\n};\n\n// Example\n\
-    // SegTree<int, MaxSegTreeOp::f, MaxSegTreeOp::e> seg_tree(a);\n// SegTree<int,\
-    \ MinSegTreeOp::f, MinSegTreeOp::e> seg_tree(a);\n"
+    // SegTree<int, MaxSegTreeOp::op, MaxSegTreeOp::e> seg_tree(a);\n// SegTree<int,\
+    \ MinSegTreeOp::op, MinSegTreeOp::e> seg_tree(a);\n"
   code: "// SegTree, copied from AtCoder library\n// AtCoder doc: https://atcoder.github.io/ac-library/master/document_en/segtree.html\n\
     //\n// Notes:\n// - Index of elements from 0 -> n-1\n// - Range queries are [l,\
     \ r-1]\n//\n// Tested:\n// - (binary search) https://atcoder.jp/contests/practice2/tasks/practice2_j\n\
@@ -173,25 +173,25 @@ data:
     \ int e() {\n        return INT_MAX;\n    }\n};\n\nstruct SumSegTreeOp {\n   \
     \ static long long op(long long x, long long y) {\n        return x + y;\n   \
     \ }\n    static long long e() {\n        return 0;\n    }\n};\n\n// Example\n\
-    // SegTree<int, MaxSegTreeOp::f, MaxSegTreeOp::e> seg_tree(a);\n// SegTree<int,\
-    \ MinSegTreeOp::f, MinSegTreeOp::e> seg_tree(a);\n"
+    // SegTree<int, MaxSegTreeOp::op, MaxSegTreeOp::e> seg_tree(a);\n// SegTree<int,\
+    \ MinSegTreeOp::op, MinSegTreeOp::e> seg_tree(a);\n"
   dependsOn: []
   isVerificationFile: false
   path: DataStructure/SegTree.h
   requiredBy:
   - DataStructure/SegTree2D.h
-  timestamp: '2022-01-05 23:36:58+08:00'
+  timestamp: '2022-06-25 23:45:44+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/hld_vertexsetpathcomposite.test.cpp
-  - DataStructure/test/segment_tree_2d_pointaddrectsum.test.cpp
-  - DataStructure/test/aizu_dsl_2_a_segment_tree_rmq_update.test.cpp
-  - DataStructure/test/aizu_dsl_2_b_segment_tree_sum.test.cpp
-  - DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
-  - DataStructure/test/segment_tree_staticrmq.test.cpp
-  - DataStructure/test/aizu_grl_5_d_hld_edge.test.cpp
-  - DataStructure/test/segment_tree_pointaddrangesum.test.cpp
   - DataStructure/test/hld_vertexaddsubtreesum.test.cpp
+  - DataStructure/test/aizu_dsl_2_a_segment_tree_rmq_update.test.cpp
+  - DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
+  - DataStructure/test/aizu_grl_5_d_hld_edge.test.cpp
+  - DataStructure/test/aizu_dsl_2_b_segment_tree_sum.test.cpp
+  - DataStructure/test/segment_tree_pointaddrangesum.test.cpp
+  - DataStructure/test/segment_tree_2d_pointaddrectsum.test.cpp
+  - DataStructure/test/segment_tree_staticrmq.test.cpp
   - DataStructure/test/hld_vertexaddpathsum.test.cpp
 documentation_of: DataStructure/SegTree.h
 layout: document

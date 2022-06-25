@@ -73,8 +73,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Graph/tests/aizu_grl_3_b_bridge.test.cpp
-  - Graph/tests/aizu_grl_3_a_articulation_points.test.cpp
   - Graph/tests/bridge_biconnected.test.cpp
+  - Graph/tests/aizu_grl_3_a_articulation_points.test.cpp
 documentation_of: Graph/DfsTree/BridgeArticulation.h
 layout: document
 redirect_from:

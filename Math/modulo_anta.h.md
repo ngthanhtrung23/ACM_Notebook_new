@@ -1,7 +1,10 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: String/hash.h
+    title: String/hash.h
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/hld_vertexsetpathcomposite.test.cpp
@@ -110,16 +113,17 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: Math/modulo_anta.h
-  requiredBy: []
+  requiredBy:
+  - String/hash.h
   timestamp: '2022-01-11 20:18:36+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Math/tests/berlekamp_massey.test.cpp
   - Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp
+  - Math/tests/berlekamp_massey.test.cpp
   - DataStructure/test/hld_vertexsetpathcomposite.test.cpp
-  - DataStructure/test/splay_tree.test.cpp
   - DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp
   - DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
+  - DataStructure/test/splay_tree.test.cpp
   - DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
 documentation_of: Math/modulo_anta.h
 layout: document

@@ -109,8 +109,8 @@ data:
     \ int e() {\n        return INT_MAX;\n    }\n};\n\nstruct SumSegTreeOp {\n   \
     \ static long long op(long long x, long long y) {\n        return x + y;\n   \
     \ }\n    static long long e() {\n        return 0;\n    }\n};\n\n// Example\n\
-    // SegTree<int, MaxSegTreeOp::f, MaxSegTreeOp::e> seg_tree(a);\n// SegTree<int,\
-    \ MinSegTreeOp::f, MinSegTreeOp::e> seg_tree(a);\n#line 1 \"DataStructure/HeavyLight_adamant.h\"\
+    // SegTree<int, MaxSegTreeOp::op, MaxSegTreeOp::e> seg_tree(a);\n// SegTree<int,\
+    \ MinSegTreeOp::op, MinSegTreeOp::e> seg_tree(a);\n#line 1 \"DataStructure/HeavyLight_adamant.h\"\
     \n// HeavyLight\n// Index from 0\n// Best used with SegTree.h\n//\n// Usage:\n\
     // HLD hld(g, root);\n// // build segment tree. Note that we must use hld.order[i]\n\
     // vector<T> nodes;\n// for (int i = 0; i < n; i++)\n//   nodes.push_back(initial_value[hld.order[i]])\n\
@@ -232,7 +232,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/aizu_grl_5_d_hld_edge.test.cpp
   requiredBy: []
-  timestamp: '2022-01-13 13:16:22+08:00'
+  timestamp: '2022-06-25 23:45:44+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/aizu_grl_5_d_hld_edge.test.cpp
