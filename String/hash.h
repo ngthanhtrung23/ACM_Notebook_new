@@ -57,6 +57,10 @@ struct HashGenerator {
         return res;
     }
 
+    Hash getHash(const std::vector<Hash>& h, int l, int r) {
+        return __getHash(h, l, r) * p[p.size() - 1 - l];
+    }
+
     // compare [l1, r1] vs [l2, r2]
     bool equals(
             const std::vector<Hash>& h1, int l1, int r1,
@@ -64,7 +68,7 @@ struct HashGenerator {
         assert(0 <= l1 && l1 <= r1 && r1 < (int) h1.size());
         assert(0 <= l2 && l2 <= r2 && r2 < (int) h2.size());
 
-        return __getHash(h1, l1, r1) * p[l2] == __getHash(h2, l2, r2) * p[l1];
+        return getHash(h1, l1, r1) == getHash(h2, l2, r2);
     }
 
     // Returns length of max common prefix of h1[l1, r1] and h2[l2, r2]
