@@ -49,8 +49,10 @@ data:
     \  solve();\n    return 0;\n}\n#line 1 \"String/hash.h\"\n// Usage:\n// HashGenerator\
     \ g(MAX_LENGTH)\n//\n// auto h = g.hash(s)\n// g.equals(s, h, l1, r1, s, h, l2,\
     \ r2)\n// g.cmp(s, h, l1, r1, s, h, l2, r2)\n//\n// Tested:\n// - https://oj.vnoi.info/problem/substr\n\
-    \n#line 1 \"Math/modulo_anta.h\"\n// Modified from anta's code\n// Not tested\
-    \ with MOD > 10^9 + 7.\n// Slow?\n//\n// Tested:\n// - https://codeforces.com/gym/101383\
+    // - https://oj.vnoi.info/problem/paliny  - max palin / binary search\n// - https://oj.vnoi.info/problem/dtksub\
+    \  - hash<Hash> for unordered_map\n// - https://oj.vnoi.info/problem/vostr   -\
+    \ cmp\n\n#line 1 \"Math/modulo_anta.h\"\n// Modified from anta's code\n// Not\
+    \ tested with MOD > 10^9 + 7.\n// Slow?\n//\n// Tested:\n// - https://codeforces.com/gym/101383\
     \ - F (MOD = 1e9+7, +, *)\n\n// ??? somehow this is 2.5x slower on https://judge.yosupo.jp/problem/matrix_product\n\
     inline void fasterLLDivMod(unsigned long long x, unsigned y, unsigned &out_d,\
     \ unsigned &out_m) {\n    unsigned xh = (unsigned)(x >> 32), xl = (unsigned)x,\
@@ -86,28 +88,31 @@ data:
     /* Example:\nconst int MOD = 1e9 + 7;\nusing modular = ModInt<MOD>;\n\nstd::ostream&\
     \ operator << (std::ostream& cout, const modular& m) {\n    cout << m.x;\n   \
     \ return cout;\n}\nstd::istream& operator >> (std::istream& cin, modular& m) {\n\
-    \    cin >> m.x;\n    return cin;\n}\n*/\n#line 12 \"String/hash.h\"\nconst int\
+    \    cin >> m.x;\n    return cin;\n}\n*/\n#line 15 \"String/hash.h\"\nconst int\
     \ MOD = 1e9 + 7;\nusing modular = ModInt<MOD>;\n\nstruct Hash {\n    long long\
     \ x;\n    modular y;\n\n    Hash operator + (const Hash& a) const { return Hash{x\
     \ + a.x, y + a.y}; }\n    Hash operator - (const Hash& a) const { return Hash{x\
     \ - a.x, y - a.y}; }\n    Hash operator * (const Hash& a) const { return Hash{x\
     \ * a.x, y * a.y}; }\n    Hash operator * (int k) const { return Hash{x*k, y*k};\
     \ }\n};\nbool operator == (const Hash& a, const Hash& b) {\n    return a.x ==\
-    \ b.x && a.y == b.y;\n}\n\nstruct HashGenerator {\n    HashGenerator(int maxLen,\
-    \ int base = 311) {\n        p.resize(maxLen + 1);\n        p[0] = {1, 1};\n \
-    \       for (int i = 1; i <= maxLen; i++) {\n            p[i] = p[i-1] * base;\n\
-    \        }\n    }\n\n    std::vector<Hash> hash(const std::string& s) {\n    \
-    \    std::vector<Hash> res(s.size());\n        for (size_t i = 0; i < s.size();\
-    \ i++) {\n            res[i] = p[i] * (int) s[i];\n        }\n        std::partial_sum(res.begin(),\
-    \ res.end(), res.begin());\n        return res;\n    }\n\n    // compare [l1,\
-    \ r1] vs [l2, r2]\n    bool equals(\n            const std::vector<Hash>& h1,\
-    \ int l1, int r1,\n            const std::vector<Hash>& h2, int l2, int r2) {\n\
-    \        assert(0 <= l1 && l1 <= r1 && r1 < (int) h1.size());\n        assert(0\
-    \ <= l2 && l2 <= r2 && r2 < (int) h2.size());\n\n        return __getHash(h1,\
-    \ l1, r1) * p[l2] == __getHash(h2, l2, r2) * p[l1];\n    }\n\n    // Returns length\
-    \ of max common prefix of h1[l1, r1] and h2[l2, r2]\n    // length = 0 -> first\
-    \ character of 2 substrings are different.\n    int maxCommonPrefix(\n       \
-    \     const std::vector<Hash>& h1, int l1, int r1,\n            const std::vector<Hash>&\
+    \ b.x && a.y == b.y;\n}\n\n// hash function for std::unordered_map\nnamespace\
+    \ std {\n    template<>\n    struct hash<Hash> {\n        public:\n          \
+    \  size_t operator() (const Hash& h) const {\n                return h.x * 1000000009\
+    \ + h.y.x;\n            }\n    };\n}\n\nstruct HashGenerator {\n    HashGenerator(int\
+    \ maxLen, int base = 311) {\n        p.resize(maxLen + 1);\n        p[0] = {1,\
+    \ 1};\n        for (int i = 1; i <= maxLen; i++) {\n            p[i] = p[i-1]\
+    \ * base;\n        }\n    }\n\n    std::vector<Hash> hash(const std::string& s)\
+    \ {\n        std::vector<Hash> res(s.size());\n        for (size_t i = 0; i <\
+    \ s.size(); i++) {\n            res[i] = p[i] * (int) s[i];\n        }\n     \
+    \   std::partial_sum(res.begin(), res.end(), res.begin());\n        return res;\n\
+    \    }\n\n    // compare [l1, r1] vs [l2, r2]\n    bool equals(\n            const\
+    \ std::vector<Hash>& h1, int l1, int r1,\n            const std::vector<Hash>&\
+    \ h2, int l2, int r2) {\n        assert(0 <= l1 && l1 <= r1 && r1 < (int) h1.size());\n\
+    \        assert(0 <= l2 && l2 <= r2 && r2 < (int) h2.size());\n\n        return\
+    \ __getHash(h1, l1, r1) * p[l2] == __getHash(h2, l2, r2) * p[l1];\n    }\n\n \
+    \   // Returns length of max common prefix of h1[l1, r1] and h2[l2, r2]\n    //\
+    \ length = 0 -> first character of 2 substrings are different.\n    int maxCommonPrefix(\n\
+    \            const std::vector<Hash>& h1, int l1, int r1,\n            const std::vector<Hash>&\
     \ h2, int l2, int r2) {\n        assert(0 <= l1 && l1 <= r1 && r1 < (int) h1.size());\n\
     \        assert(0 <= l2 && l2 <= r2 && r2 < (int) h2.size());\n\n        int len1\
     \ = r1 - l1 + 1;\n        int len2 = r2 - l2 + 1;\n\n        int res = -1, left\
@@ -157,7 +162,7 @@ data:
   isVerificationFile: true
   path: String/tests/yukicoder_1408_string_hash_lcp.test.cpp
   requiredBy: []
-  timestamp: '2022-06-26 17:55:33+08:00'
+  timestamp: '2022-06-26 18:18:31+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: String/tests/yukicoder_1408_string_hash_lcp.test.cpp
