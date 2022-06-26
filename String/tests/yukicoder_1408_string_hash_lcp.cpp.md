@@ -4,23 +4,49 @@ data:
   - icon: ':heavy_check_mark:'
     path: Math/modulo_anta.h
     title: Math/modulo_anta.h
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: String/tests/yukicoder_1408_string_hash_lcp.cpp
-    title: String/tests/yukicoder_1408_string_hash_lcp.cpp
-  _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: String/tests/aizu_alds_14_b_string_hash.test.cpp
-    title: String/tests/aizu_alds_14_b_string_hash.test.cpp
+    path: String/hash.h
+    title: String/hash.h
+  - icon: ':heavy_check_mark:'
+    path: template.h
+    title: template.h
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _pathExtension: cpp
+  _verificationStatusIcon: ':warning:'
   attributes:
     links:
-    - https://oj.vnoi.info/problem/substr
-  bundledCode: "#line 1 \"String/hash.h\"\n// Usage:\n// HashGenerator g(MAX_LENGTH)\n\
-    //\n// auto h = g.hash(s)\n// g.equals(s, h, l1, r1, s, h, l2, r2)\n// g.cmp(s,\
-    \ h, l1, r1, s, h, l2, r2)\n//\n// Tested:\n// - https://oj.vnoi.info/problem/substr\n\
+    - https://yukicoder.me/problems/1408
+  bundledCode: "#line 1 \"String/tests/yukicoder_1408_string_hash_lcp.cpp\"\n#define\
+    \ PROBLEM \"https://yukicoder.me/problems/1408\"\n\n#line 1 \"template.h\"\n#include\
+    \ <bits/stdc++.h>\nusing namespace std;\n\n#define FOR(i,a,b) for(int i=(a),_b=(b);\
+    \ i<=_b; i++)\n#define FORD(i,a,b) for(int i=(a),_b=(b); i>=_b; i--)\n#define\
+    \ REP(i,a) for(int i=0,_a=(a); i<_a; i++)\n#define EACH(it,a) for(__typeof(a.begin())\
+    \ it = a.begin(); it != a.end(); ++it)\n\n#define DEBUG(x) { cout << #x << \"\
+    \ = \"; cout << (x) << endl; }\n#define PR(a,n) { cout << #a << \" = \"; FOR(_,1,n)\
+    \ cout << a[_] << ' '; cout << endl; }\n#define PR0(a,n) { cout << #a << \" =\
+    \ \"; REP(_,n) cout << a[_] << ' '; cout << endl; }\n\n#define sqr(x) ((x) * (x))\n\
+    \n// For printing pair, container, etc.\n// Copied from https://quangloc99.github.io/2021/07/30/my-CP-debugging-template.html\n\
+    template<class U, class V> ostream& operator << (ostream& out, const pair<U, V>&\
+    \ p) {\n    return out << '(' << p.first << \", \" << p.second << ')';\n}\n\n\
+    template<class Con, class = decltype(begin(declval<Con>()))>\ntypename enable_if<!is_same<Con,\
+    \ string>::value, ostream&>::type\noperator << (ostream& out, const Con& con)\
+    \ {\n    out << '{';\n    for (auto beg = con.begin(), it = beg; it != con.end();\
+    \ it++) {\n        out << (it == beg ? \"\" : \", \") << *it;\n    }\n    return\
+    \ out << '}';\n}\ntemplate<size_t i, class T> ostream& print_tuple_utils(ostream&\
+    \ out, const T& tup) {\n    if constexpr(i == tuple_size<T>::value) return out\
+    \ << \")\"; \n    else return print_tuple_utils<i + 1, T>(out << (i ? \", \" :\
+    \ \"(\") << get<i>(tup), tup); \n}\ntemplate<class ...U> ostream& operator <<\
+    \ (ostream& out, const tuple<U...>& t) {\n    return print_tuple_utils<0, tuple<U...>>(out,\
+    \ t);\n}\n\nmt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());\n\
+    long long get_rand(long long r) {\n    return uniform_int_distribution<long long>\
+    \ (0, r-1)(rng);\n}\n\ntemplate<typename T>\nvector<T> read_vector(int n) {\n\
+    \    vector<T> res(n);\n    for (int& x : res) cin >> x;\n    return res;\n}\n\
+    \nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n  \
+    \  solve();\n    return 0;\n}\n#line 1 \"String/hash.h\"\n// Usage:\n// HashGenerator\
+    \ g(MAX_LENGTH)\n//\n// auto h = g.hash(s)\n// g.equals(s, h, l1, r1, s, h, l2,\
+    \ r2)\n// g.cmp(s, h, l1, r1, s, h, l2, r2)\n//\n// Tested:\n// - https://oj.vnoi.info/problem/substr\n\
     \n#line 1 \"Math/modulo_anta.h\"\n// Modified from anta's code\n// Not tested\
     \ with MOD > 10^9 + 7.\n// Slow?\n//\n// Tested:\n// - https://codeforces.com/gym/101383\
     \ - F (MOD = 1e9+7, +, *)\n\n// ??? somehow this is 2.5x slower on https://judge.yosupo.jp/problem/matrix_product\n\
@@ -102,68 +128,40 @@ data:
     \ < c2) ? -1 : 1);\n    }\n\nprivate:\n    std::vector<Hash> p;\n\n    // DO NOT\
     \ USE, this doesn't divide by p[l]\n    Hash __getHash(const std::vector<Hash>&\
     \ h, int l, int r) {\n        assert(0 <= l && l <= r && r < (int) h.size());\n\
-    \        return h[r] - (l == 0 ? Hash{0, 0} : h[l-1]);\n    }\n};\n"
-  code: "// Usage:\n// HashGenerator g(MAX_LENGTH)\n//\n// auto h = g.hash(s)\n//\
-    \ g.equals(s, h, l1, r1, s, h, l2, r2)\n// g.cmp(s, h, l1, r1, s, h, l2, r2)\n\
-    //\n// Tested:\n// - https://oj.vnoi.info/problem/substr\n\n#include \"../Math/modulo_anta.h\"\
-    \nconst int MOD = 1e9 + 7;\nusing modular = ModInt<MOD>;\n\nstruct Hash {\n  \
-    \  long long x;\n    modular y;\n\n    Hash operator + (const Hash& a) const {\
-    \ return Hash{x + a.x, y + a.y}; }\n    Hash operator - (const Hash& a) const\
-    \ { return Hash{x - a.x, y - a.y}; }\n    Hash operator * (const Hash& a) const\
-    \ { return Hash{x * a.x, y * a.y}; }\n    Hash operator * (int k) const { return\
-    \ Hash{x*k, y*k}; }\n};\nbool operator == (const Hash& a, const Hash& b) {\n \
-    \   return a.x == b.x && a.y == b.y;\n}\n\nstruct HashGenerator {\n    HashGenerator(int\
-    \ maxLen, int base = 311) {\n        p.resize(maxLen + 1);\n        p[0] = {1,\
-    \ 1};\n        for (int i = 1; i <= maxLen; i++) {\n            p[i] = p[i-1]\
-    \ * base;\n        }\n    }\n\n    std::vector<Hash> hash(const std::string& s)\
-    \ {\n        std::vector<Hash> res(s.size());\n        for (size_t i = 0; i <\
-    \ s.size(); i++) {\n            res[i] = p[i] * (int) s[i];\n        }\n     \
-    \   std::partial_sum(res.begin(), res.end(), res.begin());\n        return res;\n\
-    \    }\n\n    // compare [l1, r1] vs [l2, r2]\n    bool equals(\n            const\
-    \ std::vector<Hash>& h1, int l1, int r1,\n            const std::vector<Hash>&\
-    \ h2, int l2, int r2) {\n        assert(0 <= l1 && l1 <= r1 && r1 < (int) h1.size());\n\
-    \        assert(0 <= l2 && l2 <= r2 && r2 < (int) h2.size());\n\n        return\
-    \ __getHash(h1, l1, r1) * p[l2] == __getHash(h2, l2, r2) * p[l1];\n    }\n\n \
-    \   // Returns length of max common prefix of h1[l1, r1] and h2[l2, r2]\n    //\
-    \ length = 0 -> first character of 2 substrings are different.\n    int maxCommonPrefix(\n\
-    \            const std::vector<Hash>& h1, int l1, int r1,\n            const std::vector<Hash>&\
-    \ h2, int l2, int r2) {\n        assert(0 <= l1 && l1 <= r1 && r1 < (int) h1.size());\n\
-    \        assert(0 <= l2 && l2 <= r2 && r2 < (int) h2.size());\n\n        int len1\
-    \ = r1 - l1 + 1;\n        int len2 = r2 - l2 + 1;\n\n        int res = -1, left\
-    \ = 0, right = std::min(len1, len2) - 1;\n        while (left <= right) {\n  \
-    \          int mid = (left + right) / 2;\n            if (equals(h1, l1, l1 +\
-    \ mid, h2, l2, l2 + mid)) {\n                res = mid;\n                left\
-    \ = mid + 1;\n            } else {\n                right = mid - 1;\n       \
-    \     }\n        }\n        return res + 1;\n        /* C++20\n        auto r\
-    \ = std::views::iota(0, std::min(len1, len2));\n        auto res = std::ranges::partition_point(\n\
-    \                r,\n                [&] (int mid) {\n                    return\
-    \ equals(h1, l1, l1+mid, h2, l2, l2+mid);\n                });\n        return\
-    \ *res;\n         */\n    }\n\n    // compare s1[l1, r1] and s2[l2, r2]\n    int\
-    \ cmp(\n            const std::string& s1, const std::vector<Hash>& h1, int l1,\
-    \ int r1,\n            const std::string& s2, const std::vector<Hash>& h2, int\
-    \ l2, int r2) {\n        assert(0 <= l1 && l1 <= r1 && r1 < (int) h1.size());\n\
-    \        assert(0 <= l2 && l2 <= r2 && r2 < (int) h2.size());\n\n        int commonPrefixLen\
-    \ = maxCommonPrefix(h1, l1, r1, h2, l2, r2);\n        char c1 = (l1 + commonPrefixLen\
-    \ <= r1) ? s1[l1 + commonPrefixLen] : 0;\n        char c2 = (l2 + commonPrefixLen\
-    \ <= r2) ? s2[l2 + commonPrefixLen] : 0;\n\n        return (c1 == c2) ? 0 : ((c1\
-    \ < c2) ? -1 : 1);\n    }\n\nprivate:\n    std::vector<Hash> p;\n\n    // DO NOT\
-    \ USE, this doesn't divide by p[l]\n    Hash __getHash(const std::vector<Hash>&\
-    \ h, int l, int r) {\n        assert(0 <= l && l <= r && r < (int) h.size());\n\
-    \        return h[r] - (l == 0 ? Hash{0, 0} : h[l-1]);\n    }\n};\n"
+    \        return h[r] - (l == 0 ? Hash{0, 0} : h[l-1]);\n    }\n};\n#line 5 \"\
+    String/tests/yukicoder_1408_string_hash_lcp.cpp\"\n#define SZ(x) ((int)(x).size())\n\
+    \nHashGenerator g(1000111);\nvoid solve() {\n    int n; std::cin >> n;\n\n   \
+    \ std::vector<std::vector<Hash>> hs;\n    for (int i = 0; i < n; i++) {\n    \
+    \    std::string s; std::cin >> s;\n\n        hs.push_back(g.hash(s));\n    }\n\
+    \n    int m;\n    long long x, d, res = 0;\n    std::cin >> m >> x >> d;\n\n \
+    \   while (m--) {\n        int i = x / (n - 1);\n        int j = x % (n - 1);\n\
+    \        if (i <= j) ++j;\n        x = (x + d) % (n * (n-1LL));\n\n        res\
+    \ += g.maxCommonPrefix(\n                hs[i], 0, SZ(hs[i]) - 1,\n          \
+    \      hs[j], 0, SZ(hs[j]) - 1);\n    }\n    std::cout << res << '\\n';\n}\n"
+  code: "#define PROBLEM \"https://yukicoder.me/problems/1408\"\n\n#include \"../../template.h\"\
+    \n#include \"../hash.h\"\n#define SZ(x) ((int)(x).size())\n\nHashGenerator g(1000111);\n\
+    void solve() {\n    int n; std::cin >> n;\n\n    std::vector<std::vector<Hash>>\
+    \ hs;\n    for (int i = 0; i < n; i++) {\n        std::string s; std::cin >> s;\n\
+    \n        hs.push_back(g.hash(s));\n    }\n\n    int m;\n    long long x, d, res\
+    \ = 0;\n    std::cin >> m >> x >> d;\n\n    while (m--) {\n        int i = x /\
+    \ (n - 1);\n        int j = x % (n - 1);\n        if (i <= j) ++j;\n        x\
+    \ = (x + d) % (n * (n-1LL));\n\n        res += g.maxCommonPrefix(\n          \
+    \      hs[i], 0, SZ(hs[i]) - 1,\n                hs[j], 0, SZ(hs[j]) - 1);\n \
+    \   }\n    std::cout << res << '\\n';\n}\n"
   dependsOn:
+  - template.h
+  - String/hash.h
   - Math/modulo_anta.h
   isVerificationFile: false
-  path: String/hash.h
-  requiredBy:
-  - String/tests/yukicoder_1408_string_hash_lcp.cpp
+  path: String/tests/yukicoder_1408_string_hash_lcp.cpp
+  requiredBy: []
   timestamp: '2022-06-26 17:48:33+08:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - String/tests/aizu_alds_14_b_string_hash.test.cpp
-documentation_of: String/hash.h
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
+documentation_of: String/tests/yukicoder_1408_string_hash_lcp.cpp
 layout: document
 redirect_from:
-- /library/String/hash.h
-- /library/String/hash.h.html
-title: String/hash.h
+- /library/String/tests/yukicoder_1408_string_hash_lcp.cpp
+- /library/String/tests/yukicoder_1408_string_hash_lcp.cpp.html
+title: String/tests/yukicoder_1408_string_hash_lcp.cpp
 ---

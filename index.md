@@ -456,7 +456,7 @@ data:
     - icon: ':warning:'
       path: String/eertree.cpp
       title: String/eertree.cpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: String/hash.h
       title: String/hash.h
     - icon: ':warning:'
@@ -483,6 +483,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: String/zfunc.h
       title: String/zfunc.h
+  - name: String/tests
+    pages:
+    - icon: ':warning:'
+      path: String/tests/yukicoder_1408_string_hash_lcp.cpp
+      title: String/tests/yukicoder_1408_string_hash_lcp.cpp
   - name: .
     pages:
     - icon: ':heavy_check_mark:'
@@ -893,6 +898,9 @@ data:
       title: Misc/tests/aizu_dpl_3_c_largest_histogram.test.cpp
   - name: String/tests
     pages:
+    - icon: ':heavy_check_mark:'
+      path: String/tests/aizu_alds_14_b_string_hash.test.cpp
+      title: String/tests/aizu_alds_14_b_string_hash.test.cpp
     - icon: ':heavy_check_mark:'
       path: String/tests/lcp.test.cpp
       title: String/tests/lcp.test.cpp
