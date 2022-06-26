@@ -5,9 +5,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: String/hash.h
     title: String/hash.h
-  - icon: ':warning:'
-    path: String/tests/yukicoder_1408_string_hash_lcp.cpp
-    title: String/tests/yukicoder_1408_string_hash_lcp.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/hld_vertexsetpathcomposite.test.cpp
@@ -33,6 +30,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: String/tests/aizu_alds_14_b_string_hash.test.cpp
     title: String/tests/aizu_alds_14_b_string_hash.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: String/tests/yukicoder_1408_string_hash_lcp.test.cpp
+    title: String/tests/yukicoder_1408_string_hash_lcp.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -121,7 +121,6 @@ data:
   path: Math/modulo_anta.h
   requiredBy:
   - String/hash.h
-  - String/tests/yukicoder_1408_string_hash_lcp.cpp
   timestamp: '2022-01-11 20:18:36+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -133,6 +132,7 @@ data:
   - DataStructure/test/splay_tree.test.cpp
   - DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
   - String/tests/aizu_alds_14_b_string_hash.test.cpp
+  - String/tests/yukicoder_1408_string_hash_lcp.test.cpp
 documentation_of: Math/modulo_anta.h
 layout: document
 redirect_from:

@@ -483,11 +483,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: String/zfunc.h
       title: String/zfunc.h
-  - name: String/tests
-    pages:
-    - icon: ':warning:'
-      path: String/tests/yukicoder_1408_string_hash_lcp.cpp
-      title: String/tests/yukicoder_1408_string_hash_lcp.cpp
   - name: .
     pages:
     - icon: ':heavy_check_mark:'
@@ -913,6 +908,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: String/tests/suffix_array_queries.test.cpp
       title: String/tests/suffix_array_queries.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: String/tests/yukicoder_1408_string_hash_lcp.test.cpp
+      title: String/tests/yukicoder_1408_string_hash_lcp.test.cpp
     - icon: ':heavy_check_mark:'
       path: String/tests/zfunc.test.cpp
       title: String/tests/zfunc.test.cpp

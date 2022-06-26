@@ -14,15 +14,17 @@ data:
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://yukicoder.me/problems/1408
     links:
     - https://yukicoder.me/problems/1408
-  bundledCode: "#line 1 \"String/tests/yukicoder_1408_string_hash_lcp.cpp\"\n#define\
-    \ PROBLEM \"https://yukicoder.me/problems/1408\"\n\n#line 1 \"template.h\"\n#include\
-    \ <bits/stdc++.h>\nusing namespace std;\n\n#define FOR(i,a,b) for(int i=(a),_b=(b);\
-    \ i<=_b; i++)\n#define FORD(i,a,b) for(int i=(a),_b=(b); i>=_b; i--)\n#define\
-    \ REP(i,a) for(int i=0,_a=(a); i<_a; i++)\n#define EACH(it,a) for(__typeof(a.begin())\
+  bundledCode: "#line 1 \"String/tests/yukicoder_1408_string_hash_lcp.test.cpp\"\n\
+    #define PROBLEM \"https://yukicoder.me/problems/1408\"\n\n#line 1 \"template.h\"\
+    \n#include <bits/stdc++.h>\nusing namespace std;\n\n#define FOR(i,a,b) for(int\
+    \ i=(a),_b=(b); i<=_b; i++)\n#define FORD(i,a,b) for(int i=(a),_b=(b); i>=_b;\
+    \ i--)\n#define REP(i,a) for(int i=0,_a=(a); i<_a; i++)\n#define EACH(it,a) for(__typeof(a.begin())\
     \ it = a.begin(); it != a.end(); ++it)\n\n#define DEBUG(x) { cout << #x << \"\
     \ = \"; cout << (x) << endl; }\n#define PR(a,n) { cout << #a << \" = \"; FOR(_,1,n)\
     \ cout << a[_] << ' '; cout << endl; }\n#define PR0(a,n) { cout << #a << \" =\
@@ -129,7 +131,7 @@ data:
     \ USE, this doesn't divide by p[l]\n    Hash __getHash(const std::vector<Hash>&\
     \ h, int l, int r) {\n        assert(0 <= l && l <= r && r < (int) h.size());\n\
     \        return h[r] - (l == 0 ? Hash{0, 0} : h[l-1]);\n    }\n};\n#line 5 \"\
-    String/tests/yukicoder_1408_string_hash_lcp.cpp\"\n#define SZ(x) ((int)(x).size())\n\
+    String/tests/yukicoder_1408_string_hash_lcp.test.cpp\"\n#define SZ(x) ((int)(x).size())\n\
     \nHashGenerator g(1000111);\nvoid solve() {\n    int n; std::cin >> n;\n\n   \
     \ std::vector<std::vector<Hash>> hs;\n    for (int i = 0; i < n; i++) {\n    \
     \    std::string s; std::cin >> s;\n\n        hs.push_back(g.hash(s));\n    }\n\
@@ -152,16 +154,16 @@ data:
   - template.h
   - String/hash.h
   - Math/modulo_anta.h
-  isVerificationFile: false
-  path: String/tests/yukicoder_1408_string_hash_lcp.cpp
+  isVerificationFile: true
+  path: String/tests/yukicoder_1408_string_hash_lcp.test.cpp
   requiredBy: []
-  timestamp: '2022-06-26 17:48:33+08:00'
-  verificationStatus: LIBRARY_NO_TESTS
+  timestamp: '2022-06-26 17:55:33+08:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: String/tests/yukicoder_1408_string_hash_lcp.cpp
+documentation_of: String/tests/yukicoder_1408_string_hash_lcp.test.cpp
 layout: document
 redirect_from:
-- /library/String/tests/yukicoder_1408_string_hash_lcp.cpp
-- /library/String/tests/yukicoder_1408_string_hash_lcp.cpp.html
-title: String/tests/yukicoder_1408_string_hash_lcp.cpp
+- /verify/String/tests/yukicoder_1408_string_hash_lcp.test.cpp
+- /verify/String/tests/yukicoder_1408_string_hash_lcp.test.cpp.html
+title: String/tests/yukicoder_1408_string_hash_lcp.test.cpp
 ---

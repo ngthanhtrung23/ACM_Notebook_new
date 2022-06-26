@@ -4,14 +4,14 @@ data:
   - icon: ':heavy_check_mark:'
     path: Math/modulo_anta.h
     title: Math/modulo_anta.h
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: String/tests/yukicoder_1408_string_hash_lcp.cpp
-    title: String/tests/yukicoder_1408_string_hash_lcp.cpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: String/tests/aizu_alds_14_b_string_hash.test.cpp
     title: String/tests/aizu_alds_14_b_string_hash.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: String/tests/yukicoder_1408_string_hash_lcp.test.cpp
+    title: String/tests/yukicoder_1408_string_hash_lcp.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -154,12 +154,12 @@ data:
   - Math/modulo_anta.h
   isVerificationFile: false
   path: String/hash.h
-  requiredBy:
-  - String/tests/yukicoder_1408_string_hash_lcp.cpp
+  requiredBy: []
   timestamp: '2022-06-26 17:48:33+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - String/tests/aizu_alds_14_b_string_hash.test.cpp
+  - String/tests/yukicoder_1408_string_hash_lcp.test.cpp
 documentation_of: String/hash.h
 layout: document
 redirect_from:
