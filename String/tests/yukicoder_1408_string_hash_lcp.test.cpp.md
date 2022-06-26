@@ -105,24 +105,26 @@ data:
     \ {\n        std::vector<Hash> res(s.size());\n        for (size_t i = 0; i <\
     \ s.size(); i++) {\n            res[i] = p[i] * (int) s[i];\n        }\n     \
     \   std::partial_sum(res.begin(), res.end(), res.begin());\n        return res;\n\
-    \    }\n\n    // compare [l1, r1] vs [l2, r2]\n    bool equals(\n            const\
-    \ std::vector<Hash>& h1, int l1, int r1,\n            const std::vector<Hash>&\
-    \ h2, int l2, int r2) {\n        assert(0 <= l1 && l1 <= r1 && r1 < (int) h1.size());\n\
-    \        assert(0 <= l2 && l2 <= r2 && r2 < (int) h2.size());\n\n        return\
-    \ __getHash(h1, l1, r1) * p[l2] == __getHash(h2, l2, r2) * p[l1];\n    }\n\n \
-    \   // Returns length of max common prefix of h1[l1, r1] and h2[l2, r2]\n    //\
-    \ length = 0 -> first character of 2 substrings are different.\n    int maxCommonPrefix(\n\
-    \            const std::vector<Hash>& h1, int l1, int r1,\n            const std::vector<Hash>&\
-    \ h2, int l2, int r2) {\n        assert(0 <= l1 && l1 <= r1 && r1 < (int) h1.size());\n\
-    \        assert(0 <= l2 && l2 <= r2 && r2 < (int) h2.size());\n\n        int len1\
-    \ = r1 - l1 + 1;\n        int len2 = r2 - l2 + 1;\n\n        int res = -1, left\
-    \ = 0, right = std::min(len1, len2) - 1;\n        while (left <= right) {\n  \
-    \          int mid = (left + right) / 2;\n            if (equals(h1, l1, l1 +\
-    \ mid, h2, l2, l2 + mid)) {\n                res = mid;\n                left\
-    \ = mid + 1;\n            } else {\n                right = mid - 1;\n       \
-    \     }\n        }\n        return res + 1;\n        /* C++20\n        auto r\
-    \ = std::views::iota(0, std::min(len1, len2));\n        auto res = std::ranges::partition_point(\n\
-    \                r,\n                [&] (int mid) {\n                    return\
+    \    }\n\n    Hash getHash(const std::vector<Hash>& h, int l, int r) {\n     \
+    \   return __getHash(h, l, r) * p[p.size() - 1 - l];\n    }\n\n    // compare\
+    \ [l1, r1] vs [l2, r2]\n    bool equals(\n            const std::vector<Hash>&\
+    \ h1, int l1, int r1,\n            const std::vector<Hash>& h2, int l2, int r2)\
+    \ {\n        assert(0 <= l1 && l1 <= r1 && r1 < (int) h1.size());\n        assert(0\
+    \ <= l2 && l2 <= r2 && r2 < (int) h2.size());\n\n        return getHash(h1, l1,\
+    \ r1) == getHash(h2, l2, r2);\n    }\n\n    // Returns length of max common prefix\
+    \ of h1[l1, r1] and h2[l2, r2]\n    // length = 0 -> first character of 2 substrings\
+    \ are different.\n    int maxCommonPrefix(\n            const std::vector<Hash>&\
+    \ h1, int l1, int r1,\n            const std::vector<Hash>& h2, int l2, int r2)\
+    \ {\n        assert(0 <= l1 && l1 <= r1 && r1 < (int) h1.size());\n        assert(0\
+    \ <= l2 && l2 <= r2 && r2 < (int) h2.size());\n\n        int len1 = r1 - l1 +\
+    \ 1;\n        int len2 = r2 - l2 + 1;\n\n        int res = -1, left = 0, right\
+    \ = std::min(len1, len2) - 1;\n        while (left <= right) {\n            int\
+    \ mid = (left + right) / 2;\n            if (equals(h1, l1, l1 + mid, h2, l2,\
+    \ l2 + mid)) {\n                res = mid;\n                left = mid + 1;\n\
+    \            } else {\n                right = mid - 1;\n            }\n     \
+    \   }\n        return res + 1;\n        /* C++20\n        auto r = std::views::iota(0,\
+    \ std::min(len1, len2));\n        auto res = std::ranges::partition_point(\n \
+    \               r,\n                [&] (int mid) {\n                    return\
     \ equals(h1, l1, l1+mid, h2, l2, l2+mid);\n                });\n        return\
     \ *res;\n         */\n    }\n\n    // compare s1[l1, r1] and s2[l2, r2]\n    int\
     \ cmp(\n            const std::string& s1, const std::vector<Hash>& h1, int l1,\
@@ -162,7 +164,7 @@ data:
   isVerificationFile: true
   path: String/tests/yukicoder_1408_string_hash_lcp.test.cpp
   requiredBy: []
-  timestamp: '2022-06-26 18:18:31+08:00'
+  timestamp: '2022-06-26 18:53:41+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: String/tests/yukicoder_1408_string_hash_lcp.test.cpp
