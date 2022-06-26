@@ -7,6 +7,9 @@
 //
 // Tested:
 // - https://oj.vnoi.info/problem/substr
+// - https://oj.vnoi.info/problem/paliny  - max palin / binary search
+// - https://oj.vnoi.info/problem/dtksub  - hash<Hash> for unordered_map
+// - https://oj.vnoi.info/problem/vostr   - cmp
 
 #include "../Math/modulo_anta.h"
 const int MOD = 1e9 + 7;
@@ -23,6 +26,17 @@ struct Hash {
 };
 bool operator == (const Hash& a, const Hash& b) {
     return a.x == b.x && a.y == b.y;
+}
+
+// hash function for std::unordered_map
+namespace std {
+    template<>
+    struct hash<Hash> {
+        public:
+            size_t operator() (const Hash& h) const {
+                return h.x * 1000000009 + h.y.x;
+            }
+    };
 }
 
 struct HashGenerator {
