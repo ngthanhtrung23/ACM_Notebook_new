@@ -1,11 +1,12 @@
-// Not tested
-//
 // Usage:
 // HashGenerator g(MAX_LENGTH)
 //
 // auto h = g.hash(s)
 // g.equals(s, h, l1, r1, s, h, l2, r2)
 // g.cmp(s, h, l1, r1, s, h, l2, r2)
+//
+// Tested:
+// - https://oj.vnoi.info/problem/substr
 
 #include "../Math/modulo_anta.h"
 const int MOD = 1e9 + 7;
@@ -37,10 +38,8 @@ struct HashGenerator {
         std::vector<Hash> res(s.size());
         for (size_t i = 0; i < s.size(); i++) {
             res[i] = p[i] * (int) s[i];
-            if (i > 0) {
-                res[i] = res[i-1] + res[i];
-            }
         }
+        std::partial_sum(res.begin(), res.end(), res.begin());
         return res;
     }
 
@@ -75,8 +74,16 @@ struct HashGenerator {
                 right = mid - 1;
             }
         }
-
         return res + 1;
+        /* C++20
+        auto r = std::views::iota(0, std::min(len1, len2));
+        auto res = std::ranges::partition_point(
+                r,
+                [&] (int mid) {
+                    return equals(h1, l1, l1+mid, h2, l2, l2+mid);
+                });
+        return *res;
+         */
     }
 
     // compare s1[l1, r1] and s2[l2, r2]
