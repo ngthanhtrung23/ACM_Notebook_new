@@ -1,5 +1,5 @@
 // Tested:
-// - https://codeforces.com/gym/100551/submission/68858439
+// - (dynamic connectivity) https://codeforces.com/gym/100551/problem/A
 // - (used for directed MST) https://judge.yosupo.jp/problem/directedmst
 //
 // 0-based
