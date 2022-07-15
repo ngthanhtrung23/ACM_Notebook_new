@@ -20,9 +20,9 @@ data:
   bundledCode: "#line 1 \"Graph/tests/aizu_grl_2_b_directed_mst.test.cpp\"\n#define\
     \ PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_2_B\"\
     \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#line 1 \"DataStructure/DSU_rollback.h\"\
-    \n// Tested:\n// - https://codeforces.com/gym/100551/submission/68858439\n// -\
-    \ (used for directed MST) https://judge.yosupo.jp/problem/directedmst\n//\n//\
-    \ 0-based\nstruct Data {\n    int time, u, par;  // before `time`, `par` = par[u]\n\
+    \n// Tested:\n// - (dynamic connectivity) https://codeforces.com/gym/100551/problem/A\n\
+    // - (used for directed MST) https://judge.yosupo.jp/problem/directedmst\n//\n\
+    // 0-based\nstruct Data {\n    int time, u, par;  // before `time`, `par` = par[u]\n\
     };\n\nstruct DSU {\n    vector<int> par;\n    vector<Data> change;\n\n    DSU(int\
     \ n) : par(n + 5, -1) {}\n\n    // find root of x.\n    // if par[x] < 0 then\
     \ x is a root, and its tree has -par[x] nodes\n    int getRoot(int x) {\n    \
@@ -89,7 +89,7 @@ data:
   isVerificationFile: true
   path: Graph/tests/aizu_grl_2_b_directed_mst.test.cpp
   requiredBy: []
-  timestamp: '2022-01-11 21:41:41+08:00'
+  timestamp: '2022-07-15 22:40:32+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Graph/tests/aizu_grl_2_b_directed_mst.test.cpp

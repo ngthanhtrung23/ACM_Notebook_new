@@ -54,8 +54,8 @@ data:
   timestamp: '2022-01-09 02:17:25+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Misc/tests/aizu_dpl_3_c_largest_histogram.test.cpp
   - Misc/tests/aizu_dpl_3_b_largest_01_rectangle.test.cpp
+  - Misc/tests/aizu_dpl_3_c_largest_histogram.test.cpp
 documentation_of: Misc/left_nearest_smaller.h
 layout: document
 redirect_from:

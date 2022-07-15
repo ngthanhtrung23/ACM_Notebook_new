@@ -20,24 +20,24 @@ data:
   bundledCode: "#line 1 \"Graph/tests/directed_mst.test.cpp\"\n#define PROBLEM \"\
     https://judge.yosupo.jp/problem/directedmst\"\n\n#include <bits/stdc++.h>\nusing\
     \ namespace std;\n\n#line 1 \"DataStructure/DSU_rollback.h\"\n// Tested:\n// -\
-    \ https://codeforces.com/gym/100551/submission/68858439\n// - (used for directed\
-    \ MST) https://judge.yosupo.jp/problem/directedmst\n//\n// 0-based\nstruct Data\
-    \ {\n    int time, u, par;  // before `time`, `par` = par[u]\n};\n\nstruct DSU\
-    \ {\n    vector<int> par;\n    vector<Data> change;\n\n    DSU(int n) : par(n\
-    \ + 5, -1) {}\n\n    // find root of x.\n    // if par[x] < 0 then x is a root,\
-    \ and its tree has -par[x] nodes\n    int getRoot(int x) {\n        while (par[x]\
-    \ >= 0)\n            x = par[x];\n        return x;\n    }\n\n    // join components\
-    \ containing x and y.\n    // t should be current time. We use it to update `change`.\n\
-    \    bool join(int x, int y, int t) {\n        x = getRoot(x);\n        y = getRoot(y);\n\
-    \        if (x == y) return false;\n\n        //union by rank\n        if (par[x]\
-    \ < par[y]) swap(x, y); \n        //now x's tree has less nodes than y's tree\n\
-    \        change.push_back({t, y, par[y]});\n        par[y] += par[x];\n      \
-    \  change.push_back({t, x, par[x]});\n        par[x] = y;\n        return true;\n\
-    \    }\n\n    // rollback all changes at time > t.\n    void rollback(int t) {\n\
-    \        while (!change.empty() && change.back().time > t) {\n            par[change.back().u]\
-    \ = change.back().par;\n            change.pop_back();\n        }\n    }\n};\n\
-    #line 1 \"Graph/DirectedMST.h\"\n// include DSU_rollback.h\n\n// Directed MST\n\
-    // Index from 0\n//\n// Tested:\n// - https://judge.yosupo.jp/problem/directedmst\n\
+    \ (dynamic connectivity) https://codeforces.com/gym/100551/problem/A\n// - (used\
+    \ for directed MST) https://judge.yosupo.jp/problem/directedmst\n//\n// 0-based\n\
+    struct Data {\n    int time, u, par;  // before `time`, `par` = par[u]\n};\n\n\
+    struct DSU {\n    vector<int> par;\n    vector<Data> change;\n\n    DSU(int n)\
+    \ : par(n + 5, -1) {}\n\n    // find root of x.\n    // if par[x] < 0 then x is\
+    \ a root, and its tree has -par[x] nodes\n    int getRoot(int x) {\n        while\
+    \ (par[x] >= 0)\n            x = par[x];\n        return x;\n    }\n\n    // join\
+    \ components containing x and y.\n    // t should be current time. We use it to\
+    \ update `change`.\n    bool join(int x, int y, int t) {\n        x = getRoot(x);\n\
+    \        y = getRoot(y);\n        if (x == y) return false;\n\n        //union\
+    \ by rank\n        if (par[x] < par[y]) swap(x, y); \n        //now x's tree has\
+    \ less nodes than y's tree\n        change.push_back({t, y, par[y]});\n      \
+    \  par[y] += par[x];\n        change.push_back({t, x, par[x]});\n        par[x]\
+    \ = y;\n        return true;\n    }\n\n    // rollback all changes at time > t.\n\
+    \    void rollback(int t) {\n        while (!change.empty() && change.back().time\
+    \ > t) {\n            par[change.back().u] = change.back().par;\n            change.pop_back();\n\
+    \        }\n    }\n};\n#line 1 \"Graph/DirectedMST.h\"\n// include DSU_rollback.h\n\
+    \n// Directed MST\n// Index from 0\n//\n// Tested:\n// - https://judge.yosupo.jp/problem/directedmst\n\
     \nusing ll = long long;\nstruct Edge {\n    int u, v;  // directed, u -> v\n \
     \   ll cost;\n};\nstruct HeapNode {  // lazy skew heap node\n    Edge key;\n \
     \   HeapNode *l, *r;\n    ll delta;\n\n    void prop() {\n        key.cost +=\
@@ -91,7 +91,7 @@ data:
   isVerificationFile: true
   path: Graph/tests/directed_mst.test.cpp
   requiredBy: []
-  timestamp: '2022-01-06 04:18:39+08:00'
+  timestamp: '2022-07-15 22:40:32+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Graph/tests/directed_mst.test.cpp

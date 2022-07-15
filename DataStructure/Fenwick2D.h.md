@@ -119,8 +119,8 @@ data:
   timestamp: '2022-01-06 03:05:50+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - DataStructure/test/fenwick_2d_pointaddrectsum.test.cpp
   - DataStructure/test/fenwick_2d_rectsum.test.cpp
+  - DataStructure/test/fenwick_2d_pointaddrectsum.test.cpp
 documentation_of: DataStructure/Fenwick2D.h
 layout: document
 redirect_from:
