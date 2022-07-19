@@ -141,7 +141,7 @@ struct Line {
         return a*p.x + b*p.y + c;
     }
 };
-ostream& operator >> (ostream& cout, const Line& l) {
+ostream& operator << (ostream& cout, const Line& l) {
     cout << l.a << "*x + " << l.b << "*y + " << l.c;
     return cout;
 }
