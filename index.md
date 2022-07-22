@@ -288,6 +288,9 @@ data:
     - icon: ':warning:'
       path: Graph/Misc/EulerPath.h
       title: Graph/Misc/EulerPath.h
+    - icon: ':warning:'
+      path: Graph/Misc/EulerPathDirected.h
+      title: Graph/Misc/EulerPathDirected.h
   - name: ML
     pages:
     - icon: ':warning:'

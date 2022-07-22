@@ -42,20 +42,15 @@ data:
     \  solve();\n    return 0;\n}\n#line 1 \"Graph/Misc/EulerPath.h\"\n// NOTES:\n\
     // - When choosing starting vertex (for calling find_path), make sure deg[start]\
     \ > 0.\n// - If find Euler path, starting vertex must have odd degree.\n// - Check\
-    \ no solution: SZ(path) == nEdge + 1.\n//\n// Tested:\n// - https://open.kattis.com/problems/eulerianpath\
-    \ (directed)\n// - SGU 101 (undirected).\n//\n// If directed:\n// - Edge --> int\n\
-    // - add_edge(int a, int b) { adj[a].push_back(b); }\n// - Check for no solution:\n\
-    // - - for all u, |in_deg[u] - out_deg[u]| <= 1\n// - - At most 1 vertex with\
-    \ in_deg[u] - out_deg[u] = 1\n// - - At most 1 vertex with out_deg[u] - in_deg[u]\
-    \ = 1 (start vertex)\n// - - BFS from start vertex, all vertices u with out_deg[u]\
-    \ > 0 must be visited\nstruct Edge {\n    int to;\n    list<Edge>::iterator rev;\n\
-    \n    Edge(int to) :to(to) {}\n};\n\nconst int MN = 100111;\nlist<Edge> adj[MN];\n\
-    vector<int> path; // our result\n\nvoid find_path(int v) {\n    while(adj[v].size()\
+    \ no solution: SZ(path) == nEdge + 1.\n// - For directed -> see EulerPathDirected.h\n\
+    //\n// Tested:\n// - SGU 101 (undirected).\nstruct Edge {\n    int to;\n    list<Edge>::iterator\
+    \ rev;\n\n    Edge(int to) :to(to) {}\n};\n\nconst int MN = 100111;\nlist<Edge>\
+    \ adj[MN];\nvector<int> path; // our result\n\nvoid find_path(int v) {\n    while(adj[v].size()\
     \ > 0) {\n        int vn = adj[v].front().to;\n        adj[vn].erase(adj[v].front().rev);\n\
     \        adj[v].pop_front();\n        find_path(vn);\n    }\n    path.push_back(v);\n\
     }\n\nvoid add_edge(int a, int b) {\n    adj[a].push_front(Edge(b));\n    auto\
     \ ita = adj[a].begin();\n    adj[b].push_front(Edge(a));\n    auto itb = adj[b].begin();\n\
-    \    ita->rev = itb;\n    itb->rev = ita;\n}\n\n#line 3 \"Graph/Misc/EulerPath.cpp\"\
+    \    ita->rev = itb;\n    itb->rev = ita;\n}\n#line 3 \"Graph/Misc/EulerPath.cpp\"\
     \n\nint main() {\n    add_edge(1, 2);\n    add_edge(2, 3);\n    add_edge(3, 4);\n\
     \    add_edge(4, 1);\n    add_edge(1, 3);\n\n    find_path(1);\n    PR0(path,\
     \ path.size());\n}\n"
@@ -69,7 +64,7 @@ data:
   isVerificationFile: false
   path: Graph/Misc/EulerPath.cpp
   requiredBy: []
-  timestamp: '2022-01-13 13:16:22+08:00'
+  timestamp: '2022-07-23 01:36:54+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Graph/Misc/EulerPath.cpp
