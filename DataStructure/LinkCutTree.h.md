@@ -165,8 +165,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/link_cut_tree_addpathsum.test.cpp
-  - DataStructure/test/link_cut_tree_vertexaddsubtreesum.test.cpp
   - DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp
+  - DataStructure/test/link_cut_tree_vertexaddsubtreesum.test.cpp
 documentation_of: DataStructure/LinkCutTree.h
 layout: document
 redirect_from:

@@ -175,8 +175,8 @@ data:
   timestamp: '2022-06-26 18:53:41+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - String/tests/yukicoder_1408_string_hash_lcp.test.cpp
   - String/tests/aizu_alds_14_b_string_hash.test.cpp
+  - String/tests/yukicoder_1408_string_hash_lcp.test.cpp
 documentation_of: String/hash.h
 layout: document
 redirect_from:

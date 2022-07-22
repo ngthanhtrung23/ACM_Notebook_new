@@ -46,8 +46,8 @@ data:
   timestamp: '2021-12-31 14:19:54+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Graph/tests/aizu_grl_5_a_tree_diameter.test.cpp
   - Graph/tests/tree_diameter.test.cpp
+  - Graph/tests/aizu_grl_5_a_tree_diameter.test.cpp
 documentation_of: Graph/tree_diameter.h
 layout: document
 redirect_from:
