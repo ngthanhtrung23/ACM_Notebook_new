@@ -1,37 +1,81 @@
 // NOTES:
-// - When choosing starting vertex (for calling find_path), make sure deg[start] > 0.
-// - If find Euler path, starting vertex must have odd degree.
-// - Check no solution: SZ(path) == nEdge + 1.
 // - For directed -> see EulerPathDirected.h
 //
 // Tested:
-// - SGU 101 (undirected).
-struct Edge {
-    int to;
-    list<Edge>::iterator rev;
+// - SGU 101: https://codeforces.com/problemsets/acmsguru/problem/99999/101
+// - https://oj.vnoi.info/problem/tour2509
+struct EulerUndirected {
+    EulerUndirected(int _n) : n(_n), m(0), adj(_n), deg(_n, 0) {}
 
-    Edge(int to) :to(to) {}
-};
+    void add_edge(int u, int v) {
+        adj[u].push_front(Edge(v));
+        auto it1 = adj[u].begin();
+        adj[v].push_front(Edge(u));
+        auto it2 = adj[v].begin();
 
-const int MN = 100111;
-list<Edge> adj[MN];
-vector<int> path; // our result
+        it1->rev = it2;
+        it2->rev = it1;
 
-void find_path(int v) {
-    while(adj[v].size() > 0) {
-        int vn = adj[v].front().to;
-        adj[vn].erase(adj[v].front().rev);
-        adj[v].pop_front();
-        find_path(vn);
+        ++deg[u];
+        ++deg[v];
+        ++m;
     }
-    path.push_back(v);
-}
 
-void add_edge(int a, int b) {
-    adj[a].push_front(Edge(b));
-    auto ita = adj[a].begin();
-    adj[b].push_front(Edge(a));
-    auto itb = adj[b].begin();
-    ita->rev = itb;
-    itb->rev = ita;
-}
+    std::pair<bool, std::vector<int>> solve() {
+        int cntOdd = 0;
+        int start = -1;
+        for (int i = 0; i < n; i++) {
+            if (deg[i] % 2) {
+                ++cntOdd;
+                if (cntOdd > 2) return {false, {}};
+
+                if (start < 0) start = i;
+            }
+        }
+
+        // no odd vertex -> start from any vertex with positive degree
+        if (start < 0) {
+            for (int i = 0; i < n; i++) {
+                if (deg[i]) {
+                    start = i;
+                    break;
+                }
+            }
+            if (start < 0) {
+                // no edge -> empty path
+                return {true, {}};
+            }
+        }
+
+        std::vector<int> path;
+        find_path(start, path);
+
+        if (m + 1 != static_cast<int> (path.size())) {
+            return {false, {}};
+        }
+
+        return {true, path};
+    }
+
+    struct Edge {
+        int to;
+        std::list<Edge>::iterator rev;
+
+        Edge(int _to) : to(_to) {}
+    };
+
+//private:
+    int n, m;
+    std::vector<std::list<Edge>> adj;
+    std::vector<int> deg;
+
+    void find_path(int v, std::vector<int>& path) {
+        while (adj[v].size() > 0) {
+            int next = adj[v].front().to;
+            adj[next].erase(adj[v].front().rev);
+            adj[v].pop_front();
+            find_path(next, path);
+        }
+        path.push_back(v);
+    }
+};
