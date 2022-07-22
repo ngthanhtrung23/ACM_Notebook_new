@@ -283,9 +283,6 @@ data:
   - name: Graph/Misc
     pages:
     - icon: ':warning:'
-      path: Graph/Misc/EulerPath.cpp
-      title: Graph/Misc/EulerPath.cpp
-    - icon: ':warning:'
       path: Graph/Misc/EulerPath.h
       title: Graph/Misc/EulerPath.h
     - icon: ':warning:'

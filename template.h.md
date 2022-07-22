@@ -21,9 +21,6 @@ data:
     path: Geometry/polygon.cpp
     title: Geometry/polygon.cpp
   - icon: ':warning:'
-    path: Graph/Misc/EulerPath.cpp
-    title: Graph/Misc/EulerPath.cpp
-  - icon: ':warning:'
     path: Math/Polynomial/VOJ_POST2.cpp
     title: Math/Polynomial/VOJ_POST2.cpp
   - icon: ':warning:'
@@ -298,7 +295,6 @@ data:
   - Geometry/basic.cpp
   - Geometry/circle.cpp
   - Geometry/SPOJ_ALIENS.cpp
-  - Graph/Misc/EulerPath.cpp
   - DP/knuth.cpp
   - DP/divide_conquer.cpp
   timestamp: '2022-01-13 13:16:22+08:00'
