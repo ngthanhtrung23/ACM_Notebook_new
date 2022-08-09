@@ -220,7 +220,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Graph/mst.h
       title: Graph/mst.h
-    - icon: ':x:'
+    - icon: ':warning:'
       path: Graph/topo_sort.h
       title: Graph/topo_sort.h
     - icon: ':heavy_check_mark:'
@@ -491,7 +491,7 @@ data:
     - icon: ':warning:'
       path: debug.h
       title: debug.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template.h
       title: template.h
   verificationCategories:
@@ -740,9 +740,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: Graph/tests/aizu_grl_4_a_strongly_connected_cycle_check.test.cpp
       title: Graph/tests/aizu_grl_4_a_strongly_connected_cycle_check.test.cpp
-    - icon: ':x:'
-      path: Graph/tests/aizu_grl_4_b_topo_sort.test.cpp
-      title: Graph/tests/aizu_grl_4_b_topo_sort.test.cpp
     - icon: ':heavy_check_mark:'
       path: Graph/tests/aizu_grl_5_a_tree_diameter.test.cpp
       title: Graph/tests/aizu_grl_5_a_tree_diameter.test.cpp

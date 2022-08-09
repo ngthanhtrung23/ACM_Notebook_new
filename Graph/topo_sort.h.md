@@ -2,13 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':x:'
-    path: Graph/tests/aizu_grl_4_b_topo_sort.test.cpp
-    title: Graph/tests/aizu_grl_4_b_topo_sort.test.cpp
-  _isVerificationFailed: true
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links:
     - https://cses.fi/problemset/task/1679/
@@ -46,9 +43,8 @@ data:
   path: Graph/topo_sort.h
   requiredBy: []
   timestamp: '2022-01-09 11:44:38+08:00'
-  verificationStatus: LIBRARY_ALL_WA
-  verifiedWith:
-  - Graph/tests/aizu_grl_4_b_topo_sort.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: Graph/topo_sort.h
 layout: document
 redirect_from:
