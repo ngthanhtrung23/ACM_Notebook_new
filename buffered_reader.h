@@ -1,3 +1,4 @@
+// Buffered reader {{{
 #pragma once
 namespace IO {
     const int BUFSIZE = 1<<14;
@@ -31,3 +32,4 @@ namespace IO {
         return neg ? -res : res;
     }
 };
+// }}}

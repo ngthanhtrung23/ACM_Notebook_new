@@ -1,4 +1,4 @@
-#pragma once
+// DisjointSet {{{
 struct DSU {
     vector<int> lab;
 
@@ -26,3 +26,4 @@ struct DSU {
         return -lab[getRoot(u)];
     }
 };
+// }}}

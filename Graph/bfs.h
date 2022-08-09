@@ -1,4 +1,4 @@
-// BFS
+// BFS {{{
 // - Index from 0
 // - Directed
 // - Supports multi-source BFS
@@ -89,3 +89,4 @@ struct Graph {
     int n;
     vector<vector<int>> g;
 };
+// }}}

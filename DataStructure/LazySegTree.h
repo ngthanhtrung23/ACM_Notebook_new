@@ -1,4 +1,4 @@
-// Lazy Segment Tree, copied from AtCoder
+// Lazy Segment Tree, copied from AtCoder {{{
 // Source: https://github.com/atcoder/ac-library/blob/master/atcoder/lazysegtree.hpp
 // Doc: https://atcoder.github.io/ac-library/master/document_en/lazysegtree.html
 //
@@ -214,8 +214,9 @@ private:
         lz[k] = id();
     }
 };
+// }}}
 
-////////// BELOW: EXAMPLES
+// Examples {{{
 // https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_D
 // https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_E
 // https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_F
@@ -259,3 +260,4 @@ struct RangeSetAddMinSumOps {
         return F { NOT_SET, 0 };
     }
 };
+// }}}

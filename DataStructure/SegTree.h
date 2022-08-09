@@ -1,4 +1,4 @@
-// SegTree, copied from AtCoder library
+// SegTree, copied from AtCoder library {{{
 // AtCoder doc: https://atcoder.github.io/ac-library/master/document_en/segtree.html
 //
 // Notes:
@@ -140,7 +140,9 @@ private:
         d[k] = op(d[2*k], d[2*k+1]);
     }
 };
+// }}}
 
+// SegTree examples {{{
 // Examples: Commonly used SegTree ops: max / min / sum
 struct MaxSegTreeOp {
     static int op(int x, int y) {
@@ -172,3 +174,4 @@ struct SumSegTreeOp {
 // Example
 // SegTree<int, MaxSegTreeOp::op, MaxSegTreeOp::e> seg_tree(a);
 // SegTree<int, MinSegTreeOp::op, MinSegTreeOp::e> seg_tree(a);
+// }}}
