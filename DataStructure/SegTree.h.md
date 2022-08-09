@@ -49,7 +49,7 @@ data:
     - https://oj.vnoi.info/problem/nklineup
     - https://oj.vnoi.info/problem/segtree_itstr
   bundledCode: "#line 1 \"DataStructure/SegTree.h\"\n// SegTree, copied from AtCoder\
-    \ library\n// AtCoder doc: https://atcoder.github.io/ac-library/master/document_en/segtree.html\n\
+    \ library {{{\n// AtCoder doc: https://atcoder.github.io/ac-library/master/document_en/segtree.html\n\
     //\n// Notes:\n// - Index of elements from 0 -> n-1\n// - Range queries are [l,\
     \ r-1]\n//\n// Tested:\n// - (binary search) https://atcoder.jp/contests/practice2/tasks/practice2_j\n\
     // - https://oj.vnoi.info/problem/gss\n// - https://oj.vnoi.info/problem/nklineup\n\
@@ -102,17 +102,18 @@ data:
     \              }\n                }\n                return r + 1 - size;\n  \
     \          }\n            sm = op(d[r], sm);\n        } while ((r & -r) != r);\n\
     \        return 0;\n    }\n\nprivate:\n    int _n, size, log;\n    vector<T> d;\n\
-    \n    void update(int k) {\n        d[k] = op(d[2*k], d[2*k+1]);\n    }\n};\n\n\
-    // Examples: Commonly used SegTree ops: max / min / sum\nstruct MaxSegTreeOp {\n\
-    \    static int op(int x, int y) {\n        return max(x, y);\n    }\n    static\
-    \ int e() {\n        return INT_MIN;\n    }\n};\n\nstruct MinSegTreeOp {\n   \
-    \ static int op(int x, int y) {\n        return min(x, y);\n    }\n    static\
-    \ int e() {\n        return INT_MAX;\n    }\n};\n\nstruct SumSegTreeOp {\n   \
-    \ static long long op(long long x, long long y) {\n        return x + y;\n   \
-    \ }\n    static long long e() {\n        return 0;\n    }\n};\n\n// Example\n\
-    // SegTree<int, MaxSegTreeOp::op, MaxSegTreeOp::e> seg_tree(a);\n// SegTree<int,\
-    \ MinSegTreeOp::op, MinSegTreeOp::e> seg_tree(a);\n"
-  code: "// SegTree, copied from AtCoder library\n// AtCoder doc: https://atcoder.github.io/ac-library/master/document_en/segtree.html\n\
+    \n    void update(int k) {\n        d[k] = op(d[2*k], d[2*k+1]);\n    }\n};\n\
+    // }}}\n\n// SegTree examples {{{\n// Examples: Commonly used SegTree ops: max\
+    \ / min / sum\nstruct MaxSegTreeOp {\n    static int op(int x, int y) {\n    \
+    \    return max(x, y);\n    }\n    static int e() {\n        return INT_MIN;\n\
+    \    }\n};\n\nstruct MinSegTreeOp {\n    static int op(int x, int y) {\n     \
+    \   return min(x, y);\n    }\n    static int e() {\n        return INT_MAX;\n\
+    \    }\n};\n\nstruct SumSegTreeOp {\n    static long long op(long long x, long\
+    \ long y) {\n        return x + y;\n    }\n    static long long e() {\n      \
+    \  return 0;\n    }\n};\n\n// Example\n// SegTree<int, MaxSegTreeOp::op, MaxSegTreeOp::e>\
+    \ seg_tree(a);\n// SegTree<int, MinSegTreeOp::op, MinSegTreeOp::e> seg_tree(a);\n\
+    // }}}\n"
+  code: "// SegTree, copied from AtCoder library {{{\n// AtCoder doc: https://atcoder.github.io/ac-library/master/document_en/segtree.html\n\
     //\n// Notes:\n// - Index of elements from 0 -> n-1\n// - Range queries are [l,\
     \ r-1]\n//\n// Tested:\n// - (binary search) https://atcoder.jp/contests/practice2/tasks/practice2_j\n\
     // - https://oj.vnoi.info/problem/gss\n// - https://oj.vnoi.info/problem/nklineup\n\
@@ -165,22 +166,23 @@ data:
     \              }\n                }\n                return r + 1 - size;\n  \
     \          }\n            sm = op(d[r], sm);\n        } while ((r & -r) != r);\n\
     \        return 0;\n    }\n\nprivate:\n    int _n, size, log;\n    vector<T> d;\n\
-    \n    void update(int k) {\n        d[k] = op(d[2*k], d[2*k+1]);\n    }\n};\n\n\
-    // Examples: Commonly used SegTree ops: max / min / sum\nstruct MaxSegTreeOp {\n\
-    \    static int op(int x, int y) {\n        return max(x, y);\n    }\n    static\
-    \ int e() {\n        return INT_MIN;\n    }\n};\n\nstruct MinSegTreeOp {\n   \
-    \ static int op(int x, int y) {\n        return min(x, y);\n    }\n    static\
-    \ int e() {\n        return INT_MAX;\n    }\n};\n\nstruct SumSegTreeOp {\n   \
-    \ static long long op(long long x, long long y) {\n        return x + y;\n   \
-    \ }\n    static long long e() {\n        return 0;\n    }\n};\n\n// Example\n\
-    // SegTree<int, MaxSegTreeOp::op, MaxSegTreeOp::e> seg_tree(a);\n// SegTree<int,\
-    \ MinSegTreeOp::op, MinSegTreeOp::e> seg_tree(a);\n"
+    \n    void update(int k) {\n        d[k] = op(d[2*k], d[2*k+1]);\n    }\n};\n\
+    // }}}\n\n// SegTree examples {{{\n// Examples: Commonly used SegTree ops: max\
+    \ / min / sum\nstruct MaxSegTreeOp {\n    static int op(int x, int y) {\n    \
+    \    return max(x, y);\n    }\n    static int e() {\n        return INT_MIN;\n\
+    \    }\n};\n\nstruct MinSegTreeOp {\n    static int op(int x, int y) {\n     \
+    \   return min(x, y);\n    }\n    static int e() {\n        return INT_MAX;\n\
+    \    }\n};\n\nstruct SumSegTreeOp {\n    static long long op(long long x, long\
+    \ long y) {\n        return x + y;\n    }\n    static long long e() {\n      \
+    \  return 0;\n    }\n};\n\n// Example\n// SegTree<int, MaxSegTreeOp::op, MaxSegTreeOp::e>\
+    \ seg_tree(a);\n// SegTree<int, MinSegTreeOp::op, MinSegTreeOp::e> seg_tree(a);\n\
+    // }}}\n"
   dependsOn: []
   isVerificationFile: false
   path: DataStructure/SegTree.h
   requiredBy:
   - DataStructure/SegTree2D.h
-  timestamp: '2022-06-25 23:45:44+08:00'
+  timestamp: '2022-08-09 14:38:08+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/aizu_dsl_2_b_segment_tree_sum.test.cpp

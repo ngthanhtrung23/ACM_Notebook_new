@@ -15,7 +15,7 @@ data:
     - https://cses.fi/problemset/task/1667/
     - https://oj.vnoi.info/problem/vcoldwat
     - https://oj.vnoi.info/problem/vmunch
-  bundledCode: "#line 1 \"Graph/bfs.h\"\n// BFS\n// - Index from 0\n// - Directed\n\
+  bundledCode: "#line 1 \"Graph/bfs.h\"\n// BFS {{{\n// - Index from 0\n// - Directed\n\
     // - Supports multi-source BFS\n// - Supports reconstruct path\n//\n// Tested:\n\
     // - https://oj.vnoi.info/problem/vmunch\n// - https://oj.vnoi.info/problem/vcoldwat\n\
     // - (trace) https://cses.fi/problemset/task/1667/\n// - (multi-source) https://cses.fi/problemset/task/1193/\n\
@@ -47,9 +47,9 @@ data:
     \ {\n                if (dist[v] == -1) {\n                    dist[v] = dist[u]\
     \ + 1;\n                    trace[v] = u;\n                    qu.push(v);\n \
     \               }\n            }\n        }\n\n        return {dist, trace};\n\
-    \    }\n\n    int n;\n    vector<vector<int>> g;\n};\n"
-  code: "// BFS\n// - Index from 0\n// - Directed\n// - Supports multi-source BFS\n\
-    // - Supports reconstruct path\n//\n// Tested:\n// - https://oj.vnoi.info/problem/vmunch\n\
+    \    }\n\n    int n;\n    vector<vector<int>> g;\n};\n// }}}\n"
+  code: "// BFS {{{\n// - Index from 0\n// - Directed\n// - Supports multi-source\
+    \ BFS\n// - Supports reconstruct path\n//\n// Tested:\n// - https://oj.vnoi.info/problem/vmunch\n\
     // - https://oj.vnoi.info/problem/vcoldwat\n// - (trace) https://cses.fi/problemset/task/1667/\n\
     // - (multi-source) https://cses.fi/problemset/task/1193/\nstruct Graph {\n  \
     \  Graph(int _n) : n(_n), g(n) {}\n\n    void add_edge(int u, int v, bool bi_directional\
@@ -79,12 +79,12 @@ data:
     \ {\n                if (dist[v] == -1) {\n                    dist[v] = dist[u]\
     \ + 1;\n                    trace[v] = u;\n                    qu.push(v);\n \
     \               }\n            }\n        }\n\n        return {dist, trace};\n\
-    \    }\n\n    int n;\n    vector<vector<int>> g;\n};\n"
+    \    }\n\n    int n;\n    vector<vector<int>> g;\n};\n// }}}\n"
   dependsOn: []
   isVerificationFile: false
   path: Graph/bfs.h
   requiredBy: []
-  timestamp: '2022-02-14 02:58:08+08:00'
+  timestamp: '2022-08-09 14:38:08+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Graph/tests/aizu_alds1_11_c_bfs.test.cpp

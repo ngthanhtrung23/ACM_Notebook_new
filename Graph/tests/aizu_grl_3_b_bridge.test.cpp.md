@@ -17,9 +17,10 @@ data:
   bundledCode: "#line 1 \"Graph/tests/aizu_grl_3_b_bridge.test.cpp\"\n#define PROBLEM\
     \ \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_B\"\n\n#include\
     \ <bits/stdc++.h>\nusing namespace std;\n\n#line 1 \"Graph/DfsTree/BridgeArticulation.h\"\
-    \n// Assume already have undirected graph vector< vector<int> > G with V vertices\n\
-    // Vertex index from 0\n// Usage:\n// UndirectedDfs tree;\n// Then you can use\
-    \ tree.bridges and tree.articulation_points\n//\n// Tested:\n// - https://judge.yosupo.jp/problem/two_edge_connected_components\n\
+    \n// UndirectedDFS, for finding bridges & articulation points {{{\n// Assume already\
+    \ have undirected graph vector< vector<int> > G with V vertices\n// Vertex index\
+    \ from 0\n// Usage:\n// UndirectedDfs tree;\n// Then you can use tree.bridges\
+    \ and tree.articulation_points\n//\n// Tested:\n// - https://judge.yosupo.jp/problem/two_edge_connected_components\n\
     struct UndirectedDfs {\n    vector<vector<int>> g;\n    int n;\n    vector<int>\
     \ low, num, parent;\n    vector<bool> is_articulation;\n    int counter, root,\
     \ children;\n\n    vector< pair<int,int> > bridges;\n    vector<int> articulation_points;\n\
@@ -39,7 +40,7 @@ data:
     \ v}] == 1) {\n                        bridges.push_back(make_pair(u, v));\n \
     \                   }\n                }\n                low[u] = min(low[u],\
     \ low[v]);\n            } else if (v != parent[u])\n                low[u] = min(low[u],\
-    \ num[v]);\n        }\n    }\n};\n#line 7 \"Graph/tests/aizu_grl_3_b_bridge.test.cpp\"\
+    \ num[v]);\n        }\n    }\n};\n// }}}\n#line 7 \"Graph/tests/aizu_grl_3_b_bridge.test.cpp\"\
     \n\n#define REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)\n\nint main()\
     \ {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n, m; cin >> n >> m;\n\
     \    vector<vector<int>> g(n);\n    REP(i,m) {\n        int u, v; cin >> u >>\
@@ -63,7 +64,7 @@ data:
   isVerificationFile: true
   path: Graph/tests/aizu_grl_3_b_bridge.test.cpp
   requiredBy: []
-  timestamp: '2022-01-11 21:41:41+08:00'
+  timestamp: '2022-08-09 14:38:08+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Graph/tests/aizu_grl_3_b_bridge.test.cpp

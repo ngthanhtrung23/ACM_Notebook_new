@@ -47,7 +47,14 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"buffered_reader.h\"\nnamespace IO {\n    const int BUFSIZE\
+  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.10.6/x64/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
+    , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/opt/hostedtoolcache/Python/3.10.6/x64/lib/python3.10/site-packages/onlinejudge_verify/languages/cplusplus.py\"\
+    , line 187, in bundle\n    bundler.update(path)\n  File \"/opt/hostedtoolcache/Python/3.10.6/x64/lib/python3.10/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
+    , line 312, in update\n    raise BundleErrorAt(path, i + 1, \"#pragma once found\
+    \ in a non-first line\")\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt:\
+    \ buffered_reader.h: line 2: #pragma once found in a non-first line\n"
+  code: "// Buffered reader {{{\n#pragma once\nnamespace IO {\n    const int BUFSIZE\
     \ = 1<<14;\n    char buf[BUFSIZE + 1], *inp = buf;\n\n    bool reacheof;\n   \
     \ char get_char() {\n        if (!*inp && !reacheof) {\n            memset(buf,\
     \ 0, sizeof buf);\n            int tmp = fread(buf, 1, BUFSIZE, stdin);\n    \
@@ -58,24 +65,12 @@ data:
     \  if (c == '+') { neg = 0; }\n        else if (c == '-') { neg = 1; }\n     \
     \   else res = c - '0';\n\n        c = get_char();\n        while (std::isdigit(c))\
     \ {\n            res = res * 10 + (c - '0');\n            c = get_char();\n  \
-    \      }\n        return neg ? -res : res;\n    }\n};\n"
-  code: "#pragma once\nnamespace IO {\n    const int BUFSIZE = 1<<14;\n    char buf[BUFSIZE\
-    \ + 1], *inp = buf;\n\n    bool reacheof;\n    char get_char() {\n        if (!*inp\
-    \ && !reacheof) {\n            memset(buf, 0, sizeof buf);\n            int tmp\
-    \ = fread(buf, 1, BUFSIZE, stdin);\n            if (tmp != BUFSIZE) reacheof =\
-    \ true;\n            inp = buf;\n        }\n        return *inp++;\n    }\n  \
-    \  template<typename T>\n    T get() {\n        int neg = 0;\n        T res =\
-    \ 0;\n        char c = get_char();\n        while (!std::isdigit(c) && c != '-'\
-    \ && c != '+') c = get_char();\n        if (c == '+') { neg = 0; }\n        else\
-    \ if (c == '-') { neg = 1; }\n        else res = c - '0';\n\n        c = get_char();\n\
-    \        while (std::isdigit(c)) {\n            res = res * 10 + (c - '0');\n\
-    \            c = get_char();\n        }\n        return neg ? -res : res;\n  \
-    \  }\n};\n"
+    \      }\n        return neg ? -res : res;\n    }\n};\n// }}}\n"
   dependsOn: []
   isVerificationFile: false
   path: buffered_reader.h
   requiredBy: []
-  timestamp: '2022-01-06 20:02:32+08:00'
+  timestamp: '2022-08-09 14:38:08+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/segment_tree_pointaddrangesum.test.cpp

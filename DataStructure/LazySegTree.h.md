@@ -47,7 +47,7 @@ data:
     - https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_H
     - https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_I
   bundledCode: "#line 1 \"DataStructure/LazySegTree.h\"\n// Lazy Segment Tree, copied\
-    \ from AtCoder\n// Source: https://github.com/atcoder/ac-library/blob/master/atcoder/lazysegtree.hpp\n\
+    \ from AtCoder {{{\n// Source: https://github.com/atcoder/ac-library/blob/master/atcoder/lazysegtree.hpp\n\
     // Doc: https://atcoder.github.io/ac-library/master/document_en/lazysegtree.html\n\
     //\n// Notes:\n// - Index of elements from 0\n// - Range queries are [l, r-1]\n\
     // - composition(f, g) should return f(g())\n//\n// Tested:\n// - https://oj.vnoi.info/problem/qmax2\n\
@@ -128,8 +128,8 @@ data:
     \ k) {\n        d[k] = op(d[2*k], d[2*k+1]);\n    }\n    void all_apply(int k,\
     \ F f) {\n        d[k] = mapping(f, d[k]);\n        if (k < size) lz[k] = composition(f,\
     \ lz[k]);\n    }\n    void push(int k) {\n        all_apply(2*k, lz[k]);\n   \
-    \     all_apply(2*k+1, lz[k]);\n        lz[k] = id();\n    }\n};\n\n//////////\
-    \ BELOW: EXAMPLES\n// https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_D\n\
+    \     all_apply(2*k+1, lz[k]);\n        lz[k] = id();\n    }\n};\n// }}}\n\n//\
+    \ Examples {{{\n// https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_D\n\
     // https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_E\n// https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_F\n\
     // https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_G\n// https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_H\n\
     // https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_I\n// supports:\n\
@@ -145,8 +145,8 @@ data:
     \ + f.add,\n            s.sz,\n        };\n    }\n    static F composition(F f,\
     \ F g) {\n        if (f.set == NOT_SET) {\n            return F { g.set, g.add\
     \ + f.add };\n        }\n        return f;\n    }\n    static F id() {\n     \
-    \   return F { NOT_SET, 0 };\n    }\n};\n"
-  code: "// Lazy Segment Tree, copied from AtCoder\n// Source: https://github.com/atcoder/ac-library/blob/master/atcoder/lazysegtree.hpp\n\
+    \   return F { NOT_SET, 0 };\n    }\n};\n// }}}\n"
+  code: "// Lazy Segment Tree, copied from AtCoder {{{\n// Source: https://github.com/atcoder/ac-library/blob/master/atcoder/lazysegtree.hpp\n\
     // Doc: https://atcoder.github.io/ac-library/master/document_en/lazysegtree.html\n\
     //\n// Notes:\n// - Index of elements from 0\n// - Range queries are [l, r-1]\n\
     // - composition(f, g) should return f(g())\n//\n// Tested:\n// - https://oj.vnoi.info/problem/qmax2\n\
@@ -227,8 +227,8 @@ data:
     \ k) {\n        d[k] = op(d[2*k], d[2*k+1]);\n    }\n    void all_apply(int k,\
     \ F f) {\n        d[k] = mapping(f, d[k]);\n        if (k < size) lz[k] = composition(f,\
     \ lz[k]);\n    }\n    void push(int k) {\n        all_apply(2*k, lz[k]);\n   \
-    \     all_apply(2*k+1, lz[k]);\n        lz[k] = id();\n    }\n};\n\n//////////\
-    \ BELOW: EXAMPLES\n// https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_D\n\
+    \     all_apply(2*k+1, lz[k]);\n        lz[k] = id();\n    }\n};\n// }}}\n\n//\
+    \ Examples {{{\n// https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_D\n\
     // https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_E\n// https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_F\n\
     // https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_G\n// https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_H\n\
     // https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_I\n// supports:\n\
@@ -244,12 +244,12 @@ data:
     \ + f.add,\n            s.sz,\n        };\n    }\n    static F composition(F f,\
     \ F g) {\n        if (f.set == NOT_SET) {\n            return F { g.set, g.add\
     \ + f.add };\n        }\n        return f;\n    }\n    static F id() {\n     \
-    \   return F { NOT_SET, 0 };\n    }\n};\n"
+    \   return F { NOT_SET, 0 };\n    }\n};\n// }}}\n"
   dependsOn: []
   isVerificationFile: false
   path: DataStructure/LazySegTree.h
   requiredBy: []
-  timestamp: '2022-01-11 21:46:03+08:00'
+  timestamp: '2022-08-09 14:38:08+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/aizu_dsl_2_g_segment_tree_rangeaddsum.test.cpp

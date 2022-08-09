@@ -20,7 +20,7 @@ data:
   bundledCode: "#line 1 \"DataStructure/test/hld_vertexaddpathsum.test.cpp\"\n#define\
     \ PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_path_sum\"\n\n#include\
     \ <bits/stdc++.h>\nusing namespace std;\n\n#line 1 \"DataStructure/SegTree.h\"\
-    \n// SegTree, copied from AtCoder library\n// AtCoder doc: https://atcoder.github.io/ac-library/master/document_en/segtree.html\n\
+    \n// SegTree, copied from AtCoder library {{{\n// AtCoder doc: https://atcoder.github.io/ac-library/master/document_en/segtree.html\n\
     //\n// Notes:\n// - Index of elements from 0 -> n-1\n// - Range queries are [l,\
     \ r-1]\n//\n// Tested:\n// - (binary search) https://atcoder.jp/contests/practice2/tasks/practice2_j\n\
     // - https://oj.vnoi.info/problem/gss\n// - https://oj.vnoi.info/problem/nklineup\n\
@@ -73,19 +73,20 @@ data:
     \              }\n                }\n                return r + 1 - size;\n  \
     \          }\n            sm = op(d[r], sm);\n        } while ((r & -r) != r);\n\
     \        return 0;\n    }\n\nprivate:\n    int _n, size, log;\n    vector<T> d;\n\
-    \n    void update(int k) {\n        d[k] = op(d[2*k], d[2*k+1]);\n    }\n};\n\n\
-    // Examples: Commonly used SegTree ops: max / min / sum\nstruct MaxSegTreeOp {\n\
-    \    static int op(int x, int y) {\n        return max(x, y);\n    }\n    static\
-    \ int e() {\n        return INT_MIN;\n    }\n};\n\nstruct MinSegTreeOp {\n   \
-    \ static int op(int x, int y) {\n        return min(x, y);\n    }\n    static\
-    \ int e() {\n        return INT_MAX;\n    }\n};\n\nstruct SumSegTreeOp {\n   \
-    \ static long long op(long long x, long long y) {\n        return x + y;\n   \
-    \ }\n    static long long e() {\n        return 0;\n    }\n};\n\n// Example\n\
-    // SegTree<int, MaxSegTreeOp::op, MaxSegTreeOp::e> seg_tree(a);\n// SegTree<int,\
-    \ MinSegTreeOp::op, MinSegTreeOp::e> seg_tree(a);\n#line 1 \"DataStructure/HeavyLight_adamant.h\"\
-    \n// HeavyLight\n// Index from 0\n// Best used with SegTree.h\n//\n// Usage:\n\
-    // HLD hld(g, root);\n// // build segment tree. Note that we must use hld.order[i]\n\
-    // vector<T> nodes;\n// for (int i = 0; i < n; i++)\n//   nodes.push_back(initial_value[hld.order[i]])\n\
+    \n    void update(int k) {\n        d[k] = op(d[2*k], d[2*k+1]);\n    }\n};\n\
+    // }}}\n\n// SegTree examples {{{\n// Examples: Commonly used SegTree ops: max\
+    \ / min / sum\nstruct MaxSegTreeOp {\n    static int op(int x, int y) {\n    \
+    \    return max(x, y);\n    }\n    static int e() {\n        return INT_MIN;\n\
+    \    }\n};\n\nstruct MinSegTreeOp {\n    static int op(int x, int y) {\n     \
+    \   return min(x, y);\n    }\n    static int e() {\n        return INT_MAX;\n\
+    \    }\n};\n\nstruct SumSegTreeOp {\n    static long long op(long long x, long\
+    \ long y) {\n        return x + y;\n    }\n    static long long e() {\n      \
+    \  return 0;\n    }\n};\n\n// Example\n// SegTree<int, MaxSegTreeOp::op, MaxSegTreeOp::e>\
+    \ seg_tree(a);\n// SegTree<int, MinSegTreeOp::op, MinSegTreeOp::e> seg_tree(a);\n\
+    // }}}\n#line 1 \"DataStructure/HeavyLight_adamant.h\"\n// HeavyLight\n// Index\
+    \ from 0\n// Best used with SegTree.h\n//\n// Usage:\n// HLD hld(g, root);\n//\
+    \ // build segment tree. Note that we must use hld.order[i]\n// vector<T> nodes;\n\
+    // for (int i = 0; i < n; i++)\n//   nodes.push_back(initial_value[hld.order[i]])\n\
     // SegTree<S, op, e> st(nodes);\n//\n// // Update path\n// hld.apply_path(from,\
     \ to, is_edge_or_vertex, [&] (int l, int r) {\n//   st.apply(l, r+1, F);\n// });\n\
     //\n// // Query path\n// hld.prod_path_commutative<S, op, e> (from, to, is_edge_or_vertex,\
@@ -206,7 +207,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/hld_vertexaddpathsum.test.cpp
   requiredBy: []
-  timestamp: '2022-06-25 23:45:44+08:00'
+  timestamp: '2022-08-09 14:38:08+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/hld_vertexaddpathsum.test.cpp

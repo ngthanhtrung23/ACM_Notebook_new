@@ -17,8 +17,8 @@ data:
   bundledCode: "#line 1 \"Graph/tests/aizu_alds1_11_c_bfs.test.cpp\"\n#define PROBLEM\
     \ \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_11_C\"\n\n\
     #include <bits/stdc++.h>\nusing namespace std;\n\n#line 1 \"Graph/bfs.h\"\n//\
-    \ BFS\n// - Index from 0\n// - Directed\n// - Supports multi-source BFS\n// -\
-    \ Supports reconstruct path\n//\n// Tested:\n// - https://oj.vnoi.info/problem/vmunch\n\
+    \ BFS {{{\n// - Index from 0\n// - Directed\n// - Supports multi-source BFS\n\
+    // - Supports reconstruct path\n//\n// Tested:\n// - https://oj.vnoi.info/problem/vmunch\n\
     // - https://oj.vnoi.info/problem/vcoldwat\n// - (trace) https://cses.fi/problemset/task/1667/\n\
     // - (multi-source) https://cses.fi/problemset/task/1193/\nstruct Graph {\n  \
     \  Graph(int _n) : n(_n), g(n) {}\n\n    void add_edge(int u, int v, bool bi_directional\
@@ -48,7 +48,7 @@ data:
     \ {\n                if (dist[v] == -1) {\n                    dist[v] = dist[u]\
     \ + 1;\n                    trace[v] = u;\n                    qu.push(v);\n \
     \               }\n            }\n        }\n\n        return {dist, trace};\n\
-    \    }\n\n    int n;\n    vector<vector<int>> g;\n};\n#line 7 \"Graph/tests/aizu_alds1_11_c_bfs.test.cpp\"\
+    \    }\n\n    int n;\n    vector<vector<int>> g;\n};\n// }}}\n#line 7 \"Graph/tests/aizu_alds1_11_c_bfs.test.cpp\"\
     \n\n#define REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)\n\nint main()\
     \ {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n; cin >> n;\n    Graph\
     \ g(n);\n\n    REP(i,n) {\n        int u, k; cin >> u >> k;\n        --u;\n  \
@@ -69,7 +69,7 @@ data:
   isVerificationFile: true
   path: Graph/tests/aizu_alds1_11_c_bfs.test.cpp
   requiredBy: []
-  timestamp: '2022-02-14 02:58:08+08:00'
+  timestamp: '2022-08-09 14:38:08+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Graph/tests/aizu_alds1_11_c_bfs.test.cpp
