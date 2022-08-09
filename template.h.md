@@ -174,6 +174,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Graph/tests/aizu_grl_4_a_strongly_connected_cycle_check.test.cpp
     title: Graph/tests/aizu_grl_4_a_strongly_connected_cycle_check.test.cpp
+  - icon: ':x:'
+    path: Graph/tests/aizu_grl_4_b_topo_sort.test.cpp
+    title: Graph/tests/aizu_grl_4_b_topo_sort.test.cpp
   - icon: ':heavy_check_mark:'
     path: Graph/tests/aizu_grl_5_a_tree_diameter.test.cpp
     title: Graph/tests/aizu_grl_5_a_tree_diameter.test.cpp
@@ -225,9 +228,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: String/tests/yukicoder_1408_string_hash_lcp.test.cpp
     title: String/tests/yukicoder_1408_string_hash_lcp.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://quangloc99.github.io/2021/07/30/my-CP-debugging-template.html
@@ -298,7 +301,7 @@ data:
   - DP/knuth.cpp
   - DP/divide_conquer.cpp
   timestamp: '2022-01-13 13:16:22+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - String/tests/aizu_alds_14_b_string_hash.test.cpp
   - String/tests/yukicoder_1408_string_hash_lcp.test.cpp
@@ -356,6 +359,7 @@ data:
   - Geometry/tests/z_basic_ccw.test.cpp
   - Geometry/tests/aizu_cgl_7_g_circle_circle_tangent_points.test.cpp
   - Geometry/tests/aizu_cgl_2_b_basic_segment_intersect.test.cpp
+  - Graph/tests/aizu_grl_4_b_topo_sort.test.cpp
   - Graph/tests/aizu_grl_1_c_floyd.test.cpp
   - Graph/tests/aizu_grl_3_a_articulation_points.test.cpp
   - Graph/tests/aizu_grl_5_a_tree_diameter.test.cpp
