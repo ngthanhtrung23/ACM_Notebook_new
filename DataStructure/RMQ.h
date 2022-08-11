@@ -1,3 +1,5 @@
+// RMQ {{{
+//
 // Sparse table
 // Usage:
 // RMQ<int, _min> st(v);
@@ -32,3 +34,4 @@ private:
 };
 template<class T> T _min(T a, T b) { return b < a ? b : a; }
 template<class T> T _max(T a, T b) { return a < b ? b : a; }
+// }}}

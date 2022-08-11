@@ -1,4 +1,4 @@
-// Compress vector vs, and return the compressed vector
+// Compress vector vs, and return the compressed vector {{{
 // Returned values in [0, k-1] where k = number of different values
 template<typename V>
 V compress(V vs) {
@@ -11,3 +11,4 @@ V compress(V vs) {
     }
     return vs;
 }
+// }}}
