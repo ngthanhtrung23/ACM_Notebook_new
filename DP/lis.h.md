@@ -6,12 +6,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: DP/tests/aizu_dpl_1_d_lis.test.cpp
     title: DP/tests/aizu_dpl_1_d_lis.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: DP/tests/yosupo_lis.test.cpp
     title: DP/tests/yosupo_lis.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - http://codeforces.com/blog/entry/13225
@@ -50,7 +50,7 @@ data:
   path: DP/lis.h
   requiredBy: []
   timestamp: '2022-08-14 03:46:56+08:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DP/tests/yosupo_lis.test.cpp
   - DP/tests/aizu_dpl_1_d_lis.test.cpp

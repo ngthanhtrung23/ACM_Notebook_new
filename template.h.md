@@ -42,7 +42,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: DP/tests/aizu_dpl_1_d_lis.test.cpp
     title: DP/tests/aizu_dpl_1_d_lis.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: DP/tests/yosupo_lis.test.cpp
     title: DP/tests/yosupo_lis.test.cpp
   - icon: ':heavy_check_mark:'
@@ -228,9 +228,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: String/tests/yukicoder_1408_string_hash_lcp.test.cpp
     title: String/tests/yukicoder_1408_string_hash_lcp.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://quangloc99.github.io/2021/07/30/my-CP-debugging-template.html
@@ -301,7 +301,7 @@ data:
   - DP/knuth.cpp
   - DP/divide_conquer.cpp
   timestamp: '2022-01-13 13:16:22+08:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - String/tests/aizu_alds_14_b_string_hash.test.cpp
   - String/tests/yukicoder_1408_string_hash_lcp.test.cpp

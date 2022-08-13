@@ -4,7 +4,7 @@ data:
   - icon: ':warning:'
     path: Math/Polynomial/FFT.h
     title: Math/Polynomial/FFT.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []

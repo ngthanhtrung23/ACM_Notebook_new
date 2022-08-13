@@ -21,7 +21,7 @@ data:
     - icon: ':warning:'
       path: DP/knuth.cpp
       title: DP/knuth.cpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: DP/lis.h
       title: DP/lis.h
     - icon: ':warning:'
@@ -491,7 +491,7 @@ data:
     - icon: ':warning:'
       path: debug.h
       title: debug.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template.h
       title: template.h
   verificationCategories:
@@ -506,7 +506,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: DP/tests/dynamic_hull_lineaddgetmin.test.cpp
       title: DP/tests/dynamic_hull_lineaddgetmin.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: DP/tests/yosupo_lis.test.cpp
       title: DP/tests/yosupo_lis.test.cpp
   - name: DataStructure/test

@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: DP/lis.h
     title: DP/lis.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/longest_increasing_subsequence
@@ -59,22 +59,22 @@ data:
     \        if (f[i] == require) {\n            T.push_back(i);\n            require--;\n\
     \        }\n    }\n    reverse(T.begin(), T.end());\n    return T;\n}\n#line 5\
     \ \"DP/tests/yosupo_lis.test.cpp\"\n\nvoid solve() {\n    int n; cin >> n;\n \
-    \   vector<int> a(n); for(int& x : a) cin >> x;\n\n    auto res = lis_non_strict_trace(a);\n\
+    \   vector<int> a(n); for(int& x : a) cin >> x;\n\n    auto res = lis_strict_trace(a);\n\
     \    std::cout << res.size() << std::endl;\n    for (int i : res) std::cout <<\
     \ i << ' ';\n    std::cout << std::endl;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/longest_increasing_subsequence\"\
     \n\n#include \"../../template.h\"\n#include \"../lis.h\"\n\nvoid solve() {\n \
     \   int n; cin >> n;\n    vector<int> a(n); for(int& x : a) cin >> x;\n\n    auto\
-    \ res = lis_non_strict_trace(a);\n    std::cout << res.size() << std::endl;\n\
-    \    for (int i : res) std::cout << i << ' ';\n    std::cout << std::endl;\n}\n"
+    \ res = lis_strict_trace(a);\n    std::cout << res.size() << std::endl;\n    for\
+    \ (int i : res) std::cout << i << ' ';\n    std::cout << std::endl;\n}\n"
   dependsOn:
   - template.h
   - DP/lis.h
   isVerificationFile: true
   path: DP/tests/yosupo_lis.test.cpp
   requiredBy: []
-  timestamp: '2022-08-14 03:46:56+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2022-08-14 03:49:35+08:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DP/tests/yosupo_lis.test.cpp
 layout: document
