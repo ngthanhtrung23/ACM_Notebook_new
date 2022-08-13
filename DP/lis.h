@@ -28,7 +28,7 @@ int lis_strict(const vector<int>& a) {
 }
 
 // Trace - not tested
-vector<int> lis_trace(const vector<int>& a) {
+vector<int> lis_strict_trace(const vector<int>& a) {
     int n = (int) a.size();
     vector<int> b(n+1, 0), f(n, 0);
     int answer = 0;
@@ -42,7 +42,7 @@ vector<int> lis_trace(const vector<int>& a) {
     vector<int> T;
     for (int i = n-1; i >= 0; i--) {
         if (f[i] == require) {
-            T.push_back(a[i]);
+            T.push_back(i);
             require--;
         }
     }
