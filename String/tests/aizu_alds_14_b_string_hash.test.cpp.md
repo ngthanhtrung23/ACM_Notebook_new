@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: String/hash.h
     title: String/hash.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []

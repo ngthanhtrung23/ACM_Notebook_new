@@ -42,6 +42,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: DP/tests/aizu_dpl_1_d_lis.test.cpp
     title: DP/tests/aizu_dpl_1_d_lis.test.cpp
+  - icon: ':x:'
+    path: DP/tests/yosupo_lis.test.cpp
+    title: DP/tests/yosupo_lis.test.cpp
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/aizu_dsl_1_b_dsu_weighted.test.cpp
     title: DataStructure/test/aizu_dsl_1_b_dsu_weighted.test.cpp
@@ -225,9 +228,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: String/tests/yukicoder_1408_string_hash_lcp.test.cpp
     title: String/tests/yukicoder_1408_string_hash_lcp.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://quangloc99.github.io/2021/07/30/my-CP-debugging-template.html
@@ -298,7 +301,7 @@ data:
   - DP/knuth.cpp
   - DP/divide_conquer.cpp
   timestamp: '2022-01-13 13:16:22+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - String/tests/aizu_alds_14_b_string_hash.test.cpp
   - String/tests/yukicoder_1408_string_hash_lcp.test.cpp
@@ -362,6 +365,7 @@ data:
   - Graph/tests/aizu_grl_2_a_mst.test.cpp
   - Graph/tests/aizu_grl_4_a_strongly_connected_cycle_check.test.cpp
   - DP/tests/aizu_alds1_5_d_count_inversions.test.cpp
+  - DP/tests/yosupo_lis.test.cpp
   - DP/tests/aizu_dpl_1_d_lis.test.cpp
 documentation_of: template.h
 layout: document
