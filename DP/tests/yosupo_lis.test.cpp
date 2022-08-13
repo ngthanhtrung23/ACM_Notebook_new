@@ -7,7 +7,7 @@ void solve() {
     int n; cin >> n;
     vector<int> a(n); for(int& x : a) cin >> x;
 
-    auto res = lis_non_strict_trace(a);
+    auto res = lis_strict_trace(a);
     std::cout << res.size() << std::endl;
     for (int i : res) std::cout << i << ' ';
     std::cout << std::endl;
