@@ -27,7 +27,7 @@ int lis_strict(const vector<int>& a) {
     return s.size();
 }
 
-// Trace - not tested
+// Return indices of LIS (strict)
 vector<int> lis_strict_trace(const vector<int>& a) {
     int n = (int) a.size();
     vector<int> b(n+1, 0), f(n, 0);
