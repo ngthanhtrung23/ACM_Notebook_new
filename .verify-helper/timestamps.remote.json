@@ -2,6 +2,7 @@
 "DP/tests/aizu_alds1_5_d_count_inversions.test.cpp": "2022-08-11 17:15:37 +0800",
 "DP/tests/aizu_dpl_1_d_lis.test.cpp": "2022-08-14 03:46:56 +0800",
 "DP/tests/dynamic_hull_lineaddgetmin.test.cpp": "2022-01-12 13:12:33 +0800",
+"DP/tests/yosupo_lis.test.cpp": "2022-08-14 03:49:35 +0800",
 "DataStructure/test/aizu_dsl_1_a_dsu.test.cpp": "2022-08-09 14:38:08 +0800",
 "DataStructure/test/aizu_dsl_1_b_dsu_weighted.test.cpp": "2022-01-13 13:16:22 +0800",
 "DataStructure/test/aizu_dsl_2_a_segment_tree_rmq_update.test.cpp": "2022-08-09 14:38:08 +0800",
