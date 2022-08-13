@@ -1,4 +1,4 @@
-// HeavyLight
+// HeavyLight {{{
 // Index from 0
 // Best used with SegTree.h
 //
@@ -75,6 +75,21 @@ struct HLD {
             k -= in[u] - in[v] + 1;
             u = parent[v];
         }
+    }
+
+    // return k-th vertex on path from u -> v (0 <= k)
+    // if k > distance -> return -1
+    int kth_vertex_on_path(int u, int v, int k) const {
+        assert(0 <= u && u < n);
+        assert(0 <= v && v < n);
+
+        int l = lca(u, v);
+        int ul = depth[u] - depth[l];
+        if (k <= ul) return kth_parent(u, k);
+        k -= ul;
+        int vl = depth[v] - depth[l];
+        if (k <= vl) return kth_parent(v, vl - k);
+        return -1;
     }
 
     int dist(int u, int v) const {
@@ -213,3 +228,4 @@ struct HLD {
         out[u] = dfs_number;
     }
 };
+// }}}
