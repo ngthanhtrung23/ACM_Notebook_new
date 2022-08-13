@@ -34,6 +34,9 @@ data:
     path: DataStructure/test/wavelet_matrix_rangekthsmallest.test.cpp
     title: DataStructure/test/wavelet_matrix_rangekthsmallest.test.cpp
   - icon: ':heavy_check_mark:'
+    path: DataStructure/test/yosupo_hld_kth_vertex_on_path.test.cpp
+    title: DataStructure/test/yosupo_hld_kth_vertex_on_path.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Math/tests/matrix_det.test.cpp
     title: Math/tests/matrix_det.test.cpp
   - icon: ':heavy_check_mark:'
@@ -79,6 +82,7 @@ data:
   - DataStructure/test/hld_lca.test.cpp
   - DataStructure/test/rmq.test.cpp
   - DataStructure/test/wavelet_matrix_rangekthsmallest.test.cpp
+  - DataStructure/test/yosupo_hld_kth_vertex_on_path.test.cpp
   - DataStructure/test/fenwick.test.cpp
   - DataStructure/test/fenwick_pointaddrangesum.test.cpp
   - DataStructure/test/lca.test.cpp

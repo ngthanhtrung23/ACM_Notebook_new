@@ -634,6 +634,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/wavelet_matrix_staticrangefreq.test.cpp
       title: DataStructure/test/wavelet_matrix_staticrangefreq.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/test/yosupo_hld_kth_vertex_on_path.test.cpp
+      title: DataStructure/test/yosupo_hld_kth_vertex_on_path.test.cpp
   - name: Geometry/tests
     pages:
     - icon: ':heavy_check_mark:'
