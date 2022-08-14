@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/RangeSet.h
     title: DataStructure/RangeSet.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
@@ -54,7 +54,7 @@ data:
     \        return it != ranges.begin() && x <= std::prev(it)->second;\n    }\n\n\
     \    // Find range containing x, i.e. l <= x <= r\n    std::optional<std::pair<T,\
     \ T>> find_range(T x) const {\n        auto it = ranges.upper_bound(x);\n    \
-    \    if (it == ranges.end()) return std::nullopt;\n        --it;\n        return\
+    \    if (it == ranges.begin()) return std::nullopt;\n        --it;\n        return\
     \ (x <= it->second) ? std::optional<std::pair<T, T>>{*it} : std::nullopt;\n  \
     \  }\n\n    // Insert [l, r]\n    // Returns number of new integers added.\n \
     \   // AMORTIZED O(logN)\n    T insert(T l, T r) {\n        assert(l <= r);\n\
@@ -116,7 +116,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/aizu_dsl_2_d_rangeset.test.cpp
   requiredBy: []
-  timestamp: '2022-08-15 00:07:40+08:00'
+  timestamp: '2022-08-15 00:18:10+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/aizu_dsl_2_d_rangeset.test.cpp

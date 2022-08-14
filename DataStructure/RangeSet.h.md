@@ -9,12 +9,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/aizu_dsl_4_a_range_set.test.cpp
     title: DataStructure/test/aizu_dsl_4_a_range_set.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/test/yukicoder_674_range_set.test.cpp
     title: DataStructure/test/yukicoder_674_range_set.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://suisen-cp.github.io/cp-library-cpp/library/datastructure/util/range_set.hpp
@@ -27,7 +27,7 @@ data:
     \        return it != ranges.begin() && x <= std::prev(it)->second;\n    }\n\n\
     \    // Find range containing x, i.e. l <= x <= r\n    std::optional<std::pair<T,\
     \ T>> find_range(T x) const {\n        auto it = ranges.upper_bound(x);\n    \
-    \    if (it == ranges.end()) return std::nullopt;\n        --it;\n        return\
+    \    if (it == ranges.begin()) return std::nullopt;\n        --it;\n        return\
     \ (x <= it->second) ? std::optional<std::pair<T, T>>{*it} : std::nullopt;\n  \
     \  }\n\n    // Insert [l, r]\n    // Returns number of new integers added.\n \
     \   // AMORTIZED O(logN)\n    T insert(T l, T r) {\n        assert(l <= r);\n\
@@ -66,7 +66,7 @@ data:
     \        return it != ranges.begin() && x <= std::prev(it)->second;\n    }\n\n\
     \    // Find range containing x, i.e. l <= x <= r\n    std::optional<std::pair<T,\
     \ T>> find_range(T x) const {\n        auto it = ranges.upper_bound(x);\n    \
-    \    if (it == ranges.end()) return std::nullopt;\n        --it;\n        return\
+    \    if (it == ranges.begin()) return std::nullopt;\n        --it;\n        return\
     \ (x <= it->second) ? std::optional<std::pair<T, T>>{*it} : std::nullopt;\n  \
     \  }\n\n    // Insert [l, r]\n    // Returns number of new integers added.\n \
     \   // AMORTIZED O(logN)\n    T insert(T l, T r) {\n        assert(l <= r);\n\
@@ -100,8 +100,8 @@ data:
   isVerificationFile: false
   path: DataStructure/RangeSet.h
   requiredBy: []
-  timestamp: '2022-08-15 00:07:40+08:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2022-08-15 00:18:10+08:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/aizu_dsl_4_a_range_set.test.cpp
   - DataStructure/test/aizu_dsl_2_d_rangeset.test.cpp
