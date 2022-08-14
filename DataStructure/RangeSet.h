@@ -15,11 +15,11 @@ struct RangeSet {
     }
 
     // Find range containing x, i.e. l <= x <= r
-    std::optional<std::pair<int,int>> find_range(T x) const {
+    std::optional<std::pair<T, T>> find_range(T x) const {
         auto it = ranges.upper_bound(x);
         if (it == ranges.end()) return std::nullopt;
         --it;
-        return (x <= it->second) ? *it : std::nullopt;
+        return (x <= it->second) ? std::optional<std::pair<T, T>>{*it} : std::nullopt;
     }
 
     // Insert [l, r]
