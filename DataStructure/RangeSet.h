@@ -17,7 +17,7 @@ struct RangeSet {
     // Find range containing x, i.e. l <= x <= r
     std::optional<std::pair<T, T>> find_range(T x) const {
         auto it = ranges.upper_bound(x);
-        if (it == ranges.end()) return std::nullopt;
+        if (it == ranges.begin()) return std::nullopt;
         --it;
         return (x <= it->second) ? std::optional<std::pair<T, T>>{*it} : std::nullopt;
     }
