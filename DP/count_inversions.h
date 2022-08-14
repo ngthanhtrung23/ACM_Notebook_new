@@ -5,7 +5,8 @@
 template<typename T>
 long long count_inversions(vector<T> vs) {
     int n = vs.size();
-    vs = compress(vs);
+    auto compressor = CompressorBuilder<T>{vs}.build();
+    compressor.compress_inplace(vs);
     Fenwick<int> bit(n);
 
     long long res = 0;
