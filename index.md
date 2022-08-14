@@ -92,7 +92,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/RMQ.h
       title: DataStructure/RMQ.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: DataStructure/RangeSet.h
       title: DataStructure/RangeSet.h
     - icon: ':heavy_check_mark:'
@@ -494,7 +494,7 @@ data:
     - icon: ':warning:'
       path: debug.h
       title: debug.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template.h
       title: template.h
   verificationCategories:
@@ -643,6 +643,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/yosupo_hld_kth_vertex_on_path.test.cpp
       title: DataStructure/test/yosupo_hld_kth_vertex_on_path.test.cpp
+    - icon: ':x:'
+      path: DataStructure/test/yukicoder_674_range_set.test.cpp
+      title: DataStructure/test/yukicoder_674_range_set.test.cpp
   - name: Geometry/tests
     pages:
     - icon: ':heavy_check_mark:'
