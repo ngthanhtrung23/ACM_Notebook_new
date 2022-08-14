@@ -51,30 +51,31 @@ data:
     \    T n_elements() const { return sz; }\n    T n_ranges() const { return ranges.size();\
     \ }\n\n    bool contains(T x) const {\n        auto it = ranges.upper_bound(x);\n\
     \        return it != ranges.begin() && x <= std::prev(it)->second;\n    }\n\n\
-    \    // Find range containing x, i.e. l <= x <= r\n    std::optional<std::pair<int,int>>\
-    \ find_range(T x) const {\n        auto it = ranges.upper_bound(x);\n        if\
-    \ (it == ranges.end()) return std::nullopt;\n        --it;\n        return (x\
-    \ <= it->second) ? *it : std::nullopt;\n    }\n\n    // Insert [l, r]\n    //\
-    \ Returns number of new integers added.\n    // AMORTIZED O(logN)\n    T insert(T\
-    \ l, T r) {\n        assert(l <= r);\n        auto it = ranges.upper_bound(l);\n\
-    \        if (it != ranges.begin() && is_mergeable(std::prev(it)->second, l)) {\n\
-    \            it = std::prev(it);\n            l = std::min(l, it->first);\n  \
-    \      }\n        T inserted = 0;\n        for (; it != ranges.end() && is_mergeable(r,\
-    \ it->first); it = ranges.erase(it)) {\n            auto [cl, cr] = *it;\n   \
-    \         r = std::max(r, cr);\n            inserted -= cr - cl + 1;\n       \
-    \ }\n\n        inserted += r - l + 1;\n        ranges[l] = r;\n        sz += inserted;\n\
-    \        return inserted;\n    }\n\n    // Erase [l, r]\n    // Returns number\
-    \ of integers removed\n    // AMORTIZED O(logN)\n    T erase(T l, T r) {\n   \
-    \     assert(l <= r);\n        T tl = l, tr = r;\n        auto it = ranges.upper_bound(l);\n\
-    \        if (it != ranges.begin() && l <= std::prev(it)->second) {\n         \
-    \   it = std::prev(it);\n            tl = it->first;\n        }\n\n        T erased\
-    \ = 0;\n        for (; it != ranges.end() && it->first <= r; it = ranges.erase(it))\
-    \ {\n            auto [cl, cr] = *it;\n            tr = cr;\n            erased\
-    \ += cr - cl + 1;\n        }\n        if (tl < l) {\n            ranges[tl] =\
-    \ l-1;\n            erased -= l - tl;\n        }\n        if (r < tr) {\n    \
-    \        ranges[r + 1] = tr;\n            erased -= tr - r;\n        }\n     \
-    \   sz -= erased;\n        return erased;\n    }\n\n    // Find min x: x >= lower\
-    \ && x NOT in this set\n    T minimum_excluded(T lower) const {\n        static_assert(merge_adjacent_segment);\n\
+    \    // Find range containing x, i.e. l <= x <= r\n    std::optional<std::pair<T,\
+    \ T>> find_range(T x) const {\n        auto it = ranges.upper_bound(x);\n    \
+    \    if (it == ranges.end()) return std::nullopt;\n        --it;\n        return\
+    \ (x <= it->second) ? std::optional<std::pair<T, T>>{*it} : std::nullopt;\n  \
+    \  }\n\n    // Insert [l, r]\n    // Returns number of new integers added.\n \
+    \   // AMORTIZED O(logN)\n    T insert(T l, T r) {\n        assert(l <= r);\n\
+    \        auto it = ranges.upper_bound(l);\n        if (it != ranges.begin() &&\
+    \ is_mergeable(std::prev(it)->second, l)) {\n            it = std::prev(it);\n\
+    \            l = std::min(l, it->first);\n        }\n        T inserted = 0;\n\
+    \        for (; it != ranges.end() && is_mergeable(r, it->first); it = ranges.erase(it))\
+    \ {\n            auto [cl, cr] = *it;\n            r = std::max(r, cr);\n    \
+    \        inserted -= cr - cl + 1;\n        }\n\n        inserted += r - l + 1;\n\
+    \        ranges[l] = r;\n        sz += inserted;\n        return inserted;\n \
+    \   }\n\n    // Erase [l, r]\n    // Returns number of integers removed\n    //\
+    \ AMORTIZED O(logN)\n    T erase(T l, T r) {\n        assert(l <= r);\n      \
+    \  T tl = l, tr = r;\n        auto it = ranges.upper_bound(l);\n        if (it\
+    \ != ranges.begin() && l <= std::prev(it)->second) {\n            it = std::prev(it);\n\
+    \            tl = it->first;\n        }\n\n        T erased = 0;\n        for\
+    \ (; it != ranges.end() && it->first <= r; it = ranges.erase(it)) {\n        \
+    \    auto [cl, cr] = *it;\n            tr = cr;\n            erased += cr - cl\
+    \ + 1;\n        }\n        if (tl < l) {\n            ranges[tl] = l-1;\n    \
+    \        erased -= l - tl;\n        }\n        if (r < tr) {\n            ranges[r\
+    \ + 1] = tr;\n            erased -= tr - r;\n        }\n        sz -= erased;\n\
+    \        return erased;\n    }\n\n    // Find min x: x >= lower && x NOT in this\
+    \ set\n    T minimum_excluded(T lower) const {\n        static_assert(merge_adjacent_segment);\n\
     \        auto it = find_range(lower);\n        return it == ranges.end() ? lower\
     \ : it->second + 1;\n    }\n\n    // Find max x: x <= upper && x NOT in this set\n\
     \    T maximum_excluded(T upper) const {\n        static_assert(merge_adjacent_segment);\n\
@@ -85,22 +86,24 @@ data:
     \n\nvoid solve() {\n    long long d;\n    int q;\n    std::cin >> d >> q;\n\n\
     \    long long ans = 0;\n    RangeSet<long long> set;\n    while (q --> 0) {\n\
     \        long long l, r;\n        std::cin >> l >> r;\n        set.insert(l, r);\n\
-    \        auto [nl, nr] = *set.find_range(l);\n        ans = std::max(ans, nr -\
-    \ nl + 1);\n        std::cout << ans << '\\n';\n    }\n}\n"
+    \        auto lr_opt = set.find_range(l);\n        if (lr_opt.has_value()) {\n\
+    \            auto [nl, nr] = lr_opt.value();\n            ans = std::max(ans,\
+    \ nr - nl + 1LL);\n        }\n        std::cout << ans << '\\n';\n    }\n}\n"
   code: "#define PROBLEM \"https://yukicoder.me/problems/no/674\"\n\n#include \"../../template.h\"\
     \n#include \"../RangeSet.h\"\n\nvoid solve() {\n    long long d;\n    int q;\n\
     \    std::cin >> d >> q;\n\n    long long ans = 0;\n    RangeSet<long long> set;\n\
     \    while (q --> 0) {\n        long long l, r;\n        std::cin >> l >> r;\n\
-    \        set.insert(l, r);\n        auto [nl, nr] = *set.find_range(l);\n    \
-    \    ans = std::max(ans, nr - nl + 1);\n        std::cout << ans << '\\n';\n \
-    \   }\n}\n"
+    \        set.insert(l, r);\n        auto lr_opt = set.find_range(l);\n       \
+    \ if (lr_opt.has_value()) {\n            auto [nl, nr] = lr_opt.value();\n   \
+    \         ans = std::max(ans, nr - nl + 1LL);\n        }\n        std::cout <<\
+    \ ans << '\\n';\n    }\n}\n"
   dependsOn:
   - template.h
   - DataStructure/RangeSet.h
   isVerificationFile: true
   path: DataStructure/test/yukicoder_674_range_set.test.cpp
   requiredBy: []
-  timestamp: '2022-08-15 00:04:10+08:00'
+  timestamp: '2022-08-15 00:07:40+08:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: DataStructure/test/yukicoder_674_range_set.test.cpp

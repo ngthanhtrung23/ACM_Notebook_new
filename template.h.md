@@ -55,6 +55,9 @@ data:
     path: DataStructure/test/aizu_dsl_2_b_segment_tree_sum.test.cpp
     title: DataStructure/test/aizu_dsl_2_b_segment_tree_sum.test.cpp
   - icon: ':heavy_check_mark:'
+    path: DataStructure/test/aizu_dsl_2_d_rangeset.test.cpp
+    title: DataStructure/test/aizu_dsl_2_d_rangeset.test.cpp
+  - icon: ':heavy_check_mark:'
     path: DataStructure/test/aizu_dsl_2_d_segment_tree_rangeset.test.cpp
     title: DataStructure/test/aizu_dsl_2_d_segment_tree_rangeset.test.cpp
   - icon: ':heavy_check_mark:'
@@ -319,6 +322,7 @@ data:
   - DataStructure/test/aizu_dsl_2_a_segment_tree_rmq_update.test.cpp
   - DataStructure/test/aizu_dsl_2_d_segment_tree_rangeset.test.cpp
   - DataStructure/test/aizu_grl_5_d_hld_edge.test.cpp
+  - DataStructure/test/aizu_dsl_2_d_rangeset.test.cpp
   - DataStructure/test/aizu_dsl_2_h_segment_tree_rangeaddmin.test.cpp
   - DataStructure/test/aizu_grl_5_c_lca.test.cpp
   - DataStructure/test/aizu_grl_5_e_hld_edge.test.cpp

@@ -530,6 +530,9 @@ data:
       path: DataStructure/test/aizu_dsl_2_b_segment_tree_sum.test.cpp
       title: DataStructure/test/aizu_dsl_2_b_segment_tree_sum.test.cpp
     - icon: ':heavy_check_mark:'
+      path: DataStructure/test/aizu_dsl_2_d_rangeset.test.cpp
+      title: DataStructure/test/aizu_dsl_2_d_rangeset.test.cpp
+    - icon: ':heavy_check_mark:'
       path: DataStructure/test/aizu_dsl_2_d_segment_tree_rangeset.test.cpp
       title: DataStructure/test/aizu_dsl_2_d_segment_tree_rangeset.test.cpp
     - icon: ':heavy_check_mark:'
