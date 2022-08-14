@@ -93,6 +93,9 @@ data:
       path: DataStructure/RMQ.h
       title: DataStructure/RMQ.h
     - icon: ':heavy_check_mark:'
+      path: DataStructure/RangeSet.h
+      title: DataStructure/RangeSet.h
+    - icon: ':heavy_check_mark:'
       path: DataStructure/SegTree.h
       title: DataStructure/SegTree.h
     - icon: ':heavy_check_mark:'
@@ -544,6 +547,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/aizu_dsl_2_i_segment_tree_rangesetsum.test.cpp
       title: DataStructure/test/aizu_dsl_2_i_segment_tree_rangesetsum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/test/aizu_dsl_4_a_range_set.test.cpp
+      title: DataStructure/test/aizu_dsl_4_a_range_set.test.cpp
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/aizu_grl_5_c_hld_lca.test.cpp
       title: DataStructure/test/aizu_grl_5_c_hld_lca.test.cpp
