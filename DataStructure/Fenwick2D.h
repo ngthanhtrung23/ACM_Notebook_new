@@ -7,6 +7,8 @@
 // - https://judge.yosupo.jp/problem/rectangle_sum
 // - https://judge.yosupo.jp/problem/point_add_rectangle_sum
 // - https://oj.vnoi.info/problem/kl11b
+
+#include "../Misc/compress.h"
 const int INF = 2e9 + 11;  // for coordinates
 template<typename T>
 struct Query {
@@ -24,34 +26,27 @@ template<typename T>
 struct Fenwick2D {
     vector<T> solve(vector<Query<T>> queries) {
         // Get coordinates of ADD queries
-        vector<int> cx {INF}, cy {INF};
+        CompressorBuilder<int> cx_builder, cy_builder;
+        cx_builder.add(INF);
+        cy_builder.add(INF);
         for (const auto& query : queries) {
             if (query.typ == Query<T>::ADD) {
-                cx.push_back(query.x);
-                cy.push_back(query.y);
+                cx_builder.add(query.x);
+                cy_builder.add(query.y);
             }
         }
-        sort(cx.begin(), cx.end());
-        sort(cy.begin(), cy.end());
-        cx.erase(unique(cx.begin(), cx.end()), cx.end());
-        cy.erase(unique(cy.begin(), cy.end()), cy.end());
+        auto cx = cx_builder.build();
+        auto cy = cy_builder.build();
         sx = cx.size();
-
-        auto getx = [&cx] (int x) {
-            return lower_bound(cx.begin(), cx.end(), x) - cx.begin();
-        };
-        auto gety = [&cy] (int y) {
-            return lower_bound(cy.begin(), cy.end(), y) - cy.begin();
-        };
 
         // Compress
         for (auto& query : queries) {
-            query.x = getx(query.x) + 1;
-            query.y = gety(query.y) + 1;
+            query.x = cx.must_geq(query.x) + 1;
+            query.y = cy.must_geq(query.y) + 1;
 
             if (query.typ == Query<T>::QUERY) {
-                query.x2 = getx(query.x2) + 1;
-                query.y2 = gety(query.y2) + 1;
+                query.x2 = cx.must_geq(query.x2) + 1;
+                query.y2 = cy.must_geq(query.y2) + 1;
             }
         }
 
