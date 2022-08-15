@@ -5,10 +5,19 @@ data:
   - icon: ':heavy_check_mark:'
     path: DP/count_inversions.h
     title: DP/count_inversions.h
+  - icon: ':heavy_check_mark:'
+    path: DataStructure/Fenwick2D.h
+    title: DataStructure/Fenwick2D.h
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: DP/tests/aizu_alds1_5_d_count_inversions.test.cpp
     title: DP/tests/aizu_alds1_5_d_count_inversions.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: DataStructure/test/fenwick_2d_pointaddrectsum.test.cpp
+    title: DataStructure/test/fenwick_2d_pointaddrectsum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: DataStructure/test/fenwick_2d_rectsum.test.cpp
+    title: DataStructure/test/fenwick_2d_rectsum.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -107,10 +116,13 @@ data:
   isVerificationFile: false
   path: Misc/compress.h
   requiredBy:
+  - DataStructure/Fenwick2D.h
   - DP/count_inversions.h
   timestamp: '2022-08-14 20:27:19+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - DataStructure/test/fenwick_2d_rectsum.test.cpp
+  - DataStructure/test/fenwick_2d_pointaddrectsum.test.cpp
   - DP/tests/aizu_alds1_5_d_count_inversions.test.cpp
 documentation_of: Misc/compress.h
 layout: document
