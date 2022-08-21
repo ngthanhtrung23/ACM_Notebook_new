@@ -4,18 +4,10 @@
 using namespace std;
 
 #include "../LazySegTree.h"
-#include "../../Math/modulo_anta.h"
+#include "../../Math/modint.h"
 #include "../../buffered_reader.h"
 
 using modular = ModInt<998244353>;
-std::ostream& operator << (std::ostream& cout, const modular& m) {
-    cout << m.x;
-    return cout;
-}
-std::istream& operator >> (std::istream& cin, modular& m) {
-    cin >> m.x;
-    return cin;
-}
 
 struct Node {
     modular sum, sz;

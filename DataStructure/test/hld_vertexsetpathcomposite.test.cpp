@@ -4,7 +4,7 @@
 using namespace std;
 
 #include "../SegTree.h"
-#include "../../Math/modulo_anta.h"
+#include "../../Math/modint.h"
 #include "../HeavyLight_adamant.h"
 
 using modular = ModInt<998244353>;
