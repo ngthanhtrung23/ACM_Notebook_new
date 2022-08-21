@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/splay_tree.h
     title: DataStructure/splay_tree.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Math/modint.h
     title: Math/modint.h
   _extendedRequiredBy: []
@@ -55,10 +55,10 @@ data:
     \      t = ax - bx*q;\n            ax = bx; bx = t;\n        }\n        assert(a\
     \ == 1);\n        if (ax < 0) ax += MD;\n        return ax;\n    }\n\n    static\
     \ std::vector<ModInt> factorials, inv_factorials, invs;\n    constexpr static\
-    \ void _precalc(int n) {\n        if (factorials.empty()) [[unlikely]] {\n   \
-    \         factorials = {1};\n            inv_factorials = {1};\n            invs\
-    \ = {0};\n        }\n        if (n > MD) n = MD;\n        int old_sz = factorials.size();\n\
-    \        if (n <= old_sz) return;\n\n        factorials.resize(n);\n        inv_factorials.resize(n);\n\
+    \ void _precalc(int n) {\n        if (factorials.empty()) {\n            factorials\
+    \ = {1};\n            inv_factorials = {1};\n            invs = {0};\n       \
+    \ }\n        if (n > MD) n = MD;\n        int old_sz = factorials.size();\n  \
+    \      if (n <= old_sz) return;\n\n        factorials.resize(n);\n        inv_factorials.resize(n);\n\
     \        invs.resize(n);\n\n        for (int i = old_sz; i < n; ++i) factorials[i]\
     \ = factorials[i-1] * i;\n        inv_factorials[n-1] = factorials.back().pow(MD\
     \ - 2);\n        for (int i = n - 2; i >= old_sz; --i) inv_factorials[i] = inv_factorials[i+1]\
@@ -66,9 +66,12 @@ data:
     \ * factorials[i-1];\n    }\n    \nprivate:\n    // Internal, DO NOT USE.\n  \
     \  // val must be in [0, 2*MD)\n    constexpr inline __attribute__((always_inline))\
     \ ModInt& _set(ll v) {\n        x = v >= MD ? v - MD : v;\n        return *this;\n\
-    \    }\n};\n// }}}\n#line 1 \"DataStructure/splay_tree.h\"\n// SplayTreeById\n\
-    //\n// Note:\n// - op() must be commutative, otherwise reverse queries won't work.\n\
-    //   To fix it, need to store aggregate data from right->left\n//   See https://judge.yosupo.jp/submission/53778\
+    \    }\n};\ntemplate <int MD> std::vector<ModInt<MD>> ModInt<MD>::factorials =\
+    \ {1};\ntemplate <int MD> std::vector<ModInt<MD>> ModInt<MD>::inv_factorials =\
+    \ {1};\ntemplate <int MD> std::vector<ModInt<MD>> ModInt<MD>::invs = {0};\n//\
+    \ }}}\n#line 1 \"DataStructure/splay_tree.h\"\n// SplayTreeById\n//\n// Note:\n\
+    // - op() must be commutative, otherwise reverse queries won't work.\n//   To\
+    \ fix it, need to store aggregate data from right->left\n//   See https://judge.yosupo.jp/submission/53778\
     \ (and look at invsum)\n//\n// Tested:\n// - (cut, join)      https://vn.spoj.com/problems/CARDS/\n\
     // - (keys, reverse)  https://oj.vnoi.info/problem/twist\n// - (insert, prod)\
     \   https://oj.vnoi.info/problem/qmax3vn\n// - (insert, delete) https://vn.spoj.com/problems/QMAX4/\n\
@@ -272,7 +275,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/splay_tree.test.cpp
   requiredBy: []
-  timestamp: '2022-08-21 20:08:44+08:00'
+  timestamp: '2022-08-21 20:19:49+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/splay_tree.test.cpp

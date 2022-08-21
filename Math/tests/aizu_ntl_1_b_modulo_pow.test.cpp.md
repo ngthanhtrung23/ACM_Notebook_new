@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Math/modint.h
     title: Math/modint.h
   - icon: ':heavy_check_mark:'
@@ -80,10 +80,10 @@ data:
     \ ax - bx*q;\n            ax = bx; bx = t;\n        }\n        assert(a == 1);\n\
     \        if (ax < 0) ax += MD;\n        return ax;\n    }\n\n    static std::vector<ModInt>\
     \ factorials, inv_factorials, invs;\n    constexpr static void _precalc(int n)\
-    \ {\n        if (factorials.empty()) [[unlikely]] {\n            factorials =\
-    \ {1};\n            inv_factorials = {1};\n            invs = {0};\n        }\n\
-    \        if (n > MD) n = MD;\n        int old_sz = factorials.size();\n      \
-    \  if (n <= old_sz) return;\n\n        factorials.resize(n);\n        inv_factorials.resize(n);\n\
+    \ {\n        if (factorials.empty()) {\n            factorials = {1};\n      \
+    \      inv_factorials = {1};\n            invs = {0};\n        }\n        if (n\
+    \ > MD) n = MD;\n        int old_sz = factorials.size();\n        if (n <= old_sz)\
+    \ return;\n\n        factorials.resize(n);\n        inv_factorials.resize(n);\n\
     \        invs.resize(n);\n\n        for (int i = old_sz; i < n; ++i) factorials[i]\
     \ = factorials[i-1] * i;\n        inv_factorials[n-1] = factorials.back().pow(MD\
     \ - 2);\n        for (int i = n - 2; i >= old_sz; --i) inv_factorials[i] = inv_factorials[i+1]\
@@ -91,9 +91,12 @@ data:
     \ * factorials[i-1];\n    }\n    \nprivate:\n    // Internal, DO NOT USE.\n  \
     \  // val must be in [0, 2*MD)\n    constexpr inline __attribute__((always_inline))\
     \ ModInt& _set(ll v) {\n        x = v >= MD ? v - MD : v;\n        return *this;\n\
-    \    }\n};\n// }}}\n#line 5 \"Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp\"\n\n\
-    const int MOD = 1e9 + 7;\nusing modular = ModInt<MOD>;\n\nvoid solve() {\n   \
-    \ modular m; int k; cin >> m >> k;\n    cout << m.pow(k) << endl;\n}\n"
+    \    }\n};\ntemplate <int MD> std::vector<ModInt<MD>> ModInt<MD>::factorials =\
+    \ {1};\ntemplate <int MD> std::vector<ModInt<MD>> ModInt<MD>::inv_factorials =\
+    \ {1};\ntemplate <int MD> std::vector<ModInt<MD>> ModInt<MD>::invs = {0};\n//\
+    \ }}}\n#line 5 \"Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp\"\n\nconst int MOD\
+    \ = 1e9 + 7;\nusing modular = ModInt<MOD>;\n\nvoid solve() {\n    modular m; int\
+    \ k; cin >> m >> k;\n    cout << m.pow(k) << endl;\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_B\"\
     \n\n#include \"../../template.h\"\n#include \"../modint.h\"\n\nconst int MOD =\
     \ 1e9 + 7;\nusing modular = ModInt<MOD>;\n\nvoid solve() {\n    modular m; int\
@@ -104,7 +107,7 @@ data:
   isVerificationFile: true
   path: Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp
   requiredBy: []
-  timestamp: '2022-08-21 20:08:44+08:00'
+  timestamp: '2022-08-21 20:19:49+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp

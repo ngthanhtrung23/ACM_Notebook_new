@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Math/modint.h
     title: Math/modint.h
   - icon: ':heavy_check_mark:'
@@ -87,10 +87,10 @@ data:
     \ ax - bx*q;\n            ax = bx; bx = t;\n        }\n        assert(a == 1);\n\
     \        if (ax < 0) ax += MD;\n        return ax;\n    }\n\n    static std::vector<ModInt>\
     \ factorials, inv_factorials, invs;\n    constexpr static void _precalc(int n)\
-    \ {\n        if (factorials.empty()) [[unlikely]] {\n            factorials =\
-    \ {1};\n            inv_factorials = {1};\n            invs = {0};\n        }\n\
-    \        if (n > MD) n = MD;\n        int old_sz = factorials.size();\n      \
-    \  if (n <= old_sz) return;\n\n        factorials.resize(n);\n        inv_factorials.resize(n);\n\
+    \ {\n        if (factorials.empty()) {\n            factorials = {1};\n      \
+    \      inv_factorials = {1};\n            invs = {0};\n        }\n        if (n\
+    \ > MD) n = MD;\n        int old_sz = factorials.size();\n        if (n <= old_sz)\
+    \ return;\n\n        factorials.resize(n);\n        inv_factorials.resize(n);\n\
     \        invs.resize(n);\n\n        for (int i = old_sz; i < n; ++i) factorials[i]\
     \ = factorials[i-1] * i;\n        inv_factorials[n-1] = factorials.back().pow(MD\
     \ - 2);\n        for (int i = n - 2; i >= old_sz; --i) inv_factorials[i] = inv_factorials[i+1]\
@@ -98,42 +98,45 @@ data:
     \ * factorials[i-1];\n    }\n    \nprivate:\n    // Internal, DO NOT USE.\n  \
     \  // val must be in [0, 2*MD)\n    constexpr inline __attribute__((always_inline))\
     \ ModInt& _set(ll v) {\n        x = v >= MD ? v - MD : v;\n        return *this;\n\
-    \    }\n};\n// }}}\n#line 15 \"String/hash.h\"\nconst int MOD = 1e9 + 7;\nusing\
-    \ modular = ModInt<MOD>;\n\nstruct Hash {\n    long long x;\n    modular y;\n\n\
-    \    Hash operator + (const Hash& a) const { return Hash{x + a.x, y + a.y}; }\n\
-    \    Hash operator - (const Hash& a) const { return Hash{x - a.x, y - a.y}; }\n\
-    \    Hash operator * (const Hash& a) const { return Hash{x * a.x, y * a.y}; }\n\
-    \    Hash operator * (int k) const { return Hash{x*k, y*k}; }\n};\nbool operator\
-    \ == (const Hash& a, const Hash& b) {\n    return a.x == b.x && a.y == b.y;\n\
-    }\n\n// hash function for std::unordered_map\nnamespace std {\n    template<>\n\
-    \    struct hash<Hash> {\n        public:\n            size_t operator() (const\
-    \ Hash& h) const {\n                return h.x * 1000000009 + h.y.x;\n       \
-    \     }\n    };\n}\n\nstruct HashGenerator {\n    HashGenerator(int maxLen, int\
-    \ base = 311) {\n        p.resize(maxLen + 1);\n        p[0] = {1, 1};\n     \
-    \   for (int i = 1; i <= maxLen; i++) {\n            p[i] = p[i-1] * base;\n \
-    \       }\n    }\n\n    std::vector<Hash> hash(const std::string& s) {\n     \
-    \   std::vector<Hash> res(s.size());\n        for (size_t i = 0; i < s.size();\
-    \ i++) {\n            res[i] = p[i] * (int) s[i];\n        }\n        std::partial_sum(res.begin(),\
-    \ res.end(), res.begin());\n        return res;\n    }\n\n    Hash getHash(const\
-    \ std::vector<Hash>& h, int l, int r) {\n        return __getHash(h, l, r) * p[p.size()\
-    \ - 1 - l];\n    }\n\n    // compare [l1, r1] vs [l2, r2]\n    bool equals(\n\
-    \            const std::vector<Hash>& h1, int l1, int r1,\n            const std::vector<Hash>&\
-    \ h2, int l2, int r2) {\n        assert(0 <= l1 && l1 <= r1 && r1 < (int) h1.size());\n\
-    \        assert(0 <= l2 && l2 <= r2 && r2 < (int) h2.size());\n\n        return\
-    \ getHash(h1, l1, r1) == getHash(h2, l2, r2);\n    }\n\n    // Returns length\
-    \ of max common prefix of h1[l1, r1] and h2[l2, r2]\n    // length = 0 -> first\
-    \ character of 2 substrings are different.\n    int maxCommonPrefix(\n       \
-    \     const std::vector<Hash>& h1, int l1, int r1,\n            const std::vector<Hash>&\
-    \ h2, int l2, int r2) {\n        assert(0 <= l1 && l1 <= r1 && r1 < (int) h1.size());\n\
-    \        assert(0 <= l2 && l2 <= r2 && r2 < (int) h2.size());\n\n        int len1\
-    \ = r1 - l1 + 1;\n        int len2 = r2 - l2 + 1;\n\n        int res = -1, left\
-    \ = 0, right = std::min(len1, len2) - 1;\n        while (left <= right) {\n  \
-    \          int mid = (left + right) / 2;\n            if (equals(h1, l1, l1 +\
-    \ mid, h2, l2, l2 + mid)) {\n                res = mid;\n                left\
-    \ = mid + 1;\n            } else {\n                right = mid - 1;\n       \
-    \     }\n        }\n        return res + 1;\n        /* C++20\n        auto r\
-    \ = std::views::iota(0, std::min(len1, len2));\n        auto res = std::ranges::partition_point(\n\
-    \                r,\n                [&] (int mid) {\n                    return\
+    \    }\n};\ntemplate <int MD> std::vector<ModInt<MD>> ModInt<MD>::factorials =\
+    \ {1};\ntemplate <int MD> std::vector<ModInt<MD>> ModInt<MD>::inv_factorials =\
+    \ {1};\ntemplate <int MD> std::vector<ModInt<MD>> ModInt<MD>::invs = {0};\n//\
+    \ }}}\n#line 15 \"String/hash.h\"\nconst int MOD = 1e9 + 7;\nusing modular = ModInt<MOD>;\n\
+    \nstruct Hash {\n    long long x;\n    modular y;\n\n    Hash operator + (const\
+    \ Hash& a) const { return Hash{x + a.x, y + a.y}; }\n    Hash operator - (const\
+    \ Hash& a) const { return Hash{x - a.x, y - a.y}; }\n    Hash operator * (const\
+    \ Hash& a) const { return Hash{x * a.x, y * a.y}; }\n    Hash operator * (int\
+    \ k) const { return Hash{x*k, y*k}; }\n};\nbool operator == (const Hash& a, const\
+    \ Hash& b) {\n    return a.x == b.x && a.y == b.y;\n}\n\n// hash function for\
+    \ std::unordered_map\nnamespace std {\n    template<>\n    struct hash<Hash> {\n\
+    \        public:\n            size_t operator() (const Hash& h) const {\n    \
+    \            return h.x * 1000000009 + h.y.x;\n            }\n    };\n}\n\nstruct\
+    \ HashGenerator {\n    HashGenerator(int maxLen, int base = 311) {\n        p.resize(maxLen\
+    \ + 1);\n        p[0] = {1, 1};\n        for (int i = 1; i <= maxLen; i++) {\n\
+    \            p[i] = p[i-1] * base;\n        }\n    }\n\n    std::vector<Hash>\
+    \ hash(const std::string& s) {\n        std::vector<Hash> res(s.size());\n   \
+    \     for (size_t i = 0; i < s.size(); i++) {\n            res[i] = p[i] * (int)\
+    \ s[i];\n        }\n        std::partial_sum(res.begin(), res.end(), res.begin());\n\
+    \        return res;\n    }\n\n    Hash getHash(const std::vector<Hash>& h, int\
+    \ l, int r) {\n        return __getHash(h, l, r) * p[p.size() - 1 - l];\n    }\n\
+    \n    // compare [l1, r1] vs [l2, r2]\n    bool equals(\n            const std::vector<Hash>&\
+    \ h1, int l1, int r1,\n            const std::vector<Hash>& h2, int l2, int r2)\
+    \ {\n        assert(0 <= l1 && l1 <= r1 && r1 < (int) h1.size());\n        assert(0\
+    \ <= l2 && l2 <= r2 && r2 < (int) h2.size());\n\n        return getHash(h1, l1,\
+    \ r1) == getHash(h2, l2, r2);\n    }\n\n    // Returns length of max common prefix\
+    \ of h1[l1, r1] and h2[l2, r2]\n    // length = 0 -> first character of 2 substrings\
+    \ are different.\n    int maxCommonPrefix(\n            const std::vector<Hash>&\
+    \ h1, int l1, int r1,\n            const std::vector<Hash>& h2, int l2, int r2)\
+    \ {\n        assert(0 <= l1 && l1 <= r1 && r1 < (int) h1.size());\n        assert(0\
+    \ <= l2 && l2 <= r2 && r2 < (int) h2.size());\n\n        int len1 = r1 - l1 +\
+    \ 1;\n        int len2 = r2 - l2 + 1;\n\n        int res = -1, left = 0, right\
+    \ = std::min(len1, len2) - 1;\n        while (left <= right) {\n            int\
+    \ mid = (left + right) / 2;\n            if (equals(h1, l1, l1 + mid, h2, l2,\
+    \ l2 + mid)) {\n                res = mid;\n                left = mid + 1;\n\
+    \            } else {\n                right = mid - 1;\n            }\n     \
+    \   }\n        return res + 1;\n        /* C++20\n        auto r = std::views::iota(0,\
+    \ std::min(len1, len2));\n        auto res = std::ranges::partition_point(\n \
+    \               r,\n                [&] (int mid) {\n                    return\
     \ equals(h1, l1, l1+mid, h2, l2, l2+mid);\n                });\n        return\
     \ *res;\n         */\n    }\n\n    // compare s1[l1, r1] and s2[l2, r2]\n    int\
     \ cmp(\n            const std::string& s1, const std::vector<Hash>& h1, int l1,\
@@ -173,7 +176,7 @@ data:
   isVerificationFile: true
   path: String/tests/yukicoder_1408_string_hash_lcp.test.cpp
   requiredBy: []
-  timestamp: '2022-08-21 20:08:44+08:00'
+  timestamp: '2022-08-21 20:19:49+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: String/tests/yukicoder_1408_string_hash_lcp.test.cpp

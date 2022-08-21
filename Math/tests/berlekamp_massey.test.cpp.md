@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/LinearRecurrence_BerlekampMassey.h
     title: Math/LinearRecurrence_BerlekampMassey.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Math/modint.h
     title: Math/modint.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/find_linear_recurrence
@@ -55,10 +55,10 @@ data:
     \ ax - bx*q;\n            ax = bx; bx = t;\n        }\n        assert(a == 1);\n\
     \        if (ax < 0) ax += MD;\n        return ax;\n    }\n\n    static std::vector<ModInt>\
     \ factorials, inv_factorials, invs;\n    constexpr static void _precalc(int n)\
-    \ {\n        if (factorials.empty()) [[unlikely]] {\n            factorials =\
-    \ {1};\n            inv_factorials = {1};\n            invs = {0};\n        }\n\
-    \        if (n > MD) n = MD;\n        int old_sz = factorials.size();\n      \
-    \  if (n <= old_sz) return;\n\n        factorials.resize(n);\n        inv_factorials.resize(n);\n\
+    \ {\n        if (factorials.empty()) {\n            factorials = {1};\n      \
+    \      inv_factorials = {1};\n            invs = {0};\n        }\n        if (n\
+    \ > MD) n = MD;\n        int old_sz = factorials.size();\n        if (n <= old_sz)\
+    \ return;\n\n        factorials.resize(n);\n        inv_factorials.resize(n);\n\
     \        invs.resize(n);\n\n        for (int i = old_sz; i < n; ++i) factorials[i]\
     \ = factorials[i-1] * i;\n        inv_factorials[n-1] = factorials.back().pow(MD\
     \ - 2);\n        for (int i = n - 2; i >= old_sz; --i) inv_factorials[i] = inv_factorials[i+1]\
@@ -66,19 +66,22 @@ data:
     \ * factorials[i-1];\n    }\n    \nprivate:\n    // Internal, DO NOT USE.\n  \
     \  // val must be in [0, 2*MD)\n    constexpr inline __attribute__((always_inline))\
     \ ModInt& _set(ll v) {\n        x = v >= MD ? v - MD : v;\n        return *this;\n\
-    \    }\n};\n// }}}\n#line 7 \"Math/tests/berlekamp_massey.test.cpp\"\n\nusing\
-    \ modular = ModInt<998244353>;\n\n#line 1 \"Math/LinearRecurrence_BerlekampMassey.h\"\
-    \n// Berlekamp Massey\n// Given sequence s0, ..., s(N-1)\n// Find sequence c1,\
-    \ ..., cd with minimum d (d >= 0), such that:\n//   si = sum(s(i-j) * c(j), for\
-    \ j = 1..d)\n//\n// Tutorial: https://mzhang2021.github.io/cp-blog/berlekamp-massey/\n\
-    // If we have the linear recurrence, we can compute s(n):\n// - O(n*d) naively\n\
-    // - O(d^3 * log(n)) with matrix exponentiation\n// - O(d*log(d)*log(k)) with\
-    \ generating function (tutorial above)\n//\n// Solving problems where we need\
-    \ to compute f(n) mod P (e.g. VOJ SELFDIV)\n// - Guess that f is a linear recurrence\n\
-    // - Compute f(n) for small n\n// - Run Berlekamp Massey to find C (we must have\
-    \ 2*|C| < n, otherwise it's wrong)\n//\n// Note:\n// - should be calculated in\
-    \ prime modulo (i.e. T=modint), as it\n//   requires modular inverse\n// - when\
-    \ modulo is not prime --> https://github.com/zimpha/algorithmic-library/blob/master/cpp/mathematics/linear-recurrence.cc\n\
+    \    }\n};\ntemplate <int MD> std::vector<ModInt<MD>> ModInt<MD>::factorials =\
+    \ {1};\ntemplate <int MD> std::vector<ModInt<MD>> ModInt<MD>::inv_factorials =\
+    \ {1};\ntemplate <int MD> std::vector<ModInt<MD>> ModInt<MD>::invs = {0};\n//\
+    \ }}}\n#line 7 \"Math/tests/berlekamp_massey.test.cpp\"\n\nusing modular = ModInt<998244353>;\n\
+    \n#line 1 \"Math/LinearRecurrence_BerlekampMassey.h\"\n// Berlekamp Massey\n//\
+    \ Given sequence s0, ..., s(N-1)\n// Find sequence c1, ..., cd with minimum d\
+    \ (d >= 0), such that:\n//   si = sum(s(i-j) * c(j), for j = 1..d)\n//\n// Tutorial:\
+    \ https://mzhang2021.github.io/cp-blog/berlekamp-massey/\n// If we have the linear\
+    \ recurrence, we can compute s(n):\n// - O(n*d) naively\n// - O(d^3 * log(n))\
+    \ with matrix exponentiation\n// - O(d*log(d)*log(k)) with generating function\
+    \ (tutorial above)\n//\n// Solving problems where we need to compute f(n) mod\
+    \ P (e.g. VOJ SELFDIV)\n// - Guess that f is a linear recurrence\n// - Compute\
+    \ f(n) for small n\n// - Run Berlekamp Massey to find C (we must have 2*|C| <\
+    \ n, otherwise it's wrong)\n//\n// Note:\n// - should be calculated in prime modulo\
+    \ (i.e. T=modint), as it\n//   requires modular inverse\n// - when modulo is not\
+    \ prime --> https://github.com/zimpha/algorithmic-library/blob/master/cpp/mathematics/linear-recurrence.cc\n\
     //   but this comment says it doesn't work on some problem: https://codeforces.com/blog/entry/61306?#comment-454682\n\
     //\n// Tested:\n// - (BM) https://judge.yosupo.jp/problem/find_linear_recurrence\n\
     // - (BM + find_kth) https://oj.vnoi.info/problem/selfdiv\n// - (find_kth) https://oj.vnoi.info/problem/errichto_matexp_fibonacci\n\
@@ -132,8 +135,8 @@ data:
   isVerificationFile: true
   path: Math/tests/berlekamp_massey.test.cpp
   requiredBy: []
-  timestamp: '2022-08-21 20:08:44+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2022-08-21 20:19:49+08:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Math/tests/berlekamp_massey.test.cpp
 layout: document

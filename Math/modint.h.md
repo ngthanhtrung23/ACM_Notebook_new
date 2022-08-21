@@ -24,7 +24,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp
     title: Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/berlekamp_massey.test.cpp
     title: Math/tests/berlekamp_massey.test.cpp
   - icon: ':heavy_check_mark:'
@@ -36,9 +36,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: String/tests/yukicoder_1408_string_hash_lcp.test.cpp
     title: String/tests/yukicoder_1408_string_hash_lcp.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"Math/modint.h\"\n// ModInt {{{\ntemplate<int MD> struct\
@@ -77,10 +77,10 @@ data:
     \ ax - bx*q;\n            ax = bx; bx = t;\n        }\n        assert(a == 1);\n\
     \        if (ax < 0) ax += MD;\n        return ax;\n    }\n\n    static std::vector<ModInt>\
     \ factorials, inv_factorials, invs;\n    constexpr static void _precalc(int n)\
-    \ {\n        if (factorials.empty()) [[unlikely]] {\n            factorials =\
-    \ {1};\n            inv_factorials = {1};\n            invs = {0};\n        }\n\
-    \        if (n > MD) n = MD;\n        int old_sz = factorials.size();\n      \
-    \  if (n <= old_sz) return;\n\n        factorials.resize(n);\n        inv_factorials.resize(n);\n\
+    \ {\n        if (factorials.empty()) {\n            factorials = {1};\n      \
+    \      inv_factorials = {1};\n            invs = {0};\n        }\n        if (n\
+    \ > MD) n = MD;\n        int old_sz = factorials.size();\n        if (n <= old_sz)\
+    \ return;\n\n        factorials.resize(n);\n        inv_factorials.resize(n);\n\
     \        invs.resize(n);\n\n        for (int i = old_sz; i < n; ++i) factorials[i]\
     \ = factorials[i-1] * i;\n        inv_factorials[n-1] = factorials.back().pow(MD\
     \ - 2);\n        for (int i = n - 2; i >= old_sz; --i) inv_factorials[i] = inv_factorials[i+1]\
@@ -88,7 +88,10 @@ data:
     \ * factorials[i-1];\n    }\n    \nprivate:\n    // Internal, DO NOT USE.\n  \
     \  // val must be in [0, 2*MD)\n    constexpr inline __attribute__((always_inline))\
     \ ModInt& _set(ll v) {\n        x = v >= MD ? v - MD : v;\n        return *this;\n\
-    \    }\n};\n// }}}\n"
+    \    }\n};\ntemplate <int MD> std::vector<ModInt<MD>> ModInt<MD>::factorials =\
+    \ {1};\ntemplate <int MD> std::vector<ModInt<MD>> ModInt<MD>::inv_factorials =\
+    \ {1};\ntemplate <int MD> std::vector<ModInt<MD>> ModInt<MD>::invs = {0};\n//\
+    \ }}}\n"
   code: "// ModInt {{{\ntemplate<int MD> struct ModInt {\n    using ll = long long;\n\
     \    int x;\n\n    constexpr ModInt() : x(0) {}\n    constexpr ModInt(ll v) {\
     \ _set(v % MD + MD); }\n    constexpr explicit operator bool() const { return\
@@ -125,24 +128,27 @@ data:
     \    }\n        assert(a == 1);\n        if (ax < 0) ax += MD;\n        return\
     \ ax;\n    }\n\n    static std::vector<ModInt> factorials, inv_factorials, invs;\n\
     \    constexpr static void _precalc(int n) {\n        if (factorials.empty())\
-    \ [[unlikely]] {\n            factorials = {1};\n            inv_factorials =\
-    \ {1};\n            invs = {0};\n        }\n        if (n > MD) n = MD;\n    \
-    \    int old_sz = factorials.size();\n        if (n <= old_sz) return;\n\n   \
-    \     factorials.resize(n);\n        inv_factorials.resize(n);\n        invs.resize(n);\n\
-    \n        for (int i = old_sz; i < n; ++i) factorials[i] = factorials[i-1] * i;\n\
-    \        inv_factorials[n-1] = factorials.back().pow(MD - 2);\n        for (int\
-    \ i = n - 2; i >= old_sz; --i) inv_factorials[i] = inv_factorials[i+1] * (i+1);\n\
-    \        for (int i = n-1; i >= old_sz; --i) invs[i] = inv_factorials[i] * factorials[i-1];\n\
-    \    }\n    \nprivate:\n    // Internal, DO NOT USE.\n    // val must be in [0,\
-    \ 2*MD)\n    constexpr inline __attribute__((always_inline)) ModInt& _set(ll v)\
-    \ {\n        x = v >= MD ? v - MD : v;\n        return *this;\n    }\n};\n// }}}\n"
+    \ {\n            factorials = {1};\n            inv_factorials = {1};\n      \
+    \      invs = {0};\n        }\n        if (n > MD) n = MD;\n        int old_sz\
+    \ = factorials.size();\n        if (n <= old_sz) return;\n\n        factorials.resize(n);\n\
+    \        inv_factorials.resize(n);\n        invs.resize(n);\n\n        for (int\
+    \ i = old_sz; i < n; ++i) factorials[i] = factorials[i-1] * i;\n        inv_factorials[n-1]\
+    \ = factorials.back().pow(MD - 2);\n        for (int i = n - 2; i >= old_sz; --i)\
+    \ inv_factorials[i] = inv_factorials[i+1] * (i+1);\n        for (int i = n-1;\
+    \ i >= old_sz; --i) invs[i] = inv_factorials[i] * factorials[i-1];\n    }\n  \
+    \  \nprivate:\n    // Internal, DO NOT USE.\n    // val must be in [0, 2*MD)\n\
+    \    constexpr inline __attribute__((always_inline)) ModInt& _set(ll v) {\n  \
+    \      x = v >= MD ? v - MD : v;\n        return *this;\n    }\n};\ntemplate <int\
+    \ MD> std::vector<ModInt<MD>> ModInt<MD>::factorials = {1};\ntemplate <int MD>\
+    \ std::vector<ModInt<MD>> ModInt<MD>::inv_factorials = {1};\ntemplate <int MD>\
+    \ std::vector<ModInt<MD>> ModInt<MD>::invs = {0};\n// }}}\n"
   dependsOn: []
   isVerificationFile: false
   path: Math/modint.h
   requiredBy:
   - String/hash.h
-  timestamp: '2022-08-21 20:08:44+08:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2022-08-21 20:19:49+08:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - String/tests/yukicoder_1408_string_hash_lcp.test.cpp
   - String/tests/aizu_alds_14_b_string_hash.test.cpp
