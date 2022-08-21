@@ -82,7 +82,7 @@ template<int MD> struct ModInt {
 
     static std::vector<ModInt> factorials, inv_factorials, invs;
     constexpr static void _precalc(int n) {
-        if (factorials.empty()) [[unlikely]] {
+        if (factorials.empty()) {
             factorials = {1};
             inv_factorials = {1};
             invs = {0};
@@ -109,4 +109,7 @@ private:
         return *this;
     }
 };
+template <int MD> std::vector<ModInt<MD>> ModInt<MD>::factorials = {1};
+template <int MD> std::vector<ModInt<MD>> ModInt<MD>::inv_factorials = {1};
+template <int MD> std::vector<ModInt<MD>> ModInt<MD>::invs = {0};
 // }}}
