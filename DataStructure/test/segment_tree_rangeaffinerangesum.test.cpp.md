@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/LazySegTree.h
     title: DataStructure/LazySegTree.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Math/modint.h
     title: Math/modint.h
   - icon: ':heavy_check_mark:'
@@ -54,7 +54,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
   requiredBy: []
-  timestamp: '2022-08-21 18:45:50+08:00'
+  timestamp: '2022-08-21 20:08:44+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp

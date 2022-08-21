@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/berlekamp_massey.test.cpp
     title: Math/tests/berlekamp_massey.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://codeforces.com/blog/entry/61306?#comment-454682
@@ -115,7 +115,7 @@ data:
   path: Math/LinearRecurrence_BerlekampMassey.h
   requiredBy: []
   timestamp: '2022-01-08 03:48:10+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - Math/tests/berlekamp_massey.test.cpp
 documentation_of: Math/LinearRecurrence_BerlekampMassey.h

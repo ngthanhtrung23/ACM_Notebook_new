@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/LinearRecurrence_BerlekampMassey.h
     title: Math/LinearRecurrence_BerlekampMassey.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Math/modint.h
     title: Math/modint.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/find_linear_recurrence
@@ -48,25 +48,26 @@ data:
     \ x) {\n        return os << x.x;\n    }\n\n    constexpr ModInt pow(ll k) const\
     \ {\n        ModInt ans = 1, tmp = x;\n        while (k) {\n            if (k\
     \ & 1) ans *= tmp;\n            tmp *= tmp;\n            k >>= 1;\n        }\n\
-    \        return ans;\n    }\n\n    ModInt inv() {\n        if (x < 1000111) {\n\
-    \            _precalc(1000111);\n            return invs[x];\n        }\n    \
-    \    int a = x, b = MD, ax = 1, bx = 0;\n        while (b) {\n            int\
-    \ q = a/b, t = a%b;\n            a = b; b = t;\n            t = ax - bx*q;\n \
-    \           ax = bx; bx = t;\n        }\n        assert(a == 1);\n        if (ax\
-    \ < 0) ax += MD;\n        return ax;\n    }\n\n    std::vector<ModInt> factorials,\
-    \ inv_factorials, invs;\n    void _precalc(int n) {\n        if (factorials.empty())\
-    \ [[unlikely]] {\n            factorials = {1};\n            inv_factorials =\
-    \ {1};\n            invs = {0};\n        }\n        if (n > MD) n = MD;\n    \
-    \    int old_sz = factorials.size();\n        if (n <= old_sz) return;\n\n   \
-    \     factorials.resize(n);\n        inv_factorials.resize(n);\n        invs.resize(n);\n\
-    \n        for (int i = old_sz; i < n; ++i) factorials[i] = factorials[i-1] * i;\n\
-    \        inv_factorials[n-1] = factorials.back().pow(MD - 2);\n        for (int\
-    \ i = n - 2; i >= old_sz; --i) inv_factorials[i] = inv_factorials[i+1] * (i+1);\n\
-    \        for (int i = n-1; i >= old_sz; --i) invs[i] = inv_factorials[i] * factorials[i-1];\n\
-    \    }\n    \nprivate:\n    // Internal, DO NOT USE.\n    // val must be in [0,\
-    \ 2*MD)\n    constexpr ModInt& _set(ll v) {\n        x = v >= MD ? v - MD : v;\n\
-    \        return *this;\n    }\n};\n// }}}\n#line 7 \"Math/tests/berlekamp_massey.test.cpp\"\
-    \n\nusing modular = ModInt<998244353>;\n\n#line 1 \"Math/LinearRecurrence_BerlekampMassey.h\"\
+    \        return ans;\n    }\n\n    constexpr ModInt inv() const {\n        if\
+    \ (x < 1000111) {\n            _precalc(1000111);\n            return invs[x];\n\
+    \        }\n        int a = x, b = MD, ax = 1, bx = 0;\n        while (b) {\n\
+    \            int q = a/b, t = a%b;\n            a = b; b = t;\n            t =\
+    \ ax - bx*q;\n            ax = bx; bx = t;\n        }\n        assert(a == 1);\n\
+    \        if (ax < 0) ax += MD;\n        return ax;\n    }\n\n    static std::vector<ModInt>\
+    \ factorials, inv_factorials, invs;\n    constexpr static void _precalc(int n)\
+    \ {\n        if (factorials.empty()) [[unlikely]] {\n            factorials =\
+    \ {1};\n            inv_factorials = {1};\n            invs = {0};\n        }\n\
+    \        if (n > MD) n = MD;\n        int old_sz = factorials.size();\n      \
+    \  if (n <= old_sz) return;\n\n        factorials.resize(n);\n        inv_factorials.resize(n);\n\
+    \        invs.resize(n);\n\n        for (int i = old_sz; i < n; ++i) factorials[i]\
+    \ = factorials[i-1] * i;\n        inv_factorials[n-1] = factorials.back().pow(MD\
+    \ - 2);\n        for (int i = n - 2; i >= old_sz; --i) inv_factorials[i] = inv_factorials[i+1]\
+    \ * (i+1);\n        for (int i = n-1; i >= old_sz; --i) invs[i] = inv_factorials[i]\
+    \ * factorials[i-1];\n    }\n    \nprivate:\n    // Internal, DO NOT USE.\n  \
+    \  // val must be in [0, 2*MD)\n    constexpr inline __attribute__((always_inline))\
+    \ ModInt& _set(ll v) {\n        x = v >= MD ? v - MD : v;\n        return *this;\n\
+    \    }\n};\n// }}}\n#line 7 \"Math/tests/berlekamp_massey.test.cpp\"\n\nusing\
+    \ modular = ModInt<998244353>;\n\n#line 1 \"Math/LinearRecurrence_BerlekampMassey.h\"\
     \n// Berlekamp Massey\n// Given sequence s0, ..., s(N-1)\n// Find sequence c1,\
     \ ..., cd with minimum d (d >= 0), such that:\n//   si = sum(s(i-j) * c(j), for\
     \ j = 1..d)\n//\n// Tutorial: https://mzhang2021.github.io/cp-blog/berlekamp-massey/\n\
@@ -131,8 +132,8 @@ data:
   isVerificationFile: true
   path: Math/tests/berlekamp_massey.test.cpp
   requiredBy: []
-  timestamp: '2022-08-21 18:45:50+08:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2022-08-21 20:08:44+08:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: Math/tests/berlekamp_massey.test.cpp
 layout: document

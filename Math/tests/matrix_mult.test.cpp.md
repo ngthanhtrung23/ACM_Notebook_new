@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Math/Matrix.h
     title: Math/Matrix.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Math/modint.h
     title: Math/modint.h
   - icon: ':heavy_check_mark:'
@@ -46,7 +46,7 @@ data:
   isVerificationFile: true
   path: Math/tests/matrix_mult.test.cpp
   requiredBy: []
-  timestamp: '2022-08-21 18:45:50+08:00'
+  timestamp: '2022-08-21 20:08:44+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Math/tests/matrix_mult.test.cpp

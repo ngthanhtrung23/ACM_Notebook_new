@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/LinkCutTree.h
     title: DataStructure/LinkCutTree.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Math/modint.h
     title: Math/modint.h
   _extendedRequiredBy: []
@@ -49,33 +49,34 @@ data:
     \    }\n\n    constexpr ModInt pow(ll k) const {\n        ModInt ans = 1, tmp\
     \ = x;\n        while (k) {\n            if (k & 1) ans *= tmp;\n            tmp\
     \ *= tmp;\n            k >>= 1;\n        }\n        return ans;\n    }\n\n   \
-    \ ModInt inv() {\n        if (x < 1000111) {\n            _precalc(1000111);\n\
+    \ constexpr ModInt inv() const {\n        if (x < 1000111) {\n            _precalc(1000111);\n\
     \            return invs[x];\n        }\n        int a = x, b = MD, ax = 1, bx\
     \ = 0;\n        while (b) {\n            int q = a/b, t = a%b;\n            a\
     \ = b; b = t;\n            t = ax - bx*q;\n            ax = bx; bx = t;\n    \
     \    }\n        assert(a == 1);\n        if (ax < 0) ax += MD;\n        return\
-    \ ax;\n    }\n\n    std::vector<ModInt> factorials, inv_factorials, invs;\n  \
-    \  void _precalc(int n) {\n        if (factorials.empty()) [[unlikely]] {\n  \
-    \          factorials = {1};\n            inv_factorials = {1};\n            invs\
-    \ = {0};\n        }\n        if (n > MD) n = MD;\n        int old_sz = factorials.size();\n\
-    \        if (n <= old_sz) return;\n\n        factorials.resize(n);\n        inv_factorials.resize(n);\n\
-    \        invs.resize(n);\n\n        for (int i = old_sz; i < n; ++i) factorials[i]\
-    \ = factorials[i-1] * i;\n        inv_factorials[n-1] = factorials.back().pow(MD\
-    \ - 2);\n        for (int i = n - 2; i >= old_sz; --i) inv_factorials[i] = inv_factorials[i+1]\
-    \ * (i+1);\n        for (int i = n-1; i >= old_sz; --i) invs[i] = inv_factorials[i]\
-    \ * factorials[i-1];\n    }\n    \nprivate:\n    // Internal, DO NOT USE.\n  \
-    \  // val must be in [0, 2*MD)\n    constexpr ModInt& _set(ll v) {\n        x\
-    \ = v >= MD ? v - MD : v;\n        return *this;\n    }\n};\n// }}}\n#line 7 \"\
-    DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp\"\nusing modular\
-    \ = ModInt<998244353>;\n\n#define PATH_QUERIES_ONLY\nstruct T {\n    modular a,\
-    \ b;\n\n    T() : a(1), b(0) {}\n    T(modular _a, modular _b) : a(_a), b(_b)\
-    \ {}\n\n    // return f(g())\n    T operator + (const T& g) const {\n        return\
-    \ T {\n            a * g.a,\n            a * g.b + b,\n        };\n    }\n\n \
-    \   T operator += (const T& g) {\n        b = a * g.b + b;\n        a = a * g.a;\n\
-    \        return *this;\n    }\n};\n#line 1 \"DataStructure/LinkCutTree.h\"\n//\
-    \ Link Cut Tree; copied from https://codeforces.com/blog/entry/75885\n// - Index\
-    \ from 1\n// - T needs to support + operation\n//   For subtree queries -> requires\
-    \ - operation\n//   --> see this comment for how to handle it: https://codeforces.com/blog/entry/67637?#comment-650424\n\
+    \ ax;\n    }\n\n    static std::vector<ModInt> factorials, inv_factorials, invs;\n\
+    \    constexpr static void _precalc(int n) {\n        if (factorials.empty())\
+    \ [[unlikely]] {\n            factorials = {1};\n            inv_factorials =\
+    \ {1};\n            invs = {0};\n        }\n        if (n > MD) n = MD;\n    \
+    \    int old_sz = factorials.size();\n        if (n <= old_sz) return;\n\n   \
+    \     factorials.resize(n);\n        inv_factorials.resize(n);\n        invs.resize(n);\n\
+    \n        for (int i = old_sz; i < n; ++i) factorials[i] = factorials[i-1] * i;\n\
+    \        inv_factorials[n-1] = factorials.back().pow(MD - 2);\n        for (int\
+    \ i = n - 2; i >= old_sz; --i) inv_factorials[i] = inv_factorials[i+1] * (i+1);\n\
+    \        for (int i = n-1; i >= old_sz; --i) invs[i] = inv_factorials[i] * factorials[i-1];\n\
+    \    }\n    \nprivate:\n    // Internal, DO NOT USE.\n    // val must be in [0,\
+    \ 2*MD)\n    constexpr inline __attribute__((always_inline)) ModInt& _set(ll v)\
+    \ {\n        x = v >= MD ? v - MD : v;\n        return *this;\n    }\n};\n// }}}\n\
+    #line 7 \"DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp\"\n\
+    using modular = ModInt<998244353>;\n\n#define PATH_QUERIES_ONLY\nstruct T {\n\
+    \    modular a, b;\n\n    T() : a(1), b(0) {}\n    T(modular _a, modular _b) :\
+    \ a(_a), b(_b) {}\n\n    // return f(g())\n    T operator + (const T& g) const\
+    \ {\n        return T {\n            a * g.a,\n            a * g.b + b,\n    \
+    \    };\n    }\n\n    T operator += (const T& g) {\n        b = a * g.b + b;\n\
+    \        a = a * g.a;\n        return *this;\n    }\n};\n#line 1 \"DataStructure/LinkCutTree.h\"\
+    \n// Link Cut Tree; copied from https://codeforces.com/blog/entry/75885\n// -\
+    \ Index from 1\n// - T needs to support + operation\n//   For subtree queries\
+    \ -> requires - operation\n//   --> see this comment for how to handle it: https://codeforces.com/blog/entry/67637?#comment-650424\n\
     // - Not using template here, since inheritance becomes very ugly\n// - Doesn't\
     \ support lazy update (so no subtree updates)\n//\n// Tested:\n// - https://judge.yosupo.jp/problem/dynamic_tree_subtree_add_subtree_sum\n\
     // - https://judge.yosupo.jp/problem/dynamic_tree_vertex_set_path_composite\n\
@@ -186,7 +187,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp
   requiredBy: []
-  timestamp: '2022-08-21 18:56:24+08:00'
+  timestamp: '2022-08-21 20:08:44+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp

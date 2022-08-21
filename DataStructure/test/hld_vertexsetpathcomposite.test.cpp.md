@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/SegTree.h
     title: DataStructure/SegTree.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Math/modint.h
     title: Math/modint.h
   _extendedRequiredBy: []
@@ -115,27 +115,28 @@ data:
     \ x) {\n        return os << x.x;\n    }\n\n    constexpr ModInt pow(ll k) const\
     \ {\n        ModInt ans = 1, tmp = x;\n        while (k) {\n            if (k\
     \ & 1) ans *= tmp;\n            tmp *= tmp;\n            k >>= 1;\n        }\n\
-    \        return ans;\n    }\n\n    ModInt inv() {\n        if (x < 1000111) {\n\
-    \            _precalc(1000111);\n            return invs[x];\n        }\n    \
-    \    int a = x, b = MD, ax = 1, bx = 0;\n        while (b) {\n            int\
-    \ q = a/b, t = a%b;\n            a = b; b = t;\n            t = ax - bx*q;\n \
-    \           ax = bx; bx = t;\n        }\n        assert(a == 1);\n        if (ax\
-    \ < 0) ax += MD;\n        return ax;\n    }\n\n    std::vector<ModInt> factorials,\
-    \ inv_factorials, invs;\n    void _precalc(int n) {\n        if (factorials.empty())\
-    \ [[unlikely]] {\n            factorials = {1};\n            inv_factorials =\
-    \ {1};\n            invs = {0};\n        }\n        if (n > MD) n = MD;\n    \
-    \    int old_sz = factorials.size();\n        if (n <= old_sz) return;\n\n   \
-    \     factorials.resize(n);\n        inv_factorials.resize(n);\n        invs.resize(n);\n\
-    \n        for (int i = old_sz; i < n; ++i) factorials[i] = factorials[i-1] * i;\n\
-    \        inv_factorials[n-1] = factorials.back().pow(MD - 2);\n        for (int\
-    \ i = n - 2; i >= old_sz; --i) inv_factorials[i] = inv_factorials[i+1] * (i+1);\n\
-    \        for (int i = n-1; i >= old_sz; --i) invs[i] = inv_factorials[i] * factorials[i-1];\n\
-    \    }\n    \nprivate:\n    // Internal, DO NOT USE.\n    // val must be in [0,\
-    \ 2*MD)\n    constexpr ModInt& _set(ll v) {\n        x = v >= MD ? v - MD : v;\n\
-    \        return *this;\n    }\n};\n// }}}\n#line 1 \"DataStructure/HeavyLight_adamant.h\"\
-    \n// HeavyLight {{{\n// Index from 0\n// Best used with SegTree.h\n//\n// Usage:\n\
-    // HLD hld(g, root);\n// // build segment tree. Note that we must use hld.order[i]\n\
-    // vector<T> nodes;\n// for (int i = 0; i < n; i++)\n//   nodes.push_back(initial_value[hld.order[i]])\n\
+    \        return ans;\n    }\n\n    constexpr ModInt inv() const {\n        if\
+    \ (x < 1000111) {\n            _precalc(1000111);\n            return invs[x];\n\
+    \        }\n        int a = x, b = MD, ax = 1, bx = 0;\n        while (b) {\n\
+    \            int q = a/b, t = a%b;\n            a = b; b = t;\n            t =\
+    \ ax - bx*q;\n            ax = bx; bx = t;\n        }\n        assert(a == 1);\n\
+    \        if (ax < 0) ax += MD;\n        return ax;\n    }\n\n    static std::vector<ModInt>\
+    \ factorials, inv_factorials, invs;\n    constexpr static void _precalc(int n)\
+    \ {\n        if (factorials.empty()) [[unlikely]] {\n            factorials =\
+    \ {1};\n            inv_factorials = {1};\n            invs = {0};\n        }\n\
+    \        if (n > MD) n = MD;\n        int old_sz = factorials.size();\n      \
+    \  if (n <= old_sz) return;\n\n        factorials.resize(n);\n        inv_factorials.resize(n);\n\
+    \        invs.resize(n);\n\n        for (int i = old_sz; i < n; ++i) factorials[i]\
+    \ = factorials[i-1] * i;\n        inv_factorials[n-1] = factorials.back().pow(MD\
+    \ - 2);\n        for (int i = n - 2; i >= old_sz; --i) inv_factorials[i] = inv_factorials[i+1]\
+    \ * (i+1);\n        for (int i = n-1; i >= old_sz; --i) invs[i] = inv_factorials[i]\
+    \ * factorials[i-1];\n    }\n    \nprivate:\n    // Internal, DO NOT USE.\n  \
+    \  // val must be in [0, 2*MD)\n    constexpr inline __attribute__((always_inline))\
+    \ ModInt& _set(ll v) {\n        x = v >= MD ? v - MD : v;\n        return *this;\n\
+    \    }\n};\n// }}}\n#line 1 \"DataStructure/HeavyLight_adamant.h\"\n// HeavyLight\
+    \ {{{\n// Index from 0\n// Best used with SegTree.h\n//\n// Usage:\n// HLD hld(g,\
+    \ root);\n// // build segment tree. Note that we must use hld.order[i]\n// vector<T>\
+    \ nodes;\n// for (int i = 0; i < n; i++)\n//   nodes.push_back(initial_value[hld.order[i]])\n\
     // SegTree<S, op, e> st(nodes);\n//\n// // Update path\n// hld.apply_path(from,\
     \ to, is_edge_or_vertex, [&] (int l, int r) {\n//   st.apply(l, r+1, F);\n// });\n\
     //\n// // Query path\n// hld.prod_path_commutative<S, op, e> (from, to, is_edge_or_vertex,\
@@ -283,7 +284,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/hld_vertexsetpathcomposite.test.cpp
   requiredBy: []
-  timestamp: '2022-08-21 18:56:24+08:00'
+  timestamp: '2022-08-21 20:08:44+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/hld_vertexsetpathcomposite.test.cpp

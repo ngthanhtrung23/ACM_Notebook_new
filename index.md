@@ -301,7 +301,7 @@ data:
     - icon: ':warning:'
       path: Math/Fraction.h
       title: Math/Fraction.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: Math/LinearRecurrence_BerlekampMassey.h
       title: Math/LinearRecurrence_BerlekampMassey.h
     - icon: ':heavy_check_mark:'
@@ -316,7 +316,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/bigint.h
       title: Math/bigint.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Math/modint.h
       title: Math/modint.h
     - icon: ':warning:'
@@ -856,7 +856,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/tests/aizu_ntl_2_f_bigint_mul_fft.test.cpp
       title: Math/tests/aizu_ntl_2_f_bigint_mul_fft.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: Math/tests/berlekamp_massey.test.cpp
       title: Math/tests/berlekamp_massey.test.cpp
     - icon: ':heavy_check_mark:'
