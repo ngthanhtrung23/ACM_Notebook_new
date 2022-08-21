@@ -4,7 +4,7 @@
 using namespace std;
 
 #include "../Polynomial/NTT_chemthan.h"
-#include "../NumberTheory/ChineseRemainder.h"
+#include "../NumberTheory/CRT_chemthan.h"
 
 const int MOD0 = 167772161;
 const int MOD1 = 469762049;
@@ -27,14 +27,11 @@ int32_t main() {
 
     const int MOD = 1e9 + 7;
     REP(i,n+m-1) {
-        __int128_t x, _m;
-        linearCongruences<__int128_t> (
-                {1, 1, 1},
-                {c0[i], c1[i], c2[i]},
-                {MOD0, MOD1, MOD2},
-                x,
-                _m);
-        cout << (int) (x % MOD) << ' ';
+        CRT<__int128_t> crt;
+        crt.add(MOD0, c0[i]);
+        crt.add(MOD1, c1[i]);
+        crt.add(MOD2, c2[i]);
+        cout << (int) (crt.res % MOD) << ' ';
     }
     cout << endl;
     return 0;

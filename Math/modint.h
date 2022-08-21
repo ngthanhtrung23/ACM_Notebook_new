@@ -5,6 +5,7 @@ template<int MD> struct ModInt {
 
     constexpr ModInt() : x(0) {}
     constexpr ModInt(ll v) { _set(v % MD + MD); }
+    constexpr static int mod() { return MD; }
     constexpr explicit operator bool() const { return x != 0; }
 
     constexpr ModInt operator + (const ModInt& a) const {
@@ -99,6 +100,30 @@ template<int MD> struct ModInt {
         inv_factorials[n-1] = factorials.back().pow(MD - 2);
         for (int i = n - 2; i >= old_sz; --i) inv_factorials[i] = inv_factorials[i+1] * (i+1);
         for (int i = n-1; i >= old_sz; --i) invs[i] = inv_factorials[i] * factorials[i-1];
+    }
+
+    static int get_primitive_root() {
+        static int primitive_root = 0;
+        if (!primitive_root) {
+            primitive_root = [&]() {
+                std::set<int> fac;
+                int v = MD - 1;
+                for (ll i = 2; i * i <= v; i++)
+                    while (v % i == 0) fac.insert(i), v /= i;
+                if (v > 1) fac.insert(v);
+                for (int g = 1; g < MD; g++) {
+                    bool ok = true;
+                    for (auto i : fac)
+                        if (ModInt(g).pow((MD - 1) / i) == 1) {
+                            ok = false;
+                            break;
+                        }
+                    if (ok) return g;
+                }
+                return -1;
+            }();
+        }
+        return primitive_root;
     }
     
 private:

@@ -3,20 +3,20 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#include "../modint.h"
-#include "../Polynomial/NTT.h"
+#include "../Polynomial/NTT_chemthan.h"
+
+NTT<998244353, 1<<20> ntt;
 
 #define REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)
-using mint = ModInt<998244353>;
 
 int32_t main() {
     ios::sync_with_stdio(0); cin.tie(0);
     int n, m; cin >> n >> m;
-    vector<mint> a(n); REP(i,n) cin >> a[i];
-    vector<mint> b(m); REP(i,m) cin >> b[i];
+    vector<int> a(n); REP(i,n) cin >> a[i];
+    vector<int> b(m); REP(i,m) cin >> b[i];
 
-    auto c = multiply(a, b);
-    for (auto x : c) cout << x << ' ';
+    auto c = ntt.multiply(a, b);
+    for (int x : c) cout << x << ' ';
     cout << endl;
     return 0;
 }

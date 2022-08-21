@@ -1,138 +1,137 @@
-// Copied from chemthan
-// 2x slower than atcoder library
-// Tested:
-// - https://oj.vnoi.info/problem/icpc21_mt_d
-// - https://judge.yosupo.jp/problem/convolution_mod
-// - https://judge.yosupo.jp/problem/convolution_mod_1000000007
+// NTT {{{
 //
-// Sample usage: Multiply big-int polynomials using NTT + CRT
-//   NTT<MOD0, 1 << 21> ntt0;
-//   NTT<MOD1, 1 << 21> ntt1;
-//   auto r0 = ntt0.multiply(v1, v2);
-//   auto r1 = ntt1.multiply(v1, v2);
+// Faster than NTT_chemthan.h
 //
-//   // Using CRT to combine r0 and r1
-//   CRT<int> crt;
-//   crt.add(MOD0, r0[idx]);
-//   crt.add(MOD1, r1[idx]);
-//   cout << crt.res << endl;
+// Usage:
+// auto c = multiply(a, b);
+// where a and b are vector<ModInt<ANY_MOD>>
+// (If mod is NOT NTT_PRIMES, it does 3 NTT and combine result)
 
-// mod must be NTT mod
-// maxf = max degree of c. Should be 2^k?
-template<const int mod, const int maxf>
-struct NTT {
-    NTT() {
-        int k = 0; while ((1 << k) < maxf) k++;
-        bitrev[0] = 0;
-        for (int i = 1; i < maxf; i++) {
-            bitrev[i] = bitrev[i >> 1] >> 1 | ((i & 1) << (k - 1));
-        }
-        int pw = fpow(prt(), (mod - 1) / maxf);
-        rts[0] = 1;
-        for (int i = 1; i <= maxf; i++) {
-            rts[i] = (long long) rts[i - 1] * pw % mod;
-        }
-        for (int i = 1; i <= maxf; i <<= 1) {
-            iv[i] = fpow(i, mod - 2);
+constexpr int NTT_PRIMES[] = {998244353, 167772161, 469762049};
+
+// assumptions:
+// - |a| is power of 2
+// - mint::mod() is a valid NTT primes (2^k * m + 1)
+template<typename mint> void ntt(std::vector<mint>& a, bool is_inverse) {
+    int n = a.size();
+    if (n == 1) return;
+
+    static const int mod = mint::mod();
+    static const mint root = mint::get_primitive_root();
+    assert(__builtin_popcount(n) == 1 && (mod - 1) % n == 0);
+
+    static std::vector<mint> w{1}, iw{1};
+    for (int m = w.size(); m < n / 2; m *= 2) {
+        mint dw = root.pow((mod - 1) / (4 * m));
+        mint dwinv = dw.inv();
+        w.resize(m * 2);
+        iw.resize(m * 2);
+        for (int i = 0; i < m; ++i) {
+            w[m + i] = w[i] * dw;
+            iw[m + i] = iw[i] * dwinv;
         }
     }
 
-    vector<int> multiply(vector<int> a, vector<int> b) {
-        static int fa[maxf], fb[maxf], fc[maxf];
-        int na = a.size(), nb = b.size();
-        for (int i = 0; i < na; i++) fa[i] = a[i];
-        for (int i = 0; i < nb; i++) fb[i] = b[i];
-        multiply(fa, fb, na, nb, fc);
-        int k = na + nb - 1;
-        vector<int> res(k);
-        for (int i = 0; i < k; i++) res[i] = fc[i];
-        return res;
-    }
-
-private:
-    int rts[maxf + 1];
-    int bitrev[maxf];
-    int iv[maxf + 1];
-
-    int fpow(int a, int k) {
-        if (!k) return 1;
-        int res = a, tmp = a;
-        k--;
-        while (k) {
-            if (k & 1) {
-                res = (long long) res * tmp % mod;
-            }
-            tmp = (long long) tmp * tmp % mod;
-            k >>= 1;
-        }
-        return res;
-    }
-    int prt() {
-        vector<int> dvs;
-        for (int i = 2; i * i < mod; i++) {
-            if ((mod - 1) % i) continue;
-            dvs.push_back(i);
-            if (i * i != mod - 1) dvs.push_back((mod - 1) / i);
-        }
-        for (int i = 2; i < mod; i++) {
-            int flag = 1;
-            for (int j = 0; j < (int) dvs.size(); j++) {
-                if (fpow(i, dvs[j]) == 1) {
-                    flag = 0;
-                    break;
-                }
-            }
-            if (flag) return i;
-        }
-        assert(0);
-        return -1;
-    }
-    void dft(int a[], int n, int sign) {
-        int d = 0; while ((1 << d) * n != maxf) d++;
-        for (int i = 0; i < n; i++) {
-            if (i < (bitrev[i] >> d)) {
-                swap(a[i], a[bitrev[i] >> d]);
-            }
-        }
-        for (int len = 2; len <= n; len <<= 1) {
-            int delta = maxf / len * sign;
-            for (int i = 0; i < n; i += len) {
-                int *w = sign > 0 ? rts : rts + maxf;
-                for (int k = 0; k + k < len; k++) {
-                    int &a1 = a[i + k + (len >> 1)], &a2 = a[i + k];
-                    int t = (long long) *w * a1 % mod;
-                    a1 = a2 - t;
-                    a2 = a2 + t;
-                    a1 += a1 < 0 ? mod : 0;
-                    a2 -= a2 >= mod ? mod : 0;
-                    w += delta;
+    if (!is_inverse) {
+        for (int m = n; m >>= 1; ) {
+            for (int s = 0, k = 0; s < n; s += 2 * m, ++k) {
+                for (int i = s; i < s + m; ++i) {
+                    mint x = a[i], y = a[i + m] * w[k];
+                    a[i] = x + y;
+                    a[i + m] = x - y;
                 }
             }
         }
-        if (sign < 0) {
-            int in = iv[n];
-            for (int i = 0; i < n; i++) {
-                a[i] = (long long) a[i] * in % mod;
+    } else {
+        for (int m = 1; m < n; m *= 2) {
+            for (int s = 0, k = 0; s < n; s += 2 * m, ++k) {
+                for (int i = s; i < s + m; ++i) {
+                    mint x = a[i], y = a[i + m];
+                    a[i] = x + y;
+                    a[i + m] = (x - y) * iw[k];
+                }
             }
         }
+        int n_inv = mint(n).inv().x;
+        for (auto& v : a) v *= n_inv;
     }
-    void multiply(int a[], int b[], int na, int nb, int c[]) {
-        static int fa[maxf], fb[maxf];
-        int n = na + nb - 1; while (n != (n & -n)) n += n & -n;
-        for (int i = 0; i < n; i++) fa[i] = fb[i] = 0;
-        for (int i = 0; i < na; i++) fa[i] = a[i];
-        for (int i = 0; i < nb; i++) fb[i] = b[i];
-        dft(fa, n, 1), dft(fb, n, 1);
-        for (int i = 0; i < n; i++) fa[i] = (long long) fa[i] * fb[i] % mod;
-        dft(fa, n, -1);
-        for (int i = 0; i < n; i++) c[i] = fa[i];
-    }
-};
+}
 
-/* Examples
-const int MOD0 = 1004535809; //2^21 * 479 + 1
-const int MOD1 = 1012924417; //2^21 * 483 + 1
-const int MOD2 = 998244353;  //2^20 * 476 + 1
-NTT<MOD0, 1 << 21> ntt0;
-NTT<MOD1, 1 << 21> ntt1;
-*/
+template<typename mint>
+std::vector<mint> ntt_multiply(int sz, std::vector<mint> a, std::vector<mint> b) {
+    a.resize(sz);
+    b.resize(sz);
+    if (a == b) { // optimization for squaring polynomial
+        ntt(a, false);
+        b = a;
+    } else {
+        ntt(a, false);
+        ntt(b, false);
+    }
+    for (int i = 0; i < sz; ++i) a[i] *= b[i];
+    ntt(a, true);
+    return a;
+}
+
+template<int MOD, typename mint>
+std::vector<ModInt<MOD>> convert_mint_and_multiply(
+        int sz,
+        const std::vector<mint>& a,
+        const std::vector<mint>& b) {
+    using mint2 = ModInt<MOD>;
+
+    std::vector<mint2> a2(a.size()), b2(b.size());
+    for (size_t i = 0; i < a.size(); ++i) {
+        a2[i] = mint2(a[i].x);
+    }
+    for (size_t i = 0; i < b.size(); ++i) {
+        b2[i] = mint2(b[i].x);
+    }
+    return ntt_multiply(sz, a2, b2);
+}
+
+long long combine(int r0, int r1, int r2, int mod) {
+    using mint2 = ModInt<NTT_PRIMES[2]>;
+    static const long long m01 = 1LL * NTT_PRIMES[0] * NTT_PRIMES[1];
+    static const long long m0_inv_m1 = ModInt<NTT_PRIMES[1]>(NTT_PRIMES[0]).inv().x;
+    static const long long m01_inv_m2 = mint2(m01).inv().x;
+
+    int v1 = (m0_inv_m1 * (r1 + NTT_PRIMES[1] - r0)) % NTT_PRIMES[1];
+    auto v2 = (mint2(r2) - r0 - mint2(NTT_PRIMES[0]) * v1) * m01_inv_m2;
+    return (r0 + 1LL * NTT_PRIMES[0] * v1 + m01 % mod * v2.x) % mod;
+}
+
+template<typename mint>
+std::vector<mint> multiply(const std::vector<mint>& a, const std::vector<mint>& b) {
+    if (a.empty() || b.empty()) return {};
+    int sz = 1, sz_a = a.size(), sz_b = b.size();
+    while (sz < sz_a + sz_b) sz <<= 1;
+    if (sz <= 16) {
+        std::vector<mint> res(sz_a + sz_b - 1);
+        for (int i = 0; i < sz_a; ++i) {
+            for (int j = 0; j < sz_b; ++j) {
+                res[i + j] += a[i] * b[j];
+            }
+        }
+        return res;
+    }
+
+    int mod = mint::mod();
+    std::vector<mint> res;
+    if (std::find(std::begin(NTT_PRIMES), std::end(NTT_PRIMES), mod) != std::end(NTT_PRIMES)) {
+        res = ntt_multiply(sz, a, b);
+    } else {
+        auto c0 = convert_mint_and_multiply<NTT_PRIMES[0], mint> (sz, a, b);
+        auto c1 = convert_mint_and_multiply<NTT_PRIMES[1], mint> (sz, a, b);
+        auto c2 = convert_mint_and_multiply<NTT_PRIMES[2], mint> (sz, a, b);
+
+        res.resize(sz);
+        for (int i = 0; i < sz; ++i) {
+            res[i] = combine(c0[i].x, c1[i].x, c2[i].x, mod);
+        }
+    }
+
+    res.resize(sz_a + sz_b - 1);
+    return res;
+}
+// }}}
