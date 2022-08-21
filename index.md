@@ -316,7 +316,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/bigint.h
       title: Math/bigint.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Math/modint.h
       title: Math/modint.h
     - icon: ':warning:'
@@ -373,10 +373,13 @@ data:
     - icon: ':warning:'
       path: Math/Polynomial/FFT.h
       title: Math/Polynomial/FFT.h
+    - icon: ':heavy_check_mark:'
+      path: Math/Polynomial/FormerPowerSeries.h
+      title: Math/Polynomial/FormerPowerSeries.h
     - icon: ':warning:'
       path: Math/Polynomial/Karatsuba.h
       title: Math/Polynomial/Karatsuba.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Math/Polynomial/NTT.h
       title: Math/Polynomial/NTT.h
     - icon: ':heavy_check_mark:'
@@ -872,6 +875,12 @@ data:
       path: Math/tests/factorize.test.cpp
       title: Math/tests/factorize.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Math/tests/formal_power_series_multiply.test.cpp
+      title: Math/tests/formal_power_series_multiply.test.cpp
+    - icon: ':x:'
+      path: Math/tests/formal_power_series_multiply_any_mod.test.cpp
+      title: Math/tests/formal_power_series_multiply_any_mod.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Math/tests/is_prime_yukicoder.test.cpp
       title: Math/tests/is_prime_yukicoder.test.cpp
     - icon: ':heavy_check_mark:'
@@ -893,14 +902,14 @@ data:
       path: Math/tests/ntt_any_mod.test.cpp
       title: Math/tests/ntt_any_mod.test.cpp
     - icon: ':heavy_check_mark:'
-      path: Math/tests/ntt_any_mod_2.test.cpp
-      title: Math/tests/ntt_any_mod_2.test.cpp
-    - icon: ':heavy_check_mark:'
       path: Math/tests/ntt_chemthan.test.cpp
       title: Math/tests/ntt_chemthan.test.cpp
     - icon: ':heavy_check_mark:'
       path: Math/tests/ntt_chemthan_any_mod.test.cpp
       title: Math/tests/ntt_chemthan_any_mod.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Math/tests/ntt_chemthan_any_mod_2.test.cpp
+      title: Math/tests/ntt_chemthan_any_mod_2.test.cpp
     - icon: ':heavy_check_mark:'
       path: Math/tests/prime_pi.test.cpp
       title: Math/tests/prime_pi.test.cpp

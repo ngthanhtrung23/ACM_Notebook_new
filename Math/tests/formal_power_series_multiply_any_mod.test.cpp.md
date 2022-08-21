@@ -9,15 +9,16 @@ data:
     title: Math/modint.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/convolution_mod_1000000007
     links:
     - https://judge.yosupo.jp/problem/convolution_mod_1000000007
-  bundledCode: "#line 1 \"Math/tests/ntt_any_mod.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod_1000000007\"\
+  bundledCode: "#line 1 \"Math/tests/formal_power_series_multiply_any_mod.test.cpp\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod_1000000007\"\
     \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#line 1 \"Math/modint.h\"\
     \n// ModInt {{{\ntemplate<int MD> struct ModInt {\n    using ll = long long;\n\
     \    int x;\n\n    constexpr ModInt() : x(0) {}\n    constexpr ModInt(ll v) {\
@@ -135,33 +136,33 @@ data:
     \ a, b);\n\n        res.resize(sz);\n        for (int i = 0; i < sz; ++i) {\n\
     \            res[i] = combine(c0[i].x, c1[i].x, c2[i].x, mod);\n        }\n  \
     \  }\n\n    res.resize(sz_a + sz_b - 1);\n    return res;\n}\n// }}}\n#line 8\
-    \ \"Math/tests/ntt_any_mod.test.cpp\"\n\n#define REP(i, a) for (int i = 0, _##i\
-    \ = (a); i < _##i; ++i)\nusing mint = ModInt<1'000'000'007>;\n\nint32_t main()\
-    \ {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n, m; cin >> n >> m;\n\
-    \    vector<mint> a(n); REP(i,n) cin >> a[i];\n    vector<mint> b(m); REP(i,m)\
-    \ cin >> b[i];\n\n    auto c = multiply(a, b);\n    for (const auto& val : c)\
-    \ cout << val << ' ';\n    cout << endl;\n    return 0;\n}\n"
+    \ \"Math/tests/formal_power_series_multiply_any_mod.test.cpp\"\n\n#define REP(i,\
+    \ a) for (int i = 0, _##i = (a); i < _##i; ++i)\nusing mint = ModInt<1'000'000'007>;\n\
+    \nint32_t main() {\n    int n, m; std::cin >> n >> m;\n    FormalPowerSeries<mint>\
+    \ a(n), b(m);\n    for (auto& val : a) std::cin >> val;\n    for (auto& val :\
+    \ b) std::cin >> val;\n\n    auto c = a * b;\n    for (auto val : c) std::cout\
+    \ << val << ' ';\n    std::cout << std::endl;\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod_1000000007\"\
     \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../modint.h\"\
     \n#include \"../Polynomial/NTT.h\"\n\n#define REP(i, a) for (int i = 0, _##i =\
     \ (a); i < _##i; ++i)\nusing mint = ModInt<1'000'000'007>;\n\nint32_t main() {\n\
-    \    ios::sync_with_stdio(0); cin.tie(0);\n    int n, m; cin >> n >> m;\n    vector<mint>\
-    \ a(n); REP(i,n) cin >> a[i];\n    vector<mint> b(m); REP(i,m) cin >> b[i];\n\n\
-    \    auto c = multiply(a, b);\n    for (const auto& val : c) cout << val << '\
-    \ ';\n    cout << endl;\n    return 0;\n}\n"
+    \    int n, m; std::cin >> n >> m;\n    FormalPowerSeries<mint> a(n), b(m);\n\
+    \    for (auto& val : a) std::cin >> val;\n    for (auto& val : b) std::cin >>\
+    \ val;\n\n    auto c = a * b;\n    for (auto val : c) std::cout << val << ' ';\n\
+    \    std::cout << std::endl;\n    return 0;\n}\n"
   dependsOn:
   - Math/modint.h
   - Math/Polynomial/NTT.h
   isVerificationFile: true
-  path: Math/tests/ntt_any_mod.test.cpp
+  path: Math/tests/formal_power_series_multiply_any_mod.test.cpp
   requiredBy: []
-  timestamp: '2022-08-21 23:32:29+08:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2022-08-21 23:45:42+08:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: Math/tests/ntt_any_mod.test.cpp
+documentation_of: Math/tests/formal_power_series_multiply_any_mod.test.cpp
 layout: document
 redirect_from:
-- /verify/Math/tests/ntt_any_mod.test.cpp
-- /verify/Math/tests/ntt_any_mod.test.cpp.html
-title: Math/tests/ntt_any_mod.test.cpp
+- /verify/Math/tests/formal_power_series_multiply_any_mod.test.cpp
+- /verify/Math/tests/formal_power_series_multiply_any_mod.test.cpp.html
+title: Math/tests/formal_power_series_multiply_any_mod.test.cpp
 ---

@@ -20,8 +20,8 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/convolution_mod_1000000007
     links:
     - https://judge.yosupo.jp/problem/convolution_mod_1000000007
-  bundledCode: "#line 1 \"Math/tests/ntt_any_mod_2.test.cpp\"\n#define PROBLEM \"\
-    https://judge.yosupo.jp/problem/convolution_mod_1000000007\"\n\n#include <bits/stdc++.h>\n\
+  bundledCode: "#line 1 \"Math/tests/ntt_chemthan_any_mod_2.test.cpp\"\n#define PROBLEM\
+    \ \"https://judge.yosupo.jp/problem/convolution_mod_1000000007\"\n\n#include <bits/stdc++.h>\n\
     using namespace std;\n\n#line 1 \"Math/Polynomial/NTT_chemthan.h\"\n// Copied\
     \ from chemthan\n// 2x slower than atcoder library\n// Tested:\n// - https://oj.vnoi.info/problem/icpc21_mt_d\n\
     // - https://judge.yosupo.jp/problem/convolution_mod\n// - https://judge.yosupo.jp/problem/convolution_mod_1000000007\n\
@@ -97,7 +97,7 @@ data:
     \ i < n; i++) {\n        T a_ = a[i] * M, b_ = b[i] - a[i] * x, m_ = m[i];\n \
     \       T y, t, g = extgcd<T>(a_, m_, y, t);\n        if (b_ % g) return false;\n\
     \        b_ /= g; m_ /= g;\n        x += M * (y * b_ % m_);\n        M *= m_;\n\
-    \    }\n    x = (x + M) % M;\n    return true;\n}\n#line 8 \"Math/tests/ntt_any_mod_2.test.cpp\"\
+    \    }\n    x = (x + M) % M;\n    return true;\n}\n#line 8 \"Math/tests/ntt_chemthan_any_mod_2.test.cpp\"\
     \n\nconst int MOD0 = 167772161;\nconst int MOD1 = 469762049;\nconst int MOD2 =\
     \ 754974721;\nNTT<MOD0, 1 << 20> ntt0;\nNTT<MOD1, 1 << 20> ntt1;\nNTT<MOD2, 1\
     \ << 20> ntt2;\n\n#define REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)\n\
@@ -129,15 +129,15 @@ data:
   - Math/NumberTheory/ChineseRemainder.h
   - Math/NumberTheory/ExtendedEuclid.h
   isVerificationFile: true
-  path: Math/tests/ntt_any_mod_2.test.cpp
+  path: Math/tests/ntt_chemthan_any_mod_2.test.cpp
   requiredBy: []
-  timestamp: '2022-08-21 23:32:29+08:00'
+  timestamp: '2022-08-21 23:45:42+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Math/tests/ntt_any_mod_2.test.cpp
+documentation_of: Math/tests/ntt_chemthan_any_mod_2.test.cpp
 layout: document
 redirect_from:
-- /verify/Math/tests/ntt_any_mod_2.test.cpp
-- /verify/Math/tests/ntt_any_mod_2.test.cpp.html
-title: Math/tests/ntt_any_mod_2.test.cpp
+- /verify/Math/tests/ntt_chemthan_any_mod_2.test.cpp
+- /verify/Math/tests/ntt_chemthan_any_mod_2.test.cpp.html
+title: Math/tests/ntt_chemthan_any_mod_2.test.cpp
 ---
