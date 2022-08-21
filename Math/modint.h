@@ -63,7 +63,7 @@ template<int MD> struct ModInt {
         return ans;
     }
 
-    ModInt inv() {
+    constexpr ModInt inv() const {
         if (x < 1000111) {
             _precalc(1000111);
             return invs[x];
@@ -80,8 +80,8 @@ template<int MD> struct ModInt {
         return ax;
     }
 
-    std::vector<ModInt> factorials, inv_factorials, invs;
-    void _precalc(int n) {
+    static std::vector<ModInt> factorials, inv_factorials, invs;
+    constexpr static void _precalc(int n) {
         if (factorials.empty()) [[unlikely]] {
             factorials = {1};
             inv_factorials = {1};
@@ -104,7 +104,7 @@ template<int MD> struct ModInt {
 private:
     // Internal, DO NOT USE.
     // val must be in [0, 2*MD)
-    constexpr ModInt& _set(ll v) {
+    constexpr inline __attribute__((always_inline)) ModInt& _set(ll v) {
         x = v >= MD ? v - MD : v;
         return *this;
     }
