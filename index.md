@@ -316,6 +316,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/bigint.h
       title: Math/bigint.h
+    - icon: ':heavy_check_mark:'
+      path: Math/modint.h
+      title: Math/modint.h
     - icon: ':warning:'
       path: Math/modulo.h
       title: Math/modulo.h

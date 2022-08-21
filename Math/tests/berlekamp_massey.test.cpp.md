@@ -53,25 +53,25 @@ data:
     ModInt<MOD> power(ModInt<MOD> n, long long k) {\n    if (k == 0) return ModInt<MOD>\
     \ (1);\n    ModInt<MOD> res(1);\n    while (k > 0) {\n        if (k & 1) res =\
     \ res * n;\n        n = n * n;\n        k >>= 1;\n    }\n    return res;\n}\n\n\
-    /* Example:\nconst int MOD = 1e9 + 7;\nusing modular = ModInt<MOD>;\n\nstd::ostream&\
-    \ operator << (std::ostream& cout, const modular& m) {\n    cout << m.x;\n   \
-    \ return cout;\n}\nstd::istream& operator >> (std::istream& cin, modular& m) {\n\
-    \    cin >> m.x;\n    return cin;\n}\n*/\n#line 7 \"Math/tests/berlekamp_massey.test.cpp\"\
-    \n\nusing modular = ModInt<998244353>;\nstd::ostream& operator << (std::ostream&\
-    \ cout, const modular& m) {\n    cout << m.x;\n    return cout;\n}\nstd::istream&\
-    \ operator >> (std::istream& cin, modular& m) {\n    cin >> m.x;\n    return cin;\n\
-    }\n\n#line 1 \"Math/LinearRecurrence_BerlekampMassey.h\"\n// Berlekamp Massey\n\
-    // Given sequence s0, ..., s(N-1)\n// Find sequence c1, ..., cd with minimum d\
-    \ (d >= 0), such that:\n//   si = sum(s(i-j) * c(j), for j = 1..d)\n//\n// Tutorial:\
-    \ https://mzhang2021.github.io/cp-blog/berlekamp-massey/\n// If we have the linear\
-    \ recurrence, we can compute s(n):\n// - O(n*d) naively\n// - O(d^3 * log(n))\
-    \ with matrix exponentiation\n// - O(d*log(d)*log(k)) with generating function\
-    \ (tutorial above)\n//\n// Solving problems where we need to compute f(n) mod\
-    \ P (e.g. VOJ SELFDIV)\n// - Guess that f is a linear recurrence\n// - Compute\
-    \ f(n) for small n\n// - Run Berlekamp Massey to find C (we must have 2*|C| <\
-    \ n, otherwise it's wrong)\n//\n// Note:\n// - should be calculated in prime modulo\
-    \ (i.e. T=modint), as it\n//   requires modular inverse\n// - when modulo is not\
-    \ prime --> https://github.com/zimpha/algorithmic-library/blob/master/cpp/mathematics/linear-recurrence.cc\n\
+    template<int MOD>\nstd::ostream& operator << (std::ostream& cout, const ModInt<MOD>&\
+    \ m) {\n    cout << m.x;\n    return cout;\n}\ntemplate<int MOD>\nstd::istream&\
+    \ operator >> (std::istream& cin, ModInt<MOD>& m) {\n    cin >> m.x;\n    return\
+    \ cin;\n}\n\n/* Example:\nconst int MOD = 1e9 + 7;\nusing modular = ModInt<MOD>;\n\
+    */\n#line 7 \"Math/tests/berlekamp_massey.test.cpp\"\n\nusing modular = ModInt<998244353>;\n\
+    std::ostream& operator << (std::ostream& cout, const modular& m) {\n    cout <<\
+    \ m.x;\n    return cout;\n}\nstd::istream& operator >> (std::istream& cin, modular&\
+    \ m) {\n    cin >> m.x;\n    return cin;\n}\n\n#line 1 \"Math/LinearRecurrence_BerlekampMassey.h\"\
+    \n// Berlekamp Massey\n// Given sequence s0, ..., s(N-1)\n// Find sequence c1,\
+    \ ..., cd with minimum d (d >= 0), such that:\n//   si = sum(s(i-j) * c(j), for\
+    \ j = 1..d)\n//\n// Tutorial: https://mzhang2021.github.io/cp-blog/berlekamp-massey/\n\
+    // If we have the linear recurrence, we can compute s(n):\n// - O(n*d) naively\n\
+    // - O(d^3 * log(n)) with matrix exponentiation\n// - O(d*log(d)*log(k)) with\
+    \ generating function (tutorial above)\n//\n// Solving problems where we need\
+    \ to compute f(n) mod P (e.g. VOJ SELFDIV)\n// - Guess that f is a linear recurrence\n\
+    // - Compute f(n) for small n\n// - Run Berlekamp Massey to find C (we must have\
+    \ 2*|C| < n, otherwise it's wrong)\n//\n// Note:\n// - should be calculated in\
+    \ prime modulo (i.e. T=modint), as it\n//   requires modular inverse\n// - when\
+    \ modulo is not prime --> https://github.com/zimpha/algorithmic-library/blob/master/cpp/mathematics/linear-recurrence.cc\n\
     //   but this comment says it doesn't work on some problem: https://codeforces.com/blog/entry/61306?#comment-454682\n\
     //\n// Tested:\n// - (BM) https://judge.yosupo.jp/problem/find_linear_recurrence\n\
     // - (BM + find_kth) https://oj.vnoi.info/problem/selfdiv\n// - (find_kth) https://oj.vnoi.info/problem/errichto_matexp_fibonacci\n\
@@ -128,7 +128,7 @@ data:
   isVerificationFile: true
   path: Math/tests/berlekamp_massey.test.cpp
   requiredBy: []
-  timestamp: '2022-01-11 20:18:36+08:00'
+  timestamp: '2022-08-21 18:30:35+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Math/tests/berlekamp_massey.test.cpp

@@ -54,17 +54,18 @@ data:
     ModInt<MOD> power(ModInt<MOD> n, long long k) {\n    if (k == 0) return ModInt<MOD>\
     \ (1);\n    ModInt<MOD> res(1);\n    while (k > 0) {\n        if (k & 1) res =\
     \ res * n;\n        n = n * n;\n        k >>= 1;\n    }\n    return res;\n}\n\n\
-    /* Example:\nconst int MOD = 1e9 + 7;\nusing modular = ModInt<MOD>;\n\nstd::ostream&\
-    \ operator << (std::ostream& cout, const modular& m) {\n    cout << m.x;\n   \
-    \ return cout;\n}\nstd::istream& operator >> (std::istream& cin, modular& m) {\n\
-    \    cin >> m.x;\n    return cin;\n}\n*/\n#line 1 \"DataStructure/splay_tree.h\"\
-    \n// SplayTreeById\n//\n// Note:\n// - op() must be commutative, otherwise reverse\
-    \ queries won't work.\n//   To fix it, need to store aggregate data from right->left\n\
-    //   See https://judge.yosupo.jp/submission/53778 (and look at invsum)\n//\n//\
-    \ Tested:\n// - (cut, join)      https://vn.spoj.com/problems/CARDS/\n// - (keys,\
-    \ reverse)  https://oj.vnoi.info/problem/twist\n// - (insert, prod)   https://oj.vnoi.info/problem/qmax3vn\n\
-    // - (insert, delete) https://vn.spoj.com/problems/QMAX4/\n// - (insert, delete)\
-    \ https://vn.spoj.com/problems/CARDSHUF/\n// - (lazy)           https://judge.yosupo.jp/problem/dynamic_sequence_range_affine_range_sum\n\
+    template<int MOD>\nstd::ostream& operator << (std::ostream& cout, const ModInt<MOD>&\
+    \ m) {\n    cout << m.x;\n    return cout;\n}\ntemplate<int MOD>\nstd::istream&\
+    \ operator >> (std::istream& cin, ModInt<MOD>& m) {\n    cin >> m.x;\n    return\
+    \ cin;\n}\n\n/* Example:\nconst int MOD = 1e9 + 7;\nusing modular = ModInt<MOD>;\n\
+    */\n#line 1 \"DataStructure/splay_tree.h\"\n// SplayTreeById\n//\n// Note:\n//\
+    \ - op() must be commutative, otherwise reverse queries won't work.\n//   To fix\
+    \ it, need to store aggregate data from right->left\n//   See https://judge.yosupo.jp/submission/53778\
+    \ (and look at invsum)\n//\n// Tested:\n// - (cut, join)      https://vn.spoj.com/problems/CARDS/\n\
+    // - (keys, reverse)  https://oj.vnoi.info/problem/twist\n// - (insert, prod)\
+    \   https://oj.vnoi.info/problem/qmax3vn\n// - (insert, delete) https://vn.spoj.com/problems/QMAX4/\n\
+    // - (insert, delete) https://vn.spoj.com/problems/CARDSHUF/\n// - (lazy)    \
+    \       https://judge.yosupo.jp/problem/dynamic_sequence_range_affine_range_sum\n\
     // - (lazy)           https://oj.vnoi.info/problem/upit\ntemplate<class K, class\
     \ S, class F>\nstruct node_t {\n    using Node = node_t<K, S, F>;\n\n    std::array<Node*,\
     \ 2> child;\n    Node *father;\n    int size;\n    \n    // Whether we will need\
@@ -267,7 +268,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/splay_tree.test.cpp
   requiredBy: []
-  timestamp: '2022-01-11 20:18:36+08:00'
+  timestamp: '2022-08-21 18:30:35+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/splay_tree.test.cpp

@@ -39,8 +39,8 @@ data:
     - 'https://www.e-olymp.com/en/problems/313:'
     - 'https://www.e-olymp.com/en/problems/314:'
     - 'https://www.e-olymp.com/en/problems/317:'
-  bundledCode: "#line 1 \"Math/bigint.h\"\n// NOTE:\n// This code contains various\
-    \ bug fixes compared to the original version from\n// indy256 (github.com/indy256/codelibrary/blob/master/cpp/numbertheory/bigint-full.cpp),\n\
+  bundledCode: "#line 1 \"Math/bigint.h\"\n// BigInt {{{\n// NOTE:\n// This code contains\
+    \ various bug fixes compared to the original version from\n// indy256 (github.com/indy256/codelibrary/blob/master/cpp/numbertheory/bigint-full.cpp),\n\
     // including:\n// - Fix overflow bug in mul_karatsuba.\n// - Fix overflow bug\
     \ in fft.\n// - Fix bug in initialization from long long.\n// - Optimized operators\
     \ + - *.\n//\n// Tested:\n// - https://www.e-olymp.com/en/problems/266: Comparison\n\
@@ -277,9 +277,9 @@ data:
     \ + 1 < r.a.size() ? r.a[res.a.size() + 1] : 0;\n                int d3 = res.a.size()\
     \ < r.a.size() ? r.a[res.a.size()] : 0;\n                q = ((long long) d1 *\
     \ BASE * BASE + (long long) d2 * BASE + d3) / (firstDigit * 2);\n            }\n\
-    \        }\n\n        res.trim();\n        return res / norm;\n    }\n};\n"
-  code: "// NOTE:\n// This code contains various bug fixes compared to the original\
-    \ version from\n// indy256 (github.com/indy256/codelibrary/blob/master/cpp/numbertheory/bigint-full.cpp),\n\
+    \        }\n\n        res.trim();\n        return res / norm;\n    }\n};\n// }}}\n"
+  code: "// BigInt {{{\n// NOTE:\n// This code contains various bug fixes compared\
+    \ to the original version from\n// indy256 (github.com/indy256/codelibrary/blob/master/cpp/numbertheory/bigint-full.cpp),\n\
     // including:\n// - Fix overflow bug in mul_karatsuba.\n// - Fix overflow bug\
     \ in fft.\n// - Fix bug in initialization from long long.\n// - Optimized operators\
     \ + - *.\n//\n// Tested:\n// - https://www.e-olymp.com/en/problems/266: Comparison\n\
@@ -516,21 +516,21 @@ data:
     \ + 1 < r.a.size() ? r.a[res.a.size() + 1] : 0;\n                int d3 = res.a.size()\
     \ < r.a.size() ? r.a[res.a.size()] : 0;\n                q = ((long long) d1 *\
     \ BASE * BASE + (long long) d2 * BASE + d3) / (firstDigit * 2);\n            }\n\
-    \        }\n\n        res.trim();\n        return res / norm;\n    }\n};\n"
+    \        }\n\n        res.trim();\n        return res / norm;\n    }\n};\n// }}}\n"
   dependsOn: []
   isVerificationFile: false
   path: Math/bigint.h
   requiredBy: []
-  timestamp: '2022-01-11 20:04:16+08:00'
+  timestamp: '2022-08-21 18:30:35+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Math/tests/aizu_ntl_2_a_bigint_add.test.cpp
-  - Math/tests/aizu_ntl_2_b_bigint_sub.test.cpp
   - Math/tests/aizu_ntl_2_f_bigint_mul_fft.test.cpp
-  - Math/tests/aizu_ntl_2_d_bigint_div.test.cpp
-  - Math/tests/aizu_ntl_2_c_bigint_mul_karatsuba.test.cpp
-  - Math/tests/aizu_ntl_2_c_bigint_mul.test.cpp
   - Math/tests/aizu_ntl_2_e_bigint_mod.test.cpp
+  - Math/tests/aizu_ntl_2_c_bigint_mul_karatsuba.test.cpp
+  - Math/tests/aizu_ntl_2_d_bigint_div.test.cpp
+  - Math/tests/aizu_ntl_2_b_bigint_sub.test.cpp
+  - Math/tests/aizu_ntl_2_a_bigint_add.test.cpp
+  - Math/tests/aizu_ntl_2_c_bigint_mul.test.cpp
 documentation_of: Math/bigint.h
 layout: document
 redirect_from:

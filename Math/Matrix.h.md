@@ -26,7 +26,7 @@ data:
     - https://oj.vnoi.info/problem/icpc21_mt_k
     - https://oj.vnoi.info/problem/vmrook
   bundledCode: "#line 1 \"Math/Matrix.h\"\n// Matrix, which works for both double\
-    \ and int\n// Copied partially from https://judge.yosupo.jp/submission/54653\n\
+    \ and int {{{\n// Copied partially from https://judge.yosupo.jp/submission/54653\n\
     //\n// Tested:\n// - (mat mul): https://judge.yosupo.jp/problem/matrix_product\n\
     // - (mat pow): https://oj.vnoi.info/problem/icpc21_mt_k\n// - (mat pow): https://oj.vnoi.info/problem/icpc21_mb_h\n\
     // - (gauss): https://oj.vnoi.info/problem/vmrook\n// - (inverse): https://oj.vnoi.info/problem/dtl_lsr\n\
@@ -98,8 +98,8 @@ data:
     \ (i == h) continue;\n                const T c = -tmp[h][i];\n              \
     \  for (int j = 0; j < n_col; j++) ret[h][j] += ret[i][j] * c;\n             \
     \   for (int j = i+1; j < n_col; j++) tmp[h][j] += tmp[i][j] * c;\n          \
-    \  }\n        }\n\n        *this = ret;\n        return rank;\n    }\n};\n"
-  code: "// Matrix, which works for both double and int\n// Copied partially from\
+    \  }\n        }\n\n        *this = ret;\n        return rank;\n    }\n};\n// }}}\n"
+  code: "// Matrix, which works for both double and int {{{\n// Copied partially from\
     \ https://judge.yosupo.jp/submission/54653\n//\n// Tested:\n// - (mat mul): https://judge.yosupo.jp/problem/matrix_product\n\
     // - (mat pow): https://oj.vnoi.info/problem/icpc21_mt_k\n// - (mat pow): https://oj.vnoi.info/problem/icpc21_mb_h\n\
     // - (gauss): https://oj.vnoi.info/problem/vmrook\n// - (inverse): https://oj.vnoi.info/problem/dtl_lsr\n\
@@ -171,16 +171,16 @@ data:
     \ (i == h) continue;\n                const T c = -tmp[h][i];\n              \
     \  for (int j = 0; j < n_col; j++) ret[h][j] += ret[i][j] * c;\n             \
     \   for (int j = i+1; j < n_col; j++) tmp[h][j] += tmp[i][j] * c;\n          \
-    \  }\n        }\n\n        *this = ret;\n        return rank;\n    }\n};\n"
+    \  }\n        }\n\n        *this = ret;\n        return rank;\n    }\n};\n// }}}\n"
   dependsOn: []
   isVerificationFile: false
   path: Math/Matrix.h
   requiredBy: []
-  timestamp: '2022-02-12 22:40:17+08:00'
+  timestamp: '2022-08-21 18:30:35+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Math/tests/matrix_inverse.test.cpp
   - Math/tests/matrix_mult.test.cpp
+  - Math/tests/matrix_inverse.test.cpp
   - Math/tests/matrix_det.test.cpp
 documentation_of: Math/Matrix.h
 layout: document

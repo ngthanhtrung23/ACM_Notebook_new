@@ -44,9 +44,9 @@ data:
     \ (0, r-1)(rng);\n}\n\ntemplate<typename T>\nvector<T> read_vector(int n) {\n\
     \    vector<T> res(n);\n    for (int& x : res) cin >> x;\n    return res;\n}\n\
     \nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n  \
-    \  solve();\n    return 0;\n}\n#line 1 \"Math/bigint.h\"\n// NOTE:\n// This code\
-    \ contains various bug fixes compared to the original version from\n// indy256\
-    \ (github.com/indy256/codelibrary/blob/master/cpp/numbertheory/bigint-full.cpp),\n\
+    \  solve();\n    return 0;\n}\n#line 1 \"Math/bigint.h\"\n// BigInt {{{\n// NOTE:\n\
+    // This code contains various bug fixes compared to the original version from\n\
+    // indy256 (github.com/indy256/codelibrary/blob/master/cpp/numbertheory/bigint-full.cpp),\n\
     // including:\n// - Fix overflow bug in mul_karatsuba.\n// - Fix overflow bug\
     \ in fft.\n// - Fix bug in initialization from long long.\n// - Optimized operators\
     \ + - *.\n//\n// Tested:\n// - https://www.e-olymp.com/en/problems/266: Comparison\n\
@@ -283,9 +283,9 @@ data:
     \ + 1 < r.a.size() ? r.a[res.a.size() + 1] : 0;\n                int d3 = res.a.size()\
     \ < r.a.size() ? r.a[res.a.size()] : 0;\n                q = ((long long) d1 *\
     \ BASE * BASE + (long long) d2 * BASE + d3) / (firstDigit * 2);\n            }\n\
-    \        }\n\n        res.trim();\n        return res / norm;\n    }\n};\n#line\
-    \ 5 \"Math/tests/aizu_ntl_2_a_bigint_add.test.cpp\"\n\nvoid solve() {\n    BigInt\
-    \ a, b; cin >> a >> b;\n    cout << a + b << endl;\n}\n"
+    \        }\n\n        res.trim();\n        return res / norm;\n    }\n};\n// }}}\n\
+    #line 5 \"Math/tests/aizu_ntl_2_a_bigint_add.test.cpp\"\n\nvoid solve() {\n  \
+    \  BigInt a, b; cin >> a >> b;\n    cout << a + b << endl;\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_2_A\"\
     \n\n#include \"../../template.h\"\n#include \"../bigint.h\"\n\nvoid solve() {\n\
     \    BigInt a, b; cin >> a >> b;\n    cout << a + b << endl;\n}\n"
@@ -295,7 +295,7 @@ data:
   isVerificationFile: true
   path: Math/tests/aizu_ntl_2_a_bigint_add.test.cpp
   requiredBy: []
-  timestamp: '2022-01-13 13:16:22+08:00'
+  timestamp: '2022-08-21 18:30:35+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Math/tests/aizu_ntl_2_a_bigint_add.test.cpp

@@ -79,15 +79,16 @@ data:
     ModInt<MOD> power(ModInt<MOD> n, long long k) {\n    if (k == 0) return ModInt<MOD>\
     \ (1);\n    ModInt<MOD> res(1);\n    while (k > 0) {\n        if (k & 1) res =\
     \ res * n;\n        n = n * n;\n        k >>= 1;\n    }\n    return res;\n}\n\n\
-    /* Example:\nconst int MOD = 1e9 + 7;\nusing modular = ModInt<MOD>;\n\nstd::ostream&\
-    \ operator << (std::ostream& cout, const modular& m) {\n    cout << m.x;\n   \
-    \ return cout;\n}\nstd::istream& operator >> (std::istream& cin, modular& m) {\n\
-    \    cin >> m.x;\n    return cin;\n}\n*/\n#line 5 \"Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp\"\
-    \n\nconst int MOD = 1e9 + 7;\nusing modular = ModInt<MOD>;\n\nstd::ostream& operator\
-    \ << (std::ostream& cout, const modular& m) {\n    cout << m.x;\n    return cout;\n\
-    }\nstd::istream& operator >> (std::istream& cin, modular& m) {\n    cin >> m.x;\n\
-    \    return cin;\n}\n\nvoid solve() {\n    modular m; int k; cin >> m >> k;\n\
-    \    cout << power(m, k) << endl;\n}\n"
+    template<int MOD>\nstd::ostream& operator << (std::ostream& cout, const ModInt<MOD>&\
+    \ m) {\n    cout << m.x;\n    return cout;\n}\ntemplate<int MOD>\nstd::istream&\
+    \ operator >> (std::istream& cin, ModInt<MOD>& m) {\n    cin >> m.x;\n    return\
+    \ cin;\n}\n\n/* Example:\nconst int MOD = 1e9 + 7;\nusing modular = ModInt<MOD>;\n\
+    */\n#line 5 \"Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp\"\n\nconst int MOD =\
+    \ 1e9 + 7;\nusing modular = ModInt<MOD>;\n\nstd::ostream& operator << (std::ostream&\
+    \ cout, const modular& m) {\n    cout << m.x;\n    return cout;\n}\nstd::istream&\
+    \ operator >> (std::istream& cin, modular& m) {\n    cin >> m.x;\n    return cin;\n\
+    }\n\nvoid solve() {\n    modular m; int k; cin >> m >> k;\n    cout << power(m,\
+    \ k) << endl;\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_B\"\
     \n\n#include \"../../template.h\"\n#include \"../modulo_anta.h\"\n\nconst int\
     \ MOD = 1e9 + 7;\nusing modular = ModInt<MOD>;\n\nstd::ostream& operator << (std::ostream&\
@@ -101,7 +102,7 @@ data:
   isVerificationFile: true
   path: Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp
   requiredBy: []
-  timestamp: '2022-01-13 13:16:22+08:00'
+  timestamp: '2022-08-21 18:30:35+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp

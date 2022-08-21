@@ -60,29 +60,29 @@ data:
     ModInt<MOD> power(ModInt<MOD> n, long long k) {\n    if (k == 0) return ModInt<MOD>\
     \ (1);\n    ModInt<MOD> res(1);\n    while (k > 0) {\n        if (k & 1) res =\
     \ res * n;\n        n = n * n;\n        k >>= 1;\n    }\n    return res;\n}\n\n\
-    /* Example:\nconst int MOD = 1e9 + 7;\nusing modular = ModInt<MOD>;\n\nstd::ostream&\
-    \ operator << (std::ostream& cout, const modular& m) {\n    cout << m.x;\n   \
-    \ return cout;\n}\nstd::istream& operator >> (std::istream& cin, modular& m) {\n\
-    \    cin >> m.x;\n    return cin;\n}\n*/\n#line 15 \"String/hash.h\"\nconst int\
-    \ MOD = 1e9 + 7;\nusing modular = ModInt<MOD>;\n\nstruct Hash {\n    long long\
-    \ x;\n    modular y;\n\n    Hash operator + (const Hash& a) const { return Hash{x\
-    \ + a.x, y + a.y}; }\n    Hash operator - (const Hash& a) const { return Hash{x\
-    \ - a.x, y - a.y}; }\n    Hash operator * (const Hash& a) const { return Hash{x\
-    \ * a.x, y * a.y}; }\n    Hash operator * (int k) const { return Hash{x*k, y*k};\
-    \ }\n};\nbool operator == (const Hash& a, const Hash& b) {\n    return a.x ==\
-    \ b.x && a.y == b.y;\n}\n\n// hash function for std::unordered_map\nnamespace\
-    \ std {\n    template<>\n    struct hash<Hash> {\n        public:\n          \
-    \  size_t operator() (const Hash& h) const {\n                return h.x * 1000000009\
-    \ + h.y.x;\n            }\n    };\n}\n\nstruct HashGenerator {\n    HashGenerator(int\
-    \ maxLen, int base = 311) {\n        p.resize(maxLen + 1);\n        p[0] = {1,\
-    \ 1};\n        for (int i = 1; i <= maxLen; i++) {\n            p[i] = p[i-1]\
-    \ * base;\n        }\n    }\n\n    std::vector<Hash> hash(const std::string& s)\
-    \ {\n        std::vector<Hash> res(s.size());\n        for (size_t i = 0; i <\
-    \ s.size(); i++) {\n            res[i] = p[i] * (int) s[i];\n        }\n     \
-    \   std::partial_sum(res.begin(), res.end(), res.begin());\n        return res;\n\
-    \    }\n\n    Hash getHash(const std::vector<Hash>& h, int l, int r) {\n     \
-    \   return __getHash(h, l, r) * p[p.size() - 1 - l];\n    }\n\n    // compare\
-    \ [l1, r1] vs [l2, r2]\n    bool equals(\n            const std::vector<Hash>&\
+    template<int MOD>\nstd::ostream& operator << (std::ostream& cout, const ModInt<MOD>&\
+    \ m) {\n    cout << m.x;\n    return cout;\n}\ntemplate<int MOD>\nstd::istream&\
+    \ operator >> (std::istream& cin, ModInt<MOD>& m) {\n    cin >> m.x;\n    return\
+    \ cin;\n}\n\n/* Example:\nconst int MOD = 1e9 + 7;\nusing modular = ModInt<MOD>;\n\
+    */\n#line 15 \"String/hash.h\"\nconst int MOD = 1e9 + 7;\nusing modular = ModInt<MOD>;\n\
+    \nstruct Hash {\n    long long x;\n    modular y;\n\n    Hash operator + (const\
+    \ Hash& a) const { return Hash{x + a.x, y + a.y}; }\n    Hash operator - (const\
+    \ Hash& a) const { return Hash{x - a.x, y - a.y}; }\n    Hash operator * (const\
+    \ Hash& a) const { return Hash{x * a.x, y * a.y}; }\n    Hash operator * (int\
+    \ k) const { return Hash{x*k, y*k}; }\n};\nbool operator == (const Hash& a, const\
+    \ Hash& b) {\n    return a.x == b.x && a.y == b.y;\n}\n\n// hash function for\
+    \ std::unordered_map\nnamespace std {\n    template<>\n    struct hash<Hash> {\n\
+    \        public:\n            size_t operator() (const Hash& h) const {\n    \
+    \            return h.x * 1000000009 + h.y.x;\n            }\n    };\n}\n\nstruct\
+    \ HashGenerator {\n    HashGenerator(int maxLen, int base = 311) {\n        p.resize(maxLen\
+    \ + 1);\n        p[0] = {1, 1};\n        for (int i = 1; i <= maxLen; i++) {\n\
+    \            p[i] = p[i-1] * base;\n        }\n    }\n\n    std::vector<Hash>\
+    \ hash(const std::string& s) {\n        std::vector<Hash> res(s.size());\n   \
+    \     for (size_t i = 0; i < s.size(); i++) {\n            res[i] = p[i] * (int)\
+    \ s[i];\n        }\n        std::partial_sum(res.begin(), res.end(), res.begin());\n\
+    \        return res;\n    }\n\n    Hash getHash(const std::vector<Hash>& h, int\
+    \ l, int r) {\n        return __getHash(h, l, r) * p[p.size() - 1 - l];\n    }\n\
+    \n    // compare [l1, r1] vs [l2, r2]\n    bool equals(\n            const std::vector<Hash>&\
     \ h1, int l1, int r1,\n            const std::vector<Hash>& h2, int l2, int r2)\
     \ {\n        assert(0 <= l1 && l1 <= r1 && r1 < (int) h1.size());\n        assert(0\
     \ <= l2 && l2 <= r2 && r2 < (int) h2.size());\n\n        return getHash(h1, l1,\
@@ -172,11 +172,11 @@ data:
   isVerificationFile: false
   path: String/hash.h
   requiredBy: []
-  timestamp: '2022-06-26 18:53:41+08:00'
+  timestamp: '2022-08-21 18:30:35+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - String/tests/aizu_alds_14_b_string_hash.test.cpp
   - String/tests/yukicoder_1408_string_hash_lcp.test.cpp
+  - String/tests/aizu_alds_14_b_string_hash.test.cpp
 documentation_of: String/hash.h
 layout: document
 redirect_from:

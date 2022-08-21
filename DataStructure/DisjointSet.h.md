@@ -45,8 +45,8 @@ data:
   timestamp: '2022-08-09 14:38:08+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - DataStructure/test/dsu.test.cpp
   - DataStructure/test/aizu_dsl_1_a_dsu.test.cpp
+  - DataStructure/test/dsu.test.cpp
   - Graph/tests/aizu_grl_2_a_mst.test.cpp
 documentation_of: DataStructure/DisjointSet.h
 layout: document

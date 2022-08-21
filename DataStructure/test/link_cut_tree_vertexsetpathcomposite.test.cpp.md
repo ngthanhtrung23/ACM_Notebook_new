@@ -54,10 +54,11 @@ data:
     ModInt<MOD> power(ModInt<MOD> n, long long k) {\n    if (k == 0) return ModInt<MOD>\
     \ (1);\n    ModInt<MOD> res(1);\n    while (k > 0) {\n        if (k & 1) res =\
     \ res * n;\n        n = n * n;\n        k >>= 1;\n    }\n    return res;\n}\n\n\
-    /* Example:\nconst int MOD = 1e9 + 7;\nusing modular = ModInt<MOD>;\n\nstd::ostream&\
-    \ operator << (std::ostream& cout, const modular& m) {\n    cout << m.x;\n   \
-    \ return cout;\n}\nstd::istream& operator >> (std::istream& cin, modular& m) {\n\
-    \    cin >> m.x;\n    return cin;\n}\n*/\n#line 7 \"DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp\"\
+    template<int MOD>\nstd::ostream& operator << (std::ostream& cout, const ModInt<MOD>&\
+    \ m) {\n    cout << m.x;\n    return cout;\n}\ntemplate<int MOD>\nstd::istream&\
+    \ operator >> (std::istream& cin, ModInt<MOD>& m) {\n    cin >> m.x;\n    return\
+    \ cin;\n}\n\n/* Example:\nconst int MOD = 1e9 + 7;\nusing modular = ModInt<MOD>;\n\
+    */\n#line 7 \"DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp\"\
     \nusing modular = ModInt<998244353>;\nstd::ostream& operator << (std::ostream&\
     \ cout, const modular& m) {\n    cout << m.x;\n    return cout;\n}\nstd::istream&\
     \ operator >> (std::istream& cin, modular& m) {\n    cin >> m.x;\n    return cin;\n\
@@ -182,7 +183,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp
   requiredBy: []
-  timestamp: '2022-01-12 13:12:33+08:00'
+  timestamp: '2022-08-21 18:30:35+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp
