@@ -1,4 +1,5 @@
 // Copied from chemthan
+// 2x slower than atcoder library
 // Tested:
 // - https://oj.vnoi.info/problem/icpc21_mt_d
 // - https://judge.yosupo.jp/problem/convolution_mod

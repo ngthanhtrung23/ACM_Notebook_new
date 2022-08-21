@@ -1,4 +1,4 @@
-// Matrix, which works for both double and int
+// Matrix, which works for both double and int {{{
 // Copied partially from https://judge.yosupo.jp/submission/54653
 //
 // Tested:
@@ -181,3 +181,4 @@ struct Matrix {
         return rank;
     }
 };
+// }}}

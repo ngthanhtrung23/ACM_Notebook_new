@@ -84,16 +84,18 @@ ModInt<MOD> power(ModInt<MOD> n, long long k) {
     return res;
 }
 
-/* Example:
-const int MOD = 1e9 + 7;
-using modular = ModInt<MOD>;
-
-std::ostream& operator << (std::ostream& cout, const modular& m) {
+template<int MOD>
+std::ostream& operator << (std::ostream& cout, const ModInt<MOD>& m) {
     cout << m.x;
     return cout;
 }
-std::istream& operator >> (std::istream& cin, modular& m) {
+template<int MOD>
+std::istream& operator >> (std::istream& cin, ModInt<MOD>& m) {
     cin >> m.x;
     return cin;
 }
+
+/* Example:
+const int MOD = 1e9 + 7;
+using modular = ModInt<MOD>;
 */

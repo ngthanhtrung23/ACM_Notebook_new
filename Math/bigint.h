@@ -1,3 +1,4 @@
+// BigInt {{{
 // NOTE:
 // This code contains various bug fixes compared to the original version from
 // indy256 (github.com/indy256/codelibrary/blob/master/cpp/numbertheory/bigint-full.cpp),
@@ -595,3 +596,4 @@ struct BigInt {
         return res / norm;
     }
 };
+// }}}
