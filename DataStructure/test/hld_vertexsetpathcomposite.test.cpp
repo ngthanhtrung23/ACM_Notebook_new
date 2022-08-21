@@ -8,14 +8,6 @@ using namespace std;
 #include "../HeavyLight_adamant.h"
 
 using modular = ModInt<998244353>;
-std::ostream& operator << (std::ostream& cout, const modular& m) {
-    cout << m.x;
-    return cout;
-}
-std::istream& operator >> (std::istream& cin, modular& m) {
-    cin >> m.x;
-    return cin;
-}
 
 // SegTree ops
 struct F {

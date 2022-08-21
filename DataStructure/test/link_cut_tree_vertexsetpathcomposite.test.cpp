@@ -3,16 +3,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#include "../../Math/modulo_anta.h"
+#include "../../Math/modint.h"
 using modular = ModInt<998244353>;
-std::ostream& operator << (std::ostream& cout, const modular& m) {
-    cout << m.x;
-    return cout;
-}
-std::istream& operator >> (std::istream& cin, modular& m) {
-    cin >> m.x;
-    return cin;
-}
 
 #define PATH_QUERIES_ONLY
 struct T {
