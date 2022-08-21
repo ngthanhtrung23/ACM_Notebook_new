@@ -4,9 +4,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/splay_tree.h
     title: DataStructure/splay_tree.h
-  - icon: ':heavy_check_mark:'
-    path: Math/modulo_anta.h
-    title: Math/modulo_anta.h
+  - icon: ':question:'
+    path: Math/modint.h
+    title: Math/modint.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -19,53 +19,60 @@ data:
     - https://judge.yosupo.jp/problem/dynamic_sequence_range_affine_range_sum
   bundledCode: "#line 1 \"DataStructure/test/splay_tree.test.cpp\"\n#define PROBLEM\
     \ \"https://judge.yosupo.jp/problem/dynamic_sequence_range_affine_range_sum\"\n\
-    \n#include <bits/stdc++.h>\nusing namespace std;\n\n#line 1 \"Math/modulo_anta.h\"\
-    \n// Modified from anta's code\n// Not tested with MOD > 10^9 + 7.\n// Slow?\n\
-    //\n// Tested:\n// - https://codeforces.com/gym/101383 - F (MOD = 1e9+7, +, *)\n\
-    \n// ??? somehow this is 2.5x slower on https://judge.yosupo.jp/problem/matrix_product\n\
-    inline void fasterLLDivMod(unsigned long long x, unsigned y, unsigned &out_d,\
-    \ unsigned &out_m) {\n    unsigned xh = (unsigned)(x >> 32), xl = (unsigned)x,\
-    \ d, m;\n#ifdef __GNUC__\n    asm(\n        \"divl %4; \\n\\t\"\n        : \"\
-    =a\" (d), \"=d\" (m)\n        : \"d\" (xh), \"a\" (xl), \"r\" (y)\n    );\n#else\n\
-    \    __asm {\n        mov edx, dword ptr[xh];\n        mov eax, dword ptr[xl];\n\
-    \        div dword ptr[y];\n        mov dword ptr[d], eax;\n        mov dword\
-    \ ptr[m], edx;\n    };\n#endif\n    out_d = d; out_m = m;\n}\n\ntemplate<int MOD>\n\
-    struct ModInt {\n    unsigned x;\n\n    constexpr ModInt() : x(0) { }\n    constexpr\
-    \ ModInt(signed long long sig) { int sigt = sig % MOD; if (sigt < 0) sigt += MOD;\
-    \ x = sigt; }\n\n#define COMPAREOP(OP) bool constexpr operator OP(ModInt b) const\
-    \ { return x OP b.x; }\n    COMPAREOP(==) COMPAREOP(!=) COMPAREOP(<) COMPAREOP(>)\
-    \ COMPAREOP(<=) COMPAREOP(>=)\n#undef COMPAREOP\n\n    ModInt operator-() const\
-    \ { return ModInt(x ? MOD - x : 0); }\n\n    ModInt constexpr& operator+=(ModInt\
-    \ that) { if ((x += that.x) >= MOD) x -= MOD; return *this; }\n    ModInt constexpr&\
-    \ operator-=(ModInt that) { if ((x += MOD - that.x) >= MOD) x -= MOD; return *this;\
-    \ }\n    ModInt &operator*=(ModInt that) {\n        unsigned dummy;\n        fasterLLDivMod((unsigned\
-    \ long long)x * that.x, MOD, dummy, x);\n        return *this;\n    }\n    ModInt\
-    \ operator*(ModInt that) const {\n        ModInt res;\n        unsigned dummy;\n\
-    \        fasterLLDivMod((unsigned long long)x * that.x, MOD, dummy, res.x);\n\
-    \        return res;\n    }\n    ModInt operator+(ModInt that) const { return\
-    \ ModInt(*this) += that; }\n    ModInt operator-(ModInt that) const { return ModInt(*this)\
-    \ -= that; }\n\n    // Below: copied from user202729_, not tested.\n    ModInt\
-    \ inv() const {\n        int a = x, b = MOD, ax = 1, bx = 0;\n        while (b)\
-    \ {\n            int q = a/b, t = a%b;\n            a = b; b = t;\n          \
-    \  t = ax - bx*q;\n            ax = bx; bx = t;\n        }\n        assert(a ==\
-    \ 1);\n        if (ax < 0) ax += MOD;\n        return ax;\n    }\n    ModInt&\
-    \ operator /= (ModInt m) { return (*this) *= m.inv(); }\n    ModInt operator /\
-    \ (ModInt that) const { return ModInt(*this) /= that; }\n};\n\ntemplate<int MOD>\n\
-    ModInt<MOD> power(ModInt<MOD> n, long long k) {\n    if (k == 0) return ModInt<MOD>\
-    \ (1);\n    ModInt<MOD> res(1);\n    while (k > 0) {\n        if (k & 1) res =\
-    \ res * n;\n        n = n * n;\n        k >>= 1;\n    }\n    return res;\n}\n\n\
-    template<int MOD>\nstd::ostream& operator << (std::ostream& cout, const ModInt<MOD>&\
-    \ m) {\n    cout << m.x;\n    return cout;\n}\ntemplate<int MOD>\nstd::istream&\
-    \ operator >> (std::istream& cin, ModInt<MOD>& m) {\n    cin >> m.x;\n    return\
-    \ cin;\n}\n\n/* Example:\nconst int MOD = 1e9 + 7;\nusing modular = ModInt<MOD>;\n\
-    */\n#line 1 \"DataStructure/splay_tree.h\"\n// SplayTreeById\n//\n// Note:\n//\
-    \ - op() must be commutative, otherwise reverse queries won't work.\n//   To fix\
-    \ it, need to store aggregate data from right->left\n//   See https://judge.yosupo.jp/submission/53778\
-    \ (and look at invsum)\n//\n// Tested:\n// - (cut, join)      https://vn.spoj.com/problems/CARDS/\n\
-    // - (keys, reverse)  https://oj.vnoi.info/problem/twist\n// - (insert, prod)\
-    \   https://oj.vnoi.info/problem/qmax3vn\n// - (insert, delete) https://vn.spoj.com/problems/QMAX4/\n\
-    // - (insert, delete) https://vn.spoj.com/problems/CARDSHUF/\n// - (lazy)    \
-    \       https://judge.yosupo.jp/problem/dynamic_sequence_range_affine_range_sum\n\
+    \n#include <bits/stdc++.h>\nusing namespace std;\n\n#line 1 \"Math/modint.h\"\n\
+    // ModInt {{{\ntemplate<int MD> struct ModInt {\n    using ll = long long;\n \
+    \   int x;\n\n    constexpr ModInt() : x(0) {}\n    constexpr ModInt(ll v) { _set(v\
+    \ % MD + MD); }\n    constexpr explicit operator bool() const { return x != 0;\
+    \ }\n\n    constexpr ModInt operator + (const ModInt& a) const {\n        return\
+    \ ModInt()._set((ll) x + a.x);\n    }\n    constexpr ModInt operator - (const\
+    \ ModInt& a) const {\n        return ModInt()._set((ll) x - a.x + MD);\n    }\n\
+    \    constexpr ModInt operator * (const ModInt& a) const {\n        return ModInt()._set((ll)\
+    \ x * a.x % MD);\n    }\n    constexpr ModInt operator / (const ModInt& a) const\
+    \ {\n        return ModInt()._set((ll) x * a.inv().x % MD);\n    }\n    constexpr\
+    \ ModInt operator - () const {\n        return ModInt()._set(MD - x);\n    }\n\
+    \n    constexpr ModInt& operator += (const ModInt& a) { return *this = *this +\
+    \ a; }\n    constexpr ModInt& operator -= (const ModInt& a) { return *this = *this\
+    \ - a; }\n    constexpr ModInt& operator *= (const ModInt& a) { return *this =\
+    \ *this * a; }\n    constexpr ModInt& operator /= (const ModInt& a) { return *this\
+    \ = *this / a; }\n\n    friend constexpr ModInt operator + (ll a, const ModInt&\
+    \ b) {\n        return ModInt()._set(a % MD + b.x);\n    }\n    friend constexpr\
+    \ ModInt operator - (ll a, const ModInt& b) {\n        return ModInt()._set(a\
+    \ % MD - b.x + MD);\n    }\n    friend constexpr ModInt operator * (ll a, const\
+    \ ModInt& b) {\n        return ModInt()._set(a % MD * b.x % MD);\n    }\n    friend\
+    \ constexpr ModInt operator / (ll a, const ModInt& b) {\n        return ModInt()._set(a\
+    \ % MD * b.inv().x % MD);\n    }\n\n    constexpr bool operator == (const ModInt&\
+    \ a) const { return x == a.x; }\n    constexpr bool operator != (const ModInt&\
+    \ a) const { return x != a.x; }\n\n    friend std::istream& operator >> (std::istream&\
+    \ is, ModInt& x) {\n        ll val; is >> val;\n        x = ModInt(val);\n   \
+    \     return is;\n    }\n    constexpr friend std::ostream& operator << (std::ostream&\
+    \ os, const ModInt& x) {\n        return os << x.x;\n    }\n\n    constexpr ModInt\
+    \ pow(ll k) const {\n        ModInt ans = 1, tmp = x;\n        while (k) {\n \
+    \           if (k & 1) ans *= tmp;\n            tmp *= tmp;\n            k >>=\
+    \ 1;\n        }\n        return ans;\n    }\n\n    ModInt inv() {\n        if\
+    \ (x < 1000111) {\n            _precalc(1000111);\n            return invs[x];\n\
+    \        }\n        int a = x, b = MD, ax = 1, bx = 0;\n        while (b) {\n\
+    \            int q = a/b, t = a%b;\n            a = b; b = t;\n            t =\
+    \ ax - bx*q;\n            ax = bx; bx = t;\n        }\n        assert(a == 1);\n\
+    \        if (ax < 0) ax += MD;\n        return ax;\n    }\n\n    std::vector<ModInt>\
+    \ factorials, inv_factorials, invs;\n    void _precalc(int n) {\n        if (factorials.empty())\
+    \ [[unlikely]] {\n            factorials = {1};\n            inv_factorials =\
+    \ {1};\n            invs = {0};\n        }\n        if (n > MD) n = MD;\n    \
+    \    int old_sz = factorials.size();\n        if (n <= old_sz) return;\n\n   \
+    \     factorials.resize(n);\n        inv_factorials.resize(n);\n        invs.resize(n);\n\
+    \n        for (int i = old_sz; i < n; ++i) factorials[i] = factorials[i-1] * i;\n\
+    \        inv_factorials[n-1] = factorials.back().pow(MD - 2);\n        for (int\
+    \ i = n - 2; i >= old_sz; --i) inv_factorials[i] = inv_factorials[i+1] * (i+1);\n\
+    \        for (int i = n-1; i >= old_sz; --i) invs[i] = inv_factorials[i] * factorials[i-1];\n\
+    \    }\n    \nprivate:\n    // Internal, DO NOT USE.\n    // val must be in [0,\
+    \ 2*MD)\n    constexpr ModInt& _set(ll v) {\n        x = v >= MD ? v - MD : v;\n\
+    \        return *this;\n    }\n};\n// }}}\n#line 1 \"DataStructure/splay_tree.h\"\
+    \n// SplayTreeById\n//\n// Note:\n// - op() must be commutative, otherwise reverse\
+    \ queries won't work.\n//   To fix it, need to store aggregate data from right->left\n\
+    //   See https://judge.yosupo.jp/submission/53778 (and look at invsum)\n//\n//\
+    \ Tested:\n// - (cut, join)      https://vn.spoj.com/problems/CARDS/\n// - (keys,\
+    \ reverse)  https://oj.vnoi.info/problem/twist\n// - (insert, prod)   https://oj.vnoi.info/problem/qmax3vn\n\
+    // - (insert, delete) https://vn.spoj.com/problems/QMAX4/\n// - (insert, delete)\
+    \ https://vn.spoj.com/problems/CARDSHUF/\n// - (lazy)           https://judge.yosupo.jp/problem/dynamic_sequence_range_affine_range_sum\n\
     // - (lazy)           https://oj.vnoi.info/problem/upit\ntemplate<class K, class\
     \ S, class F>\nstruct node_t {\n    using Node = node_t<K, S, F>;\n\n    std::array<Node*,\
     \ 2> child;\n    Node *father;\n    int size;\n    \n    // Whether we will need\
@@ -211,64 +218,60 @@ data:
     \        RangeAffineOps::e,\n        RangeAffineOps::F,\n        RangeAffineOps::mapping,\n\
     \        RangeAffineOps::composition,\n        RangeAffineOps::id\n    > tree(keys);\n\
     \ */\n#line 8 \"DataStructure/test/splay_tree.test.cpp\"\n\nusing modular = ModInt<998244353>;\n\
-    std::ostream& operator << (std::ostream& cout, const modular& m) {\n    cout <<\
-    \ m.x;\n    return cout;\n}\nstd::istream& operator >> (std::istream& cin, modular&\
-    \ m) {\n    cin >> m.x;\n    return cin;\n}\n\nstruct S {\n    long long sum,\
-    \ sz;\n};\nstruct F {\n    long long a, b;\n};\nusing Node = node_t<int, S, F>;\n\
-    \nconst int MOD = 998244353;\nS op(S left, int key, S right) {\n    return S {\n\
-    \        (left.sum + key + right.sum) % MOD,\n        left.sz + 1 + right.sz,\n\
-    \    };\n}\npair<int, S> e() {\n    return {0, {0, 0}};\n}\npair<int, S> mapping(F\
-    \ f, Node* node) {\n    return {\n        (f.a * node->key + f.b) % MOD,\n   \
-    \     S {\n            (f.a * node->data.sum + f.b * node->data.sz) % MOD,\n \
-    \           node->data.sz,\n        }\n    };\n}\nF composition(F f, F g) {\n\
-    \    return F {\n        f.a * g.a % MOD,\n        (f.a * g.b + f.b) % MOD,\n\
-    \    };\n}\nF id() {\n    return F {1, 0};\n}\n\nint32_t main() {\n    ios::sync_with_stdio(0);\
-    \ cin.tie(0);\n    int n, q; cin >> n >> q;\n    vector<int> keys(n);\n    for\
-    \ (auto& key : keys) cin >> key;\n\n    SplayTreeById<\n        int,\n       \
-    \ S,\n        op,\n        e,\n        F,\n        mapping,\n        composition,\n\
-    \        id\n    > tree(keys);\n\n    while (q--) {\n        int typ; cin >> typ;\n\
-    \        if (typ == 0) {\n            int pos, val; cin >> pos >> val;\n     \
-    \       tree.insert(pos, val);\n        } else if (typ == 1) {\n            int\
-    \ pos; cin >> pos;\n            tree.erase(pos);\n        } else if (typ == 2)\
-    \ {\n            int l, r; cin >> l >> r;\n            tree.reverse(l, r);\n \
-    \       } else if (typ == 3) {\n            int l, r, a, b; cin >> l >> r >> a\
-    \ >> b;\n            tree.apply(l, r, F{a, b});\n        } else {\n          \
-    \  assert(typ == 4);\n            int l, r; cin >> l >> r;\n            printf(\"\
-    %lld\\n\", tree.prod(l, r).sum);\n        }\n    }\n    return 0;\n}\n"
+    \nstruct S {\n    long long sum, sz;\n};\nstruct F {\n    long long a, b;\n};\n\
+    using Node = node_t<int, S, F>;\n\nconst int MOD = 998244353;\nS op(S left, int\
+    \ key, S right) {\n    return S {\n        (left.sum + key + right.sum) % MOD,\n\
+    \        left.sz + 1 + right.sz,\n    };\n}\npair<int, S> e() {\n    return {0,\
+    \ {0, 0}};\n}\npair<int, S> mapping(F f, Node* node) {\n    return {\n       \
+    \ (f.a * node->key + f.b) % MOD,\n        S {\n            (f.a * node->data.sum\
+    \ + f.b * node->data.sz) % MOD,\n            node->data.sz,\n        }\n    };\n\
+    }\nF composition(F f, F g) {\n    return F {\n        f.a * g.a % MOD,\n     \
+    \   (f.a * g.b + f.b) % MOD,\n    };\n}\nF id() {\n    return F {1, 0};\n}\n\n\
+    int32_t main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n, q; cin\
+    \ >> n >> q;\n    vector<int> keys(n);\n    for (auto& key : keys) cin >> key;\n\
+    \n    SplayTreeById<\n        int,\n        S,\n        op,\n        e,\n    \
+    \    F,\n        mapping,\n        composition,\n        id\n    > tree(keys);\n\
+    \n    while (q--) {\n        int typ; cin >> typ;\n        if (typ == 0) {\n \
+    \           int pos, val; cin >> pos >> val;\n            tree.insert(pos, val);\n\
+    \        } else if (typ == 1) {\n            int pos; cin >> pos;\n          \
+    \  tree.erase(pos);\n        } else if (typ == 2) {\n            int l, r; cin\
+    \ >> l >> r;\n            tree.reverse(l, r);\n        } else if (typ == 3) {\n\
+    \            int l, r, a, b; cin >> l >> r >> a >> b;\n            tree.apply(l,\
+    \ r, F{a, b});\n        } else {\n            assert(typ == 4);\n            int\
+    \ l, r; cin >> l >> r;\n            printf(\"%lld\\n\", tree.prod(l, r).sum);\n\
+    \        }\n    }\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/dynamic_sequence_range_affine_range_sum\"\
-    \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../../Math/modulo_anta.h\"\
-    \n#include \"../splay_tree.h\"\n\nusing modular = ModInt<998244353>;\nstd::ostream&\
-    \ operator << (std::ostream& cout, const modular& m) {\n    cout << m.x;\n   \
-    \ return cout;\n}\nstd::istream& operator >> (std::istream& cin, modular& m) {\n\
-    \    cin >> m.x;\n    return cin;\n}\n\nstruct S {\n    long long sum, sz;\n};\n\
-    struct F {\n    long long a, b;\n};\nusing Node = node_t<int, S, F>;\n\nconst\
-    \ int MOD = 998244353;\nS op(S left, int key, S right) {\n    return S {\n   \
-    \     (left.sum + key + right.sum) % MOD,\n        left.sz + 1 + right.sz,\n \
-    \   };\n}\npair<int, S> e() {\n    return {0, {0, 0}};\n}\npair<int, S> mapping(F\
-    \ f, Node* node) {\n    return {\n        (f.a * node->key + f.b) % MOD,\n   \
-    \     S {\n            (f.a * node->data.sum + f.b * node->data.sz) % MOD,\n \
-    \           node->data.sz,\n        }\n    };\n}\nF composition(F f, F g) {\n\
-    \    return F {\n        f.a * g.a % MOD,\n        (f.a * g.b + f.b) % MOD,\n\
-    \    };\n}\nF id() {\n    return F {1, 0};\n}\n\nint32_t main() {\n    ios::sync_with_stdio(0);\
-    \ cin.tie(0);\n    int n, q; cin >> n >> q;\n    vector<int> keys(n);\n    for\
-    \ (auto& key : keys) cin >> key;\n\n    SplayTreeById<\n        int,\n       \
-    \ S,\n        op,\n        e,\n        F,\n        mapping,\n        composition,\n\
-    \        id\n    > tree(keys);\n\n    while (q--) {\n        int typ; cin >> typ;\n\
-    \        if (typ == 0) {\n            int pos, val; cin >> pos >> val;\n     \
-    \       tree.insert(pos, val);\n        } else if (typ == 1) {\n            int\
-    \ pos; cin >> pos;\n            tree.erase(pos);\n        } else if (typ == 2)\
-    \ {\n            int l, r; cin >> l >> r;\n            tree.reverse(l, r);\n \
-    \       } else if (typ == 3) {\n            int l, r, a, b; cin >> l >> r >> a\
-    \ >> b;\n            tree.apply(l, r, F{a, b});\n        } else {\n          \
-    \  assert(typ == 4);\n            int l, r; cin >> l >> r;\n            printf(\"\
-    %lld\\n\", tree.prod(l, r).sum);\n        }\n    }\n    return 0;\n}\n"
+    \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../../Math/modint.h\"\
+    \n#include \"../splay_tree.h\"\n\nusing modular = ModInt<998244353>;\n\nstruct\
+    \ S {\n    long long sum, sz;\n};\nstruct F {\n    long long a, b;\n};\nusing\
+    \ Node = node_t<int, S, F>;\n\nconst int MOD = 998244353;\nS op(S left, int key,\
+    \ S right) {\n    return S {\n        (left.sum + key + right.sum) % MOD,\n  \
+    \      left.sz + 1 + right.sz,\n    };\n}\npair<int, S> e() {\n    return {0,\
+    \ {0, 0}};\n}\npair<int, S> mapping(F f, Node* node) {\n    return {\n       \
+    \ (f.a * node->key + f.b) % MOD,\n        S {\n            (f.a * node->data.sum\
+    \ + f.b * node->data.sz) % MOD,\n            node->data.sz,\n        }\n    };\n\
+    }\nF composition(F f, F g) {\n    return F {\n        f.a * g.a % MOD,\n     \
+    \   (f.a * g.b + f.b) % MOD,\n    };\n}\nF id() {\n    return F {1, 0};\n}\n\n\
+    int32_t main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n, q; cin\
+    \ >> n >> q;\n    vector<int> keys(n);\n    for (auto& key : keys) cin >> key;\n\
+    \n    SplayTreeById<\n        int,\n        S,\n        op,\n        e,\n    \
+    \    F,\n        mapping,\n        composition,\n        id\n    > tree(keys);\n\
+    \n    while (q--) {\n        int typ; cin >> typ;\n        if (typ == 0) {\n \
+    \           int pos, val; cin >> pos >> val;\n            tree.insert(pos, val);\n\
+    \        } else if (typ == 1) {\n            int pos; cin >> pos;\n          \
+    \  tree.erase(pos);\n        } else if (typ == 2) {\n            int l, r; cin\
+    \ >> l >> r;\n            tree.reverse(l, r);\n        } else if (typ == 3) {\n\
+    \            int l, r, a, b; cin >> l >> r >> a >> b;\n            tree.apply(l,\
+    \ r, F{a, b});\n        } else {\n            assert(typ == 4);\n            int\
+    \ l, r; cin >> l >> r;\n            printf(\"%lld\\n\", tree.prod(l, r).sum);\n\
+    \        }\n    }\n    return 0;\n}\n"
   dependsOn:
-  - Math/modulo_anta.h
+  - Math/modint.h
   - DataStructure/splay_tree.h
   isVerificationFile: true
   path: DataStructure/test/splay_tree.test.cpp
   requiredBy: []
-  timestamp: '2022-08-21 18:30:35+08:00'
+  timestamp: '2022-08-21 18:45:50+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/splay_tree.test.cpp

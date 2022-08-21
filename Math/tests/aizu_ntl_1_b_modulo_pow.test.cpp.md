@@ -1,9 +1,9 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
-    path: Math/modulo_anta.h
-    title: Math/modulo_anta.h
+  - icon: ':question:'
+    path: Math/modint.h
+    title: Math/modint.h
   - icon: ':heavy_check_mark:'
     path: template.h
     title: template.h
@@ -44,65 +44,66 @@ data:
     \ (0, r-1)(rng);\n}\n\ntemplate<typename T>\nvector<T> read_vector(int n) {\n\
     \    vector<T> res(n);\n    for (int& x : res) cin >> x;\n    return res;\n}\n\
     \nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n  \
-    \  solve();\n    return 0;\n}\n#line 1 \"Math/modulo_anta.h\"\n// Modified from\
-    \ anta's code\n// Not tested with MOD > 10^9 + 7.\n// Slow?\n//\n// Tested:\n\
-    // - https://codeforces.com/gym/101383 - F (MOD = 1e9+7, +, *)\n\n// ??? somehow\
-    \ this is 2.5x slower on https://judge.yosupo.jp/problem/matrix_product\ninline\
-    \ void fasterLLDivMod(unsigned long long x, unsigned y, unsigned &out_d, unsigned\
-    \ &out_m) {\n    unsigned xh = (unsigned)(x >> 32), xl = (unsigned)x, d, m;\n\
-    #ifdef __GNUC__\n    asm(\n        \"divl %4; \\n\\t\"\n        : \"=a\" (d),\
-    \ \"=d\" (m)\n        : \"d\" (xh), \"a\" (xl), \"r\" (y)\n    );\n#else\n   \
-    \ __asm {\n        mov edx, dword ptr[xh];\n        mov eax, dword ptr[xl];\n\
-    \        div dword ptr[y];\n        mov dword ptr[d], eax;\n        mov dword\
-    \ ptr[m], edx;\n    };\n#endif\n    out_d = d; out_m = m;\n}\n\ntemplate<int MOD>\n\
-    struct ModInt {\n    unsigned x;\n\n    constexpr ModInt() : x(0) { }\n    constexpr\
-    \ ModInt(signed long long sig) { int sigt = sig % MOD; if (sigt < 0) sigt += MOD;\
-    \ x = sigt; }\n\n#define COMPAREOP(OP) bool constexpr operator OP(ModInt b) const\
-    \ { return x OP b.x; }\n    COMPAREOP(==) COMPAREOP(!=) COMPAREOP(<) COMPAREOP(>)\
-    \ COMPAREOP(<=) COMPAREOP(>=)\n#undef COMPAREOP\n\n    ModInt operator-() const\
-    \ { return ModInt(x ? MOD - x : 0); }\n\n    ModInt constexpr& operator+=(ModInt\
-    \ that) { if ((x += that.x) >= MOD) x -= MOD; return *this; }\n    ModInt constexpr&\
-    \ operator-=(ModInt that) { if ((x += MOD - that.x) >= MOD) x -= MOD; return *this;\
-    \ }\n    ModInt &operator*=(ModInt that) {\n        unsigned dummy;\n        fasterLLDivMod((unsigned\
-    \ long long)x * that.x, MOD, dummy, x);\n        return *this;\n    }\n    ModInt\
-    \ operator*(ModInt that) const {\n        ModInt res;\n        unsigned dummy;\n\
-    \        fasterLLDivMod((unsigned long long)x * that.x, MOD, dummy, res.x);\n\
-    \        return res;\n    }\n    ModInt operator+(ModInt that) const { return\
-    \ ModInt(*this) += that; }\n    ModInt operator-(ModInt that) const { return ModInt(*this)\
-    \ -= that; }\n\n    // Below: copied from user202729_, not tested.\n    ModInt\
-    \ inv() const {\n        int a = x, b = MOD, ax = 1, bx = 0;\n        while (b)\
-    \ {\n            int q = a/b, t = a%b;\n            a = b; b = t;\n          \
-    \  t = ax - bx*q;\n            ax = bx; bx = t;\n        }\n        assert(a ==\
-    \ 1);\n        if (ax < 0) ax += MOD;\n        return ax;\n    }\n    ModInt&\
-    \ operator /= (ModInt m) { return (*this) *= m.inv(); }\n    ModInt operator /\
-    \ (ModInt that) const { return ModInt(*this) /= that; }\n};\n\ntemplate<int MOD>\n\
-    ModInt<MOD> power(ModInt<MOD> n, long long k) {\n    if (k == 0) return ModInt<MOD>\
-    \ (1);\n    ModInt<MOD> res(1);\n    while (k > 0) {\n        if (k & 1) res =\
-    \ res * n;\n        n = n * n;\n        k >>= 1;\n    }\n    return res;\n}\n\n\
-    template<int MOD>\nstd::ostream& operator << (std::ostream& cout, const ModInt<MOD>&\
-    \ m) {\n    cout << m.x;\n    return cout;\n}\ntemplate<int MOD>\nstd::istream&\
-    \ operator >> (std::istream& cin, ModInt<MOD>& m) {\n    cin >> m.x;\n    return\
-    \ cin;\n}\n\n/* Example:\nconst int MOD = 1e9 + 7;\nusing modular = ModInt<MOD>;\n\
-    */\n#line 5 \"Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp\"\n\nconst int MOD =\
-    \ 1e9 + 7;\nusing modular = ModInt<MOD>;\n\nstd::ostream& operator << (std::ostream&\
-    \ cout, const modular& m) {\n    cout << m.x;\n    return cout;\n}\nstd::istream&\
-    \ operator >> (std::istream& cin, modular& m) {\n    cin >> m.x;\n    return cin;\n\
-    }\n\nvoid solve() {\n    modular m; int k; cin >> m >> k;\n    cout << power(m,\
-    \ k) << endl;\n}\n"
+    \  solve();\n    return 0;\n}\n#line 1 \"Math/modint.h\"\n// ModInt {{{\ntemplate<int\
+    \ MD> struct ModInt {\n    using ll = long long;\n    int x;\n\n    constexpr\
+    \ ModInt() : x(0) {}\n    constexpr ModInt(ll v) { _set(v % MD + MD); }\n    constexpr\
+    \ explicit operator bool() const { return x != 0; }\n\n    constexpr ModInt operator\
+    \ + (const ModInt& a) const {\n        return ModInt()._set((ll) x + a.x);\n \
+    \   }\n    constexpr ModInt operator - (const ModInt& a) const {\n        return\
+    \ ModInt()._set((ll) x - a.x + MD);\n    }\n    constexpr ModInt operator * (const\
+    \ ModInt& a) const {\n        return ModInt()._set((ll) x * a.x % MD);\n    }\n\
+    \    constexpr ModInt operator / (const ModInt& a) const {\n        return ModInt()._set((ll)\
+    \ x * a.inv().x % MD);\n    }\n    constexpr ModInt operator - () const {\n  \
+    \      return ModInt()._set(MD - x);\n    }\n\n    constexpr ModInt& operator\
+    \ += (const ModInt& a) { return *this = *this + a; }\n    constexpr ModInt& operator\
+    \ -= (const ModInt& a) { return *this = *this - a; }\n    constexpr ModInt& operator\
+    \ *= (const ModInt& a) { return *this = *this * a; }\n    constexpr ModInt& operator\
+    \ /= (const ModInt& a) { return *this = *this / a; }\n\n    friend constexpr ModInt\
+    \ operator + (ll a, const ModInt& b) {\n        return ModInt()._set(a % MD +\
+    \ b.x);\n    }\n    friend constexpr ModInt operator - (ll a, const ModInt& b)\
+    \ {\n        return ModInt()._set(a % MD - b.x + MD);\n    }\n    friend constexpr\
+    \ ModInt operator * (ll a, const ModInt& b) {\n        return ModInt()._set(a\
+    \ % MD * b.x % MD);\n    }\n    friend constexpr ModInt operator / (ll a, const\
+    \ ModInt& b) {\n        return ModInt()._set(a % MD * b.inv().x % MD);\n    }\n\
+    \n    constexpr bool operator == (const ModInt& a) const { return x == a.x; }\n\
+    \    constexpr bool operator != (const ModInt& a) const { return x != a.x; }\n\
+    \n    friend std::istream& operator >> (std::istream& is, ModInt& x) {\n     \
+    \   ll val; is >> val;\n        x = ModInt(val);\n        return is;\n    }\n\
+    \    constexpr friend std::ostream& operator << (std::ostream& os, const ModInt&\
+    \ x) {\n        return os << x.x;\n    }\n\n    constexpr ModInt pow(ll k) const\
+    \ {\n        ModInt ans = 1, tmp = x;\n        while (k) {\n            if (k\
+    \ & 1) ans *= tmp;\n            tmp *= tmp;\n            k >>= 1;\n        }\n\
+    \        return ans;\n    }\n\n    ModInt inv() {\n        if (x < 1000111) {\n\
+    \            _precalc(1000111);\n            return invs[x];\n        }\n    \
+    \    int a = x, b = MD, ax = 1, bx = 0;\n        while (b) {\n            int\
+    \ q = a/b, t = a%b;\n            a = b; b = t;\n            t = ax - bx*q;\n \
+    \           ax = bx; bx = t;\n        }\n        assert(a == 1);\n        if (ax\
+    \ < 0) ax += MD;\n        return ax;\n    }\n\n    std::vector<ModInt> factorials,\
+    \ inv_factorials, invs;\n    void _precalc(int n) {\n        if (factorials.empty())\
+    \ [[unlikely]] {\n            factorials = {1};\n            inv_factorials =\
+    \ {1};\n            invs = {0};\n        }\n        if (n > MD) n = MD;\n    \
+    \    int old_sz = factorials.size();\n        if (n <= old_sz) return;\n\n   \
+    \     factorials.resize(n);\n        inv_factorials.resize(n);\n        invs.resize(n);\n\
+    \n        for (int i = old_sz; i < n; ++i) factorials[i] = factorials[i-1] * i;\n\
+    \        inv_factorials[n-1] = factorials.back().pow(MD - 2);\n        for (int\
+    \ i = n - 2; i >= old_sz; --i) inv_factorials[i] = inv_factorials[i+1] * (i+1);\n\
+    \        for (int i = n-1; i >= old_sz; --i) invs[i] = inv_factorials[i] * factorials[i-1];\n\
+    \    }\n    \nprivate:\n    // Internal, DO NOT USE.\n    // val must be in [0,\
+    \ 2*MD)\n    constexpr ModInt& _set(ll v) {\n        x = v >= MD ? v - MD : v;\n\
+    \        return *this;\n    }\n};\n// }}}\n#line 5 \"Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp\"\
+    \n\nconst int MOD = 1e9 + 7;\nusing modular = ModInt<MOD>;\n\nvoid solve() {\n\
+    \    modular m; int k; cin >> m >> k;\n    cout << m.pow(k) << endl;\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_B\"\
-    \n\n#include \"../../template.h\"\n#include \"../modulo_anta.h\"\n\nconst int\
-    \ MOD = 1e9 + 7;\nusing modular = ModInt<MOD>;\n\nstd::ostream& operator << (std::ostream&\
-    \ cout, const modular& m) {\n    cout << m.x;\n    return cout;\n}\nstd::istream&\
-    \ operator >> (std::istream& cin, modular& m) {\n    cin >> m.x;\n    return cin;\n\
-    }\n\nvoid solve() {\n    modular m; int k; cin >> m >> k;\n    cout << power(m,\
-    \ k) << endl;\n}\n"
+    \n\n#include \"../../template.h\"\n#include \"../modint.h\"\n\nconst int MOD =\
+    \ 1e9 + 7;\nusing modular = ModInt<MOD>;\n\nvoid solve() {\n    modular m; int\
+    \ k; cin >> m >> k;\n    cout << m.pow(k) << endl;\n}\n"
   dependsOn:
   - template.h
-  - Math/modulo_anta.h
+  - Math/modint.h
   isVerificationFile: true
   path: Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp
   requiredBy: []
-  timestamp: '2022-08-21 18:30:35+08:00'
+  timestamp: '2022-08-21 18:45:50+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp

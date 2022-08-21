@@ -59,7 +59,7 @@ data:
     - icon: ':warning:'
       path: DataStructure/HeavyLight.cpp
       title: DataStructure/HeavyLight.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: DataStructure/HeavyLight_adamant.h
       title: DataStructure/HeavyLight_adamant.h
     - icon: ':warning:'
@@ -95,7 +95,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/RangeSet.h
       title: DataStructure/RangeSet.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: DataStructure/SegTree.h
       title: DataStructure/SegTree.h
     - icon: ':heavy_check_mark:'
@@ -316,7 +316,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/bigint.h
       title: Math/bigint.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Math/modint.h
       title: Math/modint.h
     - icon: ':warning:'
@@ -595,7 +595,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/hld_vertexaddsubtreesum.test.cpp
       title: DataStructure/test/hld_vertexaddsubtreesum.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: DataStructure/test/hld_vertexsetpathcomposite.test.cpp
       title: DataStructure/test/hld_vertexsetpathcomposite.test.cpp
     - icon: ':heavy_check_mark:'

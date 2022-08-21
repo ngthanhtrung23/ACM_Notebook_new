@@ -1,38 +1,11 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: String/hash.h
-    title: String/hash.h
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: DataStructure/test/hld_vertexsetpathcomposite.test.cpp
-    title: DataStructure/test/hld_vertexsetpathcomposite.test.cpp
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp
     title: DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
-    title: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
-    title: DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: DataStructure/test/splay_tree.test.cpp
-    title: DataStructure/test/splay_tree.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp
-    title: Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Math/tests/berlekamp_massey.test.cpp
-    title: Math/tests/berlekamp_massey.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: String/tests/aizu_alds_14_b_string_hash.test.cpp
-    title: String/tests/aizu_alds_14_b_string_hash.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: String/tests/yukicoder_1408_string_hash_lcp.test.cpp
-    title: String/tests/yukicoder_1408_string_hash_lcp.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -121,20 +94,11 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: Math/modulo_anta.h
-  requiredBy:
-  - String/hash.h
+  requiredBy: []
   timestamp: '2022-08-21 18:30:35+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - String/tests/yukicoder_1408_string_hash_lcp.test.cpp
-  - String/tests/aizu_alds_14_b_string_hash.test.cpp
-  - DataStructure/test/splay_tree.test.cpp
-  - DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
   - DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp
-  - DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
-  - DataStructure/test/hld_vertexsetpathcomposite.test.cpp
-  - Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp
-  - Math/tests/berlekamp_massey.test.cpp
 documentation_of: Math/modulo_anta.h
 layout: document
 redirect_from:

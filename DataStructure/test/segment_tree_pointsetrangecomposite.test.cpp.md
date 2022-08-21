@@ -1,12 +1,12 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: DataStructure/SegTree.h
     title: DataStructure/SegTree.h
-  - icon: ':heavy_check_mark:'
-    path: Math/modulo_anta.h
-    title: Math/modulo_anta.h
+  - icon: ':question:'
+    path: Math/modint.h
+    title: Math/modint.h
   - icon: ':heavy_check_mark:'
     path: buffered_reader.h
     title: buffered_reader.h
@@ -31,31 +31,29 @@ data:
     \ buffered_reader.h: line 2: #pragma once found in a non-first line\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_set_range_composite\"\
     \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../SegTree.h\"\
-    \n#include \"../../Math/modulo_anta.h\"\n#include \"../../buffered_reader.h\"\n\
-    \nusing modular = ModInt<998244353>;\nstd::ostream& operator << (std::ostream&\
-    \ cout, const modular& m) {\n    cout << m.x;\n    return cout;\n}\nstd::istream&\
-    \ operator >> (std::istream& cin, modular& m) {\n    cin >> m.x;\n    return cin;\n\
-    }\n\nstruct Func {\n    modular a, b;\n};\n\nFunc op(Func l, Func r) {\n    return\
-    \ Func{\n        l.a * r.a,\n        r.a * l.b + r.b\n    };\n}\nFunc e() {\n\
-    \    return Func{1, 0};\n}\n\nint32_t main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n\
-    \    int n = IO::get<int>();\n    int q = IO::get<int>();\n    vector<Func> funcs(n);\n\
-    \    for (auto& f : funcs) {\n        int a = IO::get<int>();\n        int b =\
-    \ IO::get<int>();\n        f = {a, b};\n    }\n\n    SegTree<Func, op, e> seg_tree(funcs);\n\
-    \    while (q--) {\n        int typ = IO::get<int>();\n        if (typ == 0) {\n\
-    \            int pos = IO::get<int>();\n            int a = IO::get<int>();\n\
-    \            int b = IO::get<int>();\n            seg_tree.set(pos, {a, b});\n\
-    \        } else {\n            int l = IO::get<int>();\n            int r = IO::get<int>();\n\
+    \n#include \"../../Math/modint.h\"\n#include \"../../buffered_reader.h\"\n\nusing\
+    \ modular = ModInt<998244353>;\n\nstruct Func {\n    modular a, b;\n};\n\nFunc\
+    \ op(Func l, Func r) {\n    return Func{\n        l.a * r.a,\n        r.a * l.b\
+    \ + r.b\n    };\n}\nFunc e() {\n    return Func{1, 0};\n}\n\nint32_t main() {\n\
+    \    ios::sync_with_stdio(0); cin.tie(0);\n    int n = IO::get<int>();\n    int\
+    \ q = IO::get<int>();\n    vector<Func> funcs(n);\n    for (auto& f : funcs) {\n\
+    \        int a = IO::get<int>();\n        int b = IO::get<int>();\n        f =\
+    \ {a, b};\n    }\n\n    SegTree<Func, op, e> seg_tree(funcs);\n    while (q--)\
+    \ {\n        int typ = IO::get<int>();\n        if (typ == 0) {\n            int\
+    \ pos = IO::get<int>();\n            int a = IO::get<int>();\n            int\
+    \ b = IO::get<int>();\n            seg_tree.set(pos, {a, b});\n        } else\
+    \ {\n            int l = IO::get<int>();\n            int r = IO::get<int>();\n\
     \            auto f = seg_tree.prod(l, r);\n            modular x(IO::get<int>());\n\
     \            cout << f.a * x + f.b << '\\n';\n        }\n    }\n    return 0;\n\
     }\n"
   dependsOn:
   - DataStructure/SegTree.h
-  - Math/modulo_anta.h
+  - Math/modint.h
   - buffered_reader.h
   isVerificationFile: true
   path: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
   requiredBy: []
-  timestamp: '2022-08-21 18:30:35+08:00'
+  timestamp: '2022-08-21 18:45:50+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
