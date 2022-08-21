@@ -4,7 +4,7 @@
 using namespace std;
 
 #include "../modint.h"
-#include "../Polynomial/NTT.h"
+#include "../Polynomial/FormalPowerSeries.h"
 
 #define REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)
 using mint = ModInt<1'000'000'007>;

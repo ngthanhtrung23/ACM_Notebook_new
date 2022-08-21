@@ -3,7 +3,7 @@
 #include <bits/stdc++.h>
 
 #include "../modint.h"
-#include "../Polynomial/FormerPowerSeries.h"
+#include "../Polynomial/FormalPowerSeries.h"
 
 #define REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)
 using mint = ModInt<998244353>;
