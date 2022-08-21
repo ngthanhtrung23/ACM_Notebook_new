@@ -47,16 +47,17 @@ data:
     \  solve();\n    return 0;\n}\n#line 1 \"Math/modint.h\"\n// ModInt {{{\ntemplate<int\
     \ MD> struct ModInt {\n    using ll = long long;\n    int x;\n\n    constexpr\
     \ ModInt() : x(0) {}\n    constexpr ModInt(ll v) { _set(v % MD + MD); }\n    constexpr\
-    \ explicit operator bool() const { return x != 0; }\n\n    constexpr ModInt operator\
-    \ + (const ModInt& a) const {\n        return ModInt()._set((ll) x + a.x);\n \
-    \   }\n    constexpr ModInt operator - (const ModInt& a) const {\n        return\
-    \ ModInt()._set((ll) x - a.x + MD);\n    }\n    constexpr ModInt operator * (const\
-    \ ModInt& a) const {\n        return ModInt()._set((ll) x * a.x % MD);\n    }\n\
-    \    constexpr ModInt operator / (const ModInt& a) const {\n        return ModInt()._set((ll)\
-    \ x * a.inv().x % MD);\n    }\n    constexpr ModInt operator - () const {\n  \
-    \      return ModInt()._set(MD - x);\n    }\n\n    constexpr ModInt& operator\
-    \ += (const ModInt& a) { return *this = *this + a; }\n    constexpr ModInt& operator\
-    \ -= (const ModInt& a) { return *this = *this - a; }\n    constexpr ModInt& operator\
+    \ static int mod() { return MD; }\n    constexpr explicit operator bool() const\
+    \ { return x != 0; }\n\n    constexpr ModInt operator + (const ModInt& a) const\
+    \ {\n        return ModInt()._set((ll) x + a.x);\n    }\n    constexpr ModInt\
+    \ operator - (const ModInt& a) const {\n        return ModInt()._set((ll) x -\
+    \ a.x + MD);\n    }\n    constexpr ModInt operator * (const ModInt& a) const {\n\
+    \        return ModInt()._set((ll) x * a.x % MD);\n    }\n    constexpr ModInt\
+    \ operator / (const ModInt& a) const {\n        return ModInt()._set((ll) x *\
+    \ a.inv().x % MD);\n    }\n    constexpr ModInt operator - () const {\n      \
+    \  return ModInt()._set(MD - x);\n    }\n\n    constexpr ModInt& operator += (const\
+    \ ModInt& a) { return *this = *this + a; }\n    constexpr ModInt& operator -=\
+    \ (const ModInt& a) { return *this = *this - a; }\n    constexpr ModInt& operator\
     \ *= (const ModInt& a) { return *this = *this * a; }\n    constexpr ModInt& operator\
     \ /= (const ModInt& a) { return *this = *this / a; }\n\n    friend constexpr ModInt\
     \ operator + (ll a, const ModInt& b) {\n        return ModInt()._set(a % MD +\
@@ -88,15 +89,25 @@ data:
     \ = factorials[i-1] * i;\n        inv_factorials[n-1] = factorials.back().pow(MD\
     \ - 2);\n        for (int i = n - 2; i >= old_sz; --i) inv_factorials[i] = inv_factorials[i+1]\
     \ * (i+1);\n        for (int i = n-1; i >= old_sz; --i) invs[i] = inv_factorials[i]\
-    \ * factorials[i-1];\n    }\n    \nprivate:\n    // Internal, DO NOT USE.\n  \
-    \  // val must be in [0, 2*MD)\n    constexpr inline __attribute__((always_inline))\
-    \ ModInt& _set(ll v) {\n        x = v >= MD ? v - MD : v;\n        return *this;\n\
-    \    }\n};\ntemplate <int MD> std::vector<ModInt<MD>> ModInt<MD>::factorials =\
-    \ {1};\ntemplate <int MD> std::vector<ModInt<MD>> ModInt<MD>::inv_factorials =\
-    \ {1};\ntemplate <int MD> std::vector<ModInt<MD>> ModInt<MD>::invs = {0};\n//\
-    \ }}}\n#line 5 \"Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp\"\n\nconst int MOD\
-    \ = 1e9 + 7;\nusing modular = ModInt<MOD>;\n\nvoid solve() {\n    modular m; int\
-    \ k; cin >> m >> k;\n    cout << m.pow(k) << endl;\n}\n"
+    \ * factorials[i-1];\n    }\n\n    static int get_primitive_root() {\n       \
+    \ static int primitive_root = 0;\n        if (!primitive_root) {\n           \
+    \ primitive_root = [&]() {\n                std::set<int> fac;\n             \
+    \   int v = MD - 1;\n                for (ll i = 2; i * i <= v; i++)\n       \
+    \             while (v % i == 0) fac.insert(i), v /= i;\n                if (v\
+    \ > 1) fac.insert(v);\n                for (int g = 1; g < MD; g++) {\n      \
+    \              bool ok = true;\n                    for (auto i : fac)\n     \
+    \                   if (ModInt(g).pow((MD - 1) / i) == 1) {\n                \
+    \            ok = false;\n                            break;\n               \
+    \         }\n                    if (ok) return g;\n                }\n      \
+    \          return -1;\n            }();\n        }\n        return primitive_root;\n\
+    \    }\n    \nprivate:\n    // Internal, DO NOT USE.\n    // val must be in [0,\
+    \ 2*MD)\n    constexpr inline __attribute__((always_inline)) ModInt& _set(ll v)\
+    \ {\n        x = v >= MD ? v - MD : v;\n        return *this;\n    }\n};\ntemplate\
+    \ <int MD> std::vector<ModInt<MD>> ModInt<MD>::factorials = {1};\ntemplate <int\
+    \ MD> std::vector<ModInt<MD>> ModInt<MD>::inv_factorials = {1};\ntemplate <int\
+    \ MD> std::vector<ModInt<MD>> ModInt<MD>::invs = {0};\n// }}}\n#line 5 \"Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp\"\
+    \n\nconst int MOD = 1e9 + 7;\nusing modular = ModInt<MOD>;\n\nvoid solve() {\n\
+    \    modular m; int k; cin >> m >> k;\n    cout << m.pow(k) << endl;\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_B\"\
     \n\n#include \"../../template.h\"\n#include \"../modint.h\"\n\nconst int MOD =\
     \ 1e9 + 7;\nusing modular = ModInt<MOD>;\n\nvoid solve() {\n    modular m; int\
@@ -107,7 +118,7 @@ data:
   isVerificationFile: true
   path: Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp
   requiredBy: []
-  timestamp: '2022-08-21 20:19:49+08:00'
+  timestamp: '2022-08-21 23:32:29+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp

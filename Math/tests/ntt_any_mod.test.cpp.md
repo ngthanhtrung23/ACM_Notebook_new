@@ -2,11 +2,11 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: Math/NumberTheory/CRT_chemthan.h
-    title: Math/NumberTheory/CRT_chemthan.h
-  - icon: ':heavy_check_mark:'
     path: Math/Polynomial/NTT.h
     title: Math/Polynomial/NTT.h
+  - icon: ':heavy_check_mark:'
+    path: Math/modint.h
+    title: Math/modint.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -18,106 +18,144 @@ data:
     links:
     - https://judge.yosupo.jp/problem/convolution_mod_1000000007
   bundledCode: "#line 1 \"Math/tests/ntt_any_mod.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod_1000000007\"\
-    \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#line 1 \"Math/Polynomial/NTT.h\"\
-    \n// Copied from chemthan\n// 2x slower than atcoder library\n// Tested:\n// -\
-    \ https://oj.vnoi.info/problem/icpc21_mt_d\n// - https://judge.yosupo.jp/problem/convolution_mod\n\
-    // - https://judge.yosupo.jp/problem/convolution_mod_1000000007\n//\n// Sample\
-    \ usage: Multiply big-int polynomials using NTT + CRT\n//   NTT<MOD0, 1 << 21>\
-    \ ntt0;\n//   NTT<MOD1, 1 << 21> ntt1;\n//   auto r0 = ntt0.multiply(v1, v2);\n\
-    //   auto r1 = ntt1.multiply(v1, v2);\n//\n//   // Using CRT to combine r0 and\
-    \ r1\n//   CRT<int> crt;\n//   crt.add(MOD0, r0[idx]);\n//   crt.add(MOD1, r1[idx]);\n\
-    //   cout << crt.res << endl;\n\n// mod must be NTT mod\n// maxf = max degree\
-    \ of c. Should be 2^k?\ntemplate<const int mod, const int maxf>\nstruct NTT {\n\
-    \    NTT() {\n        int k = 0; while ((1 << k) < maxf) k++;\n        bitrev[0]\
-    \ = 0;\n        for (int i = 1; i < maxf; i++) {\n            bitrev[i] = bitrev[i\
-    \ >> 1] >> 1 | ((i & 1) << (k - 1));\n        }\n        int pw = fpow(prt(),\
-    \ (mod - 1) / maxf);\n        rts[0] = 1;\n        for (int i = 1; i <= maxf;\
-    \ i++) {\n            rts[i] = (long long) rts[i - 1] * pw % mod;\n        }\n\
-    \        for (int i = 1; i <= maxf; i <<= 1) {\n            iv[i] = fpow(i, mod\
-    \ - 2);\n        }\n    }\n\n    vector<int> multiply(vector<int> a, vector<int>\
-    \ b) {\n        static int fa[maxf], fb[maxf], fc[maxf];\n        int na = a.size(),\
-    \ nb = b.size();\n        for (int i = 0; i < na; i++) fa[i] = a[i];\n       \
-    \ for (int i = 0; i < nb; i++) fb[i] = b[i];\n        multiply(fa, fb, na, nb,\
-    \ fc);\n        int k = na + nb - 1;\n        vector<int> res(k);\n        for\
-    \ (int i = 0; i < k; i++) res[i] = fc[i];\n        return res;\n    }\n\nprivate:\n\
-    \    int rts[maxf + 1];\n    int bitrev[maxf];\n    int iv[maxf + 1];\n\n    int\
-    \ fpow(int a, int k) {\n        if (!k) return 1;\n        int res = a, tmp =\
-    \ a;\n        k--;\n        while (k) {\n            if (k & 1) {\n          \
-    \      res = (long long) res * tmp % mod;\n            }\n            tmp = (long\
-    \ long) tmp * tmp % mod;\n            k >>= 1;\n        }\n        return res;\n\
-    \    }\n    int prt() {\n        vector<int> dvs;\n        for (int i = 2; i *\
-    \ i < mod; i++) {\n            if ((mod - 1) % i) continue;\n            dvs.push_back(i);\n\
-    \            if (i * i != mod - 1) dvs.push_back((mod - 1) / i);\n        }\n\
-    \        for (int i = 2; i < mod; i++) {\n            int flag = 1;\n        \
-    \    for (int j = 0; j < (int) dvs.size(); j++) {\n                if (fpow(i,\
-    \ dvs[j]) == 1) {\n                    flag = 0;\n                    break;\n\
-    \                }\n            }\n            if (flag) return i;\n        }\n\
-    \        assert(0);\n        return -1;\n    }\n    void dft(int a[], int n, int\
-    \ sign) {\n        int d = 0; while ((1 << d) * n != maxf) d++;\n        for (int\
-    \ i = 0; i < n; i++) {\n            if (i < (bitrev[i] >> d)) {\n            \
-    \    swap(a[i], a[bitrev[i] >> d]);\n            }\n        }\n        for (int\
-    \ len = 2; len <= n; len <<= 1) {\n            int delta = maxf / len * sign;\n\
-    \            for (int i = 0; i < n; i += len) {\n                int *w = sign\
-    \ > 0 ? rts : rts + maxf;\n                for (int k = 0; k + k < len; k++) {\n\
-    \                    int &a1 = a[i + k + (len >> 1)], &a2 = a[i + k];\n      \
-    \              int t = (long long) *w * a1 % mod;\n                    a1 = a2\
-    \ - t;\n                    a2 = a2 + t;\n                    a1 += a1 < 0 ? mod\
-    \ : 0;\n                    a2 -= a2 >= mod ? mod : 0;\n                    w\
-    \ += delta;\n                }\n            }\n        }\n        if (sign < 0)\
-    \ {\n            int in = iv[n];\n            for (int i = 0; i < n; i++) {\n\
-    \                a[i] = (long long) a[i] * in % mod;\n            }\n        }\n\
-    \    }\n    void multiply(int a[], int b[], int na, int nb, int c[]) {\n     \
-    \   static int fa[maxf], fb[maxf];\n        int n = na + nb - 1; while (n != (n\
-    \ & -n)) n += n & -n;\n        for (int i = 0; i < n; i++) fa[i] = fb[i] = 0;\n\
-    \        for (int i = 0; i < na; i++) fa[i] = a[i];\n        for (int i = 0; i\
-    \ < nb; i++) fb[i] = b[i];\n        dft(fa, n, 1), dft(fb, n, 1);\n        for\
-    \ (int i = 0; i < n; i++) fa[i] = (long long) fa[i] * fb[i] % mod;\n        dft(fa,\
-    \ n, -1);\n        for (int i = 0; i < n; i++) c[i] = fa[i];\n    }\n};\n\n/*\
-    \ Examples\nconst int MOD0 = 1004535809; //2^21 * 479 + 1\nconst int MOD1 = 1012924417;\
-    \ //2^21 * 483 + 1\nconst int MOD2 = 998244353;  //2^20 * 476 + 1\nNTT<MOD0, 1\
-    \ << 21> ntt0;\nNTT<MOD1, 1 << 21> ntt1;\n*/\n#line 1 \"Math/NumberTheory/CRT_chemthan.h\"\
-    \n// Tested:\n// - https://oj.vnoi.info/problem/icpc21_mt_d\n// - (__int128_t)\
-    \ https://judge.yosupo.jp/problem/convolution_mod_1000000007\ntemplate<typename\
-    \ T>\nstruct CRT {\n    T res;\n\n    CRT() {\n        res = 0, prd = 1;\n   \
-    \ }\n    \n    // Add condition: res % p == r\n    void add(T p, T r) {\n    \
-    \    res += mul(r - res % p + p, euclid(prd, p).first + p, p) * prd;\n       \
-    \ prd *= p;\n        if (res >= prd) res -= prd;\n    }\n\nprivate:\n    T prd;\n\
-    \    T mul(T a, T b, T p) {\n        a %= p, b %= p;\n        T q = (T) ((long\
-    \ double) a * b / p);\n        T r = a * b - q * p;\n        while (r < 0) r +=\
-    \ p;\n        while (r >= p) r -= p;\n        return r;\n    }\n    pair<T, T>\
-    \ euclid(T a, T b) {\n        if (!b) return make_pair(1, 0);\n        pair<T,\
-    \ T> r = euclid(b, a % b);\n        return make_pair(r.second, r.first - a / b\
-    \ * r.second);\n    }\n};\n#line 8 \"Math/tests/ntt_any_mod.test.cpp\"\n\nconst\
-    \ int MOD0 = 167772161;\nconst int MOD1 = 469762049;\nconst int MOD2 = 754974721;\n\
-    NTT<MOD0, 1 << 20> ntt0;\nNTT<MOD1, 1 << 20> ntt1;\nNTT<MOD2, 1 << 20> ntt2;\n\
-    \n#define REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)\n\nint32_t main()\
+    \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#line 1 \"Math/modint.h\"\
+    \n// ModInt {{{\ntemplate<int MD> struct ModInt {\n    using ll = long long;\n\
+    \    int x;\n\n    constexpr ModInt() : x(0) {}\n    constexpr ModInt(ll v) {\
+    \ _set(v % MD + MD); }\n    constexpr static int mod() { return MD; }\n    constexpr\
+    \ explicit operator bool() const { return x != 0; }\n\n    constexpr ModInt operator\
+    \ + (const ModInt& a) const {\n        return ModInt()._set((ll) x + a.x);\n \
+    \   }\n    constexpr ModInt operator - (const ModInt& a) const {\n        return\
+    \ ModInt()._set((ll) x - a.x + MD);\n    }\n    constexpr ModInt operator * (const\
+    \ ModInt& a) const {\n        return ModInt()._set((ll) x * a.x % MD);\n    }\n\
+    \    constexpr ModInt operator / (const ModInt& a) const {\n        return ModInt()._set((ll)\
+    \ x * a.inv().x % MD);\n    }\n    constexpr ModInt operator - () const {\n  \
+    \      return ModInt()._set(MD - x);\n    }\n\n    constexpr ModInt& operator\
+    \ += (const ModInt& a) { return *this = *this + a; }\n    constexpr ModInt& operator\
+    \ -= (const ModInt& a) { return *this = *this - a; }\n    constexpr ModInt& operator\
+    \ *= (const ModInt& a) { return *this = *this * a; }\n    constexpr ModInt& operator\
+    \ /= (const ModInt& a) { return *this = *this / a; }\n\n    friend constexpr ModInt\
+    \ operator + (ll a, const ModInt& b) {\n        return ModInt()._set(a % MD +\
+    \ b.x);\n    }\n    friend constexpr ModInt operator - (ll a, const ModInt& b)\
+    \ {\n        return ModInt()._set(a % MD - b.x + MD);\n    }\n    friend constexpr\
+    \ ModInt operator * (ll a, const ModInt& b) {\n        return ModInt()._set(a\
+    \ % MD * b.x % MD);\n    }\n    friend constexpr ModInt operator / (ll a, const\
+    \ ModInt& b) {\n        return ModInt()._set(a % MD * b.inv().x % MD);\n    }\n\
+    \n    constexpr bool operator == (const ModInt& a) const { return x == a.x; }\n\
+    \    constexpr bool operator != (const ModInt& a) const { return x != a.x; }\n\
+    \n    friend std::istream& operator >> (std::istream& is, ModInt& x) {\n     \
+    \   ll val; is >> val;\n        x = ModInt(val);\n        return is;\n    }\n\
+    \    constexpr friend std::ostream& operator << (std::ostream& os, const ModInt&\
+    \ x) {\n        return os << x.x;\n    }\n\n    constexpr ModInt pow(ll k) const\
+    \ {\n        ModInt ans = 1, tmp = x;\n        while (k) {\n            if (k\
+    \ & 1) ans *= tmp;\n            tmp *= tmp;\n            k >>= 1;\n        }\n\
+    \        return ans;\n    }\n\n    constexpr ModInt inv() const {\n        if\
+    \ (x < 1000111) {\n            _precalc(1000111);\n            return invs[x];\n\
+    \        }\n        int a = x, b = MD, ax = 1, bx = 0;\n        while (b) {\n\
+    \            int q = a/b, t = a%b;\n            a = b; b = t;\n            t =\
+    \ ax - bx*q;\n            ax = bx; bx = t;\n        }\n        assert(a == 1);\n\
+    \        if (ax < 0) ax += MD;\n        return ax;\n    }\n\n    static std::vector<ModInt>\
+    \ factorials, inv_factorials, invs;\n    constexpr static void _precalc(int n)\
+    \ {\n        if (factorials.empty()) {\n            factorials = {1};\n      \
+    \      inv_factorials = {1};\n            invs = {0};\n        }\n        if (n\
+    \ > MD) n = MD;\n        int old_sz = factorials.size();\n        if (n <= old_sz)\
+    \ return;\n\n        factorials.resize(n);\n        inv_factorials.resize(n);\n\
+    \        invs.resize(n);\n\n        for (int i = old_sz; i < n; ++i) factorials[i]\
+    \ = factorials[i-1] * i;\n        inv_factorials[n-1] = factorials.back().pow(MD\
+    \ - 2);\n        for (int i = n - 2; i >= old_sz; --i) inv_factorials[i] = inv_factorials[i+1]\
+    \ * (i+1);\n        for (int i = n-1; i >= old_sz; --i) invs[i] = inv_factorials[i]\
+    \ * factorials[i-1];\n    }\n\n    static int get_primitive_root() {\n       \
+    \ static int primitive_root = 0;\n        if (!primitive_root) {\n           \
+    \ primitive_root = [&]() {\n                std::set<int> fac;\n             \
+    \   int v = MD - 1;\n                for (ll i = 2; i * i <= v; i++)\n       \
+    \             while (v % i == 0) fac.insert(i), v /= i;\n                if (v\
+    \ > 1) fac.insert(v);\n                for (int g = 1; g < MD; g++) {\n      \
+    \              bool ok = true;\n                    for (auto i : fac)\n     \
+    \                   if (ModInt(g).pow((MD - 1) / i) == 1) {\n                \
+    \            ok = false;\n                            break;\n               \
+    \         }\n                    if (ok) return g;\n                }\n      \
+    \          return -1;\n            }();\n        }\n        return primitive_root;\n\
+    \    }\n    \nprivate:\n    // Internal, DO NOT USE.\n    // val must be in [0,\
+    \ 2*MD)\n    constexpr inline __attribute__((always_inline)) ModInt& _set(ll v)\
+    \ {\n        x = v >= MD ? v - MD : v;\n        return *this;\n    }\n};\ntemplate\
+    \ <int MD> std::vector<ModInt<MD>> ModInt<MD>::factorials = {1};\ntemplate <int\
+    \ MD> std::vector<ModInt<MD>> ModInt<MD>::inv_factorials = {1};\ntemplate <int\
+    \ MD> std::vector<ModInt<MD>> ModInt<MD>::invs = {0};\n// }}}\n#line 1 \"Math/Polynomial/NTT.h\"\
+    \n// NTT {{{\n//\n// Faster than NTT_chemthan.h\n//\n// Usage:\n// auto c = multiply(a,\
+    \ b);\n// where a and b are vector<ModInt<ANY_MOD>>\n// (If mod is NOT NTT_PRIMES,\
+    \ it does 3 NTT and combine result)\n\nconstexpr int NTT_PRIMES[] = {998244353,\
+    \ 167772161, 469762049};\n\n// assumptions:\n// - |a| is power of 2\n// - mint::mod()\
+    \ is a valid NTT primes (2^k * m + 1)\ntemplate<typename mint> void ntt(std::vector<mint>&\
+    \ a, bool is_inverse) {\n    int n = a.size();\n    if (n == 1) return;\n\n  \
+    \  static const int mod = mint::mod();\n    static const mint root = mint::get_primitive_root();\n\
+    \    assert(__builtin_popcount(n) == 1 && (mod - 1) % n == 0);\n\n    static std::vector<mint>\
+    \ w{1}, iw{1};\n    for (int m = w.size(); m < n / 2; m *= 2) {\n        mint\
+    \ dw = root.pow((mod - 1) / (4 * m));\n        mint dwinv = dw.inv();\n      \
+    \  w.resize(m * 2);\n        iw.resize(m * 2);\n        for (int i = 0; i < m;\
+    \ ++i) {\n            w[m + i] = w[i] * dw;\n            iw[m + i] = iw[i] * dwinv;\n\
+    \        }\n    }\n\n    if (!is_inverse) {\n        for (int m = n; m >>= 1;\
+    \ ) {\n            for (int s = 0, k = 0; s < n; s += 2 * m, ++k) {\n        \
+    \        for (int i = s; i < s + m; ++i) {\n                    mint x = a[i],\
+    \ y = a[i + m] * w[k];\n                    a[i] = x + y;\n                  \
+    \  a[i + m] = x - y;\n                }\n            }\n        }\n    } else\
+    \ {\n        for (int m = 1; m < n; m *= 2) {\n            for (int s = 0, k =\
+    \ 0; s < n; s += 2 * m, ++k) {\n                for (int i = s; i < s + m; ++i)\
+    \ {\n                    mint x = a[i], y = a[i + m];\n                    a[i]\
+    \ = x + y;\n                    a[i + m] = (x - y) * iw[k];\n                }\n\
+    \            }\n        }\n        int n_inv = mint(n).inv().x;\n        for (auto&\
+    \ v : a) v *= n_inv;\n    }\n}\n\ntemplate<typename mint>\nstd::vector<mint> ntt_multiply(int\
+    \ sz, std::vector<mint> a, std::vector<mint> b) {\n    a.resize(sz);\n    b.resize(sz);\n\
+    \    if (a == b) { // optimization for squaring polynomial\n        ntt(a, false);\n\
+    \        b = a;\n    } else {\n        ntt(a, false);\n        ntt(b, false);\n\
+    \    }\n    for (int i = 0; i < sz; ++i) a[i] *= b[i];\n    ntt(a, true);\n  \
+    \  return a;\n}\n\ntemplate<int MOD, typename mint>\nstd::vector<ModInt<MOD>>\
+    \ convert_mint_and_multiply(\n        int sz,\n        const std::vector<mint>&\
+    \ a,\n        const std::vector<mint>& b) {\n    using mint2 = ModInt<MOD>;\n\n\
+    \    std::vector<mint2> a2(a.size()), b2(b.size());\n    for (size_t i = 0; i\
+    \ < a.size(); ++i) {\n        a2[i] = mint2(a[i].x);\n    }\n    for (size_t i\
+    \ = 0; i < b.size(); ++i) {\n        b2[i] = mint2(b[i].x);\n    }\n    return\
+    \ ntt_multiply(sz, a2, b2);\n}\n\nlong long combine(int r0, int r1, int r2, int\
+    \ mod) {\n    using mint2 = ModInt<NTT_PRIMES[2]>;\n    static const long long\
+    \ m01 = 1LL * NTT_PRIMES[0] * NTT_PRIMES[1];\n    static const long long m0_inv_m1\
+    \ = ModInt<NTT_PRIMES[1]>(NTT_PRIMES[0]).inv().x;\n    static const long long\
+    \ m01_inv_m2 = mint2(m01).inv().x;\n\n    int v1 = (m0_inv_m1 * (r1 + NTT_PRIMES[1]\
+    \ - r0)) % NTT_PRIMES[1];\n    auto v2 = (mint2(r2) - r0 - mint2(NTT_PRIMES[0])\
+    \ * v1) * m01_inv_m2;\n    return (r0 + 1LL * NTT_PRIMES[0] * v1 + m01 % mod *\
+    \ v2.x) % mod;\n}\n\ntemplate<typename mint>\nstd::vector<mint> multiply(const\
+    \ std::vector<mint>& a, const std::vector<mint>& b) {\n    if (a.empty() || b.empty())\
+    \ return {};\n    int sz = 1, sz_a = a.size(), sz_b = b.size();\n    while (sz\
+    \ < sz_a + sz_b) sz <<= 1;\n    if (sz <= 16) {\n        std::vector<mint> res(sz_a\
+    \ + sz_b - 1);\n        for (int i = 0; i < sz_a; ++i) {\n            for (int\
+    \ j = 0; j < sz_b; ++j) {\n                res[i + j] += a[i] * b[j];\n      \
+    \      }\n        }\n        return res;\n    }\n\n    int mod = mint::mod();\n\
+    \    std::vector<mint> res;\n    if (std::find(std::begin(NTT_PRIMES), std::end(NTT_PRIMES),\
+    \ mod) != std::end(NTT_PRIMES)) {\n        res = ntt_multiply(sz, a, b);\n   \
+    \ } else {\n        auto c0 = convert_mint_and_multiply<NTT_PRIMES[0], mint> (sz,\
+    \ a, b);\n        auto c1 = convert_mint_and_multiply<NTT_PRIMES[1], mint> (sz,\
+    \ a, b);\n        auto c2 = convert_mint_and_multiply<NTT_PRIMES[2], mint> (sz,\
+    \ a, b);\n\n        res.resize(sz);\n        for (int i = 0; i < sz; ++i) {\n\
+    \            res[i] = combine(c0[i].x, c1[i].x, c2[i].x, mod);\n        }\n  \
+    \  }\n\n    res.resize(sz_a + sz_b - 1);\n    return res;\n}\n// }}}\n#line 8\
+    \ \"Math/tests/ntt_any_mod.test.cpp\"\n\n#define REP(i, a) for (int i = 0, _##i\
+    \ = (a); i < _##i; ++i)\nusing mint = ModInt<1'000'000'007>;\n\nint32_t main()\
     \ {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n, m; cin >> n >> m;\n\
-    \    vector<int> a(n); REP(i,n) cin >> a[i];\n    vector<int> b(m); REP(i,m) cin\
-    \ >> b[i];\n\n    auto c0 = ntt0.multiply(a, b);\n    auto c1 = ntt1.multiply(a,\
-    \ b);\n    auto c2 = ntt2.multiply(a, b);\n\n    const int MOD = 1e9 + 7;\n  \
-    \  REP(i,n+m-1) {\n        CRT<__int128_t> crt;\n        crt.add(MOD0, c0[i]);\n\
-    \        crt.add(MOD1, c1[i]);\n        crt.add(MOD2, c2[i]);\n        cout <<\
-    \ (int) (crt.res % MOD) << ' ';\n    }\n    cout << endl;\n    return 0;\n}\n"
+    \    vector<mint> a(n); REP(i,n) cin >> a[i];\n    vector<mint> b(m); REP(i,m)\
+    \ cin >> b[i];\n\n    auto c = multiply(a, b);\n    for (const auto& val : c)\
+    \ cout << val << ' ';\n    cout << endl;\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod_1000000007\"\
-    \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../Polynomial/NTT.h\"\
-    \n#include \"../NumberTheory/CRT_chemthan.h\"\n\nconst int MOD0 = 167772161;\n\
-    const int MOD1 = 469762049;\nconst int MOD2 = 754974721;\nNTT<MOD0, 1 << 20> ntt0;\n\
-    NTT<MOD1, 1 << 20> ntt1;\nNTT<MOD2, 1 << 20> ntt2;\n\n#define REP(i, a) for (int\
-    \ i = 0, _##i = (a); i < _##i; ++i)\n\nint32_t main() {\n    ios::sync_with_stdio(0);\
-    \ cin.tie(0);\n    int n, m; cin >> n >> m;\n    vector<int> a(n); REP(i,n) cin\
-    \ >> a[i];\n    vector<int> b(m); REP(i,m) cin >> b[i];\n\n    auto c0 = ntt0.multiply(a,\
-    \ b);\n    auto c1 = ntt1.multiply(a, b);\n    auto c2 = ntt2.multiply(a, b);\n\
-    \n    const int MOD = 1e9 + 7;\n    REP(i,n+m-1) {\n        CRT<__int128_t> crt;\n\
-    \        crt.add(MOD0, c0[i]);\n        crt.add(MOD1, c1[i]);\n        crt.add(MOD2,\
-    \ c2[i]);\n        cout << (int) (crt.res % MOD) << ' ';\n    }\n    cout << endl;\n\
-    \    return 0;\n}\n"
+    \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../modint.h\"\
+    \n#include \"../Polynomial/NTT.h\"\n\n#define REP(i, a) for (int i = 0, _##i =\
+    \ (a); i < _##i; ++i)\nusing mint = ModInt<1'000'000'007>;\n\nint32_t main() {\n\
+    \    ios::sync_with_stdio(0); cin.tie(0);\n    int n, m; cin >> n >> m;\n    vector<mint>\
+    \ a(n); REP(i,n) cin >> a[i];\n    vector<mint> b(m); REP(i,m) cin >> b[i];\n\n\
+    \    auto c = multiply(a, b);\n    for (const auto& val : c) cout << val << '\
+    \ ';\n    cout << endl;\n    return 0;\n}\n"
   dependsOn:
+  - Math/modint.h
   - Math/Polynomial/NTT.h
-  - Math/NumberTheory/CRT_chemthan.h
   isVerificationFile: true
   path: Math/tests/ntt_any_mod.test.cpp
   requiredBy: []
-  timestamp: '2022-08-21 18:30:35+08:00'
+  timestamp: '2022-08-21 23:32:29+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Math/tests/ntt_any_mod.test.cpp

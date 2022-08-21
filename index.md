@@ -379,6 +379,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/Polynomial/NTT.h
       title: Math/Polynomial/NTT.h
+    - icon: ':heavy_check_mark:'
+      path: Math/Polynomial/NTT_chemthan.h
+      title: Math/Polynomial/NTT_chemthan.h
     - icon: ':warning:'
       path: Math/Polynomial/PolynomialValues.h
       title: Math/Polynomial/PolynomialValues.h
@@ -892,6 +895,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/tests/ntt_any_mod_2.test.cpp
       title: Math/tests/ntt_any_mod_2.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Math/tests/ntt_chemthan.test.cpp
+      title: Math/tests/ntt_chemthan.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Math/tests/ntt_chemthan_any_mod.test.cpp
+      title: Math/tests/ntt_chemthan_any_mod.test.cpp
     - icon: ':heavy_check_mark:'
       path: Math/tests/prime_pi.test.cpp
       title: Math/tests/prime_pi.test.cpp
