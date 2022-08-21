@@ -2,13 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp
-    title: DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links:
     - https://codeforces.com/gym/101383
@@ -96,9 +93,8 @@ data:
   path: Math/modulo_anta.h
   requiredBy: []
   timestamp: '2022-08-21 18:30:35+08:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: Math/modulo_anta.h
 layout: document
 redirect_from:

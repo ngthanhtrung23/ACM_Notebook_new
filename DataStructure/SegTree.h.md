@@ -21,7 +21,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/hld_vertexaddsubtreesum.test.cpp
     title: DataStructure/test/hld_vertexaddsubtreesum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/test/hld_vertexsetpathcomposite.test.cpp
     title: DataStructure/test/hld_vertexsetpathcomposite.test.cpp
   - icon: ':heavy_check_mark:'
@@ -36,9 +36,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/segment_tree_staticrmq.test.cpp
     title: DataStructure/test/segment_tree_staticrmq.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://atcoder.github.io/ac-library/master/document_en/segtree.html
@@ -183,7 +183,7 @@ data:
   requiredBy:
   - DataStructure/SegTree2D.h
   timestamp: '2022-08-09 14:38:08+08:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/segment_tree_pointaddrangesum.test.cpp
   - DataStructure/test/segment_tree_staticrmq.test.cpp

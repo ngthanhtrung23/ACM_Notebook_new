@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/HeavyLight_adamant.h
     title: DataStructure/HeavyLight_adamant.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/SegTree.h
     title: DataStructure/SegTree.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Math/modint.h
     title: Math/modint.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/vertex_set_path_composite
@@ -227,19 +227,16 @@ data:
     \    for (int v : g[u]) {\n            nxt[v] = (v == g[u][0] ? nxt[u] : v);\n\
     \            dfs_hld(v);\n        }\n        out[u] = dfs_number;\n    }\n};\n\
     // }}}\n#line 9 \"DataStructure/test/hld_vertexsetpathcomposite.test.cpp\"\n\n\
-    using modular = ModInt<998244353>;\nstd::ostream& operator << (std::ostream& cout,\
-    \ const modular& m) {\n    cout << m.x;\n    return cout;\n}\nstd::istream& operator\
-    \ >> (std::istream& cin, modular& m) {\n    cin >> m.x;\n    return cin;\n}\n\n\
-    // SegTree ops\nstruct F {\n    modular a, b;\n};\nF op(const F& l, const F& r)\
-    \ {\n    return F{\n        l.a*r.a,\n        r.a*l.b + r.b\n    };\n}\n\nstruct\
-    \ Node {\n    F forward, backward;\n};\n\nNode op(Node l, Node r) {\n    return\
-    \ Node {\n        op(l.forward, r.forward),\n        op(r.backward, l.backward)\n\
-    \    };\n}\n\nNode e() {\n    return Node {\n        F{1, 0},\n        F{1, 0}\n\
-    \    };\n}\n\n#define REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)\n\n\
-    int32_t main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n, q; cin\
-    \ >> n >> q;\n    vector<F> fs(n);\n    REP(i,n) {\n        int a, b; cin >> a\
-    \ >> b;\n        fs[i] = {a, b};\n    }\n\n    vector<vector<int>> g(n);\n   \
-    \ REP(i,n-1) {\n        int u, v; cin >> u >> v;\n        g[u].push_back(v);\n\
+    using modular = ModInt<998244353>;\n\n// SegTree ops\nstruct F {\n    modular\
+    \ a, b;\n};\nF op(const F& l, const F& r) {\n    return F{\n        l.a*r.a,\n\
+    \        r.a*l.b + r.b\n    };\n}\n\nstruct Node {\n    F forward, backward;\n\
+    };\n\nNode op(Node l, Node r) {\n    return Node {\n        op(l.forward, r.forward),\n\
+    \        op(r.backward, l.backward)\n    };\n}\n\nNode e() {\n    return Node\
+    \ {\n        F{1, 0},\n        F{1, 0}\n    };\n}\n\n#define REP(i, a) for (int\
+    \ i = 0, _##i = (a); i < _##i; ++i)\n\nint32_t main() {\n    ios::sync_with_stdio(0);\
+    \ cin.tie(0);\n    int n, q; cin >> n >> q;\n    vector<F> fs(n);\n    REP(i,n)\
+    \ {\n        int a, b; cin >> a >> b;\n        fs[i] = {a, b};\n    }\n\n    vector<vector<int>>\
+    \ g(n);\n    REP(i,n-1) {\n        int u, v; cin >> u >> v;\n        g[u].push_back(v);\n\
     \        g[v].push_back(u);\n    }\n\n    HLD hld(g, 0);\n\n    vector<Node> nodes;\n\
     \    REP(i,n) {\n        auto f = fs[hld.order[i]];\n        nodes.push_back({f,\
     \ f});\n    }\n    SegTree<Node, op, e> tree(nodes);\n\n    while (q--) {\n  \
@@ -256,19 +253,16 @@ data:
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_set_path_composite\"\
     \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../SegTree.h\"\
     \n#include \"../../Math/modint.h\"\n#include \"../HeavyLight_adamant.h\"\n\nusing\
-    \ modular = ModInt<998244353>;\nstd::ostream& operator << (std::ostream& cout,\
-    \ const modular& m) {\n    cout << m.x;\n    return cout;\n}\nstd::istream& operator\
-    \ >> (std::istream& cin, modular& m) {\n    cin >> m.x;\n    return cin;\n}\n\n\
-    // SegTree ops\nstruct F {\n    modular a, b;\n};\nF op(const F& l, const F& r)\
-    \ {\n    return F{\n        l.a*r.a,\n        r.a*l.b + r.b\n    };\n}\n\nstruct\
-    \ Node {\n    F forward, backward;\n};\n\nNode op(Node l, Node r) {\n    return\
-    \ Node {\n        op(l.forward, r.forward),\n        op(r.backward, l.backward)\n\
-    \    };\n}\n\nNode e() {\n    return Node {\n        F{1, 0},\n        F{1, 0}\n\
-    \    };\n}\n\n#define REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)\n\n\
-    int32_t main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n, q; cin\
-    \ >> n >> q;\n    vector<F> fs(n);\n    REP(i,n) {\n        int a, b; cin >> a\
-    \ >> b;\n        fs[i] = {a, b};\n    }\n\n    vector<vector<int>> g(n);\n   \
-    \ REP(i,n-1) {\n        int u, v; cin >> u >> v;\n        g[u].push_back(v);\n\
+    \ modular = ModInt<998244353>;\n\n// SegTree ops\nstruct F {\n    modular a, b;\n\
+    };\nF op(const F& l, const F& r) {\n    return F{\n        l.a*r.a,\n        r.a*l.b\
+    \ + r.b\n    };\n}\n\nstruct Node {\n    F forward, backward;\n};\n\nNode op(Node\
+    \ l, Node r) {\n    return Node {\n        op(l.forward, r.forward),\n       \
+    \ op(r.backward, l.backward)\n    };\n}\n\nNode e() {\n    return Node {\n   \
+    \     F{1, 0},\n        F{1, 0}\n    };\n}\n\n#define REP(i, a) for (int i = 0,\
+    \ _##i = (a); i < _##i; ++i)\n\nint32_t main() {\n    ios::sync_with_stdio(0);\
+    \ cin.tie(0);\n    int n, q; cin >> n >> q;\n    vector<F> fs(n);\n    REP(i,n)\
+    \ {\n        int a, b; cin >> a >> b;\n        fs[i] = {a, b};\n    }\n\n    vector<vector<int>>\
+    \ g(n);\n    REP(i,n-1) {\n        int u, v; cin >> u >> v;\n        g[u].push_back(v);\n\
     \        g[v].push_back(u);\n    }\n\n    HLD hld(g, 0);\n\n    vector<Node> nodes;\n\
     \    REP(i,n) {\n        auto f = fs[hld.order[i]];\n        nodes.push_back({f,\
     \ f});\n    }\n    SegTree<Node, op, e> tree(nodes);\n\n    while (q--) {\n  \
@@ -289,8 +283,8 @@ data:
   isVerificationFile: true
   path: DataStructure/test/hld_vertexsetpathcomposite.test.cpp
   requiredBy: []
-  timestamp: '2022-08-21 18:45:50+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2022-08-21 18:56:24+08:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/hld_vertexsetpathcomposite.test.cpp
 layout: document
