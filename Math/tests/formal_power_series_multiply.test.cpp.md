@@ -2,12 +2,12 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: Math/Polynomial/FormerPowerSeries.h
-    title: Math/Polynomial/FormerPowerSeries.h
-  - icon: ':question:'
+    path: Math/Polynomial/FormalPowerSeries.h
+    title: Math/Polynomial/FormalPowerSeries.h
+  - icon: ':heavy_check_mark:'
     path: Math/Polynomial/NTT.h
     title: Math/Polynomial/NTT.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Math/modint.h
     title: Math/modint.h
   _extendedRequiredBy: []
@@ -82,7 +82,7 @@ data:
     \ {\n        x = v >= MD ? v - MD : v;\n        return *this;\n    }\n};\ntemplate\
     \ <int MD> std::vector<ModInt<MD>> ModInt<MD>::factorials = {1};\ntemplate <int\
     \ MD> std::vector<ModInt<MD>> ModInt<MD>::inv_factorials = {1};\ntemplate <int\
-    \ MD> std::vector<ModInt<MD>> ModInt<MD>::invs = {0};\n// }}}\n#line 1 \"Math/Polynomial/FormerPowerSeries.h\"\
+    \ MD> std::vector<ModInt<MD>> ModInt<MD>::invs = {0};\n// }}}\n#line 1 \"Math/Polynomial/FormalPowerSeries.h\"\
     \n// Formal Power Series {{{\n//\n// Notes:\n// - T must be ModInt\n\n#line 1\
     \ \"Math/Polynomial/NTT.h\"\n// NTT {{{\n//\n// Faster than NTT_chemthan.h\n//\n\
     // Usage:\n// auto c = multiply(a, b);\n// where a and b are vector<ModInt<ANY_MOD>>\n\
@@ -140,7 +140,7 @@ data:
     \ a, b);\n\n        res.resize(sz);\n        for (int i = 0; i < sz; ++i) {\n\
     \            res[i] = combine(c0[i].x, c1[i].x, c2[i].x, mod);\n        }\n  \
     \  }\n\n    res.resize(sz_a + sz_b - 1);\n    return res;\n}\n// }}}\n#line 7\
-    \ \"Math/Polynomial/FormerPowerSeries.h\"\ntemplate<typename T> struct FormalPowerSeries\
+    \ \"Math/Polynomial/FormalPowerSeries.h\"\ntemplate<typename T> struct FormalPowerSeries\
     \ : std::vector<T> {\n    using std::vector<T>::vector;\n    using P = FormalPowerSeries;\n\
     \n    // Remove zeroes at the end\n    void shrink() {\n        while (!this->empty()\
     \ && this->back() == T(0)) this->pop_back();\n    }\n\n    // basic operators\
@@ -164,7 +164,7 @@ data:
     \ (auto val : c) std::cout << val << ' ';\n    std::cout << std::endl;\n    return\
     \ 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod\"\n\n#include\
-    \ <bits/stdc++.h>\n\n#include \"../modint.h\"\n#include \"../Polynomial/FormerPowerSeries.h\"\
+    \ <bits/stdc++.h>\n\n#include \"../modint.h\"\n#include \"../Polynomial/FormalPowerSeries.h\"\
     \n\n#define REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)\nusing mint =\
     \ ModInt<998244353>;\n\nint32_t main() {\n    int n, m; std::cin >> n >> m;\n\
     \    FormalPowerSeries<mint> a(n), b(m);\n    for (auto& val : a) std::cin >>\
@@ -173,12 +173,12 @@ data:
     \ 0;\n}\n"
   dependsOn:
   - Math/modint.h
-  - Math/Polynomial/FormerPowerSeries.h
+  - Math/Polynomial/FormalPowerSeries.h
   - Math/Polynomial/NTT.h
   isVerificationFile: true
   path: Math/tests/formal_power_series_multiply.test.cpp
   requiredBy: []
-  timestamp: '2022-08-21 23:45:42+08:00'
+  timestamp: '2022-08-21 23:50:37+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Math/tests/formal_power_series_multiply.test.cpp

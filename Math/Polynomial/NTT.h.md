@@ -3,13 +3,13 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
-    path: Math/Polynomial/FormerPowerSeries.h
-    title: Math/Polynomial/FormerPowerSeries.h
+    path: Math/Polynomial/FormalPowerSeries.h
+    title: Math/Polynomial/FormalPowerSeries.h
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Math/tests/formal_power_series_multiply.test.cpp
     title: Math/tests/formal_power_series_multiply.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/formal_power_series_multiply_any_mod.test.cpp
     title: Math/tests/formal_power_series_multiply_any_mod.test.cpp
   - icon: ':heavy_check_mark:'
@@ -18,9 +18,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Math/tests/ntt_any_mod.test.cpp
     title: Math/tests/ntt_any_mod.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"Math/Polynomial/NTT.h\"\n// NTT {{{\n//\n// Faster than\
@@ -139,9 +139,9 @@ data:
   isVerificationFile: false
   path: Math/Polynomial/NTT.h
   requiredBy:
-  - Math/Polynomial/FormerPowerSeries.h
+  - Math/Polynomial/FormalPowerSeries.h
   timestamp: '2022-08-21 23:32:29+08:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Math/tests/ntt_any_mod.test.cpp
   - Math/tests/formal_power_series_multiply.test.cpp

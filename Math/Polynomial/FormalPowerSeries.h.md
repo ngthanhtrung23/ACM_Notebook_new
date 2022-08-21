@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Math/Polynomial/NTT.h
     title: Math/Polynomial/NTT.h
   _extendedRequiredBy: []
@@ -9,12 +9,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: Math/tests/formal_power_series_multiply.test.cpp
     title: Math/tests/formal_power_series_multiply.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Math/tests/formal_power_series_multiply_any_mod.test.cpp
+    title: Math/tests/formal_power_series_multiply_any_mod.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"Math/Polynomial/FormerPowerSeries.h\"\n// Formal Power Series\
+  bundledCode: "#line 1 \"Math/Polynomial/FormalPowerSeries.h\"\n// Formal Power Series\
     \ {{{\n//\n// Notes:\n// - T must be ModInt\n\n#line 1 \"Math/Polynomial/NTT.h\"\
     \n// NTT {{{\n//\n// Faster than NTT_chemthan.h\n//\n// Usage:\n// auto c = multiply(a,\
     \ b);\n// where a and b are vector<ModInt<ANY_MOD>>\n// (If mod is NOT NTT_PRIMES,\
@@ -71,7 +74,7 @@ data:
     \ a, b);\n\n        res.resize(sz);\n        for (int i = 0; i < sz; ++i) {\n\
     \            res[i] = combine(c0[i].x, c1[i].x, c2[i].x, mod);\n        }\n  \
     \  }\n\n    res.resize(sz_a + sz_b - 1);\n    return res;\n}\n// }}}\n#line 7\
-    \ \"Math/Polynomial/FormerPowerSeries.h\"\ntemplate<typename T> struct FormalPowerSeries\
+    \ \"Math/Polynomial/FormalPowerSeries.h\"\ntemplate<typename T> struct FormalPowerSeries\
     \ : std::vector<T> {\n    using std::vector<T>::vector;\n    using P = FormalPowerSeries;\n\
     \n    // Remove zeroes at the end\n    void shrink() {\n        while (!this->empty()\
     \ && this->back() == T(0)) this->pop_back();\n    }\n\n    // basic operators\
@@ -109,16 +112,17 @@ data:
   dependsOn:
   - Math/Polynomial/NTT.h
   isVerificationFile: false
-  path: Math/Polynomial/FormerPowerSeries.h
+  path: Math/Polynomial/FormalPowerSeries.h
   requiredBy: []
-  timestamp: '2022-08-21 23:45:42+08:00'
+  timestamp: '2022-08-21 23:50:37+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Math/tests/formal_power_series_multiply.test.cpp
-documentation_of: Math/Polynomial/FormerPowerSeries.h
+  - Math/tests/formal_power_series_multiply_any_mod.test.cpp
+documentation_of: Math/Polynomial/FormalPowerSeries.h
 layout: document
 redirect_from:
-- /library/Math/Polynomial/FormerPowerSeries.h
-- /library/Math/Polynomial/FormerPowerSeries.h.html
-title: Math/Polynomial/FormerPowerSeries.h
+- /library/Math/Polynomial/FormalPowerSeries.h
+- /library/Math/Polynomial/FormalPowerSeries.h.html
+title: Math/Polynomial/FormalPowerSeries.h
 ---
