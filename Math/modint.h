@@ -109,6 +109,4 @@ private:
         return *this;
     }
 };
-
-using modular = ModInt<998244353>;
 // }}}

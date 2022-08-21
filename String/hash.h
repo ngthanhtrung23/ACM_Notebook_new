@@ -11,7 +11,7 @@
 // - https://oj.vnoi.info/problem/dtksub  - hash<Hash> for unordered_map
 // - https://oj.vnoi.info/problem/vostr   - cmp
 
-#include "../Math/modulo_anta.h"
+#include "../Math/modint.h"
 const int MOD = 1e9 + 7;
 using modular = ModInt<MOD>;
 
