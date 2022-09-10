@@ -134,40 +134,40 @@ data:
     \  // compare [l1, r1] vs [l2, r2]\n    bool equals(\n            const std::vector<Hash>&\
     \ h1, int l1, int r1,\n            const std::vector<Hash>& h2, int l2, int r2)\
     \ {\n        assert(0 <= l1 && l1 <= r1 && r1 < (int) h1.size());\n        assert(0\
-    \ <= l2 && l2 <= r2 && r2 < (int) h2.size());\n\n        return getHash(h1, l1,\
-    \ r1) == getHash(h2, l2, r2);\n    }\n\n    // Returns length of max common prefix\
-    \ of h1[l1, r1] and h2[l2, r2]\n    // length = 0 -> first character of 2 substrings\
-    \ are different.\n    int maxCommonPrefix(\n            const std::vector<Hash>&\
-    \ h1, int l1, int r1,\n            const std::vector<Hash>& h2, int l2, int r2)\
-    \ {\n        assert(0 <= l1 && l1 <= r1 && r1 < (int) h1.size());\n        assert(0\
-    \ <= l2 && l2 <= r2 && r2 < (int) h2.size());\n\n        int len1 = r1 - l1 +\
-    \ 1;\n        int len2 = r2 - l2 + 1;\n\n        int res = -1, left = 0, right\
-    \ = std::min(len1, len2) - 1;\n        while (left <= right) {\n            int\
-    \ mid = (left + right) / 2;\n            if (equals(h1, l1, l1 + mid, h2, l2,\
-    \ l2 + mid)) {\n                res = mid;\n                left = mid + 1;\n\
-    \            } else {\n                right = mid - 1;\n            }\n     \
-    \   }\n        return res + 1;\n        /* C++20\n        auto r = std::views::iota(0,\
-    \ std::min(len1, len2));\n        auto res = std::ranges::partition_point(\n \
-    \               r,\n                [&] (int mid) {\n                    return\
-    \ equals(h1, l1, l1+mid, h2, l2, l2+mid);\n                });\n        return\
-    \ *res;\n         */\n    }\n\n    // compare s1[l1, r1] and s2[l2, r2]\n    int\
-    \ cmp(\n            const std::string& s1, const std::vector<Hash>& h1, int l1,\
-    \ int r1,\n            const std::string& s2, const std::vector<Hash>& h2, int\
-    \ l2, int r2) {\n        assert(0 <= l1 && l1 <= r1 && r1 < (int) h1.size());\n\
-    \        assert(0 <= l2 && l2 <= r2 && r2 < (int) h2.size());\n\n        int commonPrefixLen\
-    \ = maxCommonPrefix(h1, l1, r1, h2, l2, r2);\n        char c1 = (l1 + commonPrefixLen\
-    \ <= r1) ? s1[l1 + commonPrefixLen] : 0;\n        char c2 = (l2 + commonPrefixLen\
-    \ <= r2) ? s2[l2 + commonPrefixLen] : 0;\n\n        return (c1 == c2) ? 0 : ((c1\
-    \ < c2) ? -1 : 1);\n    }\n\nprivate:\n    std::vector<Hash> p;\n\n    // DO NOT\
-    \ USE, this doesn't divide by p[l]\n    Hash __getHash(const std::vector<Hash>&\
-    \ h, int l, int r) {\n        assert(0 <= l && l <= r && r < (int) h.size());\n\
-    \        return h[r] - (l == 0 ? Hash{0, 0} : h[l-1]);\n    }\n};\n#line 5 \"\
-    String/tests/aizu_alds_14_b_string_hash.test.cpp\"\n#define SZ(x) ((int)(x).size())\n\
-    \nHashGenerator g(1000111);\nvoid solve() {\n    std::string a, b; std::cin >>\
-    \ a >> b;\n\n    auto hb = g.hash(b);\n    auto ha = g.hash(a);\n\n    for (int\
-    \ i = 0; i + SZ(b) <= SZ(a); i++) {\n        if (g.equals(hb, 0, SZ(b) - 1,\n\
-    \                    ha, i, i + SZ(b) - 1)) {\n            std::cout << i << '\\\
-    n';\n        }\n    }\n}\n"
+    \ <= l2 && l2 <= r2 && r2 < (int) h2.size());\n        if (r1 - l1 != r2 - l2)\
+    \ return false;\n\n        return getHash(h1, l1, r1) == getHash(h2, l2, r2);\n\
+    \    }\n\n    // Returns length of max common prefix of h1[l1, r1] and h2[l2,\
+    \ r2]\n    // length = 0 -> first character of 2 substrings are different.\n \
+    \   int maxCommonPrefix(\n            const std::vector<Hash>& h1, int l1, int\
+    \ r1,\n            const std::vector<Hash>& h2, int l2, int r2) {\n        assert(0\
+    \ <= l1 && l1 <= r1 && r1 < (int) h1.size());\n        assert(0 <= l2 && l2 <=\
+    \ r2 && r2 < (int) h2.size());\n\n        int len1 = r1 - l1 + 1;\n        int\
+    \ len2 = r2 - l2 + 1;\n\n        int res = -1, left = 0, right = std::min(len1,\
+    \ len2) - 1;\n        while (left <= right) {\n            int mid = (left + right)\
+    \ / 2;\n            if (equals(h1, l1, l1 + mid, h2, l2, l2 + mid)) {\n      \
+    \          res = mid;\n                left = mid + 1;\n            } else {\n\
+    \                right = mid - 1;\n            }\n        }\n        return res\
+    \ + 1;\n        /* C++20\n        auto r = std::views::iota(0, std::min(len1,\
+    \ len2));\n        auto res = std::ranges::partition_point(\n                r,\n\
+    \                [&] (int mid) {\n                    return equals(h1, l1, l1+mid,\
+    \ h2, l2, l2+mid);\n                });\n        return *res;\n         */\n \
+    \   }\n\n    // compare s1[l1, r1] and s2[l2, r2]\n    int cmp(\n            const\
+    \ std::string& s1, const std::vector<Hash>& h1, int l1, int r1,\n            const\
+    \ std::string& s2, const std::vector<Hash>& h2, int l2, int r2) {\n        assert(0\
+    \ <= l1 && l1 <= r1 && r1 < (int) h1.size());\n        assert(0 <= l2 && l2 <=\
+    \ r2 && r2 < (int) h2.size());\n\n        int commonPrefixLen = maxCommonPrefix(h1,\
+    \ l1, r1, h2, l2, r2);\n        char c1 = (l1 + commonPrefixLen <= r1) ? s1[l1\
+    \ + commonPrefixLen] : 0;\n        char c2 = (l2 + commonPrefixLen <= r2) ? s2[l2\
+    \ + commonPrefixLen] : 0;\n\n        return (c1 == c2) ? 0 : ((c1 < c2) ? -1 :\
+    \ 1);\n    }\n\nprivate:\n    std::vector<Hash> p;\n\n    // DO NOT USE, this\
+    \ doesn't divide by p[l]\n    Hash __getHash(const std::vector<Hash>& h, int l,\
+    \ int r) {\n        assert(0 <= l && l <= r && r < (int) h.size());\n        return\
+    \ h[r] - (l == 0 ? Hash{0, 0} : h[l-1]);\n    }\n};\n#line 5 \"String/tests/aizu_alds_14_b_string_hash.test.cpp\"\
+    \n#define SZ(x) ((int)(x).size())\n\nHashGenerator g(1000111);\nvoid solve() {\n\
+    \    std::string a, b; std::cin >> a >> b;\n\n    auto hb = g.hash(b);\n    auto\
+    \ ha = g.hash(a);\n\n    for (int i = 0; i + SZ(b) <= SZ(a); i++) {\n        if\
+    \ (g.equals(hb, 0, SZ(b) - 1,\n                    ha, i, i + SZ(b) - 1)) {\n\
+    \            std::cout << i << '\\n';\n        }\n    }\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_B\"\
     \n\n#include \"../../template.h\"\n#include \"../hash.h\"\n#define SZ(x) ((int)(x).size())\n\
     \nHashGenerator g(1000111);\nvoid solve() {\n    std::string a, b; std::cin >>\
@@ -182,7 +182,7 @@ data:
   isVerificationFile: true
   path: String/tests/aizu_alds_14_b_string_hash.test.cpp
   requiredBy: []
-  timestamp: '2022-08-21 23:32:29+08:00'
+  timestamp: '2022-09-11 03:04:26+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: String/tests/aizu_alds_14_b_string_hash.test.cpp
