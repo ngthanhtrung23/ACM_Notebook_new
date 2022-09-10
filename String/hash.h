@@ -67,6 +67,7 @@ struct HashGenerator {
             const std::vector<Hash>& h2, int l2, int r2) {
         assert(0 <= l1 && l1 <= r1 && r1 < (int) h1.size());
         assert(0 <= l2 && l2 <= r2 && r2 < (int) h2.size());
+        if (r1 - l1 != r2 - l2) return false;
 
         return getHash(h1, l1, r1) == getHash(h2, l2, r2);
     }
