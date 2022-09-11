@@ -1,3 +1,6 @@
+#include "../Math/modint.h"
+
+// Hash {{{
 // Usage:
 // HashGenerator g(MAX_LENGTH)
 //
@@ -11,7 +14,6 @@
 // - https://oj.vnoi.info/problem/dtksub  - hash<Hash> for unordered_map
 // - https://oj.vnoi.info/problem/vostr   - cmp
 
-#include "../Math/modint.h"
 const int MOD = 1e9 + 7;
 using modular = ModInt<MOD>;
 
@@ -48,7 +50,8 @@ struct HashGenerator {
         }
     }
 
-    std::vector<Hash> hash(const std::string& s) {
+    template<typename Container>
+    std::vector<Hash> hash(const Container& s) {
         std::vector<Hash> res(s.size());
         for (size_t i = 0; i < s.size(); i++) {
             res[i] = p[i] * (int) s[i];
@@ -106,9 +109,10 @@ struct HashGenerator {
     }
 
     // compare s1[l1, r1] and s2[l2, r2]
+    template<typename Container>
     int cmp(
-            const std::string& s1, const std::vector<Hash>& h1, int l1, int r1,
-            const std::string& s2, const std::vector<Hash>& h2, int l2, int r2) {
+            const Container& s1, const std::vector<Hash>& h1, int l1, int r1,
+            const Container& s2, const std::vector<Hash>& h2, int l2, int r2) {
         assert(0 <= l1 && l1 <= r1 && r1 < (int) h1.size());
         assert(0 <= l2 && l2 <= r2 && r2 < (int) h2.size());
 
@@ -128,3 +132,4 @@ private:
         return h[r] - (l == 0 ? Hash{0, 0} : h[l-1]);
     }
 };
+// }}}
