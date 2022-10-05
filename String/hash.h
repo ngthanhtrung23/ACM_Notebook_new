@@ -25,6 +25,10 @@ struct Hash {
     Hash operator - (const Hash& a) const { return Hash{x - a.x, y - a.y}; }
     Hash operator * (const Hash& a) const { return Hash{x * a.x, y * a.y}; }
     Hash operator * (int k) const { return Hash{x*k, y*k}; }
+
+    Hash& operator += (const Hash& a) { return *this = *this + a; }
+    Hash& operator -= (const Hash& a) { return *this = *this - a; }
+    Hash& operator *= (const Hash& a) { return *this = *this * a; }
 };
 bool operator == (const Hash& a, const Hash& b) {
     return a.x == b.x && a.y == b.y;
