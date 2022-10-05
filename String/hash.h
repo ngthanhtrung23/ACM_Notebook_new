@@ -33,6 +33,10 @@ struct Hash {
 bool operator == (const Hash& a, const Hash& b) {
     return a.x == b.x && a.y == b.y;
 }
+std::ostream& operator << (std::ostream& out, const Hash& h) {
+    out << '(' << h.x << ", " << h.y << ')';
+    return out;
+}
 
 // hash function for std::unordered_map
 namespace std {
