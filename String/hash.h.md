@@ -92,17 +92,20 @@ data:
     \ { return Hash{x + a.x, y + a.y}; }\n    Hash operator - (const Hash& a) const\
     \ { return Hash{x - a.x, y - a.y}; }\n    Hash operator * (const Hash& a) const\
     \ { return Hash{x * a.x, y * a.y}; }\n    Hash operator * (int k) const { return\
-    \ Hash{x*k, y*k}; }\n};\nbool operator == (const Hash& a, const Hash& b) {\n \
-    \   return a.x == b.x && a.y == b.y;\n}\n\n// hash function for std::unordered_map\n\
-    namespace std {\n    template<>\n    struct hash<Hash> {\n        public:\n  \
-    \          size_t operator() (const Hash& h) const {\n                return h.x\
-    \ * 1000000009 + h.y.x;\n            }\n    };\n}\n\nstruct HashGenerator {\n\
-    \    HashGenerator(int maxLen, int base = 311) {\n        p.resize(maxLen + 1);\n\
-    \        p[0] = {1, 1};\n        for (int i = 1; i <= maxLen; i++) {\n       \
-    \     p[i] = p[i-1] * base;\n        }\n    }\n\n    template<typename Container>\n\
-    \    std::vector<Hash> hash(const Container& s) {\n        std::vector<Hash> res(s.size());\n\
-    \        for (size_t i = 0; i < s.size(); i++) {\n            res[i] = p[i] *\
-    \ (int) s[i];\n        }\n        std::partial_sum(res.begin(), res.end(), res.begin());\n\
+    \ Hash{x*k, y*k}; }\n\n    Hash& operator += (const Hash& a) { return *this =\
+    \ *this + a; }\n    Hash& operator -= (const Hash& a) { return *this = *this -\
+    \ a; }\n    Hash& operator *= (const Hash& a) { return *this = *this * a; }\n\
+    };\nbool operator == (const Hash& a, const Hash& b) {\n    return a.x == b.x &&\
+    \ a.y == b.y;\n}\n\n// hash function for std::unordered_map\nnamespace std {\n\
+    \    template<>\n    struct hash<Hash> {\n        public:\n            size_t\
+    \ operator() (const Hash& h) const {\n                return h.x * 1000000009\
+    \ + h.y.x;\n            }\n    };\n}\n\nstruct HashGenerator {\n    HashGenerator(int\
+    \ maxLen, int base = 311) {\n        p.resize(maxLen + 1);\n        p[0] = {1,\
+    \ 1};\n        for (int i = 1; i <= maxLen; i++) {\n            p[i] = p[i-1]\
+    \ * base;\n        }\n    }\n\n    template<typename Container>\n    std::vector<Hash>\
+    \ hash(const Container& s) {\n        std::vector<Hash> res(s.size());\n     \
+    \   for (size_t i = 0; i < s.size(); i++) {\n            res[i] = p[i] * (int)\
+    \ s[i];\n        }\n        std::partial_sum(res.begin(), res.end(), res.begin());\n\
     \        return res;\n    }\n\n    Hash getHash(const std::vector<Hash>& h, int\
     \ l, int r) {\n        return __getHash(h, l, r) * p[p.size() - 1 - l];\n    }\n\
     \n    // compare [l1, r1] vs [l2, r2]\n    bool equals(\n            const std::vector<Hash>&\
@@ -147,17 +150,20 @@ data:
     \ { return Hash{x + a.x, y + a.y}; }\n    Hash operator - (const Hash& a) const\
     \ { return Hash{x - a.x, y - a.y}; }\n    Hash operator * (const Hash& a) const\
     \ { return Hash{x * a.x, y * a.y}; }\n    Hash operator * (int k) const { return\
-    \ Hash{x*k, y*k}; }\n};\nbool operator == (const Hash& a, const Hash& b) {\n \
-    \   return a.x == b.x && a.y == b.y;\n}\n\n// hash function for std::unordered_map\n\
-    namespace std {\n    template<>\n    struct hash<Hash> {\n        public:\n  \
-    \          size_t operator() (const Hash& h) const {\n                return h.x\
-    \ * 1000000009 + h.y.x;\n            }\n    };\n}\n\nstruct HashGenerator {\n\
-    \    HashGenerator(int maxLen, int base = 311) {\n        p.resize(maxLen + 1);\n\
-    \        p[0] = {1, 1};\n        for (int i = 1; i <= maxLen; i++) {\n       \
-    \     p[i] = p[i-1] * base;\n        }\n    }\n\n    template<typename Container>\n\
-    \    std::vector<Hash> hash(const Container& s) {\n        std::vector<Hash> res(s.size());\n\
-    \        for (size_t i = 0; i < s.size(); i++) {\n            res[i] = p[i] *\
-    \ (int) s[i];\n        }\n        std::partial_sum(res.begin(), res.end(), res.begin());\n\
+    \ Hash{x*k, y*k}; }\n\n    Hash& operator += (const Hash& a) { return *this =\
+    \ *this + a; }\n    Hash& operator -= (const Hash& a) { return *this = *this -\
+    \ a; }\n    Hash& operator *= (const Hash& a) { return *this = *this * a; }\n\
+    };\nbool operator == (const Hash& a, const Hash& b) {\n    return a.x == b.x &&\
+    \ a.y == b.y;\n}\n\n// hash function for std::unordered_map\nnamespace std {\n\
+    \    template<>\n    struct hash<Hash> {\n        public:\n            size_t\
+    \ operator() (const Hash& h) const {\n                return h.x * 1000000009\
+    \ + h.y.x;\n            }\n    };\n}\n\nstruct HashGenerator {\n    HashGenerator(int\
+    \ maxLen, int base = 311) {\n        p.resize(maxLen + 1);\n        p[0] = {1,\
+    \ 1};\n        for (int i = 1; i <= maxLen; i++) {\n            p[i] = p[i-1]\
+    \ * base;\n        }\n    }\n\n    template<typename Container>\n    std::vector<Hash>\
+    \ hash(const Container& s) {\n        std::vector<Hash> res(s.size());\n     \
+    \   for (size_t i = 0; i < s.size(); i++) {\n            res[i] = p[i] * (int)\
+    \ s[i];\n        }\n        std::partial_sum(res.begin(), res.end(), res.begin());\n\
     \        return res;\n    }\n\n    Hash getHash(const std::vector<Hash>& h, int\
     \ l, int r) {\n        return __getHash(h, l, r) * p[p.size() - 1 - l];\n    }\n\
     \n    // compare [l1, r1] vs [l2, r2]\n    bool equals(\n            const std::vector<Hash>&\
@@ -197,7 +203,7 @@ data:
   isVerificationFile: false
   path: String/hash.h
   requiredBy: []
-  timestamp: '2022-09-12 01:37:19+08:00'
+  timestamp: '2022-10-04 22:50:31-04:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - String/tests/yukicoder_1408_string_hash_lcp.test.cpp
