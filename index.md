@@ -475,6 +475,9 @@ data:
       path: String/hash.h
       title: String/hash.h
     - icon: ':warning:'
+      path: String/hash_2mod.h
+      title: String/hash_2mod.h
+    - icon: ':warning:'
       path: String/lyndon.cpp
       title: String/lyndon.cpp
     - icon: ':warning:'
