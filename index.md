@@ -454,6 +454,9 @@ data:
     - icon: ':warning:'
       path: Misc/magic.cpp
       title: Misc/magic.cpp
+    - icon: ':warning:'
+      path: Misc/vec_utils.h
+      title: Misc/vec_utils.h
   - name: String
     pages:
     - icon: ':warning:'
