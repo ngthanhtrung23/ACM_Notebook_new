@@ -33,6 +33,10 @@ struct Hash {
 bool operator == (const Hash& a, const Hash& b) {
     return a.x == b.x && a.y == b.y;
 }
+bool operator < (const Hash& a, const Hash& b) {
+    if (a.x != b.x) return a.x < b.x;
+    return a.y.x < b.y.x;
+}
 std::ostream& operator << (std::ostream& out, const Hash& h) {
     out << '(' << h.x << ", " << h.y << ')';
     return out;
