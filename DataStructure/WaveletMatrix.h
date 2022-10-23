@@ -1,4 +1,4 @@
-// WaveletMatrix
+// WaveletMatrix {{{
 // Copied from https://github.com/dacin21/dacin21_codebook/blob/master/trees/wavelet_matrix.cpp
 //
 // Notes:
@@ -100,6 +100,7 @@ public:
         return (r-l) - count_lower(l, r, A);
     }
     // k from 0
+    // range: [l, r-1]
     T k_th(int const&l, int const&r, int k) const {
         assert(0 <= k && k < n);
         return get_kth(l, r, k);
@@ -171,3 +172,4 @@ private:
     vector<int> m_index;
     vector<Bit_Ds> data;
 };
+// }}}
