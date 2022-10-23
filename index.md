@@ -498,6 +498,9 @@ data:
     - icon: ':warning:'
       path: String/suffix_automaton.h
       title: String/suffix_automaton.h
+    - icon: ':warning:'
+      path: String/trie.h
+      title: String/trie.h
     - icon: ':heavy_check_mark:'
       path: String/zfunc.h
       title: String/zfunc.h

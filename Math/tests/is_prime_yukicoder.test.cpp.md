@@ -43,17 +43,17 @@ data:
     \ (0, r-1)(rng);\n}\n\ntemplate<typename T>\nvector<T> read_vector(int n) {\n\
     \    vector<T> res(n);\n    for (int& x : res) cin >> x;\n    return res;\n}\n\
     \nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n  \
-    \  solve();\n    return 0;\n}\n#line 1 \"Math/NumberTheory/Pollard.h\"\n// Pollard\n\
-    // Copied from https://judge.yosupo.jp/submission/61447\n//\n// Tested:\n// -\
-    \ (up to 10^18) https://judge.yosupo.jp/problem/factorize\n// - https://oj.vnoi.info/problem/icpc21_beta_l\n\
+    \  solve();\n    return 0;\n}\n#line 1 \"Math/NumberTheory/Pollard.h\"\n// Pollard\
+    \ {{{\n// Copied from https://judge.yosupo.jp/submission/61447\n//\n// Tested:\n\
+    // - (up to 10^18) https://judge.yosupo.jp/problem/factorize\n// - https://oj.vnoi.info/problem/icpc21_beta_l\n\
     \nusing ll = long long;\nusing ull = unsigned long long;\nusing ld = long double;\n\
     ll mult(ll x, ll y, ll md) {\n    ull q = (ld)x * y / md;\n    ll res = ((ull)x\
     \ * y - q * md);\n    if (res >= md) res -= md;\n    if (res < 0) res += md;\n\
-    \    return res;\n}\n\nll bin_pow(ll x, ll p, ll md) {\n    if (p == 0) return\
-    \ 1;\n    if (p & 1) return mult(x, bin_pow(x, p - 1, md), md);\n    return bin_pow(mult(x,\
+    \    return res;\n}\n\nll powMod(ll x, ll p, ll md) {\n    if (p == 0) return\
+    \ 1;\n    if (p & 1) return mult(x, powMod(x, p - 1, md), md);\n    return powMod(mult(x,\
     \ x, md), p / 2, md);\n}\n\nbool checkMillerRabin(ll x, ll md, ll s, int k) {\n\
-    \    x = bin_pow(x, s, md);\n    if (x == 1) return true;\n    while(k--) {\n\
-    \        if (x == md - 1) return true;\n        x = mult(x, x, md);\n        if\
+    \    x = powMod(x, s, md);\n    if (x == 1) return true;\n    while(k--) {\n \
+    \       if (x == md - 1) return true;\n        x = mult(x, x, md);\n        if\
     \ (x == 1) return false;\n    }\n    return false;\n}\nbool isPrime(ll x) {\n\
     \    if (x == 2 || x == 3 || x == 5 || x == 7) return true;\n    if (x % 2 ==\
     \ 0 || x % 3 == 0 || x % 5 == 0 || x % 7 == 0) return false;\n    if (x < 121)\
@@ -85,10 +85,10 @@ data:
     \  }\n}\nvector<ll> factorize(ll x) {\n    vector<ll> ans;\n    for (ll p : {2,\
     \ 3, 5, 7, 11, 13, 17, 19}) {\n        while(x % p == 0) {\n            x /= p;\n\
     \            ans.push_back(p);\n        }\n    }\n    if (x != 1) {\n        pollard(x,\
-    \ ans);\n    }\n    sort(ans.begin(), ans.end());\n    return ans;\n}\n#line 5\
-    \ \"Math/tests/is_prime_yukicoder.test.cpp\"\n\nvoid solve() {\n    int q; cin\
-    \ >> q;\n    while (q--) {\n        long long n;\n        cin >> n;\n        cout\
-    \ << n << ' ' << isPrime(n) << '\\n';\n    }\n}\n\n"
+    \ ans);\n    }\n    sort(ans.begin(), ans.end());\n    return ans;\n}\n// }}}\n\
+    #line 5 \"Math/tests/is_prime_yukicoder.test.cpp\"\n\nvoid solve() {\n    int\
+    \ q; cin >> q;\n    while (q--) {\n        long long n;\n        cin >> n;\n \
+    \       cout << n << ' ' << isPrime(n) << '\\n';\n    }\n}\n\n"
   code: "#define PROBLEM \"https://yukicoder.me/problems/no/3030\"\n\n#include \"\
     ../../template.h\"\n#include \"../NumberTheory/Pollard.h\"\n\nvoid solve() {\n\
     \    int q; cin >> q;\n    while (q--) {\n        long long n;\n        cin >>\
@@ -99,7 +99,7 @@ data:
   isVerificationFile: true
   path: Math/tests/is_prime_yukicoder.test.cpp
   requiredBy: []
-  timestamp: '2022-01-13 13:16:22+08:00'
+  timestamp: '2022-10-24 01:25:06+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Math/tests/is_prime_yukicoder.test.cpp

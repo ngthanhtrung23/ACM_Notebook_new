@@ -20,17 +20,17 @@ data:
     - https://judge.yosupo.jp/problem/factorize
     - https://judge.yosupo.jp/submission/61447
     - https://oj.vnoi.info/problem/icpc21_beta_l
-  bundledCode: "#line 1 \"Math/NumberTheory/Pollard.h\"\n// Pollard\n// Copied from\
-    \ https://judge.yosupo.jp/submission/61447\n//\n// Tested:\n// - (up to 10^18)\
+  bundledCode: "#line 1 \"Math/NumberTheory/Pollard.h\"\n// Pollard {{{\n// Copied\
+    \ from https://judge.yosupo.jp/submission/61447\n//\n// Tested:\n// - (up to 10^18)\
     \ https://judge.yosupo.jp/problem/factorize\n// - https://oj.vnoi.info/problem/icpc21_beta_l\n\
     \nusing ll = long long;\nusing ull = unsigned long long;\nusing ld = long double;\n\
     ll mult(ll x, ll y, ll md) {\n    ull q = (ld)x * y / md;\n    ll res = ((ull)x\
     \ * y - q * md);\n    if (res >= md) res -= md;\n    if (res < 0) res += md;\n\
-    \    return res;\n}\n\nll bin_pow(ll x, ll p, ll md) {\n    if (p == 0) return\
-    \ 1;\n    if (p & 1) return mult(x, bin_pow(x, p - 1, md), md);\n    return bin_pow(mult(x,\
+    \    return res;\n}\n\nll powMod(ll x, ll p, ll md) {\n    if (p == 0) return\
+    \ 1;\n    if (p & 1) return mult(x, powMod(x, p - 1, md), md);\n    return powMod(mult(x,\
     \ x, md), p / 2, md);\n}\n\nbool checkMillerRabin(ll x, ll md, ll s, int k) {\n\
-    \    x = bin_pow(x, s, md);\n    if (x == 1) return true;\n    while(k--) {\n\
-    \        if (x == md - 1) return true;\n        x = mult(x, x, md);\n        if\
+    \    x = powMod(x, s, md);\n    if (x == 1) return true;\n    while(k--) {\n \
+    \       if (x == md - 1) return true;\n        x = mult(x, x, md);\n        if\
     \ (x == 1) return false;\n    }\n    return false;\n}\nbool isPrime(ll x) {\n\
     \    if (x == 2 || x == 3 || x == 5 || x == 7) return true;\n    if (x % 2 ==\
     \ 0 || x % 3 == 0 || x % 5 == 0 || x % 7 == 0) return false;\n    if (x < 121)\
@@ -62,18 +62,18 @@ data:
     \  }\n}\nvector<ll> factorize(ll x) {\n    vector<ll> ans;\n    for (ll p : {2,\
     \ 3, 5, 7, 11, 13, 17, 19}) {\n        while(x % p == 0) {\n            x /= p;\n\
     \            ans.push_back(p);\n        }\n    }\n    if (x != 1) {\n        pollard(x,\
-    \ ans);\n    }\n    sort(ans.begin(), ans.end());\n    return ans;\n}\n"
-  code: "// Pollard\n// Copied from https://judge.yosupo.jp/submission/61447\n//\n\
-    // Tested:\n// - (up to 10^18) https://judge.yosupo.jp/problem/factorize\n// -\
-    \ https://oj.vnoi.info/problem/icpc21_beta_l\n\nusing ll = long long;\nusing ull\
-    \ = unsigned long long;\nusing ld = long double;\nll mult(ll x, ll y, ll md) {\n\
-    \    ull q = (ld)x * y / md;\n    ll res = ((ull)x * y - q * md);\n    if (res\
-    \ >= md) res -= md;\n    if (res < 0) res += md;\n    return res;\n}\n\nll bin_pow(ll\
-    \ x, ll p, ll md) {\n    if (p == 0) return 1;\n    if (p & 1) return mult(x,\
-    \ bin_pow(x, p - 1, md), md);\n    return bin_pow(mult(x, x, md), p / 2, md);\n\
-    }\n\nbool checkMillerRabin(ll x, ll md, ll s, int k) {\n    x = bin_pow(x, s,\
-    \ md);\n    if (x == 1) return true;\n    while(k--) {\n        if (x == md -\
-    \ 1) return true;\n        x = mult(x, x, md);\n        if (x == 1) return false;\n\
+    \ ans);\n    }\n    sort(ans.begin(), ans.end());\n    return ans;\n}\n// }}}\n"
+  code: "// Pollard {{{\n// Copied from https://judge.yosupo.jp/submission/61447\n\
+    //\n// Tested:\n// - (up to 10^18) https://judge.yosupo.jp/problem/factorize\n\
+    // - https://oj.vnoi.info/problem/icpc21_beta_l\n\nusing ll = long long;\nusing\
+    \ ull = unsigned long long;\nusing ld = long double;\nll mult(ll x, ll y, ll md)\
+    \ {\n    ull q = (ld)x * y / md;\n    ll res = ((ull)x * y - q * md);\n    if\
+    \ (res >= md) res -= md;\n    if (res < 0) res += md;\n    return res;\n}\n\n\
+    ll powMod(ll x, ll p, ll md) {\n    if (p == 0) return 1;\n    if (p & 1) return\
+    \ mult(x, powMod(x, p - 1, md), md);\n    return powMod(mult(x, x, md), p / 2,\
+    \ md);\n}\n\nbool checkMillerRabin(ll x, ll md, ll s, int k) {\n    x = powMod(x,\
+    \ s, md);\n    if (x == 1) return true;\n    while(k--) {\n        if (x == md\
+    \ - 1) return true;\n        x = mult(x, x, md);\n        if (x == 1) return false;\n\
     \    }\n    return false;\n}\nbool isPrime(ll x) {\n    if (x == 2 || x == 3 ||\
     \ x == 5 || x == 7) return true;\n    if (x % 2 == 0 || x % 3 == 0 || x % 5 ==\
     \ 0 || x % 7 == 0) return false;\n    if (x < 121) return x > 1;\n    ll s = x\
@@ -105,12 +105,12 @@ data:
     \ x) {\n    vector<ll> ans;\n    for (ll p : {2, 3, 5, 7, 11, 13, 17, 19}) {\n\
     \        while(x % p == 0) {\n            x /= p;\n            ans.push_back(p);\n\
     \        }\n    }\n    if (x != 1) {\n        pollard(x, ans);\n    }\n    sort(ans.begin(),\
-    \ ans.end());\n    return ans;\n}\n"
+    \ ans.end());\n    return ans;\n}\n// }}}\n"
   dependsOn: []
   isVerificationFile: false
   path: Math/NumberTheory/Pollard.h
   requiredBy: []
-  timestamp: '2021-12-19 02:05:12+08:00'
+  timestamp: '2022-10-24 01:25:06+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Math/tests/is_prime_yukicoder.test.cpp
