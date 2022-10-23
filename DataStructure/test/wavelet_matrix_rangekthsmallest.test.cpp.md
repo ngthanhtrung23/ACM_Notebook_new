@@ -20,7 +20,7 @@ data:
   bundledCode: "#line 1 \"DataStructure/test/wavelet_matrix_rangekthsmallest.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/range_kth_smallest\"\n\n#include\
     \ <bits/stdc++.h>\nusing namespace std;\n\n#line 1 \"DataStructure/WaveletMatrix.h\"\
-    \n// WaveletMatrix\n// Copied from https://github.com/dacin21/dacin21_codebook/blob/master/trees/wavelet_matrix.cpp\n\
+    \n// WaveletMatrix {{{\n// Copied from https://github.com/dacin21/dacin21_codebook/blob/master/trees/wavelet_matrix.cpp\n\
     //\n// Notes:\n// - Index from 0\n// - k (for k-th query) from 0\n// - Need to\
     \ remove #define int long long\n//\n// Tested:\n// - (kth query) https://judge.yosupo.jp/problem/range_kth_smallest\n\
     // - (range_count) https://judge.yosupo.jp/problem/static_range_frequency\nclass\
@@ -60,12 +60,12 @@ data:
     \ l <= i < r  s.t.  A <= val[i]\n    uint32_t range_count_up(int const&l, int\
     \ const&r, T const&A) const {\n        assert(0 <= l && r <= n);\n        if(__builtin_expect(l>r,\
     \ false)) return uint32_t{0};\n        return (r-l) - count_lower(l, r, A);\n\
-    \    }\n    // k from 0\n    T k_th(int const&l, int const&r, int k) const {\n\
-    \        assert(0 <= k && k < n);\n        return get_kth(l, r, k);\n    }\n\n\
-    private:\n    void build(vector<T> v){\n        m_index.resize(height);\n    \
-    \    T const a = numeric_limits<T>::min();\n        for(int h = height-1; h>=0;--h){\n\
-    \            T const b = a + (T{1}<<(max(0, h-1))) - !h + (T{1}<<(max(0, h-1)));\n\
-    \            for(int i=0;i<n;++i){\n                data[h].update_pre_build(i,\
+    \    }\n    // k from 0\n    // range: [l, r-1]\n    T k_th(int const&l, int const&r,\
+    \ int k) const {\n        assert(0 <= k && k < n);\n        return get_kth(l,\
+    \ r, k);\n    }\n\nprivate:\n    void build(vector<T> v){\n        m_index.resize(height);\n\
+    \        T const a = numeric_limits<T>::min();\n        for(int h = height-1;\
+    \ h>=0;--h){\n            T const b = a + (T{1}<<(max(0, h-1))) - !h + (T{1}<<(max(0,\
+    \ h-1)));\n            for(int i=0;i<n;++i){\n                data[h].update_pre_build(i,\
     \ v[i]<b);\n            }\n            data[h].do_build();\n            const\
     \ int m = stable_partition(v.begin(), v.end(), [&b](T const&x){return x < b;})\
     \ - v.begin();\n            for(int i=m;i<n;++i){\n                v[i] = v[i]\
@@ -90,18 +90,19 @@ data:
     \            k-= low_lr;\n                l = m_index[h] + l-low_l;\n        \
     \        r = m_index[h] + r-low_r;\n            }\n        }\n        return a;\n\
     \    }\n\n    const int n;\n    vector<int> m_index;\n    vector<Bit_Ds> data;\n\
-    };\n#line 1 \"buffered_reader.h\"\n// Buffered reader {{{\nnamespace IO {\n  \
-    \  const int BUFSIZE = 1<<14;\n    char buf[BUFSIZE + 1], *inp = buf;\n\n    bool\
-    \ reacheof;\n    char get_char() {\n        if (!*inp && !reacheof) {\n      \
-    \      memset(buf, 0, sizeof buf);\n            int tmp = fread(buf, 1, BUFSIZE,\
-    \ stdin);\n            if (tmp != BUFSIZE) reacheof = true;\n            inp =\
-    \ buf;\n        }\n        return *inp++;\n    }\n    template<typename T>\n \
-    \   T get() {\n        int neg = 0;\n        T res = 0;\n        char c = get_char();\n\
-    \        while (!std::isdigit(c) && c != '-' && c != '+') c = get_char();\n  \
-    \      if (c == '+') { neg = 0; }\n        else if (c == '-') { neg = 1; }\n \
-    \       else res = c - '0';\n\n        c = get_char();\n        while (std::isdigit(c))\
-    \ {\n            res = res * 10 + (c - '0');\n            c = get_char();\n  \
-    \      }\n        return neg ? -res : res;\n    }\n};\n// }}}\n#line 8 \"DataStructure/test/wavelet_matrix_rangekthsmallest.test.cpp\"\
+    };\n// }}}\n#line 1 \"buffered_reader.h\"\n// Buffered reader {{{\nnamespace IO\
+    \ {\n    const int BUFSIZE = 1<<14;\n    char buf[BUFSIZE + 1], *inp = buf;\n\n\
+    \    bool reacheof;\n    char get_char() {\n        if (!*inp && !reacheof) {\n\
+    \            memset(buf, 0, sizeof buf);\n            int tmp = fread(buf, 1,\
+    \ BUFSIZE, stdin);\n            if (tmp != BUFSIZE) reacheof = true;\n       \
+    \     inp = buf;\n        }\n        return *inp++;\n    }\n    template<typename\
+    \ T>\n    T get() {\n        int neg = 0;\n        T res = 0;\n        char c\
+    \ = get_char();\n        while (!std::isdigit(c) && c != '-' && c != '+') c =\
+    \ get_char();\n        if (c == '+') { neg = 0; }\n        else if (c == '-')\
+    \ { neg = 1; }\n        else res = c - '0';\n\n        c = get_char();\n     \
+    \   while (std::isdigit(c)) {\n            res = res * 10 + (c - '0');\n     \
+    \       c = get_char();\n        }\n        return neg ? -res : res;\n    }\n\
+    };\n// }}}\n#line 8 \"DataStructure/test/wavelet_matrix_rangekthsmallest.test.cpp\"\
     \n\nint32_t main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n, q;\
     \ cin >> n >> q;\n    vector<int> a(n);\n    for (int& x : a) cin >> x;\n\n  \
     \  WaveletMatrix wm(a);\n    while (q--) {\n        int l, r, k; cin >> l >> r\
@@ -119,7 +120,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/wavelet_matrix_rangekthsmallest.test.cpp
   requiredBy: []
-  timestamp: '2022-08-21 20:28:36+08:00'
+  timestamp: '2022-10-24 00:00:08+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/wavelet_matrix_rangekthsmallest.test.cpp
