@@ -60,8 +60,8 @@ data:
     \        xs.erase(std::unique(xs.begin(), xs.end()), xs.end());\n        return\
     \ Compressor{xs};\n    }\n\n    void add(const T& key) { xs.push_back(key); }\n\
     \    void add(T&& key) { xs.push_back(std::move(key)); }\n\n    std::vector<T>\
-    \ xs;\n};\n// }}}\n#line 1 \"DataStructure/Fenwick.h\"\n// 1D Fenwick\n// 0 based\
-    \ index\n//\n// Tested:\n// - https://judge.yosupo.jp/problem/static_range_sum\n\
+    \ xs;\n};\n// }}}\n#line 1 \"DataStructure/Fenwick.h\"\n// 1D Fenwick {{{\n//\
+    \ 0 based index\n//\n// Tested:\n// - https://judge.yosupo.jp/problem/static_range_sum\n\
     // - https://judge.yosupo.jp/problem/point_add_range_sum\ntemplate<\n    typename\
     \ T  // need to support operators + -\n> struct Fenwick {\n    Fenwick(int _n)\
     \ : n(_n), f(_n + 1) {}\n\n    // a[u] += val\n    void update(int u, T val) {\n\
@@ -73,9 +73,9 @@ data:
     \   T get(int l, int r) const {\n        assert(0 <= l && l <= r && r <= n);\n\
     \        if (l == r) return 0;  // empty\n        return get(r) - get(l);\n  \
     \  }\n\n    void reset() {\n        std::fill(f.begin(), f.end(), T(0));\n   \
-    \ }\n\n    int n;\n    vector<T> f;\n};\n#line 3 \"DP/count_inversions.h\"\n\n\
-    // Given vector vs, return number of inversions\ntemplate<typename T>\nlong long\
-    \ count_inversions(vector<T> vs) {\n    int n = vs.size();\n    auto compressor\
+    \ }\n\n    int n;\n    vector<T> f;\n};\n// }}}\n#line 3 \"DP/count_inversions.h\"\
+    \n\n// Given vector vs, return number of inversions\ntemplate<typename T>\nlong\
+    \ long count_inversions(vector<T> vs) {\n    int n = vs.size();\n    auto compressor\
     \ = CompressorBuilder<T>{vs}.build();\n    compressor.compress_inplace(vs);\n\
     \    Fenwick<int> bit(n);\n\n    long long res = 0;\n    for (auto v : vs) {\n\
     \        res += bit.get(v+1, n);\n        bit.update(v, +1);\n    }\n    return\
@@ -93,7 +93,7 @@ data:
   isVerificationFile: false
   path: DP/count_inversions.h
   requiredBy: []
-  timestamp: '2022-08-14 20:27:19+08:00'
+  timestamp: '2022-10-23 21:56:10+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DP/tests/aizu_alds1_5_d_count_inversions.test.cpp

@@ -17,7 +17,7 @@ data:
   bundledCode: "#line 1 \"DataStructure/test/aizu_dsl_2_b_fenwick_aizu.test.cpp\"\n\
     #define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B\"\
     \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#line 1 \"DataStructure/Fenwick.h\"\
-    \n// 1D Fenwick\n// 0 based index\n//\n// Tested:\n// - https://judge.yosupo.jp/problem/static_range_sum\n\
+    \n// 1D Fenwick {{{\n// 0 based index\n//\n// Tested:\n// - https://judge.yosupo.jp/problem/static_range_sum\n\
     // - https://judge.yosupo.jp/problem/point_add_range_sum\ntemplate<\n    typename\
     \ T  // need to support operators + -\n> struct Fenwick {\n    Fenwick(int _n)\
     \ : n(_n), f(_n + 1) {}\n\n    // a[u] += val\n    void update(int u, T val) {\n\
@@ -29,7 +29,7 @@ data:
     \   T get(int l, int r) const {\n        assert(0 <= l && l <= r && r <= n);\n\
     \        if (l == r) return 0;  // empty\n        return get(r) - get(l);\n  \
     \  }\n\n    void reset() {\n        std::fill(f.begin(), f.end(), T(0));\n   \
-    \ }\n\n    int n;\n    vector<T> f;\n};\n#line 7 \"DataStructure/test/aizu_dsl_2_b_fenwick_aizu.test.cpp\"\
+    \ }\n\n    int n;\n    vector<T> f;\n};\n// }}}\n#line 7 \"DataStructure/test/aizu_dsl_2_b_fenwick_aizu.test.cpp\"\
     \n\nint main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n, q; cin\
     \ >> n >> q;\n    Fenwick<long long> bit(n);\n    while (q--) {\n        int typ,\
     \ x, y; cin >> typ >> x >> y;\n        --x;\n        if (typ == 0) bit.update(x,\
@@ -45,7 +45,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/aizu_dsl_2_b_fenwick_aizu.test.cpp
   requiredBy: []
-  timestamp: '2022-01-11 21:41:41+08:00'
+  timestamp: '2022-10-23 21:56:10+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/aizu_dsl_2_b_fenwick_aizu.test.cpp

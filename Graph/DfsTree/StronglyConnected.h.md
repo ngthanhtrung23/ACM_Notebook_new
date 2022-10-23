@@ -78,10 +78,10 @@ data:
   timestamp: '2022-03-04 04:16:35+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Graph/tests/aizu_grl_3_c_strongly_connected.test.cpp
-  - Graph/tests/two_sat.test.cpp
-  - Graph/tests/strongly_connected.test.cpp
   - Graph/tests/aizu_grl_4_a_strongly_connected_cycle_check.test.cpp
+  - Graph/tests/strongly_connected.test.cpp
+  - Graph/tests/two_sat.test.cpp
+  - Graph/tests/aizu_grl_3_c_strongly_connected.test.cpp
 documentation_of: Graph/DfsTree/StronglyConnected.h
 layout: document
 redirect_from:

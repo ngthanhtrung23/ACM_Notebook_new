@@ -4,11 +4,23 @@ data:
   - icon: ':heavy_check_mark:'
     path: Math/modint.h
     title: Math/modint.h
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: String/SuffixArray.h
+    title: String/SuffixArray.h
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: String/tests/aizu_alds_14_b_string_hash.test.cpp
     title: String/tests/aizu_alds_14_b_string_hash.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: String/tests/lcp.test.cpp
+    title: String/tests/lcp.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: String/tests/suffix_array.test.cpp
+    title: String/tests/suffix_array.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: String/tests/suffix_array_queries.test.cpp
+    title: String/tests/suffix_array_queries.test.cpp
   - icon: ':heavy_check_mark:'
     path: String/tests/yukicoder_1408_string_hash_lcp.test.cpp
     title: String/tests/yukicoder_1408_string_hash_lcp.test.cpp
@@ -105,23 +117,23 @@ data:
     \ 311) {\n        p.resize(maxLen + 1);\n        p[0] = {1, 1};\n        for (int\
     \ i = 1; i <= maxLen; i++) {\n            p[i] = p[i-1] * base;\n        }\n \
     \   }\n\n    template<typename Container>\n    std::vector<Hash> hash(const Container&\
-    \ s) {\n        std::vector<Hash> res(s.size());\n        for (size_t i = 0; i\
-    \ < s.size(); i++) {\n            res[i] = p[i] * (int) s[i];\n        }\n   \
-    \     std::partial_sum(res.begin(), res.end(), res.begin());\n        return res;\n\
-    \    }\n\n    Hash getHash(const std::vector<Hash>& h, int l, int r) {\n     \
-    \   return __getHash(h, l, r) * p[p.size() - 1 - l];\n    }\n\n    // compare\
-    \ [l1, r1] vs [l2, r2]\n    bool equals(\n            const std::vector<Hash>&\
+    \ s) const {\n        std::vector<Hash> res(s.size());\n        for (size_t i\
+    \ = 0; i < s.size(); i++) {\n            res[i] = p[i] * (int) s[i];\n       \
+    \ }\n        std::partial_sum(res.begin(), res.end(), res.begin());\n        return\
+    \ res;\n    }\n\n    Hash getHash(const std::vector<Hash>& h, int l, int r) const\
+    \ {\n        return __getHash(h, l, r) * p[p.size() - 1 - l];\n    }\n\n    //\
+    \ compare [l1, r1] vs [l2, r2]\n    bool equals(\n            const std::vector<Hash>&\
     \ h1, int l1, int r1,\n            const std::vector<Hash>& h2, int l2, int r2)\
-    \ {\n        assert(0 <= l1 && l1 <= r1 && r1 < (int) h1.size());\n        assert(0\
-    \ <= l2 && l2 <= r2 && r2 < (int) h2.size());\n        if (r1 - l1 != r2 - l2)\
-    \ return false;\n\n        return getHash(h1, l1, r1) == getHash(h2, l2, r2);\n\
-    \    }\n\n    // Returns length of max common prefix of h1[l1, r1] and h2[l2,\
-    \ r2]\n    // length = 0 -> first character of 2 substrings are different.\n \
-    \   int maxCommonPrefix(\n            const std::vector<Hash>& h1, int l1, int\
-    \ r1,\n            const std::vector<Hash>& h2, int l2, int r2) {\n        assert(0\
-    \ <= l1 && l1 <= r1 && r1 < (int) h1.size());\n        assert(0 <= l2 && l2 <=\
-    \ r2 && r2 < (int) h2.size());\n\n        int len1 = r1 - l1 + 1;\n        int\
-    \ len2 = r2 - l2 + 1;\n\n        int res = -1, left = 0, right = std::min(len1,\
+    \ const {\n        assert(0 <= l1 && l1 <= r1 && r1 < (int) h1.size());\n    \
+    \    assert(0 <= l2 && l2 <= r2 && r2 < (int) h2.size());\n        if (r1 - l1\
+    \ != r2 - l2) return false;\n\n        return getHash(h1, l1, r1) == getHash(h2,\
+    \ l2, r2);\n    }\n\n    // Returns length of max common prefix of h1[l1, r1]\
+    \ and h2[l2, r2]\n    // length = 0 -> first character of 2 substrings are different.\n\
+    \    int maxCommonPrefix(\n            const std::vector<Hash>& h1, int l1, int\
+    \ r1,\n            const std::vector<Hash>& h2, int l2, int r2) const {\n    \
+    \    assert(0 <= l1 && l1 <= r1 && r1 < (int) h1.size());\n        assert(0 <=\
+    \ l2 && l2 <= r2 && r2 < (int) h2.size());\n\n        int len1 = r1 - l1 + 1;\n\
+    \        int len2 = r2 - l2 + 1;\n\n        int res = -1, left = 0, right = std::min(len1,\
     \ len2) - 1;\n        while (left <= right) {\n            int mid = (left + right)\
     \ / 2;\n            if (equals(h1, l1, l1 + mid, h2, l2, l2 + mid)) {\n      \
     \          res = mid;\n                left = mid + 1;\n            } else {\n\
@@ -130,18 +142,19 @@ data:
     \ len2));\n        auto res = std::ranges::partition_point(\n                r,\n\
     \                [&] (int mid) {\n                    return equals(h1, l1, l1+mid,\
     \ h2, l2, l2+mid);\n                });\n        return *res;\n         */\n \
-    \   }\n\n    // compare s1[l1, r1] and s2[l2, r2]\n    template<typename Container>\n\
-    \    int cmp(\n            const Container& s1, const std::vector<Hash>& h1, int\
-    \ l1, int r1,\n            const Container& s2, const std::vector<Hash>& h2, int\
-    \ l2, int r2) {\n        assert(0 <= l1 && l1 <= r1 && r1 < (int) h1.size());\n\
-    \        assert(0 <= l2 && l2 <= r2 && r2 < (int) h2.size());\n\n        int commonPrefixLen\
-    \ = maxCommonPrefix(h1, l1, r1, h2, l2, r2);\n        char c1 = (l1 + commonPrefixLen\
-    \ <= r1) ? s1[l1 + commonPrefixLen] : 0;\n        char c2 = (l2 + commonPrefixLen\
-    \ <= r2) ? s2[l2 + commonPrefixLen] : 0;\n\n        return (c1 == c2) ? 0 : ((c1\
-    \ < c2) ? -1 : 1);\n    }\n\nprivate:\n    std::vector<Hash> p;\n\n    // DO NOT\
-    \ USE, this doesn't divide by p[l]\n    Hash __getHash(const std::vector<Hash>&\
-    \ h, int l, int r) {\n        assert(0 <= l && l <= r && r < (int) h.size());\n\
-    \        return h[r] - (l == 0 ? Hash{0, 0} : h[l-1]);\n    }\n};\n// }}}\n"
+    \   }\n\n    // compare s1[l1, r1] and s2[l2, r2]\n    template<typename Container1,\
+    \ typename Container2>\n    int cmp(\n            const Container1& s1, const\
+    \ std::vector<Hash>& h1, int l1, int r1,\n            const Container2& s2, const\
+    \ std::vector<Hash>& h2, int l2, int r2) const {\n        assert(0 <= l1 && l1\
+    \ <= r1 && r1 < (int) h1.size());\n        assert(0 <= l2 && l2 <= r2 && r2 <\
+    \ (int) h2.size());\n\n        int commonPrefixLen = maxCommonPrefix(h1, l1, r1,\
+    \ h2, l2, r2);\n        char c1 = (l1 + commonPrefixLen <= r1) ? s1[l1 + commonPrefixLen]\
+    \ : 0;\n        char c2 = (l2 + commonPrefixLen <= r2) ? s2[l2 + commonPrefixLen]\
+    \ : 0;\n\n        return (c1 == c2) ? 0 : ((c1 < c2) ? -1 : 1);\n    }\n\nprivate:\n\
+    \    std::vector<Hash> p;\n\n    // DO NOT USE, this doesn't divide by p[l]\n\
+    \    Hash __getHash(const std::vector<Hash>& h, int l, int r) const {\n      \
+    \  assert(0 <= l && l <= r && r < (int) h.size());\n        return h[r] - (l ==\
+    \ 0 ? Hash{0, 0} : h[l-1]);\n    }\n};\n// }}}\n"
   code: "#include \"../Math/modint.h\"\n\n// Hash {{{\n// Usage:\n// HashGenerator\
     \ g(MAX_LENGTH)\n//\n// auto h = g.hash(s)\n// g.equals(s, h, l1, r1, s, h, l2,\
     \ r2)\n// g.cmp(s, h, l1, r1, s, h, l2, r2)\n//\n// Tested:\n// - https://oj.vnoi.info/problem/substr\n\
@@ -165,23 +178,23 @@ data:
     \ 311) {\n        p.resize(maxLen + 1);\n        p[0] = {1, 1};\n        for (int\
     \ i = 1; i <= maxLen; i++) {\n            p[i] = p[i-1] * base;\n        }\n \
     \   }\n\n    template<typename Container>\n    std::vector<Hash> hash(const Container&\
-    \ s) {\n        std::vector<Hash> res(s.size());\n        for (size_t i = 0; i\
-    \ < s.size(); i++) {\n            res[i] = p[i] * (int) s[i];\n        }\n   \
-    \     std::partial_sum(res.begin(), res.end(), res.begin());\n        return res;\n\
-    \    }\n\n    Hash getHash(const std::vector<Hash>& h, int l, int r) {\n     \
-    \   return __getHash(h, l, r) * p[p.size() - 1 - l];\n    }\n\n    // compare\
-    \ [l1, r1] vs [l2, r2]\n    bool equals(\n            const std::vector<Hash>&\
+    \ s) const {\n        std::vector<Hash> res(s.size());\n        for (size_t i\
+    \ = 0; i < s.size(); i++) {\n            res[i] = p[i] * (int) s[i];\n       \
+    \ }\n        std::partial_sum(res.begin(), res.end(), res.begin());\n        return\
+    \ res;\n    }\n\n    Hash getHash(const std::vector<Hash>& h, int l, int r) const\
+    \ {\n        return __getHash(h, l, r) * p[p.size() - 1 - l];\n    }\n\n    //\
+    \ compare [l1, r1] vs [l2, r2]\n    bool equals(\n            const std::vector<Hash>&\
     \ h1, int l1, int r1,\n            const std::vector<Hash>& h2, int l2, int r2)\
-    \ {\n        assert(0 <= l1 && l1 <= r1 && r1 < (int) h1.size());\n        assert(0\
-    \ <= l2 && l2 <= r2 && r2 < (int) h2.size());\n        if (r1 - l1 != r2 - l2)\
-    \ return false;\n\n        return getHash(h1, l1, r1) == getHash(h2, l2, r2);\n\
-    \    }\n\n    // Returns length of max common prefix of h1[l1, r1] and h2[l2,\
-    \ r2]\n    // length = 0 -> first character of 2 substrings are different.\n \
-    \   int maxCommonPrefix(\n            const std::vector<Hash>& h1, int l1, int\
-    \ r1,\n            const std::vector<Hash>& h2, int l2, int r2) {\n        assert(0\
-    \ <= l1 && l1 <= r1 && r1 < (int) h1.size());\n        assert(0 <= l2 && l2 <=\
-    \ r2 && r2 < (int) h2.size());\n\n        int len1 = r1 - l1 + 1;\n        int\
-    \ len2 = r2 - l2 + 1;\n\n        int res = -1, left = 0, right = std::min(len1,\
+    \ const {\n        assert(0 <= l1 && l1 <= r1 && r1 < (int) h1.size());\n    \
+    \    assert(0 <= l2 && l2 <= r2 && r2 < (int) h2.size());\n        if (r1 - l1\
+    \ != r2 - l2) return false;\n\n        return getHash(h1, l1, r1) == getHash(h2,\
+    \ l2, r2);\n    }\n\n    // Returns length of max common prefix of h1[l1, r1]\
+    \ and h2[l2, r2]\n    // length = 0 -> first character of 2 substrings are different.\n\
+    \    int maxCommonPrefix(\n            const std::vector<Hash>& h1, int l1, int\
+    \ r1,\n            const std::vector<Hash>& h2, int l2, int r2) const {\n    \
+    \    assert(0 <= l1 && l1 <= r1 && r1 < (int) h1.size());\n        assert(0 <=\
+    \ l2 && l2 <= r2 && r2 < (int) h2.size());\n\n        int len1 = r1 - l1 + 1;\n\
+    \        int len2 = r2 - l2 + 1;\n\n        int res = -1, left = 0, right = std::min(len1,\
     \ len2) - 1;\n        while (left <= right) {\n            int mid = (left + right)\
     \ / 2;\n            if (equals(h1, l1, l1 + mid, h2, l2, l2 + mid)) {\n      \
     \          res = mid;\n                left = mid + 1;\n            } else {\n\
@@ -190,28 +203,33 @@ data:
     \ len2));\n        auto res = std::ranges::partition_point(\n                r,\n\
     \                [&] (int mid) {\n                    return equals(h1, l1, l1+mid,\
     \ h2, l2, l2+mid);\n                });\n        return *res;\n         */\n \
-    \   }\n\n    // compare s1[l1, r1] and s2[l2, r2]\n    template<typename Container>\n\
-    \    int cmp(\n            const Container& s1, const std::vector<Hash>& h1, int\
-    \ l1, int r1,\n            const Container& s2, const std::vector<Hash>& h2, int\
-    \ l2, int r2) {\n        assert(0 <= l1 && l1 <= r1 && r1 < (int) h1.size());\n\
-    \        assert(0 <= l2 && l2 <= r2 && r2 < (int) h2.size());\n\n        int commonPrefixLen\
-    \ = maxCommonPrefix(h1, l1, r1, h2, l2, r2);\n        char c1 = (l1 + commonPrefixLen\
-    \ <= r1) ? s1[l1 + commonPrefixLen] : 0;\n        char c2 = (l2 + commonPrefixLen\
-    \ <= r2) ? s2[l2 + commonPrefixLen] : 0;\n\n        return (c1 == c2) ? 0 : ((c1\
-    \ < c2) ? -1 : 1);\n    }\n\nprivate:\n    std::vector<Hash> p;\n\n    // DO NOT\
-    \ USE, this doesn't divide by p[l]\n    Hash __getHash(const std::vector<Hash>&\
-    \ h, int l, int r) {\n        assert(0 <= l && l <= r && r < (int) h.size());\n\
-    \        return h[r] - (l == 0 ? Hash{0, 0} : h[l-1]);\n    }\n};\n// }}}\n"
+    \   }\n\n    // compare s1[l1, r1] and s2[l2, r2]\n    template<typename Container1,\
+    \ typename Container2>\n    int cmp(\n            const Container1& s1, const\
+    \ std::vector<Hash>& h1, int l1, int r1,\n            const Container2& s2, const\
+    \ std::vector<Hash>& h2, int l2, int r2) const {\n        assert(0 <= l1 && l1\
+    \ <= r1 && r1 < (int) h1.size());\n        assert(0 <= l2 && l2 <= r2 && r2 <\
+    \ (int) h2.size());\n\n        int commonPrefixLen = maxCommonPrefix(h1, l1, r1,\
+    \ h2, l2, r2);\n        char c1 = (l1 + commonPrefixLen <= r1) ? s1[l1 + commonPrefixLen]\
+    \ : 0;\n        char c2 = (l2 + commonPrefixLen <= r2) ? s2[l2 + commonPrefixLen]\
+    \ : 0;\n\n        return (c1 == c2) ? 0 : ((c1 < c2) ? -1 : 1);\n    }\n\nprivate:\n\
+    \    std::vector<Hash> p;\n\n    // DO NOT USE, this doesn't divide by p[l]\n\
+    \    Hash __getHash(const std::vector<Hash>& h, int l, int r) const {\n      \
+    \  assert(0 <= l && l <= r && r < (int) h.size());\n        return h[r] - (l ==\
+    \ 0 ? Hash{0, 0} : h[l-1]);\n    }\n};\n// }}}\n"
   dependsOn:
   - Math/modint.h
   isVerificationFile: false
   path: String/hash.h
-  requiredBy: []
-  timestamp: '2022-10-04 22:56:32-04:00'
+  requiredBy:
+  - String/SuffixArray.h
+  timestamp: '2022-10-23 21:56:10+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - String/tests/suffix_array.test.cpp
   - String/tests/yukicoder_1408_string_hash_lcp.test.cpp
   - String/tests/aizu_alds_14_b_string_hash.test.cpp
+  - String/tests/suffix_array_queries.test.cpp
+  - String/tests/lcp.test.cpp
 documentation_of: String/hash.h
 layout: document
 redirect_from:

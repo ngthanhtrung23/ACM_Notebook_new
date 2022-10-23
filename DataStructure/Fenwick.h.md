@@ -25,20 +25,8 @@ data:
     links:
     - https://judge.yosupo.jp/problem/point_add_range_sum
     - https://judge.yosupo.jp/problem/static_range_sum
-  bundledCode: "#line 1 \"DataStructure/Fenwick.h\"\n// 1D Fenwick\n// 0 based index\n\
-    //\n// Tested:\n// - https://judge.yosupo.jp/problem/static_range_sum\n// - https://judge.yosupo.jp/problem/point_add_range_sum\n\
-    template<\n    typename T  // need to support operators + -\n> struct Fenwick\
-    \ {\n    Fenwick(int _n) : n(_n), f(_n + 1) {}\n\n    // a[u] += val\n    void\
-    \ update(int u, T val) {\n        assert(0 <= u && u < n);\n        ++u;\n   \
-    \     for (; u <= n; u += u & -u) {\n            f[u] += val;\n        }\n   \
-    \ }\n\n    // return a[0] + .. + a[u-1]\n    T get(int u) const {\n        assert(0\
-    \ <= u && u <= n);\n        T res = 0;\n        for (; u > 0; u -= u & -u) {\n\
-    \            res += f[u];\n        }\n        return res;\n    }\n\n    // return\
-    \ a[l] + .. + a[r-1]\n    T get(int l, int r) const {\n        assert(0 <= l &&\
-    \ l <= r && r <= n);\n        if (l == r) return 0;  // empty\n        return\
-    \ get(r) - get(l);\n    }\n\n    void reset() {\n        std::fill(f.begin(),\
-    \ f.end(), T(0));\n    }\n\n    int n;\n    vector<T> f;\n};\n"
-  code: "// 1D Fenwick\n// 0 based index\n//\n// Tested:\n// - https://judge.yosupo.jp/problem/static_range_sum\n\
+  bundledCode: "#line 1 \"DataStructure/Fenwick.h\"\n// 1D Fenwick {{{\n// 0 based\
+    \ index\n//\n// Tested:\n// - https://judge.yosupo.jp/problem/static_range_sum\n\
     // - https://judge.yosupo.jp/problem/point_add_range_sum\ntemplate<\n    typename\
     \ T  // need to support operators + -\n> struct Fenwick {\n    Fenwick(int _n)\
     \ : n(_n), f(_n + 1) {}\n\n    // a[u] += val\n    void update(int u, T val) {\n\
@@ -50,18 +38,31 @@ data:
     \   T get(int l, int r) const {\n        assert(0 <= l && l <= r && r <= n);\n\
     \        if (l == r) return 0;  // empty\n        return get(r) - get(l);\n  \
     \  }\n\n    void reset() {\n        std::fill(f.begin(), f.end(), T(0));\n   \
-    \ }\n\n    int n;\n    vector<T> f;\n};\n"
+    \ }\n\n    int n;\n    vector<T> f;\n};\n// }}}\n"
+  code: "// 1D Fenwick {{{\n// 0 based index\n//\n// Tested:\n// - https://judge.yosupo.jp/problem/static_range_sum\n\
+    // - https://judge.yosupo.jp/problem/point_add_range_sum\ntemplate<\n    typename\
+    \ T  // need to support operators + -\n> struct Fenwick {\n    Fenwick(int _n)\
+    \ : n(_n), f(_n + 1) {}\n\n    // a[u] += val\n    void update(int u, T val) {\n\
+    \        assert(0 <= u && u < n);\n        ++u;\n        for (; u <= n; u += u\
+    \ & -u) {\n            f[u] += val;\n        }\n    }\n\n    // return a[0] +\
+    \ .. + a[u-1]\n    T get(int u) const {\n        assert(0 <= u && u <= n);\n \
+    \       T res = 0;\n        for (; u > 0; u -= u & -u) {\n            res += f[u];\n\
+    \        }\n        return res;\n    }\n\n    // return a[l] + .. + a[r-1]\n \
+    \   T get(int l, int r) const {\n        assert(0 <= l && l <= r && r <= n);\n\
+    \        if (l == r) return 0;  // empty\n        return get(r) - get(l);\n  \
+    \  }\n\n    void reset() {\n        std::fill(f.begin(), f.end(), T(0));\n   \
+    \ }\n\n    int n;\n    vector<T> f;\n};\n// }}}\n"
   dependsOn: []
   isVerificationFile: false
   path: DataStructure/Fenwick.h
   requiredBy:
   - DP/count_inversions.h
-  timestamp: '2021-12-30 02:18:43+08:00'
+  timestamp: '2022-10-23 21:56:10+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - DataStructure/test/fenwick_pointaddrangesum.test.cpp
   - DataStructure/test/fenwick.test.cpp
   - DataStructure/test/aizu_dsl_2_b_fenwick_aizu.test.cpp
+  - DataStructure/test/fenwick_pointaddrangesum.test.cpp
   - DP/tests/aizu_alds1_5_d_count_inversions.test.cpp
 documentation_of: DataStructure/Fenwick.h
 layout: document

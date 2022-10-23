@@ -144,8 +144,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Math/tests/formal_power_series_multiply_any_mod.test.cpp
-  - Math/tests/ntt_any_mod.test.cpp
   - Math/tests/formal_power_series_multiply.test.cpp
+  - Math/tests/ntt_any_mod.test.cpp
   - Math/tests/ntt.test.cpp
 documentation_of: Math/Polynomial/NTT.h
 layout: document
