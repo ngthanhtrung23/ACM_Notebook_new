@@ -1,4 +1,4 @@
-// Pollard
+// Pollard {{{
 // Copied from https://judge.yosupo.jp/submission/61447
 //
 // Tested:
@@ -16,14 +16,14 @@ ll mult(ll x, ll y, ll md) {
     return res;
 }
 
-ll bin_pow(ll x, ll p, ll md) {
+ll powMod(ll x, ll p, ll md) {
     if (p == 0) return 1;
-    if (p & 1) return mult(x, bin_pow(x, p - 1, md), md);
-    return bin_pow(mult(x, x, md), p / 2, md);
+    if (p & 1) return mult(x, powMod(x, p - 1, md), md);
+    return powMod(mult(x, x, md), p / 2, md);
 }
 
 bool checkMillerRabin(ll x, ll md, ll s, int k) {
-    x = bin_pow(x, s, md);
+    x = powMod(x, s, md);
     if (x == 1) return true;
     while(k--) {
         if (x == md - 1) return true;
@@ -127,3 +127,4 @@ vector<ll> factorize(ll x) {
     sort(ans.begin(), ans.end());
     return ans;
 }
+// }}}
