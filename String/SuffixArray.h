@@ -1,3 +1,4 @@
+// Suffix Array {{{
 // Source: http://codeforces.com/contest/452/submission/7269543
 // Efficient Suffix Array O(N*logN)
 
@@ -72,12 +73,12 @@ struct SuffixArray {
 // Tested:
 // - (yes / no) https://cses.fi/problemset/task/2102
 // - (count) https://cses.fi/problemset/task/2103
-// - (position) https://cses.fi/problemset/task/2104
+// - (position; need RMQ) https://cses.fi/problemset/task/2104
 int count_occurrence(const string& s, const vector<int>& sa, const string& pat) {
     int n = s.size(), m = pat.size();
     assert(n == (int) sa.size());
     if (n < m) return 0;
-
+ 
     auto f = [&] (int start) {  // compare S[start..] and pat[0..]
         for (int i = 0; start + i < n && i < m; ++i) {
             if (s[start + i] < pat[i]) return true;
@@ -95,3 +96,41 @@ int count_occurrence(const string& s, const vector<int>& sa, const string& pat) 
     auto r = std::partition_point(l, sa.end(), g);
     return std::distance(l, r);
 }
+
+
+// If hash array can be pre-computed, can answer each query in
+// O(log(|S|) * log(|S| + |pat|)
+// Tested
+// - https://oj.vnoi.info/problem/icpc22_mt_b
+#include "./hash.h"
+int count_occurrence_hash(
+        const vector<int>& sa,        // suffix array
+        const HashGenerator& gen,
+        const string& s,
+        const vector<Hash>& hash_s,   // hash of `s`, generated with `gen`
+        const string_view& pat,
+        const vector<Hash>& hash_pat  // hash of `pat`, generated with `gen`
+        ) {
+    int n = s.size(), len = pat.size();
+    assert(len == (int) hash_pat.size());
+    assert(n == (int) sa.size());
+    if (n < len) return 0;
+
+    // f(start) = compare string S[start..] and pat[0..len-1]
+    auto f = [&] (int start) {
+        return gen.cmp(
+                s, hash_s, start, n-1,
+                pat, hash_pat, 0, len-1) < 0;
+    };
+    // g(start) = true if S[start..] == pat[0..]
+    auto g = [&] (int start) {
+        int max_len = std::min(n - start, len);
+        return gen.cmp(
+                s, hash_s, start, start + max_len - 1,
+                pat, hash_pat, 0, max_len-1) == 0;
+    };
+    auto l = std::partition_point(sa.begin(), sa.end(), f);
+    auto r = std::partition_point(l, sa.end(), g);
+    return std::distance(l, r);
+}
+// }}}

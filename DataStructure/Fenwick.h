@@ -1,4 +1,4 @@
-// 1D Fenwick
+// 1D Fenwick {{{
 // 0 based index
 //
 // Tested:
@@ -42,3 +42,4 @@ template<
     int n;
     vector<T> f;
 };
+// }}}

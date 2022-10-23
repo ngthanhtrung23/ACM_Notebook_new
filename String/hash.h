@@ -59,7 +59,7 @@ struct HashGenerator {
     }
 
     template<typename Container>
-    std::vector<Hash> hash(const Container& s) {
+    std::vector<Hash> hash(const Container& s) const {
         std::vector<Hash> res(s.size());
         for (size_t i = 0; i < s.size(); i++) {
             res[i] = p[i] * (int) s[i];
@@ -68,14 +68,14 @@ struct HashGenerator {
         return res;
     }
 
-    Hash getHash(const std::vector<Hash>& h, int l, int r) {
+    Hash getHash(const std::vector<Hash>& h, int l, int r) const {
         return __getHash(h, l, r) * p[p.size() - 1 - l];
     }
 
     // compare [l1, r1] vs [l2, r2]
     bool equals(
             const std::vector<Hash>& h1, int l1, int r1,
-            const std::vector<Hash>& h2, int l2, int r2) {
+            const std::vector<Hash>& h2, int l2, int r2) const {
         assert(0 <= l1 && l1 <= r1 && r1 < (int) h1.size());
         assert(0 <= l2 && l2 <= r2 && r2 < (int) h2.size());
         if (r1 - l1 != r2 - l2) return false;
@@ -87,7 +87,7 @@ struct HashGenerator {
     // length = 0 -> first character of 2 substrings are different.
     int maxCommonPrefix(
             const std::vector<Hash>& h1, int l1, int r1,
-            const std::vector<Hash>& h2, int l2, int r2) {
+            const std::vector<Hash>& h2, int l2, int r2) const {
         assert(0 <= l1 && l1 <= r1 && r1 < (int) h1.size());
         assert(0 <= l2 && l2 <= r2 && r2 < (int) h2.size());
 
@@ -117,10 +117,10 @@ struct HashGenerator {
     }
 
     // compare s1[l1, r1] and s2[l2, r2]
-    template<typename Container>
+    template<typename Container1, typename Container2>
     int cmp(
-            const Container& s1, const std::vector<Hash>& h1, int l1, int r1,
-            const Container& s2, const std::vector<Hash>& h2, int l2, int r2) {
+            const Container1& s1, const std::vector<Hash>& h1, int l1, int r1,
+            const Container2& s2, const std::vector<Hash>& h2, int l2, int r2) const {
         assert(0 <= l1 && l1 <= r1 && r1 < (int) h1.size());
         assert(0 <= l2 && l2 <= r2 && r2 < (int) h2.size());
 
@@ -135,7 +135,7 @@ private:
     std::vector<Hash> p;
 
     // DO NOT USE, this doesn't divide by p[l]
-    Hash __getHash(const std::vector<Hash>& h, int l, int r) {
+    Hash __getHash(const std::vector<Hash>& h, int l, int r) const {
         assert(0 <= l && l <= r && r < (int) h.size());
         return h[r] - (l == 0 ? Hash{0, 0} : h[l-1]);
     }
