@@ -12,7 +12,7 @@ int32_t main() {
     vector<int> a(n);
     for (int& x : a) cin >> x;
 
-    WaveletMatrix wm(a);
+    WaveletMatrix<int> wm(a);
     while (q--) {
         int l, r, k; cin >> l >> r >> k;
         cout << wm.k_th(l, r, k) << '\n';

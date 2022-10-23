@@ -11,7 +11,7 @@ int32_t main() {
     vector<int> a(n);
     for (int& x : a) cin >> x;
 
-    WaveletMatrix wm(a);
+    WaveletMatrix<int> wm(a);
     while (q--) {
         int l, r, x; cin >> l >> r >> x;
         cout << wm.range_count(l, r, x, x+1) << '\n';
