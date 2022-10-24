@@ -6,6 +6,7 @@
 // - https://www.spoj.com/problems/ALIENS/
 // - https://www.spoj.com/problems/QCJ4/
 // - https://www.acmicpc.net/problem/2626
+// - https://oj.vnoi.info/problem/icpc22_mt_l
 
 struct SmallestEnclosingCircle {
     Circle getCircle(vector<Point> points) {
