@@ -184,29 +184,30 @@ data:
     \n// Smallest enclosing circle:\n// Given N points. Find the smallest circle enclosing\
     \ these points.\n// Amortized complexity: O(N)\n//\n// Tested:\n// - https://www.spoj.com/problems/ALIENS/\n\
     // - https://www.spoj.com/problems/QCJ4/\n// - https://www.acmicpc.net/problem/2626\n\
-    \nstruct SmallestEnclosingCircle {\n    Circle getCircle(vector<Point> points)\
-    \ {\n        assert(!points.empty());\n\n        random_shuffle(points.begin(),\
-    \ points.end());\n        Circle c(points[0], 0);\n        int n = points.size();\n\
-    \n        for (int i = 1; i < n; i++)\n            if ((points[i] - c).len() >\
-    \ c.r + EPS)\n            {\n                c = Circle(points[i], 0);\n     \
-    \           for (int j = 0; j < i; j++)\n                    if ((points[j] -\
-    \ c).len() > c.r + EPS)\n                    {\n                        c = Circle((points[i]\
-    \ + points[j]) / 2, (points[i] - points[j]).len() / 2);\n                    \
-    \    for (int k = 0; k < j; k++)\n                            if ((points[k] -\
-    \ c).len() > c.r + EPS)\n                                c = getCircumcircle(points[i],\
-    \ points[j], points[k]);\n                    }\n            }\n\n        return\
-    \ c;\n    }\n\n    // NOTE: This code work only when a, b, c are not collinear\
-    \ and no 2 points are same --> DO NOT\n    // copy and use in other cases.\n \
-    \   Circle getCircumcircle(Point a, Point b, Point c) {\n        assert(a != b\
-    \ && b != c && a != c);\n        assert(ccw(a, b, c));\n\n        double d = 2.0\
-    \ * (a.x * (b.y - c.y) + b.x * (c.y - a.y) + c.x * (a.y - b.y));\n        assert(fabs(d)\
-    \ > EPS);\n        double x = (a.norm() * (b.y - c.y) + b.norm() * (c.y - a.y)\
-    \ + c.norm() * (a.y - b.y)) / d;\n        double y = (a.norm() * (c.x - b.x) +\
-    \ b.norm() * (a.x - c.x) + c.norm() * (b.x - a.x)) / d;\n        Point p(x, y);\n\
-    \        return Circle(p, (p - a).len());\n    }\n};\n#line 5 \"Geometry/SPOJ_ALIENS.cpp\"\
-    \n\nint main()\n{\n    int test, n;\n    double x, y;\n\n    cin >> test;\n  \
-    \  while (test--) {\n        cin >> n;\n        vector<Point> points;\n      \
-    \  while (n--) {\n            scanf(\"%lf%lf\", &x, &y);\n            points.push_back(Point(x,\
+    // - https://oj.vnoi.info/problem/icpc22_mt_l\n\nstruct SmallestEnclosingCircle\
+    \ {\n    Circle getCircle(vector<Point> points) {\n        assert(!points.empty());\n\
+    \n        random_shuffle(points.begin(), points.end());\n        Circle c(points[0],\
+    \ 0);\n        int n = points.size();\n\n        for (int i = 1; i < n; i++)\n\
+    \            if ((points[i] - c).len() > c.r + EPS)\n            {\n         \
+    \       c = Circle(points[i], 0);\n                for (int j = 0; j < i; j++)\n\
+    \                    if ((points[j] - c).len() > c.r + EPS)\n                \
+    \    {\n                        c = Circle((points[i] + points[j]) / 2, (points[i]\
+    \ - points[j]).len() / 2);\n                        for (int k = 0; k < j; k++)\n\
+    \                            if ((points[k] - c).len() > c.r + EPS)\n        \
+    \                        c = getCircumcircle(points[i], points[j], points[k]);\n\
+    \                    }\n            }\n\n        return c;\n    }\n\n    // NOTE:\
+    \ This code work only when a, b, c are not collinear and no 2 points are same\
+    \ --> DO NOT\n    // copy and use in other cases.\n    Circle getCircumcircle(Point\
+    \ a, Point b, Point c) {\n        assert(a != b && b != c && a != c);\n      \
+    \  assert(ccw(a, b, c));\n\n        double d = 2.0 * (a.x * (b.y - c.y) + b.x\
+    \ * (c.y - a.y) + c.x * (a.y - b.y));\n        assert(fabs(d) > EPS);\n      \
+    \  double x = (a.norm() * (b.y - c.y) + b.norm() * (c.y - a.y) + c.norm() * (a.y\
+    \ - b.y)) / d;\n        double y = (a.norm() * (c.x - b.x) + b.norm() * (a.x -\
+    \ c.x) + c.norm() * (b.x - a.x)) / d;\n        Point p(x, y);\n        return\
+    \ Circle(p, (p - a).len());\n    }\n};\n#line 5 \"Geometry/SPOJ_ALIENS.cpp\"\n\
+    \nint main()\n{\n    int test, n;\n    double x, y;\n\n    cin >> test;\n    while\
+    \ (test--) {\n        cin >> n;\n        vector<Point> points;\n        while\
+    \ (n--) {\n            scanf(\"%lf%lf\", &x, &y);\n            points.push_back(Point(x,\
     \ y));\n        }\n\n        SmallestEnclosingCircle scc;\n        Circle c =\
     \ scc.getCircle(points);\n        printf(\"%.2lf\\n%.2lf %.2lf\\n\", c.r, c.x,\
     \ c.y);\n    }\n}\n\n"
@@ -225,7 +226,7 @@ data:
   isVerificationFile: false
   path: Geometry/SPOJ_ALIENS.cpp
   requiredBy: []
-  timestamp: '2022-02-06 13:43:52+08:00'
+  timestamp: '2022-10-24 15:47:24+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Geometry/SPOJ_ALIENS.cpp
