@@ -6,11 +6,15 @@
 //   --> see this comment for how to handle it: https://codeforces.com/blog/entry/67637?#comment-650424
 // - Not using template here, since inheritance becomes very ugly
 // - Doesn't support lazy update (so no subtree updates)
+// - For query on *edge* weights (instead of vertex weights)
+//   --> for each edge, add a new node in LinkCut tree.
+//       See https://oj.vnoi.info/problem/icpc22_mn_b for example
 //
 // Tested:
 // - https://judge.yosupo.jp/problem/dynamic_tree_subtree_add_subtree_sum
 // - https://judge.yosupo.jp/problem/dynamic_tree_vertex_set_path_composite
 // - https://judge.yosupo.jp/problem/dynamic_tree_vertex_add_subtree_sum
+// - (edge weights) https://oj.vnoi.info/problem/icpc22_mn_b
 
 // Add this for path queries only
 // #define PATH_QUERIES_ONLY
