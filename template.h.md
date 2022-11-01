@@ -27,9 +27,6 @@ data:
     path: Misc/Die.cpp
     title: Misc/Die.cpp
   - icon: ':warning:'
-    path: String/eertree.cpp
-    title: String/eertree.cpp
-  - icon: ':warning:'
     path: String/lyndon.cpp
     title: String/lyndon.cpp
   - icon: ':warning:'
@@ -300,7 +297,6 @@ data:
   requiredBy:
   - String/minmove.cpp
   - String/lyndon.cpp
-  - String/eertree.cpp
   - Misc/Die.cpp
   - Math/Polynomial/VOJ_POST2.cpp
   - DP/knuth.cpp

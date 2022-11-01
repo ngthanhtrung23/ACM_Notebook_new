@@ -1,83 +1,81 @@
 ---
 data:
-  _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
-    path: template.h
-    title: template.h
+  _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    links: []
-  bundledCode: "#line 1 \"template.h\"\n#include <bits/stdc++.h>\nusing namespace\
-    \ std;\n\n#define FOR(i,a,b) for(int i=(a),_b=(b); i<=_b; i++)\n#define FORD(i,a,b)\
-    \ for(int i=(a),_b=(b); i>=_b; i--)\n#define REP(i,a) for(int i=0,_a=(a); i<_a;\
-    \ i++)\n#define EACH(it,a) for(__typeof(a.begin()) it = a.begin(); it != a.end();\
-    \ ++it)\n\n#define DEBUG(x) { cout << #x << \" = \"; cout << (x) << endl; }\n\
-    #define PR(a,n) { cout << #a << \" = \"; FOR(_,1,n) cout << a[_] << ' '; cout\
-    \ << endl; }\n#define PR0(a,n) { cout << #a << \" = \"; REP(_,n) cout << a[_]\
-    \ << ' '; cout << endl; }\n\n#define sqr(x) ((x) * (x))\n\n// For printing pair,\
-    \ container, etc.\n// Copied from https://quangloc99.github.io/2021/07/30/my-CP-debugging-template.html\n\
-    template<class U, class V> ostream& operator << (ostream& out, const pair<U, V>&\
-    \ p) {\n    return out << '(' << p.first << \", \" << p.second << ')';\n}\n\n\
-    template<class Con, class = decltype(begin(declval<Con>()))>\ntypename enable_if<!is_same<Con,\
-    \ string>::value, ostream&>::type\noperator << (ostream& out, const Con& con)\
-    \ {\n    out << '{';\n    for (auto beg = con.begin(), it = beg; it != con.end();\
-    \ it++) {\n        out << (it == beg ? \"\" : \", \") << *it;\n    }\n    return\
-    \ out << '}';\n}\ntemplate<size_t i, class T> ostream& print_tuple_utils(ostream&\
-    \ out, const T& tup) {\n    if constexpr(i == tuple_size<T>::value) return out\
-    \ << \")\"; \n    else return print_tuple_utils<i + 1, T>(out << (i ? \", \" :\
-    \ \"(\") << get<i>(tup), tup); \n}\ntemplate<class ...U> ostream& operator <<\
-    \ (ostream& out, const tuple<U...>& t) {\n    return print_tuple_utils<0, tuple<U...>>(out,\
-    \ t);\n}\n\nmt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());\n\
-    long long get_rand(long long r) {\n    return uniform_int_distribution<long long>\
-    \ (0, r-1)(rng);\n}\n\ntemplate<typename T>\nvector<T> read_vector(int n) {\n\
-    \    vector<T> res(n);\n    for (int& x : res) cin >> x;\n    return res;\n}\n\
-    \nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n  \
-    \  solve();\n    return 0;\n}\n#line 2 \"String/eertree.cpp\"\n\nconst int MAXN\
-    \ = 105000;\n\nstruct node {\n\tint next[26];\n\tint len;\n\tint sufflink;\n};\n\
-    \nint len;\nchar s[MAXN];\nnode tree[MAXN]; \nint num; \t\t\t// node 1 - root\
-    \ with len -1, node 2 - root with len 0\nint suff; \t\t\t// max suffix palindrome\n\
-    \nbool addLetter(int pos) {\n\tint cur = suff, curlen = 0;\n\tint let = s[pos]\
-    \ - 'a';\n\n\twhile (true) {\n\t\tcurlen = tree[cur].len;\n\t\tif (pos - 1 - curlen\
-    \ >= 0 && s[pos - 1 - curlen] == s[pos])    \t\n\t\t\tbreak;\t\n\t\tcur = tree[cur].sufflink;\n\
-    \t}\t\t\n\tif (tree[cur].next[let]) {\t\n\t\tsuff = tree[cur].next[let];\n\t\t\
-    return false;\n\t}\n\n\tnum++;\n\tsuff = num;\n\ttree[num].len = tree[cur].len\
-    \ + 2;\n\ttree[cur].next[let] = num;\n\n\tif (tree[num].len == 1) {\n\t\ttree[num].sufflink\
-    \ = 2;\n\t\treturn true;\n\t}\n\n\twhile (true) {\n\t\tcur = tree[cur].sufflink;\n\
-    \t\tcurlen = tree[cur].len;\n\t\tif (pos - 1 - curlen >= 0 && s[pos - 1 - curlen]\
-    \ == s[pos]) {\n\t\t\ttree[num].sufflink = tree[cur].next[let];\n\t\t\tbreak;\n\
-    \t\t}    \t\n\t}           \n\n\treturn true;\n}\n\nvoid initTree() {\n\tnum =\
-    \ 2; suff = 2;\n\ttree[1].len = -1; tree[1].sufflink = 1;\n\ttree[2].len = 0;\
-    \ tree[2].sufflink = 1;\n}\n\nint solve() {\n\tscanf(\"%s\\n\", &s[0]);\n\tlen\
-    \ = strlen(s);\n\tinitTree();\n\tfor (int i = 0; i < len; i++) {\n\t\taddLetter(i);\n\
-    \t}\n\treturn 0;\n} \n"
-  code: "#include \"template.h\"\n\nconst int MAXN = 105000;\n\nstruct node {\n\t\
-    int next[26];\n\tint len;\n\tint sufflink;\n};\n\nint len;\nchar s[MAXN];\nnode\
-    \ tree[MAXN]; \nint num; \t\t\t// node 1 - root with len -1, node 2 - root with\
-    \ len 0\nint suff; \t\t\t// max suffix palindrome\n\nbool addLetter(int pos) {\n\
-    \tint cur = suff, curlen = 0;\n\tint let = s[pos] - 'a';\n\n\twhile (true) {\n\
-    \t\tcurlen = tree[cur].len;\n\t\tif (pos - 1 - curlen >= 0 && s[pos - 1 - curlen]\
-    \ == s[pos])    \t\n\t\t\tbreak;\t\n\t\tcur = tree[cur].sufflink;\n\t}\t\t\n\t\
-    if (tree[cur].next[let]) {\t\n\t\tsuff = tree[cur].next[let];\n\t\treturn false;\n\
-    \t}\n\n\tnum++;\n\tsuff = num;\n\ttree[num].len = tree[cur].len + 2;\n\ttree[cur].next[let]\
-    \ = num;\n\n\tif (tree[num].len == 1) {\n\t\ttree[num].sufflink = 2;\n\t\treturn\
-    \ true;\n\t}\n\n\twhile (true) {\n\t\tcur = tree[cur].sufflink;\n\t\tcurlen =\
-    \ tree[cur].len;\n\t\tif (pos - 1 - curlen >= 0 && s[pos - 1 - curlen] == s[pos])\
-    \ {\n\t\t\ttree[num].sufflink = tree[cur].next[let];\n\t\t\tbreak;\n\t\t}    \t\
-    \n\t}           \n\n\treturn true;\n}\n\nvoid initTree() {\n\tnum = 2; suff =\
-    \ 2;\n\ttree[1].len = -1; tree[1].sufflink = 1;\n\ttree[2].len = 0; tree[2].sufflink\
-    \ = 1;\n}\n\nint solve() {\n\tscanf(\"%s\\n\", &s[0]);\n\tlen = strlen(s);\n\t\
-    initTree();\n\tfor (int i = 0; i < len; i++) {\n\t\taddLetter(i);\n\t}\n\treturn\
-    \ 0;\n} \n"
-  dependsOn:
-  - template.h
+    links:
+    - https://oj.vnoi.info/problem/icpc22_mn_d
+  bundledCode: "#line 1 \"String/eertree.cpp\"\n// Palindrome Tree {{{\n// Notes:\n\
+    // - number of *distinct* palindrome substring <= N\n// Tested:\n// - https://oj.vnoi.info/problem/icpc22_mn_d\n\
+    template<int MAXC = 26>\nstruct PalindromicTree {\n    PalindromicTree(const string&\
+    \ str)\n            : _sz(str.size() + 5),\n              next(_sz, vector<int>\
+    \ (MAXC, 0)),\n              link(_sz, 0), qlink(_sz, 0),\n              cnt(_sz,\
+    \ 0), right_id(_sz, 0),\n              len(_sz, 0), s(_sz, 0) {\n        init();\n\
+    \        for (int i = 0; i < (int) str.size(); ++i) {\n            add(str[i],\
+    \ i);\n        }\n        count();\n    }\n    int _sz;\n\n    // returns vector\
+    \ of (left, right, frequency)\n    vector<tuple<int,int,int>> get_palindromes()\
+    \ {\n        vector<tuple<int,int,int>> res;\n        dfs(0, res);\n        dfs(1,\
+    \ res);\n        return res;\n    }\n\n    void dfs(int u, vector<tuple<int,int,int>>&\
+    \ res) {\n        if (u > 1) {  // u = 0 and u = 1 are two empty nodes\n     \
+    \       res.emplace_back(right_id[u] - len[u] + 1, right_id[u], cnt[u]);\n   \
+    \     }\n        for (int i = 0; i < MAXC; ++i) {\n            if (next[u][i])\
+    \ dfs(next[u][i], res);\n        }\n    }\n\n    int last, n, p;\n    vector<vector<int>>\
+    \ next, dlink;\n    vector<int> link, qlink, cnt, right_id, len, s;\n\n    int\
+    \ newnode(int l, int right) {\n        len[p] = l;\n        right_id[p] = right;\n\
+    \        return p++;\n    }\n    void init() {\n        p = 0;\n        newnode(0,\
+    \ -1), newnode(-1, -1);\n        n = last = 0;\n        s[n] = -1, link[0] = 1;\n\
+    \    }\n    int getlink(int x) {\n        while (s[n - len[x] - 1] != s[n]) {\n\
+    \            if (s[n - len[link[x]] - 1] == s[n]) x = link[x];\n            else\
+    \ x = qlink[x];\n        }\n        return x;\n    }\n    void add(char c, int\
+    \ right) {\n        c -= 'a';\n        s[++n] = c;\n        int cur = getlink(last);\n\
+    \        if (!next[cur][(int) c]) {\n            int now = newnode(len[cur] +\
+    \ 2, right);\n            link[now] = next[getlink(link[cur])][(int) c];\n   \
+    \         next[cur][(int) c] = now;\n            if (s[n - len[link[now]]] ==\
+    \ s[n - len[link[link[now]]]]) {\n                qlink[now] = qlink[link[now]];\n\
+    \            }\n            else {\n                qlink[now] = link[link[now]];\n\
+    \            }\n        }\n        last = next[cur][(int) c];\n        cnt[last]++;\n\
+    \    }\n    void count() {\n        for (int i = p - 1; i >= 0; i--) {\n     \
+    \       cnt[link[i]] += cnt[i];\n        }\n    }\n};\n// }}}\n"
+  code: "// Palindrome Tree {{{\n// Notes:\n// - number of *distinct* palindrome substring\
+    \ <= N\n// Tested:\n// - https://oj.vnoi.info/problem/icpc22_mn_d\ntemplate<int\
+    \ MAXC = 26>\nstruct PalindromicTree {\n    PalindromicTree(const string& str)\n\
+    \            : _sz(str.size() + 5),\n              next(_sz, vector<int> (MAXC,\
+    \ 0)),\n              link(_sz, 0), qlink(_sz, 0),\n              cnt(_sz, 0),\
+    \ right_id(_sz, 0),\n              len(_sz, 0), s(_sz, 0) {\n        init();\n\
+    \        for (int i = 0; i < (int) str.size(); ++i) {\n            add(str[i],\
+    \ i);\n        }\n        count();\n    }\n    int _sz;\n\n    // returns vector\
+    \ of (left, right, frequency)\n    vector<tuple<int,int,int>> get_palindromes()\
+    \ {\n        vector<tuple<int,int,int>> res;\n        dfs(0, res);\n        dfs(1,\
+    \ res);\n        return res;\n    }\n\n    void dfs(int u, vector<tuple<int,int,int>>&\
+    \ res) {\n        if (u > 1) {  // u = 0 and u = 1 are two empty nodes\n     \
+    \       res.emplace_back(right_id[u] - len[u] + 1, right_id[u], cnt[u]);\n   \
+    \     }\n        for (int i = 0; i < MAXC; ++i) {\n            if (next[u][i])\
+    \ dfs(next[u][i], res);\n        }\n    }\n\n    int last, n, p;\n    vector<vector<int>>\
+    \ next, dlink;\n    vector<int> link, qlink, cnt, right_id, len, s;\n\n    int\
+    \ newnode(int l, int right) {\n        len[p] = l;\n        right_id[p] = right;\n\
+    \        return p++;\n    }\n    void init() {\n        p = 0;\n        newnode(0,\
+    \ -1), newnode(-1, -1);\n        n = last = 0;\n        s[n] = -1, link[0] = 1;\n\
+    \    }\n    int getlink(int x) {\n        while (s[n - len[x] - 1] != s[n]) {\n\
+    \            if (s[n - len[link[x]] - 1] == s[n]) x = link[x];\n            else\
+    \ x = qlink[x];\n        }\n        return x;\n    }\n    void add(char c, int\
+    \ right) {\n        c -= 'a';\n        s[++n] = c;\n        int cur = getlink(last);\n\
+    \        if (!next[cur][(int) c]) {\n            int now = newnode(len[cur] +\
+    \ 2, right);\n            link[now] = next[getlink(link[cur])][(int) c];\n   \
+    \         next[cur][(int) c] = now;\n            if (s[n - len[link[now]]] ==\
+    \ s[n - len[link[link[now]]]]) {\n                qlink[now] = qlink[link[now]];\n\
+    \            }\n            else {\n                qlink[now] = link[link[now]];\n\
+    \            }\n        }\n        last = next[cur][(int) c];\n        cnt[last]++;\n\
+    \    }\n    void count() {\n        for (int i = p - 1; i >= 0; i--) {\n     \
+    \       cnt[link[i]] += cnt[i];\n        }\n    }\n};\n// }}}\n"
+  dependsOn: []
   isVerificationFile: false
   path: String/eertree.cpp
   requiredBy: []
-  timestamp: '2022-01-13 13:16:22+08:00'
+  timestamp: '2022-11-01 15:19:12+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: String/eertree.cpp

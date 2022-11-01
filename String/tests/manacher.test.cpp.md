@@ -16,9 +16,9 @@ data:
     - https://judge.yosupo.jp/problem/enumerate_palindromes
   bundledCode: "#line 1 \"String/tests/manacher.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/enumerate_palindromes\"\
     \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#line 1 \"String/manacher.h\"\
-    \n// Return <even_len, odd_len>\n// - even_len[i] = length of longest palindrome\
-    \ centered at [i, i+1]\n// - odd_len[i] = length of longest palindrome centered\
-    \ at i\n//\n// Tested:\n// - https://judge.yosupo.jp/problem/enumerate_palindromes\n\
+    \n// Manacher {{{\n// Return <even_len, odd_len>\n// - even_len[i] = length of\
+    \ longest palindrome centered at [i, i+1]\n// - odd_len[i] = length of longest\
+    \ palindrome centered at i\n//\n// Tested:\n// - https://judge.yosupo.jp/problem/enumerate_palindromes\n\
     // - https://oj.vnoi.info/problem/paliny\nstd::array<vector<int>, 2> manacher(const\
     \ string& s) {\n    int n = s.size();\n    std::array res = {vector<int> (n+1,\
     \ 0), vector<int> (n, 0)};\n\n    for (int z = 0; z < 2; z++) {\n        for (int\
@@ -30,8 +30,8 @@ data:
     \     l = l2;\n                r = r2;\n            }\n        }\n        for\
     \ (int i = 0; i < n; i++) {\n            res[z][i] = 2*res[z][i] + z;\n      \
     \  }\n    }\n    res[0].erase(res[0].begin(), res[0].begin() + 1);\n    res[0].pop_back();\n\
-    \    return res;\n}\n#line 7 \"String/tests/manacher.test.cpp\"\n\n#define REP(i,\
-    \ a) for (int i = 0, _##i = (a); i < _##i; ++i)\n#define SZ(x) ((int)(x).size())\n\
+    \    return res;\n}\n// }}}\n#line 7 \"String/tests/manacher.test.cpp\"\n\n#define\
+    \ REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)\n#define SZ(x) ((int)(x).size())\n\
     \nint32_t main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n    string s; cin\
     \ >> s;\n    auto [even, odd] = manacher(s);\n\n    REP(i,SZ(s)) {\n        cout\
     \ << odd[i] << ' ';\n        if (i+1 < SZ(s)) cout << even[i] << ' ';\n    }\n\
@@ -48,7 +48,7 @@ data:
   isVerificationFile: true
   path: String/tests/manacher.test.cpp
   requiredBy: []
-  timestamp: '2022-01-06 05:58:33+08:00'
+  timestamp: '2022-11-01 15:19:12+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: String/tests/manacher.test.cpp
