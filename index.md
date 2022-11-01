@@ -465,12 +465,12 @@ data:
     - icon: ':warning:'
       path: String/DC3SuffixArray.h
       title: String/DC3SuffixArray.h
+    - icon: ':warning:'
+      path: String/PalindromeTree_eertree.cpp
+      title: String/PalindromeTree_eertree.cpp
     - icon: ':heavy_check_mark:'
       path: String/SuffixArray.h
       title: String/SuffixArray.h
-    - icon: ':warning:'
-      path: String/eertree.cpp
-      title: String/eertree.cpp
     - icon: ':heavy_check_mark:'
       path: String/hash.h
       title: String/hash.h

@@ -91,16 +91,20 @@ data:
     // - Index from 1\n// - T needs to support + operation\n//   For subtree queries\
     \ -> requires - operation\n//   --> see this comment for how to handle it: https://codeforces.com/blog/entry/67637?#comment-650424\n\
     // - Not using template here, since inheritance becomes very ugly\n// - Doesn't\
-    \ support lazy update (so no subtree updates)\n//\n// Tested:\n// - https://judge.yosupo.jp/problem/dynamic_tree_subtree_add_subtree_sum\n\
+    \ support lazy update (so no subtree updates)\n// - For query on *edge* weights\
+    \ (instead of vertex weights)\n//   --> for each edge, add a new node in LinkCut\
+    \ tree.\n//       See https://oj.vnoi.info/problem/icpc22_mn_b for example\n//\n\
+    // Tested:\n// - https://judge.yosupo.jp/problem/dynamic_tree_subtree_add_subtree_sum\n\
     // - https://judge.yosupo.jp/problem/dynamic_tree_vertex_set_path_composite\n\
-    // - https://judge.yosupo.jp/problem/dynamic_tree_vertex_add_subtree_sum\n\n//\
-    \ Add this for path queries only\n// #define PATH_QUERIES_ONLY\n\n// TODO: Specify\
-    \ T\n// using T = long long;\n// SplayTree {{{\nstruct SplayTree { // can we replace\
-    \ SplayTreeById and use this only?\n    struct Node {\n        array<int, 2> child\
-    \ = {0, 0};\n        int parent = 0;\n\n        // Path aggregates\n        //\
-    \ - path[0] = go from left -> right\n        // - path[1] = go from right -> left\n\
-    \        array<T, 2> path;  // default to T constructor\n        T self;\n\n \
-    \       // Subtree aggregates\n        T sub, vir;\n\n        bool reverse = false;\n\
+    // - https://judge.yosupo.jp/problem/dynamic_tree_vertex_add_subtree_sum\n// -\
+    \ (edge weights) https://oj.vnoi.info/problem/icpc22_mn_b\n\n// Add this for path\
+    \ queries only\n// #define PATH_QUERIES_ONLY\n\n// TODO: Specify T\n// using T\
+    \ = long long;\n// SplayTree {{{\nstruct SplayTree { // can we replace SplayTreeById\
+    \ and use this only?\n    struct Node {\n        array<int, 2> child = {0, 0};\n\
+    \        int parent = 0;\n\n        // Path aggregates\n        // - path[0] =\
+    \ go from left -> right\n        // - path[1] = go from right -> left\n      \
+    \  array<T, 2> path;  // default to T constructor\n        T self;\n\n       \
+    \ // Subtree aggregates\n        T sub, vir;\n\n        bool reverse = false;\n\
     \    };\n    vector<Node> nodes;\n\n    SplayTree(int n) : nodes(n + 1) {}\n\n\
     \    void splay(int x) {\n        for (pushDown(x); ~getDirection(x); ) {\n  \
     \          int y = nodes[x].parent;\n            int z = nodes[y].parent;\n  \
@@ -204,7 +208,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp
   requiredBy: []
-  timestamp: '2022-11-01 15:19:12+08:00'
+  timestamp: '2022-11-01 16:26:05+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp
