@@ -1,68 +1,85 @@
-#include "template.h"
+// Palindrome Tree {{{
+// Notes:
+// - number of *distinct* palindrome substring <= N
+// Tested:
+// - https://oj.vnoi.info/problem/icpc22_mn_d
+template<int MAXC = 26>
+struct PalindromicTree {
+    PalindromicTree(const string& str)
+            : _sz(str.size() + 5),
+              next(_sz, vector<int> (MAXC, 0)),
+              link(_sz, 0), qlink(_sz, 0),
+              cnt(_sz, 0), right_id(_sz, 0),
+              len(_sz, 0), s(_sz, 0) {
+        init();
+        for (int i = 0; i < (int) str.size(); ++i) {
+            add(str[i], i);
+        }
+        count();
+    }
+    int _sz;
 
-const int MAXN = 105000;
+    // returns vector of (left, right, frequency)
+    vector<tuple<int,int,int>> get_palindromes() {
+        vector<tuple<int,int,int>> res;
+        dfs(0, res);
+        dfs(1, res);
+        return res;
+    }
 
-struct node {
-	int next[26];
-	int len;
-	int sufflink;
+    void dfs(int u, vector<tuple<int,int,int>>& res) {
+        if (u > 1) {  // u = 0 and u = 1 are two empty nodes
+            res.emplace_back(right_id[u] - len[u] + 1, right_id[u], cnt[u]);
+        }
+        for (int i = 0; i < MAXC; ++i) {
+            if (next[u][i]) dfs(next[u][i], res);
+        }
+    }
+
+    int last, n, p;
+    vector<vector<int>> next, dlink;
+    vector<int> link, qlink, cnt, right_id, len, s;
+
+    int newnode(int l, int right) {
+        len[p] = l;
+        right_id[p] = right;
+        return p++;
+    }
+    void init() {
+        p = 0;
+        newnode(0, -1), newnode(-1, -1);
+        n = last = 0;
+        s[n] = -1, link[0] = 1;
+    }
+    int getlink(int x) {
+        while (s[n - len[x] - 1] != s[n]) {
+            if (s[n - len[link[x]] - 1] == s[n]) x = link[x];
+            else x = qlink[x];
+        }
+        return x;
+    }
+    void add(char c, int right) {
+        c -= 'a';
+        s[++n] = c;
+        int cur = getlink(last);
+        if (!next[cur][(int) c]) {
+            int now = newnode(len[cur] + 2, right);
+            link[now] = next[getlink(link[cur])][(int) c];
+            next[cur][(int) c] = now;
+            if (s[n - len[link[now]]] == s[n - len[link[link[now]]]]) {
+                qlink[now] = qlink[link[now]];
+            }
+            else {
+                qlink[now] = link[link[now]];
+            }
+        }
+        last = next[cur][(int) c];
+        cnt[last]++;
+    }
+    void count() {
+        for (int i = p - 1; i >= 0; i--) {
+            cnt[link[i]] += cnt[i];
+        }
+    }
 };
-
-int len;
-char s[MAXN];
-node tree[MAXN]; 
-int num; 			// node 1 - root with len -1, node 2 - root with len 0
-int suff; 			// max suffix palindrome
-
-bool addLetter(int pos) {
-	int cur = suff, curlen = 0;
-	int let = s[pos] - 'a';
-
-	while (true) {
-		curlen = tree[cur].len;
-		if (pos - 1 - curlen >= 0 && s[pos - 1 - curlen] == s[pos])    	
-			break;	
-		cur = tree[cur].sufflink;
-	}		
-	if (tree[cur].next[let]) {	
-		suff = tree[cur].next[let];
-		return false;
-	}
-
-	num++;
-	suff = num;
-	tree[num].len = tree[cur].len + 2;
-	tree[cur].next[let] = num;
-
-	if (tree[num].len == 1) {
-		tree[num].sufflink = 2;
-		return true;
-	}
-
-	while (true) {
-		cur = tree[cur].sufflink;
-		curlen = tree[cur].len;
-		if (pos - 1 - curlen >= 0 && s[pos - 1 - curlen] == s[pos]) {
-			tree[num].sufflink = tree[cur].next[let];
-			break;
-		}    	
-	}           
-
-	return true;
-}
-
-void initTree() {
-	num = 2; suff = 2;
-	tree[1].len = -1; tree[1].sufflink = 1;
-	tree[2].len = 0; tree[2].sufflink = 1;
-}
-
-int solve() {
-	scanf("%s\n", &s[0]);
-	len = strlen(s);
-	initTree();
-	for (int i = 0; i < len; i++) {
-		addLetter(i);
-	}
-	return 0;
-} 
+// }}}

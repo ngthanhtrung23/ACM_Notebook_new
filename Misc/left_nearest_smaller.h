@@ -1,3 +1,4 @@
+// Nearest smaller {{{
 // Tested:
 // - https://cses.fi/problemset/task/1645
 // - https://cses.fi/problemset/task/1142
@@ -38,3 +39,4 @@ vector<int> rightNearestSmaller(const vector<int>& a) {
     }
     return right;
 }
+// }}}

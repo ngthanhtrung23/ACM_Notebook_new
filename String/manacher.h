@@ -1,3 +1,4 @@
+// Manacher {{{
 // Return <even_len, odd_len>
 // - even_len[i] = length of longest palindrome centered at [i, i+1]
 // - odd_len[i] = length of longest palindrome centered at i
@@ -33,3 +34,4 @@ std::array<vector<int>, 2> manacher(const string& s) {
     res[0].pop_back();
     return res;
 }
+// }}}

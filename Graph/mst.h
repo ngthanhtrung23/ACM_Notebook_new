@@ -14,12 +14,16 @@ struct Edge {
 bool operator < (const Edge& a, const Edge& b) {
     return a.c < b.c;
 }
+ostream& operator << (ostream& out, const Edge& e) {
+    out << e.u << " - " << e.v << " [" << e.c << ']';
+    return out;
+}
 std::pair<ll, std::vector<Edge>> mst(
         int n,
         std::vector<Edge> edges) {
     std::sort(edges.begin(), edges.end());
 
-    DSU dsu(n);
+    DSU dsu(n + 1);  // tolerate 1-based index
     ll total = 0;
     vector<Edge> tree;
     for (const auto& e : edges) {

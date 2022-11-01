@@ -17,6 +17,14 @@
 //       FOR(k = A[i][j-1]..A[i+1][j])
 //         update(dp[i][j])
 //     }
+// 
+// There is another type of Knuth in https://oj.vnoi.info/problem/icpc22_mn_c
+// - f[i][j] = min(f[i-1][last] + cost[last+1][j])
+// - cost satisfies quandrangle inequality
+//   FOR(i, 1, k)
+//     FORD(j, n, 1)
+//       FOR(last, opt[i-1][j], opt[i][j+1])
+//         update f[i][j] and A[i][j] using f[i-1][last] + cost[last+1][j]
 
 // OPTCUT
 #include "../template.h"

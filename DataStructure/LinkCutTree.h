@@ -1,4 +1,5 @@
-// Link Cut Tree; copied from https://codeforces.com/blog/entry/75885
+// Link Cut Tree {{{
+// copied from https://codeforces.com/blog/entry/75885
 // - Index from 1
 // - T needs to support + operation
 //   For subtree queries -> requires - operation
@@ -16,6 +17,7 @@
 
 // TODO: Specify T
 // using T = long long;
+// SplayTree {{{
 struct SplayTree { // can we replace SplayTreeById and use this only?
     struct Node {
         array<int, 2> child = {0, 0};
@@ -116,6 +118,7 @@ struct SplayTree { // can we replace SplayTreeById and use this only?
         pushUp(x);
     }
 };
+// }}}
 
 struct LinkCut : SplayTree {
     LinkCut(int n) : SplayTree(n) {}
@@ -124,7 +127,7 @@ struct LinkCut : SplayTree {
         reroot(u);
         access(v);
 
-        nodes[v].vir += nodes[u].sub;
+        nodes[v].vir = nodes[v].vir + nodes[u].sub;
         nodes[u].parent = v;
         pushUp(v);
     }
@@ -135,6 +138,14 @@ struct LinkCut : SplayTree {
 
         nodes[v].child[0] = nodes[u].parent = 0;
         pushUp(v);
+    }
+
+    // Returns 0 if u and v are not connected
+    int LCA(int u, int v) {
+        if (u == v) return u;
+        access(u);
+        int ret = access(v);
+        return nodes[u].parent ? ret : 0;
     }
 
     T getPath(int u, int v) {
@@ -171,7 +182,7 @@ struct LinkCut : SplayTree {
         for (; u; v = u, u = nodes[u].parent) {
             splay(u);
             int& ov = nodes[u].child[1];
-            nodes[u].vir += nodes[ov].sub;
+            nodes[u].vir = nodes[u].vir + nodes[ov].sub;
 #ifndef PATH_QUERIES_ONLY
             // T requires subtract for subtree queries
             nodes[u].vir -= nodes[v].sub;
@@ -208,3 +219,4 @@ struct T {
     }
 };
 */
+// }}}
