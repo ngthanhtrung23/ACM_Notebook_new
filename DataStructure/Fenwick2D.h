@@ -2,6 +2,13 @@
 // Note:
 // - already included coordinate compression, so any `int` coordinates
 //   should work
+// - For faster implementation which also supports Rectagle ADD, see:
+//   https://hitonanode.github.io/cplib-cpp/data_structure/rectangle_add_rectangle_sum.hpp
+//
+// If cannot use the struct directly (e.g. ICPC Vietnam national 2022 - G), do:
+// 1. fakeUpdate
+// 2. initNodes
+// 3. Queries
 //
 // Tested:
 // - https://judge.yosupo.jp/problem/rectangle_sum
@@ -59,13 +66,7 @@ struct Fenwick2D {
             }
         }
 
-        // init nodes
-        for (int i = 1; i <= sx; i++) {
-            nodes[i].push_back(INF);
-            sort(nodes[i].begin(), nodes[i].end());
-            nodes[i].erase(unique(nodes[i].begin(), nodes[i].end()), nodes[i].end());
-            f[i].resize(nodes[i].size() + 1);
-        }
+        initNodes();
 
         // answer queries
         vector<T> res;
@@ -89,6 +90,15 @@ struct Fenwick2D {
     vector<vector<int>> nodes;
     vector<vector<T>> f;
     int sx;
+
+    void initNodes() {
+        for (int i = 1; i <= sx; i++) {
+            nodes[i].push_back(INF);
+            sort(nodes[i].begin(), nodes[i].end());
+            nodes[i].erase(unique(nodes[i].begin(), nodes[i].end()), nodes[i].end());
+            f[i].resize(nodes[i].size() + 1);
+        }
+    }
 
     void fakeUpdate(int x, int y) {
         for (; x <= sx; x += x & -x)

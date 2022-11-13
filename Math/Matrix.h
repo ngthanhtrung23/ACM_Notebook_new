@@ -180,5 +180,23 @@ struct Matrix {
         *this = ret;
         return rank;
     }
+
+    // sum of [r1, r2) x [c1, c2)
+    T submatrix_sum(int r1, int c1, int r2, int c2) {
+        T res {0};
+        for (int r = r1; r < r2; ++r) {
+            res += std::accumulate(
+                    x.begin() + r * n_col + c1,
+                    x.begin() + r * n_col + c2,
+                    T{0});
+        }
+        return res;
+    }
 };
+template<typename T>
+ostream& operator << (ostream& cout, const Matrix<T>& m) {
+    cout << m.n_row << ' ' << m.n_col << endl;
+    cout << m.x << endl;
+    return cout;
+}
 // }}}

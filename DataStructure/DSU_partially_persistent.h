@@ -34,4 +34,8 @@ struct PartiallyPersistentDSU {
         lab[y] = x;
         t_unite[y] = t;
     }
+
+    bool same_component(int t, int u, int v) {
+        return getRoot(t, u) == getRoot(t, v);
+    }
 };

@@ -1,4 +1,4 @@
-// Berlekamp Massey
+// Berlekamp Massey {{{
 // Given sequence s0, ..., s(N-1)
 // Find sequence c1, ..., cd with minimum d (d >= 0), such that:
 //   si = sum(s(i-j) * c(j), for j = 1..d)
@@ -25,6 +25,7 @@
 // - (BM + find_kth) https://oj.vnoi.info/problem/selfdiv
 // - (find_kth) https://oj.vnoi.info/problem/errichto_matexp_fibonacci
 // - (find_kth) https://cses.fi/problemset/task/2181/
+// - 2022 ICPC Vietnam National - H
 
 // Returns c1, ..., cd
 template<typename T>
@@ -104,3 +105,4 @@ T solve(const vector<T> &c, const vector<T> &s, long long k) {
         ret += x[i] * s[i];
     return ret;
 }
+// }}}
