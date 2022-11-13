@@ -20,7 +20,7 @@ data:
     \ long get_rand(long long r) {\n    return uniform_int_distribution<long long>\
     \ (0, r-1)(rng);\n}\n\n#line 1 \"Math/NumberTheory/Pollard.h\"\n// Pollard {{{\n\
     // Copied from https://judge.yosupo.jp/submission/61447\n//\n// Tested:\n// -\
-    \ (up to 10^18) https://judge.yosupo.jp/problem/factorize\n// - https://oj.vnoi.info/problem/icpc21_beta_l\n\
+    \ (up to 10^18; 200 tests) https://judge.yosupo.jp/problem/factorize\n// - https://oj.vnoi.info/problem/icpc21_beta_l\n\
     \nusing ll = long long;\nusing ull = unsigned long long;\nusing ld = long double;\n\
     ll mult(ll x, ll y, ll md) {\n    ull q = (ld)x * y / md;\n    ll res = ((ull)x\
     \ * y - q * md);\n    if (res >= md) res -= md;\n    if (res < 0) res += md;\n\
@@ -80,7 +80,7 @@ data:
   isVerificationFile: true
   path: Math/tests/factorize.test.cpp
   requiredBy: []
-  timestamp: '2022-10-24 01:25:06+08:00'
+  timestamp: '2022-11-13 20:53:23+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Math/tests/factorize.test.cpp

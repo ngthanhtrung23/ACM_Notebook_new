@@ -8,66 +8,55 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links:
-    - https://en.wikipedia.org/wiki/Modular_arithmetic#Example_implementations
+    - https://github.com/kth-competitive-programming/kactl/blob/main/content/number-theory/ModMulLL.h
+    - https://oj.vnoi.info/problem/icpc22_national_c
+    - https://oj.vnoi.info/src/1816262)
   bundledCode: "#line 1 \"Math/Prime/RabinMiller.h\"\n// Use isPrime in Pollard.h\
-    \ instead\n\ntypedef long long ll;\n\n// mulMod and powMod is same as Math/modulo.h.\n\
-    // These 2 functions are duplicated here for easier copy-paste.\n\n/**\n * When\
-    \ MOD < 2^63, use following mulMod:\n * Source: https://en.wikipedia.org/wiki/Modular_arithmetic#Example_implementations\n\
-    \ * On computer architectures where an extended precision format with at least\
-    \ 64 bits\n * of mantissa is available (such as the long double type of most x86\
-    \ C compilers),\n * the following routine is faster than any algorithmic solution,\
-    \ by employing the\n * trick that, by hardware, floating-point multiplication\
-    \ results in the most\n * significant bits of the product kept, while integer\
-    \ multiplication results in the\n * least significant bits kept\n */\nuint64_t\
-    \ mulMod(uint64_t a, uint64_t b, uint64_t m) {\n    long double x;\n    uint64_t\
-    \ c;\n    int64_t r;\n\n    if (a >= m) a %= m;\n    if (b >= m) b %= m;\n\n \
-    \   x = a;\n    c = x * b / m;\n    r = (int64_t)(a * b - c * m) % (int64_t)m;\n\
-    \    return r < 0 ? r + m : r;\n}\n\n/** Calculates a^b % m */\nuint64_t powMod(uint64_t\
-    \ a, uint64_t b, uint64_t m) {\n    uint64_t r = m==1?0:1; // make it works when\
-    \ m == 1.\n    while (b > 0) {\n        if (b & 1) r = mulMod(r, a, m);\n    \
-    \    b = b >> 1;\n        a = mulMod(a, a, m);\n    }\n    return r;\n}\n\nbool\
-    \ suspect(ll a, ll s, ll d, ll n) {\n    ll x = powMod(a, d, n);\n    if (x ==\
-    \ 1) return true;\n    for (int r = 0; r < s; ++r) {\n        if (x == n - 1)\
-    \ return true;\n        x = mulMod(x, x, n);\n    }\n    return false;\n}\n//\
-    \ {2,7,61,-1}                      is for n < 4759123141 (= 2^32)\n// {2,3,5,7,11,13,17,19,23,-1}\
-    \ is for n < 10^15 (at least)\nbool isPrime(int64_t n) {\n    if (n <= 1 || (n\
-    \ > 2 && n % 2 == 0)) return false;\n    ll test[] = {2,3,5,7,11,13,17,19,23,-1};\n\
-    \    ll d = n - 1, s = 0;\n    while (d % 2 == 0) ++s, d /= 2;\n    for (int i\
-    \ = 0; test[i] < n && test[i] != -1; ++i)\n        if (!suspect(test[i], s, d,\
-    \ n)) return false;\n    return true;\n}\n// Killer prime: 5555555557LL (fail\
-    \ when not used mulMod)\n"
-  code: "// Use isPrime in Pollard.h instead\n\ntypedef long long ll;\n\n// mulMod\
-    \ and powMod is same as Math/modulo.h.\n// These 2 functions are duplicated here\
-    \ for easier copy-paste.\n\n/**\n * When MOD < 2^63, use following mulMod:\n *\
-    \ Source: https://en.wikipedia.org/wiki/Modular_arithmetic#Example_implementations\n\
-    \ * On computer architectures where an extended precision format with at least\
-    \ 64 bits\n * of mantissa is available (such as the long double type of most x86\
-    \ C compilers),\n * the following routine is faster than any algorithmic solution,\
-    \ by employing the\n * trick that, by hardware, floating-point multiplication\
-    \ results in the most\n * significant bits of the product kept, while integer\
-    \ multiplication results in the\n * least significant bits kept\n */\nuint64_t\
-    \ mulMod(uint64_t a, uint64_t b, uint64_t m) {\n    long double x;\n    uint64_t\
-    \ c;\n    int64_t r;\n\n    if (a >= m) a %= m;\n    if (b >= m) b %= m;\n\n \
-    \   x = a;\n    c = x * b / m;\n    r = (int64_t)(a * b - c * m) % (int64_t)m;\n\
-    \    return r < 0 ? r + m : r;\n}\n\n/** Calculates a^b % m */\nuint64_t powMod(uint64_t\
-    \ a, uint64_t b, uint64_t m) {\n    uint64_t r = m==1?0:1; // make it works when\
-    \ m == 1.\n    while (b > 0) {\n        if (b & 1) r = mulMod(r, a, m);\n    \
-    \    b = b >> 1;\n        a = mulMod(a, a, m);\n    }\n    return r;\n}\n\nbool\
-    \ suspect(ll a, ll s, ll d, ll n) {\n    ll x = powMod(a, d, n);\n    if (x ==\
-    \ 1) return true;\n    for (int r = 0; r < s; ++r) {\n        if (x == n - 1)\
-    \ return true;\n        x = mulMod(x, x, n);\n    }\n    return false;\n}\n//\
-    \ {2,7,61,-1}                      is for n < 4759123141 (= 2^32)\n// {2,3,5,7,11,13,17,19,23,-1}\
-    \ is for n < 10^15 (at least)\nbool isPrime(int64_t n) {\n    if (n <= 1 || (n\
-    \ > 2 && n % 2 == 0)) return false;\n    ll test[] = {2,3,5,7,11,13,17,19,23,-1};\n\
-    \    ll d = n - 1, s = 0;\n    while (d % 2 == 0) ++s, d /= 2;\n    for (int i\
-    \ = 0; test[i] < n && test[i] != -1; ++i)\n        if (!suspect(test[i], s, d,\
-    \ n)) return false;\n    return true;\n}\n// Killer prime: 5555555557LL (fail\
-    \ when not used mulMod)\n"
+    \ instead\n\n// Tested:\n// - (up to 10^19) https://oj.vnoi.info/problem/icpc22_national_c\n\
+    //\n// If TLE, try:\n// 1. If numbers are <= 7.2e18 -> use modMul from KACTL:\n\
+    //    https://github.com/kth-competitive-programming/kactl/blob/main/content/number-theory/ModMulLL.h\n\
+    // 2. Sieve and check for small primes separately\n// 3. Check divisible by first\
+    \ 50 primes (see https://oj.vnoi.info/src/1816262)\n\n#include <initializer_list>\n\
+    \nusing uint = unsigned long long;\nuint mult(uint x, uint y, uint mod) {\n  \
+    \  return __int128_t(x) * y % mod;\n}\n\nuint powMod(uint x, uint p, uint mod)\
+    \ {\n    if (p == 0) return 1;\n    if (p % 2) return mult(x, powMod(x, p - 1,\
+    \ mod), mod);\n    return powMod(mult(x, x, mod), p / 2, mod);\n}\n\nbool checkMillerRabin(uint\
+    \ x, uint mod, uint s, int k) {\n    x = powMod(x, s, mod);\n    if (x == 1) return\
+    \ true;\n    while(k--) {\n        if (x == mod - 1) return true;\n        x =\
+    \ mult(x, x, mod);\n        if (x == 1) return false;\n    }\n    return false;\n\
+    }\n\nbool is_prime(uint x) {\n    if (x == 2 || x == 3 || x == 5 || x == 7) return\
+    \ true;\n    if (x % 2 == 0 || x % 3 == 0 || x % 5 == 0 || x % 7 == 0) return\
+    \ false;\n    if (x < 121) return x > 1;\n\n    uint s = x - 1;\n    int k = 0;\n\
+    \    while (s % 2 == 0) {\n        s /= 2;\n        k++;\n    }\n    if (x < 1LL\
+    \ << 32) {\n        for (uint z : {2, 7, 61}) {\n            if (!checkMillerRabin(z,\
+    \ x, s, k)) return false;\n        }\n    } else {\n        for (uint z : {2,\
+    \ 325, 9375, 28178, 450775, 9780504, 1795265022}) {\n            if (!checkMillerRabin(z,\
+    \ x, s, k)) return false;\n        }\n    }\n    return true;\n}\n"
+  code: "// Use isPrime in Pollard.h instead\n\n// Tested:\n// - (up to 10^19) https://oj.vnoi.info/problem/icpc22_national_c\n\
+    //\n// If TLE, try:\n// 1. If numbers are <= 7.2e18 -> use modMul from KACTL:\n\
+    //    https://github.com/kth-competitive-programming/kactl/blob/main/content/number-theory/ModMulLL.h\n\
+    // 2. Sieve and check for small primes separately\n// 3. Check divisible by first\
+    \ 50 primes (see https://oj.vnoi.info/src/1816262)\n\n#include <initializer_list>\n\
+    \nusing uint = unsigned long long;\nuint mult(uint x, uint y, uint mod) {\n  \
+    \  return __int128_t(x) * y % mod;\n}\n\nuint powMod(uint x, uint p, uint mod)\
+    \ {\n    if (p == 0) return 1;\n    if (p % 2) return mult(x, powMod(x, p - 1,\
+    \ mod), mod);\n    return powMod(mult(x, x, mod), p / 2, mod);\n}\n\nbool checkMillerRabin(uint\
+    \ x, uint mod, uint s, int k) {\n    x = powMod(x, s, mod);\n    if (x == 1) return\
+    \ true;\n    while(k--) {\n        if (x == mod - 1) return true;\n        x =\
+    \ mult(x, x, mod);\n        if (x == 1) return false;\n    }\n    return false;\n\
+    }\n\nbool is_prime(uint x) {\n    if (x == 2 || x == 3 || x == 5 || x == 7) return\
+    \ true;\n    if (x % 2 == 0 || x % 3 == 0 || x % 5 == 0 || x % 7 == 0) return\
+    \ false;\n    if (x < 121) return x > 1;\n\n    uint s = x - 1;\n    int k = 0;\n\
+    \    while (s % 2 == 0) {\n        s /= 2;\n        k++;\n    }\n    if (x < 1LL\
+    \ << 32) {\n        for (uint z : {2, 7, 61}) {\n            if (!checkMillerRabin(z,\
+    \ x, s, k)) return false;\n        }\n    } else {\n        for (uint z : {2,\
+    \ 325, 9375, 28178, 450775, 9780504, 1795265022}) {\n            if (!checkMillerRabin(z,\
+    \ x, s, k)) return false;\n        }\n    }\n    return true;\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: Math/Prime/RabinMiller.h
   requiredBy: []
-  timestamp: '2021-12-19 02:05:12+08:00'
+  timestamp: '2022-11-13 20:55:13+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Math/Prime/RabinMiller.h

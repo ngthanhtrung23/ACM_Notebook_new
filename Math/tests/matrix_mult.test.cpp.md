@@ -94,10 +94,17 @@ data:
     \ (i == h) continue;\n                const T c = -tmp[h][i];\n              \
     \  for (int j = 0; j < n_col; j++) ret[h][j] += ret[i][j] * c;\n             \
     \   for (int j = i+1; j < n_col; j++) tmp[h][j] += tmp[i][j] * c;\n          \
-    \  }\n        }\n\n        *this = ret;\n        return rank;\n    }\n};\n// }}}\n\
-    #line 1 \"buffered_reader.h\"\n// Buffered reader {{{\nnamespace IO {\n    const\
-    \ int BUFSIZE = 1<<14;\n    char buf[BUFSIZE + 1], *inp = buf;\n\n    bool reacheof;\n\
-    \    char get_char() {\n        if (!*inp && !reacheof) {\n            memset(buf,\
+    \  }\n        }\n\n        *this = ret;\n        return rank;\n    }\n\n    //\
+    \ sum of [r1, r2) x [c1, c2)\n    T submatrix_sum(int r1, int c1, int r2, int\
+    \ c2) {\n        T res {0};\n        for (int r = r1; r < r2; ++r) {\n       \
+    \     res += std::accumulate(\n                    x.begin() + r * n_col + c1,\n\
+    \                    x.begin() + r * n_col + c2,\n                    T{0});\n\
+    \        }\n        return res;\n    }\n};\ntemplate<typename T>\nostream& operator\
+    \ << (ostream& cout, const Matrix<T>& m) {\n    cout << m.n_row << ' ' << m.n_col\
+    \ << endl;\n    cout << m.x << endl;\n    return cout;\n}\n// }}}\n#line 1 \"\
+    buffered_reader.h\"\n// Buffered reader {{{\nnamespace IO {\n    const int BUFSIZE\
+    \ = 1<<14;\n    char buf[BUFSIZE + 1], *inp = buf;\n\n    bool reacheof;\n   \
+    \ char get_char() {\n        if (!*inp && !reacheof) {\n            memset(buf,\
     \ 0, sizeof buf);\n            int tmp = fread(buf, 1, BUFSIZE, stdin);\n    \
     \        if (tmp != BUFSIZE) reacheof = true;\n            inp = buf;\n      \
     \  }\n        return *inp++;\n    }\n    template<typename T>\n    T get() {\n\
@@ -192,7 +199,7 @@ data:
   isVerificationFile: true
   path: Math/tests/matrix_mult.test.cpp
   requiredBy: []
-  timestamp: '2022-08-21 23:32:29+08:00'
+  timestamp: '2022-11-13 20:48:45+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Math/tests/matrix_mult.test.cpp

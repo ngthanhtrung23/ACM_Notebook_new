@@ -21,7 +21,8 @@ data:
     \ = getRoot(t, y);\n        x = root_x; y = root_y;\n        if (x == y) {\n \
     \           return;\n        }\n        if (lab[x] > lab[y]) {\n            std::swap(x,\
     \ y);\n        }\n        lab[x] += lab[y];\n        lab[y] = x;\n        t_unite[y]\
-    \ = t;\n    }\n};\n"
+    \ = t;\n    }\n\n    bool same_component(int t, int u, int v) {\n        return\
+    \ getRoot(t, u) == getRoot(t, v);\n    }\n};\n"
   code: "// Partially persistent DSU\n//\n// Supports:\n// - Linear history (version\
     \ t+1 always build on top of version t)\n// - Query history information at version\
     \ t\n//\n// Tested:\n// - https://oj.vnoi.info/problem/vnoicup22_r2_c\nstruct\
@@ -33,12 +34,13 @@ data:
     \      int root_y = getRoot(t, y);\n        x = root_x; y = root_y;\n        if\
     \ (x == y) {\n            return;\n        }\n        if (lab[x] > lab[y]) {\n\
     \            std::swap(x, y);\n        }\n        lab[x] += lab[y];\n        lab[y]\
-    \ = x;\n        t_unite[y] = t;\n    }\n};\n"
+    \ = x;\n        t_unite[y] = t;\n    }\n\n    bool same_component(int t, int u,\
+    \ int v) {\n        return getRoot(t, u) == getRoot(t, v);\n    }\n};\n"
   dependsOn: []
   isVerificationFile: false
   path: DataStructure/DSU_partially_persistent.h
   requiredBy: []
-  timestamp: '2022-06-25 23:45:44+08:00'
+  timestamp: '2022-11-13 20:48:45+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: DataStructure/DSU_partially_persistent.h
