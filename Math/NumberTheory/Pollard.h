@@ -1,5 +1,6 @@
 // Pollard {{{
 // Copied from https://judge.yosupo.jp/submission/61447
+// O(N^0.25)
 //
 // Tested:
 // - (up to 10^18; 200 tests) https://judge.yosupo.jp/problem/factorize
