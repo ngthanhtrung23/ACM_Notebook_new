@@ -1,57 +1,59 @@
-// Use isPrime in Pollard.h instead
-
-// Tested:
-// - (up to 10^19) https://oj.vnoi.info/problem/icpc22_national_c
+// From https://github.com/SnapDragon64/ContestLibrary/blob/master/math.h
+// which also has specialized versions for 32-bit and 42-bit
 //
-// If TLE, try:
-// 1. If numbers are <= 7.2e18 -> use modMul from KACTL:
-//    https://github.com/kth-competitive-programming/kactl/blob/main/content/number-theory/ModMulLL.h
-// 2. Sieve and check for small primes separately
-// 3. Check divisible by first 50 primes (see https://oj.vnoi.info/src/1816262)
+// Tested:
+// - https://oj.vnoi.info/problem/icpc22_national_c (fastest solution)
 
-#include <initializer_list>
-
-using uint = unsigned long long;
-uint mult(uint x, uint y, uint mod) {
-    return __int128_t(x) * y % mod;
+// Rabin miller {{{
+inline uint64_t mod_mult64(uint64_t a, uint64_t b, uint64_t m) {
+    return __int128_t(a) * b % m;
 }
-
-uint powMod(uint x, uint p, uint mod) {
-    if (p == 0) return 1;
-    if (p % 2) return mult(x, powMod(x, p - 1, mod), mod);
-    return powMod(mult(x, x, mod), p / 2, mod);
-}
-
-bool checkMillerRabin(uint x, uint mod, uint s, int k) {
-    x = powMod(x, s, mod);
-    if (x == 1) return true;
-    while(k--) {
-        if (x == mod - 1) return true;
-        x = mult(x, x, mod);
-        if (x == 1) return false;
+uint64_t mod_pow64(uint64_t a, uint64_t b, uint64_t m) {
+    uint64_t ret = (m > 1);
+    for (;;) {
+        if (b & 1) ret = mod_mult64(ret, a, m);
+        if (!(b >>= 1)) return ret;
+        a = mod_mult64(a, a, m);
     }
-    return false;
 }
 
-bool is_prime(uint x) {
-    if (x == 2 || x == 3 || x == 5 || x == 7) return true;
-    if (x % 2 == 0 || x % 3 == 0 || x % 5 == 0 || x % 7 == 0) return false;
-    if (x < 121) return x > 1;
+// Works for all primes p < 2^64
+bool is_prime(uint64_t n) {
+    if (n <= 3) return (n >= 2);
+    static const uint64_t small[] = {
+        2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67,
+        71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139,
+        149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199,
+    };
+    for (size_t i = 0; i < sizeof(small) / sizeof(uint64_t); ++i) {
+        if (n % small[i] == 0) return n == small[i];
+    }
 
-    uint s = x - 1;
-    int k = 0;
+    // Makes use of the known bounds for Miller-Rabin pseudoprimes.
+    static const uint64_t millerrabin[] = {
+        2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37,
+    };
+    static const uint64_t A014233[] = {  // From OEIS.
+        2047LL, 1373653LL, 25326001LL, 3215031751LL, 2152302898747LL,
+        3474749660383LL, 341550071728321LL, 341550071728321LL,
+        3825123056546413051LL, 3825123056546413051LL, 3825123056546413051LL, 0,
+    };
+    uint64_t s = n-1, r = 0;
     while (s % 2 == 0) {
         s /= 2;
-        k++;
+        r++;
     }
-    if (x < 1LL << 32) {
-        for (uint z : {2, 7, 61}) {
-            if (!checkMillerRabin(z, x, s, k)) return false;
+    for (size_t i = 0, j; i < sizeof(millerrabin) / sizeof(uint64_t); i++) {
+        uint64_t md = mod_pow64(millerrabin[i], s, n);
+        if (md != 1) {
+            for (j = 1; j < r; j++) {
+                if (md == n-1) break;
+                md = mod_mult64(md, md, n);
+            }
+            if (md != n-1) return false;
         }
-    } else {
-        for (uint z : {2, 325, 9375, 28178, 450775, 9780504, 1795265022}) {
-            if (!checkMillerRabin(z, x, s, k)) return false;
-        }
+        if (n < A014233[i]) return true;
     }
     return true;
 }
+// }}}
