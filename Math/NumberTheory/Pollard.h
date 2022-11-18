@@ -5,6 +5,7 @@
 // Tested:
 // - (up to 10^18; 200 tests) https://judge.yosupo.jp/problem/factorize
 // - https://oj.vnoi.info/problem/icpc21_beta_l
+// - https://www.spoj.com/problems/FACT0/
 
 using ll = long long;
 using ull = unsigned long long;

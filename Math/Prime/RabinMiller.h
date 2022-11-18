@@ -3,6 +3,7 @@
 //
 // Tested:
 // - https://oj.vnoi.info/problem/icpc22_national_c (fastest solution)
+// - https://www.spoj.com/problems/PON/
 
 // Rabin miller {{{
 inline uint64_t mod_mult64(uint64_t a, uint64_t b, uint64_t m) {

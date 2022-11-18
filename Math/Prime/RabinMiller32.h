@@ -1,3 +1,7 @@
+// Tested:
+// - https://www.spoj.com/problems/PRIC/
+
+#include <cstdint>
 inline unsigned mod_mult(unsigned a, unsigned b, unsigned m) {
   return (uint64_t)a*b%m;
 }
@@ -22,13 +26,11 @@ bool is_prime(unsigned n) {
   }
  
   // Jaeschke93 showed that 2,7,61 suffice for n < 4,759,123,141.
-  static const unsigned millerrabin1[] = {2, 7, 61};
-  static const unsigned millerrabin2[] = {11000544, 31481107};
+  static const unsigned millerrabin[] = {2, 7, 61};
   unsigned s = n-1, r = 0;
   while (s%2 == 0) {s /= 2; r++;}
  
-  const auto& test = (n < 316349281 ? millerrabin2 : millerrabin1);
-  for (int i = 0, j; i < sizeof(test)/sizeof(unsigned); i++) {
+  for (int i = 0, j; i < sizeof(millerrabin)/sizeof(unsigned); i++) {
     unsigned md = mod_pow(test[i], s, n);
     if (md == 1) continue;
     for (j = 1; j < r; j++) {
