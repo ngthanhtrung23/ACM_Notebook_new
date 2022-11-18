@@ -171,8 +171,8 @@ data:
   timestamp: '2022-10-24 01:33:41+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - DataStructure/test/wavelet_matrix_rangekthsmallest.test.cpp
   - DataStructure/test/wavelet_matrix_staticrangefreq.test.cpp
+  - DataStructure/test/wavelet_matrix_rangekthsmallest.test.cpp
 documentation_of: DataStructure/WaveletMatrix.h
 layout: document
 redirect_from:

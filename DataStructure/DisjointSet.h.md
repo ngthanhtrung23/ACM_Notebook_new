@@ -46,8 +46,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Graph/tests/aizu_grl_2_a_mst.test.cpp
-  - DataStructure/test/dsu.test.cpp
   - DataStructure/test/aizu_dsl_1_a_dsu.test.cpp
+  - DataStructure/test/dsu.test.cpp
 documentation_of: DataStructure/DisjointSet.h
 layout: document
 redirect_from:

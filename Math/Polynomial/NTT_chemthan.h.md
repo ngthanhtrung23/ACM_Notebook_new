@@ -141,8 +141,8 @@ data:
   timestamp: '2022-08-21 23:32:29+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Math/tests/ntt_chemthan_any_mod.test.cpp
   - Math/tests/ntt_chemthan.test.cpp
+  - Math/tests/ntt_chemthan_any_mod.test.cpp
   - Math/tests/ntt_chemthan_any_mod_2.test.cpp
 documentation_of: Math/Polynomial/NTT_chemthan.h
 layout: document

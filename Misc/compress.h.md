@@ -116,14 +116,14 @@ data:
   isVerificationFile: false
   path: Misc/compress.h
   requiredBy:
-  - DataStructure/Fenwick2D.h
   - DP/count_inversions.h
+  - DataStructure/Fenwick2D.h
   timestamp: '2022-08-14 20:27:19+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - DP/tests/aizu_alds1_5_d_count_inversions.test.cpp
   - DataStructure/test/fenwick_2d_rectsum.test.cpp
   - DataStructure/test/fenwick_2d_pointaddrectsum.test.cpp
-  - DP/tests/aizu_alds1_5_d_count_inversions.test.cpp
 documentation_of: Misc/compress.h
 layout: document
 redirect_from:

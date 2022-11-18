@@ -409,6 +409,9 @@ data:
       path: Math/Prime/RabinMiller.h
       title: Math/Prime/RabinMiller.h
     - icon: ':warning:'
+      path: Math/Prime/RabinMiller32.h
+      title: Math/Prime/RabinMiller32.h
+    - icon: ':warning:'
       path: Math/Prime/SegmentedSieve.h
       title: Math/Prime/SegmentedSieve.h
   - name: Math/Pure
