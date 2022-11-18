@@ -10,11 +10,12 @@ data:
     links:
     - https://github.com/SnapDragon64/ContestLibrary/blob/master/math.h
     - https://oj.vnoi.info/problem/icpc22_national_c
+    - https://www.spoj.com/problems/PON/
   bundledCode: "#line 1 \"Math/Prime/RabinMiller.h\"\n// From https://github.com/SnapDragon64/ContestLibrary/blob/master/math.h\n\
     // which also has specialized versions for 32-bit and 42-bit\n//\n// Tested:\n\
-    // - https://oj.vnoi.info/problem/icpc22_national_c (fastest solution)\n\n// Rabin\
-    \ miller {{{\ninline uint64_t mod_mult64(uint64_t a, uint64_t b, uint64_t m) {\n\
-    \    return __int128_t(a) * b % m;\n}\nuint64_t mod_pow64(uint64_t a, uint64_t\
+    // - https://oj.vnoi.info/problem/icpc22_national_c (fastest solution)\n// - https://www.spoj.com/problems/PON/\n\
+    \n// Rabin miller {{{\ninline uint64_t mod_mult64(uint64_t a, uint64_t b, uint64_t\
+    \ m) {\n    return __int128_t(a) * b % m;\n}\nuint64_t mod_pow64(uint64_t a, uint64_t\
     \ b, uint64_t m) {\n    uint64_t ret = (m > 1);\n    for (;;) {\n        if (b\
     \ & 1) ret = mod_mult64(ret, a, m);\n        if (!(b >>= 1)) return ret;\n   \
     \     a = mod_mult64(a, a, m);\n    }\n}\n\n// Works for all primes p < 2^64\n\
@@ -38,9 +39,9 @@ data:
     \ (n < A014233[i]) return true;\n    }\n    return true;\n}\n// }}}\n"
   code: "// From https://github.com/SnapDragon64/ContestLibrary/blob/master/math.h\n\
     // which also has specialized versions for 32-bit and 42-bit\n//\n// Tested:\n\
-    // - https://oj.vnoi.info/problem/icpc22_national_c (fastest solution)\n\n// Rabin\
-    \ miller {{{\ninline uint64_t mod_mult64(uint64_t a, uint64_t b, uint64_t m) {\n\
-    \    return __int128_t(a) * b % m;\n}\nuint64_t mod_pow64(uint64_t a, uint64_t\
+    // - https://oj.vnoi.info/problem/icpc22_national_c (fastest solution)\n// - https://www.spoj.com/problems/PON/\n\
+    \n// Rabin miller {{{\ninline uint64_t mod_mult64(uint64_t a, uint64_t b, uint64_t\
+    \ m) {\n    return __int128_t(a) * b % m;\n}\nuint64_t mod_pow64(uint64_t a, uint64_t\
     \ b, uint64_t m) {\n    uint64_t ret = (m > 1);\n    for (;;) {\n        if (b\
     \ & 1) ret = mod_mult64(ret, a, m);\n        if (!(b >>= 1)) return ret;\n   \
     \     a = mod_mult64(a, a, m);\n    }\n}\n\n// Works for all primes p < 2^64\n\
@@ -66,7 +67,7 @@ data:
   isVerificationFile: false
   path: Math/Prime/RabinMiller.h
   requiredBy: []
-  timestamp: '2022-11-18 02:00:08+08:00'
+  timestamp: '2022-11-18 18:23:54+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Math/Prime/RabinMiller.h
