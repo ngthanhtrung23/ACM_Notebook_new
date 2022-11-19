@@ -244,3 +244,87 @@ int cnt_occurrences_hash(
     return std::distance(l, r);
 }
 // }}}
+// Returns length of LCS of strings s & t {{{
+// O(N)
+// Tested:
+// - https://www.spoj.com/problems/LCS/
+// - https://www.spoj.com/problems/ADAPHOTO/
+int longestCommonSubstring(const string& s, const string& t) {
+    char c = 127;
+    string combined = s + c + t;
+    auto sa = suffix_array(combined, 0, 127);
+    auto lcp = LCP(combined, sa);
+ 
+    // s -> 0 .. |s|-1
+    // 255 -> |s|
+    // t -> |s|+1 ..
+    int ls = s.size(), lcombined = combined.size();
+    auto is_s = [&] (int id) { return sa[id] < ls; };
+    auto is_t = [&] (int id) { return sa[id] > ls; };
+ 
+    assert(sa[lcombined - 1] == ls);
+ 
+    int res = 0;
+    for (int i = 0; i < lcombined - 2; ++i) {
+        if ((is_s(i) && is_t(i+1)) || (is_s(i+1) && is_t(i))) {
+            res = max(res, lcp[i]);
+        }
+    }
+    return res;
+}
+// }}}
+// Returns length of LCS of n strings {{{
+// Tested:
+// - https://www.spoj.com/problems/LCS2/
+// - https://www.spoj.com/problems/LONGCS
+#include "../DataStructure/RMQ.h"
+int longestCommonSubstring(const std::vector<std::string> strs) {
+    char c = 127;
+    string combined = "";
+    vector<int> ids;
+    for (size_t i = 0; i < strs.size(); ++i) {
+        const auto& s = strs[i];
+        combined += s;
+        while (ids.size() < combined.size()) ids.push_back(i);
+
+        combined += c;
+        ids.push_back(-1);
+
+        --c;
+    }
+    auto sa = suffix_array(combined, 0, 127);
+    auto lcp = LCP(combined, sa);
+    RMQ<int, _min> rmq(lcp);
+
+    // count frequency of i-th string in current window
+    std::vector<int> cnt(strs.size(), 0);
+    int strs_in_window = 0;
+    auto add = [&] (int i) {
+        if (i < 0) return;
+        ++cnt[i];
+        if (cnt[i] == 1) ++strs_in_window;
+    };
+    auto rem = [&] (int i) {
+        if (i < 0) return;
+        --cnt[i];
+        if (cnt[i] == 0) --strs_in_window;
+    };
+
+    int i = 0, j = -1;
+    int lcombined = combined.size();
+    int n = strs.size();
+    int res = 0;
+    while (i < lcombined - 1) {
+        while (j + 1 < lcombined - 1 && strs_in_window < n) {
+            ++j;
+            add(ids[sa[j]]);
+        }
+        if (strs_in_window == n) {
+            res = max(res, rmq.get(i, j));
+        }
+
+        rem(ids[sa[i]]); ++i;
+    }
+    return res;
+}
+// }}}
