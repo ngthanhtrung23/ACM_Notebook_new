@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: DataStructure/RMQ.h
+    title: DataStructure/RMQ.h
+  - icon: ':heavy_check_mark:'
     path: Math/modint.h
     title: Math/modint.h
   - icon: ':heavy_check_mark:'
@@ -33,6 +36,10 @@ data:
     - https://judge.yosupo.jp/problem/suffixarray
     - https://judge.yosupo.jp/submission/52300
     - https://oj.vnoi.info/problem/icpc22_mt_b
+    - https://www.spoj.com/problems/ADAPHOTO/
+    - https://www.spoj.com/problems/LCS/
+    - https://www.spoj.com/problems/LCS2/
+    - https://www.spoj.com/problems/LONGCS
     - https://www.spoj.com/problems/SARRAY/
     - https://www.spoj.com/problems/SUBLEX/
     - https://www.spoj.com/problems/SUBST1/
@@ -270,7 +277,49 @@ data:
     \        return gen.cmp(\n                s, hash_s, start, start + max_len -\
     \ 1,\n                pat, hash_pat, 0, max_len-1) == 0;\n    };\n    auto l =\
     \ std::partition_point(sa.begin(), sa.end(), f);\n    auto r = std::partition_point(l,\
-    \ sa.end(), g);\n    return std::distance(l, r);\n}\n// }}}\n"
+    \ sa.end(), g);\n    return std::distance(l, r);\n}\n// }}}\n// Returns length\
+    \ of LCS of strings s & t {{{\n// O(N)\n// Tested:\n// - https://www.spoj.com/problems/LCS/\n\
+    // - https://www.spoj.com/problems/ADAPHOTO/\nint longestCommonSubstring(const\
+    \ string& s, const string& t) {\n    char c = 127;\n    string combined = s +\
+    \ c + t;\n    auto sa = suffix_array(combined, 0, 127);\n    auto lcp = LCP(combined,\
+    \ sa);\n \n    // s -> 0 .. |s|-1\n    // 255 -> |s|\n    // t -> |s|+1 ..\n \
+    \   int ls = s.size(), lcombined = combined.size();\n    auto is_s = [&] (int\
+    \ id) { return sa[id] < ls; };\n    auto is_t = [&] (int id) { return sa[id] >\
+    \ ls; };\n \n    assert(sa[lcombined - 1] == ls);\n \n    int res = 0;\n    for\
+    \ (int i = 0; i < lcombined - 2; ++i) {\n        if ((is_s(i) && is_t(i+1)) ||\
+    \ (is_s(i+1) && is_t(i))) {\n            res = max(res, lcp[i]);\n        }\n\
+    \    }\n    return res;\n}\n// }}}\n// Returns length of LCS of n strings {{{\n\
+    // Tested:\n// - https://www.spoj.com/problems/LCS2/\n// - https://www.spoj.com/problems/LONGCS\n\
+    #line 1 \"DataStructure/RMQ.h\"\n// RMQ {{{\n//\n// Sparse table\n// Usage:\n\
+    // RMQ<int, _min> st(v);\n//\n// Note:\n// - doesn't work for empty range\n//\n\
+    // Tested:\n// - https://judge.yosupo.jp/problem/staticrmq\ntemplate<class T,\
+    \ T (*op) (T, T)> struct RMQ {\n    RMQ() = default;\n    RMQ(const vector<T>&\
+    \ v) : t{v}, n{(int) v.size()} {\n        for (int k = 1; (1<<k) <= n; ++k) {\n\
+    \            t.emplace_back(n - (1<<k) + 1);\n            for (int i = 0; i +\
+    \ (1<<k) <= n; ++i) {\n                t[k][i] = op(t[k-1][i], t[k-1][i + (1<<(k-1))]);\n\
+    \            }\n        }\n    }\n\n    // get range [l, r-1]\n    // doesn't\
+    \ work for empty range\n    T get(int l, int r) const {\n        assert(0 <= l\
+    \ && l < r && r <= n);\n        int k = __lg(r - l);\n        return op(t[k][l],\
+    \ t[k][r - (1<<k)]);\n    }\n\nprivate:\n    vector<vector<T>> t;\n    int n;\n\
+    };\ntemplate<class T> T _min(T a, T b) { return b < a ? b : a; }\ntemplate<class\
+    \ T> T _max(T a, T b) { return a < b ? b : a; }\n// }}}\n#line 281 \"String/SuffixArray.h\"\
+    \nint longestCommonSubstring(const std::vector<std::string> strs) {\n    char\
+    \ c = 127;\n    string combined = \"\";\n    vector<int> ids;\n    for (size_t\
+    \ i = 0; i < strs.size(); ++i) {\n        const auto& s = strs[i];\n        combined\
+    \ += s;\n        while (ids.size() < combined.size()) ids.push_back(i);\n\n  \
+    \      combined += c;\n        ids.push_back(-1);\n\n        --c;\n    }\n   \
+    \ auto sa = suffix_array(combined, 0, 127);\n    auto lcp = LCP(combined, sa);\n\
+    \    RMQ<int, _min> rmq(lcp);\n\n    // count frequency of i-th string in current\
+    \ window\n    std::vector<int> cnt(strs.size(), 0);\n    int strs_in_window =\
+    \ 0;\n    auto add = [&] (int i) {\n        if (i < 0) return;\n        ++cnt[i];\n\
+    \        if (cnt[i] == 1) ++strs_in_window;\n    };\n    auto rem = [&] (int i)\
+    \ {\n        if (i < 0) return;\n        --cnt[i];\n        if (cnt[i] == 0) --strs_in_window;\n\
+    \    };\n\n    int i = 0, j = -1;\n    int lcombined = combined.size();\n    int\
+    \ n = strs.size();\n    int res = 0;\n    while (i < lcombined - 1) {\n      \
+    \  while (j + 1 < lcombined - 1 && strs_in_window < n) {\n            ++j;\n \
+    \           add(ids[sa[j]]);\n        }\n        if (strs_in_window == n) {\n\
+    \            res = max(res, rmq.get(i, j));\n        }\n\n        rem(ids[sa[i]]);\
+    \ ++i;\n    }\n    return res;\n}\n// }}}\n"
   code: "// Efficient O(N + alphabet_size) time and space suffix array\n// For ICPC\
     \ notebook, it's better to copy a shorter code such as\n// https://github.com/kth-competitive-programming/kactl/blob/main/content/strings/SuffixArray.h\n\
     \n// Usage:\n// - sa = suffix_array(s, 'a', 'z')\n// - lcp = LCP(s, sa)\n//  \
@@ -381,14 +430,43 @@ data:
     \   s, hash_s, start, start + max_len - 1,\n                pat, hash_pat, 0,\
     \ max_len-1) == 0;\n    };\n    auto l = std::partition_point(sa.begin(), sa.end(),\
     \ f);\n    auto r = std::partition_point(l, sa.end(), g);\n    return std::distance(l,\
-    \ r);\n}\n// }}}\n"
+    \ r);\n}\n// }}}\n// Returns length of LCS of strings s & t {{{\n// O(N)\n// Tested:\n\
+    // - https://www.spoj.com/problems/LCS/\n// - https://www.spoj.com/problems/ADAPHOTO/\n\
+    int longestCommonSubstring(const string& s, const string& t) {\n    char c = 127;\n\
+    \    string combined = s + c + t;\n    auto sa = suffix_array(combined, 0, 127);\n\
+    \    auto lcp = LCP(combined, sa);\n \n    // s -> 0 .. |s|-1\n    // 255 -> |s|\n\
+    \    // t -> |s|+1 ..\n    int ls = s.size(), lcombined = combined.size();\n \
+    \   auto is_s = [&] (int id) { return sa[id] < ls; };\n    auto is_t = [&] (int\
+    \ id) { return sa[id] > ls; };\n \n    assert(sa[lcombined - 1] == ls);\n \n \
+    \   int res = 0;\n    for (int i = 0; i < lcombined - 2; ++i) {\n        if ((is_s(i)\
+    \ && is_t(i+1)) || (is_s(i+1) && is_t(i))) {\n            res = max(res, lcp[i]);\n\
+    \        }\n    }\n    return res;\n}\n// }}}\n// Returns length of LCS of n strings\
+    \ {{{\n// Tested:\n// - https://www.spoj.com/problems/LCS2/\n// - https://www.spoj.com/problems/LONGCS\n\
+    #include \"../DataStructure/RMQ.h\"\nint longestCommonSubstring(const std::vector<std::string>\
+    \ strs) {\n    char c = 127;\n    string combined = \"\";\n    vector<int> ids;\n\
+    \    for (size_t i = 0; i < strs.size(); ++i) {\n        const auto& s = strs[i];\n\
+    \        combined += s;\n        while (ids.size() < combined.size()) ids.push_back(i);\n\
+    \n        combined += c;\n        ids.push_back(-1);\n\n        --c;\n    }\n\
+    \    auto sa = suffix_array(combined, 0, 127);\n    auto lcp = LCP(combined, sa);\n\
+    \    RMQ<int, _min> rmq(lcp);\n\n    // count frequency of i-th string in current\
+    \ window\n    std::vector<int> cnt(strs.size(), 0);\n    int strs_in_window =\
+    \ 0;\n    auto add = [&] (int i) {\n        if (i < 0) return;\n        ++cnt[i];\n\
+    \        if (cnt[i] == 1) ++strs_in_window;\n    };\n    auto rem = [&] (int i)\
+    \ {\n        if (i < 0) return;\n        --cnt[i];\n        if (cnt[i] == 0) --strs_in_window;\n\
+    \    };\n\n    int i = 0, j = -1;\n    int lcombined = combined.size();\n    int\
+    \ n = strs.size();\n    int res = 0;\n    while (i < lcombined - 1) {\n      \
+    \  while (j + 1 < lcombined - 1 && strs_in_window < n) {\n            ++j;\n \
+    \           add(ids[sa[j]]);\n        }\n        if (strs_in_window == n) {\n\
+    \            res = max(res, rmq.get(i, j));\n        }\n\n        rem(ids[sa[i]]);\
+    \ ++i;\n    }\n    return res;\n}\n// }}}\n"
   dependsOn:
   - String/hash.h
   - Math/modint.h
+  - DataStructure/RMQ.h
   isVerificationFile: false
   path: String/SuffixArray.h
   requiredBy: []
-  timestamp: '2022-11-19 22:41:58+08:00'
+  timestamp: '2022-11-19 23:37:03+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - String/tests/suffix_array_queries.test.cpp

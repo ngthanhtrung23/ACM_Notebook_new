@@ -5,6 +5,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/LCA.h
     title: DataStructure/LCA.h
+  - icon: ':heavy_check_mark:'
+    path: String/SuffixArray.h
+    title: String/SuffixArray.h
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/aizu_grl_5_c_lca.test.cpp
@@ -15,6 +18,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/rmq.test.cpp
     title: DataStructure/test/rmq.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: String/tests/lcp.test.cpp
+    title: String/tests/lcp.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: String/tests/suffix_array.test.cpp
+    title: String/tests/suffix_array.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: String/tests/suffix_array_queries.test.cpp
+    title: String/tests/suffix_array_queries.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -50,10 +62,14 @@ data:
   isVerificationFile: false
   path: DataStructure/RMQ.h
   requiredBy:
+  - String/SuffixArray.h
   - DataStructure/LCA.h
   timestamp: '2022-08-11 17:15:37+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - String/tests/suffix_array_queries.test.cpp
+  - String/tests/suffix_array.test.cpp
+  - String/tests/lcp.test.cpp
   - DataStructure/test/rmq.test.cpp
   - DataStructure/test/aizu_grl_5_c_lca.test.cpp
   - DataStructure/test/lca.test.cpp
