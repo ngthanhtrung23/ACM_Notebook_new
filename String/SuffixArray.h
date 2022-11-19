@@ -96,8 +96,9 @@ int count_occurrence(const string& s, const vector<int>& sa, const string& pat) 
     auto r = std::partition_point(l, sa.end(), g);
     return std::distance(l, r);
 }
+// }}}
 
-
+// Count occurrences using hash {{{
 // If hash array can be pre-computed, can answer each query in
 // O(log(|S|) * log(|S| + |pat|)
 // Tested

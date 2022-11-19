@@ -23,6 +23,7 @@
 // - SGU 193
 // - SPOJ MUL, VFMUL: Multiplication.
 // - SPOJ FDIV, VFDIV: Division.
+// - SPOJ SQRROOT: sqrt
 
 const int BASE_DIGITS = 9;
 const int BASE = 1000000000;

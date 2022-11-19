@@ -3,6 +3,7 @@
 //
 // Notes:
 // - To find lexicographically min -> change queue<int> qu to set
+//   (see https://www.spoj.com/problems/TOPOSORT/)
 //
 // Tested:
 // - https://cses.fi/problemset/task/1679/
