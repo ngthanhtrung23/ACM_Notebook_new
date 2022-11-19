@@ -57,71 +57,71 @@ data:
     \ (simple / karatsuba / fft)\n// - https://www.e-olymp.com/en/problems/1327: Multiplication\n\
     // - https://www.e-olymp.com/en/problems/1328\n// - VOJ BIGNUM: Addition, Subtraction,\
     \ Multiplication.\n// - SGU 111: sqrt\n// - SGU 193\n// - SPOJ MUL, VFMUL: Multiplication.\n\
-    // - SPOJ FDIV, VFDIV: Division.\n\nconst int BASE_DIGITS = 9;\nconst int BASE\
-    \ = 1000000000;\n\nstruct BigInt {\n    int sign;\n    vector<int> a;\n\n    //\
-    \ -------------------- Constructors -------------------- \n    // Default constructor.\n\
-    \    BigInt() : sign(1) {}\n\n    // Constructor from long long.\n    BigInt(long\
-    \ long v) {\n        *this = v;\n    }\n    BigInt& operator = (long long v) {\n\
-    \        sign = 1;\n        if (v < 0) {\n            sign = -1;\n           \
-    \ v = -v;\n        }\n        a.clear();\n        for (; v > 0; v = v / BASE)\n\
-    \            a.push_back(v % BASE);\n        return *this;\n    }\n\n    // Initialize\
-    \ from string.\n    BigInt(const string& s) {\n        read(s);\n    }\n\n   \
-    \ // -------------------- Input / Output --------------------\n    void read(const\
-    \ string& s) {\n        sign = 1;\n        a.clear();\n        int pos = 0;\n\
-    \        while (pos < (int) s.size() && (s[pos] == '-' || s[pos] == '+')) {\n\
-    \            if (s[pos] == '-')\n                sign = -sign;\n            ++pos;\n\
-    \        }\n        for (int i = s.size() - 1; i >= pos; i -= BASE_DIGITS) {\n\
-    \            int x = 0;\n            for (int j = max(pos, i - BASE_DIGITS + 1);\
-    \ j <= i; j++)\n                x = x * 10 + s[j] - '0';\n            a.push_back(x);\n\
-    \        }\n        trim();\n    }\n    friend istream& operator>>(istream &stream,\
-    \ BigInt &v) {\n        string s;\n        stream >> s;\n        v.read(s);\n\
-    \        return stream;\n    }\n\n    friend ostream& operator<<(ostream &stream,\
-    \ const BigInt &v) {\n        if (v.sign == -1 && !v.isZero())\n            stream\
-    \ << '-';\n        stream << (v.a.empty() ? 0 : v.a.back());\n        for (int\
-    \ i = (int) v.a.size() - 2; i >= 0; --i)\n            stream << setw(BASE_DIGITS)\
-    \ << setfill('0') << v.a[i];\n        return stream;\n    }\n\n    // --------------------\
-    \ Comparison --------------------\n    bool operator<(const BigInt &v) const {\n\
-    \        if (sign != v.sign)\n            return sign < v.sign;\n        if (a.size()\
-    \ != v.a.size())\n            return a.size() * sign < v.a.size() * v.sign;\n\
-    \        for (int i = ((int) a.size()) - 1; i >= 0; i--)\n            if (a[i]\
-    \ != v.a[i])\n                return a[i] * sign < v.a[i] * sign;\n        return\
-    \ false;\n    }\n\n    bool operator>(const BigInt &v) const {\n        return\
-    \ v < *this;\n    }\n    bool operator<=(const BigInt &v) const {\n        return\
-    \ !(v < *this);\n    }\n    bool operator>=(const BigInt &v) const {\n       \
-    \ return !(*this < v);\n    }\n    bool operator==(const BigInt &v) const {\n\
-    \        return !(*this < v) && !(v < *this);\n    }\n    bool operator!=(const\
-    \ BigInt &v) const {\n        return *this < v || v < *this;\n    }\n\n    //\
-    \ Returns:\n    // 0 if |x| == |y|\n    // -1 if |x| < |y|\n    // 1 if |x| >\
-    \ |y|\n    friend int __compare_abs(const BigInt& x, const BigInt& y) {\n    \
-    \    if (x.a.size() != y.a.size()) {\n            return x.a.size() < y.a.size()\
-    \ ? -1 : 1;\n        }\n\n        for (int i = ((int) x.a.size()) - 1; i >= 0;\
-    \ --i) {\n            if (x.a[i] != y.a[i]) {\n                return x.a[i] <\
-    \ y.a[i] ? -1 : 1;\n            }\n        }\n        return 0;\n    }\n\n   \
-    \ // -------------------- Unary operator - and operators +- --------------------\n\
-    \    BigInt operator-() const {\n        BigInt res = *this;\n        if (isZero())\
-    \ return res;\n\n        res.sign = -sign;\n        return res;\n    }\n\n   \
-    \ // Note: sign ignored.\n    void __internal_add(const BigInt& v) {\n       \
-    \ if (a.size() < v.a.size()) {\n            a.resize(v.a.size(), 0);\n       \
-    \ }\n        for (int i = 0, carry = 0; i < (int) max(a.size(), v.a.size()) ||\
-    \ carry; ++i) {\n            if (i == (int) a.size()) a.push_back(0);\n\n    \
-    \        a[i] += carry + (i < (int) v.a.size() ? v.a[i] : 0);\n            carry\
-    \ = a[i] >= BASE;\n            if (carry) a[i] -= BASE;\n        }\n    }\n\n\
-    \    // Note: sign ignored.\n    void __internal_sub(const BigInt& v) {\n    \
-    \    for (int i = 0, carry = 0; i < (int) v.a.size() || carry; ++i) {\n      \
-    \      a[i] -= carry + (i < (int) v.a.size() ? v.a[i] : 0);\n            carry\
-    \ = a[i] < 0;\n            if (carry) a[i] += BASE;\n        }\n        this->trim();\n\
-    \    }\n\n    BigInt operator += (const BigInt& v) {\n        if (sign == v.sign)\
-    \ {\n            __internal_add(v);\n        } else {\n            if (__compare_abs(*this,\
+    // - SPOJ FDIV, VFDIV: Division.\n// - SPOJ SQRROOT: sqrt\n\nconst int BASE_DIGITS\
+    \ = 9;\nconst int BASE = 1000000000;\n\nstruct BigInt {\n    int sign;\n    vector<int>\
+    \ a;\n\n    // -------------------- Constructors -------------------- \n    //\
+    \ Default constructor.\n    BigInt() : sign(1) {}\n\n    // Constructor from long\
+    \ long.\n    BigInt(long long v) {\n        *this = v;\n    }\n    BigInt& operator\
+    \ = (long long v) {\n        sign = 1;\n        if (v < 0) {\n            sign\
+    \ = -1;\n            v = -v;\n        }\n        a.clear();\n        for (; v\
+    \ > 0; v = v / BASE)\n            a.push_back(v % BASE);\n        return *this;\n\
+    \    }\n\n    // Initialize from string.\n    BigInt(const string& s) {\n    \
+    \    read(s);\n    }\n\n    // -------------------- Input / Output --------------------\n\
+    \    void read(const string& s) {\n        sign = 1;\n        a.clear();\n   \
+    \     int pos = 0;\n        while (pos < (int) s.size() && (s[pos] == '-' || s[pos]\
+    \ == '+')) {\n            if (s[pos] == '-')\n                sign = -sign;\n\
+    \            ++pos;\n        }\n        for (int i = s.size() - 1; i >= pos; i\
+    \ -= BASE_DIGITS) {\n            int x = 0;\n            for (int j = max(pos,\
+    \ i - BASE_DIGITS + 1); j <= i; j++)\n                x = x * 10 + s[j] - '0';\n\
+    \            a.push_back(x);\n        }\n        trim();\n    }\n    friend istream&\
+    \ operator>>(istream &stream, BigInt &v) {\n        string s;\n        stream\
+    \ >> s;\n        v.read(s);\n        return stream;\n    }\n\n    friend ostream&\
+    \ operator<<(ostream &stream, const BigInt &v) {\n        if (v.sign == -1 &&\
+    \ !v.isZero())\n            stream << '-';\n        stream << (v.a.empty() ? 0\
+    \ : v.a.back());\n        for (int i = (int) v.a.size() - 2; i >= 0; --i)\n  \
+    \          stream << setw(BASE_DIGITS) << setfill('0') << v.a[i];\n        return\
+    \ stream;\n    }\n\n    // -------------------- Comparison --------------------\n\
+    \    bool operator<(const BigInt &v) const {\n        if (sign != v.sign)\n  \
+    \          return sign < v.sign;\n        if (a.size() != v.a.size())\n      \
+    \      return a.size() * sign < v.a.size() * v.sign;\n        for (int i = ((int)\
+    \ a.size()) - 1; i >= 0; i--)\n            if (a[i] != v.a[i])\n             \
+    \   return a[i] * sign < v.a[i] * sign;\n        return false;\n    }\n\n    bool\
+    \ operator>(const BigInt &v) const {\n        return v < *this;\n    }\n    bool\
+    \ operator<=(const BigInt &v) const {\n        return !(v < *this);\n    }\n \
+    \   bool operator>=(const BigInt &v) const {\n        return !(*this < v);\n \
+    \   }\n    bool operator==(const BigInt &v) const {\n        return !(*this <\
+    \ v) && !(v < *this);\n    }\n    bool operator!=(const BigInt &v) const {\n \
+    \       return *this < v || v < *this;\n    }\n\n    // Returns:\n    // 0 if\
+    \ |x| == |y|\n    // -1 if |x| < |y|\n    // 1 if |x| > |y|\n    friend int __compare_abs(const\
+    \ BigInt& x, const BigInt& y) {\n        if (x.a.size() != y.a.size()) {\n   \
+    \         return x.a.size() < y.a.size() ? -1 : 1;\n        }\n\n        for (int\
+    \ i = ((int) x.a.size()) - 1; i >= 0; --i) {\n            if (x.a[i] != y.a[i])\
+    \ {\n                return x.a[i] < y.a[i] ? -1 : 1;\n            }\n       \
+    \ }\n        return 0;\n    }\n\n    // -------------------- Unary operator -\
+    \ and operators +- --------------------\n    BigInt operator-() const {\n    \
+    \    BigInt res = *this;\n        if (isZero()) return res;\n\n        res.sign\
+    \ = -sign;\n        return res;\n    }\n\n    // Note: sign ignored.\n    void\
+    \ __internal_add(const BigInt& v) {\n        if (a.size() < v.a.size()) {\n  \
+    \          a.resize(v.a.size(), 0);\n        }\n        for (int i = 0, carry\
+    \ = 0; i < (int) max(a.size(), v.a.size()) || carry; ++i) {\n            if (i\
+    \ == (int) a.size()) a.push_back(0);\n\n            a[i] += carry + (i < (int)\
+    \ v.a.size() ? v.a[i] : 0);\n            carry = a[i] >= BASE;\n            if\
+    \ (carry) a[i] -= BASE;\n        }\n    }\n\n    // Note: sign ignored.\n    void\
+    \ __internal_sub(const BigInt& v) {\n        for (int i = 0, carry = 0; i < (int)\
+    \ v.a.size() || carry; ++i) {\n            a[i] -= carry + (i < (int) v.a.size()\
+    \ ? v.a[i] : 0);\n            carry = a[i] < 0;\n            if (carry) a[i] +=\
+    \ BASE;\n        }\n        this->trim();\n    }\n\n    BigInt operator += (const\
+    \ BigInt& v) {\n        if (sign == v.sign) {\n            __internal_add(v);\n\
+    \        } else {\n            if (__compare_abs(*this, v) >= 0) {\n         \
+    \       __internal_sub(v);\n            } else {\n                BigInt vv =\
+    \ v;\n                swap(*this, vv);\n                __internal_sub(vv);\n\
+    \            }\n        }\n        return *this;\n    }\n\n    BigInt operator\
+    \ -= (const BigInt& v) {\n        if (sign == v.sign) {\n            if (__compare_abs(*this,\
     \ v) >= 0) {\n                __internal_sub(v);\n            } else {\n     \
     \           BigInt vv = v;\n                swap(*this, vv);\n               \
-    \ __internal_sub(vv);\n            }\n        }\n        return *this;\n    }\n\
-    \n    BigInt operator -= (const BigInt& v) {\n        if (sign == v.sign) {\n\
-    \            if (__compare_abs(*this, v) >= 0) {\n                __internal_sub(v);\n\
-    \            } else {\n                BigInt vv = v;\n                swap(*this,\
-    \ vv);\n                __internal_sub(vv);\n                this->sign = -this->sign;\n\
-    \            }\n        } else {\n            __internal_add(v);\n        }\n\
-    \        return *this;\n    }\n\n    // Optimize operators + and - according to\n\
-    \    // https://stackoverflow.com/questions/13166079/move-semantics-and-pass-by-rvalue-reference-in-overloaded-arithmetic\n\
+    \ __internal_sub(vv);\n                this->sign = -this->sign;\n           \
+    \ }\n        } else {\n            __internal_add(v);\n        }\n        return\
+    \ *this;\n    }\n\n    // Optimize operators + and - according to\n    // https://stackoverflow.com/questions/13166079/move-semantics-and-pass-by-rvalue-reference-in-overloaded-arithmetic\n\
     \    template< typename L, typename R >\n        typename std::enable_if<\n  \
     \          std::is_convertible<L, BigInt>::value &&\n            std::is_convertible<R,\
     \ BigInt>::value &&\n            std::is_lvalue_reference<R&&>::value,\n     \
@@ -295,7 +295,7 @@ data:
   isVerificationFile: true
   path: Math/tests/aizu_ntl_2_f_bigint_mul_fft.test.cpp
   requiredBy: []
-  timestamp: '2022-08-21 18:30:35+08:00'
+  timestamp: '2022-11-19 11:13:09+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Math/tests/aizu_ntl_2_f_bigint_mul_fft.test.cpp

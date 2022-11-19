@@ -66,48 +66,49 @@ data:
     \ m; ++i) {\n            if (s[start + i] > pat[i]) return false;\n        }\n\
     \        return true;\n    };\n    auto l = std::partition_point(sa.begin(), sa.end(),\
     \ f);\n    auto r = std::partition_point(l, sa.end(), g);\n    return std::distance(l,\
-    \ r);\n}\n\n\n// If hash array can be pre-computed, can answer each query in\n\
-    // O(log(|S|) * log(|S| + |pat|)\n// Tested\n// - https://oj.vnoi.info/problem/icpc22_mt_b\n\
-    #line 1 \"Math/modint.h\"\n// ModInt {{{\ntemplate<int MD> struct ModInt {\n \
-    \   using ll = long long;\n    int x;\n\n    constexpr ModInt() : x(0) {}\n  \
-    \  constexpr ModInt(ll v) { _set(v % MD + MD); }\n    constexpr static int mod()\
-    \ { return MD; }\n    constexpr explicit operator bool() const { return x != 0;\
-    \ }\n\n    constexpr ModInt operator + (const ModInt& a) const {\n        return\
-    \ ModInt()._set((ll) x + a.x);\n    }\n    constexpr ModInt operator - (const\
-    \ ModInt& a) const {\n        return ModInt()._set((ll) x - a.x + MD);\n    }\n\
-    \    constexpr ModInt operator * (const ModInt& a) const {\n        return ModInt()._set((ll)\
-    \ x * a.x % MD);\n    }\n    constexpr ModInt operator / (const ModInt& a) const\
-    \ {\n        return ModInt()._set((ll) x * a.inv().x % MD);\n    }\n    constexpr\
-    \ ModInt operator - () const {\n        return ModInt()._set(MD - x);\n    }\n\
-    \n    constexpr ModInt& operator += (const ModInt& a) { return *this = *this +\
-    \ a; }\n    constexpr ModInt& operator -= (const ModInt& a) { return *this = *this\
-    \ - a; }\n    constexpr ModInt& operator *= (const ModInt& a) { return *this =\
-    \ *this * a; }\n    constexpr ModInt& operator /= (const ModInt& a) { return *this\
-    \ = *this / a; }\n\n    friend constexpr ModInt operator + (ll a, const ModInt&\
-    \ b) {\n        return ModInt()._set(a % MD + b.x);\n    }\n    friend constexpr\
-    \ ModInt operator - (ll a, const ModInt& b) {\n        return ModInt()._set(a\
-    \ % MD - b.x + MD);\n    }\n    friend constexpr ModInt operator * (ll a, const\
-    \ ModInt& b) {\n        return ModInt()._set(a % MD * b.x % MD);\n    }\n    friend\
-    \ constexpr ModInt operator / (ll a, const ModInt& b) {\n        return ModInt()._set(a\
-    \ % MD * b.inv().x % MD);\n    }\n\n    constexpr bool operator == (const ModInt&\
-    \ a) const { return x == a.x; }\n    constexpr bool operator != (const ModInt&\
-    \ a) const { return x != a.x; }\n\n    friend std::istream& operator >> (std::istream&\
-    \ is, ModInt& x) {\n        ll val; is >> val;\n        x = ModInt(val);\n   \
-    \     return is;\n    }\n    constexpr friend std::ostream& operator << (std::ostream&\
-    \ os, const ModInt& x) {\n        return os << x.x;\n    }\n\n    constexpr ModInt\
-    \ pow(ll k) const {\n        ModInt ans = 1, tmp = x;\n        while (k) {\n \
-    \           if (k & 1) ans *= tmp;\n            tmp *= tmp;\n            k >>=\
-    \ 1;\n        }\n        return ans;\n    }\n\n    constexpr ModInt inv() const\
-    \ {\n        if (x < 1000111) {\n            _precalc(1000111);\n            return\
-    \ invs[x];\n        }\n        int a = x, b = MD, ax = 1, bx = 0;\n        while\
-    \ (b) {\n            int q = a/b, t = a%b;\n            a = b; b = t;\n      \
-    \      t = ax - bx*q;\n            ax = bx; bx = t;\n        }\n        assert(a\
-    \ == 1);\n        if (ax < 0) ax += MD;\n        return ax;\n    }\n\n    static\
-    \ std::vector<ModInt> factorials, inv_factorials, invs;\n    constexpr static\
-    \ void _precalc(int n) {\n        if (factorials.empty()) {\n            factorials\
-    \ = {1};\n            inv_factorials = {1};\n            invs = {0};\n       \
-    \ }\n        if (n > MD) n = MD;\n        int old_sz = factorials.size();\n  \
-    \      if (n <= old_sz) return;\n\n        factorials.resize(n);\n        inv_factorials.resize(n);\n\
+    \ r);\n}\n// }}}\n\n// Count occurrences using hash {{{\n// If hash array can\
+    \ be pre-computed, can answer each query in\n// O(log(|S|) * log(|S| + |pat|)\n\
+    // Tested\n// - https://oj.vnoi.info/problem/icpc22_mt_b\n#line 1 \"Math/modint.h\"\
+    \n// ModInt {{{\ntemplate<int MD> struct ModInt {\n    using ll = long long;\n\
+    \    int x;\n\n    constexpr ModInt() : x(0) {}\n    constexpr ModInt(ll v) {\
+    \ _set(v % MD + MD); }\n    constexpr static int mod() { return MD; }\n    constexpr\
+    \ explicit operator bool() const { return x != 0; }\n\n    constexpr ModInt operator\
+    \ + (const ModInt& a) const {\n        return ModInt()._set((ll) x + a.x);\n \
+    \   }\n    constexpr ModInt operator - (const ModInt& a) const {\n        return\
+    \ ModInt()._set((ll) x - a.x + MD);\n    }\n    constexpr ModInt operator * (const\
+    \ ModInt& a) const {\n        return ModInt()._set((ll) x * a.x % MD);\n    }\n\
+    \    constexpr ModInt operator / (const ModInt& a) const {\n        return ModInt()._set((ll)\
+    \ x * a.inv().x % MD);\n    }\n    constexpr ModInt operator - () const {\n  \
+    \      return ModInt()._set(MD - x);\n    }\n\n    constexpr ModInt& operator\
+    \ += (const ModInt& a) { return *this = *this + a; }\n    constexpr ModInt& operator\
+    \ -= (const ModInt& a) { return *this = *this - a; }\n    constexpr ModInt& operator\
+    \ *= (const ModInt& a) { return *this = *this * a; }\n    constexpr ModInt& operator\
+    \ /= (const ModInt& a) { return *this = *this / a; }\n\n    friend constexpr ModInt\
+    \ operator + (ll a, const ModInt& b) {\n        return ModInt()._set(a % MD +\
+    \ b.x);\n    }\n    friend constexpr ModInt operator - (ll a, const ModInt& b)\
+    \ {\n        return ModInt()._set(a % MD - b.x + MD);\n    }\n    friend constexpr\
+    \ ModInt operator * (ll a, const ModInt& b) {\n        return ModInt()._set(a\
+    \ % MD * b.x % MD);\n    }\n    friend constexpr ModInt operator / (ll a, const\
+    \ ModInt& b) {\n        return ModInt()._set(a % MD * b.inv().x % MD);\n    }\n\
+    \n    constexpr bool operator == (const ModInt& a) const { return x == a.x; }\n\
+    \    constexpr bool operator != (const ModInt& a) const { return x != a.x; }\n\
+    \n    friend std::istream& operator >> (std::istream& is, ModInt& x) {\n     \
+    \   ll val; is >> val;\n        x = ModInt(val);\n        return is;\n    }\n\
+    \    constexpr friend std::ostream& operator << (std::ostream& os, const ModInt&\
+    \ x) {\n        return os << x.x;\n    }\n\n    constexpr ModInt pow(ll k) const\
+    \ {\n        ModInt ans = 1, tmp = x;\n        while (k) {\n            if (k\
+    \ & 1) ans *= tmp;\n            tmp *= tmp;\n            k >>= 1;\n        }\n\
+    \        return ans;\n    }\n\n    constexpr ModInt inv() const {\n        if\
+    \ (x < 1000111) {\n            _precalc(1000111);\n            return invs[x];\n\
+    \        }\n        int a = x, b = MD, ax = 1, bx = 0;\n        while (b) {\n\
+    \            int q = a/b, t = a%b;\n            a = b; b = t;\n            t =\
+    \ ax - bx*q;\n            ax = bx; bx = t;\n        }\n        assert(a == 1);\n\
+    \        if (ax < 0) ax += MD;\n        return ax;\n    }\n\n    static std::vector<ModInt>\
+    \ factorials, inv_factorials, invs;\n    constexpr static void _precalc(int n)\
+    \ {\n        if (factorials.empty()) {\n            factorials = {1};\n      \
+    \      inv_factorials = {1};\n            invs = {0};\n        }\n        if (n\
+    \ > MD) n = MD;\n        int old_sz = factorials.size();\n        if (n <= old_sz)\
+    \ return;\n\n        factorials.resize(n);\n        inv_factorials.resize(n);\n\
     \        invs.resize(n);\n\n        for (int i = old_sz; i < n; ++i) factorials[i]\
     \ = factorials[i-1] * i;\n        inv_factorials[n-1] = factorials.back().pow(MD\
     \ - 2);\n        for (int i = n - 2; i >= old_sz; --i) inv_factorials[i] = inv_factorials[i+1]\
@@ -191,7 +192,7 @@ data:
     \ doesn't divide by p[l]\n    Hash __getHash(const std::vector<Hash>& h, int l,\
     \ int r) const {\n        assert(0 <= l && l <= r && r < (int) h.size());\n  \
     \      return h[r] - (l == 0 ? Hash{0, 0} : h[l-1]);\n    }\n};\n// }}}\n#line\
-    \ 106 \"String/SuffixArray.h\"\nint count_occurrence_hash(\n        const vector<int>&\
+    \ 107 \"String/SuffixArray.h\"\nint count_occurrence_hash(\n        const vector<int>&\
     \ sa,        // suffix array\n        const HashGenerator& gen,\n        const\
     \ string& s,\n        const vector<Hash>& hash_s,   // hash of `s`, generated\
     \ with `gen`\n        const string_view& pat,\n        const vector<Hash>& hash_pat\
@@ -221,7 +222,7 @@ data:
   isVerificationFile: true
   path: String/tests/suffix_array.test.cpp
   requiredBy: []
-  timestamp: '2022-10-08 21:15:49-04:00'
+  timestamp: '2022-11-19 11:13:09+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: String/tests/suffix_array.test.cpp
