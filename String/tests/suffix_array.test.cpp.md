@@ -22,52 +22,102 @@ data:
     - https://judge.yosupo.jp/problem/suffixarray
   bundledCode: "#line 1 \"String/tests/suffix_array.test.cpp\"\n#define PROBLEM \"\
     https://judge.yosupo.jp/problem/suffixarray\"\n\n#include <bits/stdc++.h>\nusing\
-    \ namespace std;\n\n#line 1 \"String/SuffixArray.h\"\n// Suffix Array {{{\n//\
-    \ Source: http://codeforces.com/contest/452/submission/7269543\n// Efficient Suffix\
-    \ Array O(N*logN)\n\n// String index from 0\n// Usage:\n// string s;  (s[i] >\
-    \ 0)\n// SuffixArray sa(s);\n// Now we can use sa.SA and sa.LCP\n// sa.LCP[i]\
-    \ = max common prefix suffix of sa.SA[i-1] and sa.SA[i]\n//\n// Notes:\n// - Number\
-    \ of distinct substrings = |S| * (|S| + 1) / 2 - sum(LCP)\n//\n// Tested:\n//\
-    \ - (build SA) https://judge.yosupo.jp/problem/suffixarray\n// - (LCP) https://judge.yosupo.jp/problem/number_of_substrings\n\
-    // - (LCP - kth distinct substr) https://cses.fi/problemset/task/2108\n// - (LCP\
-    \ - longest repeated substr) https://cses.fi/problemset/task/2106/\nstruct SuffixArray\
-    \ {\n    string a;\n    int N, m;\n    vector<int> SA, LCP, x, y, w, c;\n\n  \
-    \  SuffixArray(string _a, int _m = 256) : a(\" \" + _a), N(a.length()), m(_m),\n\
-    \            SA(N), LCP(N), x(N), y(N), w(max(m, N)), c(N) {\n        a[0] = 0;\n\
-    \        DA();\n        kasaiLCP();\n        #define REF(X) { rotate(X.begin(),\
-    \ X.begin()+1, X.end()); X.pop_back(); }\n        REF(SA); REF(LCP);\n       \
-    \ a = a.substr(1, a.size());\n        for(int i = 0; i < (int) SA.size(); ++i)\
-    \ --SA[i];\n        #undef REF\n    }\n\n    inline bool cmp (const int u, const\
-    \ int v, const int l) {\n        return (y[u] == y[v] && (u + l < N && v + l <\
-    \ N ? y[u + l] == y[v + l] : false));\n    }\n\n    void Sort() {\n        for(int\
-    \ i = 0; i < m; ++i) w[i] = 0;\n        for(int i = 0; i < N; ++i) ++w[x[y[i]]];\n\
-    \        for(int i = 0; i < m - 1; ++i) w[i + 1] += w[i];\n        for(int i =\
-    \ N - 1; i >= 0; --i) SA[--w[x[y[i]]]] = y[i];\n    }\n\n    void DA() {\n   \
-    \     for(int i = 0; i < N; ++i) x[i] = a[i], y[i] = i;\n        Sort();\n   \
-    \     for(int i, j = 1, p = 1; p < N; j <<= 1, m = p) {\n            for(p = 0,\
-    \ i = N - j; i < N; i++) y[p++] = i;\n            for (int k = 0; k < N; ++k)\
-    \ if (SA[k] >= j) y[p++] = SA[k] - j;\n            Sort();\n            for(swap(x,\
-    \ y), p = 1, x[SA[0]] = 0, i = 1; i < N; ++i)\n                x[SA[i]] = cmp(SA[i\
-    \ - 1], SA[i], j) ? p - 1 : p++;\n        }\n    }\n\n    void kasaiLCP() {\n\
-    \        for (int i = 0; i < N; i++) c[SA[i]] = i;\n        for (int i = 0, j,\
-    \ k = 0; i < N; LCP[c[i++]] = k)\n            if (c[i] > 0) for (k ? k-- : 0,\
-    \ j = SA[c[i] - 1]; a[i + k] == a[j + k]; k++);\n            else k = 0;\n   \
-    \ }\n};\n\n// Example:\n// given string S and Q queries pat_i, for each query,\
-    \ count how many\n// times pat_i appears in S\n// O(min(|S|, |pat|) * log(|S|))\
-    \ per query\n//\n// Tested:\n// - (yes / no) https://cses.fi/problemset/task/2102\n\
-    // - (count) https://cses.fi/problemset/task/2103\n// - (position; need RMQ) https://cses.fi/problemset/task/2104\n\
-    int count_occurrence(const string& s, const vector<int>& sa, const string& pat)\
-    \ {\n    int n = s.size(), m = pat.size();\n    assert(n == (int) sa.size());\n\
-    \    if (n < m) return 0;\n \n    auto f = [&] (int start) {  // compare S[start..]\
-    \ and pat[0..]\n        for (int i = 0; start + i < n && i < m; ++i) {\n     \
-    \       if (s[start + i] < pat[i]) return true;\n            if (s[start + i]\
-    \ > pat[i]) return false;\n        }\n        return n - start < m;\n    };\n\
-    \    auto g = [&] (int start) {\n        for (int i = 0; start + i < n && i <\
-    \ m; ++i) {\n            if (s[start + i] > pat[i]) return false;\n        }\n\
-    \        return true;\n    };\n    auto l = std::partition_point(sa.begin(), sa.end(),\
-    \ f);\n    auto r = std::partition_point(l, sa.end(), g);\n    return std::distance(l,\
-    \ r);\n}\n// }}}\n\n// Count occurrences using hash {{{\n// If hash array can\
-    \ be pre-computed, can answer each query in\n// O(log(|S|) * log(|S| + |pat|)\n\
+    \ namespace std;\n\n#line 1 \"String/SuffixArray.h\"\n// Efficient O(N + alphabet_size)\
+    \ time and space suffix array\n// For ICPC notebook, it's better to copy a shorter\
+    \ code such as\n// https://github.com/kth-competitive-programming/kactl/blob/main/content/strings/SuffixArray.h\n\
+    \n// Usage:\n// - sa = suffix_array(s, 'a', 'z')\n// - lcp = LCP(s, sa)\n//  \
+    \ lcp[i] = LCP(sa[i], sa[i+1])\n//\n// Tested:\n// - SA https://judge.yosupo.jp/problem/suffixarray\n\
+    // - SA https://www.spoj.com/problems/SARRAY/\n// - LCP https://judge.yosupo.jp/problem/number_of_substrings\n\
+    // Suffix Array {{{\n// Copied from https://judge.yosupo.jp/submission/52300\n\
+    // Helper functions {{{\nvoid induced_sort(const std::vector<int>& vec, int val_range,\n\
+    \                  std::vector<int>& SA, const std::vector<bool>& sl,\n      \
+    \            const std::vector<int>& lms_idx) {\n    std::vector<int> l(val_range,\
+    \ 0), r(val_range, 0);\n    for (int c : vec) {\n        if (c + 1 < val_range)\
+    \ ++l[c + 1];\n        ++r[c];\n    }\n    std::partial_sum(l.begin(), l.end(),\
+    \ l.begin());\n    std::partial_sum(r.begin(), r.end(), r.begin());\n    std::fill(SA.begin(),\
+    \ SA.end(), -1);\n    for (int i = (int)lms_idx.size() - 1; i >= 0; --i)\n   \
+    \     SA[--r[vec[lms_idx[i]]]] = lms_idx[i];\n    for (int i : SA)\n        if\
+    \ (i >= 1 && sl[i - 1]) SA[l[vec[i - 1]]++] = i - 1;\n    std::fill(r.begin(),\
+    \ r.end(), 0);\n    for (int c : vec) ++r[c];\n    std::partial_sum(r.begin(),\
+    \ r.end(), r.begin());\n    for (int k = (int)SA.size() - 1, i = SA[k]; k >= 1;\
+    \ --k, i = SA[k])\n        if (i >= 1 && !sl[i - 1]) {\n            SA[--r[vec[i\
+    \ - 1]]] = i - 1;\n        }\n}\n\nstd::vector<int> SA_IS(const std::vector<int>&\
+    \ vec, int val_range) {\n    const int n = vec.size();\n    std::vector<int> SA(n),\
+    \ lms_idx;\n    std::vector<bool> sl(n);\n    sl[n - 1] = false;\n    for (int\
+    \ i = n - 2; i >= 0; --i) {\n        sl[i] = (vec[i] > vec[i + 1] || (vec[i] ==\
+    \ vec[i + 1] && sl[i + 1]));\n        if (sl[i] && !sl[i + 1]) lms_idx.push_back(i\
+    \ + 1);\n    }\n    std::reverse(lms_idx.begin(), lms_idx.end());\n    induced_sort(vec,\
+    \ val_range, SA, sl, lms_idx);\n    std::vector<int> new_lms_idx(lms_idx.size()),\
+    \ lms_vec(lms_idx.size());\n    for (int i = 0, k = 0; i < n; ++i)\n        if\
+    \ (!sl[SA[i]] && SA[i] >= 1 && sl[SA[i] - 1]) {\n            new_lms_idx[k++]\
+    \ = SA[i];\n        }\n    int cur = 0;\n    SA[n - 1] = cur;\n    for (size_t\
+    \ k = 1; k < new_lms_idx.size(); ++k) {\n        int i = new_lms_idx[k - 1], j\
+    \ = new_lms_idx[k];\n        if (vec[i] != vec[j]) {\n            SA[j] = ++cur;\n\
+    \            continue;\n        }\n        bool flag = false;\n        for (int\
+    \ a = i + 1, b = j + 1;; ++a, ++b) {\n            if (vec[a] != vec[b]) {\n  \
+    \              flag = true;\n                break;\n            }\n         \
+    \   if ((!sl[a] && sl[a - 1]) || (!sl[b] && sl[b - 1])) {\n                flag\
+    \ = !((!sl[a] && sl[a - 1]) && (!sl[b] && sl[b - 1]));\n                break;\n\
+    \            }\n        }\n        SA[j] = (flag ? ++cur : cur);\n    }\n    for\
+    \ (size_t i = 0; i < lms_idx.size(); ++i) lms_vec[i] = SA[lms_idx[i]];\n    if\
+    \ (cur + 1 < (int)lms_idx.size()) {\n        auto lms_SA = SA_IS(lms_vec, cur\
+    \ + 1);\n        for (size_t i = 0; i < lms_idx.size(); ++i) {\n            new_lms_idx[i]\
+    \ = lms_idx[lms_SA[i]];\n        }\n    }\n    induced_sort(vec, val_range, SA,\
+    \ sl, new_lms_idx);\n    return SA;\n}\n// }}}\n\ntemplate<typename ContainerT\
+    \ = std::string, typename ElemT = unsigned char>\nstd::vector<int> suffix_array(const\
+    \ ContainerT& s, const ElemT first = 'a',\n                         const ElemT\
+    \ last = 'z') {\n    std::vector<int> vec(s.size() + 1);\n    std::copy(std::begin(s),\
+    \ std::end(s), std::begin(vec));\n    for (auto& x : vec) x -= (int)first - 1;\n\
+    \    vec.back() = 0;\n    auto ret = SA_IS(vec, (int)last - (int)first + 2);\n\
+    \    ret.erase(ret.begin());\n    return ret;\n}\n// Author: https://codeforces.com/blog/entry/12796?#comment-175287\n\
+    // Uses kasai's algorithm linear in time and space\nstd::vector<int> LCP(const\
+    \ std::string& s, const std::vector<int>& sa) {\n    int n = s.size(), k = 0;\n\
+    \    std::vector<int> lcp(n), rank(n);\n    for (int i = 0; i < n; i++) rank[sa[i]]\
+    \ = i;\n    for (int i = 0; i < n; i++, k ? k-- : 0) {\n        if (rank[i] ==\
+    \ n - 1) {\n            k = 0;\n            continue;\n        }\n        int\
+    \ j = sa[rank[i] + 1];\n        while (i + k < n && j + k < n && s[i + k] == s[j\
+    \ + k]) k++;\n        lcp[rank[i]] = k;\n    }\n    lcp[n - 1] = 0;\n    return\
+    \ lcp;\n}\n// }}}\n// Number of distinct substrings {{{\n// Tested:\n// - https://judge.yosupo.jp/problem/number_of_substrings\n\
+    // - https://www.spoj.com/problems/SUBST1/\nint64_t cnt_distinct_substrings(const\
+    \ std::string& s) {\n    auto lcp = LCP(s, suffix_array(s, 0, 255));\n    return\
+    \ s.size() * (int64_t) (s.size() + 1) / 2\n        - std::accumulate(lcp.begin(),\
+    \ lcp.end(), 0LL);\n}\n// }}}\n// K-th distinct substring {{{\n// Tested:\n//\
+    \ - https://cses.fi/problemset/task/2108\n// - https://www.spoj.com/problems/SUBLEX/\n\
+    \n// Consider all distinct substring of string `s` in lexicographically increasing\n\
+    // order. Find k-th substring.\n//\n// Preprocessing: O(N)\n// Each query: O(log(N))\n\
+    //\n// Returns {start index, length}. If not found -> {-1, -1}\nstd::vector<std::pair<int,int>>\
+    \ kth_distinct_substring(\n        const std::string& s,\n        const std::vector<int64_t>&\
+    \ ks) {\n    if (s.empty()) {\n        return {};\n    }\n    auto sa = suffix_array(s,\
+    \ 0, 255);\n    auto lcp = LCP(s, sa);\n    int n = s.size();\n    \n    // for\
+    \ each suffix (in increasing order), we count how many new distinct\n    // substrings\
+    \ it create\n    std::vector<int64_t> n_new_substrs(n);\n    for (int i = 0; i\
+    \ < n; ++i) {\n        int substr_len = n - sa[i];\n        int new_substr_start\
+    \ = (i > 0 ? lcp[i-1] : 0);\n        n_new_substrs[i] = substr_len - new_substr_start;\n\
+    \    }\n    std::partial_sum(n_new_substrs.begin(), n_new_substrs.end(), n_new_substrs.begin());\n\
+    \n    std::vector<std::pair<int,int>> res;\n    for (int64_t k : ks) {\n     \
+    \   if (k > *n_new_substrs.rbegin()) {\n            res.emplace_back(-1, -1);\n\
+    \        } else {\n            int i = std::lower_bound(n_new_substrs.begin(),\
+    \ n_new_substrs.end(), k) - n_new_substrs.begin();\n            int new_substr_start\
+    \ = (i > 0 ? lcp[i-1] : 0);\n            if (i > 0) k -= n_new_substrs[i-1];\n\
+    \            res.emplace_back(sa[i], new_substr_start + k);\n        }\n    }\n\
+    \    return res;\n}\n// }}}\n// Count substring occurrences {{{\n// given string\
+    \ S and Q queries pat_i, for each query, count how many\n// times pat_i appears\
+    \ in S\n// O(min(|S|, |pat|) * log(|S|)) per query\n//\n// Tested:\n// - (yes\
+    \ / no) https://cses.fi/problemset/task/2102\n// - (count) https://cses.fi/problemset/task/2103\n\
+    // - (position; need RMQ) https://cses.fi/problemset/task/2104\nint cnt_occurrences(const\
+    \ string& s, const vector<int>& sa, const string& pat) {\n    int n = s.size(),\
+    \ m = pat.size();\n    assert(n == (int) sa.size());\n    if (n < m) return 0;\n\
+    \ \n    auto f = [&] (int start) {  // compare S[start..] and pat[0..]\n     \
+    \   for (int i = 0; start + i < n && i < m; ++i) {\n            if (s[start +\
+    \ i] < pat[i]) return true;\n            if (s[start + i] > pat[i]) return false;\n\
+    \        }\n        return n - start < m;\n    };\n    auto g = [&] (int start)\
+    \ {\n        for (int i = 0; start + i < n && i < m; ++i) {\n            if (s[start\
+    \ + i] > pat[i]) return false;\n        }\n        return true;\n    };\n    auto\
+    \ l = std::partition_point(sa.begin(), sa.end(), f);\n    auto r = std::partition_point(l,\
+    \ sa.end(), g);\n    // To find first occurrence, return min of sa in range [l,\
+    \ r)\n    // See https://cses.fi/problemset/task/2104\n    return std::distance(l,\
+    \ r);\n}\n// }}}\n// Count substring occurrences using hash {{{\n// If hash array\
+    \ can be pre-computed, can answer each query in\n// O(log(|S|) * log(|S| + |pat|)\n\
     // Tested\n// - https://oj.vnoi.info/problem/icpc22_mt_b\n#line 1 \"Math/modint.h\"\
     \n// ModInt {{{\ntemplate<int MD> struct ModInt {\n    using ll = long long;\n\
     \    int x;\n\n    constexpr ModInt() : x(0) {}\n    constexpr ModInt(ll v) {\
@@ -192,7 +242,7 @@ data:
     \ doesn't divide by p[l]\n    Hash __getHash(const std::vector<Hash>& h, int l,\
     \ int r) const {\n        assert(0 <= l && l <= r && r < (int) h.size());\n  \
     \      return h[r] - (l == 0 ? Hash{0, 0} : h[l-1]);\n    }\n};\n// }}}\n#line\
-    \ 107 \"String/SuffixArray.h\"\nint count_occurrence_hash(\n        const vector<int>&\
+    \ 216 \"String/SuffixArray.h\"\nint cnt_occurrences_hash(\n        const vector<int>&\
     \ sa,        // suffix array\n        const HashGenerator& gen,\n        const\
     \ string& s,\n        const vector<Hash>& hash_s,   // hash of `s`, generated\
     \ with `gen`\n        const string_view& pat,\n        const vector<Hash>& hash_pat\
@@ -208,13 +258,13 @@ data:
     \ std::partition_point(sa.begin(), sa.end(), f);\n    auto r = std::partition_point(l,\
     \ sa.end(), g);\n    return std::distance(l, r);\n}\n// }}}\n#line 7 \"String/tests/suffix_array.test.cpp\"\
     \n\nint32_t main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n    string s;\
-    \ cin >> s;\n    SuffixArray sa(s);\n    for (int x : sa.SA) {\n        cout <<\
-    \ x << ' ';\n    }\n    cout << endl;\n    return 0;\n}\n"
+    \ cin >> s;\n    auto sa = suffix_array(s, 'a', 'z');\n    for (int x : sa) std::cout\
+    \ << x << ' ';\n    cout << endl;\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/suffixarray\"\n\n#include\
     \ <bits/stdc++.h>\nusing namespace std;\n\n#include \"../SuffixArray.h\"\n\nint32_t\
     \ main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n    string s; cin >> s;\n\
-    \    SuffixArray sa(s);\n    for (int x : sa.SA) {\n        cout << x << ' ';\n\
-    \    }\n    cout << endl;\n    return 0;\n}\n"
+    \    auto sa = suffix_array(s, 'a', 'z');\n    for (int x : sa) std::cout << x\
+    \ << ' ';\n    cout << endl;\n    return 0;\n}\n"
   dependsOn:
   - String/SuffixArray.h
   - String/hash.h
@@ -222,7 +272,7 @@ data:
   isVerificationFile: true
   path: String/tests/suffix_array.test.cpp
   requiredBy: []
-  timestamp: '2022-11-19 11:13:09+08:00'
+  timestamp: '2022-11-19 22:41:58+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: String/tests/suffix_array.test.cpp

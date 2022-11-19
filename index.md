@@ -466,9 +466,6 @@ data:
       path: String/AhoCorasick.h
       title: String/AhoCorasick.h
     - icon: ':warning:'
-      path: String/DC3SuffixArray.h
-      title: String/DC3SuffixArray.h
-    - icon: ':warning:'
       path: String/PalindromeTree_eertree.cpp
       title: String/PalindromeTree_eertree.cpp
     - icon: ':heavy_check_mark:'
