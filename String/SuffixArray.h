@@ -1,71 +1,179 @@
-// Suffix Array {{{
-// Source: http://codeforces.com/contest/452/submission/7269543
-// Efficient Suffix Array O(N*logN)
+// Efficient O(N + alphabet_size) time and space suffix array
+// For ICPC notebook, it's better to copy a shorter code such as
+// https://github.com/kth-competitive-programming/kactl/blob/main/content/strings/SuffixArray.h
 
-// String index from 0
 // Usage:
-// string s;  (s[i] > 0)
-// SuffixArray sa(s);
-// Now we can use sa.SA and sa.LCP
-// sa.LCP[i] = max common prefix suffix of sa.SA[i-1] and sa.SA[i]
-//
-// Notes:
-// - Number of distinct substrings = |S| * (|S| + 1) / 2 - sum(LCP)
+// - sa = suffix_array(s, 'a', 'z')
+// - lcp = LCP(s, sa)
+//   lcp[i] = LCP(sa[i], sa[i+1])
 //
 // Tested:
-// - (build SA) https://judge.yosupo.jp/problem/suffixarray
-// - (LCP) https://judge.yosupo.jp/problem/number_of_substrings
-// - (LCP - kth distinct substr) https://cses.fi/problemset/task/2108
-// - (LCP - longest repeated substr) https://cses.fi/problemset/task/2106/
-struct SuffixArray {
-    string a;
-    int N, m;
-    vector<int> SA, LCP, x, y, w, c;
-
-    SuffixArray(string _a, int _m = 256) : a(" " + _a), N(a.length()), m(_m),
-            SA(N), LCP(N), x(N), y(N), w(max(m, N)), c(N) {
-        a[0] = 0;
-        DA();
-        kasaiLCP();
-        #define REF(X) { rotate(X.begin(), X.begin()+1, X.end()); X.pop_back(); }
-        REF(SA); REF(LCP);
-        a = a.substr(1, a.size());
-        for(int i = 0; i < (int) SA.size(); ++i) --SA[i];
-        #undef REF
+// - SA https://judge.yosupo.jp/problem/suffixarray
+// - SA https://www.spoj.com/problems/SARRAY/
+// - LCP https://judge.yosupo.jp/problem/number_of_substrings
+// Suffix Array {{{
+// Copied from https://judge.yosupo.jp/submission/52300
+// Helper functions {{{
+void induced_sort(const std::vector<int>& vec, int val_range,
+                  std::vector<int>& SA, const std::vector<bool>& sl,
+                  const std::vector<int>& lms_idx) {
+    std::vector<int> l(val_range, 0), r(val_range, 0);
+    for (int c : vec) {
+        if (c + 1 < val_range) ++l[c + 1];
+        ++r[c];
     }
+    std::partial_sum(l.begin(), l.end(), l.begin());
+    std::partial_sum(r.begin(), r.end(), r.begin());
+    std::fill(SA.begin(), SA.end(), -1);
+    for (int i = (int)lms_idx.size() - 1; i >= 0; --i)
+        SA[--r[vec[lms_idx[i]]]] = lms_idx[i];
+    for (int i : SA)
+        if (i >= 1 && sl[i - 1]) SA[l[vec[i - 1]]++] = i - 1;
+    std::fill(r.begin(), r.end(), 0);
+    for (int c : vec) ++r[c];
+    std::partial_sum(r.begin(), r.end(), r.begin());
+    for (int k = (int)SA.size() - 1, i = SA[k]; k >= 1; --k, i = SA[k])
+        if (i >= 1 && !sl[i - 1]) {
+            SA[--r[vec[i - 1]]] = i - 1;
+        }
+}
 
-    inline bool cmp (const int u, const int v, const int l) {
-        return (y[u] == y[v] && (u + l < N && v + l < N ? y[u + l] == y[v + l] : false));
+std::vector<int> SA_IS(const std::vector<int>& vec, int val_range) {
+    const int n = vec.size();
+    std::vector<int> SA(n), lms_idx;
+    std::vector<bool> sl(n);
+    sl[n - 1] = false;
+    for (int i = n - 2; i >= 0; --i) {
+        sl[i] = (vec[i] > vec[i + 1] || (vec[i] == vec[i + 1] && sl[i + 1]));
+        if (sl[i] && !sl[i + 1]) lms_idx.push_back(i + 1);
     }
-
-    void Sort() {
-        for(int i = 0; i < m; ++i) w[i] = 0;
-        for(int i = 0; i < N; ++i) ++w[x[y[i]]];
-        for(int i = 0; i < m - 1; ++i) w[i + 1] += w[i];
-        for(int i = N - 1; i >= 0; --i) SA[--w[x[y[i]]]] = y[i];
+    std::reverse(lms_idx.begin(), lms_idx.end());
+    induced_sort(vec, val_range, SA, sl, lms_idx);
+    std::vector<int> new_lms_idx(lms_idx.size()), lms_vec(lms_idx.size());
+    for (int i = 0, k = 0; i < n; ++i)
+        if (!sl[SA[i]] && SA[i] >= 1 && sl[SA[i] - 1]) {
+            new_lms_idx[k++] = SA[i];
+        }
+    int cur = 0;
+    SA[n - 1] = cur;
+    for (size_t k = 1; k < new_lms_idx.size(); ++k) {
+        int i = new_lms_idx[k - 1], j = new_lms_idx[k];
+        if (vec[i] != vec[j]) {
+            SA[j] = ++cur;
+            continue;
+        }
+        bool flag = false;
+        for (int a = i + 1, b = j + 1;; ++a, ++b) {
+            if (vec[a] != vec[b]) {
+                flag = true;
+                break;
+            }
+            if ((!sl[a] && sl[a - 1]) || (!sl[b] && sl[b - 1])) {
+                flag = !((!sl[a] && sl[a - 1]) && (!sl[b] && sl[b - 1]));
+                break;
+            }
+        }
+        SA[j] = (flag ? ++cur : cur);
     }
-
-    void DA() {
-        for(int i = 0; i < N; ++i) x[i] = a[i], y[i] = i;
-        Sort();
-        for(int i, j = 1, p = 1; p < N; j <<= 1, m = p) {
-            for(p = 0, i = N - j; i < N; i++) y[p++] = i;
-            for (int k = 0; k < N; ++k) if (SA[k] >= j) y[p++] = SA[k] - j;
-            Sort();
-            for(swap(x, y), p = 1, x[SA[0]] = 0, i = 1; i < N; ++i)
-                x[SA[i]] = cmp(SA[i - 1], SA[i], j) ? p - 1 : p++;
+    for (size_t i = 0; i < lms_idx.size(); ++i) lms_vec[i] = SA[lms_idx[i]];
+    if (cur + 1 < (int)lms_idx.size()) {
+        auto lms_SA = SA_IS(lms_vec, cur + 1);
+        for (size_t i = 0; i < lms_idx.size(); ++i) {
+            new_lms_idx[i] = lms_idx[lms_SA[i]];
         }
     }
+    induced_sort(vec, val_range, SA, sl, new_lms_idx);
+    return SA;
+}
+// }}}
 
-    void kasaiLCP() {
-        for (int i = 0; i < N; i++) c[SA[i]] = i;
-        for (int i = 0, j, k = 0; i < N; LCP[c[i++]] = k)
-            if (c[i] > 0) for (k ? k-- : 0, j = SA[c[i] - 1]; a[i + k] == a[j + k]; k++);
-            else k = 0;
+template<typename ContainerT = std::string, typename ElemT = unsigned char>
+std::vector<int> suffix_array(const ContainerT& s, const ElemT first = 'a',
+                         const ElemT last = 'z') {
+    std::vector<int> vec(s.size() + 1);
+    std::copy(std::begin(s), std::end(s), std::begin(vec));
+    for (auto& x : vec) x -= (int)first - 1;
+    vec.back() = 0;
+    auto ret = SA_IS(vec, (int)last - (int)first + 2);
+    ret.erase(ret.begin());
+    return ret;
+}
+// Author: https://codeforces.com/blog/entry/12796?#comment-175287
+// Uses kasai's algorithm linear in time and space
+std::vector<int> LCP(const std::string& s, const std::vector<int>& sa) {
+    int n = s.size(), k = 0;
+    std::vector<int> lcp(n), rank(n);
+    for (int i = 0; i < n; i++) rank[sa[i]] = i;
+    for (int i = 0; i < n; i++, k ? k-- : 0) {
+        if (rank[i] == n - 1) {
+            k = 0;
+            continue;
+        }
+        int j = sa[rank[i] + 1];
+        while (i + k < n && j + k < n && s[i + k] == s[j + k]) k++;
+        lcp[rank[i]] = k;
     }
-};
+    lcp[n - 1] = 0;
+    return lcp;
+}
+// }}}
+// Number of distinct substrings {{{
+// Tested:
+// - https://judge.yosupo.jp/problem/number_of_substrings
+// - https://www.spoj.com/problems/SUBST1/
+int64_t cnt_distinct_substrings(const std::string& s) {
+    auto lcp = LCP(s, suffix_array(s, 0, 255));
+    return s.size() * (int64_t) (s.size() + 1) / 2
+        - std::accumulate(lcp.begin(), lcp.end(), 0LL);
+}
+// }}}
+// K-th distinct substring {{{
+// Tested:
+// - https://cses.fi/problemset/task/2108
+// - https://www.spoj.com/problems/SUBLEX/
 
-// Example:
+// Consider all distinct substring of string `s` in lexicographically increasing
+// order. Find k-th substring.
+//
+// Preprocessing: O(N)
+// Each query: O(log(N))
+//
+// Returns {start index, length}. If not found -> {-1, -1}
+std::vector<std::pair<int,int>> kth_distinct_substring(
+        const std::string& s,
+        const std::vector<int64_t>& ks) {
+    if (s.empty()) {
+        return {};
+    }
+    auto sa = suffix_array(s, 0, 255);
+    auto lcp = LCP(s, sa);
+    int n = s.size();
+    
+    // for each suffix (in increasing order), we count how many new distinct
+    // substrings it create
+    std::vector<int64_t> n_new_substrs(n);
+    for (int i = 0; i < n; ++i) {
+        int substr_len = n - sa[i];
+        int new_substr_start = (i > 0 ? lcp[i-1] : 0);
+        n_new_substrs[i] = substr_len - new_substr_start;
+    }
+    std::partial_sum(n_new_substrs.begin(), n_new_substrs.end(), n_new_substrs.begin());
+
+    std::vector<std::pair<int,int>> res;
+    for (int64_t k : ks) {
+        if (k > *n_new_substrs.rbegin()) {
+            res.emplace_back(-1, -1);
+        } else {
+            int i = std::lower_bound(n_new_substrs.begin(), n_new_substrs.end(), k) - n_new_substrs.begin();
+            int new_substr_start = (i > 0 ? lcp[i-1] : 0);
+            if (i > 0) k -= n_new_substrs[i-1];
+            res.emplace_back(sa[i], new_substr_start + k);
+        }
+    }
+    return res;
+}
+// }}}
+// Count substring occurrences {{{
 // given string S and Q queries pat_i, for each query, count how many
 // times pat_i appears in S
 // O(min(|S|, |pat|) * log(|S|)) per query
@@ -74,7 +182,7 @@ struct SuffixArray {
 // - (yes / no) https://cses.fi/problemset/task/2102
 // - (count) https://cses.fi/problemset/task/2103
 // - (position; need RMQ) https://cses.fi/problemset/task/2104
-int count_occurrence(const string& s, const vector<int>& sa, const string& pat) {
+int cnt_occurrences(const string& s, const vector<int>& sa, const string& pat) {
     int n = s.size(), m = pat.size();
     assert(n == (int) sa.size());
     if (n < m) return 0;
@@ -94,17 +202,18 @@ int count_occurrence(const string& s, const vector<int>& sa, const string& pat) 
     };
     auto l = std::partition_point(sa.begin(), sa.end(), f);
     auto r = std::partition_point(l, sa.end(), g);
+    // To find first occurrence, return min of sa in range [l, r)
+    // See https://cses.fi/problemset/task/2104
     return std::distance(l, r);
 }
 // }}}
-
-// Count occurrences using hash {{{
+// Count substring occurrences using hash {{{
 // If hash array can be pre-computed, can answer each query in
 // O(log(|S|) * log(|S| + |pat|)
 // Tested
 // - https://oj.vnoi.info/problem/icpc22_mt_b
 #include "./hash.h"
-int count_occurrence_hash(
+int cnt_occurrences_hash(
         const vector<int>& sa,        // suffix array
         const HashGenerator& gen,
         const string& s,

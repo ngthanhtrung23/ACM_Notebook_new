@@ -10,10 +10,10 @@ int main() {
     string s, pat;
     int q;
     cin >> s >> q;
-    SuffixArray SA(s);
+    auto sa = suffix_array(s, 0, 255);
     while (q--) {
         cin >> pat;
-        int cnt = count_occurrence(s, SA.SA, pat);
+        int cnt = cnt_occurrences(s, sa, pat);
         cout << (cnt ? 1 : 0) << '\n';
     }
     return 0;

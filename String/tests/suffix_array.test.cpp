@@ -8,10 +8,8 @@ using namespace std;
 int32_t main() {
     ios::sync_with_stdio(0); cin.tie(0);
     string s; cin >> s;
-    SuffixArray sa(s);
-    for (int x : sa.SA) {
-        cout << x << ' ';
-    }
+    auto sa = suffix_array(s, 'a', 'z');
+    for (int x : sa) std::cout << x << ' ';
     cout << endl;
     return 0;
 }
