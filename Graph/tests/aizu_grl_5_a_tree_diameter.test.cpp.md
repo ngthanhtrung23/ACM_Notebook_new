@@ -44,36 +44,37 @@ data:
     \ (0, r-1)(rng);\n}\n\ntemplate<typename T>\nvector<T> read_vector(int n) {\n\
     \    vector<T> res(n);\n    for (int& x : res) cin >> x;\n    return res;\n}\n\
     \nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n  \
-    \  solve();\n    return 0;\n}\n#line 1 \"Graph/tree_diameter.h\"\n// Tree diameter\
-    \ (weighted)\n// Index from 0\n// Return {length, path}\n//\n// Tested:\n// -\
-    \ https://judge.yosupo.jp/problem/tree_diameter\nusing ll = long long;\npair<ll,\
-    \ vector<int>> get_diameter(const vector<vector<pair<int,int>>>& g) {\n    int\
-    \ n = g.size();\n    vector<ll> dist(n);\n    vector<int> parent(n);\n\n    function<void(int,\
-    \ int, ll)> dfs = [&] (int u, int fu, ll cur_dist) {\n        dist[u] = cur_dist;\n\
-    \        parent[u] = fu;\n        for (auto [v, cost] : g[u]) if (v != fu) {\n\
-    \            dfs(v, u, cur_dist + cost);\n        }\n    };\n    dfs(0, -1, 0);\n\
-    \    // r = furthest node from root\n    int r = max_element(dist.begin(), dist.end())\
-    \ - dist.begin();\n    dfs(r, -1, 0);\n    // r->s = longest path\n    int s =\
-    \ max_element(dist.begin(), dist.end()) - dist.begin();\n\n    vector<int> path;\n\
-    \    for (int x = s; x >= 0; x = parent[x]) path.push_back(x);\n\n    return {dist[s],\
-    \ path};\n}\n#line 5 \"Graph/tests/aizu_grl_5_a_tree_diameter.test.cpp\"\n\nvoid\
-    \ solve() {\n    int n; cin >> n;\n    vector<vector<pair<int,int>>> g(n);\n \
-    \   REP(i,n-1) {\n        int u, v, cost; cin >> u >> v >> cost;\n        g[u].emplace_back(v,\
+    \  solve();\n    return 0;\n}\n#line 1 \"Graph/tree_diameter.h\"\n// Index from\
+    \ 0\n// g should contains both (u, v) and (v, u)\n// Return {length, path}\n//\n\
+    // Tested:\n// - https://judge.yosupo.jp/problem/tree_diameter\n//\n// Tree diameter\
+    \ (weighted) {{{\nusing ll = long long;\npair<ll, vector<int>> tree_diameter(const\
+    \ vector<vector<pair<int,int>>>& g) {\n    int n = g.size();\n    vector<ll> dist(n);\n\
+    \    vector<int> parent(n);\n\n    function<void(int, int, ll)> dfs = [&] (int\
+    \ u, int fu, ll cur_dist) {\n        dist[u] = cur_dist;\n        parent[u] =\
+    \ fu;\n        for (auto [v, cost] : g[u]) if (v != fu) {\n            dfs(v,\
+    \ u, cur_dist + cost);\n        }\n    };\n    dfs(0, -1, 0);\n    // r = furthest\
+    \ node from root\n    int r = max_element(dist.begin(), dist.end()) - dist.begin();\n\
+    \    dfs(r, -1, 0);\n    // r->s = longest path\n    int s = max_element(dist.begin(),\
+    \ dist.end()) - dist.begin();\n\n    vector<int> path;\n    for (int x = s; x\
+    \ >= 0; x = parent[x]) path.push_back(x);\n\n    return {dist[s], path};\n}\n\
+    // }}}\n#line 5 \"Graph/tests/aizu_grl_5_a_tree_diameter.test.cpp\"\n\nvoid solve()\
+    \ {\n    int n; cin >> n;\n    vector<vector<pair<int,int>>> g(n);\n    REP(i,n-1)\
+    \ {\n        int u, v, cost; cin >> u >> v >> cost;\n        g[u].emplace_back(v,\
     \ cost);\n        g[v].emplace_back(u, cost);\n    }\n\n    auto [length, path]\
-    \ = get_diameter(g);\n    cout << length << endl;\n}\n"
+    \ = tree_diameter(g);\n    cout << length << endl;\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_A\"\
     \n\n#include \"../../template.h\"\n#include \"../tree_diameter.h\"\n\nvoid solve()\
     \ {\n    int n; cin >> n;\n    vector<vector<pair<int,int>>> g(n);\n    REP(i,n-1)\
     \ {\n        int u, v, cost; cin >> u >> v >> cost;\n        g[u].emplace_back(v,\
     \ cost);\n        g[v].emplace_back(u, cost);\n    }\n\n    auto [length, path]\
-    \ = get_diameter(g);\n    cout << length << endl;\n}\n"
+    \ = tree_diameter(g);\n    cout << length << endl;\n}\n"
   dependsOn:
   - template.h
   - Graph/tree_diameter.h
   isVerificationFile: true
   path: Graph/tests/aizu_grl_5_a_tree_diameter.test.cpp
   requiredBy: []
-  timestamp: '2022-01-13 13:16:22+08:00'
+  timestamp: '2022-11-21 21:56:30+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Graph/tests/aizu_grl_5_a_tree_diameter.test.cpp
