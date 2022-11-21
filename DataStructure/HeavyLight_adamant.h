@@ -1,4 +1,3 @@
-// HeavyLight {{{
 // Index from 0
 // Best used with SegTree.h
 //
@@ -11,12 +10,12 @@
 // SegTree<S, op, e> st(nodes);
 //
 // // Update path
-// hld.apply_path(from, to, is_edge_or_vertex, [&] (int l, int r) {
+// hld.apply_path(from, to, is_edge, [&] (int l, int r) {
 //   st.apply(l, r+1, F);
 // });
 //
 // // Query path
-// hld.prod_path_commutative<S, op, e> (from, to, is_edge_or_vertex, [&] (int l, int r) {
+// hld.prod_path_commutative<S, op, e> (from, to, is_edge, [&] (int l, int r) {
 //   return st.prod(l, r+1);
 // });
 //
@@ -35,6 +34,7 @@
 //
 // - (lca) https://oj.vnoi.info/problem/fselect
 // - (kth_parent) https://cses.fi/problemset/task/1687
+// HeavyLight {{{
 struct HLD {
     HLD(const vector<vector<int>>& _g, int root)
             : n(_g.size()), g(_g),
