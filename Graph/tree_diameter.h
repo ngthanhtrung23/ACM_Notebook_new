@@ -1,11 +1,13 @@
-// Tree diameter (weighted)
 // Index from 0
+// g should contains both (u, v) and (v, u)
 // Return {length, path}
 //
 // Tested:
 // - https://judge.yosupo.jp/problem/tree_diameter
+//
+// Tree diameter (weighted) {{{
 using ll = long long;
-pair<ll, vector<int>> get_diameter(const vector<vector<pair<int,int>>>& g) {
+pair<ll, vector<int>> tree_diameter(const vector<vector<pair<int,int>>>& g) {
     int n = g.size();
     vector<ll> dist(n);
     vector<int> parent(n);
@@ -29,3 +31,4 @@ pair<ll, vector<int>> get_diameter(const vector<vector<pair<int,int>>>& g) {
 
     return {dist[s], path};
 }
+// }}}

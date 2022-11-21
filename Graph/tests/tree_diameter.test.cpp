@@ -18,7 +18,7 @@ int32_t main() {
         g[v].emplace_back(u, cost);
     }
 
-    auto [length, path] = get_diameter(g);
+    auto [length, path] = tree_diameter(g);
     cout << length << ' ' << SZ(path) << endl;
     for (int x : path) cout << x << ' ';
     cout << endl;
