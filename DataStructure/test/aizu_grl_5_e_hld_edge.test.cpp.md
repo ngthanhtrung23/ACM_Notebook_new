@@ -147,15 +147,15 @@ data:
     \ F g) {\n        if (f.set == NOT_SET) {\n            return F { g.set, g.add\
     \ + f.add };\n        }\n        return f;\n    }\n    static F id() {\n     \
     \   return F { NOT_SET, 0 };\n    }\n};\n// }}}\n#line 1 \"DataStructure/HeavyLight_adamant.h\"\
-    \n// HeavyLight {{{\n// Index from 0\n// Best used with SegTree.h\n//\n// Usage:\n\
-    // HLD hld(g, root);\n// // build segment tree. Note that we must use hld.order[i]\n\
-    // vector<T> nodes;\n// for (int i = 0; i < n; i++)\n//   nodes.push_back(initial_value[hld.order[i]])\n\
+    \n// Index from 0\n// Best used with SegTree.h\n//\n// Usage:\n// HLD hld(g, root);\n\
+    // // build segment tree. Note that we must use hld.order[i]\n// vector<T> nodes;\n\
+    // for (int i = 0; i < n; i++)\n//   nodes.push_back(initial_value[hld.order[i]])\n\
     // SegTree<S, op, e> st(nodes);\n//\n// // Update path\n// hld.apply_path(from,\
-    \ to, is_edge_or_vertex, [&] (int l, int r) {\n//   st.apply(l, r+1, F);\n// });\n\
-    //\n// // Query path\n// hld.prod_path_commutative<S, op, e> (from, to, is_edge_or_vertex,\
-    \ [&] (int l, int r) {\n//   return st.prod(l, r+1);\n// });\n//\n// Tested:\n\
-    // - (vertex, path) https://judge.yosupo.jp/problem/vertex_add_path_sum\n// -\
-    \ (vertex, path, non-commutative) https://judge.yosupo.jp/problem/vertex_set_path_composite\n\
+    \ to, is_edge, [&] (int l, int r) {\n//   st.apply(l, r+1, F);\n// });\n//\n//\
+    \ // Query path\n// hld.prod_path_commutative<S, op, e> (from, to, is_edge, [&]\
+    \ (int l, int r) {\n//   return st.prod(l, r+1);\n// });\n//\n// Tested:\n// -\
+    \ (vertex, path) https://judge.yosupo.jp/problem/vertex_add_path_sum\n// - (vertex,\
+    \ path, non-commutative) https://judge.yosupo.jp/problem/vertex_set_path_composite\n\
     // - (vertex, subtree) https://judge.yosupo.jp/problem/vertex_add_subtree_sum\n\
     // - (vertex, path, non-commutative, 1-index) https://oj.vnoi.info/problem/icpc21_mt_l\n\
     // - (vertex, path) https://oj.vnoi.info/problem/qtree3\n//\n// - (edge, path)\
@@ -163,13 +163,13 @@ data:
     // - (edge, path) https://oj.vnoi.info/problem/pwalk\n// - (edge, path, lazy)\
     \ https://oj.vnoi.info/problem/kbuild\n// - (edge, path, lazy) https://oj.vnoi.info/problem/onbridge\n\
     //\n// - (lca) https://oj.vnoi.info/problem/fselect\n// - (kth_parent) https://cses.fi/problemset/task/1687\n\
-    struct HLD {\n    HLD(const vector<vector<int>>& _g, int root)\n            :\
-    \ n(_g.size()), g(_g),\n            parent(n), depth(n), sz(n),\n            dfs_number(0),\
-    \ nxt(n), in(n), out(n), order(n)\n    {\n        assert(0 <= root && root < n);\n\
-    \n        // init parent, depth, sz\n        // also move most heavy child of\
-    \ u to g[u][0]\n        depth[root] = 0;\n        dfs_sz(root, -1);\n\n      \
-    \  // init nxt, in, out\n        nxt[root] = root;\n        dfs_hld(root);\n \
-    \   }\n\n    int lca(int u, int v) const {\n        assert(0 <= u && u < n);\n\
+    // HeavyLight {{{\nstruct HLD {\n    HLD(const vector<vector<int>>& _g, int root)\n\
+    \            : n(_g.size()), g(_g),\n            parent(n), depth(n), sz(n),\n\
+    \            dfs_number(0), nxt(n), in(n), out(n), order(n)\n    {\n        assert(0\
+    \ <= root && root < n);\n\n        // init parent, depth, sz\n        // also\
+    \ move most heavy child of u to g[u][0]\n        depth[root] = 0;\n        dfs_sz(root,\
+    \ -1);\n\n        // init nxt, in, out\n        nxt[root] = root;\n        dfs_hld(root);\n\
+    \    }\n\n    int lca(int u, int v) const {\n        assert(0 <= u && u < n);\n\
     \        assert(0 <= v && v < n);\n        while (true) {\n            if (in[u]\
     \ > in[v]) swap(u, v); // in[u] <= in[v]\n            if (nxt[u] == nxt[v]) return\
     \ u;\n            v = parent[nxt[v]];\n        }\n    }\n\n    // return k-th\
@@ -283,7 +283,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/aizu_grl_5_e_hld_edge.test.cpp
   requiredBy: []
-  timestamp: '2022-08-14 04:11:09+08:00'
+  timestamp: '2022-11-21 23:05:00+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/aizu_grl_5_e_hld_edge.test.cpp
