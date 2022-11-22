@@ -33,6 +33,9 @@ data:
       path: DataStructure/BinaryTrie.h
       title: DataStructure/BinaryTrie.h
     - icon: ':warning:'
+      path: DataStructure/DSU_dynamic_connectivity.h
+      title: DataStructure/DSU_dynamic_connectivity.h
+    - icon: ':warning:'
       path: DataStructure/DSU_partially_persistent.h
       title: DataStructure/DSU_partially_persistent.h
     - icon: ':warning:'
