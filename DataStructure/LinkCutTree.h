@@ -1,4 +1,3 @@
-// Link Cut Tree {{{
 // copied from https://codeforces.com/blog/entry/75885
 // - Index from 1
 // - T needs to support + operation
@@ -15,12 +14,14 @@
 // - https://judge.yosupo.jp/problem/dynamic_tree_vertex_set_path_composite
 // - https://judge.yosupo.jp/problem/dynamic_tree_vertex_add_subtree_sum
 // - (edge weights) https://oj.vnoi.info/problem/icpc22_mn_b
+// - (link, cut, connected) https://www.spoj.com/problems/DYNACON1/
 
 // Add this for path queries only
 // #define PATH_QUERIES_ONLY
 
 // TODO: Specify T
 // using T = long long;
+// Link Cut Tree {{{
 // SplayTree {{{
 struct SplayTree { // can we replace SplayTreeById and use this only?
     struct Node {
@@ -126,6 +127,10 @@ struct SplayTree { // can we replace SplayTreeById and use this only?
 
 struct LinkCut : SplayTree {
     LinkCut(int n) : SplayTree(n) {}
+
+    bool is_connected(int u, int v) {
+        return LCA(u, v) > 0;
+    }
 
     void link(int u, int v) {
         reroot(u);
