@@ -23,10 +23,10 @@ data:
     - https://judge.yosupo.jp/problem/dynamic_tree_vertex_add_subtree_sum
     - https://judge.yosupo.jp/problem/dynamic_tree_vertex_set_path_composite
     - https://oj.vnoi.info/problem/icpc22_mn_b
-  bundledCode: "#line 1 \"DataStructure/LinkCutTree.h\"\n// Link Cut Tree {{{\n//\
-    \ copied from https://codeforces.com/blog/entry/75885\n// - Index from 1\n// -\
-    \ T needs to support + operation\n//   For subtree queries -> requires - operation\n\
-    //   --> see this comment for how to handle it: https://codeforces.com/blog/entry/67637?#comment-650424\n\
+    - https://www.spoj.com/problems/DYNACON1/
+  bundledCode: "#line 1 \"DataStructure/LinkCutTree.h\"\n// copied from https://codeforces.com/blog/entry/75885\n\
+    // - Index from 1\n// - T needs to support + operation\n//   For subtree queries\
+    \ -> requires - operation\n//   --> see this comment for how to handle it: https://codeforces.com/blog/entry/67637?#comment-650424\n\
     // - Not using template here, since inheritance becomes very ugly\n// - Doesn't\
     \ support lazy update (so no subtree updates)\n// - For query on *edge* weights\
     \ (instead of vertex weights)\n//   --> for each edge, add a new node in LinkCut\
@@ -34,9 +34,10 @@ data:
     // Tested:\n// - https://judge.yosupo.jp/problem/dynamic_tree_subtree_add_subtree_sum\n\
     // - https://judge.yosupo.jp/problem/dynamic_tree_vertex_set_path_composite\n\
     // - https://judge.yosupo.jp/problem/dynamic_tree_vertex_add_subtree_sum\n// -\
-    \ (edge weights) https://oj.vnoi.info/problem/icpc22_mn_b\n\n// Add this for path\
-    \ queries only\n// #define PATH_QUERIES_ONLY\n\n// TODO: Specify T\n// using T\
-    \ = long long;\n// SplayTree {{{\nstruct SplayTree { // can we replace SplayTreeById\
+    \ (edge weights) https://oj.vnoi.info/problem/icpc22_mn_b\n// - (link, cut, connected)\
+    \ https://www.spoj.com/problems/DYNACON1/\n\n// Add this for path queries only\n\
+    // #define PATH_QUERIES_ONLY\n\n// TODO: Specify T\n// using T = long long;\n\
+    // Link Cut Tree {{{\n// SplayTree {{{\nstruct SplayTree { // can we replace SplayTreeById\
     \ and use this only?\n    struct Node {\n        array<int, 2> child = {0, 0};\n\
     \        int parent = 0;\n\n        // Path aggregates\n        // - path[0] =\
     \ go from left -> right\n        // - path[1] = go from right -> left\n      \
@@ -70,7 +71,8 @@ data:
     \ nodes[r].sub + nodes[x].self;\n    }\n\n    void setChild(int x, int y, int\
     \ dir) {\n        nodes[x].child[dir] = y;\n        nodes[y].parent = x;\n   \
     \     pushUp(x);\n    }\n};\n// }}}\n\nstruct LinkCut : SplayTree {\n    LinkCut(int\
-    \ n) : SplayTree(n) {}\n\n    void link(int u, int v) {\n        reroot(u);\n\
+    \ n) : SplayTree(n) {}\n\n    bool is_connected(int u, int v) {\n        return\
+    \ LCA(u, v) > 0;\n    }\n\n    void link(int u, int v) {\n        reroot(u);\n\
     \        access(v);\n\n        nodes[v].vir = nodes[v].vir + nodes[u].sub;\n \
     \       nodes[u].parent = v;\n        pushUp(v);\n    }\n\n    void cut(int u,\
     \ int v) {\n        reroot(u);\n        access(v);\n\n        nodes[v].child[0]\
@@ -99,9 +101,9 @@ data:
     \            a * g.b + b,\n        };\n    }\n\n    T operator += (const T& g)\
     \ {\n        b = a * g.b + b;\n        a = a * g.a;\n        return *this;\n \
     \   }\n};\n*/\n// }}}\n"
-  code: "// Link Cut Tree {{{\n// copied from https://codeforces.com/blog/entry/75885\n\
-    // - Index from 1\n// - T needs to support + operation\n//   For subtree queries\
-    \ -> requires - operation\n//   --> see this comment for how to handle it: https://codeforces.com/blog/entry/67637?#comment-650424\n\
+  code: "// copied from https://codeforces.com/blog/entry/75885\n// - Index from 1\n\
+    // - T needs to support + operation\n//   For subtree queries -> requires - operation\n\
+    //   --> see this comment for how to handle it: https://codeforces.com/blog/entry/67637?#comment-650424\n\
     // - Not using template here, since inheritance becomes very ugly\n// - Doesn't\
     \ support lazy update (so no subtree updates)\n// - For query on *edge* weights\
     \ (instead of vertex weights)\n//   --> for each edge, add a new node in LinkCut\
@@ -109,9 +111,10 @@ data:
     // Tested:\n// - https://judge.yosupo.jp/problem/dynamic_tree_subtree_add_subtree_sum\n\
     // - https://judge.yosupo.jp/problem/dynamic_tree_vertex_set_path_composite\n\
     // - https://judge.yosupo.jp/problem/dynamic_tree_vertex_add_subtree_sum\n// -\
-    \ (edge weights) https://oj.vnoi.info/problem/icpc22_mn_b\n\n// Add this for path\
-    \ queries only\n// #define PATH_QUERIES_ONLY\n\n// TODO: Specify T\n// using T\
-    \ = long long;\n// SplayTree {{{\nstruct SplayTree { // can we replace SplayTreeById\
+    \ (edge weights) https://oj.vnoi.info/problem/icpc22_mn_b\n// - (link, cut, connected)\
+    \ https://www.spoj.com/problems/DYNACON1/\n\n// Add this for path queries only\n\
+    // #define PATH_QUERIES_ONLY\n\n// TODO: Specify T\n// using T = long long;\n\
+    // Link Cut Tree {{{\n// SplayTree {{{\nstruct SplayTree { // can we replace SplayTreeById\
     \ and use this only?\n    struct Node {\n        array<int, 2> child = {0, 0};\n\
     \        int parent = 0;\n\n        // Path aggregates\n        // - path[0] =\
     \ go from left -> right\n        // - path[1] = go from right -> left\n      \
@@ -145,7 +148,8 @@ data:
     \ nodes[r].sub + nodes[x].self;\n    }\n\n    void setChild(int x, int y, int\
     \ dir) {\n        nodes[x].child[dir] = y;\n        nodes[y].parent = x;\n   \
     \     pushUp(x);\n    }\n};\n// }}}\n\nstruct LinkCut : SplayTree {\n    LinkCut(int\
-    \ n) : SplayTree(n) {}\n\n    void link(int u, int v) {\n        reroot(u);\n\
+    \ n) : SplayTree(n) {}\n\n    bool is_connected(int u, int v) {\n        return\
+    \ LCA(u, v) > 0;\n    }\n\n    void link(int u, int v) {\n        reroot(u);\n\
     \        access(v);\n\n        nodes[v].vir = nodes[v].vir + nodes[u].sub;\n \
     \       nodes[u].parent = v;\n        pushUp(v);\n    }\n\n    void cut(int u,\
     \ int v) {\n        reroot(u);\n        access(v);\n\n        nodes[v].child[0]\
@@ -178,7 +182,7 @@ data:
   isVerificationFile: false
   path: DataStructure/LinkCutTree.h
   requiredBy: []
-  timestamp: '2022-11-01 16:26:05+08:00'
+  timestamp: '2022-11-22 20:50:06+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/link_cut_tree_vertexaddsubtreesum.test.cpp
