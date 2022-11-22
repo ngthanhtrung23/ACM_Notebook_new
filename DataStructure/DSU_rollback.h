@@ -3,6 +3,7 @@
 // - (used for directed MST) https://judge.yosupo.jp/problem/directedmst
 //
 // 0-based
+// DSU with rollback {{{
 struct Data {
     int time, u, par;  // before `time`, `par` = par[u]
 };
@@ -19,6 +20,10 @@ struct DSU {
         while (par[x] >= 0)
             x = par[x];
         return x;
+    }
+
+    bool same_component(int u, int v) {
+        return getRoot(u) == getRoot(v);
     }
 
     // join components containing x and y.
@@ -46,3 +51,4 @@ struct DSU {
         }
     }
 };
+// }}}
