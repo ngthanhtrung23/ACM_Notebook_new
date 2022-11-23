@@ -1,5 +1,12 @@
 // Tested:
 // - (up to 5e8) https://judge.yosupo.jp/problem/enumerate_primes
+//
+// Notes:
+// - There's faster sieve using Segmented Sieve + Wheel factorization.
+//   (can run upto 2^31)
+//   See: https://judge.yosupo.jp/submission/50677
+//   Problems: https://www.spoj.com/problems/KPRIMES2/
+//         or: https://www.spoj.com/problems/PRIMES2/
 typedef unsigned int uint;
 
 // NOTE: gP(n) is incorrect for even values of n

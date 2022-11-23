@@ -2,6 +2,7 @@
 // - https://www.spoj.com/problems/PRIC/
 
 #include <cstdint>
+// Rabin Miller for 32-bit numbers {{{
 inline unsigned mod_mult(unsigned a, unsigned b, unsigned m) {
   return (uint64_t)a*b%m;
 }
@@ -31,7 +32,7 @@ bool is_prime(unsigned n) {
   while (s%2 == 0) {s /= 2; r++;}
  
   for (int i = 0, j; i < sizeof(millerrabin)/sizeof(unsigned); i++) {
-    unsigned md = mod_pow(test[i], s, n);
+    unsigned md = mod_pow(millerrabin[i], s, n);
     if (md == 1) continue;
     for (j = 1; j < r; j++) {
       if (md == n-1) break;
@@ -42,3 +43,4 @@ bool is_prime(unsigned n) {
  
   return true;
 }
+// }}}

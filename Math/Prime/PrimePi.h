@@ -4,7 +4,9 @@
 //
 // Tested:
 // - https://judge.yosupo.jp/problem/counting_primes
+// - https://www.spoj.com/problems/NTHPRIME/ (binary search + prime pi)
 
+// prime_pi {{{
 using ll = long long;
 int isqrt(ll n) {
     return sqrtl(n);
@@ -58,3 +60,4 @@ ll prime_pi(const ll N) {
     }
     return larges[0] + 1;
 }
+// }}}
