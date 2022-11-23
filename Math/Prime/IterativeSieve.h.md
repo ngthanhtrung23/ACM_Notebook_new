@@ -12,8 +12,14 @@ data:
   attributes:
     links:
     - https://judge.yosupo.jp/problem/enumerate_primes
+    - https://judge.yosupo.jp/submission/50677
+    - https://www.spoj.com/problems/KPRIMES2/
+    - https://www.spoj.com/problems/PRIMES2/
   bundledCode: "#line 1 \"Math/Prime/IterativeSieve.h\"\n// Tested:\n// - (up to 5e8)\
-    \ https://judge.yosupo.jp/problem/enumerate_primes\ntypedef unsigned int uint;\n\
+    \ https://judge.yosupo.jp/problem/enumerate_primes\n//\n// Notes:\n// - There's\
+    \ faster sieve using Segmented Sieve + Wheel factorization.\n//   (can run upto\
+    \ 2^31)\n//   See: https://judge.yosupo.jp/submission/50677\n//   Problems: https://www.spoj.com/problems/KPRIMES2/\n\
+    //         or: https://www.spoj.com/problems/PRIMES2/\ntypedef unsigned int uint;\n\
     \n// NOTE: gP(n) is incorrect for even values of n\nconst uint N = 5e8 + 11;\n\
     uint mark[N / 64 + 1];\n// DO NOT USE gP(n) directly.\n#define gP(n) (mark[(n)>>6]&(1<<(((n)>>1)&31)))\n\
     #define rP(n) (mark[(n)>>6]&=~(1<<(((n)>>1)&31)))\n\n// prime indexed from 0\n\
@@ -26,6 +32,9 @@ data:
     \ true;\n    if (n % 2 == 0) return false;\n\n    if (gP(n)) return true;\n  \
     \  return false;\n}\n"
   code: "// Tested:\n// - (up to 5e8) https://judge.yosupo.jp/problem/enumerate_primes\n\
+    //\n// Notes:\n// - There's faster sieve using Segmented Sieve + Wheel factorization.\n\
+    //   (can run upto 2^31)\n//   See: https://judge.yosupo.jp/submission/50677\n\
+    //   Problems: https://www.spoj.com/problems/KPRIMES2/\n//         or: https://www.spoj.com/problems/PRIMES2/\n\
     typedef unsigned int uint;\n\n// NOTE: gP(n) is incorrect for even values of n\n\
     const uint N = 5e8 + 11;\nuint mark[N / 64 + 1];\n// DO NOT USE gP(n) directly.\n\
     #define gP(n) (mark[(n)>>6]&(1<<(((n)>>1)&31)))\n#define rP(n) (mark[(n)>>6]&=~(1<<(((n)>>1)&31)))\n\
@@ -41,7 +50,7 @@ data:
   isVerificationFile: false
   path: Math/Prime/IterativeSieve.h
   requiredBy: []
-  timestamp: '2022-01-06 04:41:45+08:00'
+  timestamp: '2022-11-23 19:16:36+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Math/tests/sieve.test.cpp

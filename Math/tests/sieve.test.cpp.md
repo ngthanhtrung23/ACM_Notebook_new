@@ -17,6 +17,9 @@ data:
   bundledCode: "#line 1 \"Math/tests/sieve.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/enumerate_primes\"\
     \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#line 1 \"Math/Prime/IterativeSieve.h\"\
     \n// Tested:\n// - (up to 5e8) https://judge.yosupo.jp/problem/enumerate_primes\n\
+    //\n// Notes:\n// - There's faster sieve using Segmented Sieve + Wheel factorization.\n\
+    //   (can run upto 2^31)\n//   See: https://judge.yosupo.jp/submission/50677\n\
+    //   Problems: https://www.spoj.com/problems/KPRIMES2/\n//         or: https://www.spoj.com/problems/PRIMES2/\n\
     typedef unsigned int uint;\n\n// NOTE: gP(n) is incorrect for even values of n\n\
     const uint N = 5e8 + 11;\nuint mark[N / 64 + 1];\n// DO NOT USE gP(n) directly.\n\
     #define gP(n) (mark[(n)>>6]&(1<<(((n)>>1)&31)))\n#define rP(n) (mark[(n)>>6]&=~(1<<(((n)>>1)&31)))\n\
@@ -53,7 +56,7 @@ data:
   isVerificationFile: true
   path: Math/tests/sieve.test.cpp
   requiredBy: []
-  timestamp: '2022-01-10 00:30:04+08:00'
+  timestamp: '2022-11-23 19:16:36+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Math/tests/sieve.test.cpp
