@@ -117,8 +117,8 @@ data:
   timestamp: '2022-08-21 23:50:37+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Math/tests/formal_power_series_multiply.test.cpp
   - Math/tests/formal_power_series_multiply_any_mod.test.cpp
+  - Math/tests/formal_power_series_multiply.test.cpp
 documentation_of: Math/Polynomial/FormalPowerSeries.h
 layout: document
 redirect_from:

@@ -366,6 +366,9 @@ data:
       path: Math/NumberTheory/SqrtMod.h
       title: Math/NumberTheory/SqrtMod.h
     - icon: ':warning:'
+      path: Math/NumberTheory/cnt_divisors.h
+      title: Math/NumberTheory/cnt_divisors.h
+    - icon: ':warning:'
       path: Math/NumberTheory/congruence.h
       title: Math/NumberTheory/congruence.h
     - icon: ':warning:'
@@ -403,9 +406,6 @@ data:
       path: Math/Prime/EulerPhi.h
       title: Math/Prime/EulerPhi.h
     - icon: ':heavy_check_mark:'
-      path: Math/Prime/IterativeSieve.h
-      title: Math/Prime/IterativeSieve.h
-    - icon: ':heavy_check_mark:'
       path: Math/Prime/PrimePi.h
       title: Math/Prime/PrimePi.h
     - icon: ':warning:'
@@ -417,6 +417,12 @@ data:
     - icon: ':warning:'
       path: Math/Prime/SegmentedSieve.h
       title: Math/Prime/SegmentedSieve.h
+    - icon: ':heavy_check_mark:'
+      path: Math/Prime/Sieve.h
+      title: Math/Prime/Sieve.h
+    - icon: ':heavy_check_mark:'
+      path: Math/Prime/SieveFast.h
+      title: Math/Prime/SieveFast.h
   - name: Math/Pure
     pages:
     - icon: ':warning:'
@@ -928,6 +934,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/tests/sieve.test.cpp
       title: Math/tests/sieve.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Math/tests/sieve_fast.test.cpp
+      title: Math/tests/sieve_fast.test.cpp
     - icon: ':heavy_check_mark:'
       path: Math/tests/sqrt_mod.test.cpp
       title: Math/tests/sqrt_mod.test.cpp

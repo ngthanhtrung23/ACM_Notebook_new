@@ -82,20 +82,20 @@ data:
   timestamp: '2022-08-21 20:28:36+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Math/tests/matrix_det.test.cpp
-  - Math/tests/matrix_inverse.test.cpp
-  - Math/tests/matrix_mult.test.cpp
+  - DataStructure/test/fenwick.test.cpp
+  - DataStructure/test/lca.test.cpp
+  - DataStructure/test/segment_tree_pointaddrangesum.test.cpp
+  - DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
   - DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
+  - DataStructure/test/fenwick_pointaddrangesum.test.cpp
+  - DataStructure/test/wavelet_matrix_rangekthsmallest.test.cpp
   - DataStructure/test/rmq.test.cpp
   - DataStructure/test/yosupo_hld_kth_vertex_on_path.test.cpp
   - DataStructure/test/hld_lca.test.cpp
   - DataStructure/test/segment_tree_2d_pointaddrectsum.test.cpp
-  - DataStructure/test/fenwick.test.cpp
-  - DataStructure/test/lca.test.cpp
-  - DataStructure/test/fenwick_pointaddrangesum.test.cpp
-  - DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
-  - DataStructure/test/wavelet_matrix_rangekthsmallest.test.cpp
-  - DataStructure/test/segment_tree_pointaddrangesum.test.cpp
+  - Math/tests/matrix_inverse.test.cpp
+  - Math/tests/matrix_det.test.cpp
+  - Math/tests/matrix_mult.test.cpp
 documentation_of: buffered_reader.h
 layout: document
 redirect_from:
