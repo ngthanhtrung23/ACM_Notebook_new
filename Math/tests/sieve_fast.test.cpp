@@ -3,7 +3,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#include "../Prime/Sieve.h"
+#include "../Prime/SieveFast.h"
 
 int n, a, b, cnt = 0, cnt_mod = 0;
 vector<int> ps;

@@ -1,5 +1,7 @@
 // table[i-L] == true <=> i == prime
 const int SQRTN = 1<<16; // upperbound of sqrt(H) + 10
+
+// [L, H)
 vector<bool> segmentSieve(ll L, ll H) {
     static ll p[SQRTN];
     static int lookup = 0;
