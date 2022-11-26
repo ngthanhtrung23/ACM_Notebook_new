@@ -372,6 +372,9 @@ data:
       path: Math/NumberTheory/congruence.h
       title: Math/NumberTheory/congruence.h
     - icon: ':warning:'
+      path: Math/NumberTheory/factorize_brent.h
+      title: Math/NumberTheory/factorize_brent.h
+    - icon: ':warning:'
       path: Math/NumberTheory/x_k_a.h
       title: Math/NumberTheory/x_k_a.h
   - name: Math/Polynomial
@@ -457,6 +460,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Misc/compress.h
       title: Misc/compress.h
+    - icon: ':warning:'
+      path: Misc/int128.h
+      title: Misc/int128.h
     - icon: ':heavy_check_mark:'
       path: Misc/left_nearest_smaller.h
       title: Misc/left_nearest_smaller.h
