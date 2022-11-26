@@ -11,80 +11,96 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links:
-    - https://github.com/dacin21/dacin21_codebook/blob/master/nt/polynomials_2.0.cpp
+    - https://github.com/kth-competitive-programming/kactl/blob/main/content/numerical/FastFourierTransform.h
     - https://open.kattis.com/problems/polymul2
-  bundledCode: "#line 1 \"Math/Polynomial/FFT.h\"\n// Let's just not use this inefficient\
-    \ code and use dacin21's code here:\n// https://github.com/dacin21/dacin21_codebook/blob/master/nt/polynomials_2.0.cpp\n\
-    //\n// Example with using Fft class directly (maybe it's easier to use dacin21's\
-    \ class Polynomial):\n//\n// const int MOD = 1e9 + 7;\n// vector<int64_t> a, b;\n\
-    // vector<int64_t> res;\n// \n// // res = a * b:\n// if (mod <= 5000) Fft<Complex<double>>::poly_mul_faster(res,\
-    \ a, b, MOD);\n// else Fft<Complex<double>>::poly_mul_split(res, a, b, MOD);\n\
-    //\n// // res = a * a;\n// if (mod <= 5000) Fft<Complex<double>>::poly_mul_faster(res,\
-    \ a, a, MOD);\n// else Fft<Complex<double>>::poly_square_split(res, a, MOD);\n\
-    \n\n\n\n\n\n\n// Below code is my inefficient implementation:\n// Tested:\n//\
-    \ - FBHC 2016 R3 - Problem E\n// - https://open.kattis.com/problems/polymul2 (need\
-    \ long double)\n// Note:\n// - a[2] will have size <= 2*n\n// - When rounding,\
-    \ careful with negative numbers:\nint my_round(double x) {\n    if (x < 0) return\
-    \ -my_round(-x);\n    return (int) (x + 1e-3);\n}\n\nconst double PI = acos((double)\
-    \ -1.0);\n\ntypedef complex<double> cplex;\nint rev[MN];\ncplex wlen_pw[MN], fa[MN],\
-    \ fb[MN];\n\nvoid fft(cplex a[], int n, bool invert) {\n    for (int i = 0; i\
-    \ < n; ++i) if (i < rev[i]) swap (a[i], a[rev[i]]);\n\n    for (int len = 2; len\
-    \ <= n; len <<= 1) {\n        double alpha = 2 * PI / len * (invert ? -1 : +1);\n\
-    \        int len2 = len >> 1;\n\n        wlen_pw[0] = cplex(1, 0);\n        cplex\
-    \ wlen(cos(alpha), sin(alpha));\n        for (int i = 1; i < len2; ++i) wlen_pw[i]\
-    \ = wlen_pw[i-1] * wlen;\n\n        for (int i = 0; i < n; i += len) {\n     \
-    \       cplex t, *pu = a+i, *pv = a + i + len2,\n                    *pu_end =\
-    \ a + i + len2, *pw = wlen_pw;\n            for (; pu != pu_end; ++pu, ++pv, ++pw)\
-    \ {\n                t = *pv * *pw;\n                *pv = *pu - t;\n        \
-    \        *pu += t;\n            }\n        }\n    }\n\n    if (invert) REP(i,\
-    \ n) a[i] /= n;\n}\n\nvoid calcRev(int n, int logn) {\n    REP(i, n) {\n     \
-    \   rev[i] = 0;\n        REP(j, logn) if (i & (1 << j)) rev[i] |= 1 << (logn -\
-    \ 1 - j);\n    }\n}\n\nvoid mulpoly(int a[], int b[], ll c[], int na, int nb,\
-    \ int &n) {\n    int l = max(na, nb), logn = 0;\n    for (n = 1; n < l; n <<=\
-    \ 1) ++logn;\n    n <<= 1; ++logn;\n    calcRev(n, logn);\n\n    REP(i,n) fa[i]\
-    \ = fb[i] = cplex(0);\n    REP(i,na) fa[i] = cplex(a[i]);\n    REP(i,nb) fb[i]\
-    \ = cplex(b[i]);\n\n    fft(fa, n, false);\n    fft(fb, n, false);\n\n    REP(i,n)\
-    \ fa[i] *= fb[i];\n    fft(fa, n, true);\n\n    REP(i,n) c[i] = (ll)(fa[i].real()\
-    \ + 0.5);\n}\n"
-  code: "// Let's just not use this inefficient code and use dacin21's code here:\n\
-    // https://github.com/dacin21/dacin21_codebook/blob/master/nt/polynomials_2.0.cpp\n\
-    //\n// Example with using Fft class directly (maybe it's easier to use dacin21's\
-    \ class Polynomial):\n//\n// const int MOD = 1e9 + 7;\n// vector<int64_t> a, b;\n\
-    // vector<int64_t> res;\n// \n// // res = a * b:\n// if (mod <= 5000) Fft<Complex<double>>::poly_mul_faster(res,\
-    \ a, b, MOD);\n// else Fft<Complex<double>>::poly_mul_split(res, a, b, MOD);\n\
-    //\n// // res = a * a;\n// if (mod <= 5000) Fft<Complex<double>>::poly_mul_faster(res,\
-    \ a, a, MOD);\n// else Fft<Complex<double>>::poly_square_split(res, a, MOD);\n\
-    \n\n\n\n\n\n\n// Below code is my inefficient implementation:\n// Tested:\n//\
-    \ - FBHC 2016 R3 - Problem E\n// - https://open.kattis.com/problems/polymul2 (need\
-    \ long double)\n// Note:\n// - a[2] will have size <= 2*n\n// - When rounding,\
-    \ careful with negative numbers:\nint my_round(double x) {\n    if (x < 0) return\
-    \ -my_round(-x);\n    return (int) (x + 1e-3);\n}\n\nconst double PI = acos((double)\
-    \ -1.0);\n\ntypedef complex<double> cplex;\nint rev[MN];\ncplex wlen_pw[MN], fa[MN],\
-    \ fb[MN];\n\nvoid fft(cplex a[], int n, bool invert) {\n    for (int i = 0; i\
-    \ < n; ++i) if (i < rev[i]) swap (a[i], a[rev[i]]);\n\n    for (int len = 2; len\
-    \ <= n; len <<= 1) {\n        double alpha = 2 * PI / len * (invert ? -1 : +1);\n\
-    \        int len2 = len >> 1;\n\n        wlen_pw[0] = cplex(1, 0);\n        cplex\
-    \ wlen(cos(alpha), sin(alpha));\n        for (int i = 1; i < len2; ++i) wlen_pw[i]\
-    \ = wlen_pw[i-1] * wlen;\n\n        for (int i = 0; i < n; i += len) {\n     \
-    \       cplex t, *pu = a+i, *pv = a + i + len2,\n                    *pu_end =\
-    \ a + i + len2, *pw = wlen_pw;\n            for (; pu != pu_end; ++pu, ++pv, ++pw)\
-    \ {\n                t = *pv * *pw;\n                *pv = *pu - t;\n        \
-    \        *pu += t;\n            }\n        }\n    }\n\n    if (invert) REP(i,\
-    \ n) a[i] /= n;\n}\n\nvoid calcRev(int n, int logn) {\n    REP(i, n) {\n     \
-    \   rev[i] = 0;\n        REP(j, logn) if (i & (1 << j)) rev[i] |= 1 << (logn -\
-    \ 1 - j);\n    }\n}\n\nvoid mulpoly(int a[], int b[], ll c[], int na, int nb,\
-    \ int &n) {\n    int l = max(na, nb), logn = 0;\n    for (n = 1; n < l; n <<=\
-    \ 1) ++logn;\n    n <<= 1; ++logn;\n    calcRev(n, logn);\n\n    REP(i,n) fa[i]\
-    \ = fb[i] = cplex(0);\n    REP(i,na) fa[i] = cplex(a[i]);\n    REP(i,nb) fb[i]\
-    \ = cplex(b[i]);\n\n    fft(fa, n, false);\n    fft(fb, n, false);\n\n    REP(i,n)\
-    \ fa[i] *= fb[i];\n    fft(fa, n, true);\n\n    REP(i,n) c[i] = (ll)(fa[i].real()\
-    \ + 0.5);\n}\n"
+    - https://www.spoj.com/problems/MUL/
+    - https://www.spoj.com/problems/VFMUL/
+  bundledCode: "#line 1 \"Math/Polynomial/FFT.h\"\n// Note:\n// - When convert double\
+    \ -> int, use my_round(x) which handles negative numbers\n//   correctly.\n//\n\
+    // Tested:\n// - https://open.kattis.com/problems/polymul2\n// - https://www.spoj.com/problems/VFMUL/\n\
+    // - https://www.spoj.com/problems/MUL/\n//\n// FFT {{{\n// Source: https://github.com/kth-competitive-programming/kactl/blob/main/content/numerical/FastFourierTransform.h\n\
+    \nusing ld = long double;\nstruct Complex {\n    ld x[2];\n\n    Complex() { x[0]\
+    \ = x[1] = 0.0; }\n    Complex(ld a) { x[0] = a; }\n    Complex(ld a, ld b) {\
+    \ x[0] = a; x[1] = b; }\n    Complex(const std::complex<ld>& c) {\n        x[0]\
+    \ = c.real();\n        x[1] = c.imag();\n    }\n\n    Complex conj() const {\n\
+    \        return Complex(x[0], -x[1]);\n    }\n\n    Complex operator + (const\
+    \ Complex& c) const {\n        return Complex {\n            x[0] + c.x[0],\n\
+    \            x[1] + c.x[1],\n        };\n    }\n    Complex operator - (const\
+    \ Complex& c) const {\n        return Complex {\n            x[0] - c.x[0],\n\
+    \            x[1] - c.x[1],\n        };\n    }\n    Complex operator * (const\
+    \ Complex& c) const {\n        return Complex(\n            x[0] * c.x[0] - x[1]\
+    \ * c.x[1],\n            x[0] * c.x[1] + x[1] * c.x[0]\n        );\n    }\n\n\
+    \    Complex& operator += (const Complex& c) { return *this = *this + c; }\n \
+    \   Complex& operator -= (const Complex& c) { return *this = *this - c; }\n  \
+    \  Complex& operator *= (const Complex& c) { return *this = *this * c; }\n};\n\
+    void fft(vector<Complex>& a) {\n    int n = a.size();\n    int L = 31 - __builtin_clz(n);\n\
+    \    static vector<Complex> R(2, 1);\n    static vector<Complex> rt(2, 1);\n \
+    \   for (static int k = 2; k < n; k *= 2) {\n        R.resize(n);\n        rt.resize(n);\n\
+    \        auto x = Complex(polar(1.0L, acos(-1.0L) / k));\n        for (int i =\
+    \ k; i < 2*k; ++i) {\n            rt[i] = R[i] = i&1 ? R[i/2] * x : R[i/2];\n\
+    \        }\n    }\n    vector<int> rev(n);\n    for (int i = 0; i < n; ++i) rev[i]\
+    \ = (rev[i/2] | (i&1) << L) / 2;\n    for (int i = 0; i < n; ++i) if (i < rev[i])\
+    \ swap(a[i], a[rev[i]]);\n\n    for (int k = 1; k < n; k *= 2) {\n        for\
+    \ (int i = 0; i < n; i += 2*k) {\n            for (int j = 0; j < k; ++j) {\n\
+    \                auto x = (ld*) &rt[j+k].x, y = (ld*) &a[i+j+k].x;\n         \
+    \       Complex z(x[0]*y[0] - x[1]*y[1], x[0]*y[1] + x[1]*y[0]);\n           \
+    \     a[i + j + k] = a[i + j] - z;\n                a[i + j] += z;\n         \
+    \   }\n        }\n    }\n}\nvector<ld> multiply(const vector<ld>& a, const vector<ld>&\
+    \ b) {\n    if (a.empty() || b.empty()) return {};\n    vector<ld> res(a.size()\
+    \ + b.size() - 1);\n    int L = 32 - __builtin_clz(res.size()), n = 1<<L;\n  \
+    \  vector<Complex> in(n), out(n);\n\n    for (size_t i = 0; i < a.size(); ++i)\
+    \ in[i].x[0] = a[i];\n    for (size_t i = 0; i < b.size(); ++i) in[i].x[1] = b[i];\n\
+    \n    fft(in);\n    for (Complex& x : in) x *= x;\n\n    for (int i = 0; i < n;\
+    \ ++i) out[i] = in[-i & (n-1)] - in[i].conj();\n    fft(out);\n\n    for (size_t\
+    \ i = 0; i < res.size(); ++i) res[i] = out[i].x[1] / (4*n);\n    return res;\n\
+    }\nint my_round(double x) {\n    if (x < 0) return -my_round(-x);\n    return\
+    \ (int) (x + 1e-6);\n}\n// }}}\n"
+  code: "// Note:\n// - When convert double -> int, use my_round(x) which handles\
+    \ negative numbers\n//   correctly.\n//\n// Tested:\n// - https://open.kattis.com/problems/polymul2\n\
+    // - https://www.spoj.com/problems/VFMUL/\n// - https://www.spoj.com/problems/MUL/\n\
+    //\n// FFT {{{\n// Source: https://github.com/kth-competitive-programming/kactl/blob/main/content/numerical/FastFourierTransform.h\n\
+    \nusing ld = long double;\nstruct Complex {\n    ld x[2];\n\n    Complex() { x[0]\
+    \ = x[1] = 0.0; }\n    Complex(ld a) { x[0] = a; }\n    Complex(ld a, ld b) {\
+    \ x[0] = a; x[1] = b; }\n    Complex(const std::complex<ld>& c) {\n        x[0]\
+    \ = c.real();\n        x[1] = c.imag();\n    }\n\n    Complex conj() const {\n\
+    \        return Complex(x[0], -x[1]);\n    }\n\n    Complex operator + (const\
+    \ Complex& c) const {\n        return Complex {\n            x[0] + c.x[0],\n\
+    \            x[1] + c.x[1],\n        };\n    }\n    Complex operator - (const\
+    \ Complex& c) const {\n        return Complex {\n            x[0] - c.x[0],\n\
+    \            x[1] - c.x[1],\n        };\n    }\n    Complex operator * (const\
+    \ Complex& c) const {\n        return Complex(\n            x[0] * c.x[0] - x[1]\
+    \ * c.x[1],\n            x[0] * c.x[1] + x[1] * c.x[0]\n        );\n    }\n\n\
+    \    Complex& operator += (const Complex& c) { return *this = *this + c; }\n \
+    \   Complex& operator -= (const Complex& c) { return *this = *this - c; }\n  \
+    \  Complex& operator *= (const Complex& c) { return *this = *this * c; }\n};\n\
+    void fft(vector<Complex>& a) {\n    int n = a.size();\n    int L = 31 - __builtin_clz(n);\n\
+    \    static vector<Complex> R(2, 1);\n    static vector<Complex> rt(2, 1);\n \
+    \   for (static int k = 2; k < n; k *= 2) {\n        R.resize(n);\n        rt.resize(n);\n\
+    \        auto x = Complex(polar(1.0L, acos(-1.0L) / k));\n        for (int i =\
+    \ k; i < 2*k; ++i) {\n            rt[i] = R[i] = i&1 ? R[i/2] * x : R[i/2];\n\
+    \        }\n    }\n    vector<int> rev(n);\n    for (int i = 0; i < n; ++i) rev[i]\
+    \ = (rev[i/2] | (i&1) << L) / 2;\n    for (int i = 0; i < n; ++i) if (i < rev[i])\
+    \ swap(a[i], a[rev[i]]);\n\n    for (int k = 1; k < n; k *= 2) {\n        for\
+    \ (int i = 0; i < n; i += 2*k) {\n            for (int j = 0; j < k; ++j) {\n\
+    \                auto x = (ld*) &rt[j+k].x, y = (ld*) &a[i+j+k].x;\n         \
+    \       Complex z(x[0]*y[0] - x[1]*y[1], x[0]*y[1] + x[1]*y[0]);\n           \
+    \     a[i + j + k] = a[i + j] - z;\n                a[i + j] += z;\n         \
+    \   }\n        }\n    }\n}\nvector<ld> multiply(const vector<ld>& a, const vector<ld>&\
+    \ b) {\n    if (a.empty() || b.empty()) return {};\n    vector<ld> res(a.size()\
+    \ + b.size() - 1);\n    int L = 32 - __builtin_clz(res.size()), n = 1<<L;\n  \
+    \  vector<Complex> in(n), out(n);\n\n    for (size_t i = 0; i < a.size(); ++i)\
+    \ in[i].x[0] = a[i];\n    for (size_t i = 0; i < b.size(); ++i) in[i].x[1] = b[i];\n\
+    \n    fft(in);\n    for (Complex& x : in) x *= x;\n\n    for (int i = 0; i < n;\
+    \ ++i) out[i] = in[-i & (n-1)] - in[i].conj();\n    fft(out);\n\n    for (size_t\
+    \ i = 0; i < res.size(); ++i) res[i] = out[i].x[1] / (4*n);\n    return res;\n\
+    }\nint my_round(double x) {\n    if (x < 0) return -my_round(-x);\n    return\
+    \ (int) (x + 1e-6);\n}\n// }}}\n"
   dependsOn: []
   isVerificationFile: false
   path: Math/Polynomial/FFT.h
   requiredBy:
   - Math/Polynomial/VOJ_POST2.cpp
-  timestamp: '2018-10-04 14:36:34+08:00'
+  timestamp: '2022-11-27 00:04:40+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Math/Polynomial/FFT.h
