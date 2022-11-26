@@ -1,12 +1,12 @@
 // Minimum cut between every pair of vertices (Stoer Wagner)
-pair<int, VI> GetMinCut(VVI &weights) {
+pair<int, vector<int>> GetMinCut(const vector<vector<int>> &weights) {
     int N = weights.size();
-    VI used(N), cut, best_cut;
+    vector<int> used(N), cut, best_cut;
     int best_weight = -1;
     
     for (int phase = N-1; phase >= 0; phase--) {
-        VI w = weights[0];
-        VI added = used;
+        vector<int> w = weights[0];
+        vector<int> added = used;
         int prev, last = 0;
         for (int i = 0; i < phase; i++) {
             prev = last;
