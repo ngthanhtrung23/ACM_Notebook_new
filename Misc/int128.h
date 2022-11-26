@@ -41,5 +41,15 @@ i128 gcd(i128 a, i128 b) {
     if (b == 0) return a;
     return gcd(b, a % b);
 }
+// Count trailing zeroes
+int ctz128(i128 n) {
+    if (!n) return 128;
+ 
+    if (!static_cast<uint64_t>(n)) {
+        return __builtin_ctzll(static_cast<uint64_t>(n >> 64)) + 64;
+    } else {
+        return __builtin_ctzll(static_cast<uint64_t>(n));
+    }
+}
 // }}}
 
