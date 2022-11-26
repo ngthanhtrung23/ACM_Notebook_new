@@ -42,8 +42,10 @@ data:
     \  solve();\n    return 0;\n}\n#line 2 \"Math/Polynomial/VOJ_POST2.cpp\"\n\nconst\
     \ int MN = 1000111;\n#line 1 \"Math/Polynomial/FFT.h\"\n// Note:\n// - When convert\
     \ double -> int, use my_round(x) which handles negative numbers\n//   correctly.\n\
-    //\n// Tested:\n// - https://open.kattis.com/problems/polymul2\n// - https://www.spoj.com/problems/VFMUL/\n\
-    // - https://www.spoj.com/problems/MUL/\n//\n// FFT {{{\n// Source: https://github.com/kth-competitive-programming/kactl/blob/main/content/numerical/FastFourierTransform.h\n\
+    //\n// Tested:\n// - https://open.kattis.com/problems/polymul2\n// - https://www.spoj.com/problems/TSUM/\n\
+    // - (bigint mul) https://www.spoj.com/problems/VFMUL/\n// - (bigint mul) https://www.spoj.com/problems/MUL/\n\
+    // - (string matching) https://www.spoj.com/problems/MAXMATCH\n//\n// FFT {{{\n\
+    // Source: https://github.com/kth-competitive-programming/kactl/blob/main/content/numerical/FastFourierTransform.h\n\
     \nusing ld = long double;\n// Can use std::complex<ld> instead to make code shorter\
     \ (but it will be slightly slower)\nstruct Complex {\n    ld x[2];\n\n    Complex()\
     \ { x[0] = x[1] = 0.0; }\n    Complex(ld a) { x[0] = a; }\n    Complex(ld a, ld\
@@ -79,9 +81,9 @@ data:
     \n    fft(in);\n    for (Complex& x : in) x *= x;\n\n    for (int i = 0; i < n;\
     \ ++i) out[i] = in[-i & (n-1)] - in[i].conj();\n    fft(out);\n\n    for (size_t\
     \ i = 0; i < res.size(); ++i) res[i] = out[i].x[1] / (4*n);\n    return res;\n\
-    }\nint my_round(double x) {\n    if (x < 0) return -my_round(-x);\n    return\
-    \ (int) (x + 1e-6);\n}\n// }}}\n#line 5 \"Math/Polynomial/VOJ_POST2.cpp\"\n\n\
-    int cnt_a[MN], cnt_b[MN];\nBase a[3][MN];\n\nint main() {\n    ios :: sync_with_stdio(false);\
+    }\nlong long my_round(ld x) {\n    if (x < 0) return -my_round(-x);\n    return\
+    \ (long long) (x + 1e-2);\n}\n// }}}\n#line 5 \"Math/Polynomial/VOJ_POST2.cpp\"\
+    \n\nint cnt_a[MN], cnt_b[MN];\nBase a[3][MN];\n\nint main() {\n    ios :: sync_with_stdio(false);\
     \ cin.tie(NULL);\n    int n; cin >> n;\n    FOR(i,1,n) {\n        int u; cin >>\
     \ u;\n        ++cnt_a[u + 50000];\n    }\n    FOR(i,1,n) {\n        int u; cin\
     \ >> u;\n        ++cnt_b[u + 50000];\n    }\n\n    FOR(i,0,100000) {\n       \
@@ -104,7 +106,7 @@ data:
   isVerificationFile: false
   path: Math/Polynomial/VOJ_POST2.cpp
   requiredBy: []
-  timestamp: '2022-11-27 00:28:22+08:00'
+  timestamp: '2022-11-27 02:07:49+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Math/Polynomial/VOJ_POST2.cpp
