@@ -44,11 +44,12 @@ data:
     \ double -> int, use my_round(x) which handles negative numbers\n//   correctly.\n\
     //\n// Tested:\n// - https://open.kattis.com/problems/polymul2\n// - https://www.spoj.com/problems/VFMUL/\n\
     // - https://www.spoj.com/problems/MUL/\n//\n// FFT {{{\n// Source: https://github.com/kth-competitive-programming/kactl/blob/main/content/numerical/FastFourierTransform.h\n\
-    \nusing ld = long double;\nstruct Complex {\n    ld x[2];\n\n    Complex() { x[0]\
-    \ = x[1] = 0.0; }\n    Complex(ld a) { x[0] = a; }\n    Complex(ld a, ld b) {\
-    \ x[0] = a; x[1] = b; }\n    Complex(const std::complex<ld>& c) {\n        x[0]\
-    \ = c.real();\n        x[1] = c.imag();\n    }\n\n    Complex conj() const {\n\
-    \        return Complex(x[0], -x[1]);\n    }\n\n    Complex operator + (const\
+    \nusing ld = long double;\n// Can use std::complex<ld> instead to make code shorter\
+    \ (but it will be slightly slower)\nstruct Complex {\n    ld x[2];\n\n    Complex()\
+    \ { x[0] = x[1] = 0.0; }\n    Complex(ld a) { x[0] = a; }\n    Complex(ld a, ld\
+    \ b) { x[0] = a; x[1] = b; }\n    Complex(const std::complex<ld>& c) {\n     \
+    \   x[0] = c.real();\n        x[1] = c.imag();\n    }\n\n    Complex conj() const\
+    \ {\n        return Complex(x[0], -x[1]);\n    }\n\n    Complex operator + (const\
     \ Complex& c) const {\n        return Complex {\n            x[0] + c.x[0],\n\
     \            x[1] + c.x[1],\n        };\n    }\n    Complex operator - (const\
     \ Complex& c) const {\n        return Complex {\n            x[0] - c.x[0],\n\
@@ -103,7 +104,7 @@ data:
   isVerificationFile: false
   path: Math/Polynomial/VOJ_POST2.cpp
   requiredBy: []
-  timestamp: '2022-11-27 00:04:40+08:00'
+  timestamp: '2022-11-27 00:28:22+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Math/Polynomial/VOJ_POST2.cpp
