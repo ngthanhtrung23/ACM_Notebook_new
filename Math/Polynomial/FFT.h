@@ -11,6 +11,7 @@
 // Source: https://github.com/kth-competitive-programming/kactl/blob/main/content/numerical/FastFourierTransform.h
 
 using ld = long double;
+// Can use std::complex<ld> instead to make code shorter (but it will be slightly slower)
 struct Complex {
     ld x[2];
 
