@@ -4,8 +4,10 @@
 //
 // Tested:
 // - https://open.kattis.com/problems/polymul2
-// - https://www.spoj.com/problems/VFMUL/
-// - https://www.spoj.com/problems/MUL/
+// - https://www.spoj.com/problems/TSUM/
+// - (bigint mul) https://www.spoj.com/problems/VFMUL/
+// - (bigint mul) https://www.spoj.com/problems/MUL/
+// - (string matching) https://www.spoj.com/problems/MAXMATCH
 //
 // FFT {{{
 // Source: https://github.com/kth-competitive-programming/kactl/blob/main/content/numerical/FastFourierTransform.h
@@ -96,8 +98,8 @@ vector<ld> multiply(const vector<ld>& a, const vector<ld>& b) {
     for (size_t i = 0; i < res.size(); ++i) res[i] = out[i].x[1] / (4*n);
     return res;
 }
-int my_round(double x) {
+long long my_round(ld x) {
     if (x < 0) return -my_round(-x);
-    return (int) (x + 1e-6);
+    return (long long) (x + 1e-2);
 }
 // }}}
