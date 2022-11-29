@@ -57,9 +57,28 @@ data:
     \        answer = max(answer, f[i]);\n        b[f[i]] = a[i];\n    }\n\n    int\
     \ require = answer;\n    vector<int> T;\n    for (int i = n-1; i >= 0; i--) {\n\
     \        if (f[i] == require) {\n            T.push_back(i);\n            require--;\n\
-    \        }\n    }\n    reverse(T.begin(), T.end());\n    return T;\n}\n#line 5\
-    \ \"DP/tests/yosupo_lis.test.cpp\"\n\nvoid solve() {\n    int n; cin >> n;\n \
-    \   vector<int> a(n); for(int& x : a) cin >> x;\n\n    auto res = lis_strict_trace(a);\n\
+    \        }\n    }\n    reverse(T.begin(), T.end());\n    return T;\n}\n\n// Count\
+    \ number of LIS\nusing mint = long long;  // Cnt is exponential. Check if statement\
+    \ says ModInt here?\n// Returns: (length of LIS, number of LIS)\npair<int,mint>\
+    \ count_lis(const vector<int>& a) {\n    if (a.empty()) {\n        return {0,\
+    \ 1};\n    }\n\n    // dp[i] = [ (last value, accumulate count) ] for increasing\
+    \ seq of\n    //                                            length i+1\n    //\
+    \         last value are decreasing\n    vector<vector<pair<int,mint>>> dp(a.size()\
+    \ + 1);\n    int max_len = 0;\n\n    // returns true if we can append `val` to\
+    \ LIS stored at `cur`.\n    auto pred_len = [] (const vector<pair<int, mint>>&\
+    \ cur, int val) {\n        return !cur.empty() && cur.back().first < val;\n  \
+    \  };\n    // returns true if we can append `val` after the LIS represented with\
+    \ `p`.\n    auto pred_val = [] (int val, const pair<int,mint>& p) { return val\
+    \ > p.first; };\n\n    for (int x : a) {\n        int len = lower_bound(dp.begin(),\
+    \ dp.end(), x, pred_len) - dp.begin();\n\n        mint cnt = 1;\n        if (len\
+    \ >= 1) {\n            int pos = upper_bound(dp[len-1].begin(), dp[len-1].end(),\
+    \ x, pred_val) - dp[len-1].begin();\n            cnt = dp[len-1].back().second;\n\
+    \            cnt -= (pos == 0) ? 0 : dp[len-1][pos-1].second;\n        }\n   \
+    \     dp[len].emplace_back(x, cnt + (dp[len].empty() ? 0 : dp[len].back().second));\n\
+    \        max_len = max(max_len, len + 1);\n    }\n    assert(max_len > 0);\n \
+    \   return {\n        max_len,\n        dp[max_len-1].back().second,\n    };\n\
+    }\n#line 5 \"DP/tests/yosupo_lis.test.cpp\"\n\nvoid solve() {\n    int n; cin\
+    \ >> n;\n    vector<int> a(n); for(int& x : a) cin >> x;\n\n    auto res = lis_strict_trace(a);\n\
     \    std::cout << res.size() << std::endl;\n    for (int i : res) std::cout <<\
     \ i << ' ';\n    std::cout << std::endl;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/longest_increasing_subsequence\"\
@@ -73,7 +92,7 @@ data:
   isVerificationFile: true
   path: DP/tests/yosupo_lis.test.cpp
   requiredBy: []
-  timestamp: '2022-08-14 03:49:35+08:00'
+  timestamp: '2022-11-29 22:46:48+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DP/tests/yosupo_lis.test.cpp
