@@ -104,7 +104,7 @@ struct Matrix {
     }
 
     // return upper triangle matrix
-    Matrix gauss() const {
+    [[nodiscard]] Matrix gauss() const {
         int c = 0;
         Matrix mtr(*this);
         vector<int> ws;
