@@ -69,43 +69,44 @@ data:
     \ * = nullptr>\n    static int choose_pivot(const Matrix<T2> &mtr, int h, int\
     \ c) noexcept {\n        for (int j = h; j < mtr.n_row; j++) {\n            if\
     \ (mtr.get(j, c) != T(0)) return j;\n        }\n        return -1;\n    }\n\n\
-    \    // return upper triangle matrix\n    Matrix gauss() const {\n        int\
-    \ c = 0;\n        Matrix mtr(*this);\n        vector<int> ws;\n        ws.reserve(n_col);\n\
-    \n        for (int h = 0; h < n_row; h++) {\n            if (c == n_col) break;\n\
-    \            int piv = choose_pivot(mtr, h, c);\n            if (piv == -1) {\n\
-    \                c++;\n                h--;\n                continue;\n     \
-    \       }\n            if (h != piv) {\n                for (int w = 0; w < n_col;\
-    \ w++) {\n                    swap(mtr[piv][w], mtr[h][w]);\n                \
-    \    mtr[piv][w] *= -1; // for determinant\n                }\n            }\n\
-    \            ws.clear();\n            for (int w = c; w < n_col; w++) {\n    \
-    \            if (mtr[h][w] != 0) ws.emplace_back(w);\n            }\n        \
-    \    const T hcinv = T(1) / mtr[h][c];\n            for (int hh = 0; hh < n_row;\
-    \ hh++) {\n                if (hh != h) {\n                    const T coeff =\
-    \ mtr[hh][c] * hcinv;\n                    for (auto w : ws) mtr[hh][w] -= mtr[h][w]\
-    \ * coeff;\n                    mtr[hh][c] = 0;\n                }\n         \
-    \   }\n            c++;\n        }\n        return mtr;\n    }\n\n    // For upper\
-    \ triangle matrix\n    T det() const {\n        T ret = 1;\n        for (int i\
-    \ = 0; i < n_row; i++) {\n            ret *= get(i, i);\n        }\n        return\
-    \ ret;\n    }\n\n    // return rank of inverse matrix. If rank < n -> not invertible\n\
-    \    int inverse() {\n        assert(n_row == n_col);\n        vector<vector<T>>\
-    \ ret = identity(n_row), tmp = *this;\n        int rank = 0;\n\n        for (int\
-    \ i = 0; i < n_row; i++) {\n            int ti = i;\n            while (ti < n_row\
-    \ && tmp[ti][i] == 0) ++ti;\n            if (ti == n_row) continue;\n        \
-    \    else ++rank;\n\n            ret[i].swap(ret[ti]);\n            tmp[i].swap(tmp[ti]);\n\
-    \n            T inv = T(1) / tmp[i][i];\n            for (int j = 0; j < n_col;\
-    \ j++) ret[i][j] *= inv;\n            for (int j = i+1; j < n_col; j++) tmp[i][j]\
-    \ *= inv;\n\n            for (int h = 0; h < n_row; h++) {\n                if\
-    \ (i == h) continue;\n                const T c = -tmp[h][i];\n              \
-    \  for (int j = 0; j < n_col; j++) ret[h][j] += ret[i][j] * c;\n             \
-    \   for (int j = i+1; j < n_col; j++) tmp[h][j] += tmp[i][j] * c;\n          \
-    \  }\n        }\n\n        *this = ret;\n        return rank;\n    }\n\n    //\
-    \ sum of [r1, r2) x [c1, c2)\n    T submatrix_sum(int r1, int c1, int r2, int\
-    \ c2) {\n        T res {0};\n        for (int r = r1; r < r2; ++r) {\n       \
-    \     res += std::accumulate(\n                    x.begin() + r * n_col + c1,\n\
-    \                    x.begin() + r * n_col + c2,\n                    T{0});\n\
-    \        }\n        return res;\n    }\n};\ntemplate<typename T>\nostream& operator\
-    \ << (ostream& cout, const Matrix<T>& m) {\n    cout << m.n_row << ' ' << m.n_col\
-    \ << endl;\n    cout << m.x << endl;\n    return cout;\n}\n// }}}\n"
+    \    // return upper triangle matrix\n    [[nodiscard]] Matrix gauss() const {\n\
+    \        int c = 0;\n        Matrix mtr(*this);\n        vector<int> ws;\n   \
+    \     ws.reserve(n_col);\n\n        for (int h = 0; h < n_row; h++) {\n      \
+    \      if (c == n_col) break;\n            int piv = choose_pivot(mtr, h, c);\n\
+    \            if (piv == -1) {\n                c++;\n                h--;\n  \
+    \              continue;\n            }\n            if (h != piv) {\n       \
+    \         for (int w = 0; w < n_col; w++) {\n                    swap(mtr[piv][w],\
+    \ mtr[h][w]);\n                    mtr[piv][w] *= -1; // for determinant\n   \
+    \             }\n            }\n            ws.clear();\n            for (int\
+    \ w = c; w < n_col; w++) {\n                if (mtr[h][w] != 0) ws.emplace_back(w);\n\
+    \            }\n            const T hcinv = T(1) / mtr[h][c];\n            for\
+    \ (int hh = 0; hh < n_row; hh++) {\n                if (hh != h) {\n         \
+    \           const T coeff = mtr[hh][c] * hcinv;\n                    for (auto\
+    \ w : ws) mtr[hh][w] -= mtr[h][w] * coeff;\n                    mtr[hh][c] = 0;\n\
+    \                }\n            }\n            c++;\n        }\n        return\
+    \ mtr;\n    }\n\n    // For upper triangle matrix\n    T det() const {\n     \
+    \   T ret = 1;\n        for (int i = 0; i < n_row; i++) {\n            ret *=\
+    \ get(i, i);\n        }\n        return ret;\n    }\n\n    // return rank of inverse\
+    \ matrix. If rank < n -> not invertible\n    int inverse() {\n        assert(n_row\
+    \ == n_col);\n        vector<vector<T>> ret = identity(n_row), tmp = *this;\n\
+    \        int rank = 0;\n\n        for (int i = 0; i < n_row; i++) {\n        \
+    \    int ti = i;\n            while (ti < n_row && tmp[ti][i] == 0) ++ti;\n  \
+    \          if (ti == n_row) continue;\n            else ++rank;\n\n          \
+    \  ret[i].swap(ret[ti]);\n            tmp[i].swap(tmp[ti]);\n\n            T inv\
+    \ = T(1) / tmp[i][i];\n            for (int j = 0; j < n_col; j++) ret[i][j] *=\
+    \ inv;\n            for (int j = i+1; j < n_col; j++) tmp[i][j] *= inv;\n\n  \
+    \          for (int h = 0; h < n_row; h++) {\n                if (i == h) continue;\n\
+    \                const T c = -tmp[h][i];\n                for (int j = 0; j <\
+    \ n_col; j++) ret[h][j] += ret[i][j] * c;\n                for (int j = i+1; j\
+    \ < n_col; j++) tmp[h][j] += tmp[i][j] * c;\n            }\n        }\n\n    \
+    \    *this = ret;\n        return rank;\n    }\n\n    // sum of [r1, r2) x [c1,\
+    \ c2)\n    T submatrix_sum(int r1, int c1, int r2, int c2) {\n        T res {0};\n\
+    \        for (int r = r1; r < r2; ++r) {\n            res += std::accumulate(\n\
+    \                    x.begin() + r * n_col + c1,\n                    x.begin()\
+    \ + r * n_col + c2,\n                    T{0});\n        }\n        return res;\n\
+    \    }\n};\ntemplate<typename T>\nostream& operator << (ostream& cout, const Matrix<T>&\
+    \ m) {\n    cout << m.n_row << ' ' << m.n_col << endl;\n    cout << m.x << endl;\n\
+    \    return cout;\n}\n// }}}\n"
   code: "// Matrix, which works for both double and int {{{\n// Copied partially from\
     \ https://judge.yosupo.jp/submission/54653\n//\n// Tested:\n// - (mat mul): https://judge.yosupo.jp/problem/matrix_product\n\
     // - (mat pow): https://oj.vnoi.info/problem/icpc21_mt_k\n// - (mat pow): https://oj.vnoi.info/problem/icpc21_mb_h\n\
@@ -149,48 +150,49 @@ data:
     \ * = nullptr>\n    static int choose_pivot(const Matrix<T2> &mtr, int h, int\
     \ c) noexcept {\n        for (int j = h; j < mtr.n_row; j++) {\n            if\
     \ (mtr.get(j, c) != T(0)) return j;\n        }\n        return -1;\n    }\n\n\
-    \    // return upper triangle matrix\n    Matrix gauss() const {\n        int\
-    \ c = 0;\n        Matrix mtr(*this);\n        vector<int> ws;\n        ws.reserve(n_col);\n\
-    \n        for (int h = 0; h < n_row; h++) {\n            if (c == n_col) break;\n\
-    \            int piv = choose_pivot(mtr, h, c);\n            if (piv == -1) {\n\
-    \                c++;\n                h--;\n                continue;\n     \
-    \       }\n            if (h != piv) {\n                for (int w = 0; w < n_col;\
-    \ w++) {\n                    swap(mtr[piv][w], mtr[h][w]);\n                \
-    \    mtr[piv][w] *= -1; // for determinant\n                }\n            }\n\
-    \            ws.clear();\n            for (int w = c; w < n_col; w++) {\n    \
-    \            if (mtr[h][w] != 0) ws.emplace_back(w);\n            }\n        \
-    \    const T hcinv = T(1) / mtr[h][c];\n            for (int hh = 0; hh < n_row;\
-    \ hh++) {\n                if (hh != h) {\n                    const T coeff =\
-    \ mtr[hh][c] * hcinv;\n                    for (auto w : ws) mtr[hh][w] -= mtr[h][w]\
-    \ * coeff;\n                    mtr[hh][c] = 0;\n                }\n         \
-    \   }\n            c++;\n        }\n        return mtr;\n    }\n\n    // For upper\
-    \ triangle matrix\n    T det() const {\n        T ret = 1;\n        for (int i\
-    \ = 0; i < n_row; i++) {\n            ret *= get(i, i);\n        }\n        return\
-    \ ret;\n    }\n\n    // return rank of inverse matrix. If rank < n -> not invertible\n\
-    \    int inverse() {\n        assert(n_row == n_col);\n        vector<vector<T>>\
-    \ ret = identity(n_row), tmp = *this;\n        int rank = 0;\n\n        for (int\
-    \ i = 0; i < n_row; i++) {\n            int ti = i;\n            while (ti < n_row\
-    \ && tmp[ti][i] == 0) ++ti;\n            if (ti == n_row) continue;\n        \
-    \    else ++rank;\n\n            ret[i].swap(ret[ti]);\n            tmp[i].swap(tmp[ti]);\n\
-    \n            T inv = T(1) / tmp[i][i];\n            for (int j = 0; j < n_col;\
-    \ j++) ret[i][j] *= inv;\n            for (int j = i+1; j < n_col; j++) tmp[i][j]\
-    \ *= inv;\n\n            for (int h = 0; h < n_row; h++) {\n                if\
-    \ (i == h) continue;\n                const T c = -tmp[h][i];\n              \
-    \  for (int j = 0; j < n_col; j++) ret[h][j] += ret[i][j] * c;\n             \
-    \   for (int j = i+1; j < n_col; j++) tmp[h][j] += tmp[i][j] * c;\n          \
-    \  }\n        }\n\n        *this = ret;\n        return rank;\n    }\n\n    //\
-    \ sum of [r1, r2) x [c1, c2)\n    T submatrix_sum(int r1, int c1, int r2, int\
-    \ c2) {\n        T res {0};\n        for (int r = r1; r < r2; ++r) {\n       \
-    \     res += std::accumulate(\n                    x.begin() + r * n_col + c1,\n\
-    \                    x.begin() + r * n_col + c2,\n                    T{0});\n\
-    \        }\n        return res;\n    }\n};\ntemplate<typename T>\nostream& operator\
-    \ << (ostream& cout, const Matrix<T>& m) {\n    cout << m.n_row << ' ' << m.n_col\
-    \ << endl;\n    cout << m.x << endl;\n    return cout;\n}\n// }}}\n"
+    \    // return upper triangle matrix\n    [[nodiscard]] Matrix gauss() const {\n\
+    \        int c = 0;\n        Matrix mtr(*this);\n        vector<int> ws;\n   \
+    \     ws.reserve(n_col);\n\n        for (int h = 0; h < n_row; h++) {\n      \
+    \      if (c == n_col) break;\n            int piv = choose_pivot(mtr, h, c);\n\
+    \            if (piv == -1) {\n                c++;\n                h--;\n  \
+    \              continue;\n            }\n            if (h != piv) {\n       \
+    \         for (int w = 0; w < n_col; w++) {\n                    swap(mtr[piv][w],\
+    \ mtr[h][w]);\n                    mtr[piv][w] *= -1; // for determinant\n   \
+    \             }\n            }\n            ws.clear();\n            for (int\
+    \ w = c; w < n_col; w++) {\n                if (mtr[h][w] != 0) ws.emplace_back(w);\n\
+    \            }\n            const T hcinv = T(1) / mtr[h][c];\n            for\
+    \ (int hh = 0; hh < n_row; hh++) {\n                if (hh != h) {\n         \
+    \           const T coeff = mtr[hh][c] * hcinv;\n                    for (auto\
+    \ w : ws) mtr[hh][w] -= mtr[h][w] * coeff;\n                    mtr[hh][c] = 0;\n\
+    \                }\n            }\n            c++;\n        }\n        return\
+    \ mtr;\n    }\n\n    // For upper triangle matrix\n    T det() const {\n     \
+    \   T ret = 1;\n        for (int i = 0; i < n_row; i++) {\n            ret *=\
+    \ get(i, i);\n        }\n        return ret;\n    }\n\n    // return rank of inverse\
+    \ matrix. If rank < n -> not invertible\n    int inverse() {\n        assert(n_row\
+    \ == n_col);\n        vector<vector<T>> ret = identity(n_row), tmp = *this;\n\
+    \        int rank = 0;\n\n        for (int i = 0; i < n_row; i++) {\n        \
+    \    int ti = i;\n            while (ti < n_row && tmp[ti][i] == 0) ++ti;\n  \
+    \          if (ti == n_row) continue;\n            else ++rank;\n\n          \
+    \  ret[i].swap(ret[ti]);\n            tmp[i].swap(tmp[ti]);\n\n            T inv\
+    \ = T(1) / tmp[i][i];\n            for (int j = 0; j < n_col; j++) ret[i][j] *=\
+    \ inv;\n            for (int j = i+1; j < n_col; j++) tmp[i][j] *= inv;\n\n  \
+    \          for (int h = 0; h < n_row; h++) {\n                if (i == h) continue;\n\
+    \                const T c = -tmp[h][i];\n                for (int j = 0; j <\
+    \ n_col; j++) ret[h][j] += ret[i][j] * c;\n                for (int j = i+1; j\
+    \ < n_col; j++) tmp[h][j] += tmp[i][j] * c;\n            }\n        }\n\n    \
+    \    *this = ret;\n        return rank;\n    }\n\n    // sum of [r1, r2) x [c1,\
+    \ c2)\n    T submatrix_sum(int r1, int c1, int r2, int c2) {\n        T res {0};\n\
+    \        for (int r = r1; r < r2; ++r) {\n            res += std::accumulate(\n\
+    \                    x.begin() + r * n_col + c1,\n                    x.begin()\
+    \ + r * n_col + c2,\n                    T{0});\n        }\n        return res;\n\
+    \    }\n};\ntemplate<typename T>\nostream& operator << (ostream& cout, const Matrix<T>&\
+    \ m) {\n    cout << m.n_row << ' ' << m.n_col << endl;\n    cout << m.x << endl;\n\
+    \    return cout;\n}\n// }}}\n"
   dependsOn: []
   isVerificationFile: false
   path: Math/Matrix.h
   requiredBy: []
-  timestamp: '2022-11-13 20:48:45+08:00'
+  timestamp: '2022-11-29 21:44:39+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Math/tests/matrix_inverse.test.cpp

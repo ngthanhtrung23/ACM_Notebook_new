@@ -269,62 +269,62 @@ data:
     \ * = nullptr>\n    static int choose_pivot(const Matrix<T2> &mtr, int h, int\
     \ c) noexcept {\n        for (int j = h; j < mtr.n_row; j++) {\n            if\
     \ (mtr.get(j, c) != T(0)) return j;\n        }\n        return -1;\n    }\n\n\
-    \    // return upper triangle matrix\n    Matrix gauss() const {\n        int\
-    \ c = 0;\n        Matrix mtr(*this);\n        vector<int> ws;\n        ws.reserve(n_col);\n\
-    \n        for (int h = 0; h < n_row; h++) {\n            if (c == n_col) break;\n\
-    \            int piv = choose_pivot(mtr, h, c);\n            if (piv == -1) {\n\
-    \                c++;\n                h--;\n                continue;\n     \
-    \       }\n            if (h != piv) {\n                for (int w = 0; w < n_col;\
-    \ w++) {\n                    swap(mtr[piv][w], mtr[h][w]);\n                \
-    \    mtr[piv][w] *= -1; // for determinant\n                }\n            }\n\
-    \            ws.clear();\n            for (int w = c; w < n_col; w++) {\n    \
-    \            if (mtr[h][w] != 0) ws.emplace_back(w);\n            }\n        \
-    \    const T hcinv = T(1) / mtr[h][c];\n            for (int hh = 0; hh < n_row;\
-    \ hh++) {\n                if (hh != h) {\n                    const T coeff =\
-    \ mtr[hh][c] * hcinv;\n                    for (auto w : ws) mtr[hh][w] -= mtr[h][w]\
-    \ * coeff;\n                    mtr[hh][c] = 0;\n                }\n         \
-    \   }\n            c++;\n        }\n        return mtr;\n    }\n\n    // For upper\
-    \ triangle matrix\n    T det() const {\n        T ret = 1;\n        for (int i\
-    \ = 0; i < n_row; i++) {\n            ret *= get(i, i);\n        }\n        return\
-    \ ret;\n    }\n\n    // return rank of inverse matrix. If rank < n -> not invertible\n\
-    \    int inverse() {\n        assert(n_row == n_col);\n        vector<vector<T>>\
-    \ ret = identity(n_row), tmp = *this;\n        int rank = 0;\n\n        for (int\
-    \ i = 0; i < n_row; i++) {\n            int ti = i;\n            while (ti < n_row\
-    \ && tmp[ti][i] == 0) ++ti;\n            if (ti == n_row) continue;\n        \
-    \    else ++rank;\n\n            ret[i].swap(ret[ti]);\n            tmp[i].swap(tmp[ti]);\n\
-    \n            T inv = T(1) / tmp[i][i];\n            for (int j = 0; j < n_col;\
-    \ j++) ret[i][j] *= inv;\n            for (int j = i+1; j < n_col; j++) tmp[i][j]\
-    \ *= inv;\n\n            for (int h = 0; h < n_row; h++) {\n                if\
-    \ (i == h) continue;\n                const T c = -tmp[h][i];\n              \
-    \  for (int j = 0; j < n_col; j++) ret[h][j] += ret[i][j] * c;\n             \
-    \   for (int j = i+1; j < n_col; j++) tmp[h][j] += tmp[i][j] * c;\n          \
-    \  }\n        }\n\n        *this = ret;\n        return rank;\n    }\n\n    //\
-    \ sum of [r1, r2) x [c1, c2)\n    T submatrix_sum(int r1, int c1, int r2, int\
-    \ c2) {\n        T res {0};\n        for (int r = r1; r < r2; ++r) {\n       \
-    \     res += std::accumulate(\n                    x.begin() + r * n_col + c1,\n\
-    \                    x.begin() + r * n_col + c2,\n                    T{0});\n\
-    \        }\n        return res;\n    }\n};\ntemplate<typename T>\nostream& operator\
-    \ << (ostream& cout, const Matrix<T>& m) {\n    cout << m.n_row << ' ' << m.n_col\
-    \ << endl;\n    cout << m.x << endl;\n    return cout;\n}\n// }}}\n#line 1 \"\
-    buffered_reader.h\"\n// Buffered reader {{{\nnamespace IO {\n    const int BUFSIZE\
-    \ = 1<<14;\n    char buf[BUFSIZE + 1], *inp = buf;\n\n    bool reacheof;\n   \
-    \ char get_char() {\n        if (!*inp && !reacheof) {\n            memset(buf,\
-    \ 0, sizeof buf);\n            int tmp = fread(buf, 1, BUFSIZE, stdin);\n    \
-    \        if (tmp != BUFSIZE) reacheof = true;\n            inp = buf;\n      \
-    \  }\n        return *inp++;\n    }\n    template<typename T>\n    T get() {\n\
-    \        int neg = 0;\n        T res = 0;\n        char c = get_char();\n    \
-    \    while (!std::isdigit(c) && c != '-' && c != '+') c = get_char();\n      \
-    \  if (c == '+') { neg = 0; }\n        else if (c == '-') { neg = 1; }\n     \
-    \   else res = c - '0';\n\n        c = get_char();\n        while (std::isdigit(c))\
-    \ {\n            res = res * 10 + (c - '0');\n            c = get_char();\n  \
-    \      }\n        return neg ? -res : res;\n    }\n};\n// }}}\n#line 10 \"Math/tests/matrix_inverse.test.cpp\"\
-    \n\n#define REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)\n\nint32_t main()\
-    \ {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n = IO::get<int>();\n \
-    \   Matrix<modint998244353> a(n, n);\n    REP(i,n) REP(j,n) {\n        int x =\
-    \ IO::get<int>();\n        a[i][j] = x;\n    }\n    int rank = a.inverse();\n\
-    \    if (rank < n) cout << -1 << '\\n';\n    else {\n        REP(i,n) {\n    \
-    \        REP(j,n) cout << a[i][j].val() << ' ';\n            cout << '\\n';\n\
-    \        }\n    }\n    return 0;\n}\n"
+    \    // return upper triangle matrix\n    [[nodiscard]] Matrix gauss() const {\n\
+    \        int c = 0;\n        Matrix mtr(*this);\n        vector<int> ws;\n   \
+    \     ws.reserve(n_col);\n\n        for (int h = 0; h < n_row; h++) {\n      \
+    \      if (c == n_col) break;\n            int piv = choose_pivot(mtr, h, c);\n\
+    \            if (piv == -1) {\n                c++;\n                h--;\n  \
+    \              continue;\n            }\n            if (h != piv) {\n       \
+    \         for (int w = 0; w < n_col; w++) {\n                    swap(mtr[piv][w],\
+    \ mtr[h][w]);\n                    mtr[piv][w] *= -1; // for determinant\n   \
+    \             }\n            }\n            ws.clear();\n            for (int\
+    \ w = c; w < n_col; w++) {\n                if (mtr[h][w] != 0) ws.emplace_back(w);\n\
+    \            }\n            const T hcinv = T(1) / mtr[h][c];\n            for\
+    \ (int hh = 0; hh < n_row; hh++) {\n                if (hh != h) {\n         \
+    \           const T coeff = mtr[hh][c] * hcinv;\n                    for (auto\
+    \ w : ws) mtr[hh][w] -= mtr[h][w] * coeff;\n                    mtr[hh][c] = 0;\n\
+    \                }\n            }\n            c++;\n        }\n        return\
+    \ mtr;\n    }\n\n    // For upper triangle matrix\n    T det() const {\n     \
+    \   T ret = 1;\n        for (int i = 0; i < n_row; i++) {\n            ret *=\
+    \ get(i, i);\n        }\n        return ret;\n    }\n\n    // return rank of inverse\
+    \ matrix. If rank < n -> not invertible\n    int inverse() {\n        assert(n_row\
+    \ == n_col);\n        vector<vector<T>> ret = identity(n_row), tmp = *this;\n\
+    \        int rank = 0;\n\n        for (int i = 0; i < n_row; i++) {\n        \
+    \    int ti = i;\n            while (ti < n_row && tmp[ti][i] == 0) ++ti;\n  \
+    \          if (ti == n_row) continue;\n            else ++rank;\n\n          \
+    \  ret[i].swap(ret[ti]);\n            tmp[i].swap(tmp[ti]);\n\n            T inv\
+    \ = T(1) / tmp[i][i];\n            for (int j = 0; j < n_col; j++) ret[i][j] *=\
+    \ inv;\n            for (int j = i+1; j < n_col; j++) tmp[i][j] *= inv;\n\n  \
+    \          for (int h = 0; h < n_row; h++) {\n                if (i == h) continue;\n\
+    \                const T c = -tmp[h][i];\n                for (int j = 0; j <\
+    \ n_col; j++) ret[h][j] += ret[i][j] * c;\n                for (int j = i+1; j\
+    \ < n_col; j++) tmp[h][j] += tmp[i][j] * c;\n            }\n        }\n\n    \
+    \    *this = ret;\n        return rank;\n    }\n\n    // sum of [r1, r2) x [c1,\
+    \ c2)\n    T submatrix_sum(int r1, int c1, int r2, int c2) {\n        T res {0};\n\
+    \        for (int r = r1; r < r2; ++r) {\n            res += std::accumulate(\n\
+    \                    x.begin() + r * n_col + c1,\n                    x.begin()\
+    \ + r * n_col + c2,\n                    T{0});\n        }\n        return res;\n\
+    \    }\n};\ntemplate<typename T>\nostream& operator << (ostream& cout, const Matrix<T>&\
+    \ m) {\n    cout << m.n_row << ' ' << m.n_col << endl;\n    cout << m.x << endl;\n\
+    \    return cout;\n}\n// }}}\n#line 1 \"buffered_reader.h\"\n// Buffered reader\
+    \ {{{\nnamespace IO {\n    const int BUFSIZE = 1<<14;\n    char buf[BUFSIZE +\
+    \ 1], *inp = buf;\n\n    bool reacheof;\n    char get_char() {\n        if (!*inp\
+    \ && !reacheof) {\n            memset(buf, 0, sizeof buf);\n            int tmp\
+    \ = fread(buf, 1, BUFSIZE, stdin);\n            if (tmp != BUFSIZE) reacheof =\
+    \ true;\n            inp = buf;\n        }\n        return *inp++;\n    }\n  \
+    \  template<typename T>\n    T get() {\n        int neg = 0;\n        T res =\
+    \ 0;\n        char c = get_char();\n        while (!std::isdigit(c) && c != '-'\
+    \ && c != '+') c = get_char();\n        if (c == '+') { neg = 0; }\n        else\
+    \ if (c == '-') { neg = 1; }\n        else res = c - '0';\n\n        c = get_char();\n\
+    \        while (std::isdigit(c)) {\n            res = res * 10 + (c - '0');\n\
+    \            c = get_char();\n        }\n        return neg ? -res : res;\n  \
+    \  }\n};\n// }}}\n#line 10 \"Math/tests/matrix_inverse.test.cpp\"\n\n#define REP(i,\
+    \ a) for (int i = 0, _##i = (a); i < _##i; ++i)\n\nint32_t main() {\n    ios::sync_with_stdio(0);\
+    \ cin.tie(0);\n    int n = IO::get<int>();\n    Matrix<modint998244353> a(n, n);\n\
+    \    REP(i,n) REP(j,n) {\n        int x = IO::get<int>();\n        a[i][j] = x;\n\
+    \    }\n    int rank = a.inverse();\n    if (rank < n) cout << -1 << '\\n';\n\
+    \    else {\n        REP(i,n) {\n            REP(j,n) cout << a[i][j].val() <<\
+    \ ' ';\n            cout << '\\n';\n        }\n    }\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/inverse_matrix\"\n\n#include\
     \ <bits/stdc++.h>\n#include \"../../atcoder/modint.hpp\"\nusing namespace std;\n\
     using namespace atcoder;\n\n#include \"../Matrix.h\"\n#include \"../../buffered_reader.h\"\
@@ -341,7 +341,7 @@ data:
   isVerificationFile: true
   path: Math/tests/matrix_inverse.test.cpp
   requiredBy: []
-  timestamp: '2022-11-13 20:48:45+08:00'
+  timestamp: '2022-11-29 21:44:39+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Math/tests/matrix_inverse.test.cpp
