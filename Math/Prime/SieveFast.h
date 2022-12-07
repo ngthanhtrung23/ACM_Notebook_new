@@ -87,7 +87,7 @@ void sieve(int MAX, F func) {
     for (int i = 6; i < WHEEL * 64; i += 13) mark(pattern, i);
  
     // Segmented sieve
-    func(2);
+    if (2 <= MAX) func(2);
     for (int offset = 0; offset < MAX; offset += SIEVE_SPAN) {
         update_sieve(offset);
  
