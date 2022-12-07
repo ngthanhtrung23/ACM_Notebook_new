@@ -55,14 +55,14 @@ data:
     \ < WHEEL * 64; i += 5) mark(pattern, i);\n    for (int i = 3; i < WHEEL * 64;\
     \ i += 7) mark(pattern, i);\n    for (int i = 5; i < WHEEL * 64; i += 11) mark(pattern,\
     \ i);\n    for (int i = 6; i < WHEEL * 64; i += 13) mark(pattern, i);\n \n   \
-    \ // Segmented sieve\n    func(2);\n    for (int offset = 0; offset < MAX; offset\
-    \ += SIEVE_SPAN) {\n        update_sieve(offset);\n \n        for (uint32_t j\
-    \ = 0; j < SIEVE_SIZE; j++){\n            uint64_t x = ~si[j];\n            while\
-    \ (x){\n                uint32_t p = offset + (j << 7) + (__builtin_ctzll(x) <<\
-    \ 1) + 1;\n                if (p > offset + SIEVE_SPAN - 1) break;\n         \
-    \       if (p <= MAX) {\n                    func(p);\n                }\n   \
-    \             x ^= (-x & x);\n            }\n        }\n    }\n}\n}\nusing segmented_sieve_wheel::sieve;\n\
-    // }}}\n"
+    \ // Segmented sieve\n    if (2 <= MAX) func(2);\n    for (int offset = 0; offset\
+    \ < MAX; offset += SIEVE_SPAN) {\n        update_sieve(offset);\n \n        for\
+    \ (uint32_t j = 0; j < SIEVE_SIZE; j++){\n            uint64_t x = ~si[j];\n \
+    \           while (x){\n                uint32_t p = offset + (j << 7) + (__builtin_ctzll(x)\
+    \ << 1) + 1;\n                if (p > offset + SIEVE_SPAN - 1) break;\n      \
+    \          if (p <= MAX) {\n                    func(p);\n                }\n\
+    \                x ^= (-x & x);\n            }\n        }\n    }\n}\n}\nusing\
+    \ segmented_sieve_wheel::sieve;\n// }}}\n"
   code: "// Tested:\n// - (3B+) https://oj.vnoi.info/problem/icpc22_national_c\n//\
     \ - (1B, collect into vector of primes) https://www.spoj.com/problems/KPRIMES2/\n\
     // - (1B, print) https://www.spoj.com/problems/PRIMES2/\n\n// Segmented sieve\
@@ -104,19 +104,19 @@ data:
     \ < WHEEL * 64; i += 5) mark(pattern, i);\n    for (int i = 3; i < WHEEL * 64;\
     \ i += 7) mark(pattern, i);\n    for (int i = 5; i < WHEEL * 64; i += 11) mark(pattern,\
     \ i);\n    for (int i = 6; i < WHEEL * 64; i += 13) mark(pattern, i);\n \n   \
-    \ // Segmented sieve\n    func(2);\n    for (int offset = 0; offset < MAX; offset\
-    \ += SIEVE_SPAN) {\n        update_sieve(offset);\n \n        for (uint32_t j\
-    \ = 0; j < SIEVE_SIZE; j++){\n            uint64_t x = ~si[j];\n            while\
-    \ (x){\n                uint32_t p = offset + (j << 7) + (__builtin_ctzll(x) <<\
-    \ 1) + 1;\n                if (p > offset + SIEVE_SPAN - 1) break;\n         \
-    \       if (p <= MAX) {\n                    func(p);\n                }\n   \
-    \             x ^= (-x & x);\n            }\n        }\n    }\n}\n}\nusing segmented_sieve_wheel::sieve;\n\
-    // }}}\n"
+    \ // Segmented sieve\n    if (2 <= MAX) func(2);\n    for (int offset = 0; offset\
+    \ < MAX; offset += SIEVE_SPAN) {\n        update_sieve(offset);\n \n        for\
+    \ (uint32_t j = 0; j < SIEVE_SIZE; j++){\n            uint64_t x = ~si[j];\n \
+    \           while (x){\n                uint32_t p = offset + (j << 7) + (__builtin_ctzll(x)\
+    \ << 1) + 1;\n                if (p > offset + SIEVE_SPAN - 1) break;\n      \
+    \          if (p <= MAX) {\n                    func(p);\n                }\n\
+    \                x ^= (-x & x);\n            }\n        }\n    }\n}\n}\nusing\
+    \ segmented_sieve_wheel::sieve;\n// }}}\n"
   dependsOn: []
   isVerificationFile: false
   path: Math/Prime/SieveFast.h
   requiredBy: []
-  timestamp: '2022-11-25 16:33:51+08:00'
+  timestamp: '2022-12-07 20:07:03+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Math/tests/sieve_fast.test.cpp
