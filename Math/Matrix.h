@@ -20,6 +20,9 @@ struct Matrix {
         return x.begin() + r * n_col;
     }
     inline T get(int i, int j) const { return x[i * n_col + j]; }
+    vector<T> at(int r) const {
+        return vector<T> { x.begin() + r * n_col, x.begin() + (r+1) * n_col };
+    }
 
     // constructors
     Matrix() = default;
@@ -181,6 +184,11 @@ struct Matrix {
         return rank;
     }
 
+    // sum of all elements in this matrix
+    T sum_all() {
+        return submatrix_sum(0, 0, n_row, n_col);
+    }
+
     // sum of [r1, r2) x [c1, c2)
     T submatrix_sum(int r1, int c1, int r2, int c2) {
         T res {0};
@@ -196,7 +204,9 @@ struct Matrix {
 template<typename T>
 ostream& operator << (ostream& cout, const Matrix<T>& m) {
     cout << m.n_row << ' ' << m.n_col << endl;
-    cout << m.x << endl;
+    for (int i = 0; i < m.n_row; ++i) {
+        cout << "row [" << i << "] = " << m.at(i) << endl;
+    }
     return cout;
 }
 // }}}
