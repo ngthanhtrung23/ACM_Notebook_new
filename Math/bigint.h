@@ -1,4 +1,3 @@
-// BigInt {{{
 // NOTE:
 // This code contains various bug fixes compared to the original version from
 // indy256 (github.com/indy256/codelibrary/blob/master/cpp/numbertheory/bigint-full.cpp),
@@ -25,6 +24,7 @@
 // - SPOJ FDIV, VFDIV: Division.
 // - SPOJ SQRROOT: sqrt
 
+// BigInt {{{
 const int BASE_DIGITS = 9;
 const int BASE = 1000000000;
 

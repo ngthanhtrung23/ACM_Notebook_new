@@ -1,5 +1,7 @@
 // NOTES:
 // - For directed -> see EulerPathDirected.h
+// - Here we assume that we only need to draw every edges (and not every
+//   vertices). So for graph with 0 edges, it returns true
 //
 // Tested:
 // - SGU 101: https://codeforces.com/problemsets/acmsguru/problem/99999/101
