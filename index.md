@@ -457,6 +457,12 @@ data:
     - icon: ':warning:'
       path: Misc/Rubik.h
       title: Misc/Rubik.h
+    - icon: ':warning:'
+      path: Misc/bitmask_utils.h
+      title: Misc/bitmask_utils.h
+    - icon: ':warning:'
+      path: Misc/board_utils.h
+      title: Misc/board_utils.h
     - icon: ':heavy_check_mark:'
       path: Misc/compress.h
       title: Misc/compress.h

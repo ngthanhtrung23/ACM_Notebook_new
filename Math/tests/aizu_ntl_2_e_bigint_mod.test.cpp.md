@@ -44,9 +44,9 @@ data:
     \ (0, r-1)(rng);\n}\n\ntemplate<typename T>\nvector<T> read_vector(int n) {\n\
     \    vector<T> res(n);\n    for (int& x : res) cin >> x;\n    return res;\n}\n\
     \nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n  \
-    \  solve();\n    return 0;\n}\n#line 1 \"Math/bigint.h\"\n// BigInt {{{\n// NOTE:\n\
-    // This code contains various bug fixes compared to the original version from\n\
-    // indy256 (github.com/indy256/codelibrary/blob/master/cpp/numbertheory/bigint-full.cpp),\n\
+    \  solve();\n    return 0;\n}\n#line 1 \"Math/bigint.h\"\n// NOTE:\n// This code\
+    \ contains various bug fixes compared to the original version from\n// indy256\
+    \ (github.com/indy256/codelibrary/blob/master/cpp/numbertheory/bigint-full.cpp),\n\
     // including:\n// - Fix overflow bug in mul_karatsuba.\n// - Fix overflow bug\
     \ in fft.\n// - Fix bug in initialization from long long.\n// - Optimized operators\
     \ + - *.\n//\n// Tested:\n// - https://www.e-olymp.com/en/problems/266: Comparison\n\
@@ -57,16 +57,16 @@ data:
     \ (simple / karatsuba / fft)\n// - https://www.e-olymp.com/en/problems/1327: Multiplication\n\
     // - https://www.e-olymp.com/en/problems/1328\n// - VOJ BIGNUM: Addition, Subtraction,\
     \ Multiplication.\n// - SGU 111: sqrt\n// - SGU 193\n// - SPOJ MUL, VFMUL: Multiplication.\n\
-    // - SPOJ FDIV, VFDIV: Division.\n// - SPOJ SQRROOT: sqrt\n\nconst int BASE_DIGITS\
-    \ = 9;\nconst int BASE = 1000000000;\n\nstruct BigInt {\n    int sign;\n    vector<int>\
-    \ a;\n\n    // -------------------- Constructors -------------------- \n    //\
-    \ Default constructor.\n    BigInt() : sign(1) {}\n\n    // Constructor from long\
-    \ long.\n    BigInt(long long v) {\n        *this = v;\n    }\n    BigInt& operator\
-    \ = (long long v) {\n        sign = 1;\n        if (v < 0) {\n            sign\
-    \ = -1;\n            v = -v;\n        }\n        a.clear();\n        for (; v\
-    \ > 0; v = v / BASE)\n            a.push_back(v % BASE);\n        return *this;\n\
-    \    }\n\n    // Initialize from string.\n    BigInt(const string& s) {\n    \
-    \    read(s);\n    }\n\n    // -------------------- Input / Output --------------------\n\
+    // - SPOJ FDIV, VFDIV: Division.\n// - SPOJ SQRROOT: sqrt\n\n// BigInt {{{\nconst\
+    \ int BASE_DIGITS = 9;\nconst int BASE = 1000000000;\n\nstruct BigInt {\n    int\
+    \ sign;\n    vector<int> a;\n\n    // -------------------- Constructors --------------------\
+    \ \n    // Default constructor.\n    BigInt() : sign(1) {}\n\n    // Constructor\
+    \ from long long.\n    BigInt(long long v) {\n        *this = v;\n    }\n    BigInt&\
+    \ operator = (long long v) {\n        sign = 1;\n        if (v < 0) {\n      \
+    \      sign = -1;\n            v = -v;\n        }\n        a.clear();\n      \
+    \  for (; v > 0; v = v / BASE)\n            a.push_back(v % BASE);\n        return\
+    \ *this;\n    }\n\n    // Initialize from string.\n    BigInt(const string& s)\
+    \ {\n        read(s);\n    }\n\n    // -------------------- Input / Output --------------------\n\
     \    void read(const string& s) {\n        sign = 1;\n        a.clear();\n   \
     \     int pos = 0;\n        while (pos < (int) s.size() && (s[pos] == '-' || s[pos]\
     \ == '+')) {\n            if (s[pos] == '-')\n                sign = -sign;\n\
@@ -295,7 +295,7 @@ data:
   isVerificationFile: true
   path: Math/tests/aizu_ntl_2_e_bigint_mod.test.cpp
   requiredBy: []
-  timestamp: '2022-11-19 11:13:09+08:00'
+  timestamp: '2022-12-12 13:43:59+07:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Math/tests/aizu_ntl_2_e_bigint_mod.test.cpp
