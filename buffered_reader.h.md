@@ -62,7 +62,7 @@ data:
     \ { neg = 1; }\n        else res = c - '0';\n\n        c = get_char();\n     \
     \   while (std::isdigit(c)) {\n            res = res * 10 + (c - '0');\n     \
     \       c = get_char();\n        }\n        return neg ? -res : res;\n    }\n\
-    };\n// }}}\n"
+    };\n// Helper methods\nint ri() {\n    return IO::get<int>();\n}\n// }}}\n"
   code: "// Buffered reader {{{\nnamespace IO {\n    const int BUFSIZE = 1<<14;\n\
     \    char buf[BUFSIZE + 1], *inp = buf;\n\n    bool reacheof;\n    char get_char()\
     \ {\n        if (!*inp && !reacheof) {\n            memset(buf, 0, sizeof buf);\n\
@@ -74,12 +74,13 @@ data:
     \        else if (c == '-') { neg = 1; }\n        else res = c - '0';\n\n    \
     \    c = get_char();\n        while (std::isdigit(c)) {\n            res = res\
     \ * 10 + (c - '0');\n            c = get_char();\n        }\n        return neg\
-    \ ? -res : res;\n    }\n};\n// }}}\n"
+    \ ? -res : res;\n    }\n};\n// Helper methods\nint ri() {\n    return IO::get<int>();\n\
+    }\n// }}}\n"
   dependsOn: []
   isVerificationFile: false
   path: buffered_reader.h
   requiredBy: []
-  timestamp: '2022-08-21 20:28:36+08:00'
+  timestamp: '2022-12-14 02:22:04+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/fenwick.test.cpp

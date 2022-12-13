@@ -34,9 +34,10 @@ data:
     \        else if (c == '-') { neg = 1; }\n        else res = c - '0';\n\n    \
     \    c = get_char();\n        while (std::isdigit(c)) {\n            res = res\
     \ * 10 + (c - '0');\n            c = get_char();\n        }\n        return neg\
-    \ ? -res : res;\n    }\n};\n// }}}\n#line 1 \"DataStructure/SegTree2D.h\"\n//\
-    \ 2D segment tree\n#line 1 \"DataStructure/SegTree.h\"\n// SegTree, copied from\
-    \ AtCoder library {{{\n// AtCoder doc: https://atcoder.github.io/ac-library/master/document_en/segtree.html\n\
+    \ ? -res : res;\n    }\n};\n// Helper methods\nint ri() {\n    return IO::get<int>();\n\
+    }\n// }}}\n#line 1 \"DataStructure/SegTree2D.h\"\n// 2D segment tree\n#line 1\
+    \ \"DataStructure/SegTree.h\"\n// SegTree, copied from AtCoder library {{{\n//\
+    \ AtCoder doc: https://atcoder.github.io/ac-library/master/document_en/segtree.html\n\
     //\n// Notes:\n// - Index of elements from 0 -> n-1\n// - Range queries are [l,\
     \ r-1]\n//\n// Tested:\n// - (binary search) https://atcoder.jp/contests/practice2/tasks/practice2_j\n\
     // - https://oj.vnoi.info/problem/gss\n// - https://oj.vnoi.info/problem/nklineup\n\
@@ -191,7 +192,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/segment_tree_2d_pointaddrectsum.test.cpp
   requiredBy: []
-  timestamp: '2022-08-21 20:28:36+08:00'
+  timestamp: '2022-12-14 02:22:04+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/segment_tree_2d_pointaddrectsum.test.cpp

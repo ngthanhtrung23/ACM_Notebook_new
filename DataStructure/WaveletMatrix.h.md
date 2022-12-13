@@ -17,14 +17,13 @@ data:
     - https://github.com/dacin21/dacin21_codebook/blob/master/trees/wavelet_matrix.cpp
     - https://judge.yosupo.jp/problem/range_kth_smallest
     - https://judge.yosupo.jp/problem/static_range_frequency
-  bundledCode: "#line 1 \"DataStructure/WaveletMatrix.h\"\n// WaveletMatrix {{{\n\
-    // Copied from https://github.com/dacin21/dacin21_codebook/blob/master/trees/wavelet_matrix.cpp\n\
+  bundledCode: "#line 1 \"DataStructure/WaveletMatrix.h\"\n// Copied from https://github.com/dacin21/dacin21_codebook/blob/master/trees/wavelet_matrix.cpp\n\
     //\n// Notes:\n// - Index from 0\n// - k (for k-th query) from 0\n// - Need to\
     \ remove #define int long long\n//\n// Tested:\n// - (kth query) https://judge.yosupo.jp/problem/range_kth_smallest\n\
     // - (range_count) https://judge.yosupo.jp/problem/static_range_frequency\n\n\
-    // Bit Presum {{{\nclass Bit_Presum {\npublic:\n    static constexpr uint32_t\
-    \ omega = CHAR_BIT * sizeof(uint64_t);\n    static constexpr uint32_t lg_omega\
-    \ = __lg(omega);\n    static_assert(omega == 64u);\n\n    Bit_Presum(vector<uint64_t>\
+    // WaveletMatrix {{{\n// Bit Presum {{{\nclass Bit_Presum {\npublic:\n    static\
+    \ constexpr uint32_t omega = CHAR_BIT * sizeof(uint64_t);\n    static constexpr\
+    \ uint32_t lg_omega = __lg(omega);\n    static_assert(omega == 64u);\n\n    Bit_Presum(vector<uint64_t>\
     \ mask_)\n            : n(mask_.size()), mask(move(mask_)), presum(n+1) {\n  \
     \      build();\n    }\n    Bit_Presum(uint32_t bits, bool init_val = 0)\n   \
     \         : n((bits>>lg_omega) + 1),\n              mask(n, init_val ? ~uint64_t{0}\
@@ -91,13 +90,13 @@ data:
     \          r = m_index[h] + r-low_r;\n            }\n        }\n        return\
     \ a;\n    }\n\n    const int n;\n    vector<int> m_index;\n    vector<Bit_Ds>\
     \ data;\n    // }}}\n};\n// }}}\n"
-  code: "// WaveletMatrix {{{\n// Copied from https://github.com/dacin21/dacin21_codebook/blob/master/trees/wavelet_matrix.cpp\n\
+  code: "// Copied from https://github.com/dacin21/dacin21_codebook/blob/master/trees/wavelet_matrix.cpp\n\
     //\n// Notes:\n// - Index from 0\n// - k (for k-th query) from 0\n// - Need to\
     \ remove #define int long long\n//\n// Tested:\n// - (kth query) https://judge.yosupo.jp/problem/range_kth_smallest\n\
     // - (range_count) https://judge.yosupo.jp/problem/static_range_frequency\n\n\
-    // Bit Presum {{{\nclass Bit_Presum {\npublic:\n    static constexpr uint32_t\
-    \ omega = CHAR_BIT * sizeof(uint64_t);\n    static constexpr uint32_t lg_omega\
-    \ = __lg(omega);\n    static_assert(omega == 64u);\n\n    Bit_Presum(vector<uint64_t>\
+    // WaveletMatrix {{{\n// Bit Presum {{{\nclass Bit_Presum {\npublic:\n    static\
+    \ constexpr uint32_t omega = CHAR_BIT * sizeof(uint64_t);\n    static constexpr\
+    \ uint32_t lg_omega = __lg(omega);\n    static_assert(omega == 64u);\n\n    Bit_Presum(vector<uint64_t>\
     \ mask_)\n            : n(mask_.size()), mask(move(mask_)), presum(n+1) {\n  \
     \      build();\n    }\n    Bit_Presum(uint32_t bits, bool init_val = 0)\n   \
     \         : n((bits>>lg_omega) + 1),\n              mask(n, init_val ? ~uint64_t{0}\
@@ -168,7 +167,7 @@ data:
   isVerificationFile: false
   path: DataStructure/WaveletMatrix.h
   requiredBy: []
-  timestamp: '2022-10-24 01:33:41+08:00'
+  timestamp: '2022-12-14 02:22:04+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/wavelet_matrix_rangekthsmallest.test.cpp

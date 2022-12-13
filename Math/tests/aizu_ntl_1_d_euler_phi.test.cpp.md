@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/Prime/EulerPhi.h
     title: Math/Prime/EulerPhi.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_D
@@ -54,9 +54,21 @@ data:
     \ = i;\n        for (int i = 2; i < N; ++i) {\n            if (p[i]) {\n     \
     \       f[i] -= f[i] / i;\n                for (int j = i+i; j < N; j+=i)\n  \
     \                  p[j] = 0, f[j] -= f[j] / i;\n            }\n        }\n   \
-    \     lookup = 1;\n    }\n    return f[n];\n}\n#line 5 \"Math/tests/aizu_ntl_1_d_euler_phi.test.cpp\"\
-    \n\nusing ll = long long;\nvoid solve() {\n    ll n; cin >> n;\n    if (n < N)\
-    \ {\n        assert(eulerPhi(n) == eulerPhi_lookup(n));\n    }\n    cout << eulerPhi(n)\
+    \     lookup = 1;\n    }\n    return f[n];\n}\n\n// Segmented sieve version, compute\
+    \ phi(i) for i in [l, r]\n// Tested: https://www.spoj.com/problems/ETFS/\nvector<int>\
+    \ primes;    // NOTE: must initialize this\nconst int N = 100111;  // >= r - l\
+    \ + 1\n\nlong long phi[N], val[N];  // phi[i-l] = euler_phi(i)\nvoid eulerPhi_segmentedSieve(long\
+    \ long l, long long r) {\n    assert(!primes.empty());  // must precompute primes\
+    \ upto sqrt(r)\n\n    for (auto i = l; i <= r; ++i) {\n        phi[i-l] = i;\n\
+    \        val[i-l] = i;\n    }\n    \n    for (auto p : primes) {\n        if (p\
+    \ > r) break;\n        long long first = (l / p) * p;\n        if (first < l)\
+    \ first += p;\n\n        while (first <= r) {\n            phi[first - l] -= phi[first\
+    \ - l] / p;\n            while (val[first - l] % p == 0) val[first - l] /= p;\n\
+    \            first += p;\n        }\n    }\n\n    for (auto i = l; i <= r; ++i)\
+    \ {\n        if (val[i-l] > 1) {\n            phi[i-l] -= phi[i-l] / val[i-l];\n\
+    \        }\n    }\n}\n#line 5 \"Math/tests/aizu_ntl_1_d_euler_phi.test.cpp\"\n\
+    \nusing ll = long long;\nvoid solve() {\n    ll n; cin >> n;\n    if (n < N) {\n\
+    \        assert(eulerPhi(n) == eulerPhi_lookup(n));\n    }\n    cout << eulerPhi(n)\
     \ << endl;\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_D\"\
     \n\n#include \"../../template.h\"\n#include \"../Prime/EulerPhi.h\"\n\nusing ll\
@@ -69,8 +81,8 @@ data:
   isVerificationFile: true
   path: Math/tests/aizu_ntl_1_d_euler_phi.test.cpp
   requiredBy: []
-  timestamp: '2022-01-13 13:16:22+08:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2022-12-14 02:22:04+08:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: Math/tests/aizu_ntl_1_d_euler_phi.test.cpp
 layout: document

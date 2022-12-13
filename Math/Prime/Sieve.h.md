@@ -13,8 +13,8 @@ data:
     links: []
   bundledCode: "#line 1 \"Math/Prime/Sieve.h\"\n// F is called for each prime\n//\
     \ Sieve (odd only + segmented) {{{\ntemplate<typename F>\nvoid sieve(int MAX,\
-    \ F func) {\n\n    const int S = round(sqrt(MAX));\n    vector<char> sieve(S +\
-    \ 1, true);\n    vector<array<int, 2>> cp;\n    for (int i = 3; i < S; i += 2)\
+    \ F func) {\n\n    const int S = sqrt(MAX + 0.5);\n    vector<char> sieve(S +\
+    \ 1, true);\n    vector<array<int, 2>> cp;\n    for (int i = 3; i <= S; i += 2)\
     \ {\n        if (!sieve[i])\n            continue;\n        cp.push_back({i, (i\
     \ * i - 1) / 2});\n        for (int j = i * i; j <= S; j += 2 * i)\n         \
     \   sieve[j] = false;\n    }\n    func(2);\n    vector<char> block(S);\n    int\
@@ -26,10 +26,10 @@ data:
     \ i < S && low + i <= high; i++)\n            if (block[i]) {\n              \
     \  func((low + i) * 2 + 1);\n            }\n    };\n}\n// }}}\n"
   code: "// F is called for each prime\n// Sieve (odd only + segmented) {{{\ntemplate<typename\
-    \ F>\nvoid sieve(int MAX, F func) {\n\n    const int S = round(sqrt(MAX));\n \
-    \   vector<char> sieve(S + 1, true);\n    vector<array<int, 2>> cp;\n    for (int\
-    \ i = 3; i < S; i += 2) {\n        if (!sieve[i])\n            continue;\n   \
-    \     cp.push_back({i, (i * i - 1) / 2});\n        for (int j = i * i; j <= S;\
+    \ F>\nvoid sieve(int MAX, F func) {\n\n    const int S = sqrt(MAX + 0.5);\n  \
+    \  vector<char> sieve(S + 1, true);\n    vector<array<int, 2>> cp;\n    for (int\
+    \ i = 3; i <= S; i += 2) {\n        if (!sieve[i])\n            continue;\n  \
+    \      cp.push_back({i, (i * i - 1) / 2});\n        for (int j = i * i; j <= S;\
     \ j += 2 * i)\n            sieve[j] = false;\n    }\n    func(2);\n    vector<char>\
     \ block(S);\n    int high = (MAX - 1) / 2;\n    for (int low = 0; low <= high;\
     \ low += S) {\n        fill(block.begin(), block.end(), true);\n        for (auto\
@@ -42,7 +42,7 @@ data:
   isVerificationFile: false
   path: Math/Prime/Sieve.h
   requiredBy: []
-  timestamp: '2022-11-25 16:33:51+08:00'
+  timestamp: '2022-12-14 02:22:04+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Math/tests/sieve.test.cpp

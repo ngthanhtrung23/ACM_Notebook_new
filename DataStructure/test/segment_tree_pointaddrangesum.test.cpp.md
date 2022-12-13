@@ -95,15 +95,16 @@ data:
     \ { neg = 1; }\n        else res = c - '0';\n\n        c = get_char();\n     \
     \   while (std::isdigit(c)) {\n            res = res * 10 + (c - '0');\n     \
     \       c = get_char();\n        }\n        return neg ? -res : res;\n    }\n\
-    };\n// }}}\n#line 8 \"DataStructure/test/segment_tree_pointaddrangesum.test.cpp\"\
-    \n\n#define REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)\n\nint32_t main()\
-    \ {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n, q; cin >> n >> q;\n\
-    \    vector<long long> a(n);\n    for (auto& x : a) cin >> x;\n\n    SegTree<long\
-    \ long, SumSegTreeOp::op, SumSegTreeOp::e> seg_tree(a);\n\n    while (q--) {\n\
-    \        int typ; cin >> typ;\n        if (typ == 0) {\n            int pos, val;\
-    \ cin >> pos >> val;\n            seg_tree.set(pos, seg_tree.get(pos) + val);\n\
-    \        } else {\n            int l, r; cin >> l >> r;\n            cout << seg_tree.prod(l,\
-    \ r) << '\\n';\n        }\n    }\n    return 0;\n}\n"
+    };\n// Helper methods\nint ri() {\n    return IO::get<int>();\n}\n// }}}\n#line\
+    \ 8 \"DataStructure/test/segment_tree_pointaddrangesum.test.cpp\"\n\n#define REP(i,\
+    \ a) for (int i = 0, _##i = (a); i < _##i; ++i)\n\nint32_t main() {\n    ios::sync_with_stdio(0);\
+    \ cin.tie(0);\n    int n, q; cin >> n >> q;\n    vector<long long> a(n);\n   \
+    \ for (auto& x : a) cin >> x;\n\n    SegTree<long long, SumSegTreeOp::op, SumSegTreeOp::e>\
+    \ seg_tree(a);\n\n    while (q--) {\n        int typ; cin >> typ;\n        if\
+    \ (typ == 0) {\n            int pos, val; cin >> pos >> val;\n            seg_tree.set(pos,\
+    \ seg_tree.get(pos) + val);\n        } else {\n            int l, r; cin >> l\
+    \ >> r;\n            cout << seg_tree.prod(l, r) << '\\n';\n        }\n    }\n\
+    \    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n\
     \n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../SegTree.h\"\n\
     #include \"../../buffered_reader.h\"\n\n#define REP(i, a) for (int i = 0, _##i\
@@ -120,7 +121,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/segment_tree_pointaddrangesum.test.cpp
   requiredBy: []
-  timestamp: '2022-08-21 20:28:36+08:00'
+  timestamp: '2022-12-14 02:22:04+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/segment_tree_pointaddrangesum.test.cpp

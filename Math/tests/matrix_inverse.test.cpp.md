@@ -322,8 +322,9 @@ data:
     \ { neg = 1; }\n        else res = c - '0';\n\n        c = get_char();\n     \
     \   while (std::isdigit(c)) {\n            res = res * 10 + (c - '0');\n     \
     \       c = get_char();\n        }\n        return neg ? -res : res;\n    }\n\
-    };\n// }}}\n#line 10 \"Math/tests/matrix_inverse.test.cpp\"\n\n#define REP(i,\
-    \ a) for (int i = 0, _##i = (a); i < _##i; ++i)\n\nint32_t main() {\n    ios::sync_with_stdio(0);\
+    };\n// Helper methods\nint ri() {\n    return IO::get<int>();\n}\n// }}}\n#line\
+    \ 10 \"Math/tests/matrix_inverse.test.cpp\"\n\n#define REP(i, a) for (int i =\
+    \ 0, _##i = (a); i < _##i; ++i)\n\nint32_t main() {\n    ios::sync_with_stdio(0);\
     \ cin.tie(0);\n    int n = IO::get<int>();\n    Matrix<modint998244353> a(n, n);\n\
     \    REP(i,n) REP(j,n) {\n        int x = IO::get<int>();\n        a[i][j] = x;\n\
     \    }\n    int rank = a.inverse();\n    if (rank < n) cout << -1 << '\\n';\n\
@@ -345,7 +346,7 @@ data:
   isVerificationFile: true
   path: Math/tests/matrix_inverse.test.cpp
   requiredBy: []
-  timestamp: '2022-12-10 23:08:36+07:00'
+  timestamp: '2022-12-14 02:22:04+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Math/tests/matrix_inverse.test.cpp

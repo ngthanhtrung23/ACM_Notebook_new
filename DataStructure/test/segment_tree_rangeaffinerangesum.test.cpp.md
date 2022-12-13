@@ -194,7 +194,8 @@ data:
     \        else if (c == '-') { neg = 1; }\n        else res = c - '0';\n\n    \
     \    c = get_char();\n        while (std::isdigit(c)) {\n            res = res\
     \ * 10 + (c - '0');\n            c = get_char();\n        }\n        return neg\
-    \ ? -res : res;\n    }\n};\n// }}}\n#line 9 \"DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp\"\
+    \ ? -res : res;\n    }\n};\n// Helper methods\nint ri() {\n    return IO::get<int>();\n\
+    }\n// }}}\n#line 9 \"DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp\"\
     \n\nusing modular = ModInt<998244353>;\n\nstruct Node {\n    modular sum, sz;\n\
     };\nstruct Lazy {\n    modular a, b;\n};\n\nNode op(Node l, Node r) {\n    return\
     \ Node {\n        l.sum + r.sum,\n        l.sz + r.sz\n    };\n}\nNode e() {\n\
@@ -235,7 +236,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
   requiredBy: []
-  timestamp: '2022-08-21 23:32:29+08:00'
+  timestamp: '2022-12-14 02:22:04+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp

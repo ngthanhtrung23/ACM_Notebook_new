@@ -60,6 +60,9 @@ data:
       path: DataStructure/Fenwick2D.h
       title: DataStructure/Fenwick2D.h
     - icon: ':warning:'
+      path: DataStructure/Fenwick2D_smallN.h
+      title: DataStructure/Fenwick2D_smallN.h
+    - icon: ':warning:'
       path: DataStructure/HeavyLight.cpp
       title: DataStructure/HeavyLight.cpp
     - icon: ':heavy_check_mark:'
@@ -405,7 +408,7 @@ data:
       title: Math/Polynomial/xorFFT.h
   - name: Math/Prime
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: Math/Prime/EulerPhi.h
       title: Math/Prime/EulerPhi.h
     - icon: ':heavy_check_mark:'
@@ -533,7 +536,7 @@ data:
     - icon: ':warning:'
       path: debug.h
       title: debug.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template.h
       title: template.h
   verificationCategories:
@@ -865,7 +868,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp
       title: Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: Math/tests/aizu_ntl_1_d_euler_phi.test.cpp
       title: Math/tests/aizu_ntl_1_d_euler_phi.test.cpp
     - icon: ':heavy_check_mark:'

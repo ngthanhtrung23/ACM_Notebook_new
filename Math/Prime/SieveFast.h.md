@@ -14,10 +14,22 @@ data:
     - https://oj.vnoi.info/problem/icpc22_national_c
     - https://www.spoj.com/problems/KPRIMES2/
     - https://www.spoj.com/problems/PRIMES2/
+    - https://www.spoj.com/status/SUMPRIM2,mr_invincible/
   bundledCode: "#line 1 \"Math/Prime/SieveFast.h\"\n// Tested:\n// - (3B+) https://oj.vnoi.info/problem/icpc22_national_c\n\
     // - (1B, collect into vector of primes) https://www.spoj.com/problems/KPRIMES2/\n\
-    // - (1B, print) https://www.spoj.com/problems/PRIMES2/\n\n// Segmented sieve\
-    \ with wheel factorization {{{\nnamespace segmented_sieve_wheel {\nconst int WHEEL\
+    // - (1B, print) https://www.spoj.com/problems/PRIMES2/\n//\n// Note:\n// - It's\
+    \ possible to extract code from here to have a fast implementation\n//   of segmented\
+    \ sieve for [L, R] where R is very big (e.g. 10^12)\n//   See: https://www.spoj.com/status/SUMPRIM2,mr_invincible/\n\
+    //   However there are several things that need to be fixed:\n//   1. Initialization\
+    \ of small primes:\n//      - Need to change 256 -> R^0.25\n//      - Change 32768\
+    \ -> R^0.5\n//   2. Change N_SMALL_PRIMES\n//   3. If R^0.5 is around 10^6, p^2\
+    \ overflow int, so need to check everywhere..\n//   4. si[SIEVE_SIZE] may not\
+    \ have enough elements to sieve small_primes..\n//   5. update_sieve(offset) assumes\
+    \ offset is a multiple of SIEVE_SPAN. This\n//      is not true if we sieve a\
+    \ segment [L, R]\n//   6. Maybe more issues..\n//   Essentially if we need to\
+    \ do this, either use SegmentedSieve or copy from\n//   https://www.spoj.com/status/SUMPRIM2,mr_invincible/\
+    \ which I spent like an\n//   hour to make it work..\n\n// Segmented sieve with\
+    \ wheel factorization {{{\nnamespace segmented_sieve_wheel {\nconst int WHEEL\
     \ = 3 * 5 * 7 * 11 * 13;\nconst int N_SMALL_PRIMES = 6536;             // cnt\
     \ primes less than 2^16\nconst int SIEVE_SPAN = WHEEL * 64;           // one iteration\
     \ of segmented sieve\nconst int SIEVE_SIZE = SIEVE_SPAN / 128 + 1;\n \nuint64_t\
@@ -65,8 +77,19 @@ data:
     \ segmented_sieve_wheel::sieve;\n// }}}\n"
   code: "// Tested:\n// - (3B+) https://oj.vnoi.info/problem/icpc22_national_c\n//\
     \ - (1B, collect into vector of primes) https://www.spoj.com/problems/KPRIMES2/\n\
-    // - (1B, print) https://www.spoj.com/problems/PRIMES2/\n\n// Segmented sieve\
-    \ with wheel factorization {{{\nnamespace segmented_sieve_wheel {\nconst int WHEEL\
+    // - (1B, print) https://www.spoj.com/problems/PRIMES2/\n//\n// Note:\n// - It's\
+    \ possible to extract code from here to have a fast implementation\n//   of segmented\
+    \ sieve for [L, R] where R is very big (e.g. 10^12)\n//   See: https://www.spoj.com/status/SUMPRIM2,mr_invincible/\n\
+    //   However there are several things that need to be fixed:\n//   1. Initialization\
+    \ of small primes:\n//      - Need to change 256 -> R^0.25\n//      - Change 32768\
+    \ -> R^0.5\n//   2. Change N_SMALL_PRIMES\n//   3. If R^0.5 is around 10^6, p^2\
+    \ overflow int, so need to check everywhere..\n//   4. si[SIEVE_SIZE] may not\
+    \ have enough elements to sieve small_primes..\n//   5. update_sieve(offset) assumes\
+    \ offset is a multiple of SIEVE_SPAN. This\n//      is not true if we sieve a\
+    \ segment [L, R]\n//   6. Maybe more issues..\n//   Essentially if we need to\
+    \ do this, either use SegmentedSieve or copy from\n//   https://www.spoj.com/status/SUMPRIM2,mr_invincible/\
+    \ which I spent like an\n//   hour to make it work..\n\n// Segmented sieve with\
+    \ wheel factorization {{{\nnamespace segmented_sieve_wheel {\nconst int WHEEL\
     \ = 3 * 5 * 7 * 11 * 13;\nconst int N_SMALL_PRIMES = 6536;             // cnt\
     \ primes less than 2^16\nconst int SIEVE_SPAN = WHEEL * 64;           // one iteration\
     \ of segmented sieve\nconst int SIEVE_SIZE = SIEVE_SPAN / 128 + 1;\n \nuint64_t\
@@ -116,7 +139,7 @@ data:
   isVerificationFile: false
   path: Math/Prime/SieveFast.h
   requiredBy: []
-  timestamp: '2022-12-07 20:07:03+08:00'
+  timestamp: '2022-12-14 02:22:04+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Math/tests/sieve_fast.test.cpp

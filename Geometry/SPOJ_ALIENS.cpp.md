@@ -10,7 +10,7 @@ data:
   - icon: ':warning:'
     path: Geometry/smallestEnclosingCircle.h
     title: Geometry/smallestEnclosingCircle.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []

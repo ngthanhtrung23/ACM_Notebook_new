@@ -17,10 +17,10 @@ data:
   bundledCode: "#line 1 \"Math/tests/sieve.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/enumerate_primes\"\
     \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#line 1 \"Math/Prime/Sieve.h\"\
     \n// F is called for each prime\n// Sieve (odd only + segmented) {{{\ntemplate<typename\
-    \ F>\nvoid sieve(int MAX, F func) {\n\n    const int S = round(sqrt(MAX));\n \
-    \   vector<char> sieve(S + 1, true);\n    vector<array<int, 2>> cp;\n    for (int\
-    \ i = 3; i < S; i += 2) {\n        if (!sieve[i])\n            continue;\n   \
-    \     cp.push_back({i, (i * i - 1) / 2});\n        for (int j = i * i; j <= S;\
+    \ F>\nvoid sieve(int MAX, F func) {\n\n    const int S = sqrt(MAX + 0.5);\n  \
+    \  vector<char> sieve(S + 1, true);\n    vector<array<int, 2>> cp;\n    for (int\
+    \ i = 3; i <= S; i += 2) {\n        if (!sieve[i])\n            continue;\n  \
+    \      cp.push_back({i, (i * i - 1) / 2});\n        for (int j = i * i; j <= S;\
     \ j += 2 * i)\n            sieve[j] = false;\n    }\n    func(2);\n    vector<char>\
     \ block(S);\n    int high = (MAX - 1) / 2;\n    for (int low = 0; low <= high;\
     \ low += S) {\n        fill(block.begin(), block.end(), true);\n        for (auto\
@@ -49,7 +49,7 @@ data:
   isVerificationFile: true
   path: Math/tests/sieve.test.cpp
   requiredBy: []
-  timestamp: '2022-11-25 16:33:51+08:00'
+  timestamp: '2022-12-14 02:22:04+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Math/tests/sieve.test.cpp

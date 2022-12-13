@@ -35,7 +35,7 @@ data:
     \ -1).first;\n    }\n\n    // multi-source BFS\n    // Return: dist[u] = shortest\
     \ distance from any source -> u\n    vector<int> bfs(vector<int> starts) const\
     \ {\n        return _bfs(starts, -1).first;\n    }\n\n// private:\n\n    // Start\
-    \ BFS from start, and stop when reaching target.\n    // Start = -1 -> BFS whole\
+    \ BFS from start, and stop when reaching target.\n    // Target = -1 -> BFS whole\
     \ graph\n    // Returns {distance, trace}\n    pair<vector<int>, vector<int>>\
     \ _bfs(vector<int> starts, int target) const {\n        assert(-1 <= target &&\
     \ target < n);\n\n        queue<int> qu;\n        vector<int> dist(g.size(), -1);\n\
@@ -68,23 +68,24 @@ data:
     \ BFS\n    // Return: dist[u] = shortest distance from any source -> u\n    vector<int>\
     \ bfs(vector<int> starts) const {\n        return _bfs(starts, -1).first;\n  \
     \  }\n\n// private:\n\n    // Start BFS from start, and stop when reaching target.\n\
-    \    // Start = -1 -> BFS whole graph\n    // Returns {distance, trace}\n    pair<vector<int>,\
-    \ vector<int>> _bfs(vector<int> starts, int target) const {\n        assert(-1\
-    \ <= target && target < n);\n\n        queue<int> qu;\n        vector<int> dist(g.size(),\
-    \ -1);\n        vector<int> trace(g.size(), -1);\n\n        for (int start : starts)\
-    \ {\n            assert(0 <= start && start < n);\n            dist[start] = 0;\n\
-    \            qu.push(start);\n        }\n\n        while (!qu.empty()) {\n   \
-    \         auto u = qu.front(); qu.pop();\n            if (u == target) {\n   \
-    \             break;\n            }\n\n            for (const auto& v : g[u])\
-    \ {\n                if (dist[v] == -1) {\n                    dist[v] = dist[u]\
-    \ + 1;\n                    trace[v] = u;\n                    qu.push(v);\n \
-    \               }\n            }\n        }\n\n        return {dist, trace};\n\
-    \    }\n\n    int n;\n    vector<vector<int>> g;\n};\n// }}}\n"
+    \    // Target = -1 -> BFS whole graph\n    // Returns {distance, trace}\n   \
+    \ pair<vector<int>, vector<int>> _bfs(vector<int> starts, int target) const {\n\
+    \        assert(-1 <= target && target < n);\n\n        queue<int> qu;\n     \
+    \   vector<int> dist(g.size(), -1);\n        vector<int> trace(g.size(), -1);\n\
+    \n        for (int start : starts) {\n            assert(0 <= start && start <\
+    \ n);\n            dist[start] = 0;\n            qu.push(start);\n        }\n\n\
+    \        while (!qu.empty()) {\n            auto u = qu.front(); qu.pop();\n \
+    \           if (u == target) {\n                break;\n            }\n\n    \
+    \        for (const auto& v : g[u]) {\n                if (dist[v] == -1) {\n\
+    \                    dist[v] = dist[u] + 1;\n                    trace[v] = u;\n\
+    \                    qu.push(v);\n                }\n            }\n        }\n\
+    \n        return {dist, trace};\n    }\n\n    int n;\n    vector<vector<int>>\
+    \ g;\n};\n// }}}\n"
   dependsOn: []
   isVerificationFile: false
   path: Graph/bfs.h
   requiredBy: []
-  timestamp: '2022-08-09 14:38:08+08:00'
+  timestamp: '2022-12-14 02:22:04+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Graph/tests/aizu_alds1_11_c_bfs.test.cpp
