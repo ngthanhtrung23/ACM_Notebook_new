@@ -27,3 +27,36 @@ int eulerPhi_lookup(int n) {
     }
     return f[n];
 }
+
+// Segmented sieve version, compute phi(i) for i in [l, r]
+// Tested: https://www.spoj.com/problems/ETFS/
+vector<int> primes;    // NOTE: must initialize this
+const int N = 100111;  // >= r - l + 1
+
+long long phi[N], val[N];  // phi[i-l] = euler_phi(i)
+void eulerPhi_segmentedSieve(long long l, long long r) {
+    assert(!primes.empty());  // must precompute primes upto sqrt(r)
+
+    for (auto i = l; i <= r; ++i) {
+        phi[i-l] = i;
+        val[i-l] = i;
+    }
+    
+    for (auto p : primes) {
+        if (p > r) break;
+        long long first = (l / p) * p;
+        if (first < l) first += p;
+
+        while (first <= r) {
+            phi[first - l] -= phi[first - l] / p;
+            while (val[first - l] % p == 0) val[first - l] /= p;
+            first += p;
+        }
+    }
+
+    for (auto i = l; i <= r; ++i) {
+        if (val[i-l] > 1) {
+            phi[i-l] -= phi[i-l] / val[i-l];
+        }
+    }
+}

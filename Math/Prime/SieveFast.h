@@ -2,6 +2,24 @@
 // - (3B+) https://oj.vnoi.info/problem/icpc22_national_c
 // - (1B, collect into vector of primes) https://www.spoj.com/problems/KPRIMES2/
 // - (1B, print) https://www.spoj.com/problems/PRIMES2/
+//
+// Note:
+// - It's possible to extract code from here to have a fast implementation
+//   of segmented sieve for [L, R] where R is very big (e.g. 10^12)
+//   See: https://www.spoj.com/status/SUMPRIM2,mr_invincible/
+//   However there are several things that need to be fixed:
+//   1. Initialization of small primes:
+//      - Need to change 256 -> R^0.25
+//      - Change 32768 -> R^0.5
+//   2. Change N_SMALL_PRIMES
+//   3. If R^0.5 is around 10^6, p^2 overflow int, so need to check everywhere..
+//   4. si[SIEVE_SIZE] may not have enough elements to sieve small_primes..
+//   5. update_sieve(offset) assumes offset is a multiple of SIEVE_SPAN. This
+//      is not true if we sieve a segment [L, R]
+//   6. Maybe more issues..
+//   Essentially if we need to do this, either use SegmentedSieve or copy from
+//   https://www.spoj.com/status/SUMPRIM2,mr_invincible/ which I spent like an
+//   hour to make it work..
 
 // Segmented sieve with wheel factorization {{{
 namespace segmented_sieve_wheel {

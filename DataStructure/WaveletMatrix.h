@@ -1,4 +1,3 @@
-// WaveletMatrix {{{
 // Copied from https://github.com/dacin21/dacin21_codebook/blob/master/trees/wavelet_matrix.cpp
 //
 // Notes:
@@ -10,6 +9,7 @@
 // - (kth query) https://judge.yosupo.jp/problem/range_kth_smallest
 // - (range_count) https://judge.yosupo.jp/problem/static_range_frequency
 
+// WaveletMatrix {{{
 // Bit Presum {{{
 class Bit_Presum {
 public:

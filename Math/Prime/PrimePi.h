@@ -5,6 +5,14 @@
 // Tested:
 // - https://judge.yosupo.jp/problem/counting_primes
 // - https://www.spoj.com/problems/NTHPRIME/ (binary search + prime pi)
+//
+// Notes:
+// - There's simpler O(N^0.75) code for prime_pi and prime_sum
+//   Write up: https://www.facebook.com/code.cung.rr/posts/pfbid0eAyeQynkVN9evzy7Bnwx52zLeN7EHDE6H9Uur6KTSK2MTiyxJwCV71Wvujqz75vgl
+//   Implementation:
+//   - prime_sum: https://www.spoj.com/status/SUMPRIM1,mr_invincible/
+//   This can be modified to implement more complicated things such as
+//   https://www.spoj.com/problems/DIVFACT4/
 
 // prime_pi {{{
 using ll = long long;

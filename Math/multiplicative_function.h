@@ -1,4 +1,4 @@
-// Multiplicative function
+// Multiplicative function {{{
 template<int N>
 struct MultiplicativeFunction {
     // Init sieve and pk
@@ -54,9 +54,10 @@ struct MultiplicativeFunction {
 // private:
     // sieve[i] == 0 if i is prime,
     // sieve[i] = any prime factor p otherwise
-    array<int, N> sieve;
+    array<int, N> sieve = {0};
 
     // pk[i] = {p, k} if i == p^k
     // pk[i] = {-1, 0} otherwise
     array<pair<int,int>, N> pk;
 };
+// }}}

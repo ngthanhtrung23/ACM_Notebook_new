@@ -3,10 +3,10 @@
 template<typename F>
 void sieve(int MAX, F func) {
 
-    const int S = round(sqrt(MAX));
+    const int S = sqrt(MAX + 0.5);
     vector<char> sieve(S + 1, true);
     vector<array<int, 2>> cp;
-    for (int i = 3; i < S; i += 2) {
+    for (int i = 3; i <= S; i += 2) {
         if (!sieve[i])
             continue;
         cp.push_back({i, (i * i - 1) / 2});

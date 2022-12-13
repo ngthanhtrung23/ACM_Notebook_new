@@ -53,7 +53,7 @@ struct Graph {
 // private:
 
     // Start BFS from start, and stop when reaching target.
-    // Start = -1 -> BFS whole graph
+    // Target = -1 -> BFS whole graph
     // Returns {distance, trace}
     pair<vector<int>, vector<int>> _bfs(vector<int> starts, int target) const {
         assert(-1 <= target && target < n);

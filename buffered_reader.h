@@ -31,4 +31,8 @@ namespace IO {
         return neg ? -res : res;
     }
 };
+// Helper methods
+int ri() {
+    return IO::get<int>();
+}
 // }}}
