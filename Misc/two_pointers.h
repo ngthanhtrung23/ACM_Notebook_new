@@ -1,5 +1,6 @@
 // O(N) 2 pointers
-// Find optimal substring that satisfy a predicate while minimizing a cost function
+// Find *smallest* substring that satisfy a predicate while minimizing a cost function
+// (when not satisfy -> expand -> assume expand is always valid)
 //
 // - pred() = whether current segment satisfy condition
 // - cost(l, r) = cost of [l, r]
@@ -10,7 +11,10 @@
 // Returns: <best cost, left, right> where [left, right] is substring with
 //   mincost or [-1, -1] if no solution
 //
-// Two pointers {{{
+// Tested:
+// - https://www.spoj.com/problems/KOIREP/
+//
+// Two pointers (smallest substring) {{{
 template<typename Pred, typename Cost, typename Add, typename Rem>
 tuple<long long, int, int> two_pointers(int n, Pred pred, Cost cost, Add add, Rem rem) {
     tuple<long long, int, int> res {LLONG_MAX, -1, -1};
