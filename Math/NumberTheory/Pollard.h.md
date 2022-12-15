@@ -119,8 +119,8 @@ data:
   timestamp: '2022-11-18 18:23:54+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Math/tests/aizu_ntl_1_a_factorize.test.cpp
   - Math/tests/factorize.test.cpp
+  - Math/tests/aizu_ntl_1_a_factorize.test.cpp
   - Math/tests/is_prime_yukicoder.test.cpp
 documentation_of: Math/NumberTheory/Pollard.h
 layout: document

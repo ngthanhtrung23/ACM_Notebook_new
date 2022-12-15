@@ -240,14 +240,14 @@ data:
   timestamp: '2022-11-21 23:05:00+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - DataStructure/test/aizu_grl_5_e_hld_edge.test.cpp
-  - DataStructure/test/hld_vertexaddpathsum.test.cpp
-  - DataStructure/test/hld_vertexsetpathcomposite.test.cpp
-  - DataStructure/test/aizu_grl_5_c_hld_lca.test.cpp
-  - DataStructure/test/hld_vertexaddsubtreesum.test.cpp
-  - DataStructure/test/yosupo_hld_kth_vertex_on_path.test.cpp
   - DataStructure/test/hld_lca.test.cpp
+  - DataStructure/test/aizu_grl_5_c_hld_lca.test.cpp
+  - DataStructure/test/hld_vertexsetpathcomposite.test.cpp
+  - DataStructure/test/hld_vertexaddpathsum.test.cpp
+  - DataStructure/test/aizu_grl_5_e_hld_edge.test.cpp
+  - DataStructure/test/hld_vertexaddsubtreesum.test.cpp
   - DataStructure/test/aizu_grl_5_d_hld_edge.test.cpp
+  - DataStructure/test/yosupo_hld_kth_vertex_on_path.test.cpp
 documentation_of: DataStructure/HeavyLight_adamant.h
 layout: document
 redirect_from:
