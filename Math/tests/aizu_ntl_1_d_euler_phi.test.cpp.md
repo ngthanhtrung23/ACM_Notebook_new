@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/Prime/EulerPhi.h
     title: Math/Prime/EulerPhi.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_D
@@ -55,19 +55,20 @@ data:
     \       f[i] -= f[i] / i;\n                for (int j = i+i; j < N; j+=i)\n  \
     \                  p[j] = 0, f[j] -= f[j] / i;\n            }\n        }\n   \
     \     lookup = 1;\n    }\n    return f[n];\n}\n\n// Segmented sieve version, compute\
-    \ phi(i) for i in [l, r]\n// Tested: https://www.spoj.com/problems/ETFS/\nvector<int>\
-    \ primes;    // NOTE: must initialize this\nconst int N = 100111;  // >= r - l\
-    \ + 1\n\nlong long phi[N], val[N];  // phi[i-l] = euler_phi(i)\nvoid eulerPhi_segmentedSieve(long\
-    \ long l, long long r) {\n    assert(!primes.empty());  // must precompute primes\
-    \ upto sqrt(r)\n\n    for (auto i = l; i <= r; ++i) {\n        phi[i-l] = i;\n\
-    \        val[i-l] = i;\n    }\n    \n    for (auto p : primes) {\n        if (p\
-    \ > r) break;\n        long long first = (l / p) * p;\n        if (first < l)\
-    \ first += p;\n\n        while (first <= r) {\n            phi[first - l] -= phi[first\
-    \ - l] / p;\n            while (val[first - l] % p == 0) val[first - l] /= p;\n\
-    \            first += p;\n        }\n    }\n\n    for (auto i = l; i <= r; ++i)\
-    \ {\n        if (val[i-l] > 1) {\n            phi[i-l] -= phi[i-l] / val[i-l];\n\
-    \        }\n    }\n}\n#line 5 \"Math/tests/aizu_ntl_1_d_euler_phi.test.cpp\"\n\
-    \nusing ll = long long;\nvoid solve() {\n    ll n; cin >> n;\n    if (n < N) {\n\
+    \ phi(i) for i in [l, r]\n// Tested: https://www.spoj.com/problems/ETFS/\nnamespace\
+    \ EulerPhiSegmented {\nvector<int> primes;    // NOTE: must initialize this\n\
+    const int N = 100111;  // >= r - l + 1\n\nlong long phi[N], val[N];  // phi[i-l]\
+    \ = euler_phi(i)\nvoid eulerPhi_segmentedSieve(long long l, long long r) {\n \
+    \   assert(!primes.empty());  // must precompute primes upto sqrt(r)\n\n    for\
+    \ (auto i = l; i <= r; ++i) {\n        phi[i-l] = i;\n        val[i-l] = i;\n\
+    \    }\n    \n    for (auto p : primes) {\n        if (p > r) break;\n       \
+    \ long long first = (l / p) * p;\n        if (first < l) first += p;\n\n     \
+    \   while (first <= r) {\n            phi[first - l] -= phi[first - l] / p;\n\
+    \            while (val[first - l] % p == 0) val[first - l] /= p;\n          \
+    \  first += p;\n        }\n    }\n\n    for (auto i = l; i <= r; ++i) {\n    \
+    \    if (val[i-l] > 1) {\n            phi[i-l] -= phi[i-l] / val[i-l];\n     \
+    \   }\n    }\n}\n}\n#line 5 \"Math/tests/aizu_ntl_1_d_euler_phi.test.cpp\"\n\n\
+    using ll = long long;\nvoid solve() {\n    ll n; cin >> n;\n    if (n < N) {\n\
     \        assert(eulerPhi(n) == eulerPhi_lookup(n));\n    }\n    cout << eulerPhi(n)\
     \ << endl;\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_D\"\
@@ -81,8 +82,8 @@ data:
   isVerificationFile: true
   path: Math/tests/aizu_ntl_1_d_euler_phi.test.cpp
   requiredBy: []
-  timestamp: '2022-12-14 02:22:04+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2022-12-19 21:18:52+08:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Math/tests/aizu_ntl_1_d_euler_phi.test.cpp
 layout: document

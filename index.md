@@ -408,7 +408,7 @@ data:
       title: Math/Polynomial/xorFFT.h
   - name: Math/Prime
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/Prime/EulerPhi.h
       title: Math/Prime/EulerPhi.h
     - icon: ':heavy_check_mark:'
@@ -539,7 +539,7 @@ data:
     - icon: ':warning:'
       path: debug.h
       title: debug.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template.h
       title: template.h
   verificationCategories:
@@ -871,7 +871,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp
       title: Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/aizu_ntl_1_d_euler_phi.test.cpp
       title: Math/tests/aizu_ntl_1_d_euler_phi.test.cpp
     - icon: ':heavy_check_mark:'
