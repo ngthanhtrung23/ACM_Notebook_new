@@ -10,7 +10,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Misc/compress.h
     title: Misc/compress.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []

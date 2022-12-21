@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: DataStructure/SegTree.h
     title: DataStructure/SegTree.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: buffered_reader.h
     title: buffered_reader.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/point_add_range_sum
@@ -81,30 +81,30 @@ data:
     \   return min(x, y);\n    }\n    static int e() {\n        return INT_MAX;\n\
     \    }\n};\n\nstruct SumSegTreeOp {\n    static long long op(long long x, long\
     \ long y) {\n        return x + y;\n    }\n    static long long e() {\n      \
-    \  return 0;\n    }\n};\n\n// Example\n// SegTree<int, MaxSegTreeOp::op, MaxSegTreeOp::e>\
-    \ seg_tree(a);\n// SegTree<int, MinSegTreeOp::op, MinSegTreeOp::e> seg_tree(a);\n\
-    // }}}\n#line 1 \"buffered_reader.h\"\n// Buffered reader {{{\nnamespace IO {\n\
-    \    const int BUFSIZE = 1<<14;\n    char buf[BUFSIZE + 1], *inp = buf;\n\n  \
-    \  bool reacheof;\n    char get_char() {\n        if (!*inp && !reacheof) {\n\
-    \            memset(buf, 0, sizeof buf);\n            int tmp = fread(buf, 1,\
-    \ BUFSIZE, stdin);\n            if (tmp != BUFSIZE) reacheof = true;\n       \
-    \     inp = buf;\n        }\n        return *inp++;\n    }\n    template<typename\
-    \ T>\n    T get() {\n        int neg = 0;\n        T res = 0;\n        char c\
-    \ = get_char();\n        while (!std::isdigit(c) && c != '-' && c != '+') c =\
-    \ get_char();\n        if (c == '+') { neg = 0; }\n        else if (c == '-')\
-    \ { neg = 1; }\n        else res = c - '0';\n\n        c = get_char();\n     \
-    \   while (std::isdigit(c)) {\n            res = res * 10 + (c - '0');\n     \
-    \       c = get_char();\n        }\n        return neg ? -res : res;\n    }\n\
-    };\n// Helper methods\nint ri() {\n    return IO::get<int>();\n}\n// }}}\n#line\
-    \ 8 \"DataStructure/test/segment_tree_pointaddrangesum.test.cpp\"\n\n#define REP(i,\
-    \ a) for (int i = 0, _##i = (a); i < _##i; ++i)\n\nint32_t main() {\n    ios::sync_with_stdio(0);\
-    \ cin.tie(0);\n    int n, q; cin >> n >> q;\n    vector<long long> a(n);\n   \
-    \ for (auto& x : a) cin >> x;\n\n    SegTree<long long, SumSegTreeOp::op, SumSegTreeOp::e>\
-    \ seg_tree(a);\n\n    while (q--) {\n        int typ; cin >> typ;\n        if\
-    \ (typ == 0) {\n            int pos, val; cin >> pos >> val;\n            seg_tree.set(pos,\
-    \ seg_tree.get(pos) + val);\n        } else {\n            int l, r; cin >> l\
-    \ >> r;\n            cout << seg_tree.prod(l, r) << '\\n';\n        }\n    }\n\
-    \    return 0;\n}\n"
+    \  return 0;\n    }\n};\n\nusing STMax = SegTree<int, MaxSegTreeOp::op, MaxSegTreeOp::e>;\n\
+    using STMin = SegTree<int, MinSegTreeOp::op, MinSegTreeOp::e>;\nusing STSum =\
+    \ SegTree<int, SumSegTreeOp::op, SumSegTreeOp::e>;\n// }}}\n#line 1 \"buffered_reader.h\"\
+    \n// Buffered reader {{{\nnamespace IO {\n    const int BUFSIZE = 1<<14;\n   \
+    \ char buf[BUFSIZE + 1], *inp = buf;\n\n    bool reacheof;\n    char get_char()\
+    \ {\n        if (!*inp && !reacheof) {\n            memset(buf, 0, sizeof buf);\n\
+    \            int tmp = fread(buf, 1, BUFSIZE, stdin);\n            if (tmp !=\
+    \ BUFSIZE) reacheof = true;\n            inp = buf;\n        }\n        return\
+    \ *inp++;\n    }\n    template<typename T>\n    T get() {\n        int neg = 0;\n\
+    \        T res = 0;\n        char c = get_char();\n        while (!std::isdigit(c)\
+    \ && c != '-' && c != '+') c = get_char();\n        if (c == '+') { neg = 0; }\n\
+    \        else if (c == '-') { neg = 1; }\n        else res = c - '0';\n\n    \
+    \    c = get_char();\n        while (std::isdigit(c)) {\n            res = res\
+    \ * 10 + (c - '0');\n            c = get_char();\n        }\n        return neg\
+    \ ? -res : res;\n    }\n};\n// Helper methods\nint ri() {\n    return IO::get<int>();\n\
+    }\n// }}}\n#line 8 \"DataStructure/test/segment_tree_pointaddrangesum.test.cpp\"\
+    \n\n#define REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)\n\nint32_t main()\
+    \ {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n, q; cin >> n >> q;\n\
+    \    vector<long long> a(n);\n    for (auto& x : a) cin >> x;\n\n    SegTree<long\
+    \ long, SumSegTreeOp::op, SumSegTreeOp::e> seg_tree(a);\n\n    while (q--) {\n\
+    \        int typ; cin >> typ;\n        if (typ == 0) {\n            int pos, val;\
+    \ cin >> pos >> val;\n            seg_tree.set(pos, seg_tree.get(pos) + val);\n\
+    \        } else {\n            int l, r; cin >> l >> r;\n            cout << seg_tree.prod(l,\
+    \ r) << '\\n';\n        }\n    }\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n\
     \n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../SegTree.h\"\n\
     #include \"../../buffered_reader.h\"\n\n#define REP(i, a) for (int i = 0, _##i\
@@ -121,8 +121,8 @@ data:
   isVerificationFile: true
   path: DataStructure/test/segment_tree_pointaddrangesum.test.cpp
   requiredBy: []
-  timestamp: '2022-12-14 02:22:04+08:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2022-12-21 12:35:38+08:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: DataStructure/test/segment_tree_pointaddrangesum.test.cpp
 layout: document

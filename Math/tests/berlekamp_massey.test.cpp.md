@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Math/LinearRecurrence_BerlekampMassey.h
     title: Math/LinearRecurrence_BerlekampMassey.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Math/modint.h
     title: Math/modint.h
   _extendedRequiredBy: []

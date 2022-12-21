@@ -10,21 +10,22 @@ data:
     links: []
   bundledCode: "#line 1 \"DataStructure/STL/order_statistic.cpp\"\n#include <ext/pb_ds/assoc_container.hpp>\
     \ // Common file\n#include <ext/pb_ds/tree_policy.hpp>     // Including tree_order_statistics_node_update\n\
-    \nusing namespace __gnu_pbds;\n\ntypedef tree<int, null_type, less<int>, rb_tree_tag,\
-    \ tree_order_statistics_node_update> ordered_set;\n\nint main() { \n    ordered_set\
-    \ X;\n    // X = {1, 2, 4, 8, 16}\n    for(int i = 1; i <= 16; i *= 2)\n     \
-    \   X.insert(i);\n    cout << *X.find_by_order(0) << endl; // 1\n    cout << *X.find_by_order(1)\
-    \ << endl; // 2\n    cout << *X.find_by_order(2) << endl; // 4\n    cout << *X.find_by_order(4)\
-    \ << endl; // 16\n    cout << (X.end()==X.find_by_order(6)) << endl; // true\n\
-    \n    cout<<X.order_of_key(-5)<<endl;  // 0\n    cout<<X.order_of_key(1)<<endl;\
+    \nusing namespace __gnu_pbds;\n\n// for multiset, change less -> less_equal\n\
+    typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update>\
+    \ ordered_set;\n\nint main() { \n    ordered_set X;\n    // X = {1, 2, 4, 8, 16}\n\
+    \    for(int i = 1; i <= 16; i *= 2)\n        X.insert(i);\n    cout << *X.find_by_order(0)\
+    \ << endl; // 1\n    cout << *X.find_by_order(1) << endl; // 2\n    cout << *X.find_by_order(2)\
+    \ << endl; // 4\n    cout << *X.find_by_order(4) << endl; // 16\n    cout << (X.end()==X.find_by_order(6))\
+    \ << endl; // true\n\n    cout<<X.order_of_key(-5)<<endl;  // 0\n    cout<<X.order_of_key(1)<<endl;\
     \   // 0\n    cout<<X.order_of_key(3)<<endl;   // 2\n    cout<<X.order_of_key(4)<<endl;\
     \   // 2\n    cout<<X.order_of_key(400)<<endl; // 5\n}\n"
   code: "#include <ext/pb_ds/assoc_container.hpp> // Common file\n#include <ext/pb_ds/tree_policy.hpp>\
     \     // Including tree_order_statistics_node_update\n\nusing namespace __gnu_pbds;\n\
-    \ntypedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update>\
-    \ ordered_set;\n\nint main() { \n    ordered_set X;\n    // X = {1, 2, 4, 8, 16}\n\
-    \    for(int i = 1; i <= 16; i *= 2)\n        X.insert(i);\n    cout << *X.find_by_order(0)\
-    \ << endl; // 1\n    cout << *X.find_by_order(1) << endl; // 2\n    cout << *X.find_by_order(2)\
+    \n// for multiset, change less -> less_equal\ntypedef tree<int, null_type, less<int>,\
+    \ rb_tree_tag, tree_order_statistics_node_update> ordered_set;\n\nint main() {\
+    \ \n    ordered_set X;\n    // X = {1, 2, 4, 8, 16}\n    for(int i = 1; i <= 16;\
+    \ i *= 2)\n        X.insert(i);\n    cout << *X.find_by_order(0) << endl; // 1\n\
+    \    cout << *X.find_by_order(1) << endl; // 2\n    cout << *X.find_by_order(2)\
     \ << endl; // 4\n    cout << *X.find_by_order(4) << endl; // 16\n    cout << (X.end()==X.find_by_order(6))\
     \ << endl; // true\n\n    cout<<X.order_of_key(-5)<<endl;  // 0\n    cout<<X.order_of_key(1)<<endl;\
     \   // 0\n    cout<<X.order_of_key(3)<<endl;   // 2\n    cout<<X.order_of_key(4)<<endl;\
@@ -33,7 +34,7 @@ data:
   isVerificationFile: false
   path: DataStructure/STL/order_statistic.cpp
   requiredBy: []
-  timestamp: '2022-01-17 03:27:26+08:00'
+  timestamp: '2022-12-21 09:44:46+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: DataStructure/STL/order_statistic.cpp

@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: DataStructure/SegTree.h
     title: DataStructure/SegTree.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Math/modint.h
     title: Math/modint.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: buffered_reader.h
     title: buffered_reader.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/point_set_range_composite
@@ -84,48 +84,49 @@ data:
     \   return min(x, y);\n    }\n    static int e() {\n        return INT_MAX;\n\
     \    }\n};\n\nstruct SumSegTreeOp {\n    static long long op(long long x, long\
     \ long y) {\n        return x + y;\n    }\n    static long long e() {\n      \
-    \  return 0;\n    }\n};\n\n// Example\n// SegTree<int, MaxSegTreeOp::op, MaxSegTreeOp::e>\
-    \ seg_tree(a);\n// SegTree<int, MinSegTreeOp::op, MinSegTreeOp::e> seg_tree(a);\n\
-    // }}}\n#line 1 \"Math/modint.h\"\n// ModInt {{{\ntemplate<int MD> struct ModInt\
-    \ {\n    using ll = long long;\n    int x;\n\n    constexpr ModInt() : x(0) {}\n\
-    \    constexpr ModInt(ll v) { _set(v % MD + MD); }\n    constexpr static int mod()\
-    \ { return MD; }\n    constexpr explicit operator bool() const { return x != 0;\
-    \ }\n\n    constexpr ModInt operator + (const ModInt& a) const {\n        return\
-    \ ModInt()._set((ll) x + a.x);\n    }\n    constexpr ModInt operator - (const\
-    \ ModInt& a) const {\n        return ModInt()._set((ll) x - a.x + MD);\n    }\n\
-    \    constexpr ModInt operator * (const ModInt& a) const {\n        return ModInt()._set((ll)\
-    \ x * a.x % MD);\n    }\n    constexpr ModInt operator / (const ModInt& a) const\
-    \ {\n        return ModInt()._set((ll) x * a.inv().x % MD);\n    }\n    constexpr\
-    \ ModInt operator - () const {\n        return ModInt()._set(MD - x);\n    }\n\
-    \n    constexpr ModInt& operator += (const ModInt& a) { return *this = *this +\
-    \ a; }\n    constexpr ModInt& operator -= (const ModInt& a) { return *this = *this\
-    \ - a; }\n    constexpr ModInt& operator *= (const ModInt& a) { return *this =\
-    \ *this * a; }\n    constexpr ModInt& operator /= (const ModInt& a) { return *this\
-    \ = *this / a; }\n\n    friend constexpr ModInt operator + (ll a, const ModInt&\
-    \ b) {\n        return ModInt()._set(a % MD + b.x);\n    }\n    friend constexpr\
-    \ ModInt operator - (ll a, const ModInt& b) {\n        return ModInt()._set(a\
-    \ % MD - b.x + MD);\n    }\n    friend constexpr ModInt operator * (ll a, const\
-    \ ModInt& b) {\n        return ModInt()._set(a % MD * b.x % MD);\n    }\n    friend\
-    \ constexpr ModInt operator / (ll a, const ModInt& b) {\n        return ModInt()._set(a\
-    \ % MD * b.inv().x % MD);\n    }\n\n    constexpr bool operator == (const ModInt&\
-    \ a) const { return x == a.x; }\n    constexpr bool operator != (const ModInt&\
-    \ a) const { return x != a.x; }\n\n    friend std::istream& operator >> (std::istream&\
-    \ is, ModInt& x) {\n        ll val; is >> val;\n        x = ModInt(val);\n   \
-    \     return is;\n    }\n    constexpr friend std::ostream& operator << (std::ostream&\
-    \ os, const ModInt& x) {\n        return os << x.x;\n    }\n\n    constexpr ModInt\
-    \ pow(ll k) const {\n        ModInt ans = 1, tmp = x;\n        while (k) {\n \
-    \           if (k & 1) ans *= tmp;\n            tmp *= tmp;\n            k >>=\
-    \ 1;\n        }\n        return ans;\n    }\n\n    constexpr ModInt inv() const\
-    \ {\n        if (x < 1000111) {\n            _precalc(1000111);\n            return\
-    \ invs[x];\n        }\n        int a = x, b = MD, ax = 1, bx = 0;\n        while\
-    \ (b) {\n            int q = a/b, t = a%b;\n            a = b; b = t;\n      \
-    \      t = ax - bx*q;\n            ax = bx; bx = t;\n        }\n        assert(a\
-    \ == 1);\n        if (ax < 0) ax += MD;\n        return ax;\n    }\n\n    static\
-    \ std::vector<ModInt> factorials, inv_factorials, invs;\n    constexpr static\
-    \ void _precalc(int n) {\n        if (factorials.empty()) {\n            factorials\
-    \ = {1};\n            inv_factorials = {1};\n            invs = {0};\n       \
-    \ }\n        if (n > MD) n = MD;\n        int old_sz = factorials.size();\n  \
-    \      if (n <= old_sz) return;\n\n        factorials.resize(n);\n        inv_factorials.resize(n);\n\
+    \  return 0;\n    }\n};\n\nusing STMax = SegTree<int, MaxSegTreeOp::op, MaxSegTreeOp::e>;\n\
+    using STMin = SegTree<int, MinSegTreeOp::op, MinSegTreeOp::e>;\nusing STSum =\
+    \ SegTree<int, SumSegTreeOp::op, SumSegTreeOp::e>;\n// }}}\n#line 1 \"Math/modint.h\"\
+    \n// ModInt {{{\ntemplate<int MD> struct ModInt {\n    using ll = long long;\n\
+    \    int x;\n\n    constexpr ModInt() : x(0) {}\n    constexpr ModInt(ll v) {\
+    \ _set(v % MD + MD); }\n    constexpr static int mod() { return MD; }\n    constexpr\
+    \ explicit operator bool() const { return x != 0; }\n\n    constexpr ModInt operator\
+    \ + (const ModInt& a) const {\n        return ModInt()._set((ll) x + a.x);\n \
+    \   }\n    constexpr ModInt operator - (const ModInt& a) const {\n        return\
+    \ ModInt()._set((ll) x - a.x + MD);\n    }\n    constexpr ModInt operator * (const\
+    \ ModInt& a) const {\n        return ModInt()._set((ll) x * a.x % MD);\n    }\n\
+    \    constexpr ModInt operator / (const ModInt& a) const {\n        return ModInt()._set((ll)\
+    \ x * a.inv().x % MD);\n    }\n    constexpr ModInt operator - () const {\n  \
+    \      return ModInt()._set(MD - x);\n    }\n\n    constexpr ModInt& operator\
+    \ += (const ModInt& a) { return *this = *this + a; }\n    constexpr ModInt& operator\
+    \ -= (const ModInt& a) { return *this = *this - a; }\n    constexpr ModInt& operator\
+    \ *= (const ModInt& a) { return *this = *this * a; }\n    constexpr ModInt& operator\
+    \ /= (const ModInt& a) { return *this = *this / a; }\n\n    friend constexpr ModInt\
+    \ operator + (ll a, const ModInt& b) {\n        return ModInt()._set(a % MD +\
+    \ b.x);\n    }\n    friend constexpr ModInt operator - (ll a, const ModInt& b)\
+    \ {\n        return ModInt()._set(a % MD - b.x + MD);\n    }\n    friend constexpr\
+    \ ModInt operator * (ll a, const ModInt& b) {\n        return ModInt()._set(a\
+    \ % MD * b.x % MD);\n    }\n    friend constexpr ModInt operator / (ll a, const\
+    \ ModInt& b) {\n        return ModInt()._set(a % MD * b.inv().x % MD);\n    }\n\
+    \n    constexpr bool operator == (const ModInt& a) const { return x == a.x; }\n\
+    \    constexpr bool operator != (const ModInt& a) const { return x != a.x; }\n\
+    \n    friend std::istream& operator >> (std::istream& is, ModInt& x) {\n     \
+    \   ll val; is >> val;\n        x = ModInt(val);\n        return is;\n    }\n\
+    \    constexpr friend std::ostream& operator << (std::ostream& os, const ModInt&\
+    \ x) {\n        return os << x.x;\n    }\n\n    constexpr ModInt pow(ll k) const\
+    \ {\n        ModInt ans = 1, tmp = x;\n        while (k) {\n            if (k\
+    \ & 1) ans *= tmp;\n            tmp *= tmp;\n            k >>= 1;\n        }\n\
+    \        return ans;\n    }\n\n    constexpr ModInt inv() const {\n        if\
+    \ (x < 1000111) {\n            _precalc(1000111);\n            return invs[x];\n\
+    \        }\n        int a = x, b = MD, ax = 1, bx = 0;\n        while (b) {\n\
+    \            int q = a/b, t = a%b;\n            a = b; b = t;\n            t =\
+    \ ax - bx*q;\n            ax = bx; bx = t;\n        }\n        assert(a == 1);\n\
+    \        if (ax < 0) ax += MD;\n        return ax;\n    }\n\n    static std::vector<ModInt>\
+    \ factorials, inv_factorials, invs;\n    constexpr static void _precalc(int n)\
+    \ {\n        if (factorials.empty()) {\n            factorials = {1};\n      \
+    \      inv_factorials = {1};\n            invs = {0};\n        }\n        if (n\
+    \ > MD) n = MD;\n        int old_sz = factorials.size();\n        if (n <= old_sz)\
+    \ return;\n\n        factorials.resize(n);\n        inv_factorials.resize(n);\n\
     \        invs.resize(n);\n\n        for (int i = old_sz; i < n; ++i) factorials[i]\
     \ = factorials[i-1] * i;\n        inv_factorials[n-1] = factorials.back().pow(MD\
     \ - 2);\n        for (int i = n - 2; i >= old_sz; --i) inv_factorials[i] = inv_factorials[i+1]\
@@ -198,8 +199,8 @@ data:
   isVerificationFile: true
   path: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
   requiredBy: []
-  timestamp: '2022-12-14 02:22:04+08:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2022-12-21 12:35:38+08:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
 layout: document

@@ -65,7 +65,7 @@ data:
     - icon: ':warning:'
       path: DataStructure/HeavyLight.cpp
       title: DataStructure/HeavyLight.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: DataStructure/HeavyLight_adamant.h
       title: DataStructure/HeavyLight_adamant.h
     - icon: ':warning:'
@@ -87,6 +87,12 @@ data:
       path: DataStructure/LinkCutTree.h
       title: DataStructure/LinkCutTree.h
     - icon: ':warning:'
+      path: DataStructure/MoAlgorithm.h
+      title: DataStructure/MoAlgorithm.h
+    - icon: ':warning:'
+      path: DataStructure/MoAlgorithmWithUndo.h
+      title: DataStructure/MoAlgorithmWithUndo.h
+    - icon: ':warning:'
       path: DataStructure/OrderedSet.h
       title: DataStructure/OrderedSet.h
     - icon: ':heavy_check_mark:'
@@ -101,10 +107,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/RangeSet.h
       title: DataStructure/RangeSet.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: DataStructure/SegTree.h
       title: DataStructure/SegTree.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: DataStructure/SegTree2D.h
       title: DataStructure/SegTree2D.h
     - icon: ':warning:'
@@ -322,7 +328,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/bigint.h
       title: Math/bigint.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Math/modint.h
       title: Math/modint.h
     - icon: ':warning:'
@@ -533,13 +539,13 @@ data:
       title: String/zfunc.h
   - name: .
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: buffered_reader.h
       title: buffered_reader.h
     - icon: ':warning:'
       path: debug.h
       title: debug.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template.h
       title: template.h
   verificationCategories:
@@ -565,13 +571,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/aizu_dsl_1_b_dsu_weighted.test.cpp
       title: DataStructure/test/aizu_dsl_1_b_dsu_weighted.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: DataStructure/test/aizu_dsl_2_a_segment_tree_rmq_update.test.cpp
       title: DataStructure/test/aizu_dsl_2_a_segment_tree_rmq_update.test.cpp
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/aizu_dsl_2_b_fenwick_aizu.test.cpp
       title: DataStructure/test/aizu_dsl_2_b_fenwick_aizu.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: DataStructure/test/aizu_dsl_2_b_segment_tree_sum.test.cpp
       title: DataStructure/test/aizu_dsl_2_b_segment_tree_sum.test.cpp
     - icon: ':heavy_check_mark:'
@@ -604,7 +610,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/aizu_grl_5_c_lca.test.cpp
       title: DataStructure/test/aizu_grl_5_c_lca.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: DataStructure/test/aizu_grl_5_d_hld_edge.test.cpp
       title: DataStructure/test/aizu_grl_5_d_hld_edge.test.cpp
     - icon: ':heavy_check_mark:'
@@ -631,13 +637,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/hld_lca.test.cpp
       title: DataStructure/test/hld_lca.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: DataStructure/test/hld_vertexaddpathsum.test.cpp
       title: DataStructure/test/hld_vertexaddpathsum.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: DataStructure/test/hld_vertexaddsubtreesum.test.cpp
       title: DataStructure/test/hld_vertexaddsubtreesum.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: DataStructure/test/hld_vertexsetpathcomposite.test.cpp
       title: DataStructure/test/hld_vertexsetpathcomposite.test.cpp
     - icon: ':heavy_check_mark:'
@@ -664,19 +670,19 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/rmq.test.cpp
       title: DataStructure/test/rmq.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: DataStructure/test/segment_tree_2d_pointaddrectsum.test.cpp
       title: DataStructure/test/segment_tree_2d_pointaddrectsum.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: DataStructure/test/segment_tree_pointaddrangesum.test.cpp
       title: DataStructure/test/segment_tree_pointaddrangesum.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
       title: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
       title: DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: DataStructure/test/segment_tree_staticrmq.test.cpp
       title: DataStructure/test/segment_tree_staticrmq.test.cpp
     - icon: ':heavy_check_mark:'

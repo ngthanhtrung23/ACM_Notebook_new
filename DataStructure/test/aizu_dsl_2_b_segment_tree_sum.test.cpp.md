@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: DataStructure/SegTree.h
     title: DataStructure/SegTree.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B
@@ -106,10 +106,10 @@ data:
     \   return min(x, y);\n    }\n    static int e() {\n        return INT_MAX;\n\
     \    }\n};\n\nstruct SumSegTreeOp {\n    static long long op(long long x, long\
     \ long y) {\n        return x + y;\n    }\n    static long long e() {\n      \
-    \  return 0;\n    }\n};\n\n// Example\n// SegTree<int, MaxSegTreeOp::op, MaxSegTreeOp::e>\
-    \ seg_tree(a);\n// SegTree<int, MinSegTreeOp::op, MinSegTreeOp::e> seg_tree(a);\n\
-    // }}}\n#line 5 \"DataStructure/test/aizu_dsl_2_b_segment_tree_sum.test.cpp\"\n\
-    \nvoid solve() {\n    int n, q; cin >> n >> q;\n    SegTree<long long, SumSegTreeOp::op,\
+    \  return 0;\n    }\n};\n\nusing STMax = SegTree<int, MaxSegTreeOp::op, MaxSegTreeOp::e>;\n\
+    using STMin = SegTree<int, MinSegTreeOp::op, MinSegTreeOp::e>;\nusing STSum =\
+    \ SegTree<int, SumSegTreeOp::op, SumSegTreeOp::e>;\n// }}}\n#line 5 \"DataStructure/test/aizu_dsl_2_b_segment_tree_sum.test.cpp\"\
+    \n\nvoid solve() {\n    int n, q; cin >> n >> q;\n    SegTree<long long, SumSegTreeOp::op,\
     \ SumSegTreeOp::e> st(n);\n    while (q--) {\n        int typ; cin >> typ;\n \
     \       if (typ == 0) {\n            int pos, val; cin >> pos >> val;\n      \
     \      --pos;\n            st.set(pos, st.get(pos) + val);\n        } else {\n\
@@ -129,8 +129,8 @@ data:
   isVerificationFile: true
   path: DataStructure/test/aizu_dsl_2_b_segment_tree_sum.test.cpp
   requiredBy: []
-  timestamp: '2022-08-09 14:38:08+08:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2022-12-21 12:35:38+08:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: DataStructure/test/aizu_dsl_2_b_segment_tree_sum.test.cpp
 layout: document
