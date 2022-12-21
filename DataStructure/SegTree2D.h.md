@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/SegTree.h
     title: DataStructure/SegTree.h
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/test/segment_tree_2d_pointaddrectsum.test.cpp
     title: DataStructure/test/segment_tree_2d_pointaddrectsum.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"DataStructure/SegTree2D.h\"\n// 2D segment tree\n#line 1\
@@ -77,9 +77,9 @@ data:
     \   return min(x, y);\n    }\n    static int e() {\n        return INT_MAX;\n\
     \    }\n};\n\nstruct SumSegTreeOp {\n    static long long op(long long x, long\
     \ long y) {\n        return x + y;\n    }\n    static long long e() {\n      \
-    \  return 0;\n    }\n};\n\nusing STMax = SegTree<int, MaxSegTreeOp::op, MaxSegTreeOp::e>;\n\
-    using STMin = SegTree<int, MinSegTreeOp::op, MinSegTreeOp::e>;\nusing STSum =\
-    \ SegTree<int, SumSegTreeOp::op, SumSegTreeOp::e>;\n// }}}\n#line 3 \"DataStructure/SegTree2D.h\"\
+    \  return 0;\n    }\n};\n\n// using STMax = SegTree<int, MaxSegTreeOp::op, MaxSegTreeOp::e>;\n\
+    // using STMin = SegTree<int, MinSegTreeOp::op, MinSegTreeOp::e>;\n// using STSum\
+    \ = SegTree<int, SumSegTreeOp::op, SumSegTreeOp::e>;\n// }}}\n#line 3 \"DataStructure/SegTree2D.h\"\
     \ntemplate<\n    class S,        // aggregate data type\n    S (*op) (S, S), //\
     \ combine aggregate data\n    S (*e) (),      // empty element\n    class Coord\
     \     // for x and y coordinates\n> struct SegTree2D {\n    using P = pair<Coord,\
@@ -162,8 +162,8 @@ data:
   isVerificationFile: false
   path: DataStructure/SegTree2D.h
   requiredBy: []
-  timestamp: '2022-12-21 12:35:38+08:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2022-12-21 14:26:45+08:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/segment_tree_2d_pointaddrectsum.test.cpp
 documentation_of: DataStructure/SegTree2D.h

@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/HeavyLight_adamant.h
     title: DataStructure/HeavyLight_adamant.h
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/SegTree.h
     title: DataStructure/SegTree.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_D
@@ -109,9 +109,9 @@ data:
     \   return min(x, y);\n    }\n    static int e() {\n        return INT_MAX;\n\
     \    }\n};\n\nstruct SumSegTreeOp {\n    static long long op(long long x, long\
     \ long y) {\n        return x + y;\n    }\n    static long long e() {\n      \
-    \  return 0;\n    }\n};\n\nusing STMax = SegTree<int, MaxSegTreeOp::op, MaxSegTreeOp::e>;\n\
-    using STMin = SegTree<int, MinSegTreeOp::op, MinSegTreeOp::e>;\nusing STSum =\
-    \ SegTree<int, SumSegTreeOp::op, SumSegTreeOp::e>;\n// }}}\n#line 1 \"DataStructure/HeavyLight_adamant.h\"\
+    \  return 0;\n    }\n};\n\n// using STMax = SegTree<int, MaxSegTreeOp::op, MaxSegTreeOp::e>;\n\
+    // using STMin = SegTree<int, MinSegTreeOp::op, MinSegTreeOp::e>;\n// using STSum\
+    \ = SegTree<int, SumSegTreeOp::op, SumSegTreeOp::e>;\n// }}}\n#line 1 \"DataStructure/HeavyLight_adamant.h\"\
     \n// Index from 0\n// Best used with SegTree.h\n//\n// Usage:\n// HLD hld(g, root);\n\
     // // build segment tree. Note that we must use hld.order[i]\n// vector<T> nodes;\n\
     // for (int i = 0; i < n; i++)\n//   nodes.push_back(initial_value[hld.order[i]])\n\
@@ -239,8 +239,8 @@ data:
   isVerificationFile: true
   path: DataStructure/test/aizu_grl_5_d_hld_edge.test.cpp
   requiredBy: []
-  timestamp: '2022-12-21 12:35:38+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2022-12-21 14:26:45+08:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/aizu_grl_5_d_hld_edge.test.cpp
 layout: document

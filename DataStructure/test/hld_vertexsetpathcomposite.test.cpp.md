@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/HeavyLight_adamant.h
     title: DataStructure/HeavyLight_adamant.h
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/SegTree.h
     title: DataStructure/SegTree.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Math/modint.h
     title: Math/modint.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/vertex_set_path_composite
@@ -84,9 +84,9 @@ data:
     \   return min(x, y);\n    }\n    static int e() {\n        return INT_MAX;\n\
     \    }\n};\n\nstruct SumSegTreeOp {\n    static long long op(long long x, long\
     \ long y) {\n        return x + y;\n    }\n    static long long e() {\n      \
-    \  return 0;\n    }\n};\n\nusing STMax = SegTree<int, MaxSegTreeOp::op, MaxSegTreeOp::e>;\n\
-    using STMin = SegTree<int, MinSegTreeOp::op, MinSegTreeOp::e>;\nusing STSum =\
-    \ SegTree<int, SumSegTreeOp::op, SumSegTreeOp::e>;\n// }}}\n#line 1 \"Math/modint.h\"\
+    \  return 0;\n    }\n};\n\n// using STMax = SegTree<int, MaxSegTreeOp::op, MaxSegTreeOp::e>;\n\
+    // using STMin = SegTree<int, MinSegTreeOp::op, MinSegTreeOp::e>;\n// using STSum\
+    \ = SegTree<int, SumSegTreeOp::op, SumSegTreeOp::e>;\n// }}}\n#line 1 \"Math/modint.h\"\
     \n// ModInt {{{\ntemplate<int MD> struct ModInt {\n    using ll = long long;\n\
     \    int x;\n\n    constexpr ModInt() : x(0) {}\n    constexpr ModInt(ll v) {\
     \ _set(v % MD + MD); }\n    constexpr static int mod() { return MD; }\n    constexpr\
@@ -298,8 +298,8 @@ data:
   isVerificationFile: true
   path: DataStructure/test/hld_vertexsetpathcomposite.test.cpp
   requiredBy: []
-  timestamp: '2022-12-21 12:35:38+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2022-12-21 14:26:45+08:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/hld_vertexsetpathcomposite.test.cpp
 layout: document

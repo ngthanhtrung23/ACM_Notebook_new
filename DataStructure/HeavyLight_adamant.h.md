@@ -6,7 +6,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/aizu_grl_5_c_hld_lca.test.cpp
     title: DataStructure/test/aizu_grl_5_c_hld_lca.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/test/aizu_grl_5_d_hld_edge.test.cpp
     title: DataStructure/test/aizu_grl_5_d_hld_edge.test.cpp
   - icon: ':heavy_check_mark:'
@@ -15,21 +15,21 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/hld_lca.test.cpp
     title: DataStructure/test/hld_lca.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/test/hld_vertexaddpathsum.test.cpp
     title: DataStructure/test/hld_vertexaddpathsum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/test/hld_vertexaddsubtreesum.test.cpp
     title: DataStructure/test/hld_vertexaddsubtreesum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/test/hld_vertexsetpathcomposite.test.cpp
     title: DataStructure/test/hld_vertexsetpathcomposite.test.cpp
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/yosupo_hld_kth_vertex_on_path.test.cpp
     title: DataStructure/test/yosupo_hld_kth_vertex_on_path.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://cses.fi/problemset/task/1687
@@ -238,7 +238,7 @@ data:
   path: DataStructure/HeavyLight_adamant.h
   requiredBy: []
   timestamp: '2022-11-21 23:05:00+08:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/hld_lca.test.cpp
   - DataStructure/test/aizu_grl_5_c_hld_lca.test.cpp

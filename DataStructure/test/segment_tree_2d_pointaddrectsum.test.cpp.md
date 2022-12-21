@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/SegTree.h
     title: DataStructure/SegTree.h
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/SegTree2D.h
     title: DataStructure/SegTree2D.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: buffered_reader.h
     title: buffered_reader.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/point_add_rectangle_sum
@@ -98,9 +98,9 @@ data:
     \   return min(x, y);\n    }\n    static int e() {\n        return INT_MAX;\n\
     \    }\n};\n\nstruct SumSegTreeOp {\n    static long long op(long long x, long\
     \ long y) {\n        return x + y;\n    }\n    static long long e() {\n      \
-    \  return 0;\n    }\n};\n\nusing STMax = SegTree<int, MaxSegTreeOp::op, MaxSegTreeOp::e>;\n\
-    using STMin = SegTree<int, MinSegTreeOp::op, MinSegTreeOp::e>;\nusing STSum =\
-    \ SegTree<int, SumSegTreeOp::op, SumSegTreeOp::e>;\n// }}}\n#line 3 \"DataStructure/SegTree2D.h\"\
+    \  return 0;\n    }\n};\n\n// using STMax = SegTree<int, MaxSegTreeOp::op, MaxSegTreeOp::e>;\n\
+    // using STMin = SegTree<int, MinSegTreeOp::op, MinSegTreeOp::e>;\n// using STSum\
+    \ = SegTree<int, SumSegTreeOp::op, SumSegTreeOp::e>;\n// }}}\n#line 3 \"DataStructure/SegTree2D.h\"\
     \ntemplate<\n    class S,        // aggregate data type\n    S (*op) (S, S), //\
     \ combine aggregate data\n    S (*e) (),      // empty element\n    class Coord\
     \     // for x and y coordinates\n> struct SegTree2D {\n    using P = pair<Coord,\
@@ -192,8 +192,8 @@ data:
   isVerificationFile: true
   path: DataStructure/test/segment_tree_2d_pointaddrectsum.test.cpp
   requiredBy: []
-  timestamp: '2022-12-21 12:35:38+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2022-12-21 14:26:45+08:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/segment_tree_2d_pointaddrectsum.test.cpp
 layout: document
