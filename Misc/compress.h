@@ -74,13 +74,13 @@ struct CompressorBuilder {
         // throw exception if no such key is found
         int must_leq(const T& key) {
             auto it = UB(key);
-            asesrt(it != xs.begin());
+            assert(it != xs.begin());
             return it - xs.begin() - 1;
         }
         // throw exception if no such key is found
         int must_lt(const T& key) {
             auto it = LB(key);
-            asesrt(it != xs.begin());
+            assert(it != xs.begin());
             return it - xs.begin() - 1;
         }
 #undef LB

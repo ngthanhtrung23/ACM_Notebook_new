@@ -56,10 +56,10 @@ void mo_with_updates(
             cur_l = query.l;
             cur_r = query.r;
         } else {
-            while (cur_l < query.l) rem(cur_l++);
             while (cur_l > query.l) add(--cur_l);
             while (cur_r < query.r) add(++cur_r);
             while (cur_r > query.r) rem(cur_r--);
+            while (cur_l < query.l) rem(cur_l++);
         }
 
         // process updates

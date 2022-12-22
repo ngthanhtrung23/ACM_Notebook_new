@@ -41,10 +41,10 @@ vector<ResultT> mo(int n, std::vector<QueryT> queries, Add add, Rem rem, Get get
             }
             cur_l = queries[qid].l, cur_r = queries[qid].r;
         } else {
-            while (cur_l < queries[qid].l) rem(cur_l++);
             while (cur_l > queries[qid].l) add(--cur_l);
             while (cur_r < queries[qid].r) add(++cur_r);
             while (cur_r > queries[qid].r) rem(cur_r--);
+            while (cur_l < queries[qid].l) rem(cur_l++);
         }
  
         res[qid] = get(queries[qid]);
