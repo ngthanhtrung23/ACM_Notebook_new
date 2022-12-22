@@ -29,10 +29,10 @@ data:
     \ qid : query_ids) {\n        // move to this range\n        if (cur_l < 0) {\n\
     \            for (int i = queries[qid].l; i <= queries[qid].r; ++i) {\n      \
     \          add(i);\n            }\n            cur_l = queries[qid].l, cur_r =\
-    \ queries[qid].r;\n        } else {\n            while (cur_l < queries[qid].l)\
-    \ rem(cur_l++);\n            while (cur_l > queries[qid].l) add(--cur_l);\n  \
-    \          while (cur_r < queries[qid].r) add(++cur_r);\n            while (cur_r\
-    \ > queries[qid].r) rem(cur_r--);\n        }\n \n        res[qid] = get(queries[qid]);\n\
+    \ queries[qid].r;\n        } else {\n            while (cur_l > queries[qid].l)\
+    \ add(--cur_l);\n            while (cur_r < queries[qid].r) add(++cur_r);\n  \
+    \          while (cur_r > queries[qid].r) rem(cur_r--);\n            while (cur_l\
+    \ < queries[qid].l) rem(cur_l++);\n        }\n \n        res[qid] = get(queries[qid]);\n\
     \    }\n    return res;\n}\n \n// Example\nstruct Query {\n    int l, r;  // QueryT\
     \ must have l, r\n};\n// }}}\n"
   code: "// Notes:\n// - queries are [l, r]\n// - add(int array_id) -> void \n// -\
@@ -54,17 +54,17 @@ data:
     \ {\n        // move to this range\n        if (cur_l < 0) {\n            for\
     \ (int i = queries[qid].l; i <= queries[qid].r; ++i) {\n                add(i);\n\
     \            }\n            cur_l = queries[qid].l, cur_r = queries[qid].r;\n\
-    \        } else {\n            while (cur_l < queries[qid].l) rem(cur_l++);\n\
-    \            while (cur_l > queries[qid].l) add(--cur_l);\n            while (cur_r\
-    \ < queries[qid].r) add(++cur_r);\n            while (cur_r > queries[qid].r)\
-    \ rem(cur_r--);\n        }\n \n        res[qid] = get(queries[qid]);\n    }\n\
+    \        } else {\n            while (cur_l > queries[qid].l) add(--cur_l);\n\
+    \            while (cur_r < queries[qid].r) add(++cur_r);\n            while (cur_r\
+    \ > queries[qid].r) rem(cur_r--);\n            while (cur_l < queries[qid].l)\
+    \ rem(cur_l++);\n        }\n \n        res[qid] = get(queries[qid]);\n    }\n\
     \    return res;\n}\n \n// Example\nstruct Query {\n    int l, r;  // QueryT must\
     \ have l, r\n};\n// }}}\n"
   dependsOn: []
   isVerificationFile: false
   path: DataStructure/MoAlgorithm.h
   requiredBy: []
-  timestamp: '2022-12-21 14:14:57+08:00'
+  timestamp: '2022-12-22 10:28:54+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: DataStructure/MoAlgorithm.h

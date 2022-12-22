@@ -93,6 +93,9 @@ data:
       path: DataStructure/MoAlgorithmWithUndo.h
       title: DataStructure/MoAlgorithmWithUndo.h
     - icon: ':warning:'
+      path: DataStructure/MoAlgorithmWithUpdates.h
+      title: DataStructure/MoAlgorithmWithUpdates.h
+    - icon: ':warning:'
       path: DataStructure/OrderedSet.h
       title: DataStructure/OrderedSet.h
     - icon: ':heavy_check_mark:'
@@ -475,6 +478,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Misc/compress.h
       title: Misc/compress.h
+    - icon: ':warning:'
+      path: Misc/container_pipe_utils.h
+      title: Misc/container_pipe_utils.h
     - icon: ':warning:'
       path: Misc/int128.h
       title: Misc/int128.h

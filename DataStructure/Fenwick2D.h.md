@@ -63,10 +63,10 @@ data:
     \        int must_gt(const T& key) {\n            auto it = UB(key);\n       \
     \     assert(it != xs.end());\n            return it - xs.begin();\n        }\n\
     \        // throw exception if no such key is found\n        int must_leq(const\
-    \ T& key) {\n            auto it = UB(key);\n            asesrt(it != xs.begin());\n\
+    \ T& key) {\n            auto it = UB(key);\n            assert(it != xs.begin());\n\
     \            return it - xs.begin() - 1;\n        }\n        // throw exception\
     \ if no such key is found\n        int must_lt(const T& key) {\n            auto\
-    \ it = LB(key);\n            asesrt(it != xs.begin());\n            return it\
+    \ it = LB(key);\n            assert(it != xs.begin());\n            return it\
     \ - xs.begin() - 1;\n        }\n#undef LB\n#undef UB\n\n        std::vector<T>\
     \ xs;\n    };\n\n    auto build() {\n        std::sort(xs.begin(), xs.end());\n\
     \        xs.erase(std::unique(xs.begin(), xs.end()), xs.end());\n        return\
@@ -167,7 +167,7 @@ data:
   isVerificationFile: false
   path: DataStructure/Fenwick2D.h
   requiredBy: []
-  timestamp: '2022-11-13 20:48:45+08:00'
+  timestamp: '2022-12-22 10:28:54+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/fenwick_2d_rectsum.test.cpp
