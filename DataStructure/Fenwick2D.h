@@ -16,6 +16,7 @@
 // - https://oj.vnoi.info/problem/kl11b
 
 #include "../Misc/compress.h"
+// Fenwick 2D {{{
 const int INF = 2e9 + 11;  // for coordinates
 template<typename T>
 struct Query {
@@ -121,3 +122,4 @@ struct Fenwick2D {
         return res;
     }
 };
+// }}}

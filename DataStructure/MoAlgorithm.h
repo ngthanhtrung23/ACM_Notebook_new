@@ -56,4 +56,7 @@ vector<ResultT> mo(int n, std::vector<QueryT> queries, Add add, Rem rem, Get get
 struct Query {
     int l, r;  // QueryT must have l, r
 };
+// Usage
+// auto res = mo<Query, int, decltype(add), decltype(rem), decltype(get)>
+//        (n, queries, add, rem, get);
 // }}}

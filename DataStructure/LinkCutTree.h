@@ -202,8 +202,9 @@ struct LinkCut : SplayTree {
         return splay(x), v;
     }
 };
+// }}}
 
-// Example for custom type: // https://judge.yosupo.jp/problem/dynamic_tree_vertex_set_path_composite
+// Example for custom type: // https://judge.yosupo.jp/problem/dynamic_tree_vertex_set_path_composite {{{
 // Since T doesn't support subtract -> comment out line
 //   nodes[u].vir -= nodes[v].sub
 /**

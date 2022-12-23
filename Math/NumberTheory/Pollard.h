@@ -115,6 +115,7 @@ void pollard(ll x, vector<ll> &ans) {
         }
     }
 }
+// return list of all prime factors of x (can have duplicates)
 vector<ll> factorize(ll x) {
     vector<ll> ans;
     for (ll p : {2, 3, 5, 7, 11, 13, 17, 19}) {
@@ -128,5 +129,23 @@ vector<ll> factorize(ll x) {
     }
     sort(ans.begin(), ans.end());
     return ans;
+}
+// return pairs of (p, k) where x = product(p^k)
+vector<pair<ll, int>> factorize_pk(ll x) {
+    auto ps = factorize(x);
+    ll last = -1, cnt = 0;
+    vector<pair<ll, int>> res;
+    for (auto p : ps) {
+        if (p == last) ++cnt;
+        else {
+            if (last > 0) res.emplace_back(last, cnt);
+            last = p;
+            cnt = 1;
+        }
+    }
+    if (cnt > 0) {
+        res.emplace_back(last, cnt);
+    }
+    return res;
 }
 // }}}

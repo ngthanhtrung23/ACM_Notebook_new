@@ -9,6 +9,9 @@
 //   nodes.push_back(initial_value[hld.order[i]])
 // SegTree<S, op, e> st(nodes);
 //
+// // Update single vertex
+// st.set(hld.in[u], new_value)
+//
 // // Update path
 // hld.apply_path(from, to, is_edge, [&] (int l, int r) {
 //   st.apply(l, r+1, F);

@@ -7,6 +7,7 @@
 // Tested:
 // - https://www.spoj.com/problems/FREQ2/ (submission ID: 30602190)
 // - https://www.spoj.com/problems/KDOMINO/ (submission ID: 30602247)
+// - https://www.spoj.com/problems/ZQUERY/
 //
 // Mo algorithm with undo DS {{{
 template<typename QueryT, typename ResultT, typename Add, typename Undo, typename Get>
@@ -65,5 +66,8 @@ vector<ResultT> mo_with_undo(int n, std::vector<QueryT> queries, Add add, Undo u
 struct Query {
     int l, r;  // QueryT must have l, r
 };
+// Usage
+// auto res = mo_with_undo<Query, int, decltype(add), decltype(undo), decltype(get)>
+//        (n, queries, add, undo, get);
 // }}}
 
