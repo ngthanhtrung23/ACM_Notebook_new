@@ -64,10 +64,17 @@ data:
     \ x);\n                    z = f(z);\n                }\n            }\n     \
     \       if (g == x) break;\n            assert(g != 1);\n            pollard(g,\
     \ ans);\n            pollard(x / g, ans);\n            return;\n        }\n  \
-    \  }\n}\nvector<ll> factorize(ll x) {\n    vector<ll> ans;\n    for (ll p : {2,\
-    \ 3, 5, 7, 11, 13, 17, 19}) {\n        while(x % p == 0) {\n            x /= p;\n\
-    \            ans.push_back(p);\n        }\n    }\n    if (x != 1) {\n        pollard(x,\
-    \ ans);\n    }\n    sort(ans.begin(), ans.end());\n    return ans;\n}\n// }}}\n"
+    \  }\n}\n// return list of all prime factors of x (can have duplicates)\nvector<ll>\
+    \ factorize(ll x) {\n    vector<ll> ans;\n    for (ll p : {2, 3, 5, 7, 11, 13,\
+    \ 17, 19}) {\n        while(x % p == 0) {\n            x /= p;\n            ans.push_back(p);\n\
+    \        }\n    }\n    if (x != 1) {\n        pollard(x, ans);\n    }\n    sort(ans.begin(),\
+    \ ans.end());\n    return ans;\n}\n// return pairs of (p, k) where x = product(p^k)\n\
+    vector<pair<ll, int>> factorize_pk(ll x) {\n    auto ps = factorize(x);\n    ll\
+    \ last = -1, cnt = 0;\n    vector<pair<ll, int>> res;\n    for (auto p : ps) {\n\
+    \        if (p == last) ++cnt;\n        else {\n            if (last > 0) res.emplace_back(last,\
+    \ cnt);\n            last = p;\n            cnt = 1;\n        }\n    }\n    if\
+    \ (cnt > 0) {\n        res.emplace_back(last, cnt);\n    }\n    return res;\n\
+    }\n// }}}\n"
   code: "// Pollard {{{\n// Copied from https://judge.yosupo.jp/submission/61447\n\
     // O(N^0.25)\n//\n// Tested:\n// - (up to 10^18; 200 tests) https://judge.yosupo.jp/problem/factorize\n\
     // - https://oj.vnoi.info/problem/icpc21_beta_l\n// - https://www.spoj.com/problems/FACT0/\n\
@@ -107,16 +114,23 @@ data:
     \ x);\n                    z = f(z);\n                }\n            }\n     \
     \       if (g == x) break;\n            assert(g != 1);\n            pollard(g,\
     \ ans);\n            pollard(x / g, ans);\n            return;\n        }\n  \
-    \  }\n}\nvector<ll> factorize(ll x) {\n    vector<ll> ans;\n    for (ll p : {2,\
-    \ 3, 5, 7, 11, 13, 17, 19}) {\n        while(x % p == 0) {\n            x /= p;\n\
-    \            ans.push_back(p);\n        }\n    }\n    if (x != 1) {\n        pollard(x,\
-    \ ans);\n    }\n    sort(ans.begin(), ans.end());\n    return ans;\n}\n// }}}\n"
+    \  }\n}\n// return list of all prime factors of x (can have duplicates)\nvector<ll>\
+    \ factorize(ll x) {\n    vector<ll> ans;\n    for (ll p : {2, 3, 5, 7, 11, 13,\
+    \ 17, 19}) {\n        while(x % p == 0) {\n            x /= p;\n            ans.push_back(p);\n\
+    \        }\n    }\n    if (x != 1) {\n        pollard(x, ans);\n    }\n    sort(ans.begin(),\
+    \ ans.end());\n    return ans;\n}\n// return pairs of (p, k) where x = product(p^k)\n\
+    vector<pair<ll, int>> factorize_pk(ll x) {\n    auto ps = factorize(x);\n    ll\
+    \ last = -1, cnt = 0;\n    vector<pair<ll, int>> res;\n    for (auto p : ps) {\n\
+    \        if (p == last) ++cnt;\n        else {\n            if (last > 0) res.emplace_back(last,\
+    \ cnt);\n            last = p;\n            cnt = 1;\n        }\n    }\n    if\
+    \ (cnt > 0) {\n        res.emplace_back(last, cnt);\n    }\n    return res;\n\
+    }\n// }}}\n"
   dependsOn: []
   isVerificationFile: false
   path: Math/NumberTheory/Pollard.h
   requiredBy:
   - Math/NumberTheory/cnt_divisors.h
-  timestamp: '2022-11-18 18:23:54+08:00'
+  timestamp: '2022-12-24 01:16:58+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Math/tests/factorize.test.cpp

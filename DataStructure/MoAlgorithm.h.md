@@ -34,7 +34,8 @@ data:
     \          while (cur_r > queries[qid].r) rem(cur_r--);\n            while (cur_l\
     \ < queries[qid].l) rem(cur_l++);\n        }\n \n        res[qid] = get(queries[qid]);\n\
     \    }\n    return res;\n}\n \n// Example\nstruct Query {\n    int l, r;  // QueryT\
-    \ must have l, r\n};\n// }}}\n"
+    \ must have l, r\n};\n// Usage\n// auto res = mo<Query, int, decltype(add), decltype(rem),\
+    \ decltype(get)>\n//        (n, queries, add, rem, get);\n// }}}\n"
   code: "// Notes:\n// - queries are [l, r]\n// - add(int array_id) -> void \n// -\
     \ remove(int array_id) -> void\n// - get(QueryT query) -> ResultT\n//\n// Tested:\n\
     // - https://www.spoj.com/problems/KDOMINO/ (submission ID: 30602374)\n// - https://www.spoj.com/problems/FREQ2\
@@ -59,12 +60,13 @@ data:
     \ > queries[qid].r) rem(cur_r--);\n            while (cur_l < queries[qid].l)\
     \ rem(cur_l++);\n        }\n \n        res[qid] = get(queries[qid]);\n    }\n\
     \    return res;\n}\n \n// Example\nstruct Query {\n    int l, r;  // QueryT must\
-    \ have l, r\n};\n// }}}\n"
+    \ have l, r\n};\n// Usage\n// auto res = mo<Query, int, decltype(add), decltype(rem),\
+    \ decltype(get)>\n//        (n, queries, add, rem, get);\n// }}}\n"
   dependsOn: []
   isVerificationFile: false
   path: DataStructure/MoAlgorithm.h
   requiredBy: []
-  timestamp: '2022-12-22 10:28:54+08:00'
+  timestamp: '2022-12-24 01:16:58+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: DataStructure/MoAlgorithm.h

@@ -84,13 +84,19 @@ data:
     \ x);\n                    z = f(z);\n                }\n            }\n     \
     \       if (g == x) break;\n            assert(g != 1);\n            pollard(g,\
     \ ans);\n            pollard(x / g, ans);\n            return;\n        }\n  \
-    \  }\n}\nvector<ll> factorize(ll x) {\n    vector<ll> ans;\n    for (ll p : {2,\
-    \ 3, 5, 7, 11, 13, 17, 19}) {\n        while(x % p == 0) {\n            x /= p;\n\
-    \            ans.push_back(p);\n        }\n    }\n    if (x != 1) {\n        pollard(x,\
-    \ ans);\n    }\n    sort(ans.begin(), ans.end());\n    return ans;\n}\n// }}}\n\
-    #line 5 \"Math/tests/aizu_ntl_1_a_factorize.test.cpp\"\n\nvoid solve() {\n   \
-    \ int n;\n    cin >> n;\n    auto facs = factorize(n);\n    cout << n << ':';\n\
-    \    for (auto x : facs) cout << ' ' << x;\n    cout << '\\n';\n}\n"
+    \  }\n}\n// return list of all prime factors of x (can have duplicates)\nvector<ll>\
+    \ factorize(ll x) {\n    vector<ll> ans;\n    for (ll p : {2, 3, 5, 7, 11, 13,\
+    \ 17, 19}) {\n        while(x % p == 0) {\n            x /= p;\n            ans.push_back(p);\n\
+    \        }\n    }\n    if (x != 1) {\n        pollard(x, ans);\n    }\n    sort(ans.begin(),\
+    \ ans.end());\n    return ans;\n}\n// return pairs of (p, k) where x = product(p^k)\n\
+    vector<pair<ll, int>> factorize_pk(ll x) {\n    auto ps = factorize(x);\n    ll\
+    \ last = -1, cnt = 0;\n    vector<pair<ll, int>> res;\n    for (auto p : ps) {\n\
+    \        if (p == last) ++cnt;\n        else {\n            if (last > 0) res.emplace_back(last,\
+    \ cnt);\n            last = p;\n            cnt = 1;\n        }\n    }\n    if\
+    \ (cnt > 0) {\n        res.emplace_back(last, cnt);\n    }\n    return res;\n\
+    }\n// }}}\n#line 5 \"Math/tests/aizu_ntl_1_a_factorize.test.cpp\"\n\nvoid solve()\
+    \ {\n    int n;\n    cin >> n;\n    auto facs = factorize(n);\n    cout << n <<\
+    \ ':';\n    for (auto x : facs) cout << ' ' << x;\n    cout << '\\n';\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_A\"\
     \n\n#include \"../../template.h\"\n#include \"../NumberTheory/Pollard.h\"\n\n\
     void solve() {\n    int n;\n    cin >> n;\n    auto facs = factorize(n);\n   \
@@ -102,7 +108,7 @@ data:
   isVerificationFile: true
   path: Math/tests/aizu_ntl_1_a_factorize.test.cpp
   requiredBy: []
-  timestamp: '2022-11-18 18:23:54+08:00'
+  timestamp: '2022-12-24 01:16:58+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Math/tests/aizu_ntl_1_a_factorize.test.cpp

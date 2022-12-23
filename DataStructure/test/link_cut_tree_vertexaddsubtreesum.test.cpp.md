@@ -85,12 +85,12 @@ data:
     \ nodes[u].child[1];\n            nodes[u].vir = nodes[u].vir + nodes[ov].sub;\n\
     #ifndef PATH_QUERIES_ONLY\n            // T requires subtract for subtree queries\n\
     \            nodes[u].vir -= nodes[v].sub;\n#endif\n\n            ov = v; pushUp(u);\n\
-    \        }\n        return splay(x), v;\n    }\n};\n\n// Example for custom type:\
-    \ // https://judge.yosupo.jp/problem/dynamic_tree_vertex_set_path_composite\n\
-    // Since T doesn't support subtract -> comment out line\n//   nodes[u].vir -=\
-    \ nodes[v].sub\n/**\nstruct T {\n    modular a, b;\n\n    T() : a(1), b(0) {}\n\
-    \    T(modular _a, modular _b) : a(_a), b(_b) {}\n\n    // return f(g())\n   \
-    \ T operator + (const T& g) const {\n        return T {\n            a * g.a,\n\
+    \        }\n        return splay(x), v;\n    }\n};\n// }}}\n\n// Example for custom\
+    \ type: // https://judge.yosupo.jp/problem/dynamic_tree_vertex_set_path_composite\
+    \ {{{\n// Since T doesn't support subtract -> comment out line\n//   nodes[u].vir\
+    \ -= nodes[v].sub\n/**\nstruct T {\n    modular a, b;\n\n    T() : a(1), b(0)\
+    \ {}\n    T(modular _a, modular _b) : a(_a), b(_b) {}\n\n    // return f(g())\n\
+    \    T operator + (const T& g) const {\n        return T {\n            a * g.a,\n\
     \            a * g.b + b,\n        };\n    }\n\n    T operator += (const T& g)\
     \ {\n        b = a * g.b + b;\n        a = a * g.a;\n        return *this;\n \
     \   }\n};\n*/\n// }}}\n#line 8 \"DataStructure/test/link_cut_tree_vertexaddsubtreesum.test.cpp\"\
@@ -130,7 +130,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/link_cut_tree_vertexaddsubtreesum.test.cpp
   requiredBy: []
-  timestamp: '2022-11-22 20:50:06+08:00'
+  timestamp: '2022-12-24 01:16:58+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/link_cut_tree_vertexaddsubtreesum.test.cpp
