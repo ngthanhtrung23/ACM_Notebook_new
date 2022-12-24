@@ -346,6 +346,9 @@ data:
     - icon: ':warning:'
       path: Math/multiplicative_function.h
       title: Math/multiplicative_function.h
+    - icon: ':warning:'
+      path: Math/multiplicative_functions_linear.h
+      title: Math/multiplicative_functions_linear.h
     - icon: ':heavy_check_mark:'
       path: Math/nim_product.h
       title: Math/nim_product.h
