@@ -98,6 +98,9 @@ data:
     - icon: ':warning:'
       path: DataStructure/OrderedSet.h
       title: DataStructure/OrderedSet.h
+    - icon: ':warning:'
+      path: DataStructure/PartiallyPersistentFenwick.h
+      title: DataStructure/PartiallyPersistentFenwick.h
     - icon: ':heavy_check_mark:'
       path: DataStructure/PersistentArray.h
       title: DataStructure/PersistentArray.h
