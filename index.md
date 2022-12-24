@@ -520,6 +520,9 @@ data:
       path: String/hash_2mod.h
       title: String/hash_2mod.h
     - icon: ':warning:'
+      path: String/kmp.h
+      title: String/kmp.h
+    - icon: ':warning:'
       path: String/lyndon.cpp
       title: String/lyndon.cpp
     - icon: ':warning:'
