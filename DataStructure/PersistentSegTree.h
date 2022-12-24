@@ -6,6 +6,7 @@
 // Tested:
 // - https://cses.fi/problemset/task/1737
 // - https://oj.vnoi.info/problem/vquery
+// Persistent SegTree {{{
 template<
     class S,         // node aggregate data
     S (*op) (S, S),  // combine 2 nodes
@@ -68,8 +69,8 @@ template<
 
     // p maintains [l, r)
     // query [u, v)
-    int _prod(Node* p, int l, int r, int u, int v) {
-        if (v <= l || r <= u) return 0;  // do not intersect
+    S _prod(Node* p, int l, int r, int u, int v) {
+        if (v <= l || r <= u) return e();  // do not intersect
         if (u <= l && r <= v) return p->sum;
 
         int mid = (l + r) / 2;
@@ -80,7 +81,7 @@ template<
     }
 
     // p maintains [l, r)
-    Node* _set(Node* p, int l, int r, int u, int val) {
+    Node* _set(Node* p, int l, int r, int u, S val) {
         if (u < l || r <= u) return p;
         if (l == r-1) {
             return new Node(val);
@@ -94,6 +95,7 @@ template<
         return res;
     }
 };
+// }}}
 
 /* Example
 int op(int l, int r) { return l + r; }

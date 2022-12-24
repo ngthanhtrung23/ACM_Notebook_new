@@ -14,6 +14,7 @@ auto operator | (const Container& a, ReduceOperator op) {
         case MAX:
             return *max_element(a.begin(), a.end());
     }
+    assert(false);
 }
 enum SumOperator { SUM };
 template<typename Container>
@@ -26,11 +27,14 @@ auto operator | (const Container& a, SumOperator op) {
     }
     assert(false);
 }
-enum TransformOperator { COMPRESS, PREFIX_SUM, REVERSE, SORT, SUB_1 };
+enum TransformOperator { ADD_1, COMPRESS, PREFIX_SUM, REVERSE, SORT, SUB_1 };
 template<typename Container>
 Container& operator | (Container& a, TransformOperator op) {
     __typeof(a) values;
     switch (op) {
+        case ADD_1:
+            for (auto& elem : a) elem += 1;
+            break;
         case COMPRESS:
             values = a;
             std::sort(values.begin(), values.end());
@@ -52,12 +56,15 @@ Container& operator | (Container& a, TransformOperator op) {
     }
     return a;
 }
-enum IOOperator { IN, OUT_ONE_PER_LINE };
+enum IOOperator { IN, OUT_ONE_PER_LINE, OUT_1_LINE };
 template<typename Container>
 Container& operator | (Container& a, IOOperator op) {
     switch (op) {
         case IN:
             for (auto& elem : a) cin >> elem;
+            break;
+        case OUT_1_LINE:
+            for (const auto& elem : a) cout << elem << ' ';
             break;
         case OUT_ONE_PER_LINE:
             for (const auto& elem : a) cout << elem << '\n';
