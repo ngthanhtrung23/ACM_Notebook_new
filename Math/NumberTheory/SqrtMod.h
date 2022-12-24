@@ -13,6 +13,7 @@
 // - (print all sols) https://oj.vnoi.info/problem/jacobi
 // - https://oj.vnoi.info/problem/newj
 
+// sqrtMod {{{
 using ll = long long;
 ll euclid(ll x, ll y, ll &k, ll &l) {
     if (y == 0) {
@@ -72,3 +73,4 @@ ll sqrtMod(ll X, ll q) {
     auto res = (Cipolla(X, q) % q + q) % q;
     return min(res, q-res);
 }
+// }}}

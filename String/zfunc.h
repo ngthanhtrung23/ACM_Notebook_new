@@ -3,7 +3,8 @@
 // Tested:
 // - https://judge.yosupo.jp/problem/zalgorithm
 // - (string matching) https://oj.vnoi.info/problem/substr
-vector<int> zfunc(string s) {
+// Z-func {{{
+vector<int> zfunc(const string& s) {
     int n = (int) s.length();
     vector<int> z(n);
     z[0] = n;
@@ -17,6 +18,7 @@ vector<int> zfunc(string s) {
     }
     return z;
 }
+// }}}
 
 // Examples:
 // Find all occurrences of p in t

@@ -15,6 +15,7 @@ std::vector<int> prefix_function(const Container& s) {
     return pi;
 }
 
+// Tested: https://oj.vnoi.info/problem/substr
 // Return all positions (0-based) that pattern `pat` appears in `text`
 std::vector<int> kmp(const std::string& pat, const std::string& text) {
     auto pi = prefix_function(pat + '\0' + text);
@@ -27,7 +28,7 @@ std::vector<int> kmp(const std::string& pat, const std::string& text) {
     return res;
 }
 
-// NOT TESTED
+// Tested: https://oj.vnoi.info/problem/icpc22_mt_b
 // Returns cnt[i] = # occurrences of prefix of length-i
 // NOTE: cnt[0] = n+1 (0-length prefix appears n+1 times)
 std::vector<int> prefix_occurrences(const string& s) {
