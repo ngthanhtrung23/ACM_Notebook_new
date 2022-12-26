@@ -2,7 +2,7 @@
 
 #include "../../template.h"
 #include "../cnt_distinct_subseq.h"
-#include "../../Math/ModInt.h"
+#include "../../Math/modint.h"
 
 const int MOD = 998244353;
 using mint = ModInt<MOD>;
