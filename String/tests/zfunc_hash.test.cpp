@@ -8,8 +8,9 @@ void solve() {
     string s; cin >> s;
     auto h = g.hash(s);
 
-    REP(i,SZ(s)) {
-        cout << g.maxCommonPrefix(h, 0, SZ(s)-1, h, i, SZ(s)-1) << ' ';
+    int n = s.size();
+    REP(i,n) {
+        cout << g.maxCommonPrefix(h, 0, n-1, h, i, n-1) << ' ';
     }
     cout << endl;
 }
