@@ -463,6 +463,9 @@ data:
     - icon: ':warning:'
       path: Math/Pure/lagrange.h
       title: Math/Pure/lagrange.h
+    - icon: ':warning:'
+      path: Math/Pure/pell_equation.h
+      title: Math/Pure/pell_equation.h
   - name: Misc
     pages:
     - icon: ':warning:'

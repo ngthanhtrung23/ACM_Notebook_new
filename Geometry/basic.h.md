@@ -128,10 +128,10 @@ data:
     \n// Compare points by (y, x)\ntemplate<typename T = double>\nbool cmpy(const\
     \ P<T>& a, const P<T>& b) {\n    if (cmp(a.y, b.y)) return a.y < b.y;\n    return\
     \ a.x < b.x;\n};\n\ntemplate<typename T>\nint ccw(P<T> a, P<T> b, P<T> c) {\n\
-    \    return cmp((b-a)%(c-a), T(0));\n}\n\nint RE_TRAI = ccw(Point(0, 0), Point(0,\
-    \ 1), Point(-1, 1));\nint RE_PHAI = ccw(Point(0, 0), Point(0, 1), Point(1, 1));\n\
-    \ntemplate<typename T>\nistream& operator >> (istream& cin, P<T>& p) {\n    cin\
-    \ >> p.x >> p.y;\n    return cin;\n}\ntemplate<typename T>\nostream& operator\
+    \    return cmp((b-a)%(c-a), T(0));\n}\n\nint RE_TRAI = ccw(P<int>(0, 0), P<int>(0,\
+    \ 1), P<int>(-1, 1));\nint RE_PHAI = ccw(P<int>(0, 0), P<int>(0, 1), P<int>(1,\
+    \ 1));\n\ntemplate<typename T>\nistream& operator >> (istream& cin, P<T>& p) {\n\
+    \    cin >> p.x >> p.y;\n    return cin;\n}\ntemplate<typename T>\nostream& operator\
     \ << (ostream& cout, const P<T>& p) {\n    cout << p.x << ' ' << p.y;\n    return\
     \ cout;\n}\n\ndouble angle(Point a, Point o, Point b) { // min of directed angle\
     \ AOB & BOA\n    a = a - o; b = b - o;\n    return acos((a * b) / sqrt(a.norm())\
@@ -207,9 +207,9 @@ data:
     \ T = double>\nbool cmpy(const P<T>& a, const P<T>& b) {\n    if (cmp(a.y, b.y))\
     \ return a.y < b.y;\n    return a.x < b.x;\n};\n\ntemplate<typename T>\nint ccw(P<T>\
     \ a, P<T> b, P<T> c) {\n    return cmp((b-a)%(c-a), T(0));\n}\n\nint RE_TRAI =\
-    \ ccw(Point(0, 0), Point(0, 1), Point(-1, 1));\nint RE_PHAI = ccw(Point(0, 0),\
-    \ Point(0, 1), Point(1, 1));\n\ntemplate<typename T>\nistream& operator >> (istream&\
-    \ cin, P<T>& p) {\n    cin >> p.x >> p.y;\n    return cin;\n}\ntemplate<typename\
+    \ ccw(P<int>(0, 0), P<int>(0, 1), P<int>(-1, 1));\nint RE_PHAI = ccw(P<int>(0,\
+    \ 0), P<int>(0, 1), P<int>(1, 1));\n\ntemplate<typename T>\nistream& operator\
+    \ >> (istream& cin, P<T>& p) {\n    cin >> p.x >> p.y;\n    return cin;\n}\ntemplate<typename\
     \ T>\nostream& operator << (ostream& cout, const P<T>& p) {\n    cout << p.x <<\
     \ ' ' << p.y;\n    return cout;\n}\n\ndouble angle(Point a, Point o, Point b)\
     \ { // min of directed angle AOB & BOA\n    a = a - o; b = b - o;\n    return\
@@ -264,7 +264,7 @@ data:
   - Geometry/SPOJ_ALIENS.cpp
   - Geometry/basic.cpp
   - Geometry/polygon.cpp
-  timestamp: '2022-02-06 13:43:52+08:00'
+  timestamp: '2022-12-27 01:22:59+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Geometry/tests/aizu_cgl_2_c_basic_line_intersection.test.cpp

@@ -68,58 +68,59 @@ data:
     \ Point = P<double>;\n\n// Compare points by (y, x)\ntemplate<typename T = double>\n\
     bool cmpy(const P<T>& a, const P<T>& b) {\n    if (cmp(a.y, b.y)) return a.y <\
     \ b.y;\n    return a.x < b.x;\n};\n\ntemplate<typename T>\nint ccw(P<T> a, P<T>\
-    \ b, P<T> c) {\n    return cmp((b-a)%(c-a), T(0));\n}\n\nint RE_TRAI = ccw(Point(0,\
-    \ 0), Point(0, 1), Point(-1, 1));\nint RE_PHAI = ccw(Point(0, 0), Point(0, 1),\
-    \ Point(1, 1));\n\ntemplate<typename T>\nistream& operator >> (istream& cin, P<T>&\
-    \ p) {\n    cin >> p.x >> p.y;\n    return cin;\n}\ntemplate<typename T>\nostream&\
-    \ operator << (ostream& cout, const P<T>& p) {\n    cout << p.x << ' ' << p.y;\n\
-    \    return cout;\n}\n\ndouble angle(Point a, Point o, Point b) { // min of directed\
-    \ angle AOB & BOA\n    a = a - o; b = b - o;\n    return acos((a * b) / sqrt(a.norm())\
-    \ / sqrt(b.norm()));\n}\n\ndouble directed_angle(Point a, Point o, Point b) {\
-    \ // angle AOB, in range [0, 2*PI)\n    double t = -atan2(a.y - o.y, a.x - o.x)\n\
-    \            + atan2(b.y - o.y, b.x - o.x);\n    while (t < 0) t += 2*PI;\n  \
-    \  return t;\n}\n\n// Distance from p to Line ab (closest Point --> c)\n// i.e.\
-    \ c is projection of p on AB\ndouble distToLine(Point p, Point a, Point b, Point\
-    \ &c) {\n    Point ap = p - a, ab = b - a;\n    double u = (ap * ab) / ab.norm();\n\
-    \    c = a + (ab * u);\n    return (p-c).len();\n}\n\n// Distance from p to segment\
-    \ ab (closest Point --> c)\ndouble distToLineSegment(Point p, Point a, Point b,\
-    \ Point &c) {\n    Point ap = p - a, ab = b - a;\n    double u = (ap * ab) / ab.norm();\n\
-    \    if (u < 0.0) {\n        c = Point(a.x, a.y);\n        return (p - a).len();\n\
-    \    }\n    if (u > 1.0) {\n        c = Point(b.x, b.y);\n        return (p -\
-    \ b).len();\n    }\n    return distToLine(p, a, b, c);\n}\n\n// NOTE: WILL NOT\
-    \ WORK WHEN a = b = 0.\nstruct Line {\n    double a, b, c;  // ax + by + c = 0\n\
-    \    Point A, B;  // Added for polygon intersect line. Do not rely on assumption\
-    \ that these are valid\n\n    Line(double _a, double _b, double _c) : a(_a), b(_b),\
-    \ c(_c) {} \n\n    Line(Point _A, Point _B) : A(_A), B(_B) {\n        a = B.y\
-    \ - A.y;\n        b = A.x - B.x;\n        c = - (a * A.x + b * A.y);\n    }\n\
-    \    Line(Point P, double m) {\n        a = -m; b = 1;\n        c = -((a * P.x)\
-    \ + (b * P.y));\n    }\n    double f(Point p) {\n        return a*p.x + b*p.y\
-    \ + c;\n    }\n};\nostream& operator >> (ostream& cout, const Line& l) {\n   \
-    \ cout << l.a << \"*x + \" << l.b << \"*y + \" << l.c;\n    return cout;\n}\n\n\
-    bool areParallel(Line l1, Line l2) {\n    return cmp(l1.a*l2.b, l1.b*l2.a) ==\
-    \ 0;\n}\n\nbool areSame(Line l1, Line l2) {\n    return areParallel(l1 ,l2) &&\
-    \ cmp(l1.c*l2.a, l2.c*l1.a) == 0\n                && cmp(l1.c*l2.b, l1.b*l2.c)\
-    \ == 0;\n}\n\nbool areIntersect(Line l1, Line l2, Point &p) {\n    if (areParallel(l1,\
-    \ l2)) return false;\n    double dx = l1.b*l2.c - l2.b*l1.c;\n    double dy =\
-    \ l1.c*l2.a - l2.c*l1.a;\n    double d  = l1.a*l2.b - l2.a*l1.b;\n    p = Point(dx/d,\
-    \ dy/d);\n    return true;\n}\n\n// closest point from p in line l.\nvoid closestPoint(Line\
-    \ l, Point p, Point &ans) {\n    if (fabs(l.b) < EPS) {\n        ans.x = -(l.c)\
-    \ / l.a; ans.y = p.y;\n        return;\n    }\n    if (fabs(l.a) < EPS) {\n  \
-    \      ans.x = p.x; ans.y = -(l.c) / l.b;\n        return;\n    }\n    Line perp(l.b,\
-    \ -l.a, - (l.b*p.x - l.a*p.y));\n    areIntersect(l, perp, ans);\n}\n\n// Segment\
-    \ intersect\n// Tested:\n// - https://cses.fi/problemset/task/2190/\n// returns\
-    \ true if p is on segment [a, b]\ntemplate<typename T>\nbool onSegment(const P<T>&\
-    \ a, const P<T>& b, const P<T>& p) {\n    return ccw(a, b, p) == 0\n        &&\
-    \ min(a.x, b.x) <= p.x && p.x <= max(a.x, b.x)\n        && min(a.y, b.y) <= p.y\
-    \ && p.y <= max(a.y, b.y);\n}\n\n// Returns true if segment [a, b] and [c, d]\
-    \ intersects\n// End point also returns true\ntemplate<typename T>\nbool segmentIntersect(const\
-    \ P<T>& a, const P<T>& b, const P<T>& c, const P<T>& d) {\n    if (onSegment(a,\
-    \ b, c)\n            || onSegment(a, b, d)\n            || onSegment(c, d, a)\n\
-    \            || onSegment(c, d, b)) {\n        return true;\n    }\n\n    return\
-    \ ccw(a, b, c) * ccw(a, b, d) < 0\n        && ccw(c, d, a) * ccw(c, d, b) < 0;\n\
-    }\n#line 3 \"Geometry/basic.cpp\"\n\nint main() {\n    Point P1, P2, P3(0, 1);\n\
-    \    assert((P1 == P2) == true);\n    assert((P1 == P3) == false);\n\n    vector<Point>\
-    \ P;\n    P.push_back(Point(2, 2));\n    P.push_back(Point(4, 3));\n    P.push_back(Point(2,\
+    \ b, P<T> c) {\n    return cmp((b-a)%(c-a), T(0));\n}\n\nint RE_TRAI = ccw(P<int>(0,\
+    \ 0), P<int>(0, 1), P<int>(-1, 1));\nint RE_PHAI = ccw(P<int>(0, 0), P<int>(0,\
+    \ 1), P<int>(1, 1));\n\ntemplate<typename T>\nistream& operator >> (istream& cin,\
+    \ P<T>& p) {\n    cin >> p.x >> p.y;\n    return cin;\n}\ntemplate<typename T>\n\
+    ostream& operator << (ostream& cout, const P<T>& p) {\n    cout << p.x << ' '\
+    \ << p.y;\n    return cout;\n}\n\ndouble angle(Point a, Point o, Point b) { //\
+    \ min of directed angle AOB & BOA\n    a = a - o; b = b - o;\n    return acos((a\
+    \ * b) / sqrt(a.norm()) / sqrt(b.norm()));\n}\n\ndouble directed_angle(Point a,\
+    \ Point o, Point b) { // angle AOB, in range [0, 2*PI)\n    double t = -atan2(a.y\
+    \ - o.y, a.x - o.x)\n            + atan2(b.y - o.y, b.x - o.x);\n    while (t\
+    \ < 0) t += 2*PI;\n    return t;\n}\n\n// Distance from p to Line ab (closest\
+    \ Point --> c)\n// i.e. c is projection of p on AB\ndouble distToLine(Point p,\
+    \ Point a, Point b, Point &c) {\n    Point ap = p - a, ab = b - a;\n    double\
+    \ u = (ap * ab) / ab.norm();\n    c = a + (ab * u);\n    return (p-c).len();\n\
+    }\n\n// Distance from p to segment ab (closest Point --> c)\ndouble distToLineSegment(Point\
+    \ p, Point a, Point b, Point &c) {\n    Point ap = p - a, ab = b - a;\n    double\
+    \ u = (ap * ab) / ab.norm();\n    if (u < 0.0) {\n        c = Point(a.x, a.y);\n\
+    \        return (p - a).len();\n    }\n    if (u > 1.0) {\n        c = Point(b.x,\
+    \ b.y);\n        return (p - b).len();\n    }\n    return distToLine(p, a, b,\
+    \ c);\n}\n\n// NOTE: WILL NOT WORK WHEN a = b = 0.\nstruct Line {\n    double\
+    \ a, b, c;  // ax + by + c = 0\n    Point A, B;  // Added for polygon intersect\
+    \ line. Do not rely on assumption that these are valid\n\n    Line(double _a,\
+    \ double _b, double _c) : a(_a), b(_b), c(_c) {} \n\n    Line(Point _A, Point\
+    \ _B) : A(_A), B(_B) {\n        a = B.y - A.y;\n        b = A.x - B.x;\n     \
+    \   c = - (a * A.x + b * A.y);\n    }\n    Line(Point P, double m) {\n       \
+    \ a = -m; b = 1;\n        c = -((a * P.x) + (b * P.y));\n    }\n    double f(Point\
+    \ p) {\n        return a*p.x + b*p.y + c;\n    }\n};\nostream& operator >> (ostream&\
+    \ cout, const Line& l) {\n    cout << l.a << \"*x + \" << l.b << \"*y + \" <<\
+    \ l.c;\n    return cout;\n}\n\nbool areParallel(Line l1, Line l2) {\n    return\
+    \ cmp(l1.a*l2.b, l1.b*l2.a) == 0;\n}\n\nbool areSame(Line l1, Line l2) {\n   \
+    \ return areParallel(l1 ,l2) && cmp(l1.c*l2.a, l2.c*l1.a) == 0\n             \
+    \   && cmp(l1.c*l2.b, l1.b*l2.c) == 0;\n}\n\nbool areIntersect(Line l1, Line l2,\
+    \ Point &p) {\n    if (areParallel(l1, l2)) return false;\n    double dx = l1.b*l2.c\
+    \ - l2.b*l1.c;\n    double dy = l1.c*l2.a - l2.c*l1.a;\n    double d  = l1.a*l2.b\
+    \ - l2.a*l1.b;\n    p = Point(dx/d, dy/d);\n    return true;\n}\n\n// closest\
+    \ point from p in line l.\nvoid closestPoint(Line l, Point p, Point &ans) {\n\
+    \    if (fabs(l.b) < EPS) {\n        ans.x = -(l.c) / l.a; ans.y = p.y;\n    \
+    \    return;\n    }\n    if (fabs(l.a) < EPS) {\n        ans.x = p.x; ans.y =\
+    \ -(l.c) / l.b;\n        return;\n    }\n    Line perp(l.b, -l.a, - (l.b*p.x -\
+    \ l.a*p.y));\n    areIntersect(l, perp, ans);\n}\n\n// Segment intersect\n// Tested:\n\
+    // - https://cses.fi/problemset/task/2190/\n// returns true if p is on segment\
+    \ [a, b]\ntemplate<typename T>\nbool onSegment(const P<T>& a, const P<T>& b, const\
+    \ P<T>& p) {\n    return ccw(a, b, p) == 0\n        && min(a.x, b.x) <= p.x &&\
+    \ p.x <= max(a.x, b.x)\n        && min(a.y, b.y) <= p.y && p.y <= max(a.y, b.y);\n\
+    }\n\n// Returns true if segment [a, b] and [c, d] intersects\n// End point also\
+    \ returns true\ntemplate<typename T>\nbool segmentIntersect(const P<T>& a, const\
+    \ P<T>& b, const P<T>& c, const P<T>& d) {\n    if (onSegment(a, b, c)\n     \
+    \       || onSegment(a, b, d)\n            || onSegment(c, d, a)\n           \
+    \ || onSegment(c, d, b)) {\n        return true;\n    }\n\n    return ccw(a, b,\
+    \ c) * ccw(a, b, d) < 0\n        && ccw(c, d, a) * ccw(c, d, b) < 0;\n}\n#line\
+    \ 3 \"Geometry/basic.cpp\"\n\nint main() {\n    Point P1, P2, P3(0, 1);\n    assert((P1\
+    \ == P2) == true);\n    assert((P1 == P3) == false);\n\n    vector<Point> P;\n\
+    \    P.push_back(Point(2, 2));\n    P.push_back(Point(4, 3));\n    P.push_back(Point(2,\
     \ 4));\n    P.push_back(Point(6, 6));\n    P.push_back(Point(2, 6));\n    P.push_back(Point(6,\
     \ 5));\n\n    // sorting points demo\n    sort(P.begin(), P.end());\n    assert(P[0]\
     \ == Point(2, 2));\n    assert(P[1] == Point(2, 4));\n    assert(P[2] == Point(2,\
@@ -216,7 +217,7 @@ data:
   isVerificationFile: false
   path: Geometry/basic.cpp
   requiredBy: []
-  timestamp: '2022-02-06 13:43:52+08:00'
+  timestamp: '2022-12-27 01:22:59+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Geometry/basic.cpp
