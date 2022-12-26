@@ -3,6 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':warning:'
+    path: DP/optimizations/divide_conquer.cpp
+    title: DP/optimizations/divide_conquer.cpp
+  - icon: ':warning:'
+    path: DP/optimizations/knuth.cpp
+    title: DP/optimizations/knuth.cpp
+  - icon: ':warning:'
     path: Geometry/SPOJ_ALIENS.cpp
     title: Geometry/SPOJ_ALIENS.cpp
   - icon: ':warning:'
@@ -312,6 +318,8 @@ data:
   - Geometry/SPOJ_ALIENS.cpp
   - Geometry/basic.cpp
   - Geometry/polygon.cpp
+  - DP/optimizations/divide_conquer.cpp
+  - DP/optimizations/knuth.cpp
   timestamp: '2022-01-13 13:16:22+08:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
