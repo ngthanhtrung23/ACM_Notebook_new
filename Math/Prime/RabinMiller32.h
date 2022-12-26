@@ -22,7 +22,7 @@ bool is_prime(unsigned n) {
         2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67,
         71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139,
     };
-    for (int i = 0; i < sizeof(small)/sizeof(unsigned); i++) {
+    for (size_t i = 0; i < sizeof(small)/sizeof(unsigned); i++) {
         if (n%small[i] == 0) return n == small[i];
     }
  
@@ -31,7 +31,7 @@ bool is_prime(unsigned n) {
     unsigned s = n-1, r = 0;
     while (s%2 == 0) {s /= 2; r++;}
  
-    for (int i = 0, j; i < sizeof(millerrabin)/sizeof(unsigned); i++) {
+    for (size_t i = 0, j; i < sizeof(millerrabin)/sizeof(unsigned); i++) {
         unsigned md = mod_pow(millerrabin[i], s, n);
         if (md == 1) continue;
         for (j = 1; j < r; j++) {

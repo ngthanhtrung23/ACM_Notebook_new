@@ -44,7 +44,7 @@ inline void mark(uint64_t* s, int o) { s[o >> 6] |= ONES[o & 63]; }
 inline int test(uint64_t* s, int o) { return (s[o >> 6] & ONES[o & 63]) == 0; }
  
 // update_sieve {{{
-void update_sieve(int offset) {
+void update_sieve(uint32_t offset) {
     // copy each wheel pattern to sieve
     for (int i = 0, k; i < SIEVE_SIZE; i += k) {
         k = std::min(WHEEL, SIEVE_SIZE - i);
@@ -59,7 +59,7 @@ void update_sieve(int offset) {
  
     // sieve for primes >= 17 (stored in `small_primes`)
     for (int i = 0; i < N_SMALL_PRIMES; ++i) {
-        int j = small_primes[i] * small_primes[i];
+        uint32_t j = small_primes[i] * (uint32_t) small_primes[i];
         if (j > offset + SIEVE_SPAN - 1) break;
         if (j > offset) j = (j - offset) >> 1;
         else {
@@ -76,7 +76,7 @@ void update_sieve(int offset) {
 // }}}
  
 template<typename F>
-void sieve(int MAX, F func) {
+void sieve(uint32_t MAX, F func) {
     // init small primes {{{
     for (int i = 0; i < 64; ++i) ONES[i] = 1ULL << i;
  
@@ -106,7 +106,7 @@ void sieve(int MAX, F func) {
  
     // Segmented sieve
     if (2 <= MAX) func(2);
-    for (int offset = 0; offset < MAX; offset += SIEVE_SPAN) {
+    for (uint32_t offset = 0; offset < MAX; offset += SIEVE_SPAN) {
         update_sieve(offset);
  
         for (uint32_t j = 0; j < SIEVE_SIZE; j++){
