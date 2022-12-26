@@ -5,10 +5,13 @@ data:
     path: Math/NumberTheory/Pollard.h
     title: Math/NumberTheory/Pollard.h
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: Math/tests/cnt_divisors_stress.test.cpp
+    title: Math/tests/cnt_divisors_stress.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://www.spoj.com/problems/NUMDIV/
@@ -63,23 +66,26 @@ data:
     \ cnt);\n            last = p;\n            cnt = 1;\n        }\n    }\n    if\
     \ (cnt > 0) {\n        res.emplace_back(last, cnt);\n    }\n    return res;\n\
     }\n// }}}\n#line 2 \"Math/NumberTheory/cnt_divisors.h\"\n\n// Tested: https://www.spoj.com/problems/NUMDIV/\n\
-    int64_t cnt_divisors(int64_t n) {\n    auto ps = factorize(n);\n    int cnt_ps\
-    \ = ps.size();\n    int i = 0;\n    int64_t res = 1;\n    while (i < cnt_ps) {\n\
-    \        int j = i;\n        while (j+1 < cnt_ps && ps[j+1] == ps[j]) ++j;\n \
-    \       res *= j - i + 2;\n        i = j + 1;\n    }\n    return res;\n}\n"
+    int64_t cnt_divisors(int64_t n) {\n    assert(n > 0);\n    auto ps = factorize(n);\n\
+    \    int cnt_ps = ps.size();\n    int i = 0;\n    int64_t res = 1;\n    while\
+    \ (i < cnt_ps) {\n        int j = i;\n        while (j+1 < cnt_ps && ps[j+1] ==\
+    \ ps[j]) ++j;\n        res *= j - i + 2;\n        i = j + 1;\n    }\n    return\
+    \ res;\n}\n"
   code: "#include \"Pollard.h\"\n\n// Tested: https://www.spoj.com/problems/NUMDIV/\n\
-    int64_t cnt_divisors(int64_t n) {\n    auto ps = factorize(n);\n    int cnt_ps\
-    \ = ps.size();\n    int i = 0;\n    int64_t res = 1;\n    while (i < cnt_ps) {\n\
-    \        int j = i;\n        while (j+1 < cnt_ps && ps[j+1] == ps[j]) ++j;\n \
-    \       res *= j - i + 2;\n        i = j + 1;\n    }\n    return res;\n}\n"
+    int64_t cnt_divisors(int64_t n) {\n    assert(n > 0);\n    auto ps = factorize(n);\n\
+    \    int cnt_ps = ps.size();\n    int i = 0;\n    int64_t res = 1;\n    while\
+    \ (i < cnt_ps) {\n        int j = i;\n        while (j+1 < cnt_ps && ps[j+1] ==\
+    \ ps[j]) ++j;\n        res *= j - i + 2;\n        i = j + 1;\n    }\n    return\
+    \ res;\n}\n"
   dependsOn:
   - Math/NumberTheory/Pollard.h
   isVerificationFile: false
   path: Math/NumberTheory/cnt_divisors.h
   requiredBy: []
-  timestamp: '2022-12-24 01:16:58+08:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2022-12-26 20:16:27+08:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - Math/tests/cnt_divisors_stress.test.cpp
 documentation_of: Math/NumberTheory/cnt_divisors.h
 layout: document
 redirect_from:

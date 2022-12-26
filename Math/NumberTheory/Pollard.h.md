@@ -2,13 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: Math/NumberTheory/cnt_divisors.h
     title: Math/NumberTheory/cnt_divisors.h
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Math/tests/aizu_ntl_1_a_factorize.test.cpp
     title: Math/tests/aizu_ntl_1_a_factorize.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Math/tests/cnt_divisors_stress.test.cpp
+    title: Math/tests/cnt_divisors_stress.test.cpp
   - icon: ':heavy_check_mark:'
     path: Math/tests/factorize.test.cpp
     title: Math/tests/factorize.test.cpp
@@ -136,6 +139,7 @@ data:
   - Math/tests/factorize.test.cpp
   - Math/tests/aizu_ntl_1_a_factorize.test.cpp
   - Math/tests/is_prime_yukicoder.test.cpp
+  - Math/tests/cnt_divisors_stress.test.cpp
 documentation_of: Math/NumberTheory/Pollard.h
 layout: document
 redirect_from:

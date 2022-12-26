@@ -348,10 +348,10 @@ data:
     - icon: ':warning:'
       path: Math/modulo.h
       title: Math/modulo.h
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: Math/multiplicative_function.h
       title: Math/multiplicative_function.h
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: Math/multiplicative_functions_linear.h
       title: Math/multiplicative_functions_linear.h
     - icon: ':heavy_check_mark:'
@@ -388,7 +388,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/NumberTheory/SqrtMod.h
       title: Math/NumberTheory/SqrtMod.h
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: Math/NumberTheory/cnt_divisors.h
       title: Math/NumberTheory/cnt_divisors.h
     - icon: ':warning:'
@@ -939,6 +939,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/tests/berlekamp_massey.test.cpp
       title: Math/tests/berlekamp_massey.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Math/tests/cnt_divisors_stress.test.cpp
+      title: Math/tests/cnt_divisors_stress.test.cpp
     - icon: ':heavy_check_mark:'
       path: Math/tests/convolution_and.test.cpp
       title: Math/tests/convolution_and.test.cpp

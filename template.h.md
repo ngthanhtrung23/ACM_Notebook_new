@@ -232,6 +232,9 @@ data:
     path: Math/tests/aizu_ntl_2_f_bigint_mul_fft.test.cpp
     title: Math/tests/aizu_ntl_2_f_bigint_mul_fft.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Math/tests/cnt_divisors_stress.test.cpp
+    title: Math/tests/cnt_divisors_stress.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Math/tests/is_prime_yukicoder.test.cpp
     title: Math/tests/is_prime_yukicoder.test.cpp
   - icon: ':heavy_check_mark:'
@@ -361,6 +364,7 @@ data:
   - Math/tests/is_prime_yukicoder.test.cpp
   - Math/tests/aizu_ntl_2_c_bigint_mul.test.cpp
   - Math/tests/aizu_ntl_2_f_bigint_mul_fft.test.cpp
+  - Math/tests/cnt_divisors_stress.test.cpp
   - Math/tests/aizu_ntl_1_d_euler_phi.test.cpp
   - Math/tests/aizu_ntl_2_a_bigint_add.test.cpp
   - Math/tests/rabin_miller_32_stress.test.cpp
