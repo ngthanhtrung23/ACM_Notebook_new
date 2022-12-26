@@ -16,6 +16,8 @@ template<
     // a[u] += val
     void update(int time, int u, T val) {
         assert(0 <= u && u < n);
+        assert(last_updated_time <= time);
+        last_updated_time = time;
         ++u;
         for (; u <= n; u += u & -u) {
             f[u].emplace_back(time, f[u].back().second + val);
@@ -41,6 +43,7 @@ template<
     }
 
     int n;
+    int last_updated_time = INT_MIN;
     vector<vector<pair<int, T>>> f;  // (time, data)
 };
 // }}}
