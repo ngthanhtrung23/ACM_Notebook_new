@@ -526,9 +526,6 @@ data:
       path: String/hash.h
       title: String/hash.h
     - icon: ':warning:'
-      path: String/hash_2mod.h
-      title: String/hash_2mod.h
-    - icon: ':warning:'
       path: String/kmp.h
       title: String/kmp.h
     - icon: ':warning:'

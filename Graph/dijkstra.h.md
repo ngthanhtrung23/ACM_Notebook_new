@@ -19,10 +19,10 @@ data:
     \ from 0\n//\n// Tested:\n// - https://judge.yosupo.jp/problem/shortest_path\n\
     //\n// Param:\n// - g[u] = pair<v, cost>, adjacency list\n// - start = start vertex\n\
     // Returns:\n// - distances from start. If unreachable -> dist = INF\n// - previous\
-    \ vertex. Previous[start] = start. If unreachable -> trace = -1\nusing ll = long\
-    \ long;\nconst ll INF = 1e18;  // must be greater than maximum possible path\n\
-    pair<vector<ll>, vector<int>> dijkstra(const vector<vector<pair<int, ll>>>& g,\
-    \ int start) {\n    int n = g.size();\n    vector<ll> f(n, INF);\n    vector<int>\
+    \ vertex. Previous[start] = start. If unreachable -> trace = -1\n// Dijkstra {{{\n\
+    using ll = long long;\nconst ll INF = 1e18;  // must be greater than maximum possible\
+    \ path\npair<vector<ll>, vector<int>> dijkstra(const vector<vector<pair<int, ll>>>&\
+    \ g, int start) {\n    int n = g.size();\n    vector<ll> f(n, INF);\n    vector<int>\
     \ trace(n, -1);\n    f[start] = 0;\n    trace[start] = start;\n    using P = pair<ll,\
     \ int>;  // <distance, vertex>\n\n    // priority_queue should be faster than\
     \ set?\n    priority_queue<P, vector<P>, greater<P>> all;\n    all.push(P{0LL,\
@@ -37,14 +37,14 @@ data:
     \    if (trace[target] < 0) {\n        return {INF, {}};\n    }\n\n    vector<int>\
     \ path;\n    for (int u = target; u != start; u = trace[u]) {\n        path.push_back(u);\n\
     \    }\n    path.push_back(start);\n    reverse(path.begin(), path.end());\n \
-    \   return {f[target], path};\n}\n"
+    \   return {f[target], path};\n}\n// }}}\n"
   code: "// Dijkstra\n//\n// Notes:\n// - Index from 0\n//\n// Tested:\n// - https://judge.yosupo.jp/problem/shortest_path\n\
     //\n// Param:\n// - g[u] = pair<v, cost>, adjacency list\n// - start = start vertex\n\
     // Returns:\n// - distances from start. If unreachable -> dist = INF\n// - previous\
-    \ vertex. Previous[start] = start. If unreachable -> trace = -1\nusing ll = long\
-    \ long;\nconst ll INF = 1e18;  // must be greater than maximum possible path\n\
-    pair<vector<ll>, vector<int>> dijkstra(const vector<vector<pair<int, ll>>>& g,\
-    \ int start) {\n    int n = g.size();\n    vector<ll> f(n, INF);\n    vector<int>\
+    \ vertex. Previous[start] = start. If unreachable -> trace = -1\n// Dijkstra {{{\n\
+    using ll = long long;\nconst ll INF = 1e18;  // must be greater than maximum possible\
+    \ path\npair<vector<ll>, vector<int>> dijkstra(const vector<vector<pair<int, ll>>>&\
+    \ g, int start) {\n    int n = g.size();\n    vector<ll> f(n, INF);\n    vector<int>\
     \ trace(n, -1);\n    f[start] = 0;\n    trace[start] = start;\n    using P = pair<ll,\
     \ int>;  // <distance, vertex>\n\n    // priority_queue should be faster than\
     \ set?\n    priority_queue<P, vector<P>, greater<P>> all;\n    all.push(P{0LL,\
@@ -59,12 +59,12 @@ data:
     \    if (trace[target] < 0) {\n        return {INF, {}};\n    }\n\n    vector<int>\
     \ path;\n    for (int u = target; u != start; u = trace[u]) {\n        path.push_back(u);\n\
     \    }\n    path.push_back(start);\n    reverse(path.begin(), path.end());\n \
-    \   return {f[target], path};\n}\n"
+    \   return {f[target], path};\n}\n// }}}\n"
   dependsOn: []
   isVerificationFile: false
   path: Graph/dijkstra.h
   requiredBy: []
-  timestamp: '2022-01-06 03:02:41+08:00'
+  timestamp: '2022-12-26 16:37:58+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Graph/tests/aizu_grl_1_a_dijkstra_aizu.test.cpp

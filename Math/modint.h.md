@@ -8,9 +8,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: String/hash.h
     title: String/hash.h
-  - icon: ':warning:'
-    path: String/hash_2mod.h
-    title: String/hash_2mod.h
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/hld_vertexsetpathcomposite.test.cpp
@@ -197,7 +194,6 @@ data:
   requiredBy:
   - String/SuffixArray.h
   - String/hash.h
-  - String/hash_2mod.h
   timestamp: '2022-08-21 23:32:29+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
