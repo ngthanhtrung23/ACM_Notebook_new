@@ -71,8 +71,8 @@ int ccw(P<T> a, P<T> b, P<T> c) {
     return cmp((b-a)%(c-a), T(0));
 }
 
-int RE_TRAI = ccw(Point(0, 0), Point(0, 1), Point(-1, 1));
-int RE_PHAI = ccw(Point(0, 0), Point(0, 1), Point(1, 1));
+int RE_TRAI = ccw(P<int>(0, 0), P<int>(0, 1), P<int>(-1, 1));
+int RE_PHAI = ccw(P<int>(0, 0), P<int>(0, 1), P<int>(1, 1));
 
 template<typename T>
 istream& operator >> (istream& cin, P<T>& p) {
