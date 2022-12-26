@@ -10,9 +10,9 @@ data:
     links:
     - http://codeforces.com/contest/678/standings/friends/true
     - https://oj.vnoi.info/problem/segtree_itds2
-  bundledCode: "#line 1 \"DP/convex_hull_2.h\"\n// Add lines a*x + b, must be in:\n\
-    // - increasing order of a\n// - decreasing order of b\n// Get y = max(a*x + b)\n\
-    //\n// Tested:\n// - http://codeforces.com/contest/678/standings/friends/true\n\
+  bundledCode: "#line 1 \"DP/optimizations/convex_hull_2.h\"\n// Add lines a*x + b,\
+    \ must be in:\n// - increasing order of a\n// - decreasing order of b\n// Get\
+    \ y = max(a*x + b)\n//\n// Tested:\n// - http://codeforces.com/contest/678/standings/friends/true\n\
     // - https://oj.vnoi.info/problem/segtree_itds2\n\nconst long long INF = 1e18\
     \ + 11;\nstruct Line {\n    long long a, b;\n    long long f(long long x) {\n\
     \        return a*x + b;\n    }\n};\nbool operator < (const Line& f, const Line&\
@@ -53,15 +53,15 @@ data:
     \    }\n};\n"
   dependsOn: []
   isVerificationFile: false
-  path: DP/convex_hull_2.h
+  path: DP/optimizations/convex_hull_2.h
   requiredBy: []
-  timestamp: '2021-12-26 02:20:02+08:00'
+  timestamp: '2022-12-26 18:06:15+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: DP/convex_hull_2.h
+documentation_of: DP/optimizations/convex_hull_2.h
 layout: document
 redirect_from:
-- /library/DP/convex_hull_2.h
-- /library/DP/convex_hull_2.h.html
-title: DP/convex_hull_2.h
+- /library/DP/optimizations/convex_hull_2.h
+- /library/DP/optimizations/convex_hull_2.h.html
+title: DP/optimizations/convex_hull_2.h
 ---

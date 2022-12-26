@@ -3,33 +3,35 @@ data:
   libraryCategories:
   - name: DP
     pages:
-    - icon: ':warning:'
-      path: DP/convex_hull.h
-      title: DP/convex_hull.h
-    - icon: ':warning:'
-      path: DP/convex_hull_2.h
-      title: DP/convex_hull_2.h
     - icon: ':heavy_check_mark:'
       path: DP/count_inversions.h
       title: DP/count_inversions.h
     - icon: ':warning:'
-      path: DP/divide_conquer.cpp
-      title: DP/divide_conquer.cpp
-    - icon: ':heavy_check_mark:'
-      path: DP/dynamic_hull.h
-      title: DP/dynamic_hull.h
-    - icon: ':warning:'
       path: DP/edit_distance.h
       title: DP/edit_distance.h
-    - icon: ':warning:'
-      path: DP/knuth.cpp
-      title: DP/knuth.cpp
     - icon: ':heavy_check_mark:'
       path: DP/lis.h
       title: DP/lis.h
     - icon: ':warning:'
       path: DP/reroot_tree_dp.cpp
       title: DP/reroot_tree_dp.cpp
+  - name: DP/optimizations
+    pages:
+    - icon: ':warning:'
+      path: DP/optimizations/convex_hull.h
+      title: DP/optimizations/convex_hull.h
+    - icon: ':warning:'
+      path: DP/optimizations/convex_hull_2.h
+      title: DP/optimizations/convex_hull_2.h
+    - icon: ':warning:'
+      path: DP/optimizations/divide_conquer.cpp
+      title: DP/optimizations/divide_conquer.cpp
+    - icon: ':warning:'
+      path: DP/optimizations/dynamic_hull.h
+      title: DP/optimizations/dynamic_hull.h
+    - icon: ':warning:'
+      path: DP/optimizations/knuth.cpp
+      title: DP/optimizations/knuth.cpp
   - name: DataStructure
     pages:
     - icon: ':heavy_check_mark:'
@@ -575,7 +577,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: DP/tests/aizu_dpl_1_d_lis.test.cpp
       title: DP/tests/aizu_dpl_1_d_lis.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: DP/tests/dynamic_hull_lineaddgetmin.test.cpp
       title: DP/tests/dynamic_hull_lineaddgetmin.test.cpp
     - icon: ':heavy_check_mark:'

@@ -2,18 +2,15 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: DP/tests/dynamic_hull_lineaddgetmin.test.cpp
-    title: DP/tests/dynamic_hull_lineaddgetmin.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links:
     - https://github.com/niklasb/contest-algos/blob/master/convex_hull/dynamic.cpp
     - https://judge.yosupo.jp/problem/line_add_get_min
-  bundledCode: "#line 1 \"DP/dynamic_hull.h\"\n// source: https://github.com/niklasb/contest-algos/blob/master/convex_hull/dynamic.cpp\n\
+  bundledCode: "#line 1 \"DP/optimizations/dynamic_hull.h\"\n// source: https://github.com/niklasb/contest-algos/blob/master/convex_hull/dynamic.cpp\n\
     // Tested:\n// - https://judge.yosupo.jp/problem/line_add_get_min\nusing ll =\
     \ long long;\nconst ll INF = (1LL<<62);\nstruct Line {\n    ll m, b;\n    mutable\
     \ function<const Line*()> succ;\n    bool operator<(const Line& rhs) const {\n\
@@ -51,16 +48,15 @@ data:
     \ { x, -INF });\n        return l.m * x + l.b;\n    }\n};\n"
   dependsOn: []
   isVerificationFile: false
-  path: DP/dynamic_hull.h
+  path: DP/optimizations/dynamic_hull.h
   requiredBy: []
-  timestamp: '2021-12-31 02:56:10+08:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - DP/tests/dynamic_hull_lineaddgetmin.test.cpp
-documentation_of: DP/dynamic_hull.h
+  timestamp: '2022-12-26 18:06:15+08:00'
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
+documentation_of: DP/optimizations/dynamic_hull.h
 layout: document
 redirect_from:
-- /library/DP/dynamic_hull.h
-- /library/DP/dynamic_hull.h.html
-title: DP/dynamic_hull.h
+- /library/DP/optimizations/dynamic_hull.h
+- /library/DP/optimizations/dynamic_hull.h.html
+title: DP/optimizations/dynamic_hull.h
 ---
