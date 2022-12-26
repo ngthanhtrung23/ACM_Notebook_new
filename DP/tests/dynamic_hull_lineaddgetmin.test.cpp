@@ -3,7 +3,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#include "../dynamic_hull.h"
+#include "../optimizations/dynamic_hull.h"
 
 #define REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)
 
