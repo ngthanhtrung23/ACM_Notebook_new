@@ -90,9 +90,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/binary_trie.test.cpp
     title: DataStructure/test/binary_trie.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/test/mo_algorithm.test.cpp
     title: DataStructure/test/mo_algorithm.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: DataStructure/test/mo_algorithm_with_undo.test.cpp
+    title: DataStructure/test/mo_algorithm_with_undo.test.cpp
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/yukicoder_674_range_set.test.cpp
     title: DataStructure/test/yukicoder_674_range_set.test.cpp
@@ -237,9 +240,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: String/tests/yukicoder_1408_string_hash_lcp.test.cpp
     title: String/tests/yukicoder_1408_string_hash_lcp.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://quangloc99.github.io/2021/07/30/my-CP-debugging-template.html
@@ -309,7 +312,7 @@ data:
   - DP/divide_conquer.cpp
   - DP/knuth.cpp
   timestamp: '2022-01-13 13:16:22+08:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Misc/tests/aizu_dpl_3_b_largest_01_rectangle.test.cpp
   - Misc/tests/aizu_dpl_3_c_largest_histogram.test.cpp
@@ -326,6 +329,7 @@ data:
   - DataStructure/test/aizu_dsl_2_h_segment_tree_rangeaddmin.test.cpp
   - DataStructure/test/aizu_dsl_2_a_segment_tree_rmq_update.test.cpp
   - DataStructure/test/aizu_dsl_2_e_segment_tree_rangeadd.test.cpp
+  - DataStructure/test/mo_algorithm_with_undo.test.cpp
   - DataStructure/test/aizu_dsl_2_d_rangeset.test.cpp
   - DataStructure/test/aizu_dsl_2_b_segment_tree_sum.test.cpp
   - DataStructure/test/aizu_dsl_2_d_segment_tree_rangeset.test.cpp

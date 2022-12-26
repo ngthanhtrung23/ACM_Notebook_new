@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/MoAlgorithm.h
     title: DataStructure/MoAlgorithm.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/static_range_sum
@@ -73,21 +73,21 @@ data:
     //        (n, queries, add, rem, get);\n// }}}\n#line 5 \"DataStructure/test/mo_algorithm.test.cpp\"\
     \n\nvoid solve() {\n    int n, q; cin >> n >> q;\n    vector<int> a(n); REP(i,n)\
     \ cin >> a[i];\n\n    vector<Query> queries(q);\n    REP(i,q) {\n        cin >>\
-    \ queries[i].l >> queries[i].r;\n        queries[i].r--;\n    }\n\n    int sum\
-    \ = 0;\n    auto add = [&] (int id) { sum += a[id]; };\n    auto rem = [&] (int\
-    \ id) { sum -= a[id]; };\n    auto get = [&] ([[maybe_unused]] const Query& _)\
-    \ { return sum; };\n\n    auto res = mo<Query, int, decltype(add), decltype(rem),\
-    \ decltype(get)>\n        (n, queries, add, rem, get);\n    for (int r : res)\
+    \ queries[i].l >> queries[i].r;\n        queries[i].r--;\n    }\n\n    int64_t\
+    \ sum = 0;\n    auto add = [&] (int id) { sum += a[id]; };\n    auto rem = [&]\
+    \ (int id) { sum -= a[id]; };\n    auto get = [&] ([[maybe_unused]] const Query&\
+    \ _) { return sum; };\n\n    auto res = mo<Query, int64_t, decltype(add), decltype(rem),\
+    \ decltype(get)>\n        (n, queries, add, rem, get);\n    for (auto r : res)\
     \ cout << r << '\\n';\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_sum\"\n\n\
     #include \"../../template.h\"\n#include \"../MoAlgorithm.h\"\n\nvoid solve() {\n\
     \    int n, q; cin >> n >> q;\n    vector<int> a(n); REP(i,n) cin >> a[i];\n\n\
     \    vector<Query> queries(q);\n    REP(i,q) {\n        cin >> queries[i].l >>\
-    \ queries[i].r;\n        queries[i].r--;\n    }\n\n    int sum = 0;\n    auto\
+    \ queries[i].r;\n        queries[i].r--;\n    }\n\n    int64_t sum = 0;\n    auto\
     \ add = [&] (int id) { sum += a[id]; };\n    auto rem = [&] (int id) { sum -=\
     \ a[id]; };\n    auto get = [&] ([[maybe_unused]] const Query& _) { return sum;\
-    \ };\n\n    auto res = mo<Query, int, decltype(add), decltype(rem), decltype(get)>\n\
-    \        (n, queries, add, rem, get);\n    for (int r : res) cout << r << '\\\
+    \ };\n\n    auto res = mo<Query, int64_t, decltype(add), decltype(rem), decltype(get)>\n\
+    \        (n, queries, add, rem, get);\n    for (auto r : res) cout << r << '\\\
     n';\n}\n"
   dependsOn:
   - template.h
@@ -95,8 +95,8 @@ data:
   isVerificationFile: true
   path: DataStructure/test/mo_algorithm.test.cpp
   requiredBy: []
-  timestamp: '2022-12-26 16:49:24+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2022-12-26 16:55:49+08:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/mo_algorithm.test.cpp
 layout: document
