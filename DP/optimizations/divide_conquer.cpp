@@ -14,7 +14,7 @@
 //       4. compute(i, M+1, R, opt[i][M], optR)
 
 // Example: http://codeforces.com/contest/321/problem/E
-#include "../template.h"
+#include "../../template.h"
 
 const int MN = 4011;
 const int inf = 1000111000;

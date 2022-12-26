@@ -27,7 +27,7 @@
 //         update f[i][j] and A[i][j] using f[i-1][last] + cost[last+1][j]
 
 // OPTCUT
-#include "../template.h"
+#include "../../template.h"
 
 const int MN = 2011;
 int a[MN], dp[MN][MN], C[MN][MN], A[MN][MN];
