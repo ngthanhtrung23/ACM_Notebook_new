@@ -56,6 +56,10 @@ vector<ResultT> mo(int n, std::vector<QueryT> queries, Add add, Rem rem, Get get
 struct Query {
     int l, r;  // QueryT must have l, r
 };
+ostream& operator << (ostream& cout, const Query& q) {
+    cout << "Query: [" << q.l << ", " << q.r << "]";
+    return cout;
+}
 // Usage
 // auto res = mo<Query, int, decltype(add), decltype(rem), decltype(get)>
 //        (n, queries, add, rem, get);
