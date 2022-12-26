@@ -440,7 +440,7 @@ data:
     - icon: ':warning:'
       path: Math/Prime/RabinMiller.h
       title: Math/Prime/RabinMiller.h
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: Math/Prime/RabinMiller32.h
       title: Math/Prime/RabinMiller32.h
     - icon: ':warning:'
@@ -990,6 +990,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/tests/prime_pi.test.cpp
       title: Math/tests/prime_pi.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Math/tests/rabin_miller_32_stress.test.cpp
+      title: Math/tests/rabin_miller_32_stress.test.cpp
     - icon: ':heavy_check_mark:'
       path: Math/tests/sieve.test.cpp
       title: Math/tests/sieve.test.cpp

@@ -235,6 +235,9 @@ data:
     path: Math/tests/is_prime_yukicoder.test.cpp
     title: Math/tests/is_prime_yukicoder.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Math/tests/rabin_miller_32_stress.test.cpp
+    title: Math/tests/rabin_miller_32_stress.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Misc/tests/aizu_dpl_3_b_largest_01_rectangle.test.cpp
     title: Misc/tests/aizu_dpl_3_b_largest_01_rectangle.test.cpp
   - icon: ':heavy_check_mark:'
@@ -360,6 +363,7 @@ data:
   - Math/tests/aizu_ntl_2_f_bigint_mul_fft.test.cpp
   - Math/tests/aizu_ntl_1_d_euler_phi.test.cpp
   - Math/tests/aizu_ntl_2_a_bigint_add.test.cpp
+  - Math/tests/rabin_miller_32_stress.test.cpp
   - Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp
   - Math/tests/aizu_ntl_2_d_bigint_div.test.cpp
   - Math/tests/aizu_ntl_2_c_bigint_mul_karatsuba.test.cpp

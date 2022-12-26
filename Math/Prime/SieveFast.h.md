@@ -4,6 +4,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Math/tests/rabin_miller_32_stress.test.cpp
+    title: Math/tests/rabin_miller_32_stress.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Math/tests/sieve_fast.test.cpp
     title: Math/tests/sieve_fast.test.cpp
   _isVerificationFailed: false
@@ -41,24 +44,24 @@ data:
     \ pattern (i.e. what numbers cannot\n// be primes)\nuint64_t pattern[WHEEL];\n\
     \ \ninline void mark(uint64_t* s, int o) { s[o >> 6] |= ONES[o & 63]; }\ninline\
     \ int test(uint64_t* s, int o) { return (s[o >> 6] & ONES[o & 63]) == 0; }\n \n\
-    // update_sieve {{{\nvoid update_sieve(int offset) {\n    // copy each wheel pattern\
-    \ to sieve\n    for (int i = 0, k; i < SIEVE_SIZE; i += k) {\n        k = std::min(WHEEL,\
-    \ SIEVE_SIZE - i);\n        memcpy(si + i, pattern, sizeof(*pattern) * k);\n \
-    \   }\n \n    // Correctly mark 1, 3, 5, 7, 11, 13 as not prime / primes\n   \
-    \ if (offset == 0) {\n        si[0] |= ONES[0];\n        si[0] &= ~(ONES[1] |\
-    \ ONES[2] | ONES[3] | ONES[5] | ONES[6]);\n    }\n \n    // sieve for primes >=\
-    \ 17 (stored in `small_primes`)\n    for (int i = 0; i < N_SMALL_PRIMES; ++i)\
-    \ {\n        int j = small_primes[i] * small_primes[i];\n        if (j > offset\
-    \ + SIEVE_SPAN - 1) break;\n        if (j > offset) j = (j - offset) >> 1;\n \
-    \       else {\n            j = small_primes[i] - offset % small_primes[i];\n\
+    // update_sieve {{{\nvoid update_sieve(uint32_t offset) {\n    // copy each wheel\
+    \ pattern to sieve\n    for (int i = 0, k; i < SIEVE_SIZE; i += k) {\n       \
+    \ k = std::min(WHEEL, SIEVE_SIZE - i);\n        memcpy(si + i, pattern, sizeof(*pattern)\
+    \ * k);\n    }\n \n    // Correctly mark 1, 3, 5, 7, 11, 13 as not prime / primes\n\
+    \    if (offset == 0) {\n        si[0] |= ONES[0];\n        si[0] &= ~(ONES[1]\
+    \ | ONES[2] | ONES[3] | ONES[5] | ONES[6]);\n    }\n \n    // sieve for primes\
+    \ >= 17 (stored in `small_primes`)\n    for (int i = 0; i < N_SMALL_PRIMES; ++i)\
+    \ {\n        uint32_t j = small_primes[i] * (uint32_t) small_primes[i];\n    \
+    \    if (j > offset + SIEVE_SPAN - 1) break;\n        if (j > offset) j = (j -\
+    \ offset) >> 1;\n        else {\n            j = small_primes[i] - offset % small_primes[i];\n\
     \            if ((j & 1) == 0) j += small_primes[i];\n            j >>= 1;\n \
     \       }\n        while (j < SIEVE_SPAN / 2) {\n            mark(si, j);\n  \
     \          j += small_primes[i];\n        }\n    }\n}\n// }}}\n \ntemplate<typename\
-    \ F>\nvoid sieve(int MAX, F func) {\n    // init small primes {{{\n    for (int\
-    \ i = 0; i < 64; ++i) ONES[i] = 1ULL << i;\n \n    // sieve to find small primes\n\
-    \    for (int i = 3; i < 256; i += 2) {\n        if (test(si, i >> 1)) {\n   \
-    \         for (int j = i*i / 2; j < 32768; j += i) mark(si, j);\n        }\n \
-    \   }\n    // store primes >= 17 in `small_primes` (we will sieve differently\n\
+    \ F>\nvoid sieve(uint32_t MAX, F func) {\n    // init small primes {{{\n    for\
+    \ (int i = 0; i < 64; ++i) ONES[i] = 1ULL << i;\n \n    // sieve to find small\
+    \ primes\n    for (int i = 3; i < 256; i += 2) {\n        if (test(si, i >> 1))\
+    \ {\n            for (int j = i*i / 2; j < 32768; j += i) mark(si, j);\n     \
+    \   }\n    }\n    // store primes >= 17 in `small_primes` (we will sieve differently\n\
     \    // for primes 2, 3, 5, 7, 11, 13)\n    {\n        int m = 0;\n        for\
     \ (int i = 8; i < 32768; ++i) {\n            if (test(si, i)) small_primes[m++]\
     \ = i*2 + 1;\n        }\n        assert(m == N_SMALL_PRIMES);\n    }\n    // }}}\n\
@@ -67,10 +70,10 @@ data:
     \ < WHEEL * 64; i += 5) mark(pattern, i);\n    for (int i = 3; i < WHEEL * 64;\
     \ i += 7) mark(pattern, i);\n    for (int i = 5; i < WHEEL * 64; i += 11) mark(pattern,\
     \ i);\n    for (int i = 6; i < WHEEL * 64; i += 13) mark(pattern, i);\n \n   \
-    \ // Segmented sieve\n    if (2 <= MAX) func(2);\n    for (int offset = 0; offset\
-    \ < MAX; offset += SIEVE_SPAN) {\n        update_sieve(offset);\n \n        for\
-    \ (uint32_t j = 0; j < SIEVE_SIZE; j++){\n            uint64_t x = ~si[j];\n \
-    \           while (x){\n                uint32_t p = offset + (j << 7) + (__builtin_ctzll(x)\
+    \ // Segmented sieve\n    if (2 <= MAX) func(2);\n    for (uint32_t offset = 0;\
+    \ offset < MAX; offset += SIEVE_SPAN) {\n        update_sieve(offset);\n \n  \
+    \      for (uint32_t j = 0; j < SIEVE_SIZE; j++){\n            uint64_t x = ~si[j];\n\
+    \            while (x){\n                uint32_t p = offset + (j << 7) + (__builtin_ctzll(x)\
     \ << 1) + 1;\n                if (p > offset + SIEVE_SPAN - 1) break;\n      \
     \          if (p <= MAX) {\n                    func(p);\n                }\n\
     \                x ^= (-x & x);\n            }\n        }\n    }\n}\n}\nusing\
@@ -101,24 +104,24 @@ data:
     \ pattern (i.e. what numbers cannot\n// be primes)\nuint64_t pattern[WHEEL];\n\
     \ \ninline void mark(uint64_t* s, int o) { s[o >> 6] |= ONES[o & 63]; }\ninline\
     \ int test(uint64_t* s, int o) { return (s[o >> 6] & ONES[o & 63]) == 0; }\n \n\
-    // update_sieve {{{\nvoid update_sieve(int offset) {\n    // copy each wheel pattern\
-    \ to sieve\n    for (int i = 0, k; i < SIEVE_SIZE; i += k) {\n        k = std::min(WHEEL,\
-    \ SIEVE_SIZE - i);\n        memcpy(si + i, pattern, sizeof(*pattern) * k);\n \
-    \   }\n \n    // Correctly mark 1, 3, 5, 7, 11, 13 as not prime / primes\n   \
-    \ if (offset == 0) {\n        si[0] |= ONES[0];\n        si[0] &= ~(ONES[1] |\
-    \ ONES[2] | ONES[3] | ONES[5] | ONES[6]);\n    }\n \n    // sieve for primes >=\
-    \ 17 (stored in `small_primes`)\n    for (int i = 0; i < N_SMALL_PRIMES; ++i)\
-    \ {\n        int j = small_primes[i] * small_primes[i];\n        if (j > offset\
-    \ + SIEVE_SPAN - 1) break;\n        if (j > offset) j = (j - offset) >> 1;\n \
-    \       else {\n            j = small_primes[i] - offset % small_primes[i];\n\
+    // update_sieve {{{\nvoid update_sieve(uint32_t offset) {\n    // copy each wheel\
+    \ pattern to sieve\n    for (int i = 0, k; i < SIEVE_SIZE; i += k) {\n       \
+    \ k = std::min(WHEEL, SIEVE_SIZE - i);\n        memcpy(si + i, pattern, sizeof(*pattern)\
+    \ * k);\n    }\n \n    // Correctly mark 1, 3, 5, 7, 11, 13 as not prime / primes\n\
+    \    if (offset == 0) {\n        si[0] |= ONES[0];\n        si[0] &= ~(ONES[1]\
+    \ | ONES[2] | ONES[3] | ONES[5] | ONES[6]);\n    }\n \n    // sieve for primes\
+    \ >= 17 (stored in `small_primes`)\n    for (int i = 0; i < N_SMALL_PRIMES; ++i)\
+    \ {\n        uint32_t j = small_primes[i] * (uint32_t) small_primes[i];\n    \
+    \    if (j > offset + SIEVE_SPAN - 1) break;\n        if (j > offset) j = (j -\
+    \ offset) >> 1;\n        else {\n            j = small_primes[i] - offset % small_primes[i];\n\
     \            if ((j & 1) == 0) j += small_primes[i];\n            j >>= 1;\n \
     \       }\n        while (j < SIEVE_SPAN / 2) {\n            mark(si, j);\n  \
     \          j += small_primes[i];\n        }\n    }\n}\n// }}}\n \ntemplate<typename\
-    \ F>\nvoid sieve(int MAX, F func) {\n    // init small primes {{{\n    for (int\
-    \ i = 0; i < 64; ++i) ONES[i] = 1ULL << i;\n \n    // sieve to find small primes\n\
-    \    for (int i = 3; i < 256; i += 2) {\n        if (test(si, i >> 1)) {\n   \
-    \         for (int j = i*i / 2; j < 32768; j += i) mark(si, j);\n        }\n \
-    \   }\n    // store primes >= 17 in `small_primes` (we will sieve differently\n\
+    \ F>\nvoid sieve(uint32_t MAX, F func) {\n    // init small primes {{{\n    for\
+    \ (int i = 0; i < 64; ++i) ONES[i] = 1ULL << i;\n \n    // sieve to find small\
+    \ primes\n    for (int i = 3; i < 256; i += 2) {\n        if (test(si, i >> 1))\
+    \ {\n            for (int j = i*i / 2; j < 32768; j += i) mark(si, j);\n     \
+    \   }\n    }\n    // store primes >= 17 in `small_primes` (we will sieve differently\n\
     \    // for primes 2, 3, 5, 7, 11, 13)\n    {\n        int m = 0;\n        for\
     \ (int i = 8; i < 32768; ++i) {\n            if (test(si, i)) small_primes[m++]\
     \ = i*2 + 1;\n        }\n        assert(m == N_SMALL_PRIMES);\n    }\n    // }}}\n\
@@ -127,10 +130,10 @@ data:
     \ < WHEEL * 64; i += 5) mark(pattern, i);\n    for (int i = 3; i < WHEEL * 64;\
     \ i += 7) mark(pattern, i);\n    for (int i = 5; i < WHEEL * 64; i += 11) mark(pattern,\
     \ i);\n    for (int i = 6; i < WHEEL * 64; i += 13) mark(pattern, i);\n \n   \
-    \ // Segmented sieve\n    if (2 <= MAX) func(2);\n    for (int offset = 0; offset\
-    \ < MAX; offset += SIEVE_SPAN) {\n        update_sieve(offset);\n \n        for\
-    \ (uint32_t j = 0; j < SIEVE_SIZE; j++){\n            uint64_t x = ~si[j];\n \
-    \           while (x){\n                uint32_t p = offset + (j << 7) + (__builtin_ctzll(x)\
+    \ // Segmented sieve\n    if (2 <= MAX) func(2);\n    for (uint32_t offset = 0;\
+    \ offset < MAX; offset += SIEVE_SPAN) {\n        update_sieve(offset);\n \n  \
+    \      for (uint32_t j = 0; j < SIEVE_SIZE; j++){\n            uint64_t x = ~si[j];\n\
+    \            while (x){\n                uint32_t p = offset + (j << 7) + (__builtin_ctzll(x)\
     \ << 1) + 1;\n                if (p > offset + SIEVE_SPAN - 1) break;\n      \
     \          if (p <= MAX) {\n                    func(p);\n                }\n\
     \                x ^= (-x & x);\n            }\n        }\n    }\n}\n}\nusing\
@@ -139,9 +142,10 @@ data:
   isVerificationFile: false
   path: Math/Prime/SieveFast.h
   requiredBy: []
-  timestamp: '2022-12-14 02:22:04+08:00'
+  timestamp: '2022-12-26 19:50:08+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Math/tests/rabin_miller_32_stress.test.cpp
   - Math/tests/sieve_fast.test.cpp
 documentation_of: Math/Prime/SieveFast.h
 layout: document
