@@ -5,10 +5,13 @@ data:
     path: Misc/compress.h
     title: Misc/compress.h
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: DP/tests/yosupo_cnt_distinct_subseq.test.cpp
+    title: DP/tests/yosupo_cnt_distinct_subseq.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"Misc/compress.h\"\n// Compressor {{{\n/* Example usage:\n\
@@ -76,8 +79,9 @@ data:
   path: DP/cnt_distinct_subseq.h
   requiredBy: []
   timestamp: '2022-12-26 18:08:50+08:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - DP/tests/yosupo_cnt_distinct_subseq.test.cpp
 documentation_of: DP/cnt_distinct_subseq.h
 layout: document
 redirect_from:

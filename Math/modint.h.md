@@ -10,6 +10,9 @@ data:
     title: String/hash.h
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: DP/tests/yosupo_cnt_distinct_subseq.test.cpp
+    title: DP/tests/yosupo_cnt_distinct_subseq.test.cpp
+  - icon: ':heavy_check_mark:'
     path: DataStructure/test/hld_vertexsetpathcomposite.test.cpp
     title: DataStructure/test/hld_vertexsetpathcomposite.test.cpp
   - icon: ':heavy_check_mark:'
@@ -214,6 +217,7 @@ data:
   - Math/tests/ntt_any_mod.test.cpp
   - Math/tests/formal_power_series_multiply.test.cpp
   - Math/tests/ntt.test.cpp
+  - DP/tests/yosupo_cnt_distinct_subseq.test.cpp
 documentation_of: Math/modint.h
 layout: document
 redirect_from:

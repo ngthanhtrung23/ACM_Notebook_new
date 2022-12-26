@@ -34,6 +34,9 @@ data:
     path: DP/tests/aizu_dpl_1_d_lis.test.cpp
     title: DP/tests/aizu_dpl_1_d_lis.test.cpp
   - icon: ':heavy_check_mark:'
+    path: DP/tests/yosupo_cnt_distinct_subseq.test.cpp
+    title: DP/tests/yosupo_cnt_distinct_subseq.test.cpp
+  - icon: ':heavy_check_mark:'
     path: DP/tests/yosupo_lis.test.cpp
     title: DP/tests/yosupo_lis.test.cpp
   - icon: ':heavy_check_mark:'
@@ -378,6 +381,7 @@ data:
   - Geometry/tests/aizu_cgl_3_c_polygon_in_polygon.test.cpp
   - DP/tests/aizu_alds1_5_d_count_inversions.test.cpp
   - DP/tests/yosupo_lis.test.cpp
+  - DP/tests/yosupo_cnt_distinct_subseq.test.cpp
   - DP/tests/aizu_dpl_1_d_lis.test.cpp
 documentation_of: template.h
 layout: document

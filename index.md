@@ -3,7 +3,7 @@ data:
   libraryCategories:
   - name: DP
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: DP/cnt_distinct_subseq.h
       title: DP/cnt_distinct_subseq.h
     - icon: ':heavy_check_mark:'
@@ -583,7 +583,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: DP/tests/dynamic_hull_lineaddgetmin.test.cpp
       title: DP/tests/dynamic_hull_lineaddgetmin.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: DP/tests/yosupo_cnt_distinct_subseq.test.cpp
       title: DP/tests/yosupo_cnt_distinct_subseq.test.cpp
     - icon: ':heavy_check_mark:'
