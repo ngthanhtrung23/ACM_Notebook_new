@@ -2,6 +2,7 @@
 
 // Tested: https://www.spoj.com/problems/NUMDIV/
 int64_t cnt_divisors(int64_t n) {
+    assert(n > 0);
     auto ps = factorize(n);
     int cnt_ps = ps.size();
     int i = 0;

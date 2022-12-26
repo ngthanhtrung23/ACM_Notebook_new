@@ -1,3 +1,5 @@
+// NOTE: calculate upto N-1
+//
 // Multiplicative function {{{
 template<int N>
 struct MultiplicativeFunction {

@@ -1,12 +1,13 @@
 // This is only for calculating multiplicative functions
 // If we need a fast sieve, see SieveFast.h
 // From https://codeforces.com/blog/entry/54090
+namespace linear_sieve {
 const int MN = 2e7;
 vector<int> primes;
 
 // Euler Phi {{{
-bool is_composite[MAXN];
-int phi[MAXN];
+bool is_composite[MN];
+int phi[MN];
 
 void linear_sieve_phi(int n) {
     memset(is_composite, false, sizeof is_composite);
@@ -15,16 +16,16 @@ void linear_sieve_phi(int n) {
     phi[1] = 1;
     for (int i = 2; i < n; ++i) {
         if (!is_composite[i]) {
-            prime.push_back(i);
+            primes.push_back(i);
             phi[i] = i - 1; // i is prime
         }
-        for (int j = 0; j < prime.size () && i * prime[j] < n; ++j) {
-            is_composite[i * prime[j]] = true;
-            if (i % prime[j] == 0) {
-                phi[i * prime[j]] = phi[i] * prime[j]; //prime[j] divides i
+        for (int j = 0; j < (int) primes.size() && i * primes[j] < n; ++j) {
+            is_composite[i * primes[j]] = true;
+            if (i % primes[j] == 0) {
+                phi[i * primes[j]] = phi[i] * primes[j]; //primes[j] divides i
                 break;
             } else {
-                phi[i * prime[j]] = phi[i] * phi[prime[j]]; //prime[j] does not divide i
+                phi[i * primes[j]] = phi[i] * phi[primes[j]]; //primes[j] does not divide i
             }
         }
     }
@@ -59,3 +60,5 @@ void linear_sieve_divisors(int n) {  // init range [1, n-1]
     }
 }
 // }}}
+
+}
