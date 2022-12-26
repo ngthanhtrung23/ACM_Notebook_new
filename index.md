@@ -89,7 +89,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/LinkCutTree.h
       title: DataStructure/LinkCutTree.h
-    - icon: ':warning:'
+    - icon: ':x:'
       path: DataStructure/MoAlgorithm.h
       title: DataStructure/MoAlgorithm.h
     - icon: ':warning:'
@@ -563,7 +563,7 @@ data:
     - icon: ':warning:'
       path: debug.h
       title: debug.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template.h
       title: template.h
   verificationCategories:
@@ -682,6 +682,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp
       title: DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp
+    - icon: ':x:'
+      path: DataStructure/test/mo_algorithm.test.cpp
+      title: DataStructure/test/mo_algorithm.test.cpp
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/persistent_dsu.test.cpp
       title: DataStructure/test/persistent_dsu.test.cpp
