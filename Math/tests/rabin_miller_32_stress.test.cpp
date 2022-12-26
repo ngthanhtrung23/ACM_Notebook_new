@@ -1,4 +1,4 @@
-#define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_D"
+#define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A"
 
 #include "../../template.h"
 #include "../Prime/SieveFast.h"
@@ -14,8 +14,7 @@ void solve() {
     sieve(INT_MAX, newPrime);
     cerr << "DONE SIEVE" << endl;
     for (int i = 0; i < INT_MAX; ++i) {
-        // Test only 10% of numbers..
-        if (rand() % 10) continue;
+        if (rand() % 30) continue;
         if (all_primes[i] == 1) assert(is_prime(i));
         else assert(!is_prime(i));
     }
