@@ -342,7 +342,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/bigint.h
       title: Math/bigint.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Math/modint.h
       title: Math/modint.h
     - icon: ':warning:'
@@ -527,7 +527,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: String/SuffixArray.h
       title: String/SuffixArray.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: String/hash.h
       title: String/hash.h
     - icon: ':warning:'
@@ -568,7 +568,7 @@ data:
     - icon: ':warning:'
       path: debug.h
       title: debug.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template.h
       title: template.h
   verificationCategories:
@@ -1033,7 +1033,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: String/tests/zfunc.test.cpp
       title: String/tests/zfunc.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: String/tests/zfunc_hash.test.cpp
       title: String/tests/zfunc_hash.test.cpp
 layout: toppage

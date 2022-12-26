@@ -5,7 +5,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: String/SuffixArray.h
     title: String/SuffixArray.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: String/hash.h
     title: String/hash.h
   _extendedVerifiedWith:
@@ -63,12 +63,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: String/tests/yukicoder_1408_string_hash_lcp.test.cpp
     title: String/tests/yukicoder_1408_string_hash_lcp.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: String/tests/zfunc_hash.test.cpp
     title: String/tests/zfunc_hash.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"Math/modint.h\"\n// ModInt {{{\ntemplate<int MD> struct\
@@ -201,7 +201,7 @@ data:
   - String/SuffixArray.h
   - String/hash.h
   timestamp: '2022-08-21 23:32:29+08:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - String/tests/aizu_alds_14_b_string_hash.test.cpp
   - String/tests/lcp.test.cpp

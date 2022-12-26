@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Math/Polynomial/NTT.h
     title: Math/Polynomial/NTT.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Math/modint.h
     title: Math/modint.h
   _extendedRequiredBy: []

@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Math/modint.h
     title: Math/modint.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: String/hash.h
     title: String/hash.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/zalgorithm
@@ -171,14 +171,14 @@ data:
     \ int r) const {\n        assert(0 <= l && l <= r && r < (int) h.size());\n  \
     \      return h[r] - (l == 0 ? Hash{0, 0} : h[l-1]);\n    }\n};\n// }}}\n#line\
     \ 5 \"String/tests/zfunc_hash.test.cpp\"\n\nvoid solve() {\n    HashGenerator\
-    \ g(500111);\n    string s; cin >> s;\n    auto h = g.hash(s);\n\n    REP(i,SZ(s))\
-    \ {\n        cout << g.maxCommonPrefix(h, 0, SZ(s)-1, h, i, SZ(s)-1) << ' ';\n\
-    \    }\n    cout << endl;\n}\n"
+    \ g(500111);\n    string s; cin >> s;\n    auto h = g.hash(s);\n\n    int n =\
+    \ s.size();\n    REP(i,n) {\n        cout << g.maxCommonPrefix(h, 0, n-1, h, i,\
+    \ n-1) << ' ';\n    }\n    cout << endl;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/zalgorithm\"\n\n#include\
     \ \"../../template.h\"\n#include \"../hash.h\"\n\nvoid solve() {\n    HashGenerator\
-    \ g(500111);\n    string s; cin >> s;\n    auto h = g.hash(s);\n\n    REP(i,SZ(s))\
-    \ {\n        cout << g.maxCommonPrefix(h, 0, SZ(s)-1, h, i, SZ(s)-1) << ' ';\n\
-    \    }\n    cout << endl;\n}\n"
+    \ g(500111);\n    string s; cin >> s;\n    auto h = g.hash(s);\n\n    int n =\
+    \ s.size();\n    REP(i,n) {\n        cout << g.maxCommonPrefix(h, 0, n-1, h, i,\
+    \ n-1) << ' ';\n    }\n    cout << endl;\n}\n"
   dependsOn:
   - template.h
   - String/hash.h
@@ -186,8 +186,8 @@ data:
   isVerificationFile: true
   path: String/tests/zfunc_hash.test.cpp
   requiredBy: []
-  timestamp: '2022-12-26 18:23:29+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2022-12-26 18:31:38+08:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: String/tests/zfunc_hash.test.cpp
 layout: document

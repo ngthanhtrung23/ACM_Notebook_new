@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/LazySegTree.h
     title: DataStructure/LazySegTree.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Math/modint.h
     title: Math/modint.h
   - icon: ':heavy_check_mark:'

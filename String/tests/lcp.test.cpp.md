@@ -4,13 +4,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/RMQ.h
     title: DataStructure/RMQ.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Math/modint.h
     title: Math/modint.h
   - icon: ':heavy_check_mark:'
     path: String/SuffixArray.h
     title: String/SuffixArray.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: String/hash.h
     title: String/hash.h
   _extendedRequiredBy: []
