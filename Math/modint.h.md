@@ -5,7 +5,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: String/SuffixArray.h
     title: String/SuffixArray.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: String/hash.h
     title: String/hash.h
   _extendedVerifiedWith:
@@ -63,9 +63,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: String/tests/yukicoder_1408_string_hash_lcp.test.cpp
     title: String/tests/yukicoder_1408_string_hash_lcp.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: String/tests/zfunc_hash.test.cpp
+    title: String/tests/zfunc_hash.test.cpp
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"Math/modint.h\"\n// ModInt {{{\ntemplate<int MD> struct\
@@ -198,13 +201,14 @@ data:
   - String/SuffixArray.h
   - String/hash.h
   timestamp: '2022-08-21 23:32:29+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - String/tests/aizu_alds_14_b_string_hash.test.cpp
   - String/tests/lcp.test.cpp
   - String/tests/suffix_array_queries.test.cpp
   - String/tests/yukicoder_1408_string_hash_lcp.test.cpp
   - String/tests/suffix_array.test.cpp
+  - String/tests/zfunc_hash.test.cpp
   - DataStructure/test/hld_vertexsetpathcomposite.test.cpp
   - DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
   - DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp

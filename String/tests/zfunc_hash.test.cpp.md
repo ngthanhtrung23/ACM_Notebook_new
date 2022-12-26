@@ -12,24 +12,24 @@ data:
     title: template.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://yukicoder.me/problems/1408
+    PROBLEM: https://judge.yosupo.jp/problem/zalgorithm
     links:
-    - https://yukicoder.me/problems/1408
-  bundledCode: "#line 1 \"String/tests/yukicoder_1408_string_hash_lcp.test.cpp\"\n\
-    #define PROBLEM \"https://yukicoder.me/problems/1408\"\n\n#line 1 \"template.h\"\
-    \n#include <bits/stdc++.h>\nusing namespace std;\n\n#define FOR(i,a,b) for(int\
-    \ i=(a),_b=(b); i<=_b; i++)\n#define FORD(i,a,b) for(int i=(a),_b=(b); i>=_b;\
-    \ i--)\n#define REP(i,a) for(int i=0,_a=(a); i<_a; i++)\n#define EACH(it,a) for(__typeof(a.begin())\
-    \ it = a.begin(); it != a.end(); ++it)\n\n#define DEBUG(x) { cout << #x << \"\
-    \ = \"; cout << (x) << endl; }\n#define PR(a,n) { cout << #a << \" = \"; FOR(_,1,n)\
-    \ cout << a[_] << ' '; cout << endl; }\n#define PR0(a,n) { cout << #a << \" =\
-    \ \"; REP(_,n) cout << a[_] << ' '; cout << endl; }\n\n#define sqr(x) ((x) * (x))\n\
-    \n// For printing pair, container, etc.\n// Copied from https://quangloc99.github.io/2021/07/30/my-CP-debugging-template.html\n\
+    - https://judge.yosupo.jp/problem/zalgorithm
+  bundledCode: "#line 1 \"String/tests/zfunc_hash.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/zalgorithm\"\
+    \n\n#line 1 \"template.h\"\n#include <bits/stdc++.h>\nusing namespace std;\n\n\
+    #define FOR(i,a,b) for(int i=(a),_b=(b); i<=_b; i++)\n#define FORD(i,a,b) for(int\
+    \ i=(a),_b=(b); i>=_b; i--)\n#define REP(i,a) for(int i=0,_a=(a); i<_a; i++)\n\
+    #define EACH(it,a) for(__typeof(a.begin()) it = a.begin(); it != a.end(); ++it)\n\
+    \n#define DEBUG(x) { cout << #x << \" = \"; cout << (x) << endl; }\n#define PR(a,n)\
+    \ { cout << #a << \" = \"; FOR(_,1,n) cout << a[_] << ' '; cout << endl; }\n#define\
+    \ PR0(a,n) { cout << #a << \" = \"; REP(_,n) cout << a[_] << ' '; cout << endl;\
+    \ }\n\n#define sqr(x) ((x) * (x))\n\n// For printing pair, container, etc.\n//\
+    \ Copied from https://quangloc99.github.io/2021/07/30/my-CP-debugging-template.html\n\
     template<class U, class V> ostream& operator << (ostream& out, const pair<U, V>&\
     \ p) {\n    return out << '(' << p.first << \", \" << p.second << ')';\n}\n\n\
     template<class Con, class = decltype(begin(declval<Con>()))>\ntypename enable_if<!is_same<Con,\
@@ -170,39 +170,29 @@ data:
     \ doesn't divide by p[l]\n    Hash __getHash(const std::vector<Hash>& h, int l,\
     \ int r) const {\n        assert(0 <= l && l <= r && r < (int) h.size());\n  \
     \      return h[r] - (l == 0 ? Hash{0, 0} : h[l-1]);\n    }\n};\n// }}}\n#line\
-    \ 5 \"String/tests/yukicoder_1408_string_hash_lcp.test.cpp\"\n#define SZ(x) ((int)(x).size())\n\
-    \nHashGenerator g(1000111);\nvoid solve() {\n    int n; std::cin >> n;\n\n   \
-    \ std::vector<std::vector<Hash>> hs;\n    for (int i = 0; i < n; i++) {\n    \
-    \    std::string s; std::cin >> s;\n\n        hs.push_back(g.hash(s));\n    }\n\
-    \n    int m;\n    long long x, d, res = 0;\n    std::cin >> m >> x >> d;\n\n \
-    \   while (m--) {\n        int i = x / (n - 1);\n        int j = x % (n - 1);\n\
-    \        if (i <= j) ++j;\n        x = (x + d) % (n * (n-1LL));\n\n        res\
-    \ += g.maxCommonPrefix(\n                hs[i], 0, SZ(hs[i]) - 1,\n          \
-    \      hs[j], 0, SZ(hs[j]) - 1);\n    }\n    std::cout << res << '\\n';\n}\n"
-  code: "#define PROBLEM \"https://yukicoder.me/problems/1408\"\n\n#include \"../../template.h\"\
-    \n#include \"../hash.h\"\n#define SZ(x) ((int)(x).size())\n\nHashGenerator g(1000111);\n\
-    void solve() {\n    int n; std::cin >> n;\n\n    std::vector<std::vector<Hash>>\
-    \ hs;\n    for (int i = 0; i < n; i++) {\n        std::string s; std::cin >> s;\n\
-    \n        hs.push_back(g.hash(s));\n    }\n\n    int m;\n    long long x, d, res\
-    \ = 0;\n    std::cin >> m >> x >> d;\n\n    while (m--) {\n        int i = x /\
-    \ (n - 1);\n        int j = x % (n - 1);\n        if (i <= j) ++j;\n        x\
-    \ = (x + d) % (n * (n-1LL));\n\n        res += g.maxCommonPrefix(\n          \
-    \      hs[i], 0, SZ(hs[i]) - 1,\n                hs[j], 0, SZ(hs[j]) - 1);\n \
-    \   }\n    std::cout << res << '\\n';\n}\n"
+    \ 5 \"String/tests/zfunc_hash.test.cpp\"\n\nvoid solve() {\n    HashGenerator\
+    \ g(500111);\n    string s; cin >> s;\n    auto h = g.hash(s);\n\n    REP(i,SZ(s))\
+    \ {\n        cout << g.maxCommonPrefix(h, 0, SZ(s)-1, h, i, SZ(s)-1) << ' ';\n\
+    \    }\n    cout << endl;\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/zalgorithm\"\n\n#include\
+    \ \"../../template.h\"\n#include \"../hash.h\"\n\nvoid solve() {\n    HashGenerator\
+    \ g(500111);\n    string s; cin >> s;\n    auto h = g.hash(s);\n\n    REP(i,SZ(s))\
+    \ {\n        cout << g.maxCommonPrefix(h, 0, SZ(s)-1, h, i, SZ(s)-1) << ' ';\n\
+    \    }\n    cout << endl;\n}\n"
   dependsOn:
   - template.h
   - String/hash.h
   - Math/modint.h
   isVerificationFile: true
-  path: String/tests/yukicoder_1408_string_hash_lcp.test.cpp
+  path: String/tests/zfunc_hash.test.cpp
   requiredBy: []
-  timestamp: '2022-10-08 21:15:49-04:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2022-12-26 18:23:29+08:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: String/tests/yukicoder_1408_string_hash_lcp.test.cpp
+documentation_of: String/tests/zfunc_hash.test.cpp
 layout: document
 redirect_from:
-- /verify/String/tests/yukicoder_1408_string_hash_lcp.test.cpp
-- /verify/String/tests/yukicoder_1408_string_hash_lcp.test.cpp.html
-title: String/tests/yukicoder_1408_string_hash_lcp.test.cpp
+- /verify/String/tests/zfunc_hash.test.cpp
+- /verify/String/tests/zfunc_hash.test.cpp.html
+title: String/tests/zfunc_hash.test.cpp
 ---

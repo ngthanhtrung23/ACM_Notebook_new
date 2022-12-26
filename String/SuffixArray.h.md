@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/RMQ.h
     title: DataStructure/RMQ.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Math/modint.h
     title: Math/modint.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: String/hash.h
     title: String/hash.h
   _extendedRequiredBy: []

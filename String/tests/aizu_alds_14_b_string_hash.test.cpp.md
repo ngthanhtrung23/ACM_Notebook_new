@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Math/modint.h
     title: Math/modint.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: String/hash.h
     title: String/hash.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []

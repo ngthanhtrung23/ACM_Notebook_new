@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Math/modint.h
     title: Math/modint.h
   _extendedRequiredBy:
@@ -24,9 +24,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: String/tests/yukicoder_1408_string_hash_lcp.test.cpp
     title: String/tests/yukicoder_1408_string_hash_lcp.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: String/tests/zfunc_hash.test.cpp
+    title: String/tests/zfunc_hash.test.cpp
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://oj.vnoi.info/problem/dtksub
@@ -225,13 +228,14 @@ data:
   requiredBy:
   - String/SuffixArray.h
   timestamp: '2022-10-08 21:15:49-04:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - String/tests/aizu_alds_14_b_string_hash.test.cpp
   - String/tests/lcp.test.cpp
   - String/tests/suffix_array_queries.test.cpp
   - String/tests/yukicoder_1408_string_hash_lcp.test.cpp
   - String/tests/suffix_array.test.cpp
+  - String/tests/zfunc_hash.test.cpp
 documentation_of: String/hash.h
 layout: document
 redirect_from:
