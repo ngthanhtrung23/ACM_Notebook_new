@@ -21,9 +21,6 @@ data:
     path: Geometry/polygon.cpp
     title: Geometry/polygon.cpp
   - icon: ':warning:'
-    path: Math/Polynomial/VOJ_POST2.cpp
-    title: Math/Polynomial/VOJ_POST2.cpp
-  - icon: ':warning:'
     path: Misc/Die.cpp
     title: Misc/Die.cpp
   - icon: ':warning:'
@@ -322,7 +319,6 @@ data:
   - Misc/Die.cpp
   - String/minmove.cpp
   - String/lyndon.cpp
-  - Math/Polynomial/VOJ_POST2.cpp
   - Geometry/circle.cpp
   - Geometry/SPOJ_ALIENS.cpp
   - Geometry/basic.cpp

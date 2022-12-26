@@ -420,9 +420,6 @@ data:
     - icon: ':warning:'
       path: Math/Polynomial/PolynomialValues.h
       title: Math/Polynomial/PolynomialValues.h
-    - icon: ':warning:'
-      path: Math/Polynomial/VOJ_POST2.cpp
-      title: Math/Polynomial/VOJ_POST2.cpp
     - icon: ':heavy_check_mark:'
       path: Math/Polynomial/xorFFT.h
       title: Math/Polynomial/xorFFT.h

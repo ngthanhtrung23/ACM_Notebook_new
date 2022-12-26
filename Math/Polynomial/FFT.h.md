@@ -1,10 +1,7 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: Math/Polynomial/VOJ_POST2.cpp
-    title: Math/Polynomial/VOJ_POST2.cpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: h
@@ -105,8 +102,7 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: Math/Polynomial/FFT.h
-  requiredBy:
-  - Math/Polynomial/VOJ_POST2.cpp
+  requiredBy: []
   timestamp: '2022-11-27 02:07:49+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
