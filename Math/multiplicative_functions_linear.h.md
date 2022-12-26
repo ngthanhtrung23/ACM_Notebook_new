@@ -6,6 +6,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Math/tests/cnt_divisors_stress.test.cpp
     title: Math/tests/cnt_divisors_stress.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Math/tests/euler_phi_stress.test.cpp
+    title: Math/tests/euler_phi_stress.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -69,6 +72,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Math/tests/cnt_divisors_stress.test.cpp
+  - Math/tests/euler_phi_stress.test.cpp
 documentation_of: Math/multiplicative_functions_linear.h
 layout: document
 redirect_from:

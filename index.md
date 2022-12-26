@@ -949,6 +949,9 @@ data:
       path: Math/tests/convolution_xor.test.cpp
       title: Math/tests/convolution_xor.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Math/tests/euler_phi_stress.test.cpp
+      title: Math/tests/euler_phi_stress.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Math/tests/factorize.test.cpp
       title: Math/tests/factorize.test.cpp
     - icon: ':heavy_check_mark:'

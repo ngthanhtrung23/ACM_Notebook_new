@@ -235,6 +235,9 @@ data:
     path: Math/tests/cnt_divisors_stress.test.cpp
     title: Math/tests/cnt_divisors_stress.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Math/tests/euler_phi_stress.test.cpp
+    title: Math/tests/euler_phi_stress.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Math/tests/is_prime_yukicoder.test.cpp
     title: Math/tests/is_prime_yukicoder.test.cpp
   - icon: ':heavy_check_mark:'
@@ -372,6 +375,7 @@ data:
   - Math/tests/aizu_ntl_2_d_bigint_div.test.cpp
   - Math/tests/aizu_ntl_2_c_bigint_mul_karatsuba.test.cpp
   - Math/tests/aizu_ntl_2_b_bigint_sub.test.cpp
+  - Math/tests/euler_phi_stress.test.cpp
   - Math/tests/aizu_ntl_1_e_extended_euclid.test.cpp
   - Geometry/tests/aizu_cgl_2_c_basic_line_intersection.test.cpp
   - Geometry/tests/z_basic_segment_intersect.test.cpp
