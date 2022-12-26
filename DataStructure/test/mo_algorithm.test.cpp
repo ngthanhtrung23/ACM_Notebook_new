@@ -13,12 +13,12 @@ void solve() {
         queries[i].r--;
     }
 
-    int sum = 0;
+    int64_t sum = 0;
     auto add = [&] (int id) { sum += a[id]; };
     auto rem = [&] (int id) { sum -= a[id]; };
     auto get = [&] ([[maybe_unused]] const Query& _) { return sum; };
 
     auto res = mo<Query, int, decltype(add), decltype(rem), decltype(get)>
         (n, queries, add, rem, get);
-    for (int r : res) cout << r << '\n';
+    for (auto r : res) cout << r << '\n';
 }
