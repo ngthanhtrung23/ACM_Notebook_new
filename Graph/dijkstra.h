@@ -12,6 +12,7 @@
 // Returns:
 // - distances from start. If unreachable -> dist = INF
 // - previous vertex. Previous[start] = start. If unreachable -> trace = -1
+// Dijkstra {{{
 using ll = long long;
 const ll INF = 1e18;  // must be greater than maximum possible path
 pair<vector<ll>, vector<int>> dijkstra(const vector<vector<pair<int, ll>>>& g, int start) {
@@ -60,3 +61,4 @@ pair<ll, vector<int>> dijkstra(const vector<vector<pair<int, ll>>>& g, int start
     reverse(path.begin(), path.end());
     return {f[target], path};
 }
+// }}}
