@@ -14,6 +14,7 @@ data:
     - https://judge.yosupo.jp/problem/counting_primes
     - https://judge.yosupo.jp/submission/61551
     - https://www.facebook.com/code.cung.rr/posts/pfbid0eAyeQynkVN9evzy7Bnwx52zLeN7EHDE6H9Uur6KTSK2MTiyxJwCV71Wvujqz75vgl
+    - https://www.spoj.com/problems/DIVCNT2/
     - https://www.spoj.com/problems/DIVFACT4/
     - https://www.spoj.com/problems/NTHPRIME/
     - https://www.spoj.com/status/SUMPRIM1,mr_invincible/
@@ -23,7 +24,8 @@ data:
     \ (binary search + prime pi)\n//\n// Notes:\n// - There's simpler O(N^0.75) code\
     \ for prime_pi and prime_sum\n//   Write up: https://www.facebook.com/code.cung.rr/posts/pfbid0eAyeQynkVN9evzy7Bnwx52zLeN7EHDE6H9Uur6KTSK2MTiyxJwCV71Wvujqz75vgl\n\
     //   Implementation:\n//   - prime_sum: https://www.spoj.com/status/SUMPRIM1,mr_invincible/\n\
-    //   This can be modified to implement more complicated things such as\n//   https://www.spoj.com/problems/DIVFACT4/\n\
+    //   - prime_pi: https://www.spoj.com/problems/DIVCNT2/\n//   This can be modified\
+    \ to implement more complicated things such as\n//   https://www.spoj.com/problems/DIVFACT4/\n\
     \n// prime_pi {{{\nusing ll = long long;\nint isqrt(ll n) {\n    return sqrtl(n);\n\
     }\nll prime_pi(const ll N) {\n    if (N <= 1) return 0;\n    if (N == 2) return\
     \ 1;\n    const int v = isqrt(N);\n    int s = (v + 1) / 2;\n    vector<int> smalls(s);\n\
@@ -53,7 +55,8 @@ data:
     \ (binary search + prime pi)\n//\n// Notes:\n// - There's simpler O(N^0.75) code\
     \ for prime_pi and prime_sum\n//   Write up: https://www.facebook.com/code.cung.rr/posts/pfbid0eAyeQynkVN9evzy7Bnwx52zLeN7EHDE6H9Uur6KTSK2MTiyxJwCV71Wvujqz75vgl\n\
     //   Implementation:\n//   - prime_sum: https://www.spoj.com/status/SUMPRIM1,mr_invincible/\n\
-    //   This can be modified to implement more complicated things such as\n//   https://www.spoj.com/problems/DIVFACT4/\n\
+    //   - prime_pi: https://www.spoj.com/problems/DIVCNT2/\n//   This can be modified\
+    \ to implement more complicated things such as\n//   https://www.spoj.com/problems/DIVFACT4/\n\
     \n// prime_pi {{{\nusing ll = long long;\nint isqrt(ll n) {\n    return sqrtl(n);\n\
     }\nll prime_pi(const ll N) {\n    if (N <= 1) return 0;\n    if (N == 2) return\
     \ 1;\n    const int v = isqrt(N);\n    int s = (v + 1) / 2;\n    vector<int> smalls(s);\n\
@@ -82,7 +85,7 @@ data:
   isVerificationFile: false
   path: Math/Prime/PrimePi.h
   requiredBy: []
-  timestamp: '2022-12-14 02:22:04+08:00'
+  timestamp: '2022-12-26 15:37:34+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Math/tests/prime_pi.test.cpp

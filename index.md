@@ -19,6 +19,9 @@ data:
       path: DP/dynamic_hull.h
       title: DP/dynamic_hull.h
     - icon: ':warning:'
+      path: DP/edit_distance.h
+      title: DP/edit_distance.h
+    - icon: ':warning:'
       path: DP/knuth.cpp
       title: DP/knuth.cpp
     - icon: ':heavy_check_mark:'
