@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: DP/tests/dynamic_hull_lineaddgetmin.test.cpp
+    title: DP/tests/dynamic_hull_lineaddgetmin.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://github.com/niklasb/contest-algos/blob/master/convex_hull/dynamic.cpp
@@ -51,8 +54,9 @@ data:
   path: DP/optimizations/dynamic_hull.h
   requiredBy: []
   timestamp: '2022-12-26 18:06:15+08:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - DP/tests/dynamic_hull_lineaddgetmin.test.cpp
 documentation_of: DP/optimizations/dynamic_hull.h
 layout: document
 redirect_from:

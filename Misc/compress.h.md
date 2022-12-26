@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: DP/cnt_distinct_subseq.h
+    title: DP/cnt_distinct_subseq.h
   - icon: ':heavy_check_mark:'
     path: DP/count_inversions.h
     title: DP/count_inversions.h
@@ -118,6 +121,7 @@ data:
   requiredBy:
   - DataStructure/Fenwick2D.h
   - DP/count_inversions.h
+  - DP/cnt_distinct_subseq.h
   timestamp: '2022-12-22 10:28:54+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
