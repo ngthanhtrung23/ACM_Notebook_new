@@ -50,8 +50,9 @@ data:
     \ {\n    PartiallyPersistentFenwick(int _n) : n(_n), f(_n + 1) {\n        for\
     \ (int i = 0; i <= n; ++i) {\n            f[i].emplace_back(INT_MIN, T{});\n \
     \       }\n    }\n\n    // a[u] += val\n    void update(int time, int u, T val)\
-    \ {\n        assert(0 <= u && u < n);\n        ++u;\n        for (; u <= n; u\
-    \ += u & -u) {\n            f[u].emplace_back(time, f[u].back().second + val);\n\
+    \ {\n        assert(0 <= u && u < n);\n        assert(last_updated_time <= time);\n\
+    \        last_updated_time = time;\n        ++u;\n        for (; u <= n; u +=\
+    \ u & -u) {\n            f[u].emplace_back(time, f[u].back().second + val);\n\
     \        }\n    }\n\n    // return a[0] + .. + a[u-1]\n    T get(int time, int\
     \ u) const {\n        assert(0 <= u && u <= n);\n        T res{};\n        for\
     \ (; u > 0; u -= u & -u) {\n            auto it = lower_bound(f[u].begin(), f[u].end(),\
@@ -59,8 +60,8 @@ data:
     \  }\n        return res;\n    }\n\n    // return a[l] + .. + a[r-1]\n    T get(int\
     \ time, int l, int r) const {\n        assert(0 <= l && l <= r && r <= n);\n \
     \       if (l == r) return T{};  // empty\n        return get(time, r) - get(time,\
-    \ l);\n    }\n\n    int n;\n    vector<vector<pair<int, T>>> f;  // (time, data)\n\
-    };\n// }}}\n#line 4 \"DataStructure/test/persistent_fenwick_tree_rmq.test.cpp\"\
+    \ l);\n    }\n\n    int n;\n    int last_updated_time = INT_MIN;\n    vector<vector<pair<int,\
+    \ T>>> f;  // (time, data)\n};\n// }}}\n#line 4 \"DataStructure/test/persistent_fenwick_tree_rmq.test.cpp\"\
     \n\nstruct Data {\n    int x;\n    Data() : x(INT_MAX) {}\n    Data(int _x) :\
     \ x(_x) {}\n};\nData operator + (const Data& a, const Data& b) {\n    return Data{min(a.x,\
     \ b.x)};\n}\nbool operator < (const Data&, const Data&) {\n    return false;\n\
@@ -85,7 +86,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/persistent_fenwick_tree_rmq.test.cpp
   requiredBy: []
-  timestamp: '2022-12-26 17:35:16+08:00'
+  timestamp: '2022-12-26 20:29:27+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/persistent_fenwick_tree_rmq.test.cpp
