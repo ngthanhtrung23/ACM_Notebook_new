@@ -18,7 +18,7 @@ void solve() {
     auto rem = [&] (int id) { sum -= a[id]; };
     auto get = [&] ([[maybe_unused]] const Query& _) { return sum; };
 
-    auto res = mo<Query, int, decltype(add), decltype(rem), decltype(get)>
+    auto res = mo<Query, int64_t, decltype(add), decltype(rem), decltype(get)>
         (n, queries, add, rem, get);
     for (auto r : res) cout << r << '\n';
 }
