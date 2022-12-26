@@ -97,6 +97,9 @@ data:
     path: DataStructure/test/mo_algorithm_with_undo.test.cpp
     title: DataStructure/test/mo_algorithm_with_undo.test.cpp
   - icon: ':heavy_check_mark:'
+    path: DataStructure/test/persistent_fenwick_tree_rmq.test.cpp
+    title: DataStructure/test/persistent_fenwick_tree_rmq.test.cpp
+  - icon: ':heavy_check_mark:'
     path: DataStructure/test/yukicoder_674_range_set.test.cpp
     title: DataStructure/test/yukicoder_674_range_set.test.cpp
   - icon: ':heavy_check_mark:'
@@ -335,6 +338,7 @@ data:
   - DataStructure/test/aizu_dsl_2_d_segment_tree_rangeset.test.cpp
   - DataStructure/test/aizu_dsl_2_f_segment_tree_rangesetmin.test.cpp
   - DataStructure/test/aizu_grl_5_e_hld_edge.test.cpp
+  - DataStructure/test/persistent_fenwick_tree_rmq.test.cpp
   - DataStructure/test/mo_algorithm.test.cpp
   - DataStructure/test/aizu_dsl_4_a_range_set.test.cpp
   - DataStructure/test/aizu_dsl_2_i_segment_tree_rangesetsum.test.cpp

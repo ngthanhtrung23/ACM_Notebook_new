@@ -101,7 +101,7 @@ data:
     - icon: ':warning:'
       path: DataStructure/OrderedSet.h
       title: DataStructure/OrderedSet.h
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/PartiallyPersistentFenwick.h
       title: DataStructure/PartiallyPersistentFenwick.h
     - icon: ':heavy_check_mark:'
@@ -691,6 +691,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/persistent_dsu.test.cpp
       title: DataStructure/test/persistent_dsu.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/test/persistent_fenwick_tree_rmq.test.cpp
+      title: DataStructure/test/persistent_fenwick_tree_rmq.test.cpp
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/rmq.test.cpp
       title: DataStructure/test/rmq.test.cpp
