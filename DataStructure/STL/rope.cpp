@@ -1,3 +1,9 @@
+// Example usages:
+// - https://www.spoj.com/problems/AROPE/
+// - https://www.spoj.com/problems/AROPE2/
+// - (reverse substring) https://www.spoj.com/problems/AROPE3/
+//   -> maintain reverse string
+
 #include <bits/stdc++.h>
 #include <ext/rope> // Slow (balanced BST)!!! do not abuse
 using namespace std;
