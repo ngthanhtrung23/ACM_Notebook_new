@@ -10,9 +10,6 @@ void up(i128& ai, i128& aim, i128 alpha) {
 }
 pair<vector<i128>,i128> pqa(i128 p0, i128 q0, int d) {
     double sqrt_d = sqrt(d);
-    i128 a_i = 1, a_im = 0;
-    i128 b_i = 0, b_im = 1;
-    i128 g_i = q0, g_im = -p0;
     i128 p_i = p0, q_i = q0;
     i128 p_ir = LLONG_MIN, q_ir = LLONG_MIN;
     i128 i = -1, ir = LLONG_MIN;
@@ -23,10 +20,6 @@ pair<vector<i128>,i128> pqa(i128 p0, i128 q0, int d) {
         double xi_i = (p_i + sqrt_d) / q_i;
         double xibar_i = (p_i - sqrt_d) / q_i;
         i128 alpha_i = xi_i + 1e-9;
-
-        up(a_i, a_im, alpha_i);
-        up(b_i, b_im, alpha_i);
-        up(g_i, g_im, alpha_i);
 
         if (ir == LLONG_MIN && 1 < xi_i && -1 < xibar_i && xibar_i < 0) {
             ir = i;
