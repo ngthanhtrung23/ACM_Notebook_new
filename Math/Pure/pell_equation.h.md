@@ -34,54 +34,50 @@ data:
     // Find minimum solution for x^2 - d*y^2 = 1 (d <= 1000)\n// Pell equation {{{\n\
     void up(i128& ai, i128& aim, i128 alpha) {\n    i128 old_ai = ai;\n    ai = alpha\
     \ * ai + aim;\n    aim = old_ai;\n}\npair<vector<i128>,i128> pqa(i128 p0, i128\
-    \ q0, int d) {\n    double sqrt_d = sqrt(d);\n    i128 a_i = 1, a_im = 0;\n  \
-    \  i128 b_i = 0, b_im = 1;\n    i128 g_i = q0, g_im = -p0;\n    i128 p_i = p0,\
-    \ q_i = q0;\n    i128 p_ir = LLONG_MIN, q_ir = LLONG_MIN;\n    i128 i = -1, ir\
-    \ = LLONG_MIN;\n    vector<i128> alphas;\n\n    while (1) {\n        ++i;\n  \
-    \      double xi_i = (p_i + sqrt_d) / q_i;\n        double xibar_i = (p_i - sqrt_d)\
-    \ / q_i;\n        i128 alpha_i = xi_i + 1e-9;\n\n        up(a_i, a_im, alpha_i);\n\
-    \        up(b_i, b_im, alpha_i);\n        up(g_i, g_im, alpha_i);\n\n        if\
-    \ (ir == LLONG_MIN && 1 < xi_i && -1 < xibar_i && xibar_i < 0) {\n           \
-    \ ir = i;\n            p_ir = p_i;\n            q_ir = q_i;\n        }\n     \
-    \   if (ir != LLONG_MIN && ir != i && p_i == p_ir && q_i == q_ir) {\n        \
-    \    break;\n        }\n        alphas.push_back(alpha_i);\n        p_i = alpha_i\
-    \ * q_i - p_i;\n        q_i = (d - p_i * p_i) / q_i;\n    }\n    return {alphas,\
-    \ i - ir};\n}\n\n// return minimum solution for x^2 - d*y^2 = 1\npair<i128,i128>\
-    \ pell(int d) {\n    auto [alphas, l] = pqa(0, 1, d);\n\n    int index = (l %\
-    \ 2 == 1) ? 2*l-1 : l-1;\n\n    i128 b_i = 0, b_im = 1;\n    i128 g_i = 1, g_im\
-    \ = 0;\n    int pl = alphas.size() - l;\n\n    for (int i = 0; i <= index; ++i)\
-    \ {\n        i128 alpha_i;\n        if (i < pl) alpha_i = alphas[i];\n       \
-    \ else alpha_i = alphas[pl + (i - pl) % l];\n\n        up(b_i, b_im, alpha_i);\n\
-    \        up(g_i, g_im, alpha_i);\n    }\n    return {g_i, b_i};\n}\n// }}}\n"
+    \ q0, int d) {\n    double sqrt_d = sqrt(d);\n    i128 p_i = p0, q_i = q0;\n \
+    \   i128 p_ir = LLONG_MIN, q_ir = LLONG_MIN;\n    i128 i = -1, ir = LLONG_MIN;\n\
+    \    vector<i128> alphas;\n\n    while (1) {\n        ++i;\n        double xi_i\
+    \ = (p_i + sqrt_d) / q_i;\n        double xibar_i = (p_i - sqrt_d) / q_i;\n  \
+    \      i128 alpha_i = xi_i + 1e-9;\n\n        if (ir == LLONG_MIN && 1 < xi_i\
+    \ && -1 < xibar_i && xibar_i < 0) {\n            ir = i;\n            p_ir = p_i;\n\
+    \            q_ir = q_i;\n        }\n        if (ir != LLONG_MIN && ir != i &&\
+    \ p_i == p_ir && q_i == q_ir) {\n            break;\n        }\n        alphas.push_back(alpha_i);\n\
+    \        p_i = alpha_i * q_i - p_i;\n        q_i = (d - p_i * p_i) / q_i;\n  \
+    \  }\n    return {alphas, i - ir};\n}\n\n// return minimum solution for x^2 -\
+    \ d*y^2 = 1\npair<i128,i128> pell(int d) {\n    auto [alphas, l] = pqa(0, 1, d);\n\
+    \n    int index = (l % 2 == 1) ? 2*l-1 : l-1;\n\n    i128 b_i = 0, b_im = 1;\n\
+    \    i128 g_i = 1, g_im = 0;\n    int pl = alphas.size() - l;\n\n    for (int\
+    \ i = 0; i <= index; ++i) {\n        i128 alpha_i;\n        if (i < pl) alpha_i\
+    \ = alphas[i];\n        else alpha_i = alphas[pl + (i - pl) % l];\n\n        up(b_i,\
+    \ b_im, alpha_i);\n        up(g_i, g_im, alpha_i);\n    }\n    return {g_i, b_i};\n\
+    }\n// }}}\n"
   code: "#include \"../../Misc/int128.h\"\n\n// From https://github.com/zimpha/algorithmic-library/blob/master/cpp/mathematics/pell.py\n\
     // Find minimum solution for x^2 - d*y^2 = 1 (d <= 1000)\n// Pell equation {{{\n\
     void up(i128& ai, i128& aim, i128 alpha) {\n    i128 old_ai = ai;\n    ai = alpha\
     \ * ai + aim;\n    aim = old_ai;\n}\npair<vector<i128>,i128> pqa(i128 p0, i128\
-    \ q0, int d) {\n    double sqrt_d = sqrt(d);\n    i128 a_i = 1, a_im = 0;\n  \
-    \  i128 b_i = 0, b_im = 1;\n    i128 g_i = q0, g_im = -p0;\n    i128 p_i = p0,\
-    \ q_i = q0;\n    i128 p_ir = LLONG_MIN, q_ir = LLONG_MIN;\n    i128 i = -1, ir\
-    \ = LLONG_MIN;\n    vector<i128> alphas;\n\n    while (1) {\n        ++i;\n  \
-    \      double xi_i = (p_i + sqrt_d) / q_i;\n        double xibar_i = (p_i - sqrt_d)\
-    \ / q_i;\n        i128 alpha_i = xi_i + 1e-9;\n\n        up(a_i, a_im, alpha_i);\n\
-    \        up(b_i, b_im, alpha_i);\n        up(g_i, g_im, alpha_i);\n\n        if\
-    \ (ir == LLONG_MIN && 1 < xi_i && -1 < xibar_i && xibar_i < 0) {\n           \
-    \ ir = i;\n            p_ir = p_i;\n            q_ir = q_i;\n        }\n     \
-    \   if (ir != LLONG_MIN && ir != i && p_i == p_ir && q_i == q_ir) {\n        \
-    \    break;\n        }\n        alphas.push_back(alpha_i);\n        p_i = alpha_i\
-    \ * q_i - p_i;\n        q_i = (d - p_i * p_i) / q_i;\n    }\n    return {alphas,\
-    \ i - ir};\n}\n\n// return minimum solution for x^2 - d*y^2 = 1\npair<i128,i128>\
-    \ pell(int d) {\n    auto [alphas, l] = pqa(0, 1, d);\n\n    int index = (l %\
-    \ 2 == 1) ? 2*l-1 : l-1;\n\n    i128 b_i = 0, b_im = 1;\n    i128 g_i = 1, g_im\
-    \ = 0;\n    int pl = alphas.size() - l;\n\n    for (int i = 0; i <= index; ++i)\
-    \ {\n        i128 alpha_i;\n        if (i < pl) alpha_i = alphas[i];\n       \
-    \ else alpha_i = alphas[pl + (i - pl) % l];\n\n        up(b_i, b_im, alpha_i);\n\
-    \        up(g_i, g_im, alpha_i);\n    }\n    return {g_i, b_i};\n}\n// }}}\n"
+    \ q0, int d) {\n    double sqrt_d = sqrt(d);\n    i128 p_i = p0, q_i = q0;\n \
+    \   i128 p_ir = LLONG_MIN, q_ir = LLONG_MIN;\n    i128 i = -1, ir = LLONG_MIN;\n\
+    \    vector<i128> alphas;\n\n    while (1) {\n        ++i;\n        double xi_i\
+    \ = (p_i + sqrt_d) / q_i;\n        double xibar_i = (p_i - sqrt_d) / q_i;\n  \
+    \      i128 alpha_i = xi_i + 1e-9;\n\n        if (ir == LLONG_MIN && 1 < xi_i\
+    \ && -1 < xibar_i && xibar_i < 0) {\n            ir = i;\n            p_ir = p_i;\n\
+    \            q_ir = q_i;\n        }\n        if (ir != LLONG_MIN && ir != i &&\
+    \ p_i == p_ir && q_i == q_ir) {\n            break;\n        }\n        alphas.push_back(alpha_i);\n\
+    \        p_i = alpha_i * q_i - p_i;\n        q_i = (d - p_i * p_i) / q_i;\n  \
+    \  }\n    return {alphas, i - ir};\n}\n\n// return minimum solution for x^2 -\
+    \ d*y^2 = 1\npair<i128,i128> pell(int d) {\n    auto [alphas, l] = pqa(0, 1, d);\n\
+    \n    int index = (l % 2 == 1) ? 2*l-1 : l-1;\n\n    i128 b_i = 0, b_im = 1;\n\
+    \    i128 g_i = 1, g_im = 0;\n    int pl = alphas.size() - l;\n\n    for (int\
+    \ i = 0; i <= index; ++i) {\n        i128 alpha_i;\n        if (i < pl) alpha_i\
+    \ = alphas[i];\n        else alpha_i = alphas[pl + (i - pl) % l];\n\n        up(b_i,\
+    \ b_im, alpha_i);\n        up(g_i, g_im, alpha_i);\n    }\n    return {g_i, b_i};\n\
+    }\n// }}}\n"
   dependsOn:
   - Misc/int128.h
   isVerificationFile: false
   path: Math/Pure/pell_equation.h
   requiredBy: []
-  timestamp: '2022-12-27 01:22:59+08:00'
+  timestamp: '2022-12-27 16:11:10+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Math/Pure/pell_equation.h
