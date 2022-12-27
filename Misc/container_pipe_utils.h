@@ -5,7 +5,7 @@ template<> struct accumulator_type<uint32_t> { using type = uint64_t; };
 template<> struct accumulator_type<int64_t> { using type = __int128_t; };
 template<> struct accumulator_type<uint64_t> { using type = __uint128_t; };
 
-enum ReduceOperator { MIN, MAX };
+enum ReduceOperator { MIN, MAX, CNT_MAX };
 template<typename Container>
 auto operator | (const Container& a, ReduceOperator op) {
     switch (op) {
@@ -13,6 +13,11 @@ auto operator | (const Container& a, ReduceOperator op) {
             return *min_element(a.begin(), a.end());
         case MAX:
             return *max_element(a.begin(), a.end());
+        case CNT_MAX:
+            auto ma = *max_element(a.begin(), a.end());
+            int cnt = 0;
+            for (const auto& elem : a) cnt += elem == ma;
+            return cnt;
     }
     assert(false);
 }

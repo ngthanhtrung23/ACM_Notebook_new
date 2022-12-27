@@ -53,6 +53,30 @@ struct MultiplicativeFunction {
         return res;
     }
 
+    // mobius(n) = 1  if n is square-free and has *even* number of prime factors
+    // mobius(n) = -1 if n is square-free and has *odd* number of of prime factors
+    // mobius(n) = 0  if n is not square-free
+    array<int, N> mobius() {
+        array<int, N> res;
+        res[1] = 1;
+
+        for (int i = 2; i < N; ++i) {
+            if (pk[i].first > 0) {  // i = p^k
+                res[i] = (pk[i].second >= 2) ? 0 : -1;
+            } else {
+                // i = u * v, gcd(u, v) = 1
+                int u = i, v = 1;
+                int p = sieve[i];
+                while (u % p == 0) {
+                    u /= p;
+                    v *= p;
+                }
+                res[i] = res[u] * res[v];
+            }
+        }
+        return res;
+    }
+
 // private:
     // sieve[i] == 0 if i is prime,
     // sieve[i] = any prime factor p otherwise
