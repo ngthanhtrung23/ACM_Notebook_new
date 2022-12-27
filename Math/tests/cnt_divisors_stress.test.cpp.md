@@ -126,14 +126,24 @@ data:
     \ v) = 1\n                int u = i, v = 1;\n                int p = sieve[i];\n\
     \                while (u % p == 0) {\n                    u /= p;\n         \
     \           v *= p;\n                }\n                res[i] = res[u] * res[v];\n\
-    \            }\n        }\n\n        return res;\n    }\n\n// private:\n    //\
-    \ sieve[i] == 0 if i is prime,\n    // sieve[i] = any prime factor p otherwise\n\
-    \    array<int, N> sieve = {0};\n\n    // pk[i] = {p, k} if i == p^k\n    // pk[i]\
-    \ = {-1, 0} otherwise\n    array<pair<int,int>, N> pk;\n};\n// }}}\n#line 6 \"\
-    Math/tests/cnt_divisors_stress.test.cpp\"\n\nconst int N = 1000000;\nMultiplicativeFunction<N\
-    \ + 1> mf;\nauto divisors = mf.divisors();\n\n#line 1 \"Math/multiplicative_functions_linear.h\"\
-    \n// This is only for calculating multiplicative functions\n// If we need a fast\
-    \ sieve, see SieveFast.h\n// From https://codeforces.com/blog/entry/54090\nnamespace\
+    \            }\n        }\n\n        return res;\n    }\n\n    // mobius(n) =\
+    \ 1  if n is square-free and has *even* number of prime factors\n    // mobius(n)\
+    \ = -1 if n is square-free and has *odd* number of of prime factors\n    // mobius(n)\
+    \ = 0  if n is not square-free\n    array<int, N> mobius() {\n        array<int,\
+    \ N> res;\n        res[1] = 1;\n\n        for (int i = 2; i < N; ++i) {\n    \
+    \        if (pk[i].first > 0) {  // i = p^k\n                res[i] = (pk[i].second\
+    \ >= 2) ? 0 : -1;\n            } else {\n                // i = u * v, gcd(u,\
+    \ v) = 1\n                int u = i, v = 1;\n                int p = sieve[i];\n\
+    \                while (u % p == 0) {\n                    u /= p;\n         \
+    \           v *= p;\n                }\n                res[i] = res[u] * res[v];\n\
+    \            }\n        }\n        return res;\n    }\n\n// private:\n    // sieve[i]\
+    \ == 0 if i is prime,\n    // sieve[i] = any prime factor p otherwise\n    array<int,\
+    \ N> sieve = {0};\n\n    // pk[i] = {p, k} if i == p^k\n    // pk[i] = {-1, 0}\
+    \ otherwise\n    array<pair<int,int>, N> pk;\n};\n// }}}\n#line 6 \"Math/tests/cnt_divisors_stress.test.cpp\"\
+    \n\nconst int N = 1000000;\nMultiplicativeFunction<N + 1> mf;\nauto divisors =\
+    \ mf.divisors();\n\n#line 1 \"Math/multiplicative_functions_linear.h\"\n// This\
+    \ is only for calculating multiplicative functions\n// If we need a fast sieve,\
+    \ see SieveFast.h\n// From https://codeforces.com/blog/entry/54090\nnamespace\
     \ linear_sieve {\nconst int MN = 2e7;\nvector<int> primes;\n\n// Euler Phi {{{\n\
     bool is_composite[MN];\nint phi[MN];\n\nvoid linear_sieve_phi(int n) {\n    memset(is_composite,\
     \ false, sizeof is_composite);\n    primes.clear();\n \n    phi[1] = 1;\n    for\
@@ -177,7 +187,7 @@ data:
   isVerificationFile: true
   path: Math/tests/cnt_divisors_stress.test.cpp
   requiredBy: []
-  timestamp: '2022-12-26 20:16:27+08:00'
+  timestamp: '2022-12-27 15:34:50+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Math/tests/cnt_divisors_stress.test.cpp
