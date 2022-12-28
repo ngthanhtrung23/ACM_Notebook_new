@@ -22,19 +22,20 @@ data:
     \     case CNT_MAX:\n            auto ma = *max_element(a.begin(), a.end());\n\
     \            int cnt = 0;\n            for (const auto& elem : a) cnt += elem\
     \ == ma;\n            return cnt;\n    }\n    assert(false);\n}\nenum SumOperator\
-    \ { SUM };\ntemplate<typename Container>\nauto operator | (const Container& a,\
-    \ SumOperator op) {\n    typename accumulator_type<typename Container::value_type>::type\
+    \ { SUM, SUM_XOR };\ntemplate<typename Container>\nauto operator | (const Container&\
+    \ a, SumOperator op) {\n    typename accumulator_type<typename Container::value_type>::type\
     \ sum{};\n    switch (op) {\n        case SUM:\n            for (const auto& elem\
-    \ : a) sum += elem;\n            return sum;\n    }\n    assert(false);\n}\nenum\
-    \ TransformOperator { ADD_1, COMPRESS, PREFIX_SUM, REVERSE, SORT, SUB_1 };\ntemplate<typename\
-    \ Container>\nContainer& operator | (Container& a, TransformOperator op) {\n \
-    \   __typeof(a) values;\n    switch (op) {\n        case ADD_1:\n            for\
-    \ (auto& elem : a) elem += 1;\n            break;\n        case COMPRESS:\n  \
-    \          values = a;\n            std::sort(values.begin(), values.end());\n\
-    \            values.erase(std::unique(values.begin(), values.end()), values.end());\n\
-    \            for (auto& value : a) value = std::lower_bound(values.begin(), values.end(),\
-    \ value) - values.begin();\n            break;\n        case PREFIX_SUM:\n   \
-    \         std::partial_sum(a.begin(), a.end(), a.begin());\n            break;\n\
+    \ : a) sum += elem;\n            return sum;\n        case SUM_XOR:\n        \
+    \    for (const auto& elem : a) sum ^= elem;\n            return sum;\n    }\n\
+    \    assert(false);\n}\nenum TransformOperator { ADD_1, COMPRESS, PREFIX_SUM,\
+    \ REVERSE, SORT, SUB_1 };\ntemplate<typename Container>\nContainer& operator |\
+    \ (Container& a, TransformOperator op) {\n    __typeof(a) values;\n    switch\
+    \ (op) {\n        case ADD_1:\n            for (auto& elem : a) elem += 1;\n \
+    \           break;\n        case COMPRESS:\n            values = a;\n        \
+    \    std::sort(values.begin(), values.end());\n            values.erase(std::unique(values.begin(),\
+    \ values.end()), values.end());\n            for (auto& value : a) value = std::lower_bound(values.begin(),\
+    \ values.end(), value) - values.begin();\n            break;\n        case PREFIX_SUM:\n\
+    \            std::partial_sum(a.begin(), a.end(), a.begin());\n            break;\n\
     \        case REVERSE:\n            std::reverse(a.begin(), a.end());\n      \
     \      break;\n        case SORT:\n            std::sort(a.begin(), a.end());\n\
     \            break;\n        case SUB_1:\n            for (auto& elem : a) elem\
@@ -57,19 +58,20 @@ data:
     \        case CNT_MAX:\n            auto ma = *max_element(a.begin(), a.end());\n\
     \            int cnt = 0;\n            for (const auto& elem : a) cnt += elem\
     \ == ma;\n            return cnt;\n    }\n    assert(false);\n}\nenum SumOperator\
-    \ { SUM };\ntemplate<typename Container>\nauto operator | (const Container& a,\
-    \ SumOperator op) {\n    typename accumulator_type<typename Container::value_type>::type\
+    \ { SUM, SUM_XOR };\ntemplate<typename Container>\nauto operator | (const Container&\
+    \ a, SumOperator op) {\n    typename accumulator_type<typename Container::value_type>::type\
     \ sum{};\n    switch (op) {\n        case SUM:\n            for (const auto& elem\
-    \ : a) sum += elem;\n            return sum;\n    }\n    assert(false);\n}\nenum\
-    \ TransformOperator { ADD_1, COMPRESS, PREFIX_SUM, REVERSE, SORT, SUB_1 };\ntemplate<typename\
-    \ Container>\nContainer& operator | (Container& a, TransformOperator op) {\n \
-    \   __typeof(a) values;\n    switch (op) {\n        case ADD_1:\n            for\
-    \ (auto& elem : a) elem += 1;\n            break;\n        case COMPRESS:\n  \
-    \          values = a;\n            std::sort(values.begin(), values.end());\n\
-    \            values.erase(std::unique(values.begin(), values.end()), values.end());\n\
-    \            for (auto& value : a) value = std::lower_bound(values.begin(), values.end(),\
-    \ value) - values.begin();\n            break;\n        case PREFIX_SUM:\n   \
-    \         std::partial_sum(a.begin(), a.end(), a.begin());\n            break;\n\
+    \ : a) sum += elem;\n            return sum;\n        case SUM_XOR:\n        \
+    \    for (const auto& elem : a) sum ^= elem;\n            return sum;\n    }\n\
+    \    assert(false);\n}\nenum TransformOperator { ADD_1, COMPRESS, PREFIX_SUM,\
+    \ REVERSE, SORT, SUB_1 };\ntemplate<typename Container>\nContainer& operator |\
+    \ (Container& a, TransformOperator op) {\n    __typeof(a) values;\n    switch\
+    \ (op) {\n        case ADD_1:\n            for (auto& elem : a) elem += 1;\n \
+    \           break;\n        case COMPRESS:\n            values = a;\n        \
+    \    std::sort(values.begin(), values.end());\n            values.erase(std::unique(values.begin(),\
+    \ values.end()), values.end());\n            for (auto& value : a) value = std::lower_bound(values.begin(),\
+    \ values.end(), value) - values.begin();\n            break;\n        case PREFIX_SUM:\n\
+    \            std::partial_sum(a.begin(), a.end(), a.begin());\n            break;\n\
     \        case REVERSE:\n            std::reverse(a.begin(), a.end());\n      \
     \      break;\n        case SORT:\n            std::sort(a.begin(), a.end());\n\
     \            break;\n        case SUB_1:\n            for (auto& elem : a) elem\
@@ -84,7 +86,7 @@ data:
   isVerificationFile: false
   path: Misc/container_pipe_utils.h
   requiredBy: []
-  timestamp: '2022-12-27 15:34:50+08:00'
+  timestamp: '2022-12-28 21:03:26+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Misc/container_pipe_utils.h
