@@ -21,13 +21,16 @@ auto operator | (const Container& a, ReduceOperator op) {
     }
     assert(false);
 }
-enum SumOperator { SUM };
+enum SumOperator { SUM, SUM_XOR };
 template<typename Container>
 auto operator | (const Container& a, SumOperator op) {
     typename accumulator_type<typename Container::value_type>::type sum{};
     switch (op) {
         case SUM:
             for (const auto& elem : a) sum += elem;
+            return sum;
+        case SUM_XOR:
+            for (const auto& elem : a) sum ^= elem;
             return sum;
     }
     assert(false);

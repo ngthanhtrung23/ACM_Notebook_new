@@ -1,11 +1,8 @@
 // NOTE:
-// This code contains various bug fixes compared to the original version from
-// indy256 (github.com/indy256/codelibrary/blob/master/cpp/numbertheory/bigint-full.cpp),
-// including:
-// - Fix overflow bug in mul_karatsuba.
-// - Fix overflow bug in fft.
-// - Fix bug in initialization from long long.
-// - Optimized operators + - *.
+// - Base 10^k. If need base 2^k, see submissions in:
+//   https://www.spoj.com/problems/PBBN2/     (>= 0 only, operations: *, power, xor)
+//   https://www.spoj.com/problems/PELLFOUR/  (see CPP, older submissions)
+//   https://codeforces.com/contest/504/submission/42348976  (with negative, several operations)
 //
 // Tested:
 // - https://www.e-olymp.com/en/problems/266: Comparison
