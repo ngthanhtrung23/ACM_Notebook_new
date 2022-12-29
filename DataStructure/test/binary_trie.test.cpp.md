@@ -49,18 +49,18 @@ data:
     //\n// Notes:\n// - high mem usage. If just need kth_element\n//   -> use OrderedSet.h\
     \ if MAX_VALUE is ~10^6\n//   -> use STL/order_statistic.cpp if MAX_VALUE is big\
     \ / custom type\n//\n// Tested:\n// - (insert, remove, min xor) https://judge.yosupo.jp/problem/set_xor_min\n\
-    // - (insert, max xor) https://cses.fi/problemset/task/1655/\ntemplate<\n    class\
-    \ Val = long long,   // values stored in Trie\n    class Count = long long, //\
-    \ frequency of values\n    int B = (sizeof(Val) * 8 - 2)  // max number of bit\n\
-    > struct BinaryTrie {\n    struct Node {\n        std::array<int, 2> child;\n\
-    \        Count count;\n        Node() : child{-1, -1}, count(0) {}\n    };\n\n\
-    \    BinaryTrie() : nodes{Node()} {} // create root node\n\n    // Number of elements\
-    \ in the trie\n    Count size() {\n        return nodes[0].count;\n    }\n\n \
-    \   void insert(Val x, Count cnt = 1) {\n        update(x, cnt);\n    }\n    void\
-    \ remove(Val x, Count cnt = 1) {\n        update(x, -cnt);\n    }\n\n    // return\
-    \ X: X ^ xor_val is minimum\n    pair<Val, Node> min_element(Val xor_val = 0)\
-    \ {\n        assert(0 < size());\n        return kth_element(0, xor_val);\n  \
-    \  }\n\n    // return X: X ^ xor_val is maximum\n    pair<Val, Node> max_element(Val\
+    // - (insert, max xor) https://cses.fi/problemset/task/1655/\n// Binary trie {{{\n\
+    template<\n    class Val = long long,   // values stored in Trie\n    class Count\
+    \ = long long, // frequency of values\n    int B = (sizeof(Val) * 8 - 1)  // max\
+    \ number of bit\n> struct BinaryTrie {\n    struct Node {\n        std::array<int,\
+    \ 2> child;\n        Count count;\n        Node() : child{-1, -1}, count(0) {}\n\
+    \    };\n\n    BinaryTrie() : nodes{Node()} {} // create root node\n\n    // Number\
+    \ of elements in the trie\n    Count size() {\n        return nodes[0].count;\n\
+    \    }\n\n    void insert(Val x, Count cnt = 1) {\n        update(x, cnt);\n \
+    \   }\n    void remove(Val x, Count cnt = 1) {\n        update(x, -cnt);\n   \
+    \ }\n\n    // return X: X ^ xor_val is minimum\n    pair<Val, Node> min_element(Val\
+    \ xor_val = 0) {\n        assert(0 < size());\n        return kth_element(0, xor_val);\n\
+    \    }\n\n    // return X: X ^ xor_val is maximum\n    pair<Val, Node> max_element(Val\
     \ xor_val = 0) {\n        assert(0 < size());\n        return kth_element(size()\
     \ - 1, xor_val);\n    }\n\n    // return X: X ^ xor_val is K-th (0 <= K < size())\n\
     \    pair<Val, Node> kth_element(Count k, Val xor_val = 0) {\n        assert(0\
@@ -84,7 +84,7 @@ data:
     \            int b = get_bit(x, i);\n            u = get_child(u, b);\n      \
     \  }\n        nodes[u].count += cnt;\n        assert(nodes[u].count >= 0);  //\
     \ prevent over delete\n    }\n\n    inline int get_bit(Val v, int bit) {\n   \
-    \     return (v >> bit) & 1;\n    }\n};\n\n#line 5 \"DataStructure/test/binary_trie.test.cpp\"\
+    \     return (v >> bit) & 1;\n    }\n};\n// }}}\n#line 5 \"DataStructure/test/binary_trie.test.cpp\"\
     \n\nvoid solve() {\n    BinaryTrie<int, int, 30> trie;\n    int q; cin >> q;\n\
     \    while (q--) {\n        int typ, x; cin >> typ >> x;\n        if (typ == 0)\
     \ {\n            int has = trie.count(x);\n            if (has == 0) trie.insert(x);\n\
@@ -105,7 +105,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/binary_trie.test.cpp
   requiredBy: []
-  timestamp: '2022-01-17 03:27:26+08:00'
+  timestamp: '2022-12-29 18:10:21+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/binary_trie.test.cpp

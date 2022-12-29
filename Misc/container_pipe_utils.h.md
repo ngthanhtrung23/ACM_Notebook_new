@@ -28,18 +28,20 @@ data:
     \ : a) sum += elem;\n            return sum;\n        case SUM_XOR:\n        \
     \    for (const auto& elem : a) sum ^= elem;\n            return sum;\n    }\n\
     \    assert(false);\n}\nenum TransformOperator { ADD_1, COMPRESS, PREFIX_SUM,\
-    \ REVERSE, SORT, SUB_1 };\ntemplate<typename Container>\nContainer& operator |\
-    \ (Container& a, TransformOperator op) {\n    __typeof(a) values;\n    switch\
-    \ (op) {\n        case ADD_1:\n            for (auto& elem : a) elem += 1;\n \
-    \           break;\n        case COMPRESS:\n            values = a;\n        \
-    \    std::sort(values.begin(), values.end());\n            values.erase(std::unique(values.begin(),\
+    \ PREFIX_SUM_XOR, REVERSE, SORT, SUB_1 };\ntemplate<typename Container>\nContainer&\
+    \ operator | (Container& a, TransformOperator op) {\n    __typeof(a) values;\n\
+    \    switch (op) {\n        case ADD_1:\n            for (auto& elem : a) elem\
+    \ += 1;\n            break;\n        case COMPRESS:\n            values = a;\n\
+    \            std::sort(values.begin(), values.end());\n            values.erase(std::unique(values.begin(),\
     \ values.end()), values.end());\n            for (auto& value : a) value = std::lower_bound(values.begin(),\
     \ values.end(), value) - values.begin();\n            break;\n        case PREFIX_SUM:\n\
     \            std::partial_sum(a.begin(), a.end(), a.begin());\n            break;\n\
-    \        case REVERSE:\n            std::reverse(a.begin(), a.end());\n      \
-    \      break;\n        case SORT:\n            std::sort(a.begin(), a.end());\n\
-    \            break;\n        case SUB_1:\n            for (auto& elem : a) elem\
-    \ -= 1;\n            break;\n    }\n    return a;\n}\nenum IOOperator { IN, OUT_ONE_PER_LINE,\
+    \        case PREFIX_SUM_XOR:\n            std::partial_sum(a.begin(), a.end(),\
+    \ a.begin(), [] (int x, int y) { return x ^ y; });\n            break;\n     \
+    \   case REVERSE:\n            std::reverse(a.begin(), a.end());\n           \
+    \ break;\n        case SORT:\n            std::sort(a.begin(), a.end());\n   \
+    \         break;\n        case SUB_1:\n            for (auto& elem : a) elem -=\
+    \ 1;\n            break;\n    }\n    return a;\n}\nenum IOOperator { IN, OUT_ONE_PER_LINE,\
     \ OUT_1_LINE };\ntemplate<typename Container>\nContainer& operator | (Container&\
     \ a, IOOperator op) {\n    switch (op) {\n        case IN:\n            for (auto&\
     \ elem : a) cin >> elem;\n            break;\n        case OUT_1_LINE:\n     \
@@ -64,18 +66,20 @@ data:
     \ : a) sum += elem;\n            return sum;\n        case SUM_XOR:\n        \
     \    for (const auto& elem : a) sum ^= elem;\n            return sum;\n    }\n\
     \    assert(false);\n}\nenum TransformOperator { ADD_1, COMPRESS, PREFIX_SUM,\
-    \ REVERSE, SORT, SUB_1 };\ntemplate<typename Container>\nContainer& operator |\
-    \ (Container& a, TransformOperator op) {\n    __typeof(a) values;\n    switch\
-    \ (op) {\n        case ADD_1:\n            for (auto& elem : a) elem += 1;\n \
-    \           break;\n        case COMPRESS:\n            values = a;\n        \
-    \    std::sort(values.begin(), values.end());\n            values.erase(std::unique(values.begin(),\
+    \ PREFIX_SUM_XOR, REVERSE, SORT, SUB_1 };\ntemplate<typename Container>\nContainer&\
+    \ operator | (Container& a, TransformOperator op) {\n    __typeof(a) values;\n\
+    \    switch (op) {\n        case ADD_1:\n            for (auto& elem : a) elem\
+    \ += 1;\n            break;\n        case COMPRESS:\n            values = a;\n\
+    \            std::sort(values.begin(), values.end());\n            values.erase(std::unique(values.begin(),\
     \ values.end()), values.end());\n            for (auto& value : a) value = std::lower_bound(values.begin(),\
     \ values.end(), value) - values.begin();\n            break;\n        case PREFIX_SUM:\n\
     \            std::partial_sum(a.begin(), a.end(), a.begin());\n            break;\n\
-    \        case REVERSE:\n            std::reverse(a.begin(), a.end());\n      \
-    \      break;\n        case SORT:\n            std::sort(a.begin(), a.end());\n\
-    \            break;\n        case SUB_1:\n            for (auto& elem : a) elem\
-    \ -= 1;\n            break;\n    }\n    return a;\n}\nenum IOOperator { IN, OUT_ONE_PER_LINE,\
+    \        case PREFIX_SUM_XOR:\n            std::partial_sum(a.begin(), a.end(),\
+    \ a.begin(), [] (int x, int y) { return x ^ y; });\n            break;\n     \
+    \   case REVERSE:\n            std::reverse(a.begin(), a.end());\n           \
+    \ break;\n        case SORT:\n            std::sort(a.begin(), a.end());\n   \
+    \         break;\n        case SUB_1:\n            for (auto& elem : a) elem -=\
+    \ 1;\n            break;\n    }\n    return a;\n}\nenum IOOperator { IN, OUT_ONE_PER_LINE,\
     \ OUT_1_LINE };\ntemplate<typename Container>\nContainer& operator | (Container&\
     \ a, IOOperator op) {\n    switch (op) {\n        case IN:\n            for (auto&\
     \ elem : a) cin >> elem;\n            break;\n        case OUT_1_LINE:\n     \
@@ -86,7 +90,7 @@ data:
   isVerificationFile: false
   path: Misc/container_pipe_utils.h
   requiredBy: []
-  timestamp: '2022-12-28 21:03:26+08:00'
+  timestamp: '2022-12-29 18:10:21+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Misc/container_pipe_utils.h

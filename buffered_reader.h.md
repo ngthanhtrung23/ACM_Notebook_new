@@ -36,18 +36,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/yosupo_hld_kth_vertex_on_path.test.cpp
     title: DataStructure/test/yosupo_hld_kth_vertex_on_path.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/matrix_det.test.cpp
     title: Math/tests/matrix_det.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/matrix_inverse.test.cpp
     title: Math/tests/matrix_inverse.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/matrix_mult.test.cpp
     title: Math/tests/matrix_mult.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"buffered_reader.h\"\n// Buffered reader {{{\nnamespace IO\
@@ -81,7 +81,7 @@ data:
   path: buffered_reader.h
   requiredBy: []
   timestamp: '2022-12-14 02:22:04+08:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/hld_lca.test.cpp
   - DataStructure/test/fenwick_pointaddrangesum.test.cpp
