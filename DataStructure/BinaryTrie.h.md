@@ -14,6 +14,8 @@ data:
     - https://cses.fi/problemset/task/1655/
     - https://judge.yosupo.jp/problem/set_xor_min
     - https://judge.yosupo.jp/submission/72657
+    - https://www.spoj.com/problems/SUBXOR/
+    - https://www.spoj.com/problems/XORX/
   bundledCode: "#line 1 \"DataStructure/BinaryTrie.h\"\n// Binary Trie\n// Based on\
     \ https://judge.yosupo.jp/submission/72657\n// Supports:\n// - get min / max /\
     \ kth element\n// - given K, find x: x^K is min / max / kth\n//\n// Notes:\n//\
@@ -29,25 +31,35 @@ data:
     \ of elements in the trie\n    Count size() {\n        return nodes[0].count;\n\
     \    }\n\n    void insert(Val x, Count cnt = 1) {\n        update(x, cnt);\n \
     \   }\n    void remove(Val x, Count cnt = 1) {\n        update(x, -cnt);\n   \
-    \ }\n\n    // return X: X ^ xor_val is minimum\n    pair<Val, Node> min_element(Val\
-    \ xor_val = 0) {\n        assert(0 < size());\n        return kth_element(0, xor_val);\n\
-    \    }\n\n    // return X: X ^ xor_val is maximum\n    pair<Val, Node> max_element(Val\
-    \ xor_val = 0) {\n        assert(0 < size());\n        return kth_element(size()\
-    \ - 1, xor_val);\n    }\n\n    // return X: X ^ xor_val is K-th (0 <= K < size())\n\
-    \    pair<Val, Node> kth_element(Count k, Val xor_val = 0) {\n        assert(0\
-    \ <= k && k < size());\n        int u = 0;\n        Val x = 0;\n        for (int\
-    \ i = B - 1; i >= 0; i--) {\n            int b = get_bit(xor_val, i);\n      \
-    \      int v0 = get_child(u, b);\n            if (nodes[v0].count <= k) {\n  \
-    \              k -= nodes[v0].count;\n                u = get_child(u, 1-b);\n\
-    \                x |= 1LL << i;\n            } else {\n                u = v0;\n\
-    \            }\n        }\n        return {x, nodes[u]};\n    }\n\n    // return\
-    \ frequency of x\n    Count count(Val x) {\n        int u = 0;\n        for (int\
-    \ i = B - 1; i >= 0; i--) {\n            int b = get_bit(x, i);\n            if\
-    \ (nodes[u].child[b] == -1) {\n                return 0;\n            }\n    \
-    \        u = get_child(u, b);\n        }\n        return nodes[u].count;\n   \
-    \ }\n\n// private:\n    vector<Node> nodes;\n\n    int get_child(int p, int b)\
-    \ {\n        assert(0 <= p && p < (int) nodes.size());\n        assert(0 <= b\
-    \ && b < 2);\n        if (nodes[p].child[b] == -1) {\n            nodes[p].child[b]\
+    \ }\n\n    // return min(X ^ xor_val)\n    pair<Val, Node> min_element(Val xor_val\
+    \ = 0) {\n        assert(0 < size());\n        return kth_element(0, xor_val);\n\
+    \    }\n\n    // return max(X ^ xor_val)\n    // Tested: https://www.spoj.com/problems/XORX/\n\
+    \    pair<Val, Node> max_element(Val xor_val = 0) {\n        assert(0 < size());\n\
+    \        return kth_element(size() - 1, xor_val);\n    }\n\n    // return k-th\
+    \ smallest (X ^ xor_val)  (0 <= K < size())\n    pair<Val, Node> kth_element(Count\
+    \ k, Val xor_val = 0) {\n        assert(0 <= k && k < size());\n        int u\
+    \ = 0;\n        Val x = 0;\n        for (int i = B - 1; i >= 0; i--) {\n     \
+    \       int b = get_bit(xor_val, i);\n            int v0 = get_child(u, b);\n\
+    \            if (nodes[v0].count <= k) {\n                k -= nodes[v0].count;\n\
+    \                u = get_child(u, 1-b);\n                x |= 1LL << i;\n    \
+    \        } else {\n                u = v0;\n            }\n        }\n       \
+    \ return {x, nodes[u]};\n    }\n\n    // return frequency of x\n    Count count(Val\
+    \ x) {\n        int u = 0;\n        for (int i = B - 1; i >= 0; i--) {\n     \
+    \       int b = get_bit(x, i);\n            if (nodes[u].child[b] == -1) {\n \
+    \               return 0;\n            }\n            u = get_child(u, b);\n \
+    \       }\n        return nodes[u].count;\n    }\n\n    // return how many values\
+    \ a where a ^ xor_val < x\n    // Tested: https://www.spoj.com/problems/SUBXOR/\n\
+    \    Count count_less_than(Val x, Val xor_val) {\n        Count sum = 0;\n   \
+    \     int u = 0;\n        for (int i = B - 1; i >= 0; --i) {\n            int\
+    \ bx = get_bit(x, i);\n            int bxor = get_bit(xor_val, i);\n         \
+    \   if (bx == 1) {\n                // i = first bit where a^xor_val differ from\
+    \ x\n                if (nodes[u].child[bxor] >= 0) {\n                    sum\
+    \ += nodes[nodes[u].child[bxor]].count;\n                }\n            }\n  \
+    \          if (nodes[u].child[bx ^ bxor] == -1) {\n                return sum;\n\
+    \            }\n            u = get_child(u, bx ^ bxor);\n        }\n        return\
+    \ sum;\n    }\n\n// private:\n    vector<Node> nodes;\n\n    int get_child(int\
+    \ p, int b) {\n        assert(0 <= p && p < (int) nodes.size());\n        assert(0\
+    \ <= b && b < 2);\n        if (nodes[p].child[b] == -1) {\n            nodes[p].child[b]\
     \ = nodes.size();\n            nodes.push_back(Node{});\n        }\n        return\
     \ nodes[p].child[b];\n    }\n\n    void update(Val x, Count cnt) {\n        int\
     \ u = 0;\n        for (int i = B - 1; i >= 0; i--) {\n            nodes[u].count\
@@ -70,25 +82,35 @@ data:
     \ node\n\n    // Number of elements in the trie\n    Count size() {\n        return\
     \ nodes[0].count;\n    }\n\n    void insert(Val x, Count cnt = 1) {\n        update(x,\
     \ cnt);\n    }\n    void remove(Val x, Count cnt = 1) {\n        update(x, -cnt);\n\
-    \    }\n\n    // return X: X ^ xor_val is minimum\n    pair<Val, Node> min_element(Val\
+    \    }\n\n    // return min(X ^ xor_val)\n    pair<Val, Node> min_element(Val\
     \ xor_val = 0) {\n        assert(0 < size());\n        return kth_element(0, xor_val);\n\
-    \    }\n\n    // return X: X ^ xor_val is maximum\n    pair<Val, Node> max_element(Val\
-    \ xor_val = 0) {\n        assert(0 < size());\n        return kth_element(size()\
-    \ - 1, xor_val);\n    }\n\n    // return X: X ^ xor_val is K-th (0 <= K < size())\n\
-    \    pair<Val, Node> kth_element(Count k, Val xor_val = 0) {\n        assert(0\
-    \ <= k && k < size());\n        int u = 0;\n        Val x = 0;\n        for (int\
-    \ i = B - 1; i >= 0; i--) {\n            int b = get_bit(xor_val, i);\n      \
-    \      int v0 = get_child(u, b);\n            if (nodes[v0].count <= k) {\n  \
-    \              k -= nodes[v0].count;\n                u = get_child(u, 1-b);\n\
-    \                x |= 1LL << i;\n            } else {\n                u = v0;\n\
-    \            }\n        }\n        return {x, nodes[u]};\n    }\n\n    // return\
-    \ frequency of x\n    Count count(Val x) {\n        int u = 0;\n        for (int\
-    \ i = B - 1; i >= 0; i--) {\n            int b = get_bit(x, i);\n            if\
-    \ (nodes[u].child[b] == -1) {\n                return 0;\n            }\n    \
-    \        u = get_child(u, b);\n        }\n        return nodes[u].count;\n   \
-    \ }\n\n// private:\n    vector<Node> nodes;\n\n    int get_child(int p, int b)\
-    \ {\n        assert(0 <= p && p < (int) nodes.size());\n        assert(0 <= b\
-    \ && b < 2);\n        if (nodes[p].child[b] == -1) {\n            nodes[p].child[b]\
+    \    }\n\n    // return max(X ^ xor_val)\n    // Tested: https://www.spoj.com/problems/XORX/\n\
+    \    pair<Val, Node> max_element(Val xor_val = 0) {\n        assert(0 < size());\n\
+    \        return kth_element(size() - 1, xor_val);\n    }\n\n    // return k-th\
+    \ smallest (X ^ xor_val)  (0 <= K < size())\n    pair<Val, Node> kth_element(Count\
+    \ k, Val xor_val = 0) {\n        assert(0 <= k && k < size());\n        int u\
+    \ = 0;\n        Val x = 0;\n        for (int i = B - 1; i >= 0; i--) {\n     \
+    \       int b = get_bit(xor_val, i);\n            int v0 = get_child(u, b);\n\
+    \            if (nodes[v0].count <= k) {\n                k -= nodes[v0].count;\n\
+    \                u = get_child(u, 1-b);\n                x |= 1LL << i;\n    \
+    \        } else {\n                u = v0;\n            }\n        }\n       \
+    \ return {x, nodes[u]};\n    }\n\n    // return frequency of x\n    Count count(Val\
+    \ x) {\n        int u = 0;\n        for (int i = B - 1; i >= 0; i--) {\n     \
+    \       int b = get_bit(x, i);\n            if (nodes[u].child[b] == -1) {\n \
+    \               return 0;\n            }\n            u = get_child(u, b);\n \
+    \       }\n        return nodes[u].count;\n    }\n\n    // return how many values\
+    \ a where a ^ xor_val < x\n    // Tested: https://www.spoj.com/problems/SUBXOR/\n\
+    \    Count count_less_than(Val x, Val xor_val) {\n        Count sum = 0;\n   \
+    \     int u = 0;\n        for (int i = B - 1; i >= 0; --i) {\n            int\
+    \ bx = get_bit(x, i);\n            int bxor = get_bit(xor_val, i);\n         \
+    \   if (bx == 1) {\n                // i = first bit where a^xor_val differ from\
+    \ x\n                if (nodes[u].child[bxor] >= 0) {\n                    sum\
+    \ += nodes[nodes[u].child[bxor]].count;\n                }\n            }\n  \
+    \          if (nodes[u].child[bx ^ bxor] == -1) {\n                return sum;\n\
+    \            }\n            u = get_child(u, bx ^ bxor);\n        }\n        return\
+    \ sum;\n    }\n\n// private:\n    vector<Node> nodes;\n\n    int get_child(int\
+    \ p, int b) {\n        assert(0 <= p && p < (int) nodes.size());\n        assert(0\
+    \ <= b && b < 2);\n        if (nodes[p].child[b] == -1) {\n            nodes[p].child[b]\
     \ = nodes.size();\n            nodes.push_back(Node{});\n        }\n        return\
     \ nodes[p].child[b];\n    }\n\n    void update(Val x, Count cnt) {\n        int\
     \ u = 0;\n        for (int i = B - 1; i >= 0; i--) {\n            nodes[u].count\
@@ -101,7 +123,7 @@ data:
   isVerificationFile: false
   path: DataStructure/BinaryTrie.h
   requiredBy: []
-  timestamp: '2022-12-29 18:10:21+08:00'
+  timestamp: '2022-12-29 19:07:59+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/binary_trie.test.cpp
