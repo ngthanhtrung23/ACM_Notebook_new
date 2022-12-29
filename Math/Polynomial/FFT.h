@@ -12,7 +12,7 @@
 // FFT {{{
 // Source: https://github.com/kth-competitive-programming/kactl/blob/main/content/numerical/FastFourierTransform.h
 
-using ld = long double;
+using ld = double;
 // Can use std::complex<ld> instead to make code shorter (but it will be slightly slower)
 struct Complex {
     ld x[2];
@@ -60,7 +60,7 @@ void fft(vector<Complex>& a) {
     for (static int k = 2; k < n; k *= 2) {
         R.resize(n);
         rt.resize(n);
-        auto x = Complex(polar(1.0L, acos(-1.0L) / k));
+        auto x = Complex(polar(ld(1.0), acos(ld(-1.0)) / k));
         for (int i = k; i < 2*k; ++i) {
             rt[i] = R[i] = i&1 ? R[i/2] * x : R[i/2];
         }
