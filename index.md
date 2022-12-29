@@ -330,7 +330,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/LinearRecurrence_BerlekampMassey.h
       title: Math/LinearRecurrence_BerlekampMassey.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: Math/Matrix.h
       title: Math/Matrix.h
     - icon: ':warning:'
@@ -342,7 +342,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/bigint.h
       title: Math/bigint.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Math/modint.h
       title: Math/modint.h
     - icon: ':warning:'
@@ -493,6 +493,9 @@ data:
       path: Misc/container_pipe_utils.h
       title: Misc/container_pipe_utils.h
     - icon: ':warning:'
+      path: Misc/input_utils.h
+      title: Misc/input_utils.h
+    - icon: ':warning:'
       path: Misc/int128.h
       title: Misc/int128.h
     - icon: ':heavy_check_mark:'
@@ -562,7 +565,7 @@ data:
       title: String/zfunc.h
   - name: .
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: buffered_reader.h
       title: buffered_reader.h
     - icon: ':warning:'
@@ -966,13 +969,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/tests/is_prime_yukicoder.test.cpp
       title: Math/tests/is_prime_yukicoder.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: Math/tests/matrix_det.test.cpp
       title: Math/tests/matrix_det.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: Math/tests/matrix_inverse.test.cpp
       title: Math/tests/matrix_inverse.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: Math/tests/matrix_mult.test.cpp
       title: Math/tests/matrix_mult.test.cpp
     - icon: ':heavy_check_mark:'

@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/SegTree.h
     title: DataStructure/SegTree.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Math/modint.h
     title: Math/modint.h
   _extendedRequiredBy: []
@@ -142,12 +142,14 @@ data:
     \            ok = false;\n                            break;\n               \
     \         }\n                    if (ok) return g;\n                }\n      \
     \          return -1;\n            }();\n        }\n        return primitive_root;\n\
-    \    }\n    \nprivate:\n    // Internal, DO NOT USE.\n    // val must be in [0,\
-    \ 2*MD)\n    constexpr inline __attribute__((always_inline)) ModInt& _set(ll v)\
-    \ {\n        x = v >= MD ? v - MD : v;\n        return *this;\n    }\n};\ntemplate\
-    \ <int MD> std::vector<ModInt<MD>> ModInt<MD>::factorials = {1};\ntemplate <int\
-    \ MD> std::vector<ModInt<MD>> ModInt<MD>::inv_factorials = {1};\ntemplate <int\
-    \ MD> std::vector<ModInt<MD>> ModInt<MD>::invs = {0};\n// }}}\n#line 1 \"DataStructure/HeavyLight_adamant.h\"\
+    \    }\n\n    static ModInt C(int n, int k) {\n        _precalc(n + 1);\n    \
+    \    return factorials[n] * inv_factorials[k] * inv_factorials[n-k];\n    }\n\
+    \    \nprivate:\n    // Internal, DO NOT USE.\n    // val must be in [0, 2*MD)\n\
+    \    constexpr inline __attribute__((always_inline)) ModInt& _set(ll v) {\n  \
+    \      x = v >= MD ? v - MD : v;\n        return *this;\n    }\n};\ntemplate <int\
+    \ MD> std::vector<ModInt<MD>> ModInt<MD>::factorials = {1};\ntemplate <int MD>\
+    \ std::vector<ModInt<MD>> ModInt<MD>::inv_factorials = {1};\ntemplate <int MD>\
+    \ std::vector<ModInt<MD>> ModInt<MD>::invs = {0};\n// }}}\n#line 1 \"DataStructure/HeavyLight_adamant.h\"\
     \n// Index from 0\n// Best used with SegTree.h\n//\n// Usage:\n// HLD hld(g, root);\n\
     // // build segment tree. Note that we must use hld.order[i]\n// vector<T> nodes;\n\
     // for (int i = 0; i < n; i++)\n//   nodes.push_back(initial_value[hld.order[i]])\n\
@@ -299,7 +301,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/hld_vertexsetpathcomposite.test.cpp
   requiredBy: []
-  timestamp: '2022-12-24 01:16:58+08:00'
+  timestamp: '2022-12-29 17:34:35+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/hld_vertexsetpathcomposite.test.cpp

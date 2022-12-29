@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/Matrix.h
     title: Math/Matrix.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: buffered_reader.h
     title: buffered_reader.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/inverse_matrix
@@ -310,21 +310,25 @@ data:
     \ T>\nostream& operator << (ostream& cout, const Matrix<T>& m) {\n    cout <<\
     \ m.n_row << ' ' << m.n_col << endl;\n    for (int i = 0; i < m.n_row; ++i) {\n\
     \        cout << \"row [\" << i << \"] = \" << m.at(i) << endl;\n    }\n    return\
-    \ cout;\n}\n// }}}\n#line 1 \"buffered_reader.h\"\n// Buffered reader {{{\nnamespace\
-    \ IO {\n    const int BUFSIZE = 1<<14;\n    char buf[BUFSIZE + 1], *inp = buf;\n\
-    \n    bool reacheof;\n    char get_char() {\n        if (!*inp && !reacheof) {\n\
-    \            memset(buf, 0, sizeof buf);\n            int tmp = fread(buf, 1,\
-    \ BUFSIZE, stdin);\n            if (tmp != BUFSIZE) reacheof = true;\n       \
-    \     inp = buf;\n        }\n        return *inp++;\n    }\n    template<typename\
-    \ T>\n    T get() {\n        int neg = 0;\n        T res = 0;\n        char c\
-    \ = get_char();\n        while (!std::isdigit(c) && c != '-' && c != '+') c =\
-    \ get_char();\n        if (c == '+') { neg = 0; }\n        else if (c == '-')\
-    \ { neg = 1; }\n        else res = c - '0';\n\n        c = get_char();\n     \
-    \   while (std::isdigit(c)) {\n            res = res * 10 + (c - '0');\n     \
-    \       c = get_char();\n        }\n        return neg ? -res : res;\n    }\n\
-    };\n// Helper methods\nint ri() {\n    return IO::get<int>();\n}\n// }}}\n#line\
-    \ 10 \"Math/tests/matrix_inverse.test.cpp\"\n\n#define REP(i, a) for (int i =\
-    \ 0, _##i = (a); i < _##i; ++i)\n\nint32_t main() {\n    ios::sync_with_stdio(0);\
+    \ cout;\n}\n// }}}\n// Extra stuff {{{\nbool operator == (const Matrix<int>& a,\
+    \ const Matrix<int>& b) {\n    assert(a.n_row == b.n_row && a.n_col == b.n_col);\n\
+    \    return a.x == b.x;\n}\n\n// Useful for Freivald algorithm\nMatrix<int> rand_vec(int\
+    \ n) {\n    Matrix<int> res(n, 1);\n    REP(i,n) res[i][0] = get_rand(0, 1000111);\n\
+    \    return res;\n}\n// }}}\n#line 1 \"buffered_reader.h\"\n// Buffered reader\
+    \ {{{\nnamespace IO {\n    const int BUFSIZE = 1<<14;\n    char buf[BUFSIZE +\
+    \ 1], *inp = buf;\n\n    bool reacheof;\n    char get_char() {\n        if (!*inp\
+    \ && !reacheof) {\n            memset(buf, 0, sizeof buf);\n            int tmp\
+    \ = fread(buf, 1, BUFSIZE, stdin);\n            if (tmp != BUFSIZE) reacheof =\
+    \ true;\n            inp = buf;\n        }\n        return *inp++;\n    }\n  \
+    \  template<typename T>\n    T get() {\n        int neg = 0;\n        T res =\
+    \ 0;\n        char c = get_char();\n        while (!std::isdigit(c) && c != '-'\
+    \ && c != '+') c = get_char();\n        if (c == '+') { neg = 0; }\n        else\
+    \ if (c == '-') { neg = 1; }\n        else res = c - '0';\n\n        c = get_char();\n\
+    \        while (std::isdigit(c)) {\n            res = res * 10 + (c - '0');\n\
+    \            c = get_char();\n        }\n        return neg ? -res : res;\n  \
+    \  }\n};\n// Helper methods\nint ri() {\n    return IO::get<int>();\n}\n// }}}\n\
+    #line 10 \"Math/tests/matrix_inverse.test.cpp\"\n\n#define REP(i, a) for (int\
+    \ i = 0, _##i = (a); i < _##i; ++i)\n\nint32_t main() {\n    ios::sync_with_stdio(0);\
     \ cin.tie(0);\n    int n = IO::get<int>();\n    Matrix<modint998244353> a(n, n);\n\
     \    REP(i,n) REP(j,n) {\n        int x = IO::get<int>();\n        a[i][j] = x;\n\
     \    }\n    int rank = a.inverse();\n    if (rank < n) cout << -1 << '\\n';\n\
@@ -346,8 +350,8 @@ data:
   isVerificationFile: true
   path: Math/tests/matrix_inverse.test.cpp
   requiredBy: []
-  timestamp: '2022-12-14 02:22:04+08:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2022-12-29 17:34:35+08:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: Math/tests/matrix_inverse.test.cpp
 layout: document

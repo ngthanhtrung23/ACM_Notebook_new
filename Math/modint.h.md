@@ -39,7 +39,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Math/tests/formal_power_series_multiply_any_mod.test.cpp
     title: Math/tests/formal_power_series_multiply_any_mod.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/matrix_mult.test.cpp
     title: Math/tests/matrix_mult.test.cpp
   - icon: ':heavy_check_mark:'
@@ -66,9 +66,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: String/tests/zfunc_hash.test.cpp
     title: String/tests/zfunc_hash.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"Math/modint.h\"\n// ModInt {{{\ntemplate<int MD> struct\
@@ -126,8 +126,10 @@ data:
     \ i) == 1) {\n                            ok = false;\n                      \
     \      break;\n                        }\n                    if (ok) return g;\n\
     \                }\n                return -1;\n            }();\n        }\n\
-    \        return primitive_root;\n    }\n    \nprivate:\n    // Internal, DO NOT\
-    \ USE.\n    // val must be in [0, 2*MD)\n    constexpr inline __attribute__((always_inline))\
+    \        return primitive_root;\n    }\n\n    static ModInt C(int n, int k) {\n\
+    \        _precalc(n + 1);\n        return factorials[n] * inv_factorials[k] *\
+    \ inv_factorials[n-k];\n    }\n    \nprivate:\n    // Internal, DO NOT USE.\n\
+    \    // val must be in [0, 2*MD)\n    constexpr inline __attribute__((always_inline))\
     \ ModInt& _set(ll v) {\n        x = v >= MD ? v - MD : v;\n        return *this;\n\
     \    }\n};\ntemplate <int MD> std::vector<ModInt<MD>> ModInt<MD>::factorials =\
     \ {1};\ntemplate <int MD> std::vector<ModInt<MD>> ModInt<MD>::inv_factorials =\
@@ -188,20 +190,22 @@ data:
     \            ok = false;\n                            break;\n               \
     \         }\n                    if (ok) return g;\n                }\n      \
     \          return -1;\n            }();\n        }\n        return primitive_root;\n\
-    \    }\n    \nprivate:\n    // Internal, DO NOT USE.\n    // val must be in [0,\
-    \ 2*MD)\n    constexpr inline __attribute__((always_inline)) ModInt& _set(ll v)\
-    \ {\n        x = v >= MD ? v - MD : v;\n        return *this;\n    }\n};\ntemplate\
-    \ <int MD> std::vector<ModInt<MD>> ModInt<MD>::factorials = {1};\ntemplate <int\
-    \ MD> std::vector<ModInt<MD>> ModInt<MD>::inv_factorials = {1};\ntemplate <int\
-    \ MD> std::vector<ModInt<MD>> ModInt<MD>::invs = {0};\n// }}}\n"
+    \    }\n\n    static ModInt C(int n, int k) {\n        _precalc(n + 1);\n    \
+    \    return factorials[n] * inv_factorials[k] * inv_factorials[n-k];\n    }\n\
+    \    \nprivate:\n    // Internal, DO NOT USE.\n    // val must be in [0, 2*MD)\n\
+    \    constexpr inline __attribute__((always_inline)) ModInt& _set(ll v) {\n  \
+    \      x = v >= MD ? v - MD : v;\n        return *this;\n    }\n};\ntemplate <int\
+    \ MD> std::vector<ModInt<MD>> ModInt<MD>::factorials = {1};\ntemplate <int MD>\
+    \ std::vector<ModInt<MD>> ModInt<MD>::inv_factorials = {1};\ntemplate <int MD>\
+    \ std::vector<ModInt<MD>> ModInt<MD>::invs = {0};\n// }}}\n"
   dependsOn: []
   isVerificationFile: false
   path: Math/modint.h
   requiredBy:
   - String/SuffixArray.h
   - String/hash.h
-  timestamp: '2022-08-21 23:32:29+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2022-12-29 17:34:35+08:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - String/tests/aizu_alds_14_b_string_hash.test.cpp
   - String/tests/lcp.test.cpp

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Math/modint.h
     title: Math/modint.h
   _extendedRequiredBy:
@@ -91,8 +91,10 @@ data:
     \ i) == 1) {\n                            ok = false;\n                      \
     \      break;\n                        }\n                    if (ok) return g;\n\
     \                }\n                return -1;\n            }();\n        }\n\
-    \        return primitive_root;\n    }\n    \nprivate:\n    // Internal, DO NOT\
-    \ USE.\n    // val must be in [0, 2*MD)\n    constexpr inline __attribute__((always_inline))\
+    \        return primitive_root;\n    }\n\n    static ModInt C(int n, int k) {\n\
+    \        _precalc(n + 1);\n        return factorials[n] * inv_factorials[k] *\
+    \ inv_factorials[n-k];\n    }\n    \nprivate:\n    // Internal, DO NOT USE.\n\
+    \    // val must be in [0, 2*MD)\n    constexpr inline __attribute__((always_inline))\
     \ ModInt& _set(ll v) {\n        x = v >= MD ? v - MD : v;\n        return *this;\n\
     \    }\n};\ntemplate <int MD> std::vector<ModInt<MD>> ModInt<MD>::factorials =\
     \ {1};\ntemplate <int MD> std::vector<ModInt<MD>> ModInt<MD>::inv_factorials =\
@@ -227,7 +229,7 @@ data:
   path: String/hash.h
   requiredBy:
   - String/SuffixArray.h
-  timestamp: '2022-10-08 21:15:49-04:00'
+  timestamp: '2022-12-29 17:34:35+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - String/tests/aizu_alds_14_b_string_hash.test.cpp

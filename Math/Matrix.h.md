@@ -3,18 +3,18 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/matrix_det.test.cpp
     title: Math/tests/matrix_det.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/matrix_inverse.test.cpp
     title: Math/tests/matrix_inverse.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/matrix_mult.test.cpp
     title: Math/tests/matrix_mult.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://judge.yosupo.jp/problem/inverse_matrix
@@ -110,7 +110,11 @@ data:
     \ T>\nostream& operator << (ostream& cout, const Matrix<T>& m) {\n    cout <<\
     \ m.n_row << ' ' << m.n_col << endl;\n    for (int i = 0; i < m.n_row; ++i) {\n\
     \        cout << \"row [\" << i << \"] = \" << m.at(i) << endl;\n    }\n    return\
-    \ cout;\n}\n// }}}\n"
+    \ cout;\n}\n// }}}\n// Extra stuff {{{\nbool operator == (const Matrix<int>& a,\
+    \ const Matrix<int>& b) {\n    assert(a.n_row == b.n_row && a.n_col == b.n_col);\n\
+    \    return a.x == b.x;\n}\n\n// Useful for Freivald algorithm\nMatrix<int> rand_vec(int\
+    \ n) {\n    Matrix<int> res(n, 1);\n    REP(i,n) res[i][0] = get_rand(0, 1000111);\n\
+    \    return res;\n}\n// }}}\n"
   code: "// Matrix, which works for both double and int {{{\n// Copied partially from\
     \ https://judge.yosupo.jp/submission/54653\n//\n// Tested:\n// - (mat mul): https://judge.yosupo.jp/problem/matrix_product\n\
     // - (mat pow): https://oj.vnoi.info/problem/icpc21_mt_k\n// - (mat pow): https://oj.vnoi.info/problem/icpc21_mb_h\n\
@@ -195,13 +199,17 @@ data:
     \ T>\nostream& operator << (ostream& cout, const Matrix<T>& m) {\n    cout <<\
     \ m.n_row << ' ' << m.n_col << endl;\n    for (int i = 0; i < m.n_row; ++i) {\n\
     \        cout << \"row [\" << i << \"] = \" << m.at(i) << endl;\n    }\n    return\
-    \ cout;\n}\n// }}}\n"
+    \ cout;\n}\n// }}}\n// Extra stuff {{{\nbool operator == (const Matrix<int>& a,\
+    \ const Matrix<int>& b) {\n    assert(a.n_row == b.n_row && a.n_col == b.n_col);\n\
+    \    return a.x == b.x;\n}\n\n// Useful for Freivald algorithm\nMatrix<int> rand_vec(int\
+    \ n) {\n    Matrix<int> res(n, 1);\n    REP(i,n) res[i][0] = get_rand(0, 1000111);\n\
+    \    return res;\n}\n// }}}\n"
   dependsOn: []
   isVerificationFile: false
   path: Math/Matrix.h
   requiredBy: []
-  timestamp: '2022-12-10 23:08:36+07:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2022-12-29 17:34:35+08:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - Math/tests/matrix_inverse.test.cpp
   - Math/tests/matrix_mult.test.cpp
