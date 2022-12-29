@@ -38,19 +38,20 @@ template<
         update(x, -cnt);
     }
 
-    // return X: X ^ xor_val is minimum
+    // return min(X ^ xor_val)
     pair<Val, Node> min_element(Val xor_val = 0) {
         assert(0 < size());
         return kth_element(0, xor_val);
     }
 
-    // return X: X ^ xor_val is maximum
+    // return max(X ^ xor_val)
+    // Tested: https://www.spoj.com/problems/XORX/
     pair<Val, Node> max_element(Val xor_val = 0) {
         assert(0 < size());
         return kth_element(size() - 1, xor_val);
     }
 
-    // return X: X ^ xor_val is K-th (0 <= K < size())
+    // return k-th smallest (X ^ xor_val)  (0 <= K < size())
     pair<Val, Node> kth_element(Count k, Val xor_val = 0) {
         assert(0 <= k && k < size());
         int u = 0;
@@ -80,6 +81,28 @@ template<
             u = get_child(u, b);
         }
         return nodes[u].count;
+    }
+
+    // return how many values a where a ^ xor_val < x
+    // Tested: https://www.spoj.com/problems/SUBXOR/
+    Count count_less_than(Val x, Val xor_val) {
+        Count sum = 0;
+        int u = 0;
+        for (int i = B - 1; i >= 0; --i) {
+            int bx = get_bit(x, i);
+            int bxor = get_bit(xor_val, i);
+            if (bx == 1) {
+                // i = first bit where a^xor_val differ from x
+                if (nodes[u].child[bxor] >= 0) {
+                    sum += nodes[nodes[u].child[bxor]].count;
+                }
+            }
+            if (nodes[u].child[bx ^ bxor] == -1) {
+                return sum;
+            }
+            u = get_child(u, bx ^ bxor);
+        }
+        return sum;
     }
 
 // private:
