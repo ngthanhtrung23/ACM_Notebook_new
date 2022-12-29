@@ -4,7 +4,23 @@
 struct Trie {
     Trie(int _nChild, char _offset)
         : nChild(_nChild), offset(_offset),
-        children(1, std::vector<int> (_nChild, -1)) {}
+        children(1, std::vector<int> (_nChild, -1))
+        // For DP, uncomment:
+        // , dp(1, INITIAL_VALUE)
+    {}
+
+    /** For DP:
+    void dfs(int u = 0) {
+        if (u < 0) return;
+        for (int v : children[u]) {
+            if (v < 0) continue;
+            dfs(v);
+
+            // Example function: dist to leaf
+            f[u] = max(f[u], f[v] + 1);
+        }
+    }
+     */
 
     // Add a new string s to Trie. Returns ID of new node
     int add(const string& s) {
@@ -12,6 +28,8 @@ struct Trie {
         for (char c : s) {
             p = getChild(p, c, /* create= */ true);
         }
+        // For DP: Initialize f[p] here
+        // f[p] = 0;
         return p;
     }
 
@@ -32,6 +50,8 @@ struct Trie {
         // create child node
         int child = children.size();
         children.push_back(std::vector<int> (nChild, -1));
+        // For DP: Initialize f[p]
+        // f.push_back(INT_MAX / 2);
 
         // link
         children[p][c - offset] = child;
@@ -58,5 +78,7 @@ struct Trie {
     int nChild;
     char offset;
     std::vector<std::vector<int>> children;
+    // For DP: uncomment
+    // std::vector<int> f;
 };
 // }}}

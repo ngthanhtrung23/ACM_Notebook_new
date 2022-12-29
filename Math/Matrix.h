@@ -210,3 +210,16 @@ ostream& operator << (ostream& cout, const Matrix<T>& m) {
     return cout;
 }
 // }}}
+// Extra stuff {{{
+bool operator == (const Matrix<int>& a, const Matrix<int>& b) {
+    assert(a.n_row == b.n_row && a.n_col == b.n_col);
+    return a.x == b.x;
+}
+
+// Useful for Freivald algorithm
+Matrix<int> rand_vec(int n) {
+    Matrix<int> res(n, 1);
+    REP(i,n) res[i][0] = get_rand(0, 1000111);
+    return res;
+}
+// }}}

@@ -125,6 +125,11 @@ template<int MD> struct ModInt {
         }
         return primitive_root;
     }
+
+    static ModInt C(int n, int k) {
+        _precalc(n + 1);
+        return factorials[n] * inv_factorials[k] * inv_factorials[n-k];
+    }
     
 private:
     // Internal, DO NOT USE.
