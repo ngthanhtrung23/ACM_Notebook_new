@@ -35,7 +35,7 @@ auto operator | (const Container& a, SumOperator op) {
     }
     assert(false);
 }
-enum TransformOperator { ADD_1, COMPRESS, PREFIX_SUM, REVERSE, SORT, SUB_1 };
+enum TransformOperator { ADD_1, COMPRESS, PREFIX_SUM, PREFIX_SUM_XOR, REVERSE, SORT, SUB_1 };
 template<typename Container>
 Container& operator | (Container& a, TransformOperator op) {
     __typeof(a) values;
@@ -51,6 +51,9 @@ Container& operator | (Container& a, TransformOperator op) {
             break;
         case PREFIX_SUM:
             std::partial_sum(a.begin(), a.end(), a.begin());
+            break;
+        case PREFIX_SUM_XOR:
+            std::partial_sum(a.begin(), a.end(), a.begin(), [] (int x, int y) { return x ^ y; });
             break;
         case REVERSE:
             std::reverse(a.begin(), a.end());

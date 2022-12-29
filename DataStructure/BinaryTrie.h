@@ -12,10 +12,11 @@
 // Tested:
 // - (insert, remove, min xor) https://judge.yosupo.jp/problem/set_xor_min
 // - (insert, max xor) https://cses.fi/problemset/task/1655/
+// Binary trie {{{
 template<
     class Val = long long,   // values stored in Trie
     class Count = long long, // frequency of values
-    int B = (sizeof(Val) * 8 - 2)  // max number of bit
+    int B = (sizeof(Val) * 8 - 1)  // max number of bit
 > struct BinaryTrie {
     struct Node {
         std::array<int, 2> child;
@@ -110,4 +111,4 @@ template<
         return (v >> bit) & 1;
     }
 };
-
+// }}}
