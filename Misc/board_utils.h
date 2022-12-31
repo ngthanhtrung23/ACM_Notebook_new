@@ -3,6 +3,7 @@
 
 int n_row, n_col;
 
+// board utils {{{
 inline int get_id(int r, int c) {
     return r * n_col + c;
 }
@@ -19,3 +20,4 @@ const std::vector<std::pair<int,int>> DIRECTIONS = {
     // 8 directions:
     // {-1, -1}, {-1, 1}, {1, -1}, {1, 1},
 };
+// }}}

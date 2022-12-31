@@ -1,4 +1,3 @@
-// Berlekamp Massey {{{
 // Given sequence s0, ..., s(N-1)
 // Find sequence c1, ..., cd with minimum d (d >= 0), such that:
 //   si = sum(s(i-j) * c(j), for j = 1..d)
@@ -15,8 +14,9 @@
 // - Run Berlekamp Massey to find C (we must have 2*|C| < n, otherwise it's wrong)
 //
 // Note:
-// - should be calculated in prime modulo (i.e. T=modint), as it
-//   requires modular inverse
+// - berlekampMassey must use ModInt<P> where p is prime, as it requires
+//   modular inverse
+// - HOWEVER, solve() can use any type (e.g. BigInt)
 // - when modulo is not prime --> https://github.com/zimpha/algorithmic-library/blob/master/cpp/mathematics/linear-recurrence.cc
 //   but this comment says it doesn't work on some problem: https://codeforces.com/blog/entry/61306?#comment-454682
 //
@@ -27,6 +27,7 @@
 // - (find_kth) https://cses.fi/problemset/task/2181/
 // - 2022 ICPC Vietnam National - H
 
+// Berlekamp Massey {{{
 // Returns c1, ..., cd
 template<typename T>
 vector<T> berlekampMassey(vector<T> s) {
