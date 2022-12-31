@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/RangeSet.h
     title: DataStructure/RangeSet.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://yukicoder.me/problems/no/674
@@ -53,9 +53,9 @@ data:
     \        return it != ranges.begin() && x <= std::prev(it)->second;\n    }\n\n\
     \    // Find range containing x, i.e. l <= x <= r\n    auto find_range(T x) const\
     \ {\n        auto it = ranges.upper_bound(x);\n        return it != ranges.begin()\
-    \ && x <= it->second ? it : ranges.end();\n    }\n\n    // Insert [l, r]\n   \
-    \ // Returns number of new integers added.\n    // AMORTIZED O(logN)\n    T insert(T\
-    \ l, T r) {\n        assert(l <= r);\n        auto it = ranges.upper_bound(l);\n\
+    \ && x <= prev(it)->second ? prev(it) : ranges.end();\n    }\n\n    // Insert\
+    \ [l, r]\n    // Returns number of new integers added.\n    // AMORTIZED O(logN)\n\
+    \    T insert(T l, T r) {\n        assert(l <= r);\n        auto it = ranges.upper_bound(l);\n\
     \        if (it != ranges.begin() && is_mergeable(std::prev(it)->second, l)) {\n\
     \            it = std::prev(it);\n            l = std::min(l, it->first);\n  \
     \      }\n        T inserted = 0;\n        for (; it != ranges.end() && is_mergeable(r,\
@@ -101,8 +101,8 @@ data:
   isVerificationFile: true
   path: DataStructure/test/yukicoder_674_range_set.test.cpp
   requiredBy: []
-  timestamp: '2022-12-31 16:27:12+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2022-12-31 08:30:35+00:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/yukicoder_674_range_set.test.cpp
 layout: document

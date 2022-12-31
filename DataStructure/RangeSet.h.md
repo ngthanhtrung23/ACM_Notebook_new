@@ -9,12 +9,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/aizu_dsl_4_a_range_set.test.cpp
     title: DataStructure/test/aizu_dsl_4_a_range_set.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/test/yukicoder_674_range_set.test.cpp
     title: DataStructure/test/yukicoder_674_range_set.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://suisen-cp.github.io/cp-library-cpp/library/datastructure/util/range_set.hpp
@@ -27,9 +27,9 @@ data:
     \        return it != ranges.begin() && x <= std::prev(it)->second;\n    }\n\n\
     \    // Find range containing x, i.e. l <= x <= r\n    auto find_range(T x) const\
     \ {\n        auto it = ranges.upper_bound(x);\n        return it != ranges.begin()\
-    \ && x <= it->second ? it : ranges.end();\n    }\n\n    // Insert [l, r]\n   \
-    \ // Returns number of new integers added.\n    // AMORTIZED O(logN)\n    T insert(T\
-    \ l, T r) {\n        assert(l <= r);\n        auto it = ranges.upper_bound(l);\n\
+    \ && x <= prev(it)->second ? prev(it) : ranges.end();\n    }\n\n    // Insert\
+    \ [l, r]\n    // Returns number of new integers added.\n    // AMORTIZED O(logN)\n\
+    \    T insert(T l, T r) {\n        assert(l <= r);\n        auto it = ranges.upper_bound(l);\n\
     \        if (it != ranges.begin() && is_mergeable(std::prev(it)->second, l)) {\n\
     \            it = std::prev(it);\n            l = std::min(l, it->first);\n  \
     \      }\n        T inserted = 0;\n        for (; it != ranges.end() && is_mergeable(r,\
@@ -64,9 +64,9 @@ data:
     \        return it != ranges.begin() && x <= std::prev(it)->second;\n    }\n\n\
     \    // Find range containing x, i.e. l <= x <= r\n    auto find_range(T x) const\
     \ {\n        auto it = ranges.upper_bound(x);\n        return it != ranges.begin()\
-    \ && x <= it->second ? it : ranges.end();\n    }\n\n    // Insert [l, r]\n   \
-    \ // Returns number of new integers added.\n    // AMORTIZED O(logN)\n    T insert(T\
-    \ l, T r) {\n        assert(l <= r);\n        auto it = ranges.upper_bound(l);\n\
+    \ && x <= prev(it)->second ? prev(it) : ranges.end();\n    }\n\n    // Insert\
+    \ [l, r]\n    // Returns number of new integers added.\n    // AMORTIZED O(logN)\n\
+    \    T insert(T l, T r) {\n        assert(l <= r);\n        auto it = ranges.upper_bound(l);\n\
     \        if (it != ranges.begin() && is_mergeable(std::prev(it)->second, l)) {\n\
     \            it = std::prev(it);\n            l = std::min(l, it->first);\n  \
     \      }\n        T inserted = 0;\n        for (; it != ranges.end() && is_mergeable(r,\
@@ -96,8 +96,8 @@ data:
   isVerificationFile: false
   path: DataStructure/RangeSet.h
   requiredBy: []
-  timestamp: '2022-12-31 16:27:12+08:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2022-12-31 08:30:35+00:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/yukicoder_674_range_set.test.cpp
   - DataStructure/test/aizu_dsl_2_d_rangeset.test.cpp
