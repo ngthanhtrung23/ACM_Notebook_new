@@ -17,7 +17,7 @@ struct RangeSet {
     // Find range containing x, i.e. l <= x <= r
     auto find_range(T x) const {
         auto it = ranges.upper_bound(x);
-        return it != ranges.begin() && x <= it->second ? it : ranges.end();
+        return it != ranges.begin() && x <= prev(it)->second ? prev(it) : ranges.end();
     }
 
     // Insert [l, r]
