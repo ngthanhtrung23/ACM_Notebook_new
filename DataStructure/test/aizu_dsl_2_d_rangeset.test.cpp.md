@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: DataStructure/RangeSet.h
     title: DataStructure/RangeSet.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
@@ -52,31 +52,29 @@ data:
     \    T n_elements() const { return sz; }\n    T n_ranges() const { return ranges.size();\
     \ }\n\n    bool contains(T x) const {\n        auto it = ranges.upper_bound(x);\n\
     \        return it != ranges.begin() && x <= std::prev(it)->second;\n    }\n\n\
-    \    // Find range containing x, i.e. l <= x <= r\n    std::optional<std::pair<T,\
-    \ T>> find_range(T x) const {\n        auto it = ranges.upper_bound(x);\n    \
-    \    if (it == ranges.begin()) return std::nullopt;\n        --it;\n        return\
-    \ (x <= it->second) ? std::optional<std::pair<T, T>>{*it} : std::nullopt;\n  \
-    \  }\n\n    // Insert [l, r]\n    // Returns number of new integers added.\n \
-    \   // AMORTIZED O(logN)\n    T insert(T l, T r) {\n        assert(l <= r);\n\
-    \        auto it = ranges.upper_bound(l);\n        if (it != ranges.begin() &&\
-    \ is_mergeable(std::prev(it)->second, l)) {\n            it = std::prev(it);\n\
-    \            l = std::min(l, it->first);\n        }\n        T inserted = 0;\n\
-    \        for (; it != ranges.end() && is_mergeable(r, it->first); it = ranges.erase(it))\
-    \ {\n            auto [cl, cr] = *it;\n            r = std::max(r, cr);\n    \
-    \        inserted -= cr - cl + 1;\n        }\n\n        inserted += r - l + 1;\n\
-    \        ranges[l] = r;\n        sz += inserted;\n        return inserted;\n \
-    \   }\n\n    // Erase [l, r]\n    // Returns number of integers removed\n    //\
-    \ AMORTIZED O(logN)\n    T erase(T l, T r) {\n        assert(l <= r);\n      \
-    \  T tl = l, tr = r;\n        auto it = ranges.upper_bound(l);\n        if (it\
-    \ != ranges.begin() && l <= std::prev(it)->second) {\n            it = std::prev(it);\n\
-    \            tl = it->first;\n        }\n\n        T erased = 0;\n        for\
-    \ (; it != ranges.end() && it->first <= r; it = ranges.erase(it)) {\n        \
-    \    auto [cl, cr] = *it;\n            tr = cr;\n            erased += cr - cl\
-    \ + 1;\n        }\n        if (tl < l) {\n            ranges[tl] = l-1;\n    \
-    \        erased -= l - tl;\n        }\n        if (r < tr) {\n            ranges[r\
-    \ + 1] = tr;\n            erased -= tr - r;\n        }\n        sz -= erased;\n\
-    \        return erased;\n    }\n\n    // Find min x: x >= lower && x NOT in this\
-    \ set\n    T minimum_excluded(T lower) const {\n        static_assert(merge_adjacent_segment);\n\
+    \    // Find range containing x, i.e. l <= x <= r\n    auto find_range(T x) const\
+    \ {\n        auto it = ranges.upper_bound(x);\n        return it != ranges.begin()\
+    \ && x <= it->second ? it : ranges.end();\n    }\n\n    // Insert [l, r]\n   \
+    \ // Returns number of new integers added.\n    // AMORTIZED O(logN)\n    T insert(T\
+    \ l, T r) {\n        assert(l <= r);\n        auto it = ranges.upper_bound(l);\n\
+    \        if (it != ranges.begin() && is_mergeable(std::prev(it)->second, l)) {\n\
+    \            it = std::prev(it);\n            l = std::min(l, it->first);\n  \
+    \      }\n        T inserted = 0;\n        for (; it != ranges.end() && is_mergeable(r,\
+    \ it->first); it = ranges.erase(it)) {\n            auto [cl, cr] = *it;\n   \
+    \         r = std::max(r, cr);\n            inserted -= cr - cl + 1;\n       \
+    \ }\n\n        inserted += r - l + 1;\n        ranges[l] = r;\n        sz += inserted;\n\
+    \        return inserted;\n    }\n\n    // Erase [l, r]\n    // Returns number\
+    \ of integers removed\n    // AMORTIZED O(logN)\n    T erase(T l, T r) {\n   \
+    \     assert(l <= r);\n        T tl = l, tr = r;\n        auto it = ranges.upper_bound(l);\n\
+    \        if (it != ranges.begin() && l <= std::prev(it)->second) {\n         \
+    \   it = std::prev(it);\n            tl = it->first;\n        }\n\n        T erased\
+    \ = 0;\n        for (; it != ranges.end() && it->first <= r; it = ranges.erase(it))\
+    \ {\n            auto [cl, cr] = *it;\n            tr = cr;\n            erased\
+    \ += cr - cl + 1;\n        }\n        if (tl < l) {\n            ranges[tl] =\
+    \ l-1;\n            erased -= l - tl;\n        }\n        if (r < tr) {\n    \
+    \        ranges[r + 1] = tr;\n            erased -= tr - r;\n        }\n     \
+    \   sz -= erased;\n        return erased;\n    }\n\n    // Find min x: x >= lower\
+    \ && x NOT in this set\n    T minimum_excluded(T lower) const {\n        static_assert(merge_adjacent_segment);\n\
     \        auto it = find_range(lower);\n        return it == ranges.end() ? lower\
     \ : it->second + 1;\n    }\n\n    // Find max x: x <= upper && x NOT in this set\n\
     \    T maximum_excluded(T upper) const {\n        static_assert(merge_adjacent_segment);\n\
@@ -116,7 +114,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/aizu_dsl_2_d_rangeset.test.cpp
   requiredBy: []
-  timestamp: '2022-08-15 00:18:10+08:00'
+  timestamp: '2022-12-31 16:27:12+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/aizu_dsl_2_d_rangeset.test.cpp
