@@ -4,6 +4,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Math/NumberTheory/Pollard.h
     title: Math/NumberTheory/Pollard.h
+  - icon: ':heavy_check_mark:'
+    path: Math/Prime/Sieve.h
+    title: Math/Prime/Sieve.h
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -65,24 +68,59 @@ data:
     \        if (p == last) ++cnt;\n        else {\n            if (last > 0) res.emplace_back(last,\
     \ cnt);\n            last = p;\n            cnt = 1;\n        }\n    }\n    if\
     \ (cnt > 0) {\n        res.emplace_back(last, cnt);\n    }\n    return res;\n\
-    }\n// }}}\n#line 2 \"Math/NumberTheory/cnt_divisors.h\"\n\n// Tested: https://www.spoj.com/problems/NUMDIV/\n\
+    }\n// }}}\n#line 1 \"Math/Prime/Sieve.h\"\n// F is called for each prime\n// Sieve\
+    \ (odd only + segmented) {{{\ntemplate<typename F>\nvoid sieve(int MAX, F func)\
+    \ {\n\n    const int S = sqrt(MAX + 0.5);\n    vector<char> sieve(S + 1, true);\n\
+    \    vector<array<int, 2>> cp;\n    for (int i = 3; i <= S; i += 2) {\n      \
+    \  if (!sieve[i])\n            continue;\n        cp.push_back({i, (i * i - 1)\
+    \ / 2});\n        for (int j = i * i; j <= S; j += 2 * i)\n            sieve[j]\
+    \ = false;\n    }\n    func(2);\n    vector<char> block(S);\n    int high = (MAX\
+    \ - 1) / 2;\n    for (int low = 0; low <= high; low += S) {\n        fill(block.begin(),\
+    \ block.end(), true);\n        for (auto &i : cp) {\n            int p = i[0],\
+    \ idx = i[1];\n            for (; idx < S; idx += p)\n                block[idx]\
+    \ = false;\n            i[1] = idx - S;\n        }\n        if (low == 0)\n  \
+    \          block[0] = false;\n        for (int i = 0; i < S && low + i <= high;\
+    \ i++)\n            if (block[i]) {\n                func((low + i) * 2 + 1);\n\
+    \            }\n    };\n}\n// }}}\n#line 3 \"Math/NumberTheory/cnt_divisors.h\"\
+    \n\n// Tested: https://www.spoj.com/problems/NUMDIV/\nint64_t cnt_divisors(int64_t\
+    \ n) {\n    assert(n > 0);\n    auto ps = factorize(n);\n    int cnt_ps = ps.size();\n\
+    \    int i = 0;\n    int64_t res = 1;\n    while (i < cnt_ps) {\n        int j\
+    \ = i;\n        while (j+1 < cnt_ps && ps[j+1] == ps[j]) ++j;\n        res *=\
+    \ j - i + 2;\n        i = j + 1;\n    }\n    return res;\n}\n\n// Count divisors\
+    \ Using Segmented Sieve O(sieve(sqrt(R)) + (R-L)*log) {{{\n// Returns vector of\
+    \ length (r - l + 1), where the i-th element is number of\n// divisors of i -\
+    \ l\nvector<int> cnt_divisors_segmented_sieve(int l, int r) {\n    int s = sqrt(r\
+    \ + 0.5);\n    vector<int> primes;\n    auto newPrime = [&] (int p) { primes.push_back(p);\
+    \ };\n    sieve(s, newPrime);\n\n    vector<int> cnt(r - l + 1, 1), cur(r - l\
+    \ + 1);\n    std::iota(cur.begin(), cur.end(), l);\n\n    for (int p : primes)\
+    \ {\n        if (p > r) break;\n\n        int u = (l + p - 1) / p * p;\n     \
+    \   for (int i = u; i <= r; i += p) {\n            int k = 0;\n            while\
+    \ (cur[i-l] % p == 0) cur[i-l] /= p, ++k;\n\n            cnt[i - l] *= k + 1;\n\
+    \        }\n    }\n    for (int i = l; i <= r; ++i) {\n        if (cur[i-l] >\
+    \ 1) cnt[i-l] *= 2;\n    }\n    return cnt;\n}\n// }}}\n"
+  code: "#include \"Pollard.h\"\n#include \"../Prime/Sieve.h\"\n\n// Tested: https://www.spoj.com/problems/NUMDIV/\n\
     int64_t cnt_divisors(int64_t n) {\n    assert(n > 0);\n    auto ps = factorize(n);\n\
     \    int cnt_ps = ps.size();\n    int i = 0;\n    int64_t res = 1;\n    while\
     \ (i < cnt_ps) {\n        int j = i;\n        while (j+1 < cnt_ps && ps[j+1] ==\
     \ ps[j]) ++j;\n        res *= j - i + 2;\n        i = j + 1;\n    }\n    return\
-    \ res;\n}\n"
-  code: "#include \"Pollard.h\"\n\n// Tested: https://www.spoj.com/problems/NUMDIV/\n\
-    int64_t cnt_divisors(int64_t n) {\n    assert(n > 0);\n    auto ps = factorize(n);\n\
-    \    int cnt_ps = ps.size();\n    int i = 0;\n    int64_t res = 1;\n    while\
-    \ (i < cnt_ps) {\n        int j = i;\n        while (j+1 < cnt_ps && ps[j+1] ==\
-    \ ps[j]) ++j;\n        res *= j - i + 2;\n        i = j + 1;\n    }\n    return\
-    \ res;\n}\n"
+    \ res;\n}\n\n// Count divisors Using Segmented Sieve O(sieve(sqrt(R)) + (R-L)*log)\
+    \ {{{\n// Returns vector of length (r - l + 1), where the i-th element is number\
+    \ of\n// divisors of i - l\nvector<int> cnt_divisors_segmented_sieve(int l, int\
+    \ r) {\n    int s = sqrt(r + 0.5);\n    vector<int> primes;\n    auto newPrime\
+    \ = [&] (int p) { primes.push_back(p); };\n    sieve(s, newPrime);\n\n    vector<int>\
+    \ cnt(r - l + 1, 1), cur(r - l + 1);\n    std::iota(cur.begin(), cur.end(), l);\n\
+    \n    for (int p : primes) {\n        if (p > r) break;\n\n        int u = (l\
+    \ + p - 1) / p * p;\n        for (int i = u; i <= r; i += p) {\n            int\
+    \ k = 0;\n            while (cur[i-l] % p == 0) cur[i-l] /= p, ++k;\n\n      \
+    \      cnt[i - l] *= k + 1;\n        }\n    }\n    for (int i = l; i <= r; ++i)\
+    \ {\n        if (cur[i-l] > 1) cnt[i-l] *= 2;\n    }\n    return cnt;\n}\n// }}}\n"
   dependsOn:
   - Math/NumberTheory/Pollard.h
+  - Math/Prime/Sieve.h
   isVerificationFile: false
   path: Math/NumberTheory/cnt_divisors.h
   requiredBy: []
-  timestamp: '2022-12-26 20:16:27+08:00'
+  timestamp: '2022-12-31 10:40:54+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Math/tests/cnt_divisors_stress.test.cpp
