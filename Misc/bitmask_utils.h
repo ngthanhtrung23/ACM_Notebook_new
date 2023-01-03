@@ -12,9 +12,15 @@ inline uint64_t set_bit(uint64_t mask, int b, int new_val) {
     return mask + (new_val - get_bit(mask, b)) * two(b);
 }
 inline int popcount(uint64_t mask) {
-    return __builtin_popcount(mask);
+    return __builtin_popcountll(mask);
 }
 inline int ctz(uint64_t mask) {
-    return __builtin_ctz(mask);
+    return __builtin_ctzll(mask);
+}
+template<typename F>
+inline void for_each_submask(uint64_t mask, F f) {
+    for (uint64_t submask = mask; submask > 0; submask = (submask - 1) & mask) {
+        f(submask);
+    }
 }
 // }}}

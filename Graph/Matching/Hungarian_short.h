@@ -1,12 +1,15 @@
 // Copied from https://judge.yosupo.jp/submission/16114
 //
-// Min-cost matching
+// NOTE:
+// - Min-cost matching
+// - Index from 0
 //
 // Tested:
 // - https://oj.vnoi.info/problem/match2
 // - https://judge.yosupo.jp/problem/assignment
 // - https://hochiminh17.kattis.com/problems/engaging
 // 
+// n = |left side|, m = |right side|
 // Returns {total weight, matches (from left)}
 const int N = 1011;
 template<typename T>

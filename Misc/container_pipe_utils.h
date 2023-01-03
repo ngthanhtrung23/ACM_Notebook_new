@@ -35,7 +35,18 @@ auto operator | (const Container& a, SumOperator op) {
     }
     assert(false);
 }
-enum TransformOperator { ADD_1, COMPRESS, PREFIX_SUM, PREFIX_SUM_XOR, REVERSE, SORT, SUB_1 };
+enum ComparableOperator { SORT };
+template<typename Container>
+Container& operator | (Container& a, ComparableOperator op) {
+    __typeof(a) values;
+    switch (op) {
+        case SORT:
+            std::sort(a.begin(), a.end());
+            break;
+    }
+    return a;
+}
+enum TransformOperator { ADD_1, PREFIX_SUM, PREFIX_SUM_XOR, REVERSE, SUB_1, COMPRESS };
 template<typename Container>
 Container& operator | (Container& a, TransformOperator op) {
     __typeof(a) values;
@@ -57,9 +68,6 @@ Container& operator | (Container& a, TransformOperator op) {
             break;
         case REVERSE:
             std::reverse(a.begin(), a.end());
-            break;
-        case SORT:
-            std::sort(a.begin(), a.end());
             break;
         case SUB_1:
             for (auto& elem : a) elem -= 1;

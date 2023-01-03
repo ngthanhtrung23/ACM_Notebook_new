@@ -34,7 +34,7 @@ void linear_sieve_phi(int n) {
 
 // Number of divisors {{{
 int cnt_divisors[MN + 11];  // call linear_sieve_divisors(n+1) to init
-int cnt[MN + 11];
+int cnt[MN + 11];           // power of smallest prime factor of i
 void linear_sieve_divisors(int n) {  // init range [1, n-1]
     memset(is_composite, false, sizeof is_composite);
     primes.clear();

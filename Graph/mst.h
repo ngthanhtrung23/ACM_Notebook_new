@@ -6,6 +6,8 @@
 // If graph is not connected, returns forest (number of edges will be < n-1)
 
 #include "../DataStructure/DisjointSet.h"
+
+// MST {{{
 using ll = long long;
 struct Edge {
     int u, v;
@@ -35,3 +37,4 @@ std::pair<ll, std::vector<Edge>> mst(
     }
     return {total, tree};
 }
+// }}}

@@ -189,7 +189,7 @@ struct HLD {
     }
 
     // return true if u is ancestor
-    bool isAncestor(int u, int v) {
+    bool isAncestor(int u, int v) const {
         return in[u] <= in[v] && out[v] <= out[u];
     }
 
