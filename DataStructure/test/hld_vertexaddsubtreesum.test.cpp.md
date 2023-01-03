@@ -162,8 +162,8 @@ data:
     \        }\n        upFromU.push_back({u, v});\n        reverse(upFromV.begin(),\
     \ upFromV.end());\n        upFromU.insert(upFromU.end(), upFromV.begin(), upFromV.end());\n\
     \        return upFromU;\n    }\n\n    // return true if u is ancestor\n    bool\
-    \ isAncestor(int u, int v) {\n        return in[u] <= in[v] && out[v] <= out[u];\n\
-    \    }\n\n// private:\n    int n;\n    vector<vector<int>> g;\n    vector<int>\
+    \ isAncestor(int u, int v) const {\n        return in[u] <= in[v] && out[v] <=\
+    \ out[u];\n    }\n\n// private:\n    int n;\n    vector<vector<int>> g;\n    vector<int>\
     \ parent;   // par[u] = parent of u. par[root] = -1\n    vector<int> depth;  \
     \  // depth[u] = distance from root -> u\n    vector<int> sz;       // sz[u] =\
     \ size of subtree rooted at u\n    int dfs_number;\n    vector<int> nxt;     \
@@ -214,7 +214,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/hld_vertexaddsubtreesum.test.cpp
   requiredBy: []
-  timestamp: '2022-12-24 01:16:58+08:00'
+  timestamp: '2023-01-04 02:50:55+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/hld_vertexaddsubtreesum.test.cpp

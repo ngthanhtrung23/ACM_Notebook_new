@@ -58,18 +58,19 @@ data:
     \ lab[v] = u;\n        return true;\n    }\n\n    bool same_component(int u, int\
     \ v) {\n        return getRoot(u) == getRoot(v);\n    }\n\n    int component_size(int\
     \ u) {\n        return -lab[getRoot(u)];\n    }\n};\n// }}}\n#line 9 \"Graph/mst.h\"\
-    \nusing ll = long long;\nstruct Edge {\n    int u, v;\n    ll c;\n};\nbool operator\
-    \ < (const Edge& a, const Edge& b) {\n    return a.c < b.c;\n}\nostream& operator\
-    \ << (ostream& out, const Edge& e) {\n    out << e.u << \" - \" << e.v << \" [\"\
-    \ << e.c << ']';\n    return out;\n}\nstd::pair<ll, std::vector<Edge>> mst(\n\
-    \        int n,\n        std::vector<Edge> edges) {\n    std::sort(edges.begin(),\
+    \n\n// MST {{{\nusing ll = long long;\nstruct Edge {\n    int u, v;\n    ll c;\n\
+    };\nbool operator < (const Edge& a, const Edge& b) {\n    return a.c < b.c;\n\
+    }\nostream& operator << (ostream& out, const Edge& e) {\n    out << e.u << \"\
+    \ - \" << e.v << \" [\" << e.c << ']';\n    return out;\n}\nstd::pair<ll, std::vector<Edge>>\
+    \ mst(\n        int n,\n        std::vector<Edge> edges) {\n    std::sort(edges.begin(),\
     \ edges.end());\n\n    DSU dsu(n + 1);  // tolerate 1-based index\n    ll total\
     \ = 0;\n    vector<Edge> tree;\n    for (const auto& e : edges) {\n        const\
     \ auto [u, v, c] = e;\n        if (dsu.merge(u, v)) {\n            total += c;\n\
     \            tree.push_back(e);\n        }\n    }\n    return {total, tree};\n\
-    }\n#line 5 \"Graph/tests/aizu_grl_2_a_mst.test.cpp\"\n\nvoid solve() {\n    int\
-    \ n, m; cin >> n >> m;\n    vector<Edge> edges(m);\n    for (auto& [u, v, c] :\
-    \ edges) cin >> u >> v >> c;\n\n    cout << mst(n, edges).first << endl;\n}\n"
+    }\n// }}}\n#line 5 \"Graph/tests/aizu_grl_2_a_mst.test.cpp\"\n\nvoid solve() {\n\
+    \    int n, m; cin >> n >> m;\n    vector<Edge> edges(m);\n    for (auto& [u,\
+    \ v, c] : edges) cin >> u >> v >> c;\n\n    cout << mst(n, edges).first << endl;\n\
+    }\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_2_A\"\
     \n\n#include \"../../template.h\"\n#include \"../mst.h\"\n\nvoid solve() {\n \
     \   int n, m; cin >> n >> m;\n    vector<Edge> edges(m);\n    for (auto& [u, v,\
@@ -82,7 +83,7 @@ data:
   isVerificationFile: true
   path: Graph/tests/aizu_grl_2_a_mst.test.cpp
   requiredBy: []
-  timestamp: '2022-11-01 15:19:12+08:00'
+  timestamp: '2023-01-04 02:50:55+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Graph/tests/aizu_grl_2_a_mst.test.cpp
