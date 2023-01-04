@@ -297,6 +297,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Graph/MaxFlow/MaxFlowHLPP.h
       title: Graph/MaxFlow/MaxFlowHLPP.h
+    - icon: ':x:'
+      path: Graph/MaxFlow/MaxFlowLMH.h
+      title: Graph/MaxFlow/MaxFlowLMH.h
     - icon: ':heavy_check_mark:'
       path: Graph/MaxFlow/MaxFlowPR.h
       title: Graph/MaxFlow/MaxFlowPR.h
@@ -856,6 +859,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Graph/tests/aizu_grl_6_a_maxflow_hlpp.test.cpp
       title: Graph/tests/aizu_grl_6_a_maxflow_hlpp.test.cpp
+    - icon: ':x:'
+      path: Graph/tests/aizu_grl_6_a_maxflow_lmh.test.cpp
+      title: Graph/tests/aizu_grl_6_a_maxflow_lmh.test.cpp
     - icon: ':heavy_check_mark:'
       path: Graph/tests/aizu_grl_6_a_maxflow_pr.test.cpp
       title: Graph/tests/aizu_grl_6_a_maxflow_pr.test.cpp
