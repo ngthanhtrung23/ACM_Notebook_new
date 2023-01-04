@@ -1,13 +1,12 @@
 // NOTE:
 // - MaxFlowHLPP is probably faster
+// - UNDIRECTED ONLY (for directed seems there's some infinite loop)
 // - Index from 0
-// - Can handle either directed or undirected
 //
 // Tested:
 // - https://www.spoj.com/problems/FFLOW/ (undirected)
 // - https://www.spoj.com/problems/FASTFLOW/ (undirected)
 // - https://www.spoj.com/problems/MATCHING/ (matching)
-// - TLE on https://loj.ac/p/127
 //
 // Max flow LMH {{{
 struct Edge {
@@ -24,25 +23,11 @@ struct MaxFlow {
     MaxFlow(int _n) : n(_n), head(n, -1), current(n, -1), h(n), avail(n), excess(n) {
         edges.clear();
     }
-
-    void addEdgeDirected(int u, int v, int c) {
-        Edge xuoi = {u, v, c, 0, head[u]};
-        head[u] = edges.size(); edges.push_back(xuoi);
-        Edge nguoc = {v, u, 0, 0, head[v]};
-        head[v] = edges.size(); edges.push_back(nguoc);
-    }
  
     void addEdgeUndirected(int u, int v, int c) {
         Edge xuoi = {u, v, c, 0, head[u]};
         head[u] = edges.size(); edges.push_back(xuoi);
         Edge nguoc = {v, u, c, 0, head[v]};
-        head[v] = edges.size(); edges.push_back(nguoc);
-    }
-
-    void addEdgeUndirected(int u, int v, int c, int rev_c) {
-        Edge xuoi = {u, v, c, 0, head[u]};
-        head[u] = edges.size(); edges.push_back(xuoi);
-        Edge nguoc = {v, u, rev_c, 0, head[v]};
         head[v] = edges.size(); edges.push_back(nguoc);
     }
  
