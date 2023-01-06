@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: DataStructure/DSU_persistent.h
-    title: DataStructure/DSU_persistent.h
+    path: DataStructure/DSU/DSU_persistent.h
+    title: DataStructure/DSU/DSU_persistent.h
   - icon: ':heavy_check_mark:'
     path: DataStructure/PersistentArray.h
     title: DataStructure/PersistentArray.h
@@ -19,7 +19,7 @@ data:
     - https://judge.yosupo.jp/problem/persistent_unionfind
   bundledCode: "#line 1 \"DataStructure/test/persistent_dsu.test.cpp\"\n#define PROBLEM\
     \ \"https://judge.yosupo.jp/problem/persistent_unionfind\"\n\n#include <bits/stdc++.h>\n\
-    using namespace std;\n\n#line 1 \"DataStructure/DSU_persistent.h\"\n// PersistentDSU\n\
+    using namespace std;\n\n#line 1 \"DataStructure/DSU/DSU_persistent.h\"\n// PersistentDSU\n\
     //\n// Notes:\n// - this doesn't support delete edge operation, so isn't enough\
     \ to\n//   solve dynamic connectivity problem.\n// - it has high mem and time\
     \ usage, so be careful (both TLE and MLE on\n//   https://oj.vnoi.info/problem/hello22_schoolplan)\n\
@@ -42,7 +42,7 @@ data:
     \   return t;\n    }\n\n    // init a persistent array and return root node\n\
     \    Node* build(const vector<T>& v) {\n        Node* root = NULL;\n        for\
     \ (int i = 0; i < (int) v.size(); i++) {\n            root = set(root, i, v[i]);\n\
-    \        }\n        return root;\n    }\n};\n#line 12 \"DataStructure/DSU_persistent.h\"\
+    \        }\n        return root;\n    }\n};\n#line 12 \"DataStructure/DSU/DSU_persistent.h\"\
     \nstruct PersistentDSU {\n    int n;\n    using Arr = PersistentArray<int>;\n\n\
     \    PersistentDSU(int _n) : n(_n) {\n        roots.emplace_back(A.build(std::vector<int>\
     \ (n, -1)));\n    }\n\n    int find(int version, int u) {\n        // Note that\
@@ -67,7 +67,7 @@ data:
     \ it..\n            dsu.merge(version + 1, 0, 0);\n            cout << dsu.same_component(version\
     \ + 1, u, v) << '\\n';\n        }\n    }\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/persistent_unionfind\"\n\
-    \n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../DSU_persistent.h\"\
+    \n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../DSU/DSU_persistent.h\"\
     \n\nint32_t main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n, q;\
     \ cin >> n >> q;\n\n    PersistentDSU dsu(n);\n\n    while (q--) {\n        int\
     \ typ, version; cin >> typ >> version;\n        int u, v; cin >> u >> v;\n\n \
@@ -76,12 +76,12 @@ data:
     \ it..\n            dsu.merge(version + 1, 0, 0);\n            cout << dsu.same_component(version\
     \ + 1, u, v) << '\\n';\n        }\n    }\n    return 0;\n}\n"
   dependsOn:
-  - DataStructure/DSU_persistent.h
+  - DataStructure/DSU/DSU_persistent.h
   - DataStructure/PersistentArray.h
   isVerificationFile: true
   path: DataStructure/test/persistent_dsu.test.cpp
   requiredBy: []
-  timestamp: '2022-02-08 04:18:33+08:00'
+  timestamp: '2023-01-07 01:46:12+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/persistent_dsu.test.cpp

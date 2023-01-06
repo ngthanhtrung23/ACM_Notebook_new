@@ -9,7 +9,7 @@ data:
   attributes:
     links:
     - https://oj.vnoi.info/problem/vnoicup22_r2_c
-  bundledCode: "#line 1 \"DataStructure/DSU_partially_persistent.h\"\n// Partially\
+  bundledCode: "#line 1 \"DataStructure/DSU/DSU_partially_persistent.h\"\n// Partially\
     \ persistent DSU\n//\n// Supports:\n// - Linear history (version t+1 always build\
     \ on top of version t)\n// - Query history information at version t\n//\n// Tested:\n\
     // - https://oj.vnoi.info/problem/vnoicup22_r2_c\nstruct PartiallyPersistentDSU\
@@ -38,15 +38,15 @@ data:
     \ int v) {\n        return getRoot(t, u) == getRoot(t, v);\n    }\n};\n"
   dependsOn: []
   isVerificationFile: false
-  path: DataStructure/DSU_partially_persistent.h
+  path: DataStructure/DSU/DSU_partially_persistent.h
   requiredBy: []
-  timestamp: '2022-11-13 20:48:45+08:00'
+  timestamp: '2023-01-07 01:46:12+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: DataStructure/DSU_partially_persistent.h
+documentation_of: DataStructure/DSU/DSU_partially_persistent.h
 layout: document
 redirect_from:
-- /library/DataStructure/DSU_partially_persistent.h
-- /library/DataStructure/DSU_partially_persistent.h.html
-title: DataStructure/DSU_partially_persistent.h
+- /library/DataStructure/DSU/DSU_partially_persistent.h
+- /library/DataStructure/DSU/DSU_partially_persistent.h.html
+title: DataStructure/DSU/DSU_partially_persistent.h
 ---

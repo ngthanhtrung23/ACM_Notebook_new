@@ -3,8 +3,8 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
-    path: DataStructure/DSU_persistent.h
-    title: DataStructure/DSU_persistent.h
+    path: DataStructure/DSU/DSU_persistent.h
+    title: DataStructure/DSU/DSU_persistent.h
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/persistent_dsu.test.cpp
@@ -56,7 +56,7 @@ data:
   isVerificationFile: false
   path: DataStructure/PersistentArray.h
   requiredBy:
-  - DataStructure/DSU_persistent.h
+  - DataStructure/DSU/DSU_persistent.h
   timestamp: '2022-01-02 20:29:22+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

@@ -9,9 +9,9 @@ data:
   attributes:
     links:
     - https://oj.vnoi.info/problem/hello22_schoolplan
-  bundledCode: "#line 1 \"DataStructure/DSU_partially_persistent_with_color.h\"\n\
-    // Partially persistent DSU\n//\n// Supports:\n// - Linear history (version t+1\
-    \ always build on top of version t)\n// - Query history information at version\
+  bundledCode: "#line 1 \"DataStructure/DSU/DSU_partially_persistent_with_color.h\"\
+    \n// Partially persistent DSU\n//\n// Supports:\n// - Linear history (version\
+    \ t+1 always build on top of version t)\n// - Query history information at version\
     \ t\n//\n// Tested:\n// - https://oj.vnoi.info/problem/hello22_schoolplan\nstruct\
     \ PartiallyPersistentDSU {\n    vector<int> lab, colors, t_unite;  // colors[u]\
     \ = 0/1 -> same/diff colors from parent\n\n    PartiallyPersistentDSU(int n)\n\
@@ -58,15 +58,15 @@ data:
     };\n"
   dependsOn: []
   isVerificationFile: false
-  path: DataStructure/DSU_partially_persistent_with_color.h
+  path: DataStructure/DSU/DSU_partially_persistent_with_color.h
   requiredBy: []
-  timestamp: '2022-06-25 23:45:44+08:00'
+  timestamp: '2023-01-07 01:46:12+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: DataStructure/DSU_partially_persistent_with_color.h
+documentation_of: DataStructure/DSU/DSU_partially_persistent_with_color.h
 layout: document
 redirect_from:
-- /library/DataStructure/DSU_partially_persistent_with_color.h
-- /library/DataStructure/DSU_partially_persistent_with_color.h.html
-title: DataStructure/DSU_partially_persistent_with_color.h
+- /library/DataStructure/DSU/DSU_partially_persistent_with_color.h
+- /library/DataStructure/DSU/DSU_partially_persistent_with_color.h.html
+title: DataStructure/DSU/DSU_partially_persistent_with_color.h
 ---

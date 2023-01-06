@@ -40,27 +40,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/BinaryTrie.h
       title: DataStructure/BinaryTrie.h
-    - icon: ':warning:'
-      path: DataStructure/DSU_dynamic_connectivity.h
-      title: DataStructure/DSU_dynamic_connectivity.h
-    - icon: ':warning:'
-      path: DataStructure/DSU_partially_persistent.h
-      title: DataStructure/DSU_partially_persistent.h
-    - icon: ':warning:'
-      path: DataStructure/DSU_partially_persistent_with_color.h
-      title: DataStructure/DSU_partially_persistent_with_color.h
-    - icon: ':heavy_check_mark:'
-      path: DataStructure/DSU_persistent.h
-      title: DataStructure/DSU_persistent.h
-    - icon: ':heavy_check_mark:'
-      path: DataStructure/DSU_rollback.h
-      title: DataStructure/DSU_rollback.h
-    - icon: ':heavy_check_mark:'
-      path: DataStructure/DSU_weighted.h
-      title: DataStructure/DSU_weighted.h
-    - icon: ':heavy_check_mark:'
-      path: DataStructure/DisjointSet.h
-      title: DataStructure/DisjointSet.h
     - icon: ':heavy_check_mark:'
       path: DataStructure/Fenwick.h
       title: DataStructure/Fenwick.h
@@ -136,6 +115,29 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/splay_tree.h
       title: DataStructure/splay_tree.h
+  - name: DataStructure/DSU
+    pages:
+    - icon: ':warning:'
+      path: DataStructure/DSU/DSU_dynamic_connectivity.h
+      title: DataStructure/DSU/DSU_dynamic_connectivity.h
+    - icon: ':warning:'
+      path: DataStructure/DSU/DSU_partially_persistent.h
+      title: DataStructure/DSU/DSU_partially_persistent.h
+    - icon: ':warning:'
+      path: DataStructure/DSU/DSU_partially_persistent_with_color.h
+      title: DataStructure/DSU/DSU_partially_persistent_with_color.h
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/DSU/DSU_persistent.h
+      title: DataStructure/DSU/DSU_persistent.h
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/DSU/DSU_rollback.h
+      title: DataStructure/DSU/DSU_rollback.h
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/DSU/DSU_weighted.h
+      title: DataStructure/DSU/DSU_weighted.h
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/DSU/DisjointSet.h
+      title: DataStructure/DSU/DisjointSet.h
   - name: DataStructure/STL
     pages:
     - icon: ':warning:'

@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: DataStructure/DSU_weighted.h
-    title: DataStructure/DSU_weighted.h
+    path: DataStructure/DSU/DSU_weighted.h
+    title: DataStructure/DSU/DSU_weighted.h
   - icon: ':heavy_check_mark:'
     path: template.h
     title: template.h
@@ -44,10 +44,10 @@ data:
     \ (0, r-1)(rng);\n}\n\ntemplate<typename T>\nvector<T> read_vector(int n) {\n\
     \    vector<T> res(n);\n    for (int& x : res) cin >> x;\n    return res;\n}\n\
     \nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n  \
-    \  solve();\n    return 0;\n}\n#line 1 \"DataStructure/DSU_weighted.h\"\ntemplate<class\
-    \ S>\nstruct WeightedDSU {\n    std::vector<int> lab;\n    std::vector<S> w; \
-    \ // relative to parent\n\n    WeightedDSU(int n) : lab(n, -1), w(n) {}\n\n  \
-    \  int getRoot(int u) {\n        if (lab[u] < 0) return u;\n        return getRoot(lab[u]);\n\
+    \  solve();\n    return 0;\n}\n#line 1 \"DataStructure/DSU/DSU_weighted.h\"\n\
+    template<class S>\nstruct WeightedDSU {\n    std::vector<int> lab;\n    std::vector<S>\
+    \ w;  // relative to parent\n\n    WeightedDSU(int n) : lab(n, -1), w(n) {}\n\n\
+    \    int getRoot(int u) {\n        if (lab[u] < 0) return u;\n        return getRoot(lab[u]);\n\
     \    }\n\n    int weight(int u) {\n        if (lab[u] < 0) return w[u];\n    \
     \    return w[u] + weight(lab[u]);\n    }\n\n    // weight(t) = weight(s) + diff\n\
     \    // returns false if contradicts\n    bool merge(int s, int t, S diff) {\n\
@@ -64,21 +64,21 @@ data:
     \      cout << dsu.weight(y) - dsu.weight(x) << '\\n';\n            } else {\n\
     \                cout << \"?\\n\";\n            }\n        }\n    }\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_1_B\"\
-    \n\n#include \"../../template.h\"\n#include \"../DSU_weighted.h\"\n\nvoid solve()\
-    \ {\n    int n, q; cin >> n >> q;\n    WeightedDSU<long long> dsu(n);\n    while\
-    \ (q--) {\n        int typ; cin >> typ;\n        if (typ == 0) {\n           \
-    \ int x, y, z; cin >> x >> y >> z;\n            // f[y] = f[x] + z\n         \
-    \   dsu.merge(x, y, z);\n        } else {\n            int x, y; cin >> x >> y;\n\
-    \            if (dsu.getRoot(x) == dsu.getRoot(y)) {\n                cout <<\
-    \ dsu.weight(y) - dsu.weight(x) << '\\n';\n            } else {\n            \
-    \    cout << \"?\\n\";\n            }\n        }\n    }\n}\n"
+    \n\n#include \"../../template.h\"\n#include \"../DSU/DSU_weighted.h\"\n\nvoid\
+    \ solve() {\n    int n, q; cin >> n >> q;\n    WeightedDSU<long long> dsu(n);\n\
+    \    while (q--) {\n        int typ; cin >> typ;\n        if (typ == 0) {\n  \
+    \          int x, y, z; cin >> x >> y >> z;\n            // f[y] = f[x] + z\n\
+    \            dsu.merge(x, y, z);\n        } else {\n            int x, y; cin\
+    \ >> x >> y;\n            if (dsu.getRoot(x) == dsu.getRoot(y)) {\n          \
+    \      cout << dsu.weight(y) - dsu.weight(x) << '\\n';\n            } else {\n\
+    \                cout << \"?\\n\";\n            }\n        }\n    }\n}\n"
   dependsOn:
   - template.h
-  - DataStructure/DSU_weighted.h
+  - DataStructure/DSU/DSU_weighted.h
   isVerificationFile: true
   path: DataStructure/test/aizu_dsl_1_b_dsu_weighted.test.cpp
   requiredBy: []
-  timestamp: '2022-01-13 13:16:22+08:00'
+  timestamp: '2023-01-07 01:46:12+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/aizu_dsl_1_b_dsu_weighted.test.cpp

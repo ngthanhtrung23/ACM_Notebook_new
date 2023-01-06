@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: DataStructure/DisjointSet.h
-    title: DataStructure/DisjointSet.h
+    path: DataStructure/DSU/DisjointSet.h
+    title: DataStructure/DSU/DisjointSet.h
   - icon: ':heavy_check_mark:'
     path: Graph/mst.h
     title: Graph/mst.h
@@ -49,7 +49,7 @@ data:
     \nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n  \
     \  solve();\n    return 0;\n}\n#line 1 \"Graph/mst.h\"\n// MST. 0-based index\n\
     //\n// Returns:\n// {mst cost, edges in mst}\n//\n// If graph is not connected,\
-    \ returns forest (number of edges will be < n-1)\n\n#line 1 \"DataStructure/DisjointSet.h\"\
+    \ returns forest (number of edges will be < n-1)\n\n#line 1 \"DataStructure/DSU/DisjointSet.h\"\
     \n// DisjointSet {{{\nstruct DSU {\n    vector<int> lab;\n\n    DSU(int n) : lab(n+1,\
     \ -1) {}\n\n    int getRoot(int u) {\n        if (lab[u] < 0) return u;\n    \
     \    return lab[u] = getRoot(lab[u]);\n    }\n\n    bool merge(int u, int v) {\n\
@@ -79,11 +79,11 @@ data:
   dependsOn:
   - template.h
   - Graph/mst.h
-  - DataStructure/DisjointSet.h
+  - DataStructure/DSU/DisjointSet.h
   isVerificationFile: true
   path: Graph/tests/aizu_grl_2_a_mst.test.cpp
   requiredBy: []
-  timestamp: '2023-01-04 02:50:55+08:00'
+  timestamp: '2023-01-07 01:46:12+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Graph/tests/aizu_grl_2_a_mst.test.cpp

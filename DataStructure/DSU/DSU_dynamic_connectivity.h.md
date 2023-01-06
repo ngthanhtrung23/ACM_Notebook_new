@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: DataStructure/DSU_rollback.h
-    title: DataStructure/DSU_rollback.h
+    path: DataStructure/DSU/DSU_rollback.h
+    title: DataStructure/DSU/DSU_rollback.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -13,7 +13,7 @@ data:
     links:
     - https://codeforces.com/gym/100551/problem/A
     - https://www.spoj.com/problems/DYNACON2/
-  bundledCode: "#line 1 \"DataStructure/DSU_rollback.h\"\n// Tested:\n// - (dynamic\
+  bundledCode: "#line 1 \"DataStructure/DSU/DSU_rollback.h\"\n// Tested:\n// - (dynamic\
     \ connectivity) https://codeforces.com/gym/100551/problem/A\n// - (used for directed\
     \ MST) https://judge.yosupo.jp/problem/directedmst\n//\n// 0-based\n// DSU with\
     \ rollback {{{\nstruct Data {\n    int time, u, par;  // before `time`, `par`\
@@ -31,7 +31,7 @@ data:
     \        par[x] = y;\n        return true;\n    }\n\n    // rollback all changes\
     \ at time > t.\n    void rollback(int t) {\n        while (!change.empty() &&\
     \ change.back().time > t) {\n            par[change.back().u] = change.back().par;\n\
-    \            change.pop_back();\n        }\n    }\n};\n// }}}\n#line 2 \"DataStructure/DSU_dynamic_connectivity.h\"\
+    \            change.pop_back();\n        }\n    }\n};\n// }}}\n#line 2 \"DataStructure/DSU/DSU_dynamic_connectivity.h\"\
     \n\n// Index from 0\n// Tested:\n// - https://codeforces.com/gym/100551/problem/A\n\
     // - https://www.spoj.com/problems/DYNACON2/\n//\n// Dynamic connectivity {{{\n\
     namespace DynamicConnectivity {\n    enum QueryType { ADD, REM, IS_CONNECTED,\
@@ -113,17 +113,17 @@ data:
     \          dfs(1, 0, q-1, 0, n, dsu, res);\n        }\n        return res;\n \
     \   }\n}\n// }}}\n"
   dependsOn:
-  - DataStructure/DSU_rollback.h
+  - DataStructure/DSU/DSU_rollback.h
   isVerificationFile: false
-  path: DataStructure/DSU_dynamic_connectivity.h
+  path: DataStructure/DSU/DSU_dynamic_connectivity.h
   requiredBy: []
-  timestamp: '2022-11-22 21:46:26+08:00'
+  timestamp: '2023-01-07 01:46:12+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: DataStructure/DSU_dynamic_connectivity.h
+documentation_of: DataStructure/DSU/DSU_dynamic_connectivity.h
 layout: document
 redirect_from:
-- /library/DataStructure/DSU_dynamic_connectivity.h
-- /library/DataStructure/DSU_dynamic_connectivity.h.html
-title: DataStructure/DSU_dynamic_connectivity.h
+- /library/DataStructure/DSU/DSU_dynamic_connectivity.h
+- /library/DataStructure/DSU/DSU_dynamic_connectivity.h.html
+title: DataStructure/DSU/DSU_dynamic_connectivity.h
 ---

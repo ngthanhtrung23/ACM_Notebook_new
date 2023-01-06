@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: DataStructure/DSU_rollback.h
-    title: DataStructure/DSU_rollback.h
+    path: DataStructure/DSU/DSU_rollback.h
+    title: DataStructure/DSU/DSU_rollback.h
   - icon: ':heavy_check_mark:'
     path: Graph/DirectedMST.h
     title: Graph/DirectedMST.h
@@ -19,7 +19,9 @@ data:
     - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_2_B
   bundledCode: "#line 1 \"Graph/tests/aizu_grl_2_b_directed_mst.test.cpp\"\n#define\
     \ PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_2_B\"\
-    \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#line 1 \"DataStructure/DSU_rollback.h\"\
+    \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#line 1 \"Graph/DirectedMST.h\"\
+    \n// include DSU_rollback.h\n\n// Directed MST\n// Index from 0\n//\n// Tested:\n\
+    // - https://judge.yosupo.jp/problem/directedmst\n\n#line 1 \"DataStructure/DSU/DSU_rollback.h\"\
     \n// Tested:\n// - (dynamic connectivity) https://codeforces.com/gym/100551/problem/A\n\
     // - (used for directed MST) https://judge.yosupo.jp/problem/directedmst\n//\n\
     // 0-based\n// DSU with rollback {{{\nstruct Data {\n    int time, u, par;  //\
@@ -38,60 +40,57 @@ data:
     \    }\n\n    // rollback all changes at time > t.\n    void rollback(int t) {\n\
     \        while (!change.empty() && change.back().time > t) {\n            par[change.back().u]\
     \ = change.back().par;\n            change.pop_back();\n        }\n    }\n};\n\
-    // }}}\n#line 1 \"Graph/DirectedMST.h\"\n// include DSU_rollback.h\n\n// Directed\
-    \ MST\n// Index from 0\n//\n// Tested:\n// - https://judge.yosupo.jp/problem/directedmst\n\
-    \nusing ll = long long;\nstruct Edge {\n    int u, v;  // directed, u -> v\n \
-    \   ll cost;\n};\nstruct HeapNode {  // lazy skew heap node\n    Edge key;\n \
-    \   HeapNode *l, *r;\n    ll delta;\n\n    void prop() {\n        key.cost +=\
-    \ delta;\n        if (l) l->delta += delta;\n        if (r) r->delta += delta;\n\
-    \        delta = 0;\n    }\n    Edge top() {\n        prop();\n        return\
-    \ key;\n    }\n};\nHeapNode* merge(HeapNode *a, HeapNode *b) {\n    if (!a) return\
-    \ b;\n    if (!b) return a;\n    a->prop(); b->prop();\n    if (a->key.cost >\
-    \ b->key.cost) swap(a, b);\n    swap(a->l, (a->r = merge(b, a->r)));\n    return\
-    \ a;\n}\nvoid pop(HeapNode *&a) {\n    a->prop();\n    a = merge(a->l, a->r);\n\
-    }\n\n// return {cost, parent[i]}\n// parent[root] = -1\n// Not found -> return\
-    \ {-1, {}}\npair<ll, vector<int>> directed_mst(int n, int root, vector<Edge>&\
-    \ edges) {\n    DSU dsu(n);\n    int dsu_time = 0;\n    vector<HeapNode*> heap(n);\n\
-    \    for (const Edge& e : edges) {\n        heap[e.v] = merge(heap[e.v], new HeapNode{e});\n\
-    \    }\n\n    ll res = 0;\n    vector<int> seen(n, -1), path(n);\n    seen[root]\
-    \ = root;\n    vector<Edge> Q(n), in(n, {-1, -1});\n    deque<tuple<int, int,\
-    \ vector<Edge>>> cycs;\n    for (int s = 0; s < n; ++s) {\n        int u = s,\
-    \ qi = 0, w;\n        while (seen[u] < 0) {\n            if (!heap[u]) return\
-    \ {-1, {}};\n            Edge e = heap[u]->top();\n            heap[u]->delta\
-    \ -= e.cost;\n            pop(heap[u]);\n            Q[qi] = e;\n            path[qi++]\
-    \ = u;\n            seen[u] = s;\n            res += e.cost;\n            u =\
-    \ dsu.getRoot(e.u);\n\n            if (seen[u] == s) {\n                HeapNode*\
-    \ cyc = 0;\n                int end = qi;\n                int time = dsu_time;\n\
-    \                do {\n                    cyc = merge(cyc, heap[w = path[--qi]]);\n\
-    \                } while (dsu.join(u, w, ++dsu_time));\n\n                u =\
-    \ dsu.getRoot(u);\n                heap[u] = cyc;\n                seen[u] = -1;\n\
-    \                cycs.push_front({u, time, {&Q[qi], &Q[end]}});\n            }\n\
-    \        }\n        for (int i = 0; i < qi; i++) in[dsu.getRoot(Q[i].v)] = Q[i];\n\
-    \    }\n\n    for (auto& [u, t, comp] : cycs) {\n        dsu.rollback(t);\n  \
-    \      Edge inEdge = in[u];\n        for (auto& e : comp) in[dsu.getRoot(e.v)]\
-    \ = e;\n        in[dsu.getRoot(inEdge.v)] = inEdge;\n    }\n\n    vector<int>\
-    \ par(n);\n    for (int i = 0; i < n; i++) par[i] = in[i].u;\n    return {res,\
-    \ par};\n}\n#line 8 \"Graph/tests/aizu_grl_2_b_directed_mst.test.cpp\"\n\n#define\
-    \ REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)\n\nint32_t main() {\n \
-    \   ios::sync_with_stdio(0); cin.tie(0);\n    int n, m, root; cin >> n >> m >>\
-    \ root;\n    vector<Edge> edges(m);\n    for (auto& e : edges) {\n        cin\
-    \ >> e.u >> e.v >> e.cost;\n    }\n    auto [total, par] = directed_mst(n, root,\
-    \ edges);\n    cout << total << endl;\n    return 0;\n}\n"
+    // }}}\n#line 10 \"Graph/DirectedMST.h\"\nusing ll = long long;\nstruct Edge {\n\
+    \    int u, v;  // directed, u -> v\n    ll cost;\n};\nstruct HeapNode {  // lazy\
+    \ skew heap node\n    Edge key;\n    HeapNode *l, *r;\n    ll delta;\n\n    void\
+    \ prop() {\n        key.cost += delta;\n        if (l) l->delta += delta;\n  \
+    \      if (r) r->delta += delta;\n        delta = 0;\n    }\n    Edge top() {\n\
+    \        prop();\n        return key;\n    }\n};\nHeapNode* merge(HeapNode *a,\
+    \ HeapNode *b) {\n    if (!a) return b;\n    if (!b) return a;\n    a->prop();\
+    \ b->prop();\n    if (a->key.cost > b->key.cost) swap(a, b);\n    swap(a->l, (a->r\
+    \ = merge(b, a->r)));\n    return a;\n}\nvoid pop(HeapNode *&a) {\n    a->prop();\n\
+    \    a = merge(a->l, a->r);\n}\n\n// return {cost, parent[i]}\n// parent[root]\
+    \ = -1\n// Not found -> return {-1, {}}\npair<ll, vector<int>> directed_mst(int\
+    \ n, int root, vector<Edge>& edges) {\n    DSU dsu(n);\n    int dsu_time = 0;\n\
+    \    vector<HeapNode*> heap(n);\n    for (const Edge& e : edges) {\n        heap[e.v]\
+    \ = merge(heap[e.v], new HeapNode{e});\n    }\n\n    ll res = 0;\n    vector<int>\
+    \ seen(n, -1), path(n);\n    seen[root] = root;\n    vector<Edge> Q(n), in(n,\
+    \ {-1, -1});\n    deque<tuple<int, int, vector<Edge>>> cycs;\n    for (int s =\
+    \ 0; s < n; ++s) {\n        int u = s, qi = 0, w;\n        while (seen[u] < 0)\
+    \ {\n            if (!heap[u]) return {-1, {}};\n            Edge e = heap[u]->top();\n\
+    \            heap[u]->delta -= e.cost;\n            pop(heap[u]);\n          \
+    \  Q[qi] = e;\n            path[qi++] = u;\n            seen[u] = s;\n       \
+    \     res += e.cost;\n            u = dsu.getRoot(e.u);\n\n            if (seen[u]\
+    \ == s) {\n                HeapNode* cyc = 0;\n                int end = qi;\n\
+    \                int time = dsu_time;\n                do {\n                \
+    \    cyc = merge(cyc, heap[w = path[--qi]]);\n                } while (dsu.join(u,\
+    \ w, ++dsu_time));\n\n                u = dsu.getRoot(u);\n                heap[u]\
+    \ = cyc;\n                seen[u] = -1;\n                cycs.push_front({u, time,\
+    \ {&Q[qi], &Q[end]}});\n            }\n        }\n        for (int i = 0; i <\
+    \ qi; i++) in[dsu.getRoot(Q[i].v)] = Q[i];\n    }\n\n    for (auto& [u, t, comp]\
+    \ : cycs) {\n        dsu.rollback(t);\n        Edge inEdge = in[u];\n        for\
+    \ (auto& e : comp) in[dsu.getRoot(e.v)] = e;\n        in[dsu.getRoot(inEdge.v)]\
+    \ = inEdge;\n    }\n\n    vector<int> par(n);\n    for (int i = 0; i < n; i++)\
+    \ par[i] = in[i].u;\n    return {res, par};\n}\n#line 7 \"Graph/tests/aizu_grl_2_b_directed_mst.test.cpp\"\
+    \n\n#define REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)\n\nint32_t main()\
+    \ {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n, m, root; cin >> n >>\
+    \ m >> root;\n    vector<Edge> edges(m);\n    for (auto& e : edges) {\n      \
+    \  cin >> e.u >> e.v >> e.cost;\n    }\n    auto [total, par] = directed_mst(n,\
+    \ root, edges);\n    cout << total << endl;\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_2_B\"\
-    \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../../DataStructure/DSU_rollback.h\"\
-    \n#include \"../DirectedMST.h\"\n\n#define REP(i, a) for (int i = 0, _##i = (a);\
-    \ i < _##i; ++i)\n\nint32_t main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n\
-    \    int n, m, root; cin >> n >> m >> root;\n    vector<Edge> edges(m);\n    for\
-    \ (auto& e : edges) {\n        cin >> e.u >> e.v >> e.cost;\n    }\n    auto [total,\
-    \ par] = directed_mst(n, root, edges);\n    cout << total << endl;\n    return\
-    \ 0;\n}\n"
+    \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../DirectedMST.h\"\
+    \n\n#define REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)\n\nint32_t main()\
+    \ {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n, m, root; cin >> n >>\
+    \ m >> root;\n    vector<Edge> edges(m);\n    for (auto& e : edges) {\n      \
+    \  cin >> e.u >> e.v >> e.cost;\n    }\n    auto [total, par] = directed_mst(n,\
+    \ root, edges);\n    cout << total << endl;\n    return 0;\n}\n"
   dependsOn:
-  - DataStructure/DSU_rollback.h
   - Graph/DirectedMST.h
+  - DataStructure/DSU/DSU_rollback.h
   isVerificationFile: true
   path: Graph/tests/aizu_grl_2_b_directed_mst.test.cpp
   requiredBy: []
-  timestamp: '2022-11-22 21:46:26+08:00'
+  timestamp: '2023-01-07 01:46:12+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Graph/tests/aizu_grl_2_b_directed_mst.test.cpp
