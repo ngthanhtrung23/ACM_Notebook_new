@@ -21,6 +21,7 @@
 "DataStructure/test/aizu_grl_5_c_lca.test.cpp": "2022-08-11 17:15:37 +0800",
 "DataStructure/test/aizu_grl_5_d_hld_edge.test.cpp": "2023-01-04 02:50:55 +0800",
 "DataStructure/test/aizu_grl_5_e_hld_edge.test.cpp": "2023-01-04 02:50:55 +0800",
+"DataStructure/test/area_of_union_of_rectangles.test.cpp": "2023-01-07 02:15:55 +0800",
 "DataStructure/test/binary_trie.test.cpp": "2022-12-29 19:07:59 +0800",
 "DataStructure/test/dsu.test.cpp": "2023-01-07 01:46:12 +0800",
 "DataStructure/test/fenwick.test.cpp": "2023-01-07 01:54:04 +0800",
