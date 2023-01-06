@@ -1,22 +1,25 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/LazySegTree.h
     title: DataStructure/LazySegTree.h
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/misc/area_of_union_of_rectangles.h
     title: DataStructure/misc/area_of_union_of_rectangles.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    links: []
+    PROBLEM: https://judge.yosupo.jp/problem/area_of_union_of_rectangles
+    links:
+    - https://judge.yosupo.jp/problem/area_of_union_of_rectangles
   bundledCode: "#line 1 \"DataStructure/test/area_of_union_of_rectangles.test.cpp\"\
-    \n#include <bits/stdc++.h>\nusing namespace std;\n#line 1 \"DataStructure/LazySegTree.h\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/area_of_union_of_rectangles\"\
+    \n\n#include <bits/stdc++.h>\nusing namespace std;\n#line 1 \"DataStructure/LazySegTree.h\"\
     \n// Lazy Segment Tree, copied from AtCoder {{{\n// Source: https://github.com/atcoder/ac-library/blob/master/atcoder/lazysegtree.hpp\n\
     // Doc: https://atcoder.github.io/ac-library/master/document_en/lazysegtree.html\n\
     //\n// Notes:\n// - Index of elements from 0\n// - Range queries are [l, r-1]\n\
@@ -147,11 +150,12 @@ data:
     \     }\n            ll rx = std::get<0> (events[i]);\n            auto [min_cnt,\
     \ sum] = st.all_prod();\n            res += (rx - lx) * (ys.back() - ys.front()\
     \ - (min_cnt == 0 ? sum : ll(0)));\n            lx = rx;\n        }\n        return\
-    \ res;\n    }\n}\n// }}}\n#line 4 \"DataStructure/test/area_of_union_of_rectangles.test.cpp\"\
+    \ res;\n    }\n}\n// }}}\n#line 6 \"DataStructure/test/area_of_union_of_rectangles.test.cpp\"\
     \nusing namespace area_of_union_of_rectangles;\n\nint main() {\n    int n; cin\
     \ >> n;\n    vector<Rect> rects(n);\n    for (auto& r : rects) cin >> r;\n   \
     \ cout << solve(rects) << endl;\n}\n"
-  code: "#include <bits/stdc++.h>\nusing namespace std;\n#include \"../misc/area_of_union_of_rectangles.h\"\
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/area_of_union_of_rectangles\"\
+    \n\n#include <bits/stdc++.h>\nusing namespace std;\n#include \"../misc/area_of_union_of_rectangles.h\"\
     \nusing namespace area_of_union_of_rectangles;\n\nint main() {\n    int n; cin\
     \ >> n;\n    vector<Rect> rects(n);\n    for (auto& r : rects) cin >> r;\n   \
     \ cout << solve(rects) << endl;\n}\n"
@@ -162,7 +166,7 @@ data:
   path: DataStructure/test/area_of_union_of_rectangles.test.cpp
   requiredBy: []
   timestamp: '2023-01-07 02:15:55+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/area_of_union_of_rectangles.test.cpp
 layout: document
