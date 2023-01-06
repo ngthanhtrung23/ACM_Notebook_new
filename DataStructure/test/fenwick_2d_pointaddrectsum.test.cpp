@@ -3,7 +3,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#include "../Fenwick2D.h"
+#include "../Fenwick/Fenwick2D.h"
 
 #define REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)
 

@@ -3,7 +3,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#include "../Fenwick.h"
+#include "../Fenwick/Fenwick.h"
 #include "../../buffered_reader.h"
 
 #define REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)

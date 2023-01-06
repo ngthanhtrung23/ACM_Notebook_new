@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/staticrmq"
 #include "../../template.h"
-#include "../PartiallyPersistentFenwick.h"
+#include "../Fenwick/PartiallyPersistentFenwick.h"
 
 struct Data {
     int x;

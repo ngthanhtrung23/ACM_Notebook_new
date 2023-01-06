@@ -1,5 +1,5 @@
 #include "../Misc/compress.h"
-#include "../DataStructure/Fenwick.h"
+#include "../DataStructure/Fenwick/Fenwick.h"
 
 // Given vector vs, return number of inversions
 template<typename T>
