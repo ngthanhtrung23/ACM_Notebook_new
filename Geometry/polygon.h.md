@@ -1,10 +1,7 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: Geometry/polygon.cpp
-    title: Geometry/polygon.cpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Geometry/tests/aizu_cgl_3_a_polygon_area.test.cpp
@@ -254,8 +251,7 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: Geometry/polygon.h
-  requiredBy:
-  - Geometry/polygon.cpp
+  requiredBy: []
   timestamp: '2022-01-12 01:07:11+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

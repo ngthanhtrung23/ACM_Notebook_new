@@ -1,10 +1,7 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: Geometry/SPOJ_ALIENS.cpp
-    title: Geometry/SPOJ_ALIENS.cpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: h
@@ -67,8 +64,7 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: Geometry/smallestEnclosingCircle.h
-  requiredBy:
-  - Geometry/SPOJ_ALIENS.cpp
+  requiredBy: []
   timestamp: '2022-10-24 15:47:24+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

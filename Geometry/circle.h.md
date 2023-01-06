@@ -1,13 +1,7 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: Geometry/SPOJ_ALIENS.cpp
-    title: Geometry/SPOJ_ALIENS.cpp
-  - icon: ':warning:'
-    path: Geometry/circle.cpp
-    title: Geometry/circle.cpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Geometry/tests/aizu_cgl_7_a_cicle_tangents.test.cpp
@@ -154,9 +148,7 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: Geometry/circle.h
-  requiredBy:
-  - Geometry/circle.cpp
-  - Geometry/SPOJ_ALIENS.cpp
+  requiredBy: []
   timestamp: '2022-01-11 12:26:06+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

@@ -1,19 +1,7 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: Geometry/SPOJ_ALIENS.cpp
-    title: Geometry/SPOJ_ALIENS.cpp
-  - icon: ':warning:'
-    path: Geometry/basic.cpp
-    title: Geometry/basic.cpp
-  - icon: ':warning:'
-    path: Geometry/circle.cpp
-    title: Geometry/circle.cpp
-  - icon: ':warning:'
-    path: Geometry/polygon.cpp
-    title: Geometry/polygon.cpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Geometry/tests/aizu_cgl_1_a_basic_projection.test.cpp
@@ -259,11 +247,7 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: Geometry/basic.h
-  requiredBy:
-  - Geometry/circle.cpp
-  - Geometry/SPOJ_ALIENS.cpp
-  - Geometry/basic.cpp
-  - Geometry/polygon.cpp
+  requiredBy: []
   timestamp: '2022-12-27 01:22:59+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

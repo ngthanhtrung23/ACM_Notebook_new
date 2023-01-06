@@ -173,18 +173,9 @@ data:
     - icon: ':warning:'
       path: Geometry/RectInRect.h
       title: Geometry/RectInRect.h
-    - icon: ':warning:'
-      path: Geometry/SPOJ_ALIENS.cpp
-      title: Geometry/SPOJ_ALIENS.cpp
-    - icon: ':warning:'
-      path: Geometry/basic.cpp
-      title: Geometry/basic.cpp
     - icon: ':heavy_check_mark:'
       path: Geometry/basic.h
       title: Geometry/basic.h
-    - icon: ':warning:'
-      path: Geometry/circle.cpp
-      title: Geometry/circle.cpp
     - icon: ':heavy_check_mark:'
       path: Geometry/circle.h
       title: Geometry/circle.h
@@ -194,9 +185,6 @@ data:
     - icon: ':warning:'
       path: Geometry/n_segment_intersects.h
       title: Geometry/n_segment_intersects.h
-    - icon: ':warning:'
-      path: Geometry/polygon.cpp
-      title: Geometry/polygon.cpp
     - icon: ':heavy_check_mark:'
       path: Geometry/polygon.h
       title: Geometry/polygon.h

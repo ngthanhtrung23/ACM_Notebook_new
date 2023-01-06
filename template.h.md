@@ -9,18 +9,6 @@ data:
     path: DP/optimizations/knuth.cpp
     title: DP/optimizations/knuth.cpp
   - icon: ':warning:'
-    path: Geometry/SPOJ_ALIENS.cpp
-    title: Geometry/SPOJ_ALIENS.cpp
-  - icon: ':warning:'
-    path: Geometry/basic.cpp
-    title: Geometry/basic.cpp
-  - icon: ':warning:'
-    path: Geometry/circle.cpp
-    title: Geometry/circle.cpp
-  - icon: ':warning:'
-    path: Geometry/polygon.cpp
-    title: Geometry/polygon.cpp
-  - icon: ':warning:'
     path: Misc/Die.cpp
     title: Misc/Die.cpp
   - icon: ':warning:'
@@ -319,10 +307,6 @@ data:
   - Misc/Die.cpp
   - String/minmove.cpp
   - String/lyndon.cpp
-  - Geometry/circle.cpp
-  - Geometry/SPOJ_ALIENS.cpp
-  - Geometry/basic.cpp
-  - Geometry/polygon.cpp
   - DP/optimizations/divide_conquer.cpp
   - DP/optimizations/knuth.cpp
   timestamp: '2022-01-13 13:16:22+08:00'
