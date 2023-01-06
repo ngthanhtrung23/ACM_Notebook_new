@@ -6,6 +6,7 @@
 // Tested:
 // - https://judge.yosupo.jp/problem/directedmst
 
+#include "../DataStructure/DSU/DSU_rollback.h"
 using ll = long long;
 struct Edge {
     int u, v;  // directed, u -> v

@@ -20,6 +20,7 @@
 //
 // TLE on https://www.lydsy.com/JudgeOnline/problem.php?id=1001. Why? (ACed with Dinic flow).
 
+// MaxFlow {{{
 template<typename flow_t = long long>
 struct MaxFlow {
     struct Edge {
@@ -104,3 +105,4 @@ private:
         ec[back.to] -= f;
     }
 };
+// }}}

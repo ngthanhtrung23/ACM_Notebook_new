@@ -3,7 +3,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#include "../../DataStructure/DSU_rollback.h"
 #include "../DirectedMST.h"
 
 #define REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)

@@ -1,7 +1,7 @@
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_1_B"
 
 #include "../../template.h"
-#include "../DSU_weighted.h"
+#include "../DSU/DSU_weighted.h"
 
 void solve() {
     int n, q; cin >> n >> q;

@@ -11,6 +11,7 @@
 // - https://www.spoj.com/problems/FASTFLOW/
 // - https://loj.ac/p/127
 
+// MaxFlow {{{
 template <int MAXN, class T = int> struct MaxFlow {
     MaxFlow() {}
 
@@ -107,3 +108,4 @@ template <int MAXN, class T = int> struct MaxFlow {
         return excess[t] + INF;
     }
 };
+// }}}

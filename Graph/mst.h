@@ -5,7 +5,7 @@
 //
 // If graph is not connected, returns forest (number of edges will be < n-1)
 
-#include "../DataStructure/DisjointSet.h"
+#include "../DataStructure/DSU/DisjointSet.h"
 
 // MST {{{
 using ll = long long;

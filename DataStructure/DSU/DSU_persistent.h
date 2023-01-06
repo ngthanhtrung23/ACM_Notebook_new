@@ -8,7 +8,7 @@
 //
 // Tested:
 // - https://judge.yosupo.jp/problem/persistent_unionfind
-#include "PersistentArray.h"
+#include "../PersistentArray.h"
 struct PersistentDSU {
     int n;
     using Arr = PersistentArray<int>;

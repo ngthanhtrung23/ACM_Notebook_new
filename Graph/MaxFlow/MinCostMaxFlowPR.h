@@ -13,6 +13,7 @@
 // - (trace) http://vn.spoj.com/problems/MINCOST
 // - (trace) https://cses.fi/problemset/task/2131/
 
+// Min cost max flow {{{
 template<typename flow_t = int, typename cost_t = int>
 struct MinCostFlow {
     struct Edge {
@@ -183,3 +184,4 @@ private:
         return -ex[S];
     }
 };
+// }}}
