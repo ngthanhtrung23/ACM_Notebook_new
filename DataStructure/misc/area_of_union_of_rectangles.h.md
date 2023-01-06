@@ -4,48 +4,18 @@ data:
   - icon: ':question:'
     path: DataStructure/LazySegTree.h
     title: DataStructure/LazySegTree.h
-  - icon: ':heavy_check_mark:'
-    path: template.h
-    title: template.h
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
-  _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: DataStructure/test/area_of_union_of_rectangles.test.cpp
+    title: DataStructure/test/area_of_union_of_rectangles.test.cpp
+  _isVerificationFailed: true
+  _pathExtension: h
+  _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_G
-    links:
-    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_G
-  bundledCode: "#line 1 \"DataStructure/test/aizu_dsl_2_g_segment_tree_rangeaddsum.test.cpp\"\
-    \n#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_G\"\
-    \n\n#line 1 \"template.h\"\n#include <bits/stdc++.h>\nusing namespace std;\n\n\
-    #define FOR(i,a,b) for(int i=(a),_b=(b); i<=_b; i++)\n#define FORD(i,a,b) for(int\
-    \ i=(a),_b=(b); i>=_b; i--)\n#define REP(i,a) for(int i=0,_a=(a); i<_a; i++)\n\
-    #define EACH(it,a) for(__typeof(a.begin()) it = a.begin(); it != a.end(); ++it)\n\
-    \n#define DEBUG(x) { cout << #x << \" = \"; cout << (x) << endl; }\n#define PR(a,n)\
-    \ { cout << #a << \" = \"; FOR(_,1,n) cout << a[_] << ' '; cout << endl; }\n#define\
-    \ PR0(a,n) { cout << #a << \" = \"; REP(_,n) cout << a[_] << ' '; cout << endl;\
-    \ }\n\n#define sqr(x) ((x) * (x))\n\n// For printing pair, container, etc.\n//\
-    \ Copied from https://quangloc99.github.io/2021/07/30/my-CP-debugging-template.html\n\
-    template<class U, class V> ostream& operator << (ostream& out, const pair<U, V>&\
-    \ p) {\n    return out << '(' << p.first << \", \" << p.second << ')';\n}\n\n\
-    template<class Con, class = decltype(begin(declval<Con>()))>\ntypename enable_if<!is_same<Con,\
-    \ string>::value, ostream&>::type\noperator << (ostream& out, const Con& con)\
-    \ {\n    out << '{';\n    for (auto beg = con.begin(), it = beg; it != con.end();\
-    \ it++) {\n        out << (it == beg ? \"\" : \", \") << *it;\n    }\n    return\
-    \ out << '}';\n}\ntemplate<size_t i, class T> ostream& print_tuple_utils(ostream&\
-    \ out, const T& tup) {\n    if constexpr(i == tuple_size<T>::value) return out\
-    \ << \")\"; \n    else return print_tuple_utils<i + 1, T>(out << (i ? \", \" :\
-    \ \"(\") << get<i>(tup), tup); \n}\ntemplate<class ...U> ostream& operator <<\
-    \ (ostream& out, const tuple<U...>& t) {\n    return print_tuple_utils<0, tuple<U...>>(out,\
-    \ t);\n}\n\nmt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());\n\
-    long long get_rand(long long r) {\n    return uniform_int_distribution<long long>\
-    \ (0, r-1)(rng);\n}\n\ntemplate<typename T>\nvector<T> read_vector(int n) {\n\
-    \    vector<T> res(n);\n    for (int& x : res) cin >> x;\n    return res;\n}\n\
-    \nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n  \
-    \  solve();\n    return 0;\n}\n#line 1 \"DataStructure/LazySegTree.h\"\n// Lazy\
-    \ Segment Tree, copied from AtCoder {{{\n// Source: https://github.com/atcoder/ac-library/blob/master/atcoder/lazysegtree.hpp\n\
+    links: []
+  bundledCode: "#line 1 \"DataStructure/LazySegTree.h\"\n// Lazy Segment Tree, copied\
+    \ from AtCoder {{{\n// Source: https://github.com/atcoder/ac-library/blob/master/atcoder/lazysegtree.hpp\n\
     // Doc: https://atcoder.github.io/ac-library/master/document_en/lazysegtree.html\n\
     //\n// Notes:\n// - Index of elements from 0\n// - Range queries are [l, r-1]\n\
     // - composition(f, g) should return f(g())\n//\n// Tested:\n// - https://oj.vnoi.info/problem/qmax2\n\
@@ -143,42 +113,85 @@ data:
     \ + f.add,\n            s.sz,\n        };\n    }\n    static F composition(F f,\
     \ F g) {\n        if (f.set == NOT_SET) {\n            return F { g.set, g.add\
     \ + f.add };\n        }\n        return f;\n    }\n    static F id() {\n     \
-    \   return F { NOT_SET, 0 };\n    }\n};\n// }}}\n#line 5 \"DataStructure/test/aizu_dsl_2_g_segment_tree_rangeaddsum.test.cpp\"\
-    \n\nvoid solve() {\n    int n, q; cin >> n >> q;\n    vector<RangeSetAddMinSumOps::S>\
-    \ nodes;\n    REP(i,n) nodes.push_back(RangeSetAddMinSumOps::S{0, 0, 1});\n  \
-    \  LazySegTree<\n        RangeSetAddMinSumOps::S,\n        RangeSetAddMinSumOps::op,\n\
-    \        RangeSetAddMinSumOps::e,\n        RangeSetAddMinSumOps::F,\n        RangeSetAddMinSumOps::mapping,\n\
-    \        RangeSetAddMinSumOps::composition,\n        RangeSetAddMinSumOps::id\n\
-    \    > st(nodes);\n    while (q--) {\n        int typ; cin >> typ;\n        if\
-    \ (typ == 0) {\n            int l, r, val; cin >> l >> r >> val;\n           \
-    \ --l;\n            st.apply(l, r, RangeSetAddMinSumOps::F { RangeSetAddMinSumOps::NOT_SET,\
-    \ val });\n        } else {\n            int l, r; cin >> l >> r;\n          \
-    \  --l;\n            cout << st.prod(l, r).sum << '\\n';\n        }\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_G\"\
-    \n\n#include \"../../template.h\"\n#include \"../LazySegTree.h\"\n\nvoid solve()\
-    \ {\n    int n, q; cin >> n >> q;\n    vector<RangeSetAddMinSumOps::S> nodes;\n\
-    \    REP(i,n) nodes.push_back(RangeSetAddMinSumOps::S{0, 0, 1});\n    LazySegTree<\n\
-    \        RangeSetAddMinSumOps::S,\n        RangeSetAddMinSumOps::op,\n       \
-    \ RangeSetAddMinSumOps::e,\n        RangeSetAddMinSumOps::F,\n        RangeSetAddMinSumOps::mapping,\n\
-    \        RangeSetAddMinSumOps::composition,\n        RangeSetAddMinSumOps::id\n\
-    \    > st(nodes);\n    while (q--) {\n        int typ; cin >> typ;\n        if\
-    \ (typ == 0) {\n            int l, r, val; cin >> l >> r >> val;\n           \
-    \ --l;\n            st.apply(l, r, RangeSetAddMinSumOps::F { RangeSetAddMinSumOps::NOT_SET,\
-    \ val });\n        } else {\n            int l, r; cin >> l >> r;\n          \
-    \  --l;\n            cout << st.prod(l, r).sum << '\\n';\n        }\n    }\n}\n"
+    \   return F { NOT_SET, 0 };\n    }\n};\n// }}}\n#line 2 \"DataStructure/misc/area_of_union_of_rectangles.h\"\
+    \n\n// Area of union of rectangles {{{\nnamespace area_of_union_of_rectangles\
+    \ {\n    using ll = long long;\n    const int INF = std::numeric_limits<int>::max()\
+    \ / 2;\n\n    struct Rect {\n        int x1, y1, x2, y2;\n    };\n    istream&\
+    \ operator >> (istream& cin, Rect& r) {\n        cin >> r.x1 >> r.y1 >> r.x2 >>\
+    \ r.y2;\n        return cin;\n    }\n\n    struct S {\n        int min_cnt;\n\
+    \        ll sum;\n    };\n    S op(S x, S y) {\n        if (x.min_cnt < y.min_cnt)\
+    \ return x;\n        if (y.min_cnt < x.min_cnt) return y;\n        return { x.min_cnt,\
+    \ x.sum + y.sum };\n    }\n    S e() { return { INF, 0 }; }\n    S mapping(int\
+    \ f, S s) { return { s.min_cnt + f, s.sum }; }\n    int composition(int f, int\
+    \ g) { return f + g; }\n    int id() { return 0; }\n    using ST = LazySegTree<S,\
+    \ op, e, int, mapping, composition, id>;\n\n    ll solve(const std::vector<Rect>&\
+    \ rects) {\n        if (rects.empty()) return ll(0);\n\n        const int n =\
+    \ rects.size();\n        std::vector<std::tuple<int, int, int, int>> events; events.reserve(2*n);\n\
+    \        std::vector<int> ys; ys.reserve(2*n);\n\n        for (const auto& r :\
+    \ rects) {\n            events.emplace_back(r.x1, r.y1, r.y2, +1);\n         \
+    \   events.emplace_back(r.x2, r.y1, r.y2, -1);\n            ys.push_back(r.y1);\n\
+    \            ys.push_back(r.y2);\n        }\n        std::sort(events.begin(),\
+    \ events.end(), [] (const auto& e1, const auto& e2) {\n                return\
+    \ std::get<0>(e1) < std::get<0>(e2); });\n        std::sort(ys.begin(), ys.end());\n\
+    \        ys.erase(std::unique(ys.begin(), ys.end()), ys.end());\n\n        const\
+    \ int nys = ys.size();\n        std::vector<S> init(nys - 1);\n        for (int\
+    \ i = 0; i < nys - 1; ++i) {\n            init[i] = { 0, ys[i+1] - ys[i] };\n\
+    \        }\n        ST st(init);\n\n        ll res = 0;\n        ll lx = std::get<0>(events.front());\
+    \  // events[i-1].x\n        for (int i = 0; lx != std::get<0>(events.back());)\
+    \ {\n            for (;; ++i) {\n                auto [xi, d, u, add] = events[i];\n\
+    \                if (xi != lx) break;\n                int ly = std::lower_bound(ys.begin(),\
+    \ ys.end(), d) - ys.begin();\n                int ry = std::lower_bound(ys.begin(),\
+    \ ys.end(), u) - ys.begin();\n                st.apply(ly, ry, add);\n       \
+    \     }\n            ll rx = std::get<0> (events[i]);\n            auto [min_cnt,\
+    \ sum] = st.all_prod();\n            res += (rx - lx) * (ys.back() - ys.front()\
+    \ - (min_cnt == 0 ? sum : ll(0)));\n            lx = rx;\n        }\n        return\
+    \ res;\n    }\n}\n// }}}\n"
+  code: "#include \"../LazySegTree.h\"\n\n// Area of union of rectangles {{{\nnamespace\
+    \ area_of_union_of_rectangles {\n    using ll = long long;\n    const int INF\
+    \ = std::numeric_limits<int>::max() / 2;\n\n    struct Rect {\n        int x1,\
+    \ y1, x2, y2;\n    };\n    istream& operator >> (istream& cin, Rect& r) {\n  \
+    \      cin >> r.x1 >> r.y1 >> r.x2 >> r.y2;\n        return cin;\n    }\n\n  \
+    \  struct S {\n        int min_cnt;\n        ll sum;\n    };\n    S op(S x, S\
+    \ y) {\n        if (x.min_cnt < y.min_cnt) return x;\n        if (y.min_cnt <\
+    \ x.min_cnt) return y;\n        return { x.min_cnt, x.sum + y.sum };\n    }\n\
+    \    S e() { return { INF, 0 }; }\n    S mapping(int f, S s) { return { s.min_cnt\
+    \ + f, s.sum }; }\n    int composition(int f, int g) { return f + g; }\n    int\
+    \ id() { return 0; }\n    using ST = LazySegTree<S, op, e, int, mapping, composition,\
+    \ id>;\n\n    ll solve(const std::vector<Rect>& rects) {\n        if (rects.empty())\
+    \ return ll(0);\n\n        const int n = rects.size();\n        std::vector<std::tuple<int,\
+    \ int, int, int>> events; events.reserve(2*n);\n        std::vector<int> ys; ys.reserve(2*n);\n\
+    \n        for (const auto& r : rects) {\n            events.emplace_back(r.x1,\
+    \ r.y1, r.y2, +1);\n            events.emplace_back(r.x2, r.y1, r.y2, -1);\n \
+    \           ys.push_back(r.y1);\n            ys.push_back(r.y2);\n        }\n\
+    \        std::sort(events.begin(), events.end(), [] (const auto& e1, const auto&\
+    \ e2) {\n                return std::get<0>(e1) < std::get<0>(e2); });\n     \
+    \   std::sort(ys.begin(), ys.end());\n        ys.erase(std::unique(ys.begin(),\
+    \ ys.end()), ys.end());\n\n        const int nys = ys.size();\n        std::vector<S>\
+    \ init(nys - 1);\n        for (int i = 0; i < nys - 1; ++i) {\n            init[i]\
+    \ = { 0, ys[i+1] - ys[i] };\n        }\n        ST st(init);\n\n        ll res\
+    \ = 0;\n        ll lx = std::get<0>(events.front());  // events[i-1].x\n     \
+    \   for (int i = 0; lx != std::get<0>(events.back());) {\n            for (;;\
+    \ ++i) {\n                auto [xi, d, u, add] = events[i];\n                if\
+    \ (xi != lx) break;\n                int ly = std::lower_bound(ys.begin(), ys.end(),\
+    \ d) - ys.begin();\n                int ry = std::lower_bound(ys.begin(), ys.end(),\
+    \ u) - ys.begin();\n                st.apply(ly, ry, add);\n            }\n  \
+    \          ll rx = std::get<0> (events[i]);\n            auto [min_cnt, sum] =\
+    \ st.all_prod();\n            res += (rx - lx) * (ys.back() - ys.front() - (min_cnt\
+    \ == 0 ? sum : ll(0)));\n            lx = rx;\n        }\n        return res;\n\
+    \    }\n}\n// }}}\n"
   dependsOn:
-  - template.h
   - DataStructure/LazySegTree.h
-  isVerificationFile: true
-  path: DataStructure/test/aizu_dsl_2_g_segment_tree_rangeaddsum.test.cpp
+  isVerificationFile: false
+  path: DataStructure/misc/area_of_union_of_rectangles.h
   requiredBy: []
-  timestamp: '2022-08-09 14:38:08+08:00'
-  verificationStatus: TEST_ACCEPTED
-  verifiedWith: []
-documentation_of: DataStructure/test/aizu_dsl_2_g_segment_tree_rangeaddsum.test.cpp
+  timestamp: '2023-01-07 02:15:55+08:00'
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - DataStructure/test/area_of_union_of_rectangles.test.cpp
+documentation_of: DataStructure/misc/area_of_union_of_rectangles.h
 layout: document
 redirect_from:
-- /verify/DataStructure/test/aizu_dsl_2_g_segment_tree_rangeaddsum.test.cpp
-- /verify/DataStructure/test/aizu_dsl_2_g_segment_tree_rangeaddsum.test.cpp.html
-title: DataStructure/test/aizu_dsl_2_g_segment_tree_rangeaddsum.test.cpp
+- /library/DataStructure/misc/area_of_union_of_rectangles.h
+- /library/DataStructure/misc/area_of_union_of_rectangles.h.html
+title: DataStructure/misc/area_of_union_of_rectangles.h
 ---

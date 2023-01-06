@@ -1,7 +1,10 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':x:'
+    path: DataStructure/misc/area_of_union_of_rectangles.h
+    title: DataStructure/misc/area_of_union_of_rectangles.h
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/aizu_dsl_2_d_segment_tree_rangeset.test.cpp
@@ -24,12 +27,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/aizu_grl_5_e_hld_edge.test.cpp
     title: DataStructure/test/aizu_grl_5_e_hld_edge.test.cpp
+  - icon: ':x:'
+    path: DataStructure/test/area_of_union_of_rectangles.test.cpp
+    title: DataStructure/test/area_of_union_of_rectangles.test.cpp
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
     title: DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://atcoder.github.io/ac-library/master/document_en/lazysegtree.html
@@ -248,13 +254,15 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: DataStructure/LazySegTree.h
-  requiredBy: []
+  requiredBy:
+  - DataStructure/misc/area_of_union_of_rectangles.h
   timestamp: '2022-08-09 14:38:08+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - DataStructure/test/aizu_dsl_2_h_segment_tree_rangeaddmin.test.cpp
   - DataStructure/test/aizu_dsl_2_e_segment_tree_rangeadd.test.cpp
   - DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
+  - DataStructure/test/area_of_union_of_rectangles.test.cpp
   - DataStructure/test/aizu_dsl_2_d_segment_tree_rangeset.test.cpp
   - DataStructure/test/aizu_dsl_2_f_segment_tree_rangesetmin.test.cpp
   - DataStructure/test/aizu_grl_5_e_hld_edge.test.cpp

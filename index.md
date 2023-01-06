@@ -55,7 +55,7 @@ data:
     - icon: ':warning:'
       path: DataStructure/LCA_RMQ.h
       title: DataStructure/LCA_RMQ.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: DataStructure/LazySegTree.h
       title: DataStructure/LazySegTree.h
     - icon: ':heavy_check_mark:'
@@ -156,6 +156,9 @@ data:
       title: DataStructure/STL/unordered_map_pair.h
   - name: DataStructure/misc
     pages:
+    - icon: ':x:'
+      path: DataStructure/misc/area_of_union_of_rectangles.h
+      title: DataStructure/misc/area_of_union_of_rectangles.h
     - icon: ':warning:'
       path: DataStructure/misc/offset_vector.h
       title: DataStructure/misc/offset_vector.h
@@ -652,6 +655,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/aizu_grl_5_e_hld_edge.test.cpp
       title: DataStructure/test/aizu_grl_5_e_hld_edge.test.cpp
+    - icon: ':x:'
+      path: DataStructure/test/area_of_union_of_rectangles.test.cpp
+      title: DataStructure/test/area_of_union_of_rectangles.test.cpp
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/binary_trie.test.cpp
       title: DataStructure/test/binary_trie.test.cpp
