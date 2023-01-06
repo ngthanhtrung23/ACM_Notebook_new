@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: DataStructure/Fenwick.h
-    title: DataStructure/Fenwick.h
+    path: DataStructure/Fenwick/Fenwick.h
+    title: DataStructure/Fenwick/Fenwick.h
   - icon: ':heavy_check_mark:'
     path: buffered_reader.h
     title: buffered_reader.h
@@ -19,7 +19,7 @@ data:
     - https://judge.yosupo.jp/problem/point_add_range_sum
   bundledCode: "#line 1 \"DataStructure/test/fenwick_pointaddrangesum.test.cpp\"\n\
     #define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n\n#include\
-    \ <bits/stdc++.h>\nusing namespace std;\n\n#line 1 \"DataStructure/Fenwick.h\"\
+    \ <bits/stdc++.h>\nusing namespace std;\n\n#line 1 \"DataStructure/Fenwick/Fenwick.h\"\
     \n// 1D Fenwick {{{\n// 0 based index\n//\n// Tested:\n// - https://judge.yosupo.jp/problem/static_range_sum\n\
     // - https://judge.yosupo.jp/problem/point_add_range_sum\ntemplate<\n    typename\
     \ T  // need to support operators + -\n> struct Fenwick {\n    Fenwick(int _n)\
@@ -57,8 +57,8 @@ data:
     \ r) << '\\n';\n        } else {\n            assert(false);\n        }\n    }\n\
     \    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n\
-    \n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../Fenwick.h\"\n\
-    #include \"../../buffered_reader.h\"\n\n#define REP(i, a) for (int i = 0, _##i\
+    \n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../Fenwick/Fenwick.h\"\
+    \n#include \"../../buffered_reader.h\"\n\n#define REP(i, a) for (int i = 0, _##i\
     \ = (a); i < _##i; ++i)\n\nint32_t main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n\
     \    int n = IO::get<int>();\n    int q = IO::get<int>();\n\n    Fenwick<long\
     \ long> f(n);\n    REP(i,n) {\n        int x = IO::get<int>();\n        f.update(i,\
@@ -69,12 +69,12 @@ data:
     \            cout << f.get(l, r) << '\\n';\n        } else {\n            assert(false);\n\
     \        }\n    }\n    return 0;\n}\n"
   dependsOn:
-  - DataStructure/Fenwick.h
+  - DataStructure/Fenwick/Fenwick.h
   - buffered_reader.h
   isVerificationFile: true
   path: DataStructure/test/fenwick_pointaddrangesum.test.cpp
   requiredBy: []
-  timestamp: '2022-12-14 02:22:04+08:00'
+  timestamp: '2023-01-07 01:54:04+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/fenwick_pointaddrangesum.test.cpp

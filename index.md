@@ -40,15 +40,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/BinaryTrie.h
       title: DataStructure/BinaryTrie.h
-    - icon: ':heavy_check_mark:'
-      path: DataStructure/Fenwick.h
-      title: DataStructure/Fenwick.h
-    - icon: ':heavy_check_mark:'
-      path: DataStructure/Fenwick2D.h
-      title: DataStructure/Fenwick2D.h
-    - icon: ':warning:'
-      path: DataStructure/Fenwick2D_smallN.h
-      title: DataStructure/Fenwick2D_smallN.h
     - icon: ':warning:'
       path: DataStructure/HeavyLight.cpp
       title: DataStructure/HeavyLight.cpp
@@ -85,9 +76,6 @@ data:
     - icon: ':warning:'
       path: DataStructure/OrderedSet.h
       title: DataStructure/OrderedSet.h
-    - icon: ':heavy_check_mark:'
-      path: DataStructure/PartiallyPersistentFenwick.h
-      title: DataStructure/PartiallyPersistentFenwick.h
     - icon: ':heavy_check_mark:'
       path: DataStructure/PersistentArray.h
       title: DataStructure/PersistentArray.h
@@ -138,6 +126,20 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/DSU/DisjointSet.h
       title: DataStructure/DSU/DisjointSet.h
+  - name: DataStructure/Fenwick
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/Fenwick/Fenwick.h
+      title: DataStructure/Fenwick/Fenwick.h
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/Fenwick/Fenwick2D.h
+      title: DataStructure/Fenwick/Fenwick2D.h
+    - icon: ':warning:'
+      path: DataStructure/Fenwick/Fenwick2D_smallN.h
+      title: DataStructure/Fenwick/Fenwick2D_smallN.h
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/Fenwick/PartiallyPersistentFenwick.h
+      title: DataStructure/Fenwick/PartiallyPersistentFenwick.h
   - name: DataStructure/STL
     pages:
     - icon: ':warning:'

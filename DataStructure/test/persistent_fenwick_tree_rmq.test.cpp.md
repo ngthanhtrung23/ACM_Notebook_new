@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: DataStructure/PartiallyPersistentFenwick.h
-    title: DataStructure/PartiallyPersistentFenwick.h
+    path: DataStructure/Fenwick/PartiallyPersistentFenwick.h
+    title: DataStructure/Fenwick/PartiallyPersistentFenwick.h
   - icon: ':heavy_check_mark:'
     path: template.h
     title: template.h
@@ -43,7 +43,7 @@ data:
     \ (0, r-1)(rng);\n}\n\ntemplate<typename T>\nvector<T> read_vector(int n) {\n\
     \    vector<T> res(n);\n    for (int& x : res) cin >> x;\n    return res;\n}\n\
     \nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n  \
-    \  solve();\n    return 0;\n}\n#line 1 \"DataStructure/PartiallyPersistentFenwick.h\"\
+    \  solve();\n    return 0;\n}\n#line 1 \"DataStructure/Fenwick/PartiallyPersistentFenwick.h\"\
     \n// NOTE:\n// - 0-based index\n// - for updates: time must be in increasing order\n\
     // - Update: O(log), Get: O(log^2)\n//\n// Partially Persistent FenwickTree {{{\n\
     template<\n    typename T  // need to support operators + - <\n> struct PartiallyPersistentFenwick\
@@ -71,22 +71,22 @@ data:
     \ >> l >> r;\n        auto res = fen.get(n-l, r);\n        cout << res.x << '\\\
     n';\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/staticrmq\"\n#include \"\
-    ../../template.h\"\n#include \"../PartiallyPersistentFenwick.h\"\n\nstruct Data\
-    \ {\n    int x;\n    Data() : x(INT_MAX) {}\n    Data(int _x) : x(_x) {}\n};\n\
-    Data operator + (const Data& a, const Data& b) {\n    return Data{min(a.x, b.x)};\n\
-    }\nbool operator < (const Data&, const Data&) {\n    return false;\n}\n\nvoid\
-    \ solve() {\n    int n, q; cin >> n >> q;\n    vector<int> a(n);\n    REP(i,n)\
-    \ cin >> a[i];\n\n    PartiallyPersistentFenwick<Data> fen(n);\n    FORD(i,n-1,0)\
+    ../../template.h\"\n#include \"../Fenwick/PartiallyPersistentFenwick.h\"\n\nstruct\
+    \ Data {\n    int x;\n    Data() : x(INT_MAX) {}\n    Data(int _x) : x(_x) {}\n\
+    };\nData operator + (const Data& a, const Data& b) {\n    return Data{min(a.x,\
+    \ b.x)};\n}\nbool operator < (const Data&, const Data&) {\n    return false;\n\
+    }\n\nvoid solve() {\n    int n, q; cin >> n >> q;\n    vector<int> a(n);\n   \
+    \ REP(i,n) cin >> a[i];\n\n    PartiallyPersistentFenwick<Data> fen(n);\n    FORD(i,n-1,0)\
     \ fen.update(n-i, i, Data{a[i]});\n\n    while (q--) {\n        int l, r; cin\
     \ >> l >> r;\n        auto res = fen.get(n-l, r);\n        cout << res.x << '\\\
     n';\n    }\n}\n"
   dependsOn:
   - template.h
-  - DataStructure/PartiallyPersistentFenwick.h
+  - DataStructure/Fenwick/PartiallyPersistentFenwick.h
   isVerificationFile: true
   path: DataStructure/test/persistent_fenwick_tree_rmq.test.cpp
   requiredBy: []
-  timestamp: '2022-12-26 20:29:27+08:00'
+  timestamp: '2023-01-07 01:54:04+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/persistent_fenwick_tree_rmq.test.cpp

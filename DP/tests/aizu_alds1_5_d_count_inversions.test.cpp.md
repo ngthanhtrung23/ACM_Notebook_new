@@ -5,8 +5,8 @@ data:
     path: DP/count_inversions.h
     title: DP/count_inversions.h
   - icon: ':heavy_check_mark:'
-    path: DataStructure/Fenwick.h
-    title: DataStructure/Fenwick.h
+    path: DataStructure/Fenwick/Fenwick.h
+    title: DataStructure/Fenwick/Fenwick.h
   - icon: ':heavy_check_mark:'
     path: Misc/compress.h
     title: Misc/compress.h
@@ -94,8 +94,8 @@ data:
     \        xs.erase(std::unique(xs.begin(), xs.end()), xs.end());\n        return\
     \ Compressor{xs};\n    }\n\n    void add(const T& key) { xs.push_back(key); }\n\
     \    void add(T&& key) { xs.push_back(std::move(key)); }\n\n    std::vector<T>\
-    \ xs;\n};\n// }}}\n#line 1 \"DataStructure/Fenwick.h\"\n// 1D Fenwick {{{\n//\
-    \ 0 based index\n//\n// Tested:\n// - https://judge.yosupo.jp/problem/static_range_sum\n\
+    \ xs;\n};\n// }}}\n#line 1 \"DataStructure/Fenwick/Fenwick.h\"\n// 1D Fenwick\
+    \ {{{\n// 0 based index\n//\n// Tested:\n// - https://judge.yosupo.jp/problem/static_range_sum\n\
     // - https://judge.yosupo.jp/problem/point_add_range_sum\ntemplate<\n    typename\
     \ T  // need to support operators + -\n> struct Fenwick {\n    Fenwick(int _n)\
     \ : n(_n), f(_n + 1) {}\n\n    // a[u] += val\n    void update(int u, T val) {\n\
@@ -124,11 +124,11 @@ data:
   - template.h
   - DP/count_inversions.h
   - Misc/compress.h
-  - DataStructure/Fenwick.h
+  - DataStructure/Fenwick/Fenwick.h
   isVerificationFile: true
   path: DP/tests/aizu_alds1_5_d_count_inversions.test.cpp
   requiredBy: []
-  timestamp: '2022-12-22 10:28:54+08:00'
+  timestamp: '2023-01-07 01:54:04+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DP/tests/aizu_alds1_5_d_count_inversions.test.cpp

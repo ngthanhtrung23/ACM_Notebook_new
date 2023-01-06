@@ -21,8 +21,8 @@ data:
     - https://judge.yosupo.jp/problem/point_add_rectangle_sum
     - https://judge.yosupo.jp/problem/rectangle_sum
     - https://oj.vnoi.info/problem/kl11b
-  bundledCode: "#line 1 \"DataStructure/Fenwick2D.h\"\n// 2D Fenwick\n// Note:\n//\
-    \ - already included coordinate compression, so any `int` coordinates\n//   should\
+  bundledCode: "#line 1 \"DataStructure/Fenwick/Fenwick2D.h\"\n// 2D Fenwick\n// Note:\n\
+    // - already included coordinate compression, so any `int` coordinates\n//   should\
     \ work\n// - For faster implementation which also supports Rectagle ADD, see:\n\
     //   https://hitonanode.github.io/cplib-cpp/data_structure/rectangle_add_rectangle_sum.hpp\n\
     //\n// If cannot use the struct directly (e.g. ICPC Vietnam national 2022 - G),\
@@ -72,16 +72,16 @@ data:
     \        xs.erase(std::unique(xs.begin(), xs.end()), xs.end());\n        return\
     \ Compressor{xs};\n    }\n\n    void add(const T& key) { xs.push_back(key); }\n\
     \    void add(T&& key) { xs.push_back(std::move(key)); }\n\n    std::vector<T>\
-    \ xs;\n};\n// }}}\n#line 19 \"DataStructure/Fenwick2D.h\"\n// Fenwick 2D {{{\n\
-    const int INF = 2e9 + 11;  // for coordinates\ntemplate<typename T>\nstruct Query\
-    \ {\n    static const int ADD = 0;\n    static const int QUERY = 1;\n\n    int\
-    \ typ;  // ADD or QUERY\n    int x, y;\n    int x2, y2;  // for QUERY: [x1, x2-1]\
-    \ * [y1, y2-1]\n\n    T weight;\n};\n\ntemplate<typename T>\nstruct Fenwick2D\
-    \ {\n    vector<T> solve(vector<Query<T>> queries) {\n        // Get coordinates\
-    \ of ADD queries\n        CompressorBuilder<int> cx_builder, cy_builder;\n   \
-    \     cx_builder.add(INF);\n        cy_builder.add(INF);\n        for (const auto&\
-    \ query : queries) {\n            if (query.typ == Query<T>::ADD) {\n        \
-    \        cx_builder.add(query.x);\n                cy_builder.add(query.y);\n\
+    \ xs;\n};\n// }}}\n#line 19 \"DataStructure/Fenwick/Fenwick2D.h\"\n// Fenwick\
+    \ 2D {{{\nconst int INF = 2e9 + 11;  // for coordinates\ntemplate<typename T>\n\
+    struct Query {\n    static const int ADD = 0;\n    static const int QUERY = 1;\n\
+    \n    int typ;  // ADD or QUERY\n    int x, y;\n    int x2, y2;  // for QUERY:\
+    \ [x1, x2-1] * [y1, y2-1]\n\n    T weight;\n};\n\ntemplate<typename T>\nstruct\
+    \ Fenwick2D {\n    vector<T> solve(vector<Query<T>> queries) {\n        // Get\
+    \ coordinates of ADD queries\n        CompressorBuilder<int> cx_builder, cy_builder;\n\
+    \        cx_builder.add(INF);\n        cy_builder.add(INF);\n        for (const\
+    \ auto& query : queries) {\n            if (query.typ == Query<T>::ADD) {\n  \
+    \              cx_builder.add(query.x);\n                cy_builder.add(query.y);\n\
     \            }\n        }\n        auto cx = cx_builder.build();\n        auto\
     \ cy = cy_builder.build();\n        sx = cx.size();\n\n        // Compress\n \
     \       for (auto& query : queries) {\n            query.x = cx.must_geq(query.x)\
@@ -120,8 +120,8 @@ data:
     //\n// If cannot use the struct directly (e.g. ICPC Vietnam national 2022 - G),\
     \ do:\n// 1. fakeUpdate\n// 2. initNodes\n// 3. Queries\n//\n// Tested:\n// -\
     \ https://judge.yosupo.jp/problem/rectangle_sum\n// - https://judge.yosupo.jp/problem/point_add_rectangle_sum\n\
-    // - https://oj.vnoi.info/problem/kl11b\n\n#include \"../Misc/compress.h\"\n//\
-    \ Fenwick 2D {{{\nconst int INF = 2e9 + 11;  // for coordinates\ntemplate<typename\
+    // - https://oj.vnoi.info/problem/kl11b\n\n#include \"../../Misc/compress.h\"\n\
+    // Fenwick 2D {{{\nconst int INF = 2e9 + 11;  // for coordinates\ntemplate<typename\
     \ T>\nstruct Query {\n    static const int ADD = 0;\n    static const int QUERY\
     \ = 1;\n\n    int typ;  // ADD or QUERY\n    int x, y;\n    int x2, y2;  // for\
     \ QUERY: [x1, x2-1] * [y1, y2-1]\n\n    T weight;\n};\n\ntemplate<typename T>\n\
@@ -165,17 +165,17 @@ data:
   dependsOn:
   - Misc/compress.h
   isVerificationFile: false
-  path: DataStructure/Fenwick2D.h
+  path: DataStructure/Fenwick/Fenwick2D.h
   requiredBy: []
-  timestamp: '2022-12-24 01:16:58+08:00'
+  timestamp: '2023-01-07 01:54:04+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/fenwick_2d_rectsum.test.cpp
   - DataStructure/test/fenwick_2d_pointaddrectsum.test.cpp
-documentation_of: DataStructure/Fenwick2D.h
+documentation_of: DataStructure/Fenwick/Fenwick2D.h
 layout: document
 redirect_from:
-- /library/DataStructure/Fenwick2D.h
-- /library/DataStructure/Fenwick2D.h.html
-title: DataStructure/Fenwick2D.h
+- /library/DataStructure/Fenwick/Fenwick2D.h
+- /library/DataStructure/Fenwick/Fenwick2D.h.html
+title: DataStructure/Fenwick/Fenwick2D.h
 ---

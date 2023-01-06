@@ -9,8 +9,8 @@ data:
     path: DP/count_inversions.h
     title: DP/count_inversions.h
   - icon: ':heavy_check_mark:'
-    path: DataStructure/Fenwick2D.h
-    title: DataStructure/Fenwick2D.h
+    path: DataStructure/Fenwick/Fenwick2D.h
+    title: DataStructure/Fenwick/Fenwick2D.h
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: DP/tests/aizu_alds1_5_d_count_inversions.test.cpp
@@ -122,7 +122,7 @@ data:
   isVerificationFile: false
   path: Misc/compress.h
   requiredBy:
-  - DataStructure/Fenwick2D.h
+  - DataStructure/Fenwick/Fenwick2D.h
   - DP/count_inversions.h
   - DP/cnt_distinct_subseq.h
   timestamp: '2022-12-22 10:28:54+08:00'

@@ -9,8 +9,8 @@ data:
   attributes:
     links:
     - https://www.spoj.com/problems/MATSUM/
-  bundledCode: "#line 1 \"DataStructure/Fenwick2D_smallN.h\"\n// 0-based index\n//\
-    \ Tested:\n// - https://www.spoj.com/problems/MATSUM/\n//\n// Fenwick 2D, small\
+  bundledCode: "#line 1 \"DataStructure/Fenwick/Fenwick2D_smallN.h\"\n// 0-based index\n\
+    // Tested:\n// - https://www.spoj.com/problems/MATSUM/\n//\n// Fenwick 2D, small\
     \ N {{{\ntemplate<\n    typename T  // need to support +, -\n> struct Fenwick2D\
     \ {\n    Fenwick2D(int _n1, int _n2) : n1(_n1), n2(_n2), f(1+n1, vector<T> (1+n2,\
     \ T(0))) {}\n\n    // a[x][y] += val\n    void update(int x, int y, T val) {\n\
@@ -47,15 +47,15 @@ data:
     // }}}\n"
   dependsOn: []
   isVerificationFile: false
-  path: DataStructure/Fenwick2D_smallN.h
+  path: DataStructure/Fenwick/Fenwick2D_smallN.h
   requiredBy: []
-  timestamp: '2022-12-14 02:22:04+08:00'
+  timestamp: '2023-01-07 01:54:04+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: DataStructure/Fenwick2D_smallN.h
+documentation_of: DataStructure/Fenwick/Fenwick2D_smallN.h
 layout: document
 redirect_from:
-- /library/DataStructure/Fenwick2D_smallN.h
-- /library/DataStructure/Fenwick2D_smallN.h.html
-title: DataStructure/Fenwick2D_smallN.h
+- /library/DataStructure/Fenwick/Fenwick2D_smallN.h
+- /library/DataStructure/Fenwick/Fenwick2D_smallN.h.html
+title: DataStructure/Fenwick/Fenwick2D_smallN.h
 ---

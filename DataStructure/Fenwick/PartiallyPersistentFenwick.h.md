@@ -11,10 +11,10 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"DataStructure/PartiallyPersistentFenwick.h\"\n// NOTE:\n\
-    // - 0-based index\n// - for updates: time must be in increasing order\n// - Update:\
-    \ O(log), Get: O(log^2)\n//\n// Partially Persistent FenwickTree {{{\ntemplate<\n\
-    \    typename T  // need to support operators + - <\n> struct PartiallyPersistentFenwick\
+  bundledCode: "#line 1 \"DataStructure/Fenwick/PartiallyPersistentFenwick.h\"\n//\
+    \ NOTE:\n// - 0-based index\n// - for updates: time must be in increasing order\n\
+    // - Update: O(log), Get: O(log^2)\n//\n// Partially Persistent FenwickTree {{{\n\
+    template<\n    typename T  // need to support operators + - <\n> struct PartiallyPersistentFenwick\
     \ {\n    PartiallyPersistentFenwick(int _n) : n(_n), f(_n + 1) {\n        for\
     \ (int i = 0; i <= n; ++i) {\n            f[i].emplace_back(INT_MIN, T{});\n \
     \       }\n    }\n\n    // a[u] += val\n    void update(int time, int u, T val)\
@@ -50,16 +50,16 @@ data:
     \    vector<vector<pair<int, T>>> f;  // (time, data)\n};\n// }}}\n"
   dependsOn: []
   isVerificationFile: false
-  path: DataStructure/PartiallyPersistentFenwick.h
+  path: DataStructure/Fenwick/PartiallyPersistentFenwick.h
   requiredBy: []
-  timestamp: '2022-12-26 20:29:27+08:00'
+  timestamp: '2023-01-07 01:54:04+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/persistent_fenwick_tree_rmq.test.cpp
-documentation_of: DataStructure/PartiallyPersistentFenwick.h
+documentation_of: DataStructure/Fenwick/PartiallyPersistentFenwick.h
 layout: document
 redirect_from:
-- /library/DataStructure/PartiallyPersistentFenwick.h
-- /library/DataStructure/PartiallyPersistentFenwick.h.html
-title: DataStructure/PartiallyPersistentFenwick.h
+- /library/DataStructure/Fenwick/PartiallyPersistentFenwick.h
+- /library/DataStructure/Fenwick/PartiallyPersistentFenwick.h.html
+title: DataStructure/Fenwick/PartiallyPersistentFenwick.h
 ---

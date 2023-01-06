@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: DataStructure/Fenwick2D.h
-    title: DataStructure/Fenwick2D.h
+    path: DataStructure/Fenwick/Fenwick2D.h
+    title: DataStructure/Fenwick/Fenwick2D.h
   - icon: ':heavy_check_mark:'
     path: Misc/compress.h
     title: Misc/compress.h
@@ -19,7 +19,7 @@ data:
     - https://judge.yosupo.jp/problem/point_add_rectangle_sum
   bundledCode: "#line 1 \"DataStructure/test/fenwick_2d_pointaddrectsum.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_rectangle_sum\"\n\
-    \n#include <bits/stdc++.h>\nusing namespace std;\n\n#line 1 \"DataStructure/Fenwick2D.h\"\
+    \n#include <bits/stdc++.h>\nusing namespace std;\n\n#line 1 \"DataStructure/Fenwick/Fenwick2D.h\"\
     \n// 2D Fenwick\n// Note:\n// - already included coordinate compression, so any\
     \ `int` coordinates\n//   should work\n// - For faster implementation which also\
     \ supports Rectagle ADD, see:\n//   https://hitonanode.github.io/cplib-cpp/data_structure/rectangle_add_rectangle_sum.hpp\n\
@@ -70,16 +70,16 @@ data:
     \        xs.erase(std::unique(xs.begin(), xs.end()), xs.end());\n        return\
     \ Compressor{xs};\n    }\n\n    void add(const T& key) { xs.push_back(key); }\n\
     \    void add(T&& key) { xs.push_back(std::move(key)); }\n\n    std::vector<T>\
-    \ xs;\n};\n// }}}\n#line 19 \"DataStructure/Fenwick2D.h\"\n// Fenwick 2D {{{\n\
-    const int INF = 2e9 + 11;  // for coordinates\ntemplate<typename T>\nstruct Query\
-    \ {\n    static const int ADD = 0;\n    static const int QUERY = 1;\n\n    int\
-    \ typ;  // ADD or QUERY\n    int x, y;\n    int x2, y2;  // for QUERY: [x1, x2-1]\
-    \ * [y1, y2-1]\n\n    T weight;\n};\n\ntemplate<typename T>\nstruct Fenwick2D\
-    \ {\n    vector<T> solve(vector<Query<T>> queries) {\n        // Get coordinates\
-    \ of ADD queries\n        CompressorBuilder<int> cx_builder, cy_builder;\n   \
-    \     cx_builder.add(INF);\n        cy_builder.add(INF);\n        for (const auto&\
-    \ query : queries) {\n            if (query.typ == Query<T>::ADD) {\n        \
-    \        cx_builder.add(query.x);\n                cy_builder.add(query.y);\n\
+    \ xs;\n};\n// }}}\n#line 19 \"DataStructure/Fenwick/Fenwick2D.h\"\n// Fenwick\
+    \ 2D {{{\nconst int INF = 2e9 + 11;  // for coordinates\ntemplate<typename T>\n\
+    struct Query {\n    static const int ADD = 0;\n    static const int QUERY = 1;\n\
+    \n    int typ;  // ADD or QUERY\n    int x, y;\n    int x2, y2;  // for QUERY:\
+    \ [x1, x2-1] * [y1, y2-1]\n\n    T weight;\n};\n\ntemplate<typename T>\nstruct\
+    \ Fenwick2D {\n    vector<T> solve(vector<Query<T>> queries) {\n        // Get\
+    \ coordinates of ADD queries\n        CompressorBuilder<int> cx_builder, cy_builder;\n\
+    \        cx_builder.add(INF);\n        cy_builder.add(INF);\n        for (const\
+    \ auto& query : queries) {\n            if (query.typ == Query<T>::ADD) {\n  \
+    \              cx_builder.add(query.x);\n                cy_builder.add(query.y);\n\
     \            }\n        }\n        auto cx = cx_builder.build();\n        auto\
     \ cy = cy_builder.build();\n        sx = cx.size();\n\n        // Compress\n \
     \       for (auto& query : queries) {\n            query.x = cx.must_geq(query.x)\
@@ -124,7 +124,7 @@ data:
     \      }\n    }\n\n    Fenwick2D<long long> f;\n    auto res = f.solve(queries);\n\
     \    for (auto r : res) cout << r << '\\n';\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_rectangle_sum\"\
-    \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../Fenwick2D.h\"\
+    \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../Fenwick/Fenwick2D.h\"\
     \n\n#define REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)\n\nint32_t main()\
     \ {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n, q; cin >> n >> q;\n\n\
     \    vector<Query<long long>> queries;\n    REP(i,n) {\n        int x, y, val;\
@@ -137,12 +137,12 @@ data:
     \      }\n    }\n\n    Fenwick2D<long long> f;\n    auto res = f.solve(queries);\n\
     \    for (auto r : res) cout << r << '\\n';\n    return 0;\n}\n"
   dependsOn:
-  - DataStructure/Fenwick2D.h
+  - DataStructure/Fenwick/Fenwick2D.h
   - Misc/compress.h
   isVerificationFile: true
   path: DataStructure/test/fenwick_2d_pointaddrectsum.test.cpp
   requiredBy: []
-  timestamp: '2022-12-24 01:16:58+08:00'
+  timestamp: '2023-01-07 01:54:04+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/fenwick_2d_pointaddrectsum.test.cpp
