@@ -56,7 +56,11 @@ data:
     \ ++i) out[i] = in[-i & (n-1)] - in[i].conj();\n    fft(out);\n\n    for (size_t\
     \ i = 0; i < res.size(); ++i) res[i] = out[i].x[1] / (4*n);\n    return res;\n\
     }\nlong long my_round(ld x) {\n    if (x < 0) return -my_round(-x);\n    return\
-    \ (long long) (x + 1e-2);\n}\n// }}}\n"
+    \ (long long) (x + 1e-2);\n}\nvector<long long> multiply(const vector<int>& a,\
+    \ const vector<int>& b) {\n    vector<ld> ad(a.begin(), a.end());\n    vector<ld>\
+    \ bd(b.begin(), b.end());\n    auto rd = multiply(ad, bd);\n    vector<long long>\
+    \ res(rd.size());\n    for (int i = 0; i < (int) res.size(); ++i) {\n        res[i]\
+    \ = my_round(rd[i]);\n    }\n    return res;\n}\n// }}}\n"
   code: "// Note:\n// - When convert double -> int, use my_round(x) which handles\
     \ negative numbers\n//   correctly.\n//\n// Tested:\n// - https://open.kattis.com/problems/polymul2\n\
     // - https://www.spoj.com/problems/TSUM/\n// - (bigint mul) https://www.spoj.com/problems/VFMUL/\n\
@@ -98,12 +102,16 @@ data:
     \ ++i) out[i] = in[-i & (n-1)] - in[i].conj();\n    fft(out);\n\n    for (size_t\
     \ i = 0; i < res.size(); ++i) res[i] = out[i].x[1] / (4*n);\n    return res;\n\
     }\nlong long my_round(ld x) {\n    if (x < 0) return -my_round(-x);\n    return\
-    \ (long long) (x + 1e-2);\n}\n// }}}\n"
+    \ (long long) (x + 1e-2);\n}\nvector<long long> multiply(const vector<int>& a,\
+    \ const vector<int>& b) {\n    vector<ld> ad(a.begin(), a.end());\n    vector<ld>\
+    \ bd(b.begin(), b.end());\n    auto rd = multiply(ad, bd);\n    vector<long long>\
+    \ res(rd.size());\n    for (int i = 0; i < (int) res.size(); ++i) {\n        res[i]\
+    \ = my_round(rd[i]);\n    }\n    return res;\n}\n// }}}\n"
   dependsOn: []
   isVerificationFile: false
   path: Math/Polynomial/FFT.h
   requiredBy: []
-  timestamp: '2022-12-30 02:03:03+08:00'
+  timestamp: '2023-01-16 20:41:27+07:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Math/Polynomial/FFT.h
