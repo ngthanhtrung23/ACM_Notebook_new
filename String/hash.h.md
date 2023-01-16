@@ -234,10 +234,10 @@ data:
   verifiedWith:
   - String/tests/aizu_alds_14_b_string_hash.test.cpp
   - String/tests/lcp.test.cpp
-  - String/tests/suffix_array_queries.test.cpp
   - String/tests/yukicoder_1408_string_hash_lcp.test.cpp
-  - String/tests/suffix_array.test.cpp
+  - String/tests/suffix_array_queries.test.cpp
   - String/tests/zfunc_hash.test.cpp
+  - String/tests/suffix_array.test.cpp
 documentation_of: String/hash.h
 layout: document
 redirect_from:

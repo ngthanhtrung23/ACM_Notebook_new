@@ -92,8 +92,8 @@ data:
   timestamp: '2022-11-29 22:46:48+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - DP/tests/yosupo_lis.test.cpp
   - DP/tests/aizu_dpl_1_d_lis.test.cpp
+  - DP/tests/yosupo_lis.test.cpp
 documentation_of: DP/lis.h
 layout: document
 redirect_from:

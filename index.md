@@ -1010,6 +1010,9 @@ data:
       path: Math/tests/sieve_fast.test.cpp
       title: Math/tests/sieve_fast.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Math/tests/smallest_prime_factor_stress.test.cpp
+      title: Math/tests/smallest_prime_factor_stress.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Math/tests/sqrt_mod.test.cpp
       title: Math/tests/sqrt_mod.test.cpp
     - icon: ':heavy_check_mark:'

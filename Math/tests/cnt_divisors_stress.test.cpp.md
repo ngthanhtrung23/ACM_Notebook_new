@@ -172,22 +172,28 @@ data:
     \n#line 1 \"Math/multiplicative_functions_linear.h\"\n// This is only for calculating\
     \ multiplicative functions\n// If we need a fast sieve, see SieveFast.h\n// From\
     \ https://codeforces.com/blog/entry/54090\nnamespace linear_sieve {\nconst int\
-    \ MN = 2e7;\nvector<int> primes;\n\n// Euler Phi {{{\nbool is_composite[MN];\n\
-    int phi[MN];\n\nvoid linear_sieve_phi(int n) {\n    memset(is_composite, false,\
-    \ sizeof is_composite);\n    primes.clear();\n \n    phi[1] = 1;\n    for (int\
-    \ i = 2; i < n; ++i) {\n        if (!is_composite[i]) {\n            primes.push_back(i);\n\
-    \            phi[i] = i - 1; // i is prime\n        }\n        for (int j = 0;\
-    \ j < (int) primes.size() && i * primes[j] < n; ++j) {\n            is_composite[i\
-    \ * primes[j]] = true;\n            if (i % primes[j] == 0) {\n              \
-    \  phi[i * primes[j]] = phi[i] * primes[j]; //primes[j] divides i\n          \
-    \      break;\n            } else {\n                phi[i * primes[j]] = phi[i]\
-    \ * phi[primes[j]]; //primes[j] does not divide i\n            }\n        }\n\
-    \    }\n}\n// }}}\n\n// Number of divisors {{{\nint cnt_divisors[MN + 11];  //\
-    \ call linear_sieve_divisors(n+1) to init\nint cnt[MN + 11];           // power\
-    \ of smallest prime factor of i\nvoid linear_sieve_divisors(int n) {  // init\
-    \ range [1, n-1]\n    memset(is_composite, false, sizeof is_composite);\n    primes.clear();\n\
-    \n    cnt_divisors[1] = 1;\n    for (int i = 2; i < n; ++i) {\n        if (!is_composite[i])\
-    \ {\n            primes.push_back(i);\n            cnt[i] = 1;\n            cnt_divisors[i]\
+    \ MN = 2e7;\nvector<int> primes;\n\nint smallest_p[MN];  // smallest_p[n] = smallest\
+    \ prime factor of n\nvoid linear_sieve_smallest_prime_factor(int n) {\n    primes.clear();\n\
+    \    memset(smallest_p, 0, sizeof smallest_p);\n\n    for (int i = 2; i < n; ++i)\
+    \ {\n        if (!smallest_p[i]) primes.push_back(i);\n        for (int j = 0;\
+    \ j < int(primes.size()) && i * primes[j] < n; ++j) {\n            smallest_p[i\
+    \ * primes[j]] = primes[j];\n            if (i % primes[j] == 0) break;\n    \
+    \    }\n    }\n}\n\n// Euler Phi {{{\nbool is_composite[MN];\nint phi[MN];\n\n\
+    void linear_sieve_phi(int n) {\n    memset(is_composite, false, sizeof is_composite);\n\
+    \    primes.clear();\n \n    phi[1] = 1;\n    for (int i = 2; i < n; ++i) {\n\
+    \        if (!is_composite[i]) {\n            primes.push_back(i);\n         \
+    \   phi[i] = i - 1; // i is prime\n        }\n        for (int j = 0; j < (int)\
+    \ primes.size() && i * primes[j] < n; ++j) {\n            is_composite[i * primes[j]]\
+    \ = true;\n            if (i % primes[j] == 0) {\n                phi[i * primes[j]]\
+    \ = phi[i] * primes[j]; //primes[j] divides i\n                break;\n      \
+    \      } else {\n                phi[i * primes[j]] = phi[i] * phi[primes[j]];\
+    \ //primes[j] does not divide i\n            }\n        }\n    }\n}\n// }}}\n\n\
+    // Number of divisors {{{\nint cnt_divisors[MN + 11];  // call linear_sieve_divisors(n+1)\
+    \ to init\nint cnt[MN + 11];           // power of smallest prime factor of i\n\
+    void linear_sieve_divisors(int n) {  // init range [1, n-1]\n    memset(is_composite,\
+    \ false, sizeof is_composite);\n    primes.clear();\n\n    cnt_divisors[1] = 1;\n\
+    \    for (int i = 2; i < n; ++i) {\n        if (!is_composite[i]) {\n        \
+    \    primes.push_back(i);\n            cnt[i] = 1;\n            cnt_divisors[i]\
     \ = 2;\n        }\n        for (int j = 0; j < (int) primes.size() && i * primes[j]\
     \ < n; ++j) {\n            int ip = i * primes[j];\n            is_composite[ip]\
     \ = true;\n            if (i % primes[j] == 0) {\n                cnt[ip] = cnt[i]\
@@ -216,7 +222,7 @@ data:
   isVerificationFile: true
   path: Math/tests/cnt_divisors_stress.test.cpp
   requiredBy: []
-  timestamp: '2023-01-04 02:50:55+08:00'
+  timestamp: '2023-01-16 13:01:49+07:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Math/tests/cnt_divisors_stress.test.cpp

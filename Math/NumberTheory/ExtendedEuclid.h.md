@@ -42,8 +42,8 @@ data:
   timestamp: '2022-01-06 17:46:09+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Math/tests/ntt_chemthan_any_mod_2.test.cpp
   - Math/tests/aizu_ntl_1_e_extended_euclid.test.cpp
+  - Math/tests/ntt_chemthan_any_mod_2.test.cpp
 documentation_of: Math/NumberTheory/ExtendedEuclid.h
 layout: document
 redirect_from:

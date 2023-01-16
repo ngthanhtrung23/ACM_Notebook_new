@@ -2,9 +2,6 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: Math/Prime/EulerPhi.h
-    title: Math/Prime/EulerPhi.h
-  - icon: ':heavy_check_mark:'
     path: Math/multiplicative_functions_linear.h
     title: Math/multiplicative_functions_linear.h
   - icon: ':heavy_check_mark:'
@@ -20,20 +17,20 @@ data:
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A
     links:
     - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A
-  bundledCode: "#line 1 \"Math/tests/euler_phi_stress.test.cpp\"\n#define PROBLEM\
-    \ \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A\"\n\n#line\
-    \ 1 \"template.h\"\n#include <bits/stdc++.h>\nusing namespace std;\n\n#define\
-    \ FOR(i,a,b) for(int i=(a),_b=(b); i<=_b; i++)\n#define FORD(i,a,b) for(int i=(a),_b=(b);\
-    \ i>=_b; i--)\n#define REP(i,a) for(int i=0,_a=(a); i<_a; i++)\n#define EACH(it,a)\
-    \ for(__typeof(a.begin()) it = a.begin(); it != a.end(); ++it)\n\n#define DEBUG(x)\
-    \ { cout << #x << \" = \"; cout << (x) << endl; }\n#define PR(a,n) { cout << #a\
-    \ << \" = \"; FOR(_,1,n) cout << a[_] << ' '; cout << endl; }\n#define PR0(a,n)\
-    \ { cout << #a << \" = \"; REP(_,n) cout << a[_] << ' '; cout << endl; }\n\n#define\
-    \ sqr(x) ((x) * (x))\n\n// For printing pair, container, etc.\n// Copied from\
-    \ https://quangloc99.github.io/2021/07/30/my-CP-debugging-template.html\ntemplate<class\
-    \ U, class V> ostream& operator << (ostream& out, const pair<U, V>& p) {\n   \
-    \ return out << '(' << p.first << \", \" << p.second << ')';\n}\n\ntemplate<class\
-    \ Con, class = decltype(begin(declval<Con>()))>\ntypename enable_if<!is_same<Con,\
+  bundledCode: "#line 1 \"Math/tests/smallest_prime_factor_stress.test.cpp\"\n#define\
+    \ PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A\"\
+    \n\n#line 1 \"template.h\"\n#include <bits/stdc++.h>\nusing namespace std;\n\n\
+    #define FOR(i,a,b) for(int i=(a),_b=(b); i<=_b; i++)\n#define FORD(i,a,b) for(int\
+    \ i=(a),_b=(b); i>=_b; i--)\n#define REP(i,a) for(int i=0,_a=(a); i<_a; i++)\n\
+    #define EACH(it,a) for(__typeof(a.begin()) it = a.begin(); it != a.end(); ++it)\n\
+    \n#define DEBUG(x) { cout << #x << \" = \"; cout << (x) << endl; }\n#define PR(a,n)\
+    \ { cout << #a << \" = \"; FOR(_,1,n) cout << a[_] << ' '; cout << endl; }\n#define\
+    \ PR0(a,n) { cout << #a << \" = \"; REP(_,n) cout << a[_] << ' '; cout << endl;\
+    \ }\n\n#define sqr(x) ((x) * (x))\n\n// For printing pair, container, etc.\n//\
+    \ Copied from https://quangloc99.github.io/2021/07/30/my-CP-debugging-template.html\n\
+    template<class U, class V> ostream& operator << (ostream& out, const pair<U, V>&\
+    \ p) {\n    return out << '(' << p.first << \", \" << p.second << ')';\n}\n\n\
+    template<class Con, class = decltype(begin(declval<Con>()))>\ntypename enable_if<!is_same<Con,\
     \ string>::value, ostream&>::type\noperator << (ostream& out, const Con& con)\
     \ {\n    out << '{';\n    for (auto beg = con.begin(), it = beg; it != con.end();\
     \ it++) {\n        out << (it == beg ? \"\" : \", \") << *it;\n    }\n    return\
@@ -47,32 +44,9 @@ data:
     \ (0, r-1)(rng);\n}\n\ntemplate<typename T>\nvector<T> read_vector(int n) {\n\
     \    vector<T> res(n);\n    for (int& x : res) cin >> x;\n    return res;\n}\n\
     \nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n  \
-    \  solve();\n    return 0;\n}\n#line 1 \"Math/Prime/EulerPhi.h\"\nlong long eulerPhi(long\
-    \ long n) { // = n (1-1/p1) ... (1-1/pn)\n    if (n == 0) return 0;\n    long\
-    \ long ans = n;\n    for (int x = 2; x*x <= n; ++x) {\n        if (n % x == 0)\
-    \ {\n            ans -= ans / x;\n            while (n % x == 0) n /= x;\n   \
-    \     }\n    }\n    if (n > 1) ans -= ans / n;\n    return ans;\n}\n// LookUp\
-    \ Version\nconst int N = 1000000;\nint eulerPhi_lookup(int n) {\n    static int\
-    \ lookup = 0, p[N], f[N];\n    if (!lookup) {\n        REP(i,N) p[i] = 1, f[i]\
-    \ = i;\n        for (int i = 2; i < N; ++i) {\n            if (p[i]) {\n     \
-    \       f[i] -= f[i] / i;\n                for (int j = i+i; j < N; j+=i)\n  \
-    \                  p[j] = 0, f[j] -= f[j] / i;\n            }\n        }\n   \
-    \     lookup = 1;\n    }\n    return f[n];\n}\n\n// Segmented sieve version, compute\
-    \ phi(i) for i in [l, r]\n// Tested: https://www.spoj.com/problems/ETFS/\nnamespace\
-    \ EulerPhiSegmented {\nvector<int> primes;    // NOTE: must initialize this\n\
-    const int N = 100111;  // >= r - l + 1\n\nlong long phi[N], val[N];  // phi[i-l]\
-    \ = euler_phi(i)\nvoid eulerPhi_segmentedSieve(long long l, long long r) {\n \
-    \   assert(!primes.empty());  // must precompute primes upto sqrt(r)\n\n    for\
-    \ (auto i = l; i <= r; ++i) {\n        phi[i-l] = i;\n        val[i-l] = i;\n\
-    \    }\n    \n    for (auto p : primes) {\n        if (p > r) break;\n       \
-    \ long long first = (l / p) * p;\n        if (first < l) first += p;\n\n     \
-    \   while (first <= r) {\n            phi[first - l] -= phi[first - l] / p;\n\
-    \            while (val[first - l] % p == 0) val[first - l] /= p;\n          \
-    \  first += p;\n        }\n    }\n\n    for (auto i = l; i <= r; ++i) {\n    \
-    \    if (val[i-l] > 1) {\n            phi[i-l] -= phi[i-l] / val[i-l];\n     \
-    \   }\n    }\n}\n}\n#line 1 \"Math/multiplicative_functions_linear.h\"\n// This\
-    \ is only for calculating multiplicative functions\n// If we need a fast sieve,\
-    \ see SieveFast.h\n// From https://codeforces.com/blog/entry/54090\nnamespace\
+    \  solve();\n    return 0;\n}\n#line 1 \"Math/multiplicative_functions_linear.h\"\
+    \n// This is only for calculating multiplicative functions\n// If we need a fast\
+    \ sieve, see SieveFast.h\n// From https://codeforces.com/blog/entry/54090\nnamespace\
     \ linear_sieve {\nconst int MN = 2e7;\nvector<int> primes;\n\nint smallest_p[MN];\
     \  // smallest_p[n] = smallest prime factor of n\nvoid linear_sieve_smallest_prime_factor(int\
     \ n) {\n    primes.clear();\n    memset(smallest_p, 0, sizeof smallest_p);\n\n\
@@ -101,30 +75,36 @@ data:
     \ + 1;\n                cnt_divisors[ip] = cnt_divisors[i] / (cnt[i] + 1) * (cnt[i]\
     \ + 2);\n            } else {\n                cnt[ip] = 1;\n                cnt_divisors[ip]\
     \ = 2 * cnt_divisors[i];\n            }\n        }\n    }\n}\n// }}}\n\n}\n#line\
-    \ 6 \"Math/tests/euler_phi_stress.test.cpp\"\n\nvoid solve() {\n    linear_sieve::linear_sieve_phi(N);\n\
-    \    for (int i = 1; i < N; ++i) {\n        assert(linear_sieve::phi[i] == eulerPhi(i));\n\
-    \        assert(linear_sieve::phi[i] == eulerPhi_lookup(i));\n    }\n    cout\
-    \ << \"Hello World\\n\";\n}\n"
+    \ 5 \"Math/tests/smallest_prime_factor_stress.test.cpp\"\nusing namespace linear_sieve;\n\
+    \nvoid solve() {\n    const int N = 10000;\n    linear_sieve_smallest_prime_factor(N\
+    \ + 1);\n    assert(smallest_p[1] == 0);\n    for (int n = 2; n <= N; ++n) {\n\
+    \        bool is_prime = true;\n        for (int i = 2; i*i <= n; ++i) {\n   \
+    \         if (n % i == 0) {\n                is_prime = false;\n             \
+    \   assert(smallest_p[n] == i);\n                break;\n            }\n     \
+    \   }\n        if (is_prime) assert(smallest_p[n] == 0);\n    }\n    cout << \"\
+    Hello World\\n\";\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A\"\
-    \n\n#include \"../../template.h\"\n#include \"../Prime/EulerPhi.h\"\n#include\
-    \ \"../multiplicative_functions_linear.h\"\n\nvoid solve() {\n    linear_sieve::linear_sieve_phi(N);\n\
-    \    for (int i = 1; i < N; ++i) {\n        assert(linear_sieve::phi[i] == eulerPhi(i));\n\
-    \        assert(linear_sieve::phi[i] == eulerPhi_lookup(i));\n    }\n    cout\
-    \ << \"Hello World\\n\";\n}\n"
+    \n\n#include \"../../template.h\"\n#include \"../multiplicative_functions_linear.h\"\
+    \nusing namespace linear_sieve;\n\nvoid solve() {\n    const int N = 10000;\n\
+    \    linear_sieve_smallest_prime_factor(N + 1);\n    assert(smallest_p[1] == 0);\n\
+    \    for (int n = 2; n <= N; ++n) {\n        bool is_prime = true;\n        for\
+    \ (int i = 2; i*i <= n; ++i) {\n            if (n % i == 0) {\n              \
+    \  is_prime = false;\n                assert(smallest_p[n] == i);\n          \
+    \      break;\n            }\n        }\n        if (is_prime) assert(smallest_p[n]\
+    \ == 0);\n    }\n    cout << \"Hello World\\n\";\n}\n"
   dependsOn:
   - template.h
-  - Math/Prime/EulerPhi.h
   - Math/multiplicative_functions_linear.h
   isVerificationFile: true
-  path: Math/tests/euler_phi_stress.test.cpp
+  path: Math/tests/smallest_prime_factor_stress.test.cpp
   requiredBy: []
   timestamp: '2023-01-16 13:01:49+07:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Math/tests/euler_phi_stress.test.cpp
+documentation_of: Math/tests/smallest_prime_factor_stress.test.cpp
 layout: document
 redirect_from:
-- /verify/Math/tests/euler_phi_stress.test.cpp
-- /verify/Math/tests/euler_phi_stress.test.cpp.html
-title: Math/tests/euler_phi_stress.test.cpp
+- /verify/Math/tests/smallest_prime_factor_stress.test.cpp
+- /verify/Math/tests/smallest_prime_factor_stress.test.cpp.html
+title: Math/tests/smallest_prime_factor_stress.test.cpp
 ---
