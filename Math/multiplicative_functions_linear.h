@@ -5,6 +5,20 @@ namespace linear_sieve {
 const int MN = 2e7;
 vector<int> primes;
 
+int smallest_p[MN];  // smallest_p[n] = smallest prime factor of n
+void linear_sieve_smallest_prime_factor(int n) {
+    primes.clear();
+    memset(smallest_p, 0, sizeof smallest_p);
+
+    for (int i = 2; i < n; ++i) {
+        if (!smallest_p[i]) primes.push_back(i);
+        for (int j = 0; j < int(primes.size()) && i * primes[j] < n; ++j) {
+            smallest_p[i * primes[j]] = primes[j];
+            if (i % primes[j] == 0) break;
+        }
+    }
+}
+
 // Euler Phi {{{
 bool is_composite[MN];
 int phi[MN];
