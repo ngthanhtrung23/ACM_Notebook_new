@@ -102,4 +102,14 @@ long long my_round(ld x) {
     if (x < 0) return -my_round(-x);
     return (long long) (x + 1e-2);
 }
+vector<long long> multiply(const vector<int>& a, const vector<int>& b) {
+    vector<ld> ad(a.begin(), a.end());
+    vector<ld> bd(b.begin(), b.end());
+    auto rd = multiply(ad, bd);
+    vector<long long> res(rd.size());
+    for (int i = 0; i < (int) res.size(); ++i) {
+        res[i] = my_round(rd[i]);
+    }
+    return res;
+}
 // }}}
