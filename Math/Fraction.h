@@ -1,3 +1,6 @@
+// Fraction {{{
+int cmp(int a, int b) { return (a == b) ? 0 : ((a < b) ? -1 : 1); }
+
 struct Fraction {
     int a, b;
 
@@ -62,3 +65,4 @@ ostream& operator << (ostream& cout, Fraction& p) {
     cout << p.a << '/' << p.b;
     return cout;
 }
+// }}}
