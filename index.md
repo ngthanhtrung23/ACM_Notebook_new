@@ -6,12 +6,18 @@ data:
     - icon: ':heavy_check_mark:'
       path: DP/cnt_distinct_subseq.h
       title: DP/cnt_distinct_subseq.h
+    - icon: ':warning:'
+      path: DP/coin_exchange.h
+      title: DP/coin_exchange.h
     - icon: ':heavy_check_mark:'
       path: DP/count_inversions.h
       title: DP/count_inversions.h
     - icon: ':warning:'
       path: DP/edit_distance.h
       title: DP/edit_distance.h
+    - icon: ':warning:'
+      path: DP/knapsack.h
+      title: DP/knapsack.h
     - icon: ':heavy_check_mark:'
       path: DP/lis.h
       title: DP/lis.h
