@@ -1,5 +1,6 @@
 // Copied from https://codeforces.com/blog/entry/76149
 
+// n-d vector {{{
 template<int D, typename T>
 struct Vec : public vector<Vec<D - 1, T>> {
     static_assert(D >= 1, "Dimension must be positive");
@@ -11,6 +12,7 @@ template<typename T>
 struct Vec<1, T> : public vector<T> {
     Vec(int n = 0, T val = T()) : vector<T> (n, val) {}
 };
+// }}}
 
 // Usage:
 {
