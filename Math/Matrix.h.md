@@ -204,8 +204,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Math/tests/matrix_mult.test.cpp
-  - Math/tests/matrix_inverse.test.cpp
   - Math/tests/matrix_det.test.cpp
+  - Math/tests/matrix_inverse.test.cpp
 documentation_of: Math/Matrix.h
 layout: document
 redirect_from:

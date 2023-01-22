@@ -60,8 +60,8 @@ data:
   timestamp: '2023-01-07 01:54:04+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - DataStructure/test/fenwick_pointaddrangesum.test.cpp
   - DataStructure/test/aizu_dsl_2_b_fenwick_aizu.test.cpp
+  - DataStructure/test/fenwick_pointaddrangesum.test.cpp
   - DataStructure/test/fenwick.test.cpp
   - DP/tests/aizu_alds1_5_d_count_inversions.test.cpp
 documentation_of: DataStructure/Fenwick/Fenwick.h

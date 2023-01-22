@@ -138,8 +138,8 @@ data:
   verifiedWith:
   - Math/tests/cnt_divisors_stress.test.cpp
   - Math/tests/is_prime_yukicoder.test.cpp
-  - Math/tests/factorize.test.cpp
   - Math/tests/aizu_ntl_1_a_factorize.test.cpp
+  - Math/tests/factorize.test.cpp
 documentation_of: Math/NumberTheory/Pollard.h
 layout: document
 redirect_from:

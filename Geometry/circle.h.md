@@ -153,11 +153,11 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Geometry/tests/aizu_cgl_7_d_circle_line_intersection.test.cpp
-  - Geometry/tests/aizu_cgl_7_i_circle_common_area.test.cpp
-  - Geometry/tests/aizu_cgl_7_f_circle_tangent_points.test.cpp
   - Geometry/tests/aizu_cgl_7_e_circle_circle_intersection.test.cpp
-  - Geometry/tests/aizu_cgl_7_g_circle_circle_tangent_points.test.cpp
   - Geometry/tests/aizu_cgl_7_a_cicle_tangents.test.cpp
+  - Geometry/tests/aizu_cgl_7_i_circle_common_area.test.cpp
+  - Geometry/tests/aizu_cgl_7_g_circle_circle_tangent_points.test.cpp
+  - Geometry/tests/aizu_cgl_7_f_circle_tangent_points.test.cpp
 documentation_of: Geometry/circle.h
 layout: document
 redirect_from:

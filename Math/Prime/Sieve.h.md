@@ -52,8 +52,8 @@ data:
   timestamp: '2022-12-14 02:22:04+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Math/tests/sieve.test.cpp
   - Math/tests/cnt_divisors_stress.test.cpp
+  - Math/tests/sieve.test.cpp
 documentation_of: Math/Prime/Sieve.h
 layout: document
 redirect_from:

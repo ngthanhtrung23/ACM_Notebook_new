@@ -64,13 +64,13 @@ data:
   isVerificationFile: false
   path: DataStructure/DSU/DSU_rollback.h
   requiredBy:
-  - DataStructure/DSU/DSU_dynamic_connectivity.h
   - Graph/DirectedMST.h
+  - DataStructure/DSU/DSU_dynamic_connectivity.h
   timestamp: '2023-01-07 01:46:12+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Graph/tests/aizu_grl_2_b_directed_mst.test.cpp
   - Graph/tests/directed_mst.test.cpp
+  - Graph/tests/aizu_grl_2_b_directed_mst.test.cpp
 documentation_of: DataStructure/DSU/DSU_rollback.h
 layout: document
 redirect_from:

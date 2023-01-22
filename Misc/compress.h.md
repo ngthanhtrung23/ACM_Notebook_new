@@ -130,8 +130,8 @@ data:
   verifiedWith:
   - DataStructure/test/fenwick_2d_pointaddrectsum.test.cpp
   - DataStructure/test/fenwick_2d_rectsum.test.cpp
-  - DP/tests/yosupo_cnt_distinct_subseq.test.cpp
   - DP/tests/aizu_alds1_5_d_count_inversions.test.cpp
+  - DP/tests/yosupo_cnt_distinct_subseq.test.cpp
 documentation_of: Misc/compress.h
 layout: document
 redirect_from:

@@ -142,8 +142,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Math/tests/ntt_chemthan.test.cpp
-  - Math/tests/ntt_chemthan_any_mod.test.cpp
   - Math/tests/ntt_chemthan_any_mod_2.test.cpp
+  - Math/tests/ntt_chemthan_any_mod.test.cpp
 documentation_of: Math/Polynomial/NTT_chemthan.h
 layout: document
 redirect_from:
