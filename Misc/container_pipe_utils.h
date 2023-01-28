@@ -83,7 +83,10 @@ Container& operator | (Container& a, IOOperator op) {
             for (auto& elem : a) cin >> elem;
             break;
         case OUT_1_LINE:
-            for (const auto& elem : a) cout << elem << ' ';
+            for (size_t i = 0; i < a.size(); ++i) {
+                if (i > 0) cout << ' ';
+                cout << a[i];
+            }
             break;
         case OUT_ONE_PER_LINE:
             for (const auto& elem : a) cout << elem << '\n';

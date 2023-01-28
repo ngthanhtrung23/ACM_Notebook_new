@@ -19,7 +19,7 @@
 // - https://oj.vnoi.info/problem/fmatch
 // - https://codeforces.com/gym/100337 - A: find vertices belong to all max matching
 
-// Bipartite matching {{{
+// Bipartite Matching {{{
 struct Matching {
     int n;
     vector< vector<int> > ke;
