@@ -1,4 +1,3 @@
-// Pollard {{{
 // Copied from https://judge.yosupo.jp/submission/61447
 // O(N^0.25)
 //
@@ -6,7 +5,8 @@
 // - (up to 10^18; 200 tests) https://judge.yosupo.jp/problem/factorize
 // - https://oj.vnoi.info/problem/icpc21_beta_l
 // - https://www.spoj.com/problems/FACT0/
-
+//
+// Pollard {{{
 using ll = long long;
 using ull = unsigned long long;
 using ld = long double;
@@ -146,6 +146,27 @@ vector<pair<ll, int>> factorize_pk(ll x) {
     if (cnt > 0) {
         res.emplace_back(last, cnt);
     }
+    return res;
+}
+vector<ll> divisors(ll n) {
+    auto pks = factorize_pk(n);
+
+    vector<ll> res;
+    function<void(int, ll)> gen = [&] (int i, ll prod) {
+        if (i == static_cast<int>(pks.size())) {
+            res.push_back(prod);
+            return;
+        }
+
+        ll cur_power = 1;
+        for (int cur = 0; cur <= pks[i].second; ++cur) {
+            gen(i+1, prod * cur_power);
+            cur_power *= pks[i].first;
+        }
+    };
+
+    gen(0, 1LL);
+    sort(res.begin(), res.end());
     return res;
 }
 // }}}

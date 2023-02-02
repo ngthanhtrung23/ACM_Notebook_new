@@ -131,6 +131,11 @@ PolygonLocation in_polygon(const Polygon &p, Point q) {
 // Check point in convex polygon, O(logN)
 #define Det(a,b,c) ((double)(b.x-a.x)*(double)(c.y-a.y)-(double)(b.y-a.y)*(c.x-a.x))
 PolygonLocation in_convex(vector<Point>& l, Point p){
+    if (l.empty()) return PolygonLocation::OUT;
+    if (l.size() <= 2) {
+        return onSegment(l[0], l[1 % l.size()], p) ? PolygonLocation::ON : PolygonLocation::OUT;
+    }
+
     int a = 1, b = l.size()-1, c;
     if (Det(l[0], l[a], l[b]) > 0) swap(a,b);
 
