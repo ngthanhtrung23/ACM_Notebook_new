@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Math/NumberTheory/Pollard.h
     title: Math/NumberTheory/Pollard.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/NumberTheory/cnt_divisors.h
     title: Math/NumberTheory/cnt_divisors.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Math/Prime/Sieve.h
     title: Math/Prime/Sieve.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/multiplicative_function.h
     title: Math/multiplicative_function.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Math/multiplicative_functions_linear.h
     title: Math/multiplicative_functions_linear.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A
@@ -56,45 +56,45 @@ data:
     \ (0, r-1)(rng);\n}\n\ntemplate<typename T>\nvector<T> read_vector(int n) {\n\
     \    vector<T> res(n);\n    for (int& x : res) cin >> x;\n    return res;\n}\n\
     \nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n  \
-    \  solve();\n    return 0;\n}\n#line 1 \"Math/NumberTheory/Pollard.h\"\n// Pollard\
-    \ {{{\n// Copied from https://judge.yosupo.jp/submission/61447\n// O(N^0.25)\n\
-    //\n// Tested:\n// - (up to 10^18; 200 tests) https://judge.yosupo.jp/problem/factorize\n\
-    // - https://oj.vnoi.info/problem/icpc21_beta_l\n// - https://www.spoj.com/problems/FACT0/\n\
-    \nusing ll = long long;\nusing ull = unsigned long long;\nusing ld = long double;\n\
-    ll mult(ll x, ll y, ll md) {\n    ull q = (ld)x * y / md;\n    ll res = ((ull)x\
-    \ * y - q * md);\n    if (res >= md) res -= md;\n    if (res < 0) res += md;\n\
-    \    return res;\n}\n\nll powMod(ll x, ll p, ll md) {\n    if (p == 0) return\
-    \ 1;\n    if (p & 1) return mult(x, powMod(x, p - 1, md), md);\n    return powMod(mult(x,\
-    \ x, md), p / 2, md);\n}\n\nbool checkMillerRabin(ll x, ll md, ll s, int k) {\n\
-    \    x = powMod(x, s, md);\n    if (x == 1) return true;\n    while(k--) {\n \
-    \       if (x == md - 1) return true;\n        x = mult(x, x, md);\n        if\
-    \ (x == 1) return false;\n    }\n    return false;\n}\nbool isPrime(ll x) {\n\
-    \    if (x == 2 || x == 3 || x == 5 || x == 7) return true;\n    if (x % 2 ==\
-    \ 0 || x % 3 == 0 || x % 5 == 0 || x % 7 == 0) return false;\n    if (x < 121)\
-    \ return x > 1;\n    ll s = x - 1;\n    int k = 0;\n    while(s % 2 == 0) {\n\
-    \        s >>= 1;\n        k++;\n    }\n    if (x < 1LL << 32) {\n        for\
-    \ (ll z : {2, 7, 61}) {\n            if (!checkMillerRabin(z, x, s, k)) return\
-    \ false;\n        }\n    } else {\n        for (ll z : {2, 325, 9375, 28178, 450775,\
-    \ 9780504, 1795265022}) {\n            if (!checkMillerRabin(z, x, s, k)) return\
-    \ false;\n        }\n    }\n    return true;\n}\n\nll gcd(ll x, ll y) {\n    return\
-    \ y == 0 ? x : gcd(y, x % y);\n}\n\nvoid pollard(ll x, vector<ll> &ans) {\n  \
-    \  if (isPrime(x)) {\n        ans.push_back(x);\n        return;\n    }\n    ll\
-    \ c = 1;\n    while(true) {\n        c = 1 + get_rand(x - 1);\n        auto f\
-    \ = [&](ll y) {\n            ll res = mult(y, y, x) + c;\n            if (res\
-    \ >= x) res -= x;\n            return res;\n        };\n        ll y = 2;\n  \
-    \      int B = 100;\n        int len = 1;\n        ll g = 1;\n        while(g\
-    \ == 1) {\n            ll z = y;\n            for (int i = 0; i < len; i++) {\n\
-    \                z = f(z);\n            }\n            ll zs = -1;\n         \
-    \   int lft = len;\n            while(g == 1 && lft > 0) {\n                zs\
-    \ = z;\n                ll p = 1;\n                for (int i = 0; i < B && i\
-    \ < lft; i++) {\n                    p = mult(p, abs(z - y), x);\n           \
-    \         z = f(z);\n                }\n                g = gcd(p, x);\n     \
-    \           lft -= B;\n            }\n            if (g == 1) {\n            \
-    \    y = z;\n                len <<= 1;\n                continue;\n         \
-    \   }\n            if (g == x) {\n                g = 1;\n                z =\
-    \ zs;\n                while(g == 1) {\n                    g = gcd(abs(z - y),\
-    \ x);\n                    z = f(z);\n                }\n            }\n     \
-    \       if (g == x) break;\n            assert(g != 1);\n            pollard(g,\
+    \  solve();\n    return 0;\n}\n#line 1 \"Math/NumberTheory/Pollard.h\"\n// Copied\
+    \ from https://judge.yosupo.jp/submission/61447\n// O(N^0.25)\n//\n// Tested:\n\
+    // - (up to 10^18; 200 tests) https://judge.yosupo.jp/problem/factorize\n// -\
+    \ https://oj.vnoi.info/problem/icpc21_beta_l\n// - https://www.spoj.com/problems/FACT0/\n\
+    //\n// Pollard {{{\nusing ll = long long;\nusing ull = unsigned long long;\nusing\
+    \ ld = long double;\nll mult(ll x, ll y, ll md) {\n    ull q = (ld)x * y / md;\n\
+    \    ll res = ((ull)x * y - q * md);\n    if (res >= md) res -= md;\n    if (res\
+    \ < 0) res += md;\n    return res;\n}\n\nll powMod(ll x, ll p, ll md) {\n    if\
+    \ (p == 0) return 1;\n    if (p & 1) return mult(x, powMod(x, p - 1, md), md);\n\
+    \    return powMod(mult(x, x, md), p / 2, md);\n}\n\nbool checkMillerRabin(ll\
+    \ x, ll md, ll s, int k) {\n    x = powMod(x, s, md);\n    if (x == 1) return\
+    \ true;\n    while(k--) {\n        if (x == md - 1) return true;\n        x =\
+    \ mult(x, x, md);\n        if (x == 1) return false;\n    }\n    return false;\n\
+    }\nbool isPrime(ll x) {\n    if (x == 2 || x == 3 || x == 5 || x == 7) return\
+    \ true;\n    if (x % 2 == 0 || x % 3 == 0 || x % 5 == 0 || x % 7 == 0) return\
+    \ false;\n    if (x < 121) return x > 1;\n    ll s = x - 1;\n    int k = 0;\n\
+    \    while(s % 2 == 0) {\n        s >>= 1;\n        k++;\n    }\n    if (x < 1LL\
+    \ << 32) {\n        for (ll z : {2, 7, 61}) {\n            if (!checkMillerRabin(z,\
+    \ x, s, k)) return false;\n        }\n    } else {\n        for (ll z : {2, 325,\
+    \ 9375, 28178, 450775, 9780504, 1795265022}) {\n            if (!checkMillerRabin(z,\
+    \ x, s, k)) return false;\n        }\n    }\n    return true;\n}\n\nll gcd(ll\
+    \ x, ll y) {\n    return y == 0 ? x : gcd(y, x % y);\n}\n\nvoid pollard(ll x,\
+    \ vector<ll> &ans) {\n    if (isPrime(x)) {\n        ans.push_back(x);\n     \
+    \   return;\n    }\n    ll c = 1;\n    while(true) {\n        c = 1 + get_rand(x\
+    \ - 1);\n        auto f = [&](ll y) {\n            ll res = mult(y, y, x) + c;\n\
+    \            if (res >= x) res -= x;\n            return res;\n        };\n  \
+    \      ll y = 2;\n        int B = 100;\n        int len = 1;\n        ll g = 1;\n\
+    \        while(g == 1) {\n            ll z = y;\n            for (int i = 0; i\
+    \ < len; i++) {\n                z = f(z);\n            }\n            ll zs =\
+    \ -1;\n            int lft = len;\n            while(g == 1 && lft > 0) {\n  \
+    \              zs = z;\n                ll p = 1;\n                for (int i\
+    \ = 0; i < B && i < lft; i++) {\n                    p = mult(p, abs(z - y), x);\n\
+    \                    z = f(z);\n                }\n                g = gcd(p,\
+    \ x);\n                lft -= B;\n            }\n            if (g == 1) {\n \
+    \               y = z;\n                len <<= 1;\n                continue;\n\
+    \            }\n            if (g == x) {\n                g = 1;\n          \
+    \      z = zs;\n                while(g == 1) {\n                    g = gcd(abs(z\
+    \ - y), x);\n                    z = f(z);\n                }\n            }\n\
+    \            if (g == x) break;\n            assert(g != 1);\n            pollard(g,\
     \ ans);\n            pollard(x / g, ans);\n            return;\n        }\n  \
     \  }\n}\n// return list of all prime factors of x (can have duplicates)\nvector<ll>\
     \ factorize(ll x) {\n    vector<ll> ans;\n    for (ll p : {2, 3, 5, 7, 11, 13,\
@@ -106,94 +106,100 @@ data:
     \        if (p == last) ++cnt;\n        else {\n            if (last > 0) res.emplace_back(last,\
     \ cnt);\n            last = p;\n            cnt = 1;\n        }\n    }\n    if\
     \ (cnt > 0) {\n        res.emplace_back(last, cnt);\n    }\n    return res;\n\
-    }\n// }}}\n#line 1 \"Math/Prime/Sieve.h\"\n// F is called for each prime\n// Sieve\
-    \ (odd only + segmented) {{{\ntemplate<typename F>\nvoid sieve(int MAX, F func)\
-    \ {\n\n    const int S = sqrt(MAX + 0.5);\n    vector<char> sieve(S + 1, true);\n\
-    \    vector<array<int, 2>> cp;\n    for (int i = 3; i <= S; i += 2) {\n      \
-    \  if (!sieve[i])\n            continue;\n        cp.push_back({i, (i * i - 1)\
-    \ / 2});\n        for (int j = i * i; j <= S; j += 2 * i)\n            sieve[j]\
-    \ = false;\n    }\n    func(2);\n    vector<char> block(S);\n    int high = (MAX\
-    \ - 1) / 2;\n    for (int low = 0; low <= high; low += S) {\n        fill(block.begin(),\
-    \ block.end(), true);\n        for (auto &i : cp) {\n            int p = i[0],\
-    \ idx = i[1];\n            for (; idx < S; idx += p)\n                block[idx]\
-    \ = false;\n            i[1] = idx - S;\n        }\n        if (low == 0)\n  \
-    \          block[0] = false;\n        for (int i = 0; i < S && low + i <= high;\
-    \ i++)\n            if (block[i]) {\n                func((low + i) * 2 + 1);\n\
-    \            }\n    };\n}\n// }}}\n#line 3 \"Math/NumberTheory/cnt_divisors.h\"\
-    \n\n// Tested: https://www.spoj.com/problems/NUMDIV/\nint64_t cnt_divisors(int64_t\
-    \ n) {\n    assert(n > 0);\n    auto ps = factorize(n);\n    int cnt_ps = ps.size();\n\
-    \    int i = 0;\n    int64_t res = 1;\n    while (i < cnt_ps) {\n        int j\
-    \ = i;\n        while (j+1 < cnt_ps && ps[j+1] == ps[j]) ++j;\n        res *=\
-    \ j - i + 2;\n        i = j + 1;\n    }\n    return res;\n}\n\n// Count divisors\
-    \ Using Segmented Sieve O(sieve(sqrt(R)) + (R-L)*log) {{{\n// Returns vector of\
-    \ length (r - l + 1), where the i-th element is number of\n// divisors of i -\
-    \ l\nvector<int> cnt_divisors_segmented_sieve(int l, int r) {\n    int s = sqrt(r\
-    \ + 0.5);\n    vector<int> primes;\n    auto newPrime = [&] (int p) { primes.push_back(p);\
-    \ };\n    sieve(s, newPrime);\n\n    vector<int> cnt(r - l + 1, 1), cur(r - l\
-    \ + 1);\n    std::iota(cur.begin(), cur.end(), l);\n\n    for (int p : primes)\
-    \ {\n        if (p > r) break;\n\n        int u = (l + p - 1) / p * p;\n     \
-    \   for (int i = u; i <= r; i += p) {\n            int k = 0;\n            while\
-    \ (cur[i-l] % p == 0) cur[i-l] /= p, ++k;\n\n            cnt[i - l] *= k + 1;\n\
-    \        }\n    }\n    for (int i = l; i <= r; ++i) {\n        if (cur[i-l] >\
-    \ 1) cnt[i-l] *= 2;\n    }\n    return cnt;\n}\n// }}}\n#line 1 \"Math/multiplicative_function.h\"\
-    \n// NOTE: calculate upto N-1\n//\n// Multiplicative function {{{\ntemplate<int\
-    \ N>\nstruct MultiplicativeFunction {\n    // Init sieve and pk\n    MultiplicativeFunction()\
-    \ {\n        // Init sieve\n        for (int i = 2; i*i < N; i++) {\n        \
-    \    if (!sieve[i]) {\n                for (int j = i*i; j < N; j += i) {\n  \
-    \                  sieve[j] = i;\n                }\n            }\n        }\n\
-    \n        // Init pk\n        for (int i = 2; i < N; i++) {\n            if (!sieve[i])\
-    \ {\n                pk[i] = {i, 1};\n            } else {\n                int\
-    \ p = sieve[i];\n\n                if (pk[i/p].first == p) { // i = p^k\n    \
-    \                pk[i] = {p, pk[i/p].second + 1};\n                } else {\n\
-    \                    pk[i] = {-1, 0};\n                }\n            }\n    \
-    \    }\n    }\n\n    // Tested: https://cses.fi/problemset/task/1713\n    array<int,\
-    \ N> divisors() {\n        array<int, N> res;\n        res[1] = 1;\n\n       \
-    \ for (int i = 2; i < N; i++) {\n            if (pk[i].first > 0) {  // i = p^k\n\
-    \                res[i] = pk[i].second + 1;\n            } else {\n          \
-    \      // i = u * v, gcd(u, v) = 1\n                int u = i, v = 1;\n      \
-    \          int p = sieve[i];\n                while (u % p == 0) {\n         \
-    \           u /= p;\n                    v *= p;\n                }\n        \
-    \        res[i] = res[u] * res[v];\n            }\n        }\n\n        return\
-    \ res;\n    }\n\n    // mobius(n) = 1  if n is square-free and has *even* number\
-    \ of prime factors\n    // mobius(n) = -1 if n is square-free and has *odd* number\
-    \ of of prime factors\n    // mobius(n) = 0  if n is not square-free\n    array<int,\
-    \ N> mobius() {\n        array<int, N> res;\n        res[1] = 1;\n\n        for\
-    \ (int i = 2; i < N; ++i) {\n            if (pk[i].first > 0) {  // i = p^k\n\
-    \                res[i] = (pk[i].second >= 2) ? 0 : -1;\n            } else {\n\
-    \                // i = u * v, gcd(u, v) = 1\n                int u = i, v = 1;\n\
-    \                int p = sieve[i];\n                while (u % p == 0) {\n   \
-    \                 u /= p;\n                    v *= p;\n                }\n  \
-    \              res[i] = res[u] * res[v];\n            }\n        }\n        return\
-    \ res;\n    }\n\n// private:\n    // sieve[i] == 0 if i is prime,\n    // sieve[i]\
-    \ = any prime factor p otherwise\n    array<int, N> sieve = {0};\n\n    // pk[i]\
-    \ = {p, k} if i == p^k\n    // pk[i] = {-1, 0} otherwise\n    array<pair<int,int>,\
-    \ N> pk;\n};\n// }}}\n#line 6 \"Math/tests/cnt_divisors_stress.test.cpp\"\n\n\
-    const int N = 1000000;\nMultiplicativeFunction<N + 1> mf;\nauto divisors = mf.divisors();\n\
-    \n#line 1 \"Math/multiplicative_functions_linear.h\"\n// This is only for calculating\
-    \ multiplicative functions\n// If we need a fast sieve, see SieveFast.h\n// From\
-    \ https://codeforces.com/blog/entry/54090\nnamespace linear_sieve {\nconst int\
-    \ MN = 2e7;\nvector<int> primes;\n\nint smallest_p[MN];  // smallest_p[n] = smallest\
-    \ prime factor of n\nvoid linear_sieve_smallest_prime_factor(int n) {\n    primes.clear();\n\
-    \    memset(smallest_p, 0, sizeof smallest_p);\n\n    for (int i = 2; i < n; ++i)\
-    \ {\n        if (!smallest_p[i]) primes.push_back(i);\n        for (int j = 0;\
-    \ j < int(primes.size()) && i * primes[j] < n; ++j) {\n            smallest_p[i\
-    \ * primes[j]] = primes[j];\n            if (i % primes[j] == 0) break;\n    \
-    \    }\n    }\n}\n\n// Euler Phi {{{\nbool is_composite[MN];\nint phi[MN];\n\n\
-    void linear_sieve_phi(int n) {\n    memset(is_composite, false, sizeof is_composite);\n\
-    \    primes.clear();\n \n    phi[1] = 1;\n    for (int i = 2; i < n; ++i) {\n\
-    \        if (!is_composite[i]) {\n            primes.push_back(i);\n         \
-    \   phi[i] = i - 1; // i is prime\n        }\n        for (int j = 0; j < (int)\
-    \ primes.size() && i * primes[j] < n; ++j) {\n            is_composite[i * primes[j]]\
-    \ = true;\n            if (i % primes[j] == 0) {\n                phi[i * primes[j]]\
-    \ = phi[i] * primes[j]; //primes[j] divides i\n                break;\n      \
-    \      } else {\n                phi[i * primes[j]] = phi[i] * phi[primes[j]];\
-    \ //primes[j] does not divide i\n            }\n        }\n    }\n}\n// }}}\n\n\
-    // Number of divisors {{{\nint cnt_divisors[MN + 11];  // call linear_sieve_divisors(n+1)\
-    \ to init\nint cnt[MN + 11];           // power of smallest prime factor of i\n\
-    void linear_sieve_divisors(int n) {  // init range [1, n-1]\n    memset(is_composite,\
-    \ false, sizeof is_composite);\n    primes.clear();\n\n    cnt_divisors[1] = 1;\n\
-    \    for (int i = 2; i < n; ++i) {\n        if (!is_composite[i]) {\n        \
-    \    primes.push_back(i);\n            cnt[i] = 1;\n            cnt_divisors[i]\
+    }\nvector<ll> divisors(ll n) {\n    auto pks = factorize_pk(n);\n\n    vector<ll>\
+    \ res;\n    function<void(int, ll)> gen = [&] (int i, ll prod) {\n        if (i\
+    \ == static_cast<int>(pks.size())) {\n            res.push_back(prod);\n     \
+    \       return;\n        }\n\n        ll cur_power = 1;\n        for (int cur\
+    \ = 0; cur <= pks[i].second; ++cur) {\n            gen(i+1, prod * cur_power);\n\
+    \            cur_power *= pks[i].first;\n        }\n    };\n\n    gen(0, 1LL);\n\
+    \    sort(res.begin(), res.end());\n    return res;\n}\n// }}}\n#line 1 \"Math/Prime/Sieve.h\"\
+    \n// F is called for each prime\n// Sieve (odd only + segmented) {{{\ntemplate<typename\
+    \ F>\nvoid sieve(int MAX, F func) {\n\n    const int S = sqrt(MAX + 0.5);\n  \
+    \  vector<char> sieve(S + 1, true);\n    vector<array<int, 2>> cp;\n    for (int\
+    \ i = 3; i <= S; i += 2) {\n        if (!sieve[i])\n            continue;\n  \
+    \      cp.push_back({i, (i * i - 1) / 2});\n        for (int j = i * i; j <= S;\
+    \ j += 2 * i)\n            sieve[j] = false;\n    }\n    func(2);\n    vector<char>\
+    \ block(S);\n    int high = (MAX - 1) / 2;\n    for (int low = 0; low <= high;\
+    \ low += S) {\n        fill(block.begin(), block.end(), true);\n        for (auto\
+    \ &i : cp) {\n            int p = i[0], idx = i[1];\n            for (; idx <\
+    \ S; idx += p)\n                block[idx] = false;\n            i[1] = idx -\
+    \ S;\n        }\n        if (low == 0)\n            block[0] = false;\n      \
+    \  for (int i = 0; i < S && low + i <= high; i++)\n            if (block[i]) {\n\
+    \                func((low + i) * 2 + 1);\n            }\n    };\n}\n// }}}\n\
+    #line 3 \"Math/NumberTheory/cnt_divisors.h\"\n\n// Tested: https://www.spoj.com/problems/NUMDIV/\n\
+    int64_t cnt_divisors(int64_t n) {\n    assert(n > 0);\n    auto ps = factorize(n);\n\
+    \    int cnt_ps = ps.size();\n    int i = 0;\n    int64_t res = 1;\n    while\
+    \ (i < cnt_ps) {\n        int j = i;\n        while (j+1 < cnt_ps && ps[j+1] ==\
+    \ ps[j]) ++j;\n        res *= j - i + 2;\n        i = j + 1;\n    }\n    return\
+    \ res;\n}\n\n// Count divisors Using Segmented Sieve O(sieve(sqrt(R)) + (R-L)*log)\
+    \ {{{\n// Returns vector of length (r - l + 1), where the i-th element is number\
+    \ of\n// divisors of i - l\nvector<int> cnt_divisors_segmented_sieve(int l, int\
+    \ r) {\n    int s = sqrt(r + 0.5);\n    vector<int> primes;\n    auto newPrime\
+    \ = [&] (int p) { primes.push_back(p); };\n    sieve(s, newPrime);\n\n    vector<int>\
+    \ cnt(r - l + 1, 1), cur(r - l + 1);\n    std::iota(cur.begin(), cur.end(), l);\n\
+    \n    for (int p : primes) {\n        if (p > r) break;\n\n        int u = (l\
+    \ + p - 1) / p * p;\n        for (int i = u; i <= r; i += p) {\n            int\
+    \ k = 0;\n            while (cur[i-l] % p == 0) cur[i-l] /= p, ++k;\n\n      \
+    \      cnt[i - l] *= k + 1;\n        }\n    }\n    for (int i = l; i <= r; ++i)\
+    \ {\n        if (cur[i-l] > 1) cnt[i-l] *= 2;\n    }\n    return cnt;\n}\n// }}}\n\
+    #line 1 \"Math/multiplicative_function.h\"\n// NOTE: calculate upto N-1\n//\n\
+    // Multiplicative function {{{\ntemplate<int N>\nstruct MultiplicativeFunction\
+    \ {\n    // Init sieve and pk\n    MultiplicativeFunction() {\n        // Init\
+    \ sieve\n        for (int i = 2; i*i < N; i++) {\n            if (!sieve[i]) {\n\
+    \                for (int j = i*i; j < N; j += i) {\n                    sieve[j]\
+    \ = i;\n                }\n            }\n        }\n\n        // Init pk\n  \
+    \      for (int i = 2; i < N; i++) {\n            if (!sieve[i]) {\n         \
+    \       pk[i] = {i, 1};\n            } else {\n                int p = sieve[i];\n\
+    \n                if (pk[i/p].first == p) { // i = p^k\n                    pk[i]\
+    \ = {p, pk[i/p].second + 1};\n                } else {\n                    pk[i]\
+    \ = {-1, 0};\n                }\n            }\n        }\n    }\n\n    // Tested:\
+    \ https://cses.fi/problemset/task/1713\n    array<int, N> divisors() {\n     \
+    \   array<int, N> res;\n        res[1] = 1;\n\n        for (int i = 2; i < N;\
+    \ i++) {\n            if (pk[i].first > 0) {  // i = p^k\n                res[i]\
+    \ = pk[i].second + 1;\n            } else {\n                // i = u * v, gcd(u,\
+    \ v) = 1\n                int u = i, v = 1;\n                int p = sieve[i];\n\
+    \                while (u % p == 0) {\n                    u /= p;\n         \
+    \           v *= p;\n                }\n                res[i] = res[u] * res[v];\n\
+    \            }\n        }\n\n        return res;\n    }\n\n    // mobius(n) =\
+    \ 1  if n is square-free and has *even* number of prime factors\n    // mobius(n)\
+    \ = -1 if n is square-free and has *odd* number of of prime factors\n    // mobius(n)\
+    \ = 0  if n is not square-free\n    array<int, N> mobius() {\n        array<int,\
+    \ N> res;\n        res[1] = 1;\n\n        for (int i = 2; i < N; ++i) {\n    \
+    \        if (pk[i].first > 0) {  // i = p^k\n                res[i] = (pk[i].second\
+    \ >= 2) ? 0 : -1;\n            } else {\n                // i = u * v, gcd(u,\
+    \ v) = 1\n                int u = i, v = 1;\n                int p = sieve[i];\n\
+    \                while (u % p == 0) {\n                    u /= p;\n         \
+    \           v *= p;\n                }\n                res[i] = res[u] * res[v];\n\
+    \            }\n        }\n        return res;\n    }\n\n// private:\n    // sieve[i]\
+    \ == 0 if i is prime,\n    // sieve[i] = any prime factor p otherwise\n    array<int,\
+    \ N> sieve = {0};\n\n    // pk[i] = {p, k} if i == p^k\n    // pk[i] = {-1, 0}\
+    \ otherwise\n    array<pair<int,int>, N> pk;\n};\n// }}}\n#line 6 \"Math/tests/cnt_divisors_stress.test.cpp\"\
+    \n\nconst int N = 1000000;\nMultiplicativeFunction<N + 1> mf;\nauto divisors =\
+    \ mf.divisors();\n\n#line 1 \"Math/multiplicative_functions_linear.h\"\n// This\
+    \ is only for calculating multiplicative functions\n// If we need a fast sieve,\
+    \ see SieveFast.h\n// From https://codeforces.com/blog/entry/54090\nnamespace\
+    \ linear_sieve {\nconst int MN = 2e7;\nvector<int> primes;\n\nint smallest_p[MN];\
+    \  // smallest_p[n] = smallest prime factor of n\nvoid linear_sieve_smallest_prime_factor(int\
+    \ n) {\n    primes.clear();\n    memset(smallest_p, 0, sizeof smallest_p);\n\n\
+    \    for (int i = 2; i < n; ++i) {\n        if (!smallest_p[i]) primes.push_back(i);\n\
+    \        for (int j = 0; j < int(primes.size()) && i * primes[j] < n; ++j) {\n\
+    \            smallest_p[i * primes[j]] = primes[j];\n            if (i % primes[j]\
+    \ == 0) break;\n        }\n    }\n}\n\n// Euler Phi {{{\nbool is_composite[MN];\n\
+    int phi[MN];\n\nvoid linear_sieve_phi(int n) {\n    memset(is_composite, false,\
+    \ sizeof is_composite);\n    primes.clear();\n \n    phi[1] = 1;\n    for (int\
+    \ i = 2; i < n; ++i) {\n        if (!is_composite[i]) {\n            primes.push_back(i);\n\
+    \            phi[i] = i - 1; // i is prime\n        }\n        for (int j = 0;\
+    \ j < (int) primes.size() && i * primes[j] < n; ++j) {\n            is_composite[i\
+    \ * primes[j]] = true;\n            if (i % primes[j] == 0) {\n              \
+    \  phi[i * primes[j]] = phi[i] * primes[j]; //primes[j] divides i\n          \
+    \      break;\n            } else {\n                phi[i * primes[j]] = phi[i]\
+    \ * phi[primes[j]]; //primes[j] does not divide i\n            }\n        }\n\
+    \    }\n}\n// }}}\n\n// Number of divisors {{{\nint cnt_divisors[MN + 11];  //\
+    \ call linear_sieve_divisors(n+1) to init\nint cnt[MN + 11];           // power\
+    \ of smallest prime factor of i\nvoid linear_sieve_divisors(int n) {  // init\
+    \ range [1, n-1]\n    memset(is_composite, false, sizeof is_composite);\n    primes.clear();\n\
+    \n    cnt_divisors[1] = 1;\n    for (int i = 2; i < n; ++i) {\n        if (!is_composite[i])\
+    \ {\n            primes.push_back(i);\n            cnt[i] = 1;\n            cnt_divisors[i]\
     \ = 2;\n        }\n        for (int j = 0; j < (int) primes.size() && i * primes[j]\
     \ < n; ++j) {\n            int ip = i * primes[j];\n            is_composite[ip]\
     \ = true;\n            if (i % primes[j] == 0) {\n                cnt[ip] = cnt[i]\
@@ -222,8 +228,8 @@ data:
   isVerificationFile: true
   path: Math/tests/cnt_divisors_stress.test.cpp
   requiredBy: []
-  timestamp: '2023-01-16 13:01:49+07:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-02-02 12:34:59+08:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: Math/tests/cnt_divisors_stress.test.cpp
 layout: document

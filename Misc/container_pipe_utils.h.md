@@ -48,7 +48,8 @@ data:
     \ OUT_1_LINE };\ntemplate<typename Container>\nContainer& operator | (Container&\
     \ a, IOOperator op) {\n    switch (op) {\n        case IN:\n            for (auto&\
     \ elem : a) cin >> elem;\n            break;\n        case OUT_1_LINE:\n     \
-    \       for (const auto& elem : a) cout << elem << ' ';\n            break;\n\
+    \       for (size_t i = 0; i < a.size(); ++i) {\n                if (i > 0) cout\
+    \ << ' ';\n                cout << a[i];\n            }\n            break;\n\
     \        case OUT_ONE_PER_LINE:\n            for (const auto& elem : a) cout <<\
     \ elem << '\\n';\n            break;\n    }\n    return a;\n}\n// }}}\n"
   code: "// Container operations, idea from https://codeforces.com/submissions/Yuu\
@@ -89,14 +90,15 @@ data:
     \ OUT_1_LINE };\ntemplate<typename Container>\nContainer& operator | (Container&\
     \ a, IOOperator op) {\n    switch (op) {\n        case IN:\n            for (auto&\
     \ elem : a) cin >> elem;\n            break;\n        case OUT_1_LINE:\n     \
-    \       for (const auto& elem : a) cout << elem << ' ';\n            break;\n\
+    \       for (size_t i = 0; i < a.size(); ++i) {\n                if (i > 0) cout\
+    \ << ' ';\n                cout << a[i];\n            }\n            break;\n\
     \        case OUT_ONE_PER_LINE:\n            for (const auto& elem : a) cout <<\
     \ elem << '\\n';\n            break;\n    }\n    return a;\n}\n// }}}\n"
   dependsOn: []
   isVerificationFile: false
   path: Misc/container_pipe_utils.h
   requiredBy: []
-  timestamp: '2023-01-04 02:50:55+08:00'
+  timestamp: '2023-01-28 18:33:13+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Misc/container_pipe_utils.h

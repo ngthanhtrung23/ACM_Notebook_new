@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Math/NumberTheory/Pollard.h
     title: Math/NumberTheory/Pollard.h
   _extendedRequiredBy: []
@@ -18,15 +18,15 @@ data:
     \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n// for 64-bit, use mt19937_64\n\
     mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());\nlong\
     \ long get_rand(long long r) {\n    return uniform_int_distribution<long long>\
-    \ (0, r-1)(rng);\n}\n\n#line 1 \"Math/NumberTheory/Pollard.h\"\n// Pollard {{{\n\
-    // Copied from https://judge.yosupo.jp/submission/61447\n// O(N^0.25)\n//\n//\
-    \ Tested:\n// - (up to 10^18; 200 tests) https://judge.yosupo.jp/problem/factorize\n\
-    // - https://oj.vnoi.info/problem/icpc21_beta_l\n// - https://www.spoj.com/problems/FACT0/\n\
-    \nusing ll = long long;\nusing ull = unsigned long long;\nusing ld = long double;\n\
-    ll mult(ll x, ll y, ll md) {\n    ull q = (ld)x * y / md;\n    ll res = ((ull)x\
-    \ * y - q * md);\n    if (res >= md) res -= md;\n    if (res < 0) res += md;\n\
-    \    return res;\n}\n\nll powMod(ll x, ll p, ll md) {\n    if (p == 0) return\
-    \ 1;\n    if (p & 1) return mult(x, powMod(x, p - 1, md), md);\n    return powMod(mult(x,\
+    \ (0, r-1)(rng);\n}\n\n#line 1 \"Math/NumberTheory/Pollard.h\"\n// Copied from\
+    \ https://judge.yosupo.jp/submission/61447\n// O(N^0.25)\n//\n// Tested:\n// -\
+    \ (up to 10^18; 200 tests) https://judge.yosupo.jp/problem/factorize\n// - https://oj.vnoi.info/problem/icpc21_beta_l\n\
+    // - https://www.spoj.com/problems/FACT0/\n//\n// Pollard {{{\nusing ll = long\
+    \ long;\nusing ull = unsigned long long;\nusing ld = long double;\nll mult(ll\
+    \ x, ll y, ll md) {\n    ull q = (ld)x * y / md;\n    ll res = ((ull)x * y - q\
+    \ * md);\n    if (res >= md) res -= md;\n    if (res < 0) res += md;\n    return\
+    \ res;\n}\n\nll powMod(ll x, ll p, ll md) {\n    if (p == 0) return 1;\n    if\
+    \ (p & 1) return mult(x, powMod(x, p - 1, md), md);\n    return powMod(mult(x,\
     \ x, md), p / 2, md);\n}\n\nbool checkMillerRabin(ll x, ll md, ll s, int k) {\n\
     \    x = powMod(x, s, md);\n    if (x == 1) return true;\n    while(k--) {\n \
     \       if (x == md - 1) return true;\n        x = mult(x, x, md);\n        if\
@@ -68,11 +68,17 @@ data:
     \        if (p == last) ++cnt;\n        else {\n            if (last > 0) res.emplace_back(last,\
     \ cnt);\n            last = p;\n            cnt = 1;\n        }\n    }\n    if\
     \ (cnt > 0) {\n        res.emplace_back(last, cnt);\n    }\n    return res;\n\
-    }\n// }}}\n#line 13 \"Math/tests/factorize.test.cpp\"\n\nint32_t main() {\n  \
-    \  ios::sync_with_stdio(0); cin.tie(0);\n    int ntest; cin >> ntest;\n    while\
-    \ (ntest--) {\n        long long n; cin >> n;\n        auto f = factorize(n);\n\
-    \        cout << f.size();\n        for (auto x : f) cout << ' ' << x;\n     \
-    \   cout << '\\n';\n    }\n    return 0;\n}\n"
+    }\nvector<ll> divisors(ll n) {\n    auto pks = factorize_pk(n);\n\n    vector<ll>\
+    \ res;\n    function<void(int, ll)> gen = [&] (int i, ll prod) {\n        if (i\
+    \ == static_cast<int>(pks.size())) {\n            res.push_back(prod);\n     \
+    \       return;\n        }\n\n        ll cur_power = 1;\n        for (int cur\
+    \ = 0; cur <= pks[i].second; ++cur) {\n            gen(i+1, prod * cur_power);\n\
+    \            cur_power *= pks[i].first;\n        }\n    };\n\n    gen(0, 1LL);\n\
+    \    sort(res.begin(), res.end());\n    return res;\n}\n// }}}\n#line 13 \"Math/tests/factorize.test.cpp\"\
+    \n\nint32_t main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int ntest;\
+    \ cin >> ntest;\n    while (ntest--) {\n        long long n; cin >> n;\n     \
+    \   auto f = factorize(n);\n        cout << f.size();\n        for (auto x : f)\
+    \ cout << ' ' << x;\n        cout << '\\n';\n    }\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/factorize\"\n\n#include\
     \ <bits/stdc++.h>\nusing namespace std;\n\n// for 64-bit, use mt19937_64\nmt19937_64\
     \ rng(chrono::steady_clock::now().time_since_epoch().count());\nlong long get_rand(long\
@@ -87,7 +93,7 @@ data:
   isVerificationFile: true
   path: Math/tests/factorize.test.cpp
   requiredBy: []
-  timestamp: '2022-12-24 01:16:58+08:00'
+  timestamp: '2023-02-02 12:34:59+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Math/tests/factorize.test.cpp

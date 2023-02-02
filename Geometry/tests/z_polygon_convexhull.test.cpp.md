@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Geometry/polygon.h
     title: Geometry/polygon.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
@@ -179,60 +179,63 @@ data:
     \ - p[i].y)) {\n            c = !c;\n        }\n    }\n    return c ? PolygonLocation::IN\
     \ : PolygonLocation::OUT;\n}\n\n// Check point in convex polygon, O(logN)\n#define\
     \ Det(a,b,c) ((double)(b.x-a.x)*(double)(c.y-a.y)-(double)(b.y-a.y)*(c.x-a.x))\n\
-    PolygonLocation in_convex(vector<Point>& l, Point p){\n    int a = 1, b = l.size()-1,\
-    \ c;\n    if (Det(l[0], l[a], l[b]) > 0) swap(a,b);\n\n    if (onSegment(l[0],\
-    \ l[a], p)) return ON;\n    if (onSegment(l[0], l[b], p)) return ON;\n\n    if\
-    \ (Det(l[0], l[a], p) > 0 || Det(l[0], l[b], p) < 0) return OUT;\n    while(abs(a-b)\
-    \ > 1) {\n        c = (a+b)/2;\n        if (Det(l[0], l[c], p) > 0) b = c; else\
-    \ a = c;\n    }\n    int t = cmp(Det(l[a], l[b], p), 0);\n    return (t == 0)\
-    \ ? ON : (t < 0) ? IN : OUT;\n}\n\n\n// Cut a polygon with a line. Returns half\
-    \ on left-hand-side.\n// To return the other half, reverse the direction of Line\
-    \ l (by negating l.a, l.b)\n// The line must be formed using 2 points\nPolygon\
-    \ polygon_cut(const Polygon& P, Line l) {\n    Polygon Q;\n    for(int i = 0;\
-    \ i < (int) P.size(); ++i) {\n        Point A = P[i], B = (i == ((int) P.size())-1)\
-    \ ? P[0] : P[i+1];\n        if (ccw(l.A, l.B, A) != -1) Q.push_back(A);\n    \
-    \    if (ccw(l.A, l.B, A)*ccw(l.A, l.B, B) < 0) {\n            Point p; areIntersect(Line(A,\
-    \ B), l, p);\n            Q.push_back(p);\n        }\n    }\n    return Q;\n}\n\
-    \n// Find intersection of 2 convex polygons\n// Helper method\nbool intersect_1pt(Point\
-    \ a, Point b,\n    Point c, Point d, Point &r) {\n    double D =  (b - a) % (d\
-    \ - c);\n    if (cmp(D, 0) == 0) return false;\n    double t =  ((c - a) % (d\
-    \ - c)) / D;\n    double s = -((a - c) % (b - a)) / D;\n    r = a + (b - a) *\
-    \ t;\n    return cmp(t, 0) >= 0 && cmp(t, 1) <= 0 && cmp(s, 0) >= 0 && cmp(s,\
-    \ 1) <= 0;\n}\nPolygon convex_intersect(Polygon P, Polygon Q) {\n    const int\
-    \ n = P.size(), m = Q.size();\n    int a = 0, b = 0, aa = 0, ba = 0;\n    enum\
-    \ { Pin, Qin, Unknown } in = Unknown;\n    Polygon R;\n    do {\n        int a1\
-    \ = (a+n-1) % n, b1 = (b+m-1) % m;\n        double C = (P[a] - P[a1]) % (Q[b]\
-    \ - Q[b1]);\n        double A = (P[a1] - Q[b]) % (P[a] - Q[b]);\n        double\
-    \ B = (Q[b1] - P[a]) % (Q[b] - P[a]);\n        Point r;\n        if (intersect_1pt(P[a1],\
-    \ P[a], Q[b1], Q[b], r)) {\n            if (in == Unknown) aa = ba = 0;\n    \
-    \        R.push_back( r );\n            in = B > 0 ? Pin : A > 0 ? Qin : in;\n\
-    \        }\n        if (C == 0 && B == 0 && A == 0) {\n            if (in == Pin)\
-    \ { b = (b + 1) % m; ++ba; }\n            else            { a = (a + 1) % m; ++aa;\
-    \ }\n        } else if (C >= 0) {\n            if (A > 0) { if (in == Pin) R.push_back(P[a]);\
-    \ a = (a+1)%n; ++aa; }\n            else       { if (in == Qin) R.push_back(Q[b]);\
-    \ b = (b+1)%m; ++ba; }\n        } else {\n            if (B > 0) { if (in == Qin)\
-    \ R.push_back(Q[b]); b = (b+1)%m; ++ba; }\n            else       { if (in ==\
-    \ Pin) R.push_back(P[a]); a = (a+1)%n; ++aa; }\n        }\n    } while ( (aa <\
-    \ n || ba < m) && aa < 2*n && ba < 2*m );\n    if (in == Unknown) {\n        if\
-    \ (in_convex(Q, P[0])) return P;\n        if (in_convex(P, Q[0])) return Q;\n\
-    \    }\n    return R;\n}\n\n// Find the diameter of polygon.\n// Returns:\n//\
-    \ <diameter, <ids of 2 points>>\npair<double, pair<int,int>> convex_diameter(const\
-    \ Polygon &p) {\n    const int n = p.size();\n    int is = 0, js = 0;\n    for\
-    \ (int i = 1; i < n; ++i) {\n        if (p[i].y > p[is].y) is = i;\n        if\
-    \ (p[i].y < p[js].y) js = i;\n    }\n    double maxd = (p[is]-p[js]).len();\n\
-    \    int i, maxi, j, maxj;\n    i = maxi = is;\n    j = maxj = js;\n    do {\n\
-    \        int ii = (i+1) % n, jj = (j+1) % n;\n        if ((p[ii] - p[i]) % (p[jj]\
-    \ - p[j]) >= 0) j = jj;\n        else i = ii;\n        if ((p[i] - p[j]).len()\
-    \ > maxd) {\n            maxd = (p[i] - p[j]).len();\n            maxi = i;\n\
-    \            maxj = j;\n        }\n    } while (i != is || j != js);\n    return\
-    \ {maxd, std::minmax(maxi, maxj)}; /* farthest pair is (maxi, maxj). */\n}\n\n\
-    // Pick theorem\n// Given non-intersecting polygon.\n// S = area\n// I = number\
-    \ of integer points strictly Inside\n// B = number of points on sides of polygon\n\
-    // S = I + B/2 - 1\n#line 6 \"Geometry/tests/z_polygon_convexhull.test.cpp\"\n\
-    \nvoid solve() {\n    int n; cin >> n;\n    vector<P<long long>> g(n);\n    for\
-    \ (auto& p : g) cin >> p;\n    ConvexHull(g);\n    int idx = 0;\n    FOR(i,1,n-1)\
-    \ if (cmpy(g[i], g[idx])) idx = i;\n\n    cout << g.size() << endl;\n    REP(i,g.size())\
-    \ cout << (fixed) << setprecision(0) << g[(idx + i) % g.size()] << endl;\n}\n"
+    PolygonLocation in_convex(vector<Point>& l, Point p){\n    if (l.empty()) return\
+    \ PolygonLocation::OUT;\n    if (l.size() <= 2) {\n        return onSegment(l[0],\
+    \ l[1 % l.size()], p) ? PolygonLocation::ON : PolygonLocation::OUT;\n    }\n\n\
+    \    int a = 1, b = l.size()-1, c;\n    if (Det(l[0], l[a], l[b]) > 0) swap(a,b);\n\
+    \n    if (onSegment(l[0], l[a], p)) return ON;\n    if (onSegment(l[0], l[b],\
+    \ p)) return ON;\n\n    if (Det(l[0], l[a], p) > 0 || Det(l[0], l[b], p) < 0)\
+    \ return OUT;\n    while(abs(a-b) > 1) {\n        c = (a+b)/2;\n        if (Det(l[0],\
+    \ l[c], p) > 0) b = c; else a = c;\n    }\n    int t = cmp(Det(l[a], l[b], p),\
+    \ 0);\n    return (t == 0) ? ON : (t < 0) ? IN : OUT;\n}\n\n\n// Cut a polygon\
+    \ with a line. Returns half on left-hand-side.\n// To return the other half, reverse\
+    \ the direction of Line l (by negating l.a, l.b)\n// The line must be formed using\
+    \ 2 points\nPolygon polygon_cut(const Polygon& P, Line l) {\n    Polygon Q;\n\
+    \    for(int i = 0; i < (int) P.size(); ++i) {\n        Point A = P[i], B = (i\
+    \ == ((int) P.size())-1) ? P[0] : P[i+1];\n        if (ccw(l.A, l.B, A) != -1)\
+    \ Q.push_back(A);\n        if (ccw(l.A, l.B, A)*ccw(l.A, l.B, B) < 0) {\n    \
+    \        Point p; areIntersect(Line(A, B), l, p);\n            Q.push_back(p);\n\
+    \        }\n    }\n    return Q;\n}\n\n// Find intersection of 2 convex polygons\n\
+    // Helper method\nbool intersect_1pt(Point a, Point b,\n    Point c, Point d,\
+    \ Point &r) {\n    double D =  (b - a) % (d - c);\n    if (cmp(D, 0) == 0) return\
+    \ false;\n    double t =  ((c - a) % (d - c)) / D;\n    double s = -((a - c) %\
+    \ (b - a)) / D;\n    r = a + (b - a) * t;\n    return cmp(t, 0) >= 0 && cmp(t,\
+    \ 1) <= 0 && cmp(s, 0) >= 0 && cmp(s, 1) <= 0;\n}\nPolygon convex_intersect(Polygon\
+    \ P, Polygon Q) {\n    const int n = P.size(), m = Q.size();\n    int a = 0, b\
+    \ = 0, aa = 0, ba = 0;\n    enum { Pin, Qin, Unknown } in = Unknown;\n    Polygon\
+    \ R;\n    do {\n        int a1 = (a+n-1) % n, b1 = (b+m-1) % m;\n        double\
+    \ C = (P[a] - P[a1]) % (Q[b] - Q[b1]);\n        double A = (P[a1] - Q[b]) % (P[a]\
+    \ - Q[b]);\n        double B = (Q[b1] - P[a]) % (Q[b] - P[a]);\n        Point\
+    \ r;\n        if (intersect_1pt(P[a1], P[a], Q[b1], Q[b], r)) {\n            if\
+    \ (in == Unknown) aa = ba = 0;\n            R.push_back( r );\n            in\
+    \ = B > 0 ? Pin : A > 0 ? Qin : in;\n        }\n        if (C == 0 && B == 0 &&\
+    \ A == 0) {\n            if (in == Pin) { b = (b + 1) % m; ++ba; }\n         \
+    \   else            { a = (a + 1) % m; ++aa; }\n        } else if (C >= 0) {\n\
+    \            if (A > 0) { if (in == Pin) R.push_back(P[a]); a = (a+1)%n; ++aa;\
+    \ }\n            else       { if (in == Qin) R.push_back(Q[b]); b = (b+1)%m; ++ba;\
+    \ }\n        } else {\n            if (B > 0) { if (in == Qin) R.push_back(Q[b]);\
+    \ b = (b+1)%m; ++ba; }\n            else       { if (in == Pin) R.push_back(P[a]);\
+    \ a = (a+1)%n; ++aa; }\n        }\n    } while ( (aa < n || ba < m) && aa < 2*n\
+    \ && ba < 2*m );\n    if (in == Unknown) {\n        if (in_convex(Q, P[0])) return\
+    \ P;\n        if (in_convex(P, Q[0])) return Q;\n    }\n    return R;\n}\n\n//\
+    \ Find the diameter of polygon.\n// Returns:\n// <diameter, <ids of 2 points>>\n\
+    pair<double, pair<int,int>> convex_diameter(const Polygon &p) {\n    const int\
+    \ n = p.size();\n    int is = 0, js = 0;\n    for (int i = 1; i < n; ++i) {\n\
+    \        if (p[i].y > p[is].y) is = i;\n        if (p[i].y < p[js].y) js = i;\n\
+    \    }\n    double maxd = (p[is]-p[js]).len();\n    int i, maxi, j, maxj;\n  \
+    \  i = maxi = is;\n    j = maxj = js;\n    do {\n        int ii = (i+1) % n, jj\
+    \ = (j+1) % n;\n        if ((p[ii] - p[i]) % (p[jj] - p[j]) >= 0) j = jj;\n  \
+    \      else i = ii;\n        if ((p[i] - p[j]).len() > maxd) {\n            maxd\
+    \ = (p[i] - p[j]).len();\n            maxi = i;\n            maxj = j;\n     \
+    \   }\n    } while (i != is || j != js);\n    return {maxd, std::minmax(maxi,\
+    \ maxj)}; /* farthest pair is (maxi, maxj). */\n}\n\n// Pick theorem\n// Given\
+    \ non-intersecting polygon.\n// S = area\n// I = number of integer points strictly\
+    \ Inside\n// B = number of points on sides of polygon\n// S = I + B/2 - 1\n#line\
+    \ 6 \"Geometry/tests/z_polygon_convexhull.test.cpp\"\n\nvoid solve() {\n    int\
+    \ n; cin >> n;\n    vector<P<long long>> g(n);\n    for (auto& p : g) cin >> p;\n\
+    \    ConvexHull(g);\n    int idx = 0;\n    FOR(i,1,n-1) if (cmpy(g[i], g[idx]))\
+    \ idx = i;\n\n    cout << g.size() << endl;\n    REP(i,g.size()) cout << (fixed)\
+    \ << setprecision(0) << g[(idx + i) % g.size()] << endl;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_A\"\
     \n\n#include \"../../template.h\"\n#include \"../basic.h\"\n#include \"../polygon.h\"\
     \n\nvoid solve() {\n    int n; cin >> n;\n    vector<P<long long>> g(n);\n   \
@@ -246,7 +249,7 @@ data:
   isVerificationFile: true
   path: Geometry/tests/z_polygon_convexhull.test.cpp
   requiredBy: []
-  timestamp: '2022-12-27 01:22:59+08:00'
+  timestamp: '2023-02-02 12:34:59+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Geometry/tests/z_polygon_convexhull.test.cpp

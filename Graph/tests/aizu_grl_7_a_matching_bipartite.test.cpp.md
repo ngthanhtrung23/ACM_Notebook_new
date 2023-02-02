@@ -27,7 +27,7 @@ data:
     \ left side --> not belong to some maximum matching\n// - Do similar for right\
     \ side\n//\n// Tested:\n// - https://judge.yosupo.jp/problem/bipartitematching\n\
     // - https://oj.vnoi.info/problem/fmatch\n// - https://codeforces.com/gym/100337\
-    \ - A: find vertices belong to all max matching\n\n// Bipartite matching {{{\n\
+    \ - A: find vertices belong to all max matching\n\n// Bipartite Matching {{{\n\
     struct Matching {\n    int n;\n    vector< vector<int> > ke;\n    vector< int\
     \ > seen;\n    vector< int > matchL, matchR;\n    int iteration;\n\n    Matching(int\
     \ _n) : n(_n), ke(_n), seen(_n, false), matchL(_n, -1), matchR(_n, -1), iteration{0}\
@@ -63,7 +63,7 @@ data:
   isVerificationFile: true
   path: Graph/tests/aizu_grl_7_a_matching_bipartite.test.cpp
   requiredBy: []
-  timestamp: '2023-01-22 19:46:31+07:00'
+  timestamp: '2023-01-28 18:33:13+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Graph/tests/aizu_grl_7_a_matching_bipartite.test.cpp
