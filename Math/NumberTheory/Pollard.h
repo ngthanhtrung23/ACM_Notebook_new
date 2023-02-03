@@ -148,7 +148,7 @@ vector<pair<ll, int>> factorize_pk(ll x) {
     }
     return res;
 }
-vector<ll> divisors(ll n) {
+vector<ll> get_all_divisors(ll n) {
     auto pks = factorize_pk(n);
 
     vector<ll> res;
