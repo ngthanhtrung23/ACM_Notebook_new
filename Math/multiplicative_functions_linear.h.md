@@ -3,7 +3,7 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/cnt_divisors_stress.test.cpp
     title: Math/tests/cnt_divisors_stress.test.cpp
   - icon: ':heavy_check_mark:'
@@ -12,9 +12,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Math/tests/smallest_prime_factor_stress.test.cpp
     title: Math/tests/smallest_prime_factor_stress.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://codeforces.com/blog/entry/54090
@@ -84,7 +84,7 @@ data:
   path: Math/multiplicative_functions_linear.h
   requiredBy: []
   timestamp: '2023-01-16 13:01:49+07:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Math/tests/cnt_divisors_stress.test.cpp
   - Math/tests/smallest_prime_factor_stress.test.cpp

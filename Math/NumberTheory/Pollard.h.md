@@ -2,14 +2,14 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/NumberTheory/cnt_divisors.h
     title: Math/NumberTheory/cnt_divisors.h
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Math/tests/aizu_ntl_1_a_factorize.test.cpp
     title: Math/tests/aizu_ntl_1_a_factorize.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/cnt_divisors_stress.test.cpp
     title: Math/tests/cnt_divisors_stress.test.cpp
   - icon: ':heavy_check_mark:'
@@ -18,9 +18,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Math/tests/is_prime_yukicoder.test.cpp
     title: Math/tests/is_prime_yukicoder.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://judge.yosupo.jp/problem/factorize
@@ -76,11 +76,11 @@ data:
     \        if (p == last) ++cnt;\n        else {\n            if (last > 0) res.emplace_back(last,\
     \ cnt);\n            last = p;\n            cnt = 1;\n        }\n    }\n    if\
     \ (cnt > 0) {\n        res.emplace_back(last, cnt);\n    }\n    return res;\n\
-    }\nvector<ll> divisors(ll n) {\n    auto pks = factorize_pk(n);\n\n    vector<ll>\
-    \ res;\n    function<void(int, ll)> gen = [&] (int i, ll prod) {\n        if (i\
-    \ == static_cast<int>(pks.size())) {\n            res.push_back(prod);\n     \
-    \       return;\n        }\n\n        ll cur_power = 1;\n        for (int cur\
-    \ = 0; cur <= pks[i].second; ++cur) {\n            gen(i+1, prod * cur_power);\n\
+    }\nvector<ll> get_all_divisors(ll n) {\n    auto pks = factorize_pk(n);\n\n  \
+    \  vector<ll> res;\n    function<void(int, ll)> gen = [&] (int i, ll prod) {\n\
+    \        if (i == static_cast<int>(pks.size())) {\n            res.push_back(prod);\n\
+    \            return;\n        }\n\n        ll cur_power = 1;\n        for (int\
+    \ cur = 0; cur <= pks[i].second; ++cur) {\n            gen(i+1, prod * cur_power);\n\
     \            cur_power *= pks[i].first;\n        }\n    };\n\n    gen(0, 1LL);\n\
     \    sort(res.begin(), res.end());\n    return res;\n}\n// }}}\n"
   code: "// Copied from https://judge.yosupo.jp/submission/61447\n// O(N^0.25)\n//\n\
@@ -132,11 +132,11 @@ data:
     \        if (p == last) ++cnt;\n        else {\n            if (last > 0) res.emplace_back(last,\
     \ cnt);\n            last = p;\n            cnt = 1;\n        }\n    }\n    if\
     \ (cnt > 0) {\n        res.emplace_back(last, cnt);\n    }\n    return res;\n\
-    }\nvector<ll> divisors(ll n) {\n    auto pks = factorize_pk(n);\n\n    vector<ll>\
-    \ res;\n    function<void(int, ll)> gen = [&] (int i, ll prod) {\n        if (i\
-    \ == static_cast<int>(pks.size())) {\n            res.push_back(prod);\n     \
-    \       return;\n        }\n\n        ll cur_power = 1;\n        for (int cur\
-    \ = 0; cur <= pks[i].second; ++cur) {\n            gen(i+1, prod * cur_power);\n\
+    }\nvector<ll> get_all_divisors(ll n) {\n    auto pks = factorize_pk(n);\n\n  \
+    \  vector<ll> res;\n    function<void(int, ll)> gen = [&] (int i, ll prod) {\n\
+    \        if (i == static_cast<int>(pks.size())) {\n            res.push_back(prod);\n\
+    \            return;\n        }\n\n        ll cur_power = 1;\n        for (int\
+    \ cur = 0; cur <= pks[i].second; ++cur) {\n            gen(i+1, prod * cur_power);\n\
     \            cur_power *= pks[i].first;\n        }\n    };\n\n    gen(0, 1LL);\n\
     \    sort(res.begin(), res.end());\n    return res;\n}\n// }}}\n"
   dependsOn: []
@@ -144,8 +144,8 @@ data:
   path: Math/NumberTheory/Pollard.h
   requiredBy:
   - Math/NumberTheory/cnt_divisors.h
-  timestamp: '2023-02-02 12:34:59+08:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2023-02-03 11:07:24+08:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Math/tests/cnt_divisors_stress.test.cpp
   - Math/tests/is_prime_yukicoder.test.cpp

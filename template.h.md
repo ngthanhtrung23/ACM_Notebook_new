@@ -216,7 +216,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Math/tests/aizu_ntl_2_f_bigint_mul_fft.test.cpp
     title: Math/tests/aizu_ntl_2_f_bigint_mul_fft.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/cnt_divisors_stress.test.cpp
     title: Math/tests/cnt_divisors_stress.test.cpp
   - icon: ':heavy_check_mark:'
@@ -246,9 +246,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: String/tests/zfunc_hash.test.cpp
     title: String/tests/zfunc_hash.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://quangloc99.github.io/2021/07/30/my-CP-debugging-template.html
@@ -313,7 +313,7 @@ data:
   - String/lyndon.cpp
   - String/minmove.cpp
   timestamp: '2022-01-13 13:16:22+08:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Geometry/tests/z_polygon_convexhull.test.cpp
   - Geometry/tests/aizu_cgl_2_b_basic_segment_intersect.test.cpp

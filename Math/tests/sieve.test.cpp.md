@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Math/Prime/Sieve.h
     title: Math/Prime/Sieve.h
   _extendedRequiredBy: []

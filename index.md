@@ -352,10 +352,10 @@ data:
     - icon: ':warning:'
       path: Math/modulo.h
       title: Math/modulo.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/multiplicative_function.h
       title: Math/multiplicative_function.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Math/multiplicative_functions_linear.h
       title: Math/multiplicative_functions_linear.h
     - icon: ':heavy_check_mark:'
@@ -383,7 +383,7 @@ data:
     - icon: ':warning:'
       path: Math/NumberTheory/FactorialMod.h
       title: Math/NumberTheory/FactorialMod.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Math/NumberTheory/Pollard.h
       title: Math/NumberTheory/Pollard.h
     - icon: ':warning:'
@@ -392,7 +392,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/NumberTheory/SqrtMod.h
       title: Math/NumberTheory/SqrtMod.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/NumberTheory/cnt_divisors.h
       title: Math/NumberTheory/cnt_divisors.h
     - icon: ':warning:'
@@ -444,7 +444,7 @@ data:
     - icon: ':warning:'
       path: Math/Prime/SegmentedSieve.h
       title: Math/Prime/SegmentedSieve.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Math/Prime/Sieve.h
       title: Math/Prime/Sieve.h
     - icon: ':heavy_check_mark:'
@@ -578,7 +578,7 @@ data:
     - icon: ':warning:'
       path: debug.h
       title: debug.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template.h
       title: template.h
   verificationCategories:
@@ -955,7 +955,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/tests/berlekamp_massey.test.cpp
       title: Math/tests/berlekamp_massey.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/cnt_divisors_stress.test.cpp
       title: Math/tests/cnt_divisors_stress.test.cpp
     - icon: ':heavy_check_mark:'

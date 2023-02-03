@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Math/NumberTheory/Pollard.h
     title: Math/NumberTheory/Pollard.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Math/Prime/Sieve.h
     title: Math/Prime/Sieve.h
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/cnt_divisors_stress.test.cpp
     title: Math/tests/cnt_divisors_stress.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://www.spoj.com/problems/NUMDIV/
@@ -67,11 +67,11 @@ data:
     \        if (p == last) ++cnt;\n        else {\n            if (last > 0) res.emplace_back(last,\
     \ cnt);\n            last = p;\n            cnt = 1;\n        }\n    }\n    if\
     \ (cnt > 0) {\n        res.emplace_back(last, cnt);\n    }\n    return res;\n\
-    }\nvector<ll> divisors(ll n) {\n    auto pks = factorize_pk(n);\n\n    vector<ll>\
-    \ res;\n    function<void(int, ll)> gen = [&] (int i, ll prod) {\n        if (i\
-    \ == static_cast<int>(pks.size())) {\n            res.push_back(prod);\n     \
-    \       return;\n        }\n\n        ll cur_power = 1;\n        for (int cur\
-    \ = 0; cur <= pks[i].second; ++cur) {\n            gen(i+1, prod * cur_power);\n\
+    }\nvector<ll> get_all_divisors(ll n) {\n    auto pks = factorize_pk(n);\n\n  \
+    \  vector<ll> res;\n    function<void(int, ll)> gen = [&] (int i, ll prod) {\n\
+    \        if (i == static_cast<int>(pks.size())) {\n            res.push_back(prod);\n\
+    \            return;\n        }\n\n        ll cur_power = 1;\n        for (int\
+    \ cur = 0; cur <= pks[i].second; ++cur) {\n            gen(i+1, prod * cur_power);\n\
     \            cur_power *= pks[i].first;\n        }\n    };\n\n    gen(0, 1LL);\n\
     \    sort(res.begin(), res.end());\n    return res;\n}\n// }}}\n#line 1 \"Math/Prime/Sieve.h\"\
     \n// F is called for each prime\n// Sieve (odd only + segmented) {{{\ntemplate<typename\
@@ -125,8 +125,8 @@ data:
   isVerificationFile: false
   path: Math/NumberTheory/cnt_divisors.h
   requiredBy: []
-  timestamp: '2023-02-02 12:34:59+08:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2023-02-03 11:07:24+08:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Math/tests/cnt_divisors_stress.test.cpp
 documentation_of: Math/NumberTheory/cnt_divisors.h
