@@ -146,6 +146,7 @@
 "Math/tests/sumdiv.test.cpp": "2022-01-06 04:47:02 +0800",
 "Misc/tests/aizu_dpl_3_b_largest_01_rectangle.test.cpp": "2022-11-01 15:19:12 +0800",
 "Misc/tests/aizu_dpl_3_c_largest_histogram.test.cpp": "2022-11-01 15:19:12 +0800",
+"Misc/tests/yosupo_int128.test.cpp": "2023-04-08 01:25:09 +0800",
 "String/tests/aizu_alds_14_b_string_hash.test.cpp": "2022-12-29 17:34:35 +0800",
 "String/tests/lcp.test.cpp": "2022-12-29 17:34:35 +0800",
 "String/tests/manacher.test.cpp": "2022-11-01 15:19:12 +0800",
