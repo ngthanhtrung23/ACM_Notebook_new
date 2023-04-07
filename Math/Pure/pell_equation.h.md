@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: Misc/int128.h
     title: Misc/int128.h
   _extendedRequiredBy: []

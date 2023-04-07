@@ -499,7 +499,7 @@ data:
     - icon: ':warning:'
       path: Misc/input_utils.h
       title: Misc/input_utils.h
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: Misc/int128.h
       title: Misc/int128.h
     - icon: ':heavy_check_mark:'
@@ -1035,6 +1035,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Misc/tests/aizu_dpl_3_c_largest_histogram.test.cpp
       title: Misc/tests/aizu_dpl_3_c_largest_histogram.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Misc/tests/yosupo_int128.test.cpp
+      title: Misc/tests/yosupo_int128.test.cpp
   - name: String/tests
     pages:
     - icon: ':heavy_check_mark:'

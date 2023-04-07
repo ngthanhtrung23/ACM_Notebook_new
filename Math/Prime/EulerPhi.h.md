@@ -68,8 +68,8 @@ data:
   timestamp: '2022-12-19 21:18:52+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Math/tests/euler_phi_stress.test.cpp
   - Math/tests/aizu_ntl_1_d_euler_phi.test.cpp
+  - Math/tests/euler_phi_stress.test.cpp
 documentation_of: Math/Prime/EulerPhi.h
 layout: document
 redirect_from:

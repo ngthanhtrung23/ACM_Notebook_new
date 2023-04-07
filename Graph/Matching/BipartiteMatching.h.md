@@ -79,8 +79,8 @@ data:
   timestamp: '2023-01-28 18:33:13+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Graph/tests/aizu_grl_7_a_matching_bipartite.test.cpp
   - Graph/tests/matching_bipartite.test.cpp
+  - Graph/tests/aizu_grl_7_a_matching_bipartite.test.cpp
 documentation_of: Graph/Matching/BipartiteMatching.h
 layout: document
 redirect_from:
