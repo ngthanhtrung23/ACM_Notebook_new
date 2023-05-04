@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Math/NumberTheory/Pollard.h
     title: Math/NumberTheory/Pollard.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []

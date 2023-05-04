@@ -87,6 +87,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/persistent_fenwick_tree_rmq.test.cpp
     title: DataStructure/test/persistent_fenwick_tree_rmq.test.cpp
+  - icon: ':x:'
+    path: DataStructure/test/segment_tree_rangeaffinepointget.test.cpp
+    title: DataStructure/test/segment_tree_rangeaffinepointget.test.cpp
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/yukicoder_674_range_set.test.cpp
     title: DataStructure/test/yukicoder_674_range_set.test.cpp
@@ -249,9 +252,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: String/tests/zfunc_hash.test.cpp
     title: String/tests/zfunc_hash.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://quangloc99.github.io/2021/07/30/my-CP-debugging-template.html
@@ -311,90 +314,91 @@ data:
   path: template.h
   requiredBy:
   - Misc/Die.cpp
-  - DP/optimizations/divide_conquer.cpp
-  - DP/optimizations/knuth.cpp
   - String/minmove.cpp
   - String/lyndon.cpp
+  - DP/optimizations/divide_conquer.cpp
+  - DP/optimizations/knuth.cpp
   timestamp: '2022-01-13 13:16:22+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - Graph/tests/aizu_grl_5_a_tree_diameter.test.cpp
-  - Graph/tests/aizu_grl_1_c_floyd.test.cpp
-  - Graph/tests/aizu_grl_2_a_mst.test.cpp
-  - Graph/tests/aizu_grl_4_a_strongly_connected_cycle_check.test.cpp
-  - Graph/tests/aizu_grl_3_a_articulation_points.test.cpp
-  - Math/tests/aizu_ntl_2_e_bigint_mod.test.cpp
-  - Math/tests/cnt_divisors_stress.test.cpp
-  - Math/tests/smallest_prime_factor_stress.test.cpp
-  - Math/tests/aizu_ntl_2_c_bigint_mul.test.cpp
-  - Math/tests/aizu_ntl_2_d_bigint_div.test.cpp
-  - Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp
-  - Math/tests/aizu_ntl_1_d_euler_phi.test.cpp
-  - Math/tests/aizu_ntl_2_f_bigint_mul_fft.test.cpp
-  - Math/tests/rabin_miller_32_stress.test.cpp
-  - Math/tests/aizu_ntl_2_c_bigint_mul_karatsuba.test.cpp
-  - Math/tests/is_prime_yukicoder.test.cpp
-  - Math/tests/euler_phi_stress.test.cpp
-  - Math/tests/aizu_ntl_2_b_bigint_sub.test.cpp
-  - Math/tests/aizu_ntl_1_e_extended_euclid.test.cpp
-  - Math/tests/aizu_ntl_1_a_factorize.test.cpp
-  - Math/tests/aizu_ntl_2_a_bigint_add.test.cpp
-  - Misc/tests/aizu_dpl_3_b_largest_01_rectangle.test.cpp
   - Misc/tests/aizu_dpl_3_c_largest_histogram.test.cpp
+  - Misc/tests/aizu_dpl_3_b_largest_01_rectangle.test.cpp
   - Misc/tests/yosupo_int128.test.cpp
+  - String/tests/yukicoder_1408_string_hash_lcp.test.cpp
+  - String/tests/aizu_alds_14_b_string_hash.test.cpp
+  - String/tests/zfunc_hash.test.cpp
+  - DataStructure/test/aizu_dsl_2_g_segment_tree_rangeaddsum.test.cpp
+  - DataStructure/test/aizu_grl_5_c_lca.test.cpp
+  - DataStructure/test/aizu_dsl_2_i_segment_tree_rangesetsum.test.cpp
+  - DataStructure/test/aizu_dsl_2_d_segment_tree_rangeset.test.cpp
+  - DataStructure/test/mo_algorithm_with_undo.test.cpp
+  - DataStructure/test/aizu_grl_5_d_hld_edge.test.cpp
+  - DataStructure/test/aizu_grl_5_e_hld_edge.test.cpp
+  - DataStructure/test/aizu_dsl_2_e_segment_tree_rangeadd.test.cpp
+  - DataStructure/test/aizu_dsl_2_d_rangeset.test.cpp
+  - DataStructure/test/segment_tree_rangeaffinepointget.test.cpp
   - DataStructure/test/aizu_dsl_2_b_segment_tree_sum.test.cpp
+  - DataStructure/test/persistent_fenwick_tree_rmq.test.cpp
+  - DataStructure/test/mo_algorithm.test.cpp
   - DataStructure/test/yukicoder_674_range_set.test.cpp
+  - DataStructure/test/aizu_dsl_2_f_segment_tree_rangesetmin.test.cpp
+  - DataStructure/test/binary_trie.test.cpp
+  - DataStructure/test/aizu_dsl_2_a_segment_tree_rmq_update.test.cpp
+  - DataStructure/test/aizu_dsl_2_h_segment_tree_rangeaddmin.test.cpp
   - DataStructure/test/aizu_grl_5_c_hld_lca.test.cpp
   - DataStructure/test/aizu_dsl_4_a_range_set.test.cpp
-  - DataStructure/test/persistent_fenwick_tree_rmq.test.cpp
-  - DataStructure/test/aizu_grl_5_e_hld_edge.test.cpp
-  - DataStructure/test/aizu_dsl_2_g_segment_tree_rangeaddsum.test.cpp
-  - DataStructure/test/mo_algorithm.test.cpp
-  - DataStructure/test/aizu_dsl_2_i_segment_tree_rangesetsum.test.cpp
-  - DataStructure/test/binary_trie.test.cpp
   - DataStructure/test/aizu_dsl_1_b_dsu_weighted.test.cpp
-  - DataStructure/test/aizu_dsl_2_a_segment_tree_rmq_update.test.cpp
-  - DataStructure/test/aizu_grl_5_d_hld_edge.test.cpp
-  - DataStructure/test/mo_algorithm_with_undo.test.cpp
-  - DataStructure/test/aizu_dsl_2_e_segment_tree_rangeadd.test.cpp
-  - DataStructure/test/aizu_dsl_2_h_segment_tree_rangeaddmin.test.cpp
-  - DataStructure/test/aizu_grl_5_c_lca.test.cpp
-  - DataStructure/test/aizu_dsl_2_d_segment_tree_rangeset.test.cpp
-  - DataStructure/test/aizu_dsl_2_d_rangeset.test.cpp
-  - DataStructure/test/aizu_dsl_2_f_segment_tree_rangesetmin.test.cpp
-  - Geometry/tests/aizu_cgl_7_i_circle_common_area.test.cpp
-  - Geometry/tests/aizu_cgl_5_a_closest_pair.test.cpp
-  - Geometry/tests/z_polygon_area.test.cpp
-  - Geometry/tests/z_polygon_convexhull.test.cpp
-  - Geometry/tests/aizu_cgl_1_c_basic_ccw.test.cpp
-  - Geometry/tests/aizu_cgl_7_g_circle_circle_tangent_points.test.cpp
-  - Geometry/tests/aizu_cgl_7_e_circle_circle_intersection.test.cpp
-  - Geometry/tests/aizu_cgl_2_d_basic_segment_distance.test.cpp
-  - Geometry/tests/aizu_cgl_1_a_basic_projection.test.cpp
-  - Geometry/tests/aizu_cgl_4_a_polygon_convex_hull.test.cpp
-  - Geometry/tests/z_basic_ccw.test.cpp
-  - Geometry/tests/aizu_cgl_1_b_basic_reflection.test.cpp
-  - Geometry/tests/aizu_cgl_7_f_circle_tangent_points.test.cpp
-  - Geometry/tests/aizu_cgl_3_a_polygon_area.test.cpp
-  - Geometry/tests/aizu_cgl_3_c_polygon_in_polygon.test.cpp
-  - Geometry/tests/polygon_in_convex.test.cpp
-  - Geometry/tests/aizu_cgl_2_a_basic_line.test.cpp
-  - Geometry/tests/aizu_cgl_7_d_circle_line_intersection.test.cpp
-  - Geometry/tests/aizu_cgl_4_b_polygon_convex_diameter.test.cpp
-  - Geometry/tests/z_basic_segment_intersect.test.cpp
-  - Geometry/tests/z_polygon_is_convex.test.cpp
   - Geometry/tests/aizu_cgl_3_b_polygon_is_convex.test.cpp
-  - Geometry/tests/aizu_cgl_7_a_cicle_tangents.test.cpp
-  - Geometry/tests/aizu_cgl_4_c_polygon_convex_cut.test.cpp
+  - Geometry/tests/z_basic_segment_intersect.test.cpp
+  - Geometry/tests/aizu_cgl_7_e_circle_circle_intersection.test.cpp
+  - Geometry/tests/z_polygon_is_convex.test.cpp
+  - Geometry/tests/aizu_cgl_7_i_circle_common_area.test.cpp
+  - Geometry/tests/polygon_in_convex.test.cpp
+  - Geometry/tests/z_polygon_area.test.cpp
+  - Geometry/tests/aizu_cgl_5_a_closest_pair.test.cpp
+  - Geometry/tests/z_polygon_convexhull.test.cpp
+  - Geometry/tests/aizu_cgl_3_a_polygon_area.test.cpp
   - Geometry/tests/aizu_cgl_2_b_basic_segment_intersect.test.cpp
+  - Geometry/tests/aizu_cgl_1_a_basic_projection.test.cpp
+  - Geometry/tests/aizu_cgl_4_c_polygon_convex_cut.test.cpp
+  - Geometry/tests/aizu_cgl_1_c_basic_ccw.test.cpp
+  - Geometry/tests/aizu_cgl_1_b_basic_reflection.test.cpp
+  - Geometry/tests/aizu_cgl_2_d_basic_segment_distance.test.cpp
+  - Geometry/tests/aizu_cgl_3_c_polygon_in_polygon.test.cpp
+  - Geometry/tests/aizu_cgl_7_d_circle_line_intersection.test.cpp
+  - Geometry/tests/z_basic_ccw.test.cpp
+  - Geometry/tests/aizu_cgl_7_a_cicle_tangents.test.cpp
   - Geometry/tests/aizu_cgl_2_c_basic_line_intersection.test.cpp
+  - Geometry/tests/aizu_cgl_7_g_circle_circle_tangent_points.test.cpp
+  - Geometry/tests/aizu_cgl_4_a_polygon_convex_hull.test.cpp
+  - Geometry/tests/aizu_cgl_7_f_circle_tangent_points.test.cpp
+  - Geometry/tests/aizu_cgl_4_b_polygon_convex_diameter.test.cpp
+  - Geometry/tests/aizu_cgl_2_a_basic_line.test.cpp
+  - Math/tests/aizu_ntl_2_d_bigint_div.test.cpp
+  - Math/tests/aizu_ntl_2_c_bigint_mul.test.cpp
+  - Math/tests/aizu_ntl_2_c_bigint_mul_karatsuba.test.cpp
+  - Math/tests/aizu_ntl_1_d_euler_phi.test.cpp
+  - Math/tests/is_prime_yukicoder.test.cpp
+  - Math/tests/aizu_ntl_1_e_extended_euclid.test.cpp
+  - Math/tests/aizu_ntl_2_b_bigint_sub.test.cpp
+  - Math/tests/cnt_divisors_stress.test.cpp
+  - Math/tests/smallest_prime_factor_stress.test.cpp
+  - Math/tests/aizu_ntl_2_f_bigint_mul_fft.test.cpp
+  - Math/tests/euler_phi_stress.test.cpp
+  - Math/tests/aizu_ntl_2_a_bigint_add.test.cpp
+  - Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp
+  - Math/tests/aizu_ntl_2_e_bigint_mod.test.cpp
+  - Math/tests/aizu_ntl_1_a_factorize.test.cpp
+  - Math/tests/rabin_miller_32_stress.test.cpp
+  - DP/tests/aizu_dpl_1_d_lis.test.cpp
   - DP/tests/yosupo_cnt_distinct_subseq.test.cpp
   - DP/tests/aizu_alds1_5_d_count_inversions.test.cpp
-  - DP/tests/aizu_dpl_1_d_lis.test.cpp
   - DP/tests/yosupo_lis.test.cpp
-  - String/tests/zfunc_hash.test.cpp
-  - String/tests/aizu_alds_14_b_string_hash.test.cpp
-  - String/tests/yukicoder_1408_string_hash_lcp.test.cpp
+  - Graph/tests/aizu_grl_5_a_tree_diameter.test.cpp
+  - Graph/tests/aizu_grl_3_a_articulation_points.test.cpp
+  - Graph/tests/aizu_grl_4_a_strongly_connected_cycle_check.test.cpp
+  - Graph/tests/aizu_grl_1_c_floyd.test.cpp
+  - Graph/tests/aizu_grl_2_a_mst.test.cpp
 documentation_of: template.h
 layout: document
 redirect_from:

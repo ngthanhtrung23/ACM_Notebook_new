@@ -4,13 +4,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: DP/cnt_distinct_subseq.h
     title: DP/cnt_distinct_subseq.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Math/modint.h
     title: Math/modint.h
   - icon: ':heavy_check_mark:'
     path: Misc/compress.h
     title: Misc/compress.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []

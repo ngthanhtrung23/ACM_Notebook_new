@@ -62,17 +62,17 @@ data:
   isVerificationFile: false
   path: DataStructure/RMQ.h
   requiredBy:
-  - DataStructure/LCA.h
   - String/SuffixArray.h
+  - DataStructure/LCA.h
   timestamp: '2022-08-11 17:15:37+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - String/tests/suffix_array_queries.test.cpp
+  - String/tests/lcp.test.cpp
+  - String/tests/suffix_array.test.cpp
+  - DataStructure/test/aizu_grl_5_c_lca.test.cpp
   - DataStructure/test/lca.test.cpp
   - DataStructure/test/rmq.test.cpp
-  - DataStructure/test/aizu_grl_5_c_lca.test.cpp
-  - String/tests/lcp.test.cpp
-  - String/tests/suffix_array_queries.test.cpp
-  - String/tests/suffix_array.test.cpp
 documentation_of: DataStructure/RMQ.h
 layout: document
 redirect_from:

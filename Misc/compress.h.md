@@ -123,8 +123,8 @@ data:
   path: Misc/compress.h
   requiredBy:
   - DataStructure/Fenwick/Fenwick2D.h
-  - DP/count_inversions.h
   - DP/cnt_distinct_subseq.h
+  - DP/count_inversions.h
   timestamp: '2022-12-22 10:28:54+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

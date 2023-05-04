@@ -61,7 +61,7 @@ data:
     - icon: ':warning:'
       path: DataStructure/LCA_RMQ.h
       title: DataStructure/LCA_RMQ.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: DataStructure/LazySegTree.h
       title: DataStructure/LazySegTree.h
     - icon: ':heavy_check_mark:'
@@ -346,7 +346,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/bigint.h
       title: Math/bigint.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Math/modint.h
       title: Math/modint.h
     - icon: ':warning:'
@@ -572,13 +572,13 @@ data:
       title: String/zfunc.h
   - name: .
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: buffered_reader.h
       title: buffered_reader.h
     - icon: ':warning:'
       path: debug.h
       title: debug.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template.h
       title: template.h
   verificationCategories:
@@ -727,6 +727,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
       title: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
+    - icon: ':x:'
+      path: DataStructure/test/segment_tree_rangeaffinepointget.test.cpp
+      title: DataStructure/test/segment_tree_rangeaffinepointget.test.cpp
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
       title: DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp

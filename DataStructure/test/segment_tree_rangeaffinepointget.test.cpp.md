@@ -10,20 +10,48 @@ data:
   - icon: ':question:'
     path: buffered_reader.h
     title: buffered_reader.h
+  - icon: ':question:'
+    path: template.h
+    title: template.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/range_affine_range_sum
+    PROBLEM: 'https:'
     links:
-    - https://judge.yosupo.jp/problem/range_affine_range_sum
-  bundledCode: "#line 1 \"DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp\"\
-    \n#define PROBLEM \"https://judge.yosupo.jp/problem/range_affine_range_sum\"\n\
-    \n#include <bits/stdc++.h>\nusing namespace std;\n\n#line 1 \"DataStructure/LazySegTree.h\"\
-    \n// Lazy Segment Tree, copied from AtCoder {{{\n// Source: https://github.com/atcoder/ac-library/blob/master/atcoder/lazysegtree.hpp\n\
+    - https://judge.yosupo.jp/problem/range_affine_point_get
+  bundledCode: "#line 1 \"DataStructure/test/segment_tree_rangeaffinepointget.test.cpp\"\
+    \n#define PROBLEM https://judge.yosupo.jp/problem/range_affine_point_get\n\n#line\
+    \ 1 \"template.h\"\n#include <bits/stdc++.h>\nusing namespace std;\n\n#define\
+    \ FOR(i,a,b) for(int i=(a),_b=(b); i<=_b; i++)\n#define FORD(i,a,b) for(int i=(a),_b=(b);\
+    \ i>=_b; i--)\n#define REP(i,a) for(int i=0,_a=(a); i<_a; i++)\n#define EACH(it,a)\
+    \ for(__typeof(a.begin()) it = a.begin(); it != a.end(); ++it)\n\n#define DEBUG(x)\
+    \ { cout << #x << \" = \"; cout << (x) << endl; }\n#define PR(a,n) { cout << #a\
+    \ << \" = \"; FOR(_,1,n) cout << a[_] << ' '; cout << endl; }\n#define PR0(a,n)\
+    \ { cout << #a << \" = \"; REP(_,n) cout << a[_] << ' '; cout << endl; }\n\n#define\
+    \ sqr(x) ((x) * (x))\n\n// For printing pair, container, etc.\n// Copied from\
+    \ https://quangloc99.github.io/2021/07/30/my-CP-debugging-template.html\ntemplate<class\
+    \ U, class V> ostream& operator << (ostream& out, const pair<U, V>& p) {\n   \
+    \ return out << '(' << p.first << \", \" << p.second << ')';\n}\n\ntemplate<class\
+    \ Con, class = decltype(begin(declval<Con>()))>\ntypename enable_if<!is_same<Con,\
+    \ string>::value, ostream&>::type\noperator << (ostream& out, const Con& con)\
+    \ {\n    out << '{';\n    for (auto beg = con.begin(), it = beg; it != con.end();\
+    \ it++) {\n        out << (it == beg ? \"\" : \", \") << *it;\n    }\n    return\
+    \ out << '}';\n}\ntemplate<size_t i, class T> ostream& print_tuple_utils(ostream&\
+    \ out, const T& tup) {\n    if constexpr(i == tuple_size<T>::value) return out\
+    \ << \")\"; \n    else return print_tuple_utils<i + 1, T>(out << (i ? \", \" :\
+    \ \"(\") << get<i>(tup), tup); \n}\ntemplate<class ...U> ostream& operator <<\
+    \ (ostream& out, const tuple<U...>& t) {\n    return print_tuple_utils<0, tuple<U...>>(out,\
+    \ t);\n}\n\nmt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());\n\
+    long long get_rand(long long r) {\n    return uniform_int_distribution<long long>\
+    \ (0, r-1)(rng);\n}\n\ntemplate<typename T>\nvector<T> read_vector(int n) {\n\
+    \    vector<T> res(n);\n    for (int& x : res) cin >> x;\n    return res;\n}\n\
+    \nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n  \
+    \  solve();\n    return 0;\n}\n#line 1 \"DataStructure/LazySegTree.h\"\n// Lazy\
+    \ Segment Tree, copied from AtCoder {{{\n// Source: https://github.com/atcoder/ac-library/blob/master/atcoder/lazysegtree.hpp\n\
     // Doc: https://atcoder.github.io/ac-library/master/document_en/lazysegtree.html\n\
     //\n// Notes:\n// - Index of elements from 0\n// - Range queries are [l, r-1]\n\
     // - composition(f, g) should return f(g())\n//\n// Tested:\n// - https://oj.vnoi.info/problem/qmax2\n\
@@ -197,54 +225,55 @@ data:
     \    c = get_char();\n        while (std::isdigit(c)) {\n            res = res\
     \ * 10 + (c - '0');\n            c = get_char();\n        }\n        return neg\
     \ ? -res : res;\n    }\n};\n// Helper methods\nint ri() {\n    return IO::get<int>();\n\
-    }\n// }}}\n#line 9 \"DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp\"\
-    \n\nusing modular = ModInt<998244353>;\n\nstruct Node {\n    modular sum, sz;\n\
-    };\nstruct Lazy {\n    modular a, b;\n};\n\nNode op(Node l, Node r) {\n    return\
-    \ Node {\n        l.sum + r.sum,\n        l.sz + r.sz\n    };\n}\nNode e() {\n\
-    \    return Node{0, 0};\n}\n\nNode apply(Lazy f, Node node) {\n    return Node{\n\
-    \        f.a * node.sum + f.b * node.sz,\n        node.sz\n    };\n}\nLazy combine(Lazy\
-    \ g, Lazy f) {\n    return Lazy {\n        f.a * g.a,\n        g.a * f.b + g.b\n\
-    \    };\n}\nLazy id() {\n    return Lazy{1, 0};\n}\n\nint32_t main() {\n    ios::sync_with_stdio(0);\
-    \ cin.tie(0);\n    int n, q; cin >> n >> q;\n    vector<Node> nodes(n);\n    for\
-    \ (auto& node : nodes) {\n        cin >> node.sum;\n        node.sz = 1;\n   \
-    \ }\n    LazySegTree<Node, op, e, Lazy, apply, combine, id> st(nodes);\n\n   \
-    \ while (q--) {\n        int typ; cin >> typ;\n        if (typ == 0) {\n     \
-    \       int l, r;\n            Lazy f;\n            cin >> l >> r >> f.a >> f.b;\n\
-    \            st.apply(l, r, f);\n        } else {\n            int l, r; cin >>\
-    \ l >> r;\n            cout << st.prod(l, r).sum << '\\n';\n        }\n    }\n\
-    \    return 0;\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_affine_range_sum\"\
-    \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../LazySegTree.h\"\
-    \n#include \"../../Math/modint.h\"\n#include \"../../buffered_reader.h\"\n\nusing\
-    \ modular = ModInt<998244353>;\n\nstruct Node {\n    modular sum, sz;\n};\nstruct\
-    \ Lazy {\n    modular a, b;\n};\n\nNode op(Node l, Node r) {\n    return Node\
+    }\n// }}}\n#line 7 \"DataStructure/test/segment_tree_rangeaffinepointget.test.cpp\"\
+    \n\nusing mint = ModInt<998244353>;\n\nstruct Node {\n    mint sum, sz;\n};\n\
+    struct Lazy {\n    mint a, b;\n};\n\nNode op(Node l, Node r) {\n    return Node\
     \ {\n        l.sum + r.sum,\n        l.sz + r.sz\n    };\n}\nNode e() {\n    return\
     \ Node{0, 0};\n}\n\nNode apply(Lazy f, Node node) {\n    return Node{\n      \
     \  f.a * node.sum + f.b * node.sz,\n        node.sz\n    };\n}\nLazy combine(Lazy\
     \ g, Lazy f) {\n    return Lazy {\n        f.a * g.a,\n        g.a * f.b + g.b\n\
-    \    };\n}\nLazy id() {\n    return Lazy{1, 0};\n}\n\nint32_t main() {\n    ios::sync_with_stdio(0);\
-    \ cin.tie(0);\n    int n, q; cin >> n >> q;\n    vector<Node> nodes(n);\n    for\
-    \ (auto& node : nodes) {\n        cin >> node.sum;\n        node.sz = 1;\n   \
-    \ }\n    LazySegTree<Node, op, e, Lazy, apply, combine, id> st(nodes);\n\n   \
-    \ while (q--) {\n        int typ; cin >> typ;\n        if (typ == 0) {\n     \
-    \       int l, r;\n            Lazy f;\n            cin >> l >> r >> f.a >> f.b;\n\
-    \            st.apply(l, r, f);\n        } else {\n            int l, r; cin >>\
-    \ l >> r;\n            cout << st.prod(l, r).sum << '\\n';\n        }\n    }\n\
-    \    return 0;\n}\n"
+    \    };\n}\nLazy id() {\n    return Lazy{1, 0};\n}\n\nvoid solve() {\n    int\
+    \ n = IO::get<int>();\n    int q = IO::get<int>();\n    vector<Node> nodes(n);\n\
+    \    REP(i,n) {\n        nodes[i] = {IO::get<int>(), 1};\n    }\n    LazySegTree<Node,\
+    \ op, e, Lazy, apply, combine, id> st(nodes);\n    while (q--) {\n        int\
+    \ typ = IO::get<int>();\n        if (typ == 1) {\n            int pos = IO::get<int>();\n\
+    \            cout << st.get(pos).sum << '\\n';\n        } else {\n           \
+    \ int l = IO::get<int>();\n            int r = IO::get<int>();\n            Lazy\
+    \ f;\n            f.a = IO::get<int>();\n            f.b = IO::get<int>();\n \
+    \           st.apply(l, r, f);\n        }\n    }\n}\n"
+  code: "#define PROBLEM https://judge.yosupo.jp/problem/range_affine_point_get\n\n\
+    #include \"../../template.h\"\n#include \"../LazySegTree.h\"\n#include \"../../Math/modint.h\"\
+    \n#include \"../../buffered_reader.h\"\n\nusing mint = ModInt<998244353>;\n\n\
+    struct Node {\n    mint sum, sz;\n};\nstruct Lazy {\n    mint a, b;\n};\n\nNode\
+    \ op(Node l, Node r) {\n    return Node {\n        l.sum + r.sum,\n        l.sz\
+    \ + r.sz\n    };\n}\nNode e() {\n    return Node{0, 0};\n}\n\nNode apply(Lazy\
+    \ f, Node node) {\n    return Node{\n        f.a * node.sum + f.b * node.sz,\n\
+    \        node.sz\n    };\n}\nLazy combine(Lazy g, Lazy f) {\n    return Lazy {\n\
+    \        f.a * g.a,\n        g.a * f.b + g.b\n    };\n}\nLazy id() {\n    return\
+    \ Lazy{1, 0};\n}\n\nvoid solve() {\n    int n = IO::get<int>();\n    int q = IO::get<int>();\n\
+    \    vector<Node> nodes(n);\n    REP(i,n) {\n        nodes[i] = {IO::get<int>(),\
+    \ 1};\n    }\n    LazySegTree<Node, op, e, Lazy, apply, combine, id> st(nodes);\n\
+    \    while (q--) {\n        int typ = IO::get<int>();\n        if (typ == 1) {\n\
+    \            int pos = IO::get<int>();\n            cout << st.get(pos).sum <<\
+    \ '\\n';\n        } else {\n            int l = IO::get<int>();\n            int\
+    \ r = IO::get<int>();\n            Lazy f;\n            f.a = IO::get<int>();\n\
+    \            f.b = IO::get<int>();\n            st.apply(l, r, f);\n        }\n\
+    \    }\n}\n"
   dependsOn:
+  - template.h
   - DataStructure/LazySegTree.h
   - Math/modint.h
   - buffered_reader.h
   isVerificationFile: true
-  path: DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
+  path: DataStructure/test/segment_tree_rangeaffinepointget.test.cpp
   requiredBy: []
-  timestamp: '2022-12-29 17:34:35+08:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-04 11:27:15+08:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
+documentation_of: DataStructure/test/segment_tree_rangeaffinepointget.test.cpp
 layout: document
 redirect_from:
-- /verify/DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
-- /verify/DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp.html
-title: DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
+- /verify/DataStructure/test/segment_tree_rangeaffinepointget.test.cpp
+- /verify/DataStructure/test/segment_tree_rangeaffinepointget.test.cpp.html
+title: DataStructure/test/segment_tree_rangeaffinepointget.test.cpp
 ---

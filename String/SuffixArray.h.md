@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/RMQ.h
     title: DataStructure/RMQ.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Math/modint.h
     title: Math/modint.h
   - icon: ':heavy_check_mark:'
@@ -471,8 +471,8 @@ data:
   timestamp: '2022-12-29 17:34:35+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - String/tests/lcp.test.cpp
   - String/tests/suffix_array_queries.test.cpp
+  - String/tests/lcp.test.cpp
   - String/tests/suffix_array.test.cpp
 documentation_of: String/SuffixArray.h
 layout: document
