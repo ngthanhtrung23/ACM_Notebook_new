@@ -1,31 +1,31 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/LazySegTree.h
     title: DataStructure/LazySegTree.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Math/modint.h
     title: Math/modint.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: buffered_reader.h
     title: buffered_reader.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: 'https:'
+    PROBLEM: https://judge.yosupo.jp/problem/range_affine_point_get
     links:
     - https://judge.yosupo.jp/problem/range_affine_point_get
   bundledCode: "#line 1 \"DataStructure/test/segment_tree_rangeaffinepointget.test.cpp\"\
-    \n#define PROBLEM https://judge.yosupo.jp/problem/range_affine_point_get\n\n#line\
-    \ 1 \"template.h\"\n#include <bits/stdc++.h>\nusing namespace std;\n\n#define\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/range_affine_point_get\"\n\
+    \n#line 1 \"template.h\"\n#include <bits/stdc++.h>\nusing namespace std;\n\n#define\
     \ FOR(i,a,b) for(int i=(a),_b=(b); i<=_b; i++)\n#define FORD(i,a,b) for(int i=(a),_b=(b);\
     \ i>=_b; i--)\n#define REP(i,a) for(int i=0,_a=(a); i<_a; i++)\n#define EACH(it,a)\
     \ for(__typeof(a.begin()) it = a.begin(); it != a.end(); ++it)\n\n#define DEBUG(x)\
@@ -241,12 +241,12 @@ data:
     \ int l = IO::get<int>();\n            int r = IO::get<int>();\n            Lazy\
     \ f;\n            f.a = IO::get<int>();\n            f.b = IO::get<int>();\n \
     \           st.apply(l, r, f);\n        }\n    }\n}\n"
-  code: "#define PROBLEM https://judge.yosupo.jp/problem/range_affine_point_get\n\n\
-    #include \"../../template.h\"\n#include \"../LazySegTree.h\"\n#include \"../../Math/modint.h\"\
-    \n#include \"../../buffered_reader.h\"\n\nusing mint = ModInt<998244353>;\n\n\
-    struct Node {\n    mint sum, sz;\n};\nstruct Lazy {\n    mint a, b;\n};\n\nNode\
-    \ op(Node l, Node r) {\n    return Node {\n        l.sum + r.sum,\n        l.sz\
-    \ + r.sz\n    };\n}\nNode e() {\n    return Node{0, 0};\n}\n\nNode apply(Lazy\
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_affine_point_get\"\
+    \n\n#include \"../../template.h\"\n#include \"../LazySegTree.h\"\n#include \"\
+    ../../Math/modint.h\"\n#include \"../../buffered_reader.h\"\n\nusing mint = ModInt<998244353>;\n\
+    \nstruct Node {\n    mint sum, sz;\n};\nstruct Lazy {\n    mint a, b;\n};\n\n\
+    Node op(Node l, Node r) {\n    return Node {\n        l.sum + r.sum,\n       \
+    \ l.sz + r.sz\n    };\n}\nNode e() {\n    return Node{0, 0};\n}\n\nNode apply(Lazy\
     \ f, Node node) {\n    return Node{\n        f.a * node.sum + f.b * node.sz,\n\
     \        node.sz\n    };\n}\nLazy combine(Lazy g, Lazy f) {\n    return Lazy {\n\
     \        f.a * g.a,\n        g.a * f.b + g.b\n    };\n}\nLazy id() {\n    return\
@@ -267,8 +267,8 @@ data:
   isVerificationFile: true
   path: DataStructure/test/segment_tree_rangeaffinepointget.test.cpp
   requiredBy: []
-  timestamp: '2023-05-04 11:27:15+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-05-07 00:55:39+08:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/segment_tree_rangeaffinepointget.test.cpp
 layout: document

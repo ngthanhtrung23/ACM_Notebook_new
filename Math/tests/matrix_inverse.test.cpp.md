@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Math/Matrix.h
     title: Math/Matrix.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: buffered_reader.h
     title: buffered_reader.h
   _extendedRequiredBy: []

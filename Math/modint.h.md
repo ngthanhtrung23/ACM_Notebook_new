@@ -21,7 +21,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
     title: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/test/segment_tree_rangeaffinepointget.test.cpp
     title: DataStructure/test/segment_tree_rangeaffinepointget.test.cpp
   - icon: ':heavy_check_mark:'
@@ -69,9 +69,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: String/tests/zfunc_hash.test.cpp
     title: String/tests/zfunc_hash.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"Math/modint.h\"\n// ModInt {{{\ntemplate<int MD> struct\
@@ -208,7 +208,7 @@ data:
   - String/SuffixArray.h
   - String/hash.h
   timestamp: '2022-12-29 17:34:35+08:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - String/tests/suffix_array_queries.test.cpp
   - String/tests/lcp.test.cpp

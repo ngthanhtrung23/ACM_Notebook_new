@@ -30,15 +30,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/area_of_union_of_rectangles.test.cpp
     title: DataStructure/test/area_of_union_of_rectangles.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/test/segment_tree_rangeaffinepointget.test.cpp
     title: DataStructure/test/segment_tree_rangeaffinepointget.test.cpp
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
     title: DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://atcoder.github.io/ac-library/master/document_en/lazysegtree.html
@@ -260,7 +260,7 @@ data:
   requiredBy:
   - DataStructure/misc/area_of_union_of_rectangles.h
   timestamp: '2022-08-09 14:38:08+08:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/aizu_dsl_2_g_segment_tree_rangeaddsum.test.cpp
   - DataStructure/test/aizu_dsl_2_i_segment_tree_rangesetsum.test.cpp
