@@ -46,6 +46,7 @@
 "DataStructure/test/segment_tree_2d_pointaddrectsum.test.cpp": "2022-12-21 14:26:45 +0800",
 "DataStructure/test/segment_tree_pointaddrangesum.test.cpp": "2022-12-21 14:26:45 +0800",
 "DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp": "2022-12-29 17:34:35 +0800",
+"DataStructure/test/segment_tree_rangeaffinepointget.test.cpp": "2023-05-07 00:55:39 +0800",
 "DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp": "2022-12-29 17:34:35 +0800",
 "DataStructure/test/segment_tree_staticrmq.test.cpp": "2022-12-21 14:26:45 +0800",
 "DataStructure/test/splay_tree.test.cpp": "2022-12-29 17:34:35 +0800",
