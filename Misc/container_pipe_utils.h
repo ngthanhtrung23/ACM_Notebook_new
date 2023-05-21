@@ -5,25 +5,20 @@ template<> struct accumulator_type<uint32_t> { using type = uint64_t; };
 template<> struct accumulator_type<int64_t> { using type = __int128_t; };
 template<> struct accumulator_type<uint64_t> { using type = __uint128_t; };
 
-enum ReduceOperator { MIN, MAX, CNT_MAX };
+enum ReduceOp { MIN, MAX };
 template<typename Container>
-auto operator | (const Container& a, ReduceOperator op) {
+auto operator | (const Container& a, ReduceOp op) {
     switch (op) {
         case MIN:
             return *min_element(a.begin(), a.end());
         case MAX:
             return *max_element(a.begin(), a.end());
-        case CNT_MAX:
-            auto ma = *max_element(a.begin(), a.end());
-            int cnt = 0;
-            for (const auto& elem : a) cnt += elem == ma;
-            return cnt;
     }
     assert(false);
 }
-enum SumOperator { SUM, SUM_XOR };
+enum SumOp { SUM, SUM_XOR };
 template<typename Container>
-auto operator | (const Container& a, SumOperator op) {
+auto operator | (const Container& a, SumOp op) {
     typename accumulator_type<typename Container::value_type>::type sum{};
     switch (op) {
         case SUM:
@@ -35,9 +30,9 @@ auto operator | (const Container& a, SumOperator op) {
     }
     assert(false);
 }
-enum ComparableOperator { SORT };
+enum ComparableOp { SORT };
 template<typename Container>
-Container& operator | (Container& a, ComparableOperator op) {
+Container& operator | (Container& a, ComparableOp op) {
     __typeof(a) values;
     switch (op) {
         case SORT:
@@ -46,9 +41,9 @@ Container& operator | (Container& a, ComparableOperator op) {
     }
     return a;
 }
-enum TransformOperator { ADD_1, PREFIX_SUM, PREFIX_SUM_XOR, REVERSE, SUB_1, COMPRESS };
+enum TransformOp { ADD_1, PREFIX_SUM, PREFIX_SUM_XOR, REVERSE, SUB_1, COMPRESS };
 template<typename Container>
-Container& operator | (Container& a, TransformOperator op) {
+Container& operator | (Container& a, TransformOp op) {
     __typeof(a) values;
     switch (op) {
         case ADD_1:
@@ -75,13 +70,20 @@ Container& operator | (Container& a, TransformOperator op) {
     }
     return a;
 }
-enum IOOperator { IN, OUT_ONE_PER_LINE, OUT_1_LINE };
+enum IOp { IN };
 template<typename Container>
-Container& operator | (Container& a, IOOperator op) {
+Container& operator | (Container& a, IOp op) {
     switch (op) {
         case IN:
             for (auto& elem : a) cin >> elem;
             break;
+    }
+    return a;
+}
+enum OOp { OUT_ONE_PER_LINE, OUT_1_LINE };
+template<typename Container>
+Container& operator | (Container& a, OOp op) {
+    switch (op) {
         case OUT_1_LINE:
             for (size_t i = 0; i < a.size(); ++i) {
                 if (i > 0) cout << ' ';
