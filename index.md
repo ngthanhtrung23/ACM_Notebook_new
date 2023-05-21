@@ -493,7 +493,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Misc/compress.h
       title: Misc/compress.h
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: Misc/container_pipe_utils.h
       title: Misc/container_pipe_utils.h
     - icon: ':warning:'
@@ -575,7 +575,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: buffered_reader.h
       title: buffered_reader.h
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: debug.h
       title: debug.h
     - icon: ':heavy_check_mark:'
@@ -1038,6 +1038,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Misc/tests/aizu_dpl_3_c_largest_histogram.test.cpp
       title: Misc/tests/aizu_dpl_3_c_largest_histogram.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Misc/tests/pipe_utils.test.cpp
+      title: Misc/tests/pipe_utils.test.cpp
     - icon: ':heavy_check_mark:'
       path: Misc/tests/yosupo_int128.test.cpp
       title: Misc/tests/yosupo_int128.test.cpp

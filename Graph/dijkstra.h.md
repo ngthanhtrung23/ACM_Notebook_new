@@ -67,8 +67,8 @@ data:
   timestamp: '2022-12-26 16:37:58+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Graph/tests/dijkstra.test.cpp
   - Graph/tests/aizu_grl_1_a_dijkstra_aizu.test.cpp
+  - Graph/tests/dijkstra.test.cpp
 documentation_of: Graph/dijkstra.h
 layout: document
 redirect_from:
