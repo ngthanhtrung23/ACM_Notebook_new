@@ -235,6 +235,9 @@ data:
     path: Math/tests/smallest_prime_factor_stress.test.cpp
     title: Math/tests/smallest_prime_factor_stress.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Math/tests/yosupo_primality_rabin_miller.test.cpp
+    title: Math/tests/yosupo_primality_rabin_miller.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Misc/tests/aizu_dpl_3_b_largest_01_rectangle.test.cpp
     title: Misc/tests/aizu_dpl_3_b_largest_01_rectangle.test.cpp
   - icon: ':heavy_check_mark:'
@@ -323,6 +326,7 @@ data:
   verifiedWith:
   - Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp
   - Math/tests/aizu_ntl_2_d_bigint_div.test.cpp
+  - Math/tests/yosupo_primality_rabin_miller.test.cpp
   - Math/tests/cnt_divisors_stress.test.cpp
   - Math/tests/aizu_ntl_1_e_extended_euclid.test.cpp
   - Math/tests/smallest_prime_factor_stress.test.cpp

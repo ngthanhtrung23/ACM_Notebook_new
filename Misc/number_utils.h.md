@@ -11,16 +11,20 @@ data:
   bundledCode: "#line 1 \"Misc/number_utils.h\"\n// return digits of an integer (reversed\
     \ order) {{{\nvector<int> get_digits(int n) {\n    if (n == 0) return {0};\n \
     \   vector<int> res;\n    while (n > 0) {\n        res.push_back(n % 10);\n  \
-    \      n /= 10;\n    }\n    return res;\n}\n// }}}\n"
+    \      n /= 10;\n    }\n    return res;\n}\n// }}}\n// reverse an integer {{{\n\
+    int reverse(int n) {\n    int res = 0;\n    while (n > 0) {\n        res = res\
+    \ * 10 + n % 10;\n        n /= 10;\n    }\n    return res;\n}\n// }}}\n"
   code: "// return digits of an integer (reversed order) {{{\nvector<int> get_digits(int\
     \ n) {\n    if (n == 0) return {0};\n    vector<int> res;\n    while (n > 0) {\n\
     \        res.push_back(n % 10);\n        n /= 10;\n    }\n    return res;\n}\n\
-    // }}}\n"
+    // }}}\n// reverse an integer {{{\nint reverse(int n) {\n    int res = 0;\n  \
+    \  while (n > 0) {\n        res = res * 10 + n % 10;\n        n /= 10;\n    }\n\
+    \    return res;\n}\n// }}}\n"
   dependsOn: []
   isVerificationFile: false
   path: Misc/number_utils.h
   requiredBy: []
-  timestamp: '2022-12-27 15:34:50+08:00'
+  timestamp: '2023-05-27 17:03:38+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Misc/number_utils.h

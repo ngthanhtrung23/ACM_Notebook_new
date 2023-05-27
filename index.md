@@ -435,7 +435,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/Prime/PrimePi.h
       title: Math/Prime/PrimePi.h
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: Math/Prime/RabinMiller.h
       title: Math/Prime/RabinMiller.h
     - icon: ':heavy_check_mark:'
@@ -1030,6 +1030,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/tests/sumdiv.test.cpp
       title: Math/tests/sumdiv.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Math/tests/yosupo_primality_rabin_miller.test.cpp
+      title: Math/tests/yosupo_primality_rabin_miller.test.cpp
   - name: Misc/tests
     pages:
     - icon: ':heavy_check_mark:'

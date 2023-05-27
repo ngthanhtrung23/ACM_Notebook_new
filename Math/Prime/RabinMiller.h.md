@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: Math/tests/yosupo_primality_rabin_miller.test.cpp
+    title: Math/tests/yosupo_primality_rabin_miller.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://github.com/SnapDragon64/ContestLibrary/blob/master/math.h
@@ -68,8 +71,9 @@ data:
   path: Math/Prime/RabinMiller.h
   requiredBy: []
   timestamp: '2022-11-18 18:23:54+08:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - Math/tests/yosupo_primality_rabin_miller.test.cpp
 documentation_of: Math/Prime/RabinMiller.h
 layout: document
 redirect_from:
