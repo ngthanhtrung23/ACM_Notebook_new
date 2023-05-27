@@ -90,6 +90,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/segment_tree_rangeaffinepointget.test.cpp
     title: DataStructure/test/segment_tree_rangeaffinepointget.test.cpp
+  - icon: ':x:'
+    path: DataStructure/test/yosupo_rangereversesum_splay.test.cpp
+    title: DataStructure/test/yosupo_rangereversesum_splay.test.cpp
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/yukicoder_674_range_set.test.cpp
     title: DataStructure/test/yukicoder_674_range_set.test.cpp
@@ -255,9 +258,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: String/tests/zfunc_hash.test.cpp
     title: String/tests/zfunc_hash.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://quangloc99.github.io/2021/07/30/my-CP-debugging-template.html
@@ -322,7 +325,7 @@ data:
   - DP/optimizations/divide_conquer.cpp
   - DP/optimizations/knuth.cpp
   timestamp: '2022-01-13 13:16:22+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp
   - Math/tests/aizu_ntl_2_d_bigint_div.test.cpp
@@ -381,6 +384,7 @@ data:
   - DataStructure/test/aizu_dsl_4_a_range_set.test.cpp
   - DataStructure/test/aizu_grl_5_c_lca.test.cpp
   - DataStructure/test/persistent_fenwick_tree_rmq.test.cpp
+  - DataStructure/test/yosupo_rangereversesum_splay.test.cpp
   - DataStructure/test/segment_tree_rangeaffinepointget.test.cpp
   - DataStructure/test/aizu_dsl_2_f_segment_tree_rangesetmin.test.cpp
   - DataStructure/test/aizu_dsl_2_h_segment_tree_rangeaddmin.test.cpp

@@ -4,92 +4,54 @@ data:
   - icon: ':question:'
     path: DataStructure/splay_tree.h
     title: DataStructure/splay_tree.h
-  - icon: ':heavy_check_mark:'
-    path: Math/modint.h
-    title: Math/modint.h
+  - icon: ':question:'
+    path: template.h
+    title: template.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/dynamic_sequence_range_affine_range_sum
+    PROBLEM: https://judge.yosupo.jp/problem/range_reverse_range_sum
     links:
-    - https://judge.yosupo.jp/problem/dynamic_sequence_range_affine_range_sum
-  bundledCode: "#line 1 \"DataStructure/test/splay_tree.test.cpp\"\n#define PROBLEM\
-    \ \"https://judge.yosupo.jp/problem/dynamic_sequence_range_affine_range_sum\"\n\
-    \n#include <bits/stdc++.h>\nusing namespace std;\n\n#line 1 \"Math/modint.h\"\n\
-    // ModInt {{{\ntemplate<int MD> struct ModInt {\n    using ll = long long;\n \
-    \   int x;\n\n    constexpr ModInt() : x(0) {}\n    constexpr ModInt(ll v) { _set(v\
-    \ % MD + MD); }\n    constexpr static int mod() { return MD; }\n    constexpr\
-    \ explicit operator bool() const { return x != 0; }\n\n    constexpr ModInt operator\
-    \ + (const ModInt& a) const {\n        return ModInt()._set((ll) x + a.x);\n \
-    \   }\n    constexpr ModInt operator - (const ModInt& a) const {\n        return\
-    \ ModInt()._set((ll) x - a.x + MD);\n    }\n    constexpr ModInt operator * (const\
-    \ ModInt& a) const {\n        return ModInt()._set((ll) x * a.x % MD);\n    }\n\
-    \    constexpr ModInt operator / (const ModInt& a) const {\n        return ModInt()._set((ll)\
-    \ x * a.inv().x % MD);\n    }\n    constexpr ModInt operator - () const {\n  \
-    \      return ModInt()._set(MD - x);\n    }\n\n    constexpr ModInt& operator\
-    \ += (const ModInt& a) { return *this = *this + a; }\n    constexpr ModInt& operator\
-    \ -= (const ModInt& a) { return *this = *this - a; }\n    constexpr ModInt& operator\
-    \ *= (const ModInt& a) { return *this = *this * a; }\n    constexpr ModInt& operator\
-    \ /= (const ModInt& a) { return *this = *this / a; }\n\n    friend constexpr ModInt\
-    \ operator + (ll a, const ModInt& b) {\n        return ModInt()._set(a % MD +\
-    \ b.x);\n    }\n    friend constexpr ModInt operator - (ll a, const ModInt& b)\
-    \ {\n        return ModInt()._set(a % MD - b.x + MD);\n    }\n    friend constexpr\
-    \ ModInt operator * (ll a, const ModInt& b) {\n        return ModInt()._set(a\
-    \ % MD * b.x % MD);\n    }\n    friend constexpr ModInt operator / (ll a, const\
-    \ ModInt& b) {\n        return ModInt()._set(a % MD * b.inv().x % MD);\n    }\n\
-    \n    constexpr bool operator == (const ModInt& a) const { return x == a.x; }\n\
-    \    constexpr bool operator != (const ModInt& a) const { return x != a.x; }\n\
-    \n    friend std::istream& operator >> (std::istream& is, ModInt& x) {\n     \
-    \   ll val; is >> val;\n        x = ModInt(val);\n        return is;\n    }\n\
-    \    constexpr friend std::ostream& operator << (std::ostream& os, const ModInt&\
-    \ x) {\n        return os << x.x;\n    }\n\n    constexpr ModInt pow(ll k) const\
-    \ {\n        ModInt ans = 1, tmp = x;\n        while (k) {\n            if (k\
-    \ & 1) ans *= tmp;\n            tmp *= tmp;\n            k >>= 1;\n        }\n\
-    \        return ans;\n    }\n\n    constexpr ModInt inv() const {\n        if\
-    \ (x < 1000111) {\n            _precalc(1000111);\n            return invs[x];\n\
-    \        }\n        int a = x, b = MD, ax = 1, bx = 0;\n        while (b) {\n\
-    \            int q = a/b, t = a%b;\n            a = b; b = t;\n            t =\
-    \ ax - bx*q;\n            ax = bx; bx = t;\n        }\n        assert(a == 1);\n\
-    \        if (ax < 0) ax += MD;\n        return ax;\n    }\n\n    static std::vector<ModInt>\
-    \ factorials, inv_factorials, invs;\n    constexpr static void _precalc(int n)\
-    \ {\n        if (factorials.empty()) {\n            factorials = {1};\n      \
-    \      inv_factorials = {1};\n            invs = {0};\n        }\n        if (n\
-    \ > MD) n = MD;\n        int old_sz = factorials.size();\n        if (n <= old_sz)\
-    \ return;\n\n        factorials.resize(n);\n        inv_factorials.resize(n);\n\
-    \        invs.resize(n);\n\n        for (int i = old_sz; i < n; ++i) factorials[i]\
-    \ = factorials[i-1] * i;\n        inv_factorials[n-1] = factorials.back().pow(MD\
-    \ - 2);\n        for (int i = n - 2; i >= old_sz; --i) inv_factorials[i] = inv_factorials[i+1]\
-    \ * (i+1);\n        for (int i = n-1; i >= old_sz; --i) invs[i] = inv_factorials[i]\
-    \ * factorials[i-1];\n    }\n\n    static int get_primitive_root() {\n       \
-    \ static int primitive_root = 0;\n        if (!primitive_root) {\n           \
-    \ primitive_root = [&]() {\n                std::set<int> fac;\n             \
-    \   int v = MD - 1;\n                for (ll i = 2; i * i <= v; i++)\n       \
-    \             while (v % i == 0) fac.insert(i), v /= i;\n                if (v\
-    \ > 1) fac.insert(v);\n                for (int g = 1; g < MD; g++) {\n      \
-    \              bool ok = true;\n                    for (auto i : fac)\n     \
-    \                   if (ModInt(g).pow((MD - 1) / i) == 1) {\n                \
-    \            ok = false;\n                            break;\n               \
-    \         }\n                    if (ok) return g;\n                }\n      \
-    \          return -1;\n            }();\n        }\n        return primitive_root;\n\
-    \    }\n\n    static ModInt C(int n, int k) {\n        _precalc(n + 1);\n    \
-    \    return factorials[n] * inv_factorials[k] * inv_factorials[n-k];\n    }\n\
-    \    \nprivate:\n    // Internal, DO NOT USE.\n    // val must be in [0, 2*MD)\n\
-    \    constexpr inline __attribute__((always_inline)) ModInt& _set(ll v) {\n  \
-    \      x = v >= MD ? v - MD : v;\n        return *this;\n    }\n};\ntemplate <int\
-    \ MD> std::vector<ModInt<MD>> ModInt<MD>::factorials = {1};\ntemplate <int MD>\
-    \ std::vector<ModInt<MD>> ModInt<MD>::inv_factorials = {1};\ntemplate <int MD>\
-    \ std::vector<ModInt<MD>> ModInt<MD>::invs = {0};\n// }}}\n#line 1 \"DataStructure/splay_tree.h\"\
-    \n// SplayTreeById\n//\n// Note:\n// - op() must be commutative, otherwise reverse\
-    \ queries won't work.\n//   To fix it, need to store aggregate data from right->left\n\
-    //   See https://judge.yosupo.jp/submission/53778 (and look at invsum)\n//\n//\
-    \ Tested:\n// - (cut, join)      https://vn.spoj.com/problems/CARDS/\n// - (keys,\
-    \ reverse)  https://oj.vnoi.info/problem/twist\n// - (insert, prod)   https://oj.vnoi.info/problem/qmax3vn\n\
-    // - (insert, delete) https://vn.spoj.com/problems/QMAX4/\n// - (insert, delete)\
-    \ https://vn.spoj.com/problems/CARDSHUF/\n// - (lazy)           https://judge.yosupo.jp/problem/dynamic_sequence_range_affine_range_sum\n\
+    - https://judge.yosupo.jp/problem/range_reverse_range_sum
+  bundledCode: "#line 1 \"DataStructure/test/yosupo_rangereversesum_splay.test.cpp\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/range_reverse_range_sum\"\n\
+    \n#line 1 \"template.h\"\n#include <bits/stdc++.h>\nusing namespace std;\n\n#define\
+    \ FOR(i,a,b) for(int i=(a),_b=(b); i<=_b; i++)\n#define FORD(i,a,b) for(int i=(a),_b=(b);\
+    \ i>=_b; i--)\n#define REP(i,a) for(int i=0,_a=(a); i<_a; i++)\n#define EACH(it,a)\
+    \ for(__typeof(a.begin()) it = a.begin(); it != a.end(); ++it)\n\n#define DEBUG(x)\
+    \ { cout << #x << \" = \"; cout << (x) << endl; }\n#define PR(a,n) { cout << #a\
+    \ << \" = \"; FOR(_,1,n) cout << a[_] << ' '; cout << endl; }\n#define PR0(a,n)\
+    \ { cout << #a << \" = \"; REP(_,n) cout << a[_] << ' '; cout << endl; }\n\n#define\
+    \ sqr(x) ((x) * (x))\n\n// For printing pair, container, etc.\n// Copied from\
+    \ https://quangloc99.github.io/2021/07/30/my-CP-debugging-template.html\ntemplate<class\
+    \ U, class V> ostream& operator << (ostream& out, const pair<U, V>& p) {\n   \
+    \ return out << '(' << p.first << \", \" << p.second << ')';\n}\n\ntemplate<class\
+    \ Con, class = decltype(begin(declval<Con>()))>\ntypename enable_if<!is_same<Con,\
+    \ string>::value, ostream&>::type\noperator << (ostream& out, const Con& con)\
+    \ {\n    out << '{';\n    for (auto beg = con.begin(), it = beg; it != con.end();\
+    \ it++) {\n        out << (it == beg ? \"\" : \", \") << *it;\n    }\n    return\
+    \ out << '}';\n}\ntemplate<size_t i, class T> ostream& print_tuple_utils(ostream&\
+    \ out, const T& tup) {\n    if constexpr(i == tuple_size<T>::value) return out\
+    \ << \")\"; \n    else return print_tuple_utils<i + 1, T>(out << (i ? \", \" :\
+    \ \"(\") << get<i>(tup), tup); \n}\ntemplate<class ...U> ostream& operator <<\
+    \ (ostream& out, const tuple<U...>& t) {\n    return print_tuple_utils<0, tuple<U...>>(out,\
+    \ t);\n}\n\nmt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());\n\
+    long long get_rand(long long r) {\n    return uniform_int_distribution<long long>\
+    \ (0, r-1)(rng);\n}\n\ntemplate<typename T>\nvector<T> read_vector(int n) {\n\
+    \    vector<T> res(n);\n    for (int& x : res) cin >> x;\n    return res;\n}\n\
+    \nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n  \
+    \  solve();\n    return 0;\n}\n#line 1 \"DataStructure/splay_tree.h\"\n// SplayTreeById\n\
+    //\n// Note:\n// - op() must be commutative, otherwise reverse queries won't work.\n\
+    //   To fix it, need to store aggregate data from right->left\n//   See https://judge.yosupo.jp/submission/53778\
+    \ (and look at invsum)\n//\n// Tested:\n// - (cut, join)      https://vn.spoj.com/problems/CARDS/\n\
+    // - (keys, reverse)  https://oj.vnoi.info/problem/twist\n// - (insert, prod)\
+    \   https://oj.vnoi.info/problem/qmax3vn\n// - (insert, delete) https://vn.spoj.com/problems/QMAX4/\n\
+    // - (insert, delete) https://vn.spoj.com/problems/CARDSHUF/\n// - (lazy)    \
+    \       https://judge.yosupo.jp/problem/dynamic_sequence_range_affine_range_sum\n\
     // - (lazy)           https://oj.vnoi.info/problem/upit\ntemplate<class K, class\
     \ S, class F>\nstruct node_t {\n    using Node = node_t<K, S, F>;\n\n    std::array<Node*,\
     \ 2> child;\n    Node *father;\n    int size;\n    \n    // Whether we will need\
@@ -234,67 +196,42 @@ data:
     \    SplayTreeById<\n        int,\n        RangeAffineOps::S,\n        RangeAffineOps::op,\n\
     \        RangeAffineOps::e,\n        RangeAffineOps::F,\n        RangeAffineOps::mapping,\n\
     \        RangeAffineOps::composition,\n        RangeAffineOps::id\n    > tree(keys);\n\
-    \ */\n#line 8 \"DataStructure/test/splay_tree.test.cpp\"\n\nusing modular = ModInt<998244353>;\n\
-    \nstruct S {\n    long long sum, sz;\n};\nstruct F {\n    long long a, b;\n};\n\
-    using Node = node_t<int, S, F>;\n\nconst int MOD = 998244353;\nS op(S left, int\
-    \ key, S right) {\n    return S {\n        (left.sum + key + right.sum) % MOD,\n\
-    \        left.sz + 1 + right.sz,\n    };\n}\npair<int, S> e() {\n    return {0,\
-    \ {0, 0}};\n}\npair<int, S> mapping(F f, Node* node) {\n    return {\n       \
-    \ (f.a * node->key + f.b) % MOD,\n        S {\n            (f.a * node->data.sum\
-    \ + f.b * node->data.sz) % MOD,\n            node->data.sz,\n        }\n    };\n\
-    }\nF composition(F f, F g) {\n    return F {\n        f.a * g.a % MOD,\n     \
-    \   (f.a * g.b + f.b) % MOD,\n    };\n}\nF id() {\n    return F {1, 0};\n}\n\n\
-    int32_t main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n, q; cin\
-    \ >> n >> q;\n    vector<int> keys(n);\n    for (auto& key : keys) cin >> key;\n\
-    \n    SplayTreeById<\n        int,\n        S,\n        op,\n        e,\n    \
-    \    F,\n        mapping,\n        composition,\n        id\n    > tree(keys);\n\
-    \n    while (q--) {\n        int typ; cin >> typ;\n        if (typ == 0) {\n \
-    \           int pos, val; cin >> pos >> val;\n            tree.insert(pos, val);\n\
-    \        } else if (typ == 1) {\n            int pos; cin >> pos;\n          \
-    \  tree.erase(pos);\n        } else if (typ == 2) {\n            int l, r; cin\
-    \ >> l >> r;\n            tree.reverse(l, r);\n        } else if (typ == 3) {\n\
-    \            int l, r, a, b; cin >> l >> r >> a >> b;\n            tree.apply(l,\
-    \ r, F{a, b});\n        } else {\n            assert(typ == 4);\n            int\
-    \ l, r; cin >> l >> r;\n            printf(\"%lld\\n\", tree.prod(l, r).sum);\n\
-    \        }\n    }\n    return 0;\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/dynamic_sequence_range_affine_range_sum\"\
-    \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../../Math/modint.h\"\
-    \n#include \"../splay_tree.h\"\n\nusing modular = ModInt<998244353>;\n\nstruct\
-    \ S {\n    long long sum, sz;\n};\nstruct F {\n    long long a, b;\n};\nusing\
-    \ Node = node_t<int, S, F>;\n\nconst int MOD = 998244353;\nS op(S left, int key,\
-    \ S right) {\n    return S {\n        (left.sum + key + right.sum) % MOD,\n  \
-    \      left.sz + 1 + right.sz,\n    };\n}\npair<int, S> e() {\n    return {0,\
-    \ {0, 0}};\n}\npair<int, S> mapping(F f, Node* node) {\n    return {\n       \
-    \ (f.a * node->key + f.b) % MOD,\n        S {\n            (f.a * node->data.sum\
-    \ + f.b * node->data.sz) % MOD,\n            node->data.sz,\n        }\n    };\n\
-    }\nF composition(F f, F g) {\n    return F {\n        f.a * g.a % MOD,\n     \
-    \   (f.a * g.b + f.b) % MOD,\n    };\n}\nF id() {\n    return F {1, 0};\n}\n\n\
-    int32_t main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n, q; cin\
-    \ >> n >> q;\n    vector<int> keys(n);\n    for (auto& key : keys) cin >> key;\n\
-    \n    SplayTreeById<\n        int,\n        S,\n        op,\n        e,\n    \
-    \    F,\n        mapping,\n        composition,\n        id\n    > tree(keys);\n\
-    \n    while (q--) {\n        int typ; cin >> typ;\n        if (typ == 0) {\n \
-    \           int pos, val; cin >> pos >> val;\n            tree.insert(pos, val);\n\
-    \        } else if (typ == 1) {\n            int pos; cin >> pos;\n          \
-    \  tree.erase(pos);\n        } else if (typ == 2) {\n            int l, r; cin\
-    \ >> l >> r;\n            tree.reverse(l, r);\n        } else if (typ == 3) {\n\
-    \            int l, r, a, b; cin >> l >> r >> a >> b;\n            tree.apply(l,\
-    \ r, F{a, b});\n        } else {\n            assert(typ == 4);\n            int\
-    \ l, r; cin >> l >> r;\n            printf(\"%lld\\n\", tree.prod(l, r).sum);\n\
-    \        }\n    }\n    return 0;\n}\n"
+    \ */\n#line 5 \"DataStructure/test/yosupo_rangereversesum_splay.test.cpp\"\n\n\
+    using S = int;\nusing F = bool;\nusing Node = node_t<int, S, F>;\n\nS op(S left,\
+    \ int key, S right) {\n    return left + key + right;\n}\npair<int, S> e() { return\
+    \ {0, 0}; }\npair<int, S> mapping([[maybe_unused]] F f, Node* node) {\n    return\
+    \ {node->key, node->data};\n}\nF composition([[maybe_unused]] F f, [[maybe_unused]]\
+    \ F g) { return false; }\nF id() { return false; }\n\nvoid solve() {\n    int\
+    \ n, q; cin >> n >> q;\n    vector<int> a(n); REP(i,n) cin >> a[i];\n    SplayTreeById<int,\
+    \ S, op, e, F, mapping, composition, id> tree(a);\n\n    while (q--) {\n     \
+    \   int typ; cin >> typ;\n        int l, r; cin >> l >> r;\n\n        if (typ\
+    \ == 0) tree.reverse(l, r);\n        else {\n            cout << tree.prod(l,\
+    \ r) << '\\n';\n        }\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_reverse_range_sum\"\
+    \n\n#include \"../../template.h\"\n#include \"../splay_tree.h\"\n\nusing S = int;\n\
+    using F = bool;\nusing Node = node_t<int, S, F>;\n\nS op(S left, int key, S right)\
+    \ {\n    return left + key + right;\n}\npair<int, S> e() { return {0, 0}; }\n\
+    pair<int, S> mapping([[maybe_unused]] F f, Node* node) {\n    return {node->key,\
+    \ node->data};\n}\nF composition([[maybe_unused]] F f, [[maybe_unused]] F g) {\
+    \ return false; }\nF id() { return false; }\n\nvoid solve() {\n    int n, q; cin\
+    \ >> n >> q;\n    vector<int> a(n); REP(i,n) cin >> a[i];\n    SplayTreeById<int,\
+    \ S, op, e, F, mapping, composition, id> tree(a);\n\n    while (q--) {\n     \
+    \   int typ; cin >> typ;\n        int l, r; cin >> l >> r;\n\n        if (typ\
+    \ == 0) tree.reverse(l, r);\n        else {\n            cout << tree.prod(l,\
+    \ r) << '\\n';\n        }\n    }\n}\n"
   dependsOn:
-  - Math/modint.h
+  - template.h
   - DataStructure/splay_tree.h
   isVerificationFile: true
-  path: DataStructure/test/splay_tree.test.cpp
+  path: DataStructure/test/yosupo_rangereversesum_splay.test.cpp
   requiredBy: []
-  timestamp: '2022-12-29 17:34:35+08:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-27 17:17:24+08:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: DataStructure/test/splay_tree.test.cpp
+documentation_of: DataStructure/test/yosupo_rangereversesum_splay.test.cpp
 layout: document
 redirect_from:
-- /verify/DataStructure/test/splay_tree.test.cpp
-- /verify/DataStructure/test/splay_tree.test.cpp.html
-title: DataStructure/test/splay_tree.test.cpp
+- /verify/DataStructure/test/yosupo_rangereversesum_splay.test.cpp
+- /verify/DataStructure/test/yosupo_rangereversesum_splay.test.cpp.html
+title: DataStructure/test/yosupo_rangereversesum_splay.test.cpp
 ---

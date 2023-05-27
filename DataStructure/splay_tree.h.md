@@ -6,9 +6,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/splay_tree.test.cpp
     title: DataStructure/test/splay_tree.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: DataStructure/test/yosupo_rangereversesum_splay.test.cpp
+    title: DataStructure/test/yosupo_rangereversesum_splay.test.cpp
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://judge.yosupo.jp/problem/dynamic_sequence_range_affine_range_sum
@@ -330,9 +333,10 @@ data:
   path: DataStructure/splay_tree.h
   requiredBy: []
   timestamp: '2022-01-07 04:26:13+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - DataStructure/test/splay_tree.test.cpp
+  - DataStructure/test/yosupo_rangereversesum_splay.test.cpp
 documentation_of: DataStructure/splay_tree.h
 layout: document
 redirect_from:

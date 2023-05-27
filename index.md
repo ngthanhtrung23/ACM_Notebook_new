@@ -106,7 +106,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/WaveletMatrix.h
       title: DataStructure/WaveletMatrix.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: DataStructure/splay_tree.h
       title: DataStructure/splay_tree.h
   - name: DataStructure/DSU
@@ -578,7 +578,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: debug.h
       title: debug.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template.h
       title: template.h
   verificationCategories:
@@ -748,6 +748,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/yosupo_hld_kth_vertex_on_path.test.cpp
       title: DataStructure/test/yosupo_hld_kth_vertex_on_path.test.cpp
+    - icon: ':x:'
+      path: DataStructure/test/yosupo_rangereversesum_splay.test.cpp
+      title: DataStructure/test/yosupo_rangereversesum_splay.test.cpp
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/yukicoder_674_range_set.test.cpp
       title: DataStructure/test/yukicoder_674_range_set.test.cpp
