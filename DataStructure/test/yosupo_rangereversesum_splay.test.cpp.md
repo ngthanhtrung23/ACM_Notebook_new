@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/splay_tree.h
     title: DataStructure/splay_tree.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/range_reverse_range_sum
@@ -197,10 +197,10 @@ data:
     \        RangeAffineOps::e,\n        RangeAffineOps::F,\n        RangeAffineOps::mapping,\n\
     \        RangeAffineOps::composition,\n        RangeAffineOps::id\n    > tree(keys);\n\
     \ */\n#line 5 \"DataStructure/test/yosupo_rangereversesum_splay.test.cpp\"\n\n\
-    using S = int;\nusing F = bool;\nusing Node = node_t<int, S, F>;\n\nS op(S left,\
-    \ int key, S right) {\n    return left + key + right;\n}\npair<int, S> e() { return\
-    \ {0, 0}; }\npair<int, S> mapping([[maybe_unused]] F f, Node* node) {\n    return\
-    \ {node->key, node->data};\n}\nF composition([[maybe_unused]] F f, [[maybe_unused]]\
+    using S = int64_t;\nusing F = bool;\nusing Node = node_t<int, S, F>;\n\nS op(S\
+    \ left, int key, S right) {\n    return left + key + right;\n}\npair<int, S> e()\
+    \ { return {0, 0}; }\npair<int, S> mapping([[maybe_unused]] F f, Node* node) {\n\
+    \    return {node->key, node->data};\n}\nF composition([[maybe_unused]] F f, [[maybe_unused]]\
     \ F g) { return false; }\nF id() { return false; }\n\nvoid solve() {\n    int\
     \ n, q; cin >> n >> q;\n    vector<int> a(n); REP(i,n) cin >> a[i];\n    SplayTreeById<int,\
     \ S, op, e, F, mapping, composition, id> tree(a);\n\n    while (q--) {\n     \
@@ -208,7 +208,7 @@ data:
     \ == 0) tree.reverse(l, r);\n        else {\n            cout << tree.prod(l,\
     \ r) << '\\n';\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_reverse_range_sum\"\
-    \n\n#include \"../../template.h\"\n#include \"../splay_tree.h\"\n\nusing S = int;\n\
+    \n\n#include \"../../template.h\"\n#include \"../splay_tree.h\"\n\nusing S = int64_t;\n\
     using F = bool;\nusing Node = node_t<int, S, F>;\n\nS op(S left, int key, S right)\
     \ {\n    return left + key + right;\n}\npair<int, S> e() { return {0, 0}; }\n\
     pair<int, S> mapping([[maybe_unused]] F f, Node* node) {\n    return {node->key,\
@@ -225,8 +225,8 @@ data:
   isVerificationFile: true
   path: DataStructure/test/yosupo_rangereversesum_splay.test.cpp
   requiredBy: []
-  timestamp: '2023-05-27 17:17:24+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-05-27 17:21:09+08:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/yosupo_rangereversesum_splay.test.cpp
 layout: document

@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Misc/int128.h
     title: Misc/int128.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []

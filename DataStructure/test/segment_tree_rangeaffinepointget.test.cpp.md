@@ -10,7 +10,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: buffered_reader.h
     title: buffered_reader.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
