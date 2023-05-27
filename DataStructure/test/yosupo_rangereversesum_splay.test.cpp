@@ -3,7 +3,7 @@
 #include "../../template.h"
 #include "../splay_tree.h"
 
-using S = int;
+using S = int64_t;
 using F = bool;
 using Node = node_t<int, S, F>;
 
