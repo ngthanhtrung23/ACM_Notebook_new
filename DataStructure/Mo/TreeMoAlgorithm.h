@@ -3,6 +3,9 @@
 // - Add / Rem functions:
 //   - If ids appear twice -> MUST treat as 0 time
 //
+// Resource:
+// - https://codeforces.com/blog/entry/43230
+//
 // Tested:
 // - https://www.spoj.com/problems/COT2/
 //
