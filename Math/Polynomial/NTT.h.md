@@ -143,9 +143,9 @@ data:
   timestamp: '2022-08-21 23:32:29+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Math/tests/ntt.test.cpp
   - Math/tests/ntt_any_mod.test.cpp
   - Math/tests/formal_power_series_multiply_any_mod.test.cpp
+  - Math/tests/ntt.test.cpp
   - Math/tests/formal_power_series_multiply.test.cpp
 documentation_of: Math/Polynomial/NTT.h
 layout: document

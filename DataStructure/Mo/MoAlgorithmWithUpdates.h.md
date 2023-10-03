@@ -9,9 +9,9 @@ data:
   attributes:
     links:
     - https://www.spoj.com/problems/ADAUNIQ/
-  bundledCode: "#line 1 \"DataStructure/MoAlgorithmWithUpdates.h\"\n// Tested:\n//\
-    \ - https://www.spoj.com/problems/ADAUNIQ/\n//\n// Notes:\n// - Updates must be\
-    \ set: A(u) = val\n// - When implementing Update(id, new_value, cur_l, cur_r)\
+  bundledCode: "#line 1 \"DataStructure/Mo/MoAlgorithmWithUpdates.h\"\n// Tested:\n\
+    // - https://www.spoj.com/problems/ADAUNIQ/\n//\n// Notes:\n// - Updates must\
+    \ be set: A(u) = val\n// - When implementing Update(id, new_value, cur_l, cur_r)\
     \ -> void:\n//   [cur_l, cur_r] = current segment\n//   we need to handle the\
     \ case where we update an index that is inside\n//   [cur_l, cur_r]\n//\n// Mo\
     \ algorithm with updates {{{\nenum QueryType { GET = 0, UPDATE = 1 };\n\nstruct\
@@ -78,15 +78,15 @@ data:
     \     }\n\n        get(query);\n    }\n}\n// }}}\n"
   dependsOn: []
   isVerificationFile: false
-  path: DataStructure/MoAlgorithmWithUpdates.h
+  path: DataStructure/Mo/MoAlgorithmWithUpdates.h
   requiredBy: []
-  timestamp: '2022-12-22 10:28:54+08:00'
+  timestamp: '2023-10-03 00:47:04-07:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: DataStructure/MoAlgorithmWithUpdates.h
+documentation_of: DataStructure/Mo/MoAlgorithmWithUpdates.h
 layout: document
 redirect_from:
-- /library/DataStructure/MoAlgorithmWithUpdates.h
-- /library/DataStructure/MoAlgorithmWithUpdates.h.html
-title: DataStructure/MoAlgorithmWithUpdates.h
+- /library/DataStructure/Mo/MoAlgorithmWithUpdates.h
+- /library/DataStructure/Mo/MoAlgorithmWithUpdates.h.html
+title: DataStructure/Mo/MoAlgorithmWithUpdates.h
 ---

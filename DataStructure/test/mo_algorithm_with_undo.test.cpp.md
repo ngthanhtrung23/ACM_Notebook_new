@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: DataStructure/MoAlgorithmWithUndo.h
-    title: DataStructure/MoAlgorithmWithUndo.h
+    path: DataStructure/Mo/MoAlgorithmWithUndo.h
+    title: DataStructure/Mo/MoAlgorithmWithUndo.h
   - icon: ':heavy_check_mark:'
     path: template.h
     title: template.h
@@ -43,7 +43,7 @@ data:
     \ (0, r-1)(rng);\n}\n\ntemplate<typename T>\nvector<T> read_vector(int n) {\n\
     \    vector<T> res(n);\n    for (int& x : res) cin >> x;\n    return res;\n}\n\
     \nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n  \
-    \  solve();\n    return 0;\n}\n#line 1 \"DataStructure/MoAlgorithmWithUndo.h\"\
+    \  solve();\n    return 0;\n}\n#line 1 \"DataStructure/Mo/MoAlgorithmWithUndo.h\"\
     \n// Notes:\n// - queries are [l, r]\n// - add(int array_id) -> void \n// - undo()\
     \ -> void\n// - get(QueryT query) -> ResultT\n//\n// Tested:\n// - https://www.spoj.com/problems/FREQ2/\
     \ (submission ID: 30602190)\n// - https://www.spoj.com/problems/KDOMINO/ (submission\
@@ -87,23 +87,23 @@ data:
     \ decltype(get)>\n        (n, queries, add, undo, get);\n    for (auto r : res)\
     \ cout << r << '\\n';\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_sum\"\n\n\
-    #include \"../../template.h\"\n#include \"../MoAlgorithmWithUndo.h\"\n\nvoid solve()\
-    \ {\n    int n, q; cin >> n >> q;\n    vector<int> a(n); REP(i,n) cin >> a[i];\n\
-    \n    vector<Query> queries(q);\n    REP(i,q) {\n        cin >> queries[i].l >>\
-    \ queries[i].r;\n        queries[i].r--;\n    }\n\n    int64_t sum = 0;\n    stack<int>\
-    \ nums;\n\n    auto add = [&] (int id) {\n        sum += a[id];\n        nums.push(a[id]);\n\
-    \    };\n    auto undo = [&] () {\n        sum -= nums.top();\n        nums.pop();\n\
-    \    };\n    auto get = [&] ([[maybe_unused]] const Query& _) {\n        return\
-    \ sum;\n    };\n\n    auto res = mo_with_undo<Query, int64_t, decltype(add), decltype(undo),\
-    \ decltype(get)>\n        (n, queries, add, undo, get);\n    for (auto r : res)\
-    \ cout << r << '\\n';\n}\n"
+    #include \"../../template.h\"\n#include \"../Mo/MoAlgorithmWithUndo.h\"\n\nvoid\
+    \ solve() {\n    int n, q; cin >> n >> q;\n    vector<int> a(n); REP(i,n) cin\
+    \ >> a[i];\n\n    vector<Query> queries(q);\n    REP(i,q) {\n        cin >> queries[i].l\
+    \ >> queries[i].r;\n        queries[i].r--;\n    }\n\n    int64_t sum = 0;\n \
+    \   stack<int> nums;\n\n    auto add = [&] (int id) {\n        sum += a[id];\n\
+    \        nums.push(a[id]);\n    };\n    auto undo = [&] () {\n        sum -= nums.top();\n\
+    \        nums.pop();\n    };\n    auto get = [&] ([[maybe_unused]] const Query&\
+    \ _) {\n        return sum;\n    };\n\n    auto res = mo_with_undo<Query, int64_t,\
+    \ decltype(add), decltype(undo), decltype(get)>\n        (n, queries, add, undo,\
+    \ get);\n    for (auto r : res) cout << r << '\\n';\n}\n"
   dependsOn:
   - template.h
-  - DataStructure/MoAlgorithmWithUndo.h
+  - DataStructure/Mo/MoAlgorithmWithUndo.h
   isVerificationFile: true
   path: DataStructure/test/mo_algorithm_with_undo.test.cpp
   requiredBy: []
-  timestamp: '2022-12-26 16:55:49+08:00'
+  timestamp: '2023-10-03 00:47:04-07:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/mo_algorithm_with_undo.test.cpp

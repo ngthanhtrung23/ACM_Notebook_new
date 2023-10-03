@@ -14,9 +14,9 @@ data:
     - https://www.spoj.com/problems/FREQ2/
     - https://www.spoj.com/problems/KDOMINO/
     - https://www.spoj.com/problems/ZQUERY/
-  bundledCode: "#line 1 \"DataStructure/MoAlgorithmWithUndo.h\"\n// Notes:\n// - queries\
-    \ are [l, r]\n// - add(int array_id) -> void \n// - undo() -> void\n// - get(QueryT\
-    \ query) -> ResultT\n//\n// Tested:\n// - https://www.spoj.com/problems/FREQ2/\
+  bundledCode: "#line 1 \"DataStructure/Mo/MoAlgorithmWithUndo.h\"\n// Notes:\n//\
+    \ - queries are [l, r]\n// - add(int array_id) -> void \n// - undo() -> void\n\
+    // - get(QueryT query) -> ResultT\n//\n// Tested:\n// - https://www.spoj.com/problems/FREQ2/\
     \ (submission ID: 30602190)\n// - https://www.spoj.com/problems/KDOMINO/ (submission\
     \ ID: 30602247)\n// - https://www.spoj.com/problems/ZQUERY/\n//\n// Mo algorithm\
     \ with undo DS {{{\ntemplate<typename QueryT, typename ResultT, typename Add,\
@@ -81,16 +81,16 @@ data:
     \ decltype(get)>\n//        (n, queries, add, undo, get);\n// }}}\n\n"
   dependsOn: []
   isVerificationFile: false
-  path: DataStructure/MoAlgorithmWithUndo.h
+  path: DataStructure/Mo/MoAlgorithmWithUndo.h
   requiredBy: []
-  timestamp: '2022-12-24 01:16:58+08:00'
+  timestamp: '2023-10-03 00:47:04-07:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/mo_algorithm_with_undo.test.cpp
-documentation_of: DataStructure/MoAlgorithmWithUndo.h
+documentation_of: DataStructure/Mo/MoAlgorithmWithUndo.h
 layout: document
 redirect_from:
-- /library/DataStructure/MoAlgorithmWithUndo.h
-- /library/DataStructure/MoAlgorithmWithUndo.h.html
-title: DataStructure/MoAlgorithmWithUndo.h
+- /library/DataStructure/Mo/MoAlgorithmWithUndo.h
+- /library/DataStructure/Mo/MoAlgorithmWithUndo.h.html
+title: DataStructure/Mo/MoAlgorithmWithUndo.h
 ---

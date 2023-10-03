@@ -13,8 +13,8 @@ data:
     links:
     - https://www.spoj.com/problems/FREQ2
     - https://www.spoj.com/problems/KDOMINO/
-  bundledCode: "#line 1 \"DataStructure/MoAlgorithm.h\"\n// Notes:\n// - queries are\
-    \ [l, r]\n// - add(int array_id) -> void \n// - remove(int array_id) -> void\n\
+  bundledCode: "#line 1 \"DataStructure/Mo/MoAlgorithm.h\"\n// Notes:\n// - queries\
+    \ are [l, r]\n// - add(int array_id) -> void \n// - remove(int array_id) -> void\n\
     // - get(QueryT query) -> ResultT\n//\n// Tested:\n// - https://www.spoj.com/problems/KDOMINO/\
     \ (submission ID: 30602374)\n// - https://www.spoj.com/problems/FREQ2 (submission\
     \ ID: 30602401)\n//\n// Mo algorithm {{{\ntemplate<typename QueryT, typename ResultT,\
@@ -71,16 +71,16 @@ data:
     \        (n, queries, add, rem, get);\n// }}}\n"
   dependsOn: []
   isVerificationFile: false
-  path: DataStructure/MoAlgorithm.h
+  path: DataStructure/Mo/MoAlgorithm.h
   requiredBy: []
-  timestamp: '2022-12-26 16:49:24+08:00'
+  timestamp: '2023-10-03 00:47:04-07:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/mo_algorithm.test.cpp
-documentation_of: DataStructure/MoAlgorithm.h
+documentation_of: DataStructure/Mo/MoAlgorithm.h
 layout: document
 redirect_from:
-- /library/DataStructure/MoAlgorithm.h
-- /library/DataStructure/MoAlgorithm.h.html
-title: DataStructure/MoAlgorithm.h
+- /library/DataStructure/Mo/MoAlgorithm.h
+- /library/DataStructure/Mo/MoAlgorithm.h.html
+title: DataStructure/Mo/MoAlgorithm.h
 ---

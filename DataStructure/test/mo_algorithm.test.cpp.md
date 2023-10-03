@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: DataStructure/MoAlgorithm.h
-    title: DataStructure/MoAlgorithm.h
+    path: DataStructure/Mo/MoAlgorithm.h
+    title: DataStructure/Mo/MoAlgorithm.h
   - icon: ':heavy_check_mark:'
     path: template.h
     title: template.h
@@ -43,9 +43,9 @@ data:
     \ (0, r-1)(rng);\n}\n\ntemplate<typename T>\nvector<T> read_vector(int n) {\n\
     \    vector<T> res(n);\n    for (int& x : res) cin >> x;\n    return res;\n}\n\
     \nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n  \
-    \  solve();\n    return 0;\n}\n#line 1 \"DataStructure/MoAlgorithm.h\"\n// Notes:\n\
-    // - queries are [l, r]\n// - add(int array_id) -> void \n// - remove(int array_id)\
-    \ -> void\n// - get(QueryT query) -> ResultT\n//\n// Tested:\n// - https://www.spoj.com/problems/KDOMINO/\
+    \  solve();\n    return 0;\n}\n#line 1 \"DataStructure/Mo/MoAlgorithm.h\"\n//\
+    \ Notes:\n// - queries are [l, r]\n// - add(int array_id) -> void \n// - remove(int\
+    \ array_id) -> void\n// - get(QueryT query) -> ResultT\n//\n// Tested:\n// - https://www.spoj.com/problems/KDOMINO/\
     \ (submission ID: 30602374)\n// - https://www.spoj.com/problems/FREQ2 (submission\
     \ ID: 30602401)\n//\n// Mo algorithm {{{\ntemplate<typename QueryT, typename ResultT,\
     \ typename Add, typename Rem, typename Get>\nvector<ResultT> mo(int n, std::vector<QueryT>\
@@ -80,9 +80,9 @@ data:
     \ decltype(get)>\n        (n, queries, add, rem, get);\n    for (auto r : res)\
     \ cout << r << '\\n';\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_sum\"\n\n\
-    #include \"../../template.h\"\n#include \"../MoAlgorithm.h\"\n\nvoid solve() {\n\
-    \    int n, q; cin >> n >> q;\n    vector<int> a(n); REP(i,n) cin >> a[i];\n\n\
-    \    vector<Query> queries(q);\n    REP(i,q) {\n        cin >> queries[i].l >>\
+    #include \"../../template.h\"\n#include \"../Mo/MoAlgorithm.h\"\n\nvoid solve()\
+    \ {\n    int n, q; cin >> n >> q;\n    vector<int> a(n); REP(i,n) cin >> a[i];\n\
+    \n    vector<Query> queries(q);\n    REP(i,q) {\n        cin >> queries[i].l >>\
     \ queries[i].r;\n        queries[i].r--;\n    }\n\n    int64_t sum = 0;\n    auto\
     \ add = [&] (int id) { sum += a[id]; };\n    auto rem = [&] (int id) { sum -=\
     \ a[id]; };\n    auto get = [&] ([[maybe_unused]] const Query& _) { return sum;\
@@ -91,11 +91,11 @@ data:
     n';\n}\n"
   dependsOn:
   - template.h
-  - DataStructure/MoAlgorithm.h
+  - DataStructure/Mo/MoAlgorithm.h
   isVerificationFile: true
   path: DataStructure/test/mo_algorithm.test.cpp
   requiredBy: []
-  timestamp: '2022-12-26 16:55:49+08:00'
+  timestamp: '2023-10-03 00:47:04-07:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/mo_algorithm.test.cpp

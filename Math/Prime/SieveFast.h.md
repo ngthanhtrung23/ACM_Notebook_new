@@ -145,8 +145,8 @@ data:
   timestamp: '2022-12-26 19:50:08+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Math/tests/sieve_fast.test.cpp
   - Math/tests/rabin_miller_32_stress.test.cpp
+  - Math/tests/sieve_fast.test.cpp
 documentation_of: Math/Prime/SieveFast.h
 layout: document
 redirect_from:

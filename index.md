@@ -70,15 +70,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/LinkCutTree.h
       title: DataStructure/LinkCutTree.h
-    - icon: ':heavy_check_mark:'
-      path: DataStructure/MoAlgorithm.h
-      title: DataStructure/MoAlgorithm.h
-    - icon: ':heavy_check_mark:'
-      path: DataStructure/MoAlgorithmWithUndo.h
-      title: DataStructure/MoAlgorithmWithUndo.h
-    - icon: ':warning:'
-      path: DataStructure/MoAlgorithmWithUpdates.h
-      title: DataStructure/MoAlgorithmWithUpdates.h
     - icon: ':warning:'
       path: DataStructure/OrderedSet.h
       title: DataStructure/OrderedSet.h
@@ -146,6 +137,23 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/Fenwick/PartiallyPersistentFenwick.h
       title: DataStructure/Fenwick/PartiallyPersistentFenwick.h
+  - name: DataStructure/Mo
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/Mo/MoAlgorithm.h
+      title: DataStructure/Mo/MoAlgorithm.h
+    - icon: ':heavy_check_mark:'
+      path: DataStructure/Mo/MoAlgorithmWithUndo.h
+      title: DataStructure/Mo/MoAlgorithmWithUndo.h
+    - icon: ':warning:'
+      path: DataStructure/Mo/MoAlgorithmWithUpdates.h
+      title: DataStructure/Mo/MoAlgorithmWithUpdates.h
+    - icon: ':warning:'
+      path: DataStructure/Mo/TreeMoAlgorithm.h
+      title: DataStructure/Mo/TreeMoAlgorithm.h
+    - icon: ':warning:'
+      path: DataStructure/Mo/TreeMoAlgorithmWithUpdates.h
+      title: DataStructure/Mo/TreeMoAlgorithmWithUpdates.h
   - name: DataStructure/STL
     pages:
     - icon: ':warning:'
