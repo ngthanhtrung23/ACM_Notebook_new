@@ -24,6 +24,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Math/tests/aizu_ntl_2_f_bigint_mul_fft.test.cpp
     title: Math/tests/aizu_ntl_2_f_bigint_mul_fft.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Math/tests/yosupo_bigint_add.test.cpp
+    title: Math/tests/yosupo_bigint_add.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -260,9 +263,9 @@ data:
     \        return res;\n    }\n    void trim() {\n        while (!a.empty() && !a.back())\n\
     \            a.pop_back();\n        if (a.empty())\n            sign = 1;\n  \
     \  }\n\n    bool isZero() const {\n        return a.empty() || (a.size() == 1\
-    \ && !a[0]);\n    }\n\n    friend BigInt gcd(const BigInt &a, const BigInt &b)\
-    \ {\n        return b.isZero() ? a : gcd(b, a % b);\n    }\n    friend BigInt\
-    \ lcm(const BigInt &a, const BigInt &b) {\n        return a / gcd(a, b) * b;\n\
+    \ && !a[0]);\n    }\n\n    friend BigInt gcd(const BigInt &x, const BigInt &y)\
+    \ {\n        return y.isZero() ? x : gcd(y, x % y);\n    }\n    friend BigInt\
+    \ lcm(const BigInt &x, const BigInt &y) {\n        return x / gcd(x, y) * y;\n\
     \    }\n\n    friend BigInt sqrt(const BigInt &a1) {\n        BigInt a = a1;\n\
     \        while (a.a.empty() || a.a.size() % 2 == 1)\n            a.a.push_back(0);\n\
     \n        int n = a.a.size();\n\n        int firstDigit = (int) sqrt((double)\
@@ -499,9 +502,9 @@ data:
     \        return res;\n    }\n    void trim() {\n        while (!a.empty() && !a.back())\n\
     \            a.pop_back();\n        if (a.empty())\n            sign = 1;\n  \
     \  }\n\n    bool isZero() const {\n        return a.empty() || (a.size() == 1\
-    \ && !a[0]);\n    }\n\n    friend BigInt gcd(const BigInt &a, const BigInt &b)\
-    \ {\n        return b.isZero() ? a : gcd(b, a % b);\n    }\n    friend BigInt\
-    \ lcm(const BigInt &a, const BigInt &b) {\n        return a / gcd(a, b) * b;\n\
+    \ && !a[0]);\n    }\n\n    friend BigInt gcd(const BigInt &x, const BigInt &y)\
+    \ {\n        return y.isZero() ? x : gcd(y, x % y);\n    }\n    friend BigInt\
+    \ lcm(const BigInt &x, const BigInt &y) {\n        return x / gcd(x, y) * y;\n\
     \    }\n\n    friend BigInt sqrt(const BigInt &a1) {\n        BigInt a = a1;\n\
     \        while (a.a.empty() || a.a.size() % 2 == 1)\n            a.a.push_back(0);\n\
     \n        int n = a.a.size();\n\n        int firstDigit = (int) sqrt((double)\
@@ -525,10 +528,11 @@ data:
   isVerificationFile: false
   path: Math/bigint.h
   requiredBy: []
-  timestamp: '2022-12-28 21:03:26+08:00'
+  timestamp: '2023-10-03 01:03:14-07:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Math/tests/aizu_ntl_2_e_bigint_mod.test.cpp
+  - Math/tests/yosupo_bigint_add.test.cpp
   - Math/tests/aizu_ntl_2_a_bigint_add.test.cpp
   - Math/tests/aizu_ntl_2_d_bigint_div.test.cpp
   - Math/tests/aizu_ntl_2_b_bigint_sub.test.cpp

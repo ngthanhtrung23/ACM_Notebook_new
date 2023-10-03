@@ -1042,6 +1042,9 @@ data:
       path: Math/tests/sumdiv.test.cpp
       title: Math/tests/sumdiv.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Math/tests/yosupo_bigint_add.test.cpp
+      title: Math/tests/yosupo_bigint_add.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Math/tests/yosupo_primality_rabin_miller.test.cpp
       title: Math/tests/yosupo_primality_rabin_miller.test.cpp
   - name: Misc/tests
