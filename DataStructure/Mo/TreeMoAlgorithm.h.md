@@ -8,30 +8,32 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links:
+    - https://codeforces.com/blog/entry/43230
     - https://www.spoj.com/problems/COT2/
   bundledCode: "#line 1 \"DataStructure/Mo/TreeMoAlgorithm.h\"\n// NOTE:\n// - Query\
     \ type must be a pair of vertices: <u, v>, specifying a path from u -> v\n// -\
     \ Add / Rem functions:\n//   - If ids appear twice -> MUST treat as 0 time\n//\n\
-    // Tested:\n// - https://www.spoj.com/problems/COT2/\n//\n// Mo's algorithm on\
-    \ tree {{{\ntemplate<typename ResultT, typename Add, typename Rem, typename Get>\n\
-    struct TreeMoAlgorithm {\n    TreeMoAlgorithm(const vector<vector<int>>& _g, int\
-    \ root)\n            : n(_g.size()), g(_g),\n            parent(n), depth(n),\
-    \ sz(n),\n            dfs_number(0), nxt(n), in(n), out(n), flattened(n * 2)\n\
-    \    {\n        assert(0 <= root && root < n);\n\n        // init parent, depth,\
-    \ sz\n        // also move most heavy child of u to g[u][0]\n        depth[root]\
-    \ = 0;\n        dfs_sz(root, -1);\n\n        // init nxt, in, out\n        nxt[root]\
-    \ = root;\n        dfs_hld(root);\n    }\n\n    vector<ResultT> solve(\n     \
-    \       const vector<pair<int,int>>& orig_queries,\n            Add add, Rem rem,\
-    \ Get get) {\n        int q = orig_queries.size();\n        vector<ResultT> res(q);\n\
-    \n        // Convert to tree queries\n        vector<TreeQuery> queries(q);\n\
-    \        for (int i = 0; i < q; ++i) {\n            auto [u, v] = orig_queries[i];\n\
-    \            assert(0 <= u && u < n);\n            assert(0 <= v && v < n);\n\n\
-    \            if (in[u] > in[v]) swap(u, v);\n            assert(in[u] <= in[v]);\n\
-    \n            queries[i].p = lca(u, v);\n            if (queries[i].p == u) queries[i].l\
-    \ = in[u], queries[i].r = in[v];\n            else queries[i].l = out[u], queries[i].r\
-    \ = in[v];\n            queries[i].u = u;\n        }\n     \n        // Sort queries\
-    \ in increasing order of (left / SQRT, right)\n        int S = sqrt(n);\n    \
-    \    if (S < 1) S = 1;\n     \n        vector<int> query_ids(q);\n        std::iota(query_ids.begin(),\
+    // Resource:\n// - https://codeforces.com/blog/entry/43230\n//\n// Tested:\n//\
+    \ - https://www.spoj.com/problems/COT2/\n//\n// Mo's algorithm on tree {{{\ntemplate<typename\
+    \ ResultT, typename Add, typename Rem, typename Get>\nstruct TreeMoAlgorithm {\n\
+    \    TreeMoAlgorithm(const vector<vector<int>>& _g, int root)\n            : n(_g.size()),\
+    \ g(_g),\n            parent(n), depth(n), sz(n),\n            dfs_number(0),\
+    \ nxt(n), in(n), out(n), flattened(n * 2)\n    {\n        assert(0 <= root &&\
+    \ root < n);\n\n        // init parent, depth, sz\n        // also move most heavy\
+    \ child of u to g[u][0]\n        depth[root] = 0;\n        dfs_sz(root, -1);\n\
+    \n        // init nxt, in, out\n        nxt[root] = root;\n        dfs_hld(root);\n\
+    \    }\n\n    vector<ResultT> solve(\n            const vector<pair<int,int>>&\
+    \ orig_queries,\n            Add add, Rem rem, Get get) {\n        int q = orig_queries.size();\n\
+    \        vector<ResultT> res(q);\n\n        // Convert to tree queries\n     \
+    \   vector<TreeQuery> queries(q);\n        for (int i = 0; i < q; ++i) {\n   \
+    \         auto [u, v] = orig_queries[i];\n            assert(0 <= u && u < n);\n\
+    \            assert(0 <= v && v < n);\n\n            if (in[u] > in[v]) swap(u,\
+    \ v);\n            assert(in[u] <= in[v]);\n\n            queries[i].p = lca(u,\
+    \ v);\n            if (queries[i].p == u) queries[i].l = in[u], queries[i].r =\
+    \ in[v];\n            else queries[i].l = out[u], queries[i].r = in[v];\n    \
+    \        queries[i].u = u;\n        }\n     \n        // Sort queries in increasing\
+    \ order of (left / SQRT, right)\n        int S = sqrt(n);\n        if (S < 1)\
+    \ S = 1;\n     \n        vector<int> query_ids(q);\n        std::iota(query_ids.begin(),\
     \ query_ids.end(), 0);\n        std::sort(query_ids.begin(), query_ids.end(),\
     \ [&] (int q1, int q2) {\n            int bucket1 = queries[q1].l / S;\n     \
     \       int bucket2 = queries[q2].l / S;\n            if (bucket1 != bucket2)\
@@ -68,9 +70,10 @@ data:
     \        }\n        flattened[out[u] = dfs_number++] = u;\n    }\n};\n// }}}\n"
   code: "// NOTE:\n// - Query type must be a pair of vertices: <u, v>, specifying\
     \ a path from u -> v\n// - Add / Rem functions:\n//   - If ids appear twice ->\
-    \ MUST treat as 0 time\n//\n// Tested:\n// - https://www.spoj.com/problems/COT2/\n\
-    //\n// Mo's algorithm on tree {{{\ntemplate<typename ResultT, typename Add, typename\
-    \ Rem, typename Get>\nstruct TreeMoAlgorithm {\n    TreeMoAlgorithm(const vector<vector<int>>&\
+    \ MUST treat as 0 time\n//\n// Resource:\n// - https://codeforces.com/blog/entry/43230\n\
+    //\n// Tested:\n// - https://www.spoj.com/problems/COT2/\n//\n// Mo's algorithm\
+    \ on tree {{{\ntemplate<typename ResultT, typename Add, typename Rem, typename\
+    \ Get>\nstruct TreeMoAlgorithm {\n    TreeMoAlgorithm(const vector<vector<int>>&\
     \ _g, int root)\n            : n(_g.size()), g(_g),\n            parent(n), depth(n),\
     \ sz(n),\n            dfs_number(0), nxt(n), in(n), out(n), flattened(n * 2)\n\
     \    {\n        assert(0 <= root && root < n);\n\n        // init parent, depth,\
@@ -126,7 +129,7 @@ data:
   isVerificationFile: false
   path: DataStructure/Mo/TreeMoAlgorithm.h
   requiredBy: []
-  timestamp: '2023-10-03 00:47:04-07:00'
+  timestamp: '2023-10-03 15:03:18-07:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: DataStructure/Mo/TreeMoAlgorithm.h
