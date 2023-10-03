@@ -545,11 +545,11 @@ struct BigInt {
         return a.empty() || (a.size() == 1 && !a[0]);
     }
 
-    friend BigInt gcd(const BigInt &a, const BigInt &b) {
-        return b.isZero() ? a : gcd(b, a % b);
+    friend BigInt gcd(const BigInt &x, const BigInt &y) {
+        return y.isZero() ? x : gcd(y, x % y);
     }
-    friend BigInt lcm(const BigInt &a, const BigInt &b) {
-        return a / gcd(a, b) * b;
+    friend BigInt lcm(const BigInt &x, const BigInt &y) {
+        return x / gcd(x, y) * y;
     }
 
     friend BigInt sqrt(const BigInt &a1) {
