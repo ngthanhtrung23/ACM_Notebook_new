@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/static_range_sum"
 
 #include "../../template.h"
-#include "../MoAlgorithmWithUndo.h"
+#include "../Mo/MoAlgorithmWithUndo.h"
 
 void solve() {
     int n, q; cin >> n >> q;
