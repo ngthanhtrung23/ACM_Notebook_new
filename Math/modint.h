@@ -45,13 +45,13 @@ template<int MD> struct ModInt {
     constexpr bool operator == (const ModInt& a) const { return x == a.x; }
     constexpr bool operator != (const ModInt& a) const { return x != a.x; }
 
-    friend std::istream& operator >> (std::istream& is, ModInt& x) {
+    friend std::istream& operator >> (std::istream& is, ModInt& other) {
         ll val; is >> val;
-        x = ModInt(val);
+        other = ModInt(val);
         return is;
     }
-    constexpr friend std::ostream& operator << (std::ostream& os, const ModInt& x) {
-        return os << x.x;
+    constexpr friend std::ostream& operator << (std::ostream& os, const ModInt& other) {
+        return os << other.x;
     }
 
     constexpr ModInt pow(ll k) const {
