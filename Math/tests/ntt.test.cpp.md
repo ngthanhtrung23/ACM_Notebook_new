@@ -42,23 +42,23 @@ data:
     \ ModInt& b) {\n        return ModInt()._set(a % MD * b.inv().x % MD);\n    }\n\
     \n    constexpr bool operator == (const ModInt& a) const { return x == a.x; }\n\
     \    constexpr bool operator != (const ModInt& a) const { return x != a.x; }\n\
-    \n    friend std::istream& operator >> (std::istream& is, ModInt& x) {\n     \
-    \   ll val; is >> val;\n        x = ModInt(val);\n        return is;\n    }\n\
-    \    constexpr friend std::ostream& operator << (std::ostream& os, const ModInt&\
-    \ x) {\n        return os << x.x;\n    }\n\n    constexpr ModInt pow(ll k) const\
-    \ {\n        ModInt ans = 1, tmp = x;\n        while (k) {\n            if (k\
-    \ & 1) ans *= tmp;\n            tmp *= tmp;\n            k >>= 1;\n        }\n\
-    \        return ans;\n    }\n\n    constexpr ModInt inv() const {\n        if\
-    \ (x < 1000111) {\n            _precalc(1000111);\n            return invs[x];\n\
-    \        }\n        int a = x, b = MD, ax = 1, bx = 0;\n        while (b) {\n\
-    \            int q = a/b, t = a%b;\n            a = b; b = t;\n            t =\
-    \ ax - bx*q;\n            ax = bx; bx = t;\n        }\n        assert(a == 1);\n\
-    \        if (ax < 0) ax += MD;\n        return ax;\n    }\n\n    static std::vector<ModInt>\
-    \ factorials, inv_factorials, invs;\n    constexpr static void _precalc(int n)\
-    \ {\n        if (factorials.empty()) {\n            factorials = {1};\n      \
-    \      inv_factorials = {1};\n            invs = {0};\n        }\n        if (n\
-    \ > MD) n = MD;\n        int old_sz = factorials.size();\n        if (n <= old_sz)\
-    \ return;\n\n        factorials.resize(n);\n        inv_factorials.resize(n);\n\
+    \n    friend std::istream& operator >> (std::istream& is, ModInt& other) {\n \
+    \       ll val; is >> val;\n        other = ModInt(val);\n        return is;\n\
+    \    }\n    constexpr friend std::ostream& operator << (std::ostream& os, const\
+    \ ModInt& other) {\n        return os << other.x;\n    }\n\n    constexpr ModInt\
+    \ pow(ll k) const {\n        ModInt ans = 1, tmp = x;\n        while (k) {\n \
+    \           if (k & 1) ans *= tmp;\n            tmp *= tmp;\n            k >>=\
+    \ 1;\n        }\n        return ans;\n    }\n\n    constexpr ModInt inv() const\
+    \ {\n        if (x < 1000111) {\n            _precalc(1000111);\n            return\
+    \ invs[x];\n        }\n        int a = x, b = MD, ax = 1, bx = 0;\n        while\
+    \ (b) {\n            int q = a/b, t = a%b;\n            a = b; b = t;\n      \
+    \      t = ax - bx*q;\n            ax = bx; bx = t;\n        }\n        assert(a\
+    \ == 1);\n        if (ax < 0) ax += MD;\n        return ax;\n    }\n\n    static\
+    \ std::vector<ModInt> factorials, inv_factorials, invs;\n    constexpr static\
+    \ void _precalc(int n) {\n        if (factorials.empty()) {\n            factorials\
+    \ = {1};\n            inv_factorials = {1};\n            invs = {0};\n       \
+    \ }\n        if (n > MD) n = MD;\n        int old_sz = factorials.size();\n  \
+    \      if (n <= old_sz) return;\n\n        factorials.resize(n);\n        inv_factorials.resize(n);\n\
     \        invs.resize(n);\n\n        for (int i = old_sz; i < n; ++i) factorials[i]\
     \ = factorials[i-1] * i;\n        inv_factorials[n-1] = factorials.back().pow(MD\
     \ - 2);\n        for (int i = n - 2; i >= old_sz; --i) inv_factorials[i] = inv_factorials[i+1]\
@@ -157,7 +157,7 @@ data:
   isVerificationFile: true
   path: Math/tests/ntt.test.cpp
   requiredBy: []
-  timestamp: '2022-12-29 17:34:35+08:00'
+  timestamp: '2023-10-15 09:43:20+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Math/tests/ntt.test.cpp
