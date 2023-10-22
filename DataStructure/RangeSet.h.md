@@ -99,8 +99,8 @@ data:
   timestamp: '2022-12-31 08:30:35+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - DataStructure/test/yukicoder_674_range_set.test.cpp
   - DataStructure/test/aizu_dsl_2_d_rangeset.test.cpp
+  - DataStructure/test/yukicoder_674_range_set.test.cpp
   - DataStructure/test/aizu_dsl_4_a_range_set.test.cpp
 documentation_of: DataStructure/RangeSet.h
 layout: document

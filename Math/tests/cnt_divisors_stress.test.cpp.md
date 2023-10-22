@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: Math/NumberTheory/Pollard.h
-    title: Math/NumberTheory/Pollard.h
+    path: Math/NumberTheory/Pollard_factorize.h
+    title: Math/NumberTheory/Pollard_factorize.h
   - icon: ':heavy_check_mark:'
     path: Math/NumberTheory/cnt_divisors.h
     title: Math/NumberTheory/cnt_divisors.h
@@ -56,10 +56,10 @@ data:
     \ (0, r-1)(rng);\n}\n\ntemplate<typename T>\nvector<T> read_vector(int n) {\n\
     \    vector<T> res(n);\n    for (int& x : res) cin >> x;\n    return res;\n}\n\
     \nvoid solve();\n\nint main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n  \
-    \  solve();\n    return 0;\n}\n#line 1 \"Math/NumberTheory/Pollard.h\"\n// Copied\
-    \ from https://judge.yosupo.jp/submission/61447\n// O(N^0.25)\n//\n// Tested:\n\
-    // - (up to 10^18; 200 tests) https://judge.yosupo.jp/problem/factorize\n// -\
-    \ https://oj.vnoi.info/problem/icpc21_beta_l\n// - https://www.spoj.com/problems/FACT0/\n\
+    \  solve();\n    return 0;\n}\n#line 1 \"Math/NumberTheory/Pollard_factorize.h\"\
+    \n// Copied from https://judge.yosupo.jp/submission/61447\n// O(N^0.25)\n//\n\
+    // Tested:\n// - (up to 10^18; 200 tests) https://judge.yosupo.jp/problem/factorize\n\
+    // - https://oj.vnoi.info/problem/icpc21_beta_l\n// - https://www.spoj.com/problems/FACT0/\n\
     //\n// Pollard {{{\nusing ll = long long;\nusing ull = unsigned long long;\nusing\
     \ ld = long double;\nll mult(ll x, ll y, ll md) {\n    ull q = (ld)x * y / md;\n\
     \    ll res = ((ull)x * y - q * md);\n    if (res >= md) res -= md;\n    if (res\
@@ -221,14 +221,14 @@ data:
   dependsOn:
   - template.h
   - Math/NumberTheory/cnt_divisors.h
-  - Math/NumberTheory/Pollard.h
+  - Math/NumberTheory/Pollard_factorize.h
   - Math/Prime/Sieve.h
   - Math/multiplicative_function.h
   - Math/multiplicative_functions_linear.h
   isVerificationFile: true
   path: Math/tests/cnt_divisors_stress.test.cpp
   requiredBy: []
-  timestamp: '2023-02-03 11:07:24+08:00'
+  timestamp: '2023-10-22 16:42:38+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Math/tests/cnt_divisors_stress.test.cpp

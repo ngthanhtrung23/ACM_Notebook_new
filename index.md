@@ -174,11 +174,11 @@ data:
       path: DataStructure/misc/area_of_union_of_rectangles.h
       title: DataStructure/misc/area_of_union_of_rectangles.h
     - icon: ':warning:'
+      path: DataStructure/misc/ndvec.h
+      title: DataStructure/misc/ndvec.h
+    - icon: ':warning:'
       path: DataStructure/misc/offset_vector.h
       title: DataStructure/misc/offset_vector.h
-    - icon: ':warning:'
-      path: DataStructure/misc/vec.h
-      title: DataStructure/misc/vec.h
   - name: Geometry
     pages:
     - icon: ':warning:'
@@ -392,8 +392,8 @@ data:
       path: Math/NumberTheory/FactorialMod.h
       title: Math/NumberTheory/FactorialMod.h
     - icon: ':heavy_check_mark:'
-      path: Math/NumberTheory/Pollard.h
-      title: Math/NumberTheory/Pollard.h
+      path: Math/NumberTheory/Pollard_factorize.h
+      title: Math/NumberTheory/Pollard_factorize.h
     - icon: ':warning:'
       path: Math/NumberTheory/PrimitiveRoot.h
       title: Math/NumberTheory/PrimitiveRoot.h

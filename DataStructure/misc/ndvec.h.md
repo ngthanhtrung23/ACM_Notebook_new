@@ -9,7 +9,7 @@ data:
   attributes:
     links:
     - https://codeforces.com/blog/entry/76149
-  bundledCode: "#line 1 \"DataStructure/misc/vec.h\"\n// Copied from https://codeforces.com/blog/entry/76149\n\
+  bundledCode: "#line 1 \"DataStructure/misc/ndvec.h\"\n// Copied from https://codeforces.com/blog/entry/76149\n\
     \n// n-d vector {{{\ntemplate<int D, typename T>\nstruct Vec : public vector<Vec<D\
     \ - 1, T>> {\n    static_assert(D >= 1, \"Dimension must be positive\");\n   \
     \ template<typename... Args>\n    Vec(int n = 0, Args... args) : vector<Vec<D\
@@ -37,15 +37,15 @@ data:
     \ e; // just blank vector of strings\n}\n"
   dependsOn: []
   isVerificationFile: false
-  path: DataStructure/misc/vec.h
+  path: DataStructure/misc/ndvec.h
   requiredBy: []
-  timestamp: '2023-01-18 14:36:13+07:00'
+  timestamp: '2023-10-22 16:42:38+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: DataStructure/misc/vec.h
+documentation_of: DataStructure/misc/ndvec.h
 layout: document
 redirect_from:
-- /library/DataStructure/misc/vec.h
-- /library/DataStructure/misc/vec.h.html
-title: DataStructure/misc/vec.h
+- /library/DataStructure/misc/ndvec.h
+- /library/DataStructure/misc/ndvec.h.html
+title: DataStructure/misc/ndvec.h
 ---
