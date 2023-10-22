@@ -1,4 +1,4 @@
-#include "Pollard.h"
+#include "Pollard_factorize.h"
 #include "../Prime/Sieve.h"
 
 // Tested: https://www.spoj.com/problems/NUMDIV/

@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_A"
 
 #include "../../template.h"
-#include "../NumberTheory/Pollard.h"
+#include "../NumberTheory/Pollard_factorize.h"
 
 void solve() {
     int n;

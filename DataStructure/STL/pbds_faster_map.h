@@ -1,5 +1,10 @@
 // From https://codeforces.com/blog/entry/60737
 
+// Note: it's probably useful to test if these tricks make unordered_map fast enough first:
+// unordered_map<...> mp;
+// mp.reserve(N);   // maybe use 2^x?
+// mp.max_load_factor(0.25);
+
 // Code copied from https://codeforces.com/contest/1006/submission/41804666
 #include <ext/pb_ds/assoc_container.hpp>
 using namespace __gnu_pbds;

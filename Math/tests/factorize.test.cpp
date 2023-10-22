@@ -9,7 +9,7 @@ long long get_rand(long long r) {
     return uniform_int_distribution<long long> (0, r-1)(rng);
 }
 
-#include "../NumberTheory/Pollard.h"
+#include "../NumberTheory/Pollard_factorize.h"
 
 int32_t main() {
     ios::sync_with_stdio(0); cin.tie(0);

@@ -1,7 +1,7 @@
 #define PROBLEM "https://yukicoder.me/problems/no/3030"
 
 #include "../../template.h"
-#include "../NumberTheory/Pollard.h"
+#include "../NumberTheory/Pollard_factorize.h"
 
 void solve() {
     int q; cin >> q;
