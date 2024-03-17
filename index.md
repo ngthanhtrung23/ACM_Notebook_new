@@ -934,6 +934,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Graph/tests/two_sat.test.cpp
       title: Graph/tests/two_sat.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Graph/tests/yosupo_mst.test.cpp
+      title: Graph/tests/yosupo_mst.test.cpp
   - name: Math/tests
     pages:
     - icon: ':heavy_check_mark:'

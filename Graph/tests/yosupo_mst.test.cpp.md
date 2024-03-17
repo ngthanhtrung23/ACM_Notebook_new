@@ -17,23 +17,22 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_2_A
+    PROBLEM: https://judge.yosupo.jp/problem/minimum_spanning_tree
     links:
-    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_2_A
-  bundledCode: "#line 1 \"Graph/tests/aizu_grl_2_a_mst.test.cpp\"\n#define PROBLEM\
-    \ \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_2_A\"\n\n#line\
-    \ 1 \"template.h\"\n#include <bits/stdc++.h>\nusing namespace std;\n\n#define\
-    \ FOR(i,a,b) for(int i=(a),_b=(b); i<=_b; i++)\n#define FORD(i,a,b) for(int i=(a),_b=(b);\
-    \ i>=_b; i--)\n#define REP(i,a) for(int i=0,_a=(a); i<_a; i++)\n#define EACH(it,a)\
-    \ for(__typeof(a.begin()) it = a.begin(); it != a.end(); ++it)\n\n#define DEBUG(x)\
-    \ { cout << #x << \" = \"; cout << (x) << endl; }\n#define PR(a,n) { cout << #a\
-    \ << \" = \"; FOR(_,1,n) cout << a[_] << ' '; cout << endl; }\n#define PR0(a,n)\
-    \ { cout << #a << \" = \"; REP(_,n) cout << a[_] << ' '; cout << endl; }\n\n#define\
-    \ sqr(x) ((x) * (x))\n\n// For printing pair, container, etc.\n// Copied from\
-    \ https://quangloc99.github.io/2021/07/30/my-CP-debugging-template.html\ntemplate<class\
-    \ U, class V> ostream& operator << (ostream& out, const pair<U, V>& p) {\n   \
-    \ return out << '(' << p.first << \", \" << p.second << ')';\n}\n\ntemplate<class\
-    \ Con, class = decltype(begin(declval<Con>()))>\ntypename enable_if<!is_same<Con,\
+    - https://judge.yosupo.jp/problem/minimum_spanning_tree
+  bundledCode: "#line 1 \"Graph/tests/yosupo_mst.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/minimum_spanning_tree\"\
+    \n\n#line 1 \"template.h\"\n#include <bits/stdc++.h>\nusing namespace std;\n\n\
+    #define FOR(i,a,b) for(int i=(a),_b=(b); i<=_b; i++)\n#define FORD(i,a,b) for(int\
+    \ i=(a),_b=(b); i>=_b; i--)\n#define REP(i,a) for(int i=0,_a=(a); i<_a; i++)\n\
+    #define EACH(it,a) for(__typeof(a.begin()) it = a.begin(); it != a.end(); ++it)\n\
+    \n#define DEBUG(x) { cout << #x << \" = \"; cout << (x) << endl; }\n#define PR(a,n)\
+    \ { cout << #a << \" = \"; FOR(_,1,n) cout << a[_] << ' '; cout << endl; }\n#define\
+    \ PR0(a,n) { cout << #a << \" = \"; REP(_,n) cout << a[_] << ' '; cout << endl;\
+    \ }\n\n#define sqr(x) ((x) * (x))\n\n// For printing pair, container, etc.\n//\
+    \ Copied from https://quangloc99.github.io/2021/07/30/my-CP-debugging-template.html\n\
+    template<class U, class V> ostream& operator << (ostream& out, const pair<U, V>&\
+    \ p) {\n    return out << '(' << p.first << \", \" << p.second << ')';\n}\n\n\
+    template<class Con, class = decltype(begin(declval<Con>()))>\ntypename enable_if<!is_same<Con,\
     \ string>::value, ostream&>::type\noperator << (ostream& out, const Con& con)\
     \ {\n    out << '{';\n    for (auto beg = con.begin(), it = beg; it != con.end();\
     \ it++) {\n        out << (it == beg ? \"\" : \", \") << *it;\n    }\n    return\
@@ -67,29 +66,33 @@ data:
     }\nstruct Edge {\n    int u, v;\n    ll c;\n};\nbool operator < (const Edge& a,\
     \ const Edge& b) {\n    return a.c < b.c;\n}\nostream& operator << (ostream& out,\
     \ const Edge& e) {\n    out << e.u << \" - \" << e.v << \" [\" << e.c << ']';\n\
-    \    return out;\n}\n// }}}\n#line 5 \"Graph/tests/aizu_grl_2_a_mst.test.cpp\"\
-    \n\nvoid solve() {\n    int n, m; cin >> n >> m;\n    vector<Edge> edges(m);\n\
-    \    for (auto& [u, v, c] : edges) cin >> u >> v >> c;\n\n    cout << mst(n, edges).first\
-    \ << endl;\n}\n"
-  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_2_A\"\
-    \n\n#include \"../../template.h\"\n#include \"../mst.h\"\n\nvoid solve() {\n \
-    \   int n, m; cin >> n >> m;\n    vector<Edge> edges(m);\n    for (auto& [u, v,\
-    \ c] : edges) cin >> u >> v >> c;\n\n    cout << mst(n, edges).first << endl;\n\
-    }\n"
+    \    return out;\n}\n// }}}\n#line 5 \"Graph/tests/yosupo_mst.test.cpp\"\n\nstruct\
+    \ E : Edge {\n    int id;\n};\n\nvoid solve() {\n    int n, m; cin >> n >> m;\n\
+    \    vector<E> edges(m);\n    REP(i,m) {\n        auto& e = edges[i];\n      \
+    \  cin >> e.u >> e.v >> e.c;\n        e.id = i;\n    }\n    auto g = mst<E>(n,\
+    \ edges);\n    cout << g.first << '\\n';\n    for (auto& e : g.second) cout <<\
+    \ e.id << ' ';\n    cout << '\\n';\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/minimum_spanning_tree\"\
+    \n\n#include \"../../template.h\"\n#include \"../mst.h\"\n\nstruct E : Edge {\n\
+    \    int id;\n};\n\nvoid solve() {\n    int n, m; cin >> n >> m;\n    vector<E>\
+    \ edges(m);\n    REP(i,m) {\n        auto& e = edges[i];\n        cin >> e.u >>\
+    \ e.v >> e.c;\n        e.id = i;\n    }\n    auto g = mst<E>(n, edges);\n    cout\
+    \ << g.first << '\\n';\n    for (auto& e : g.second) cout << e.id << ' ';\n  \
+    \  cout << '\\n';\n}\n"
   dependsOn:
   - template.h
   - Graph/mst.h
   - DataStructure/DSU/DisjointSet.h
   isVerificationFile: true
-  path: Graph/tests/aizu_grl_2_a_mst.test.cpp
+  path: Graph/tests/yosupo_mst.test.cpp
   requiredBy: []
   timestamp: '2024-03-17 02:51:32+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Graph/tests/aizu_grl_2_a_mst.test.cpp
+documentation_of: Graph/tests/yosupo_mst.test.cpp
 layout: document
 redirect_from:
-- /verify/Graph/tests/aizu_grl_2_a_mst.test.cpp
-- /verify/Graph/tests/aizu_grl_2_a_mst.test.cpp.html
-title: Graph/tests/aizu_grl_2_a_mst.test.cpp
+- /verify/Graph/tests/yosupo_mst.test.cpp
+- /verify/Graph/tests/yosupo_mst.test.cpp.html
+title: Graph/tests/yosupo_mst.test.cpp
 ---

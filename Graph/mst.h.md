@@ -9,6 +9,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Graph/tests/aizu_grl_2_a_mst.test.cpp
     title: Graph/tests/aizu_grl_2_a_mst.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Graph/tests/yosupo_mst.test.cpp
+    title: Graph/tests/yosupo_mst.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -25,36 +28,37 @@ data:
     \ lab[v] = u;\n        return true;\n    }\n\n    bool same_component(int u, int\
     \ v) {\n        return getRoot(u) == getRoot(v);\n    }\n\n    int component_size(int\
     \ u) {\n        return -lab[getRoot(u)];\n    }\n};\n// }}}\n#line 9 \"Graph/mst.h\"\
-    \n\n// MST {{{\nusing ll = long long;\nstruct Edge {\n    int u, v;\n    ll c;\n\
-    };\nbool operator < (const Edge& a, const Edge& b) {\n    return a.c < b.c;\n\
-    }\nostream& operator << (ostream& out, const Edge& e) {\n    out << e.u << \"\
-    \ - \" << e.v << \" [\" << e.c << ']';\n    return out;\n}\nstd::pair<ll, std::vector<Edge>>\
-    \ mst(\n        int n,\n        std::vector<Edge> edges) {\n    std::sort(edges.begin(),\
-    \ edges.end());\n\n    DSU dsu(n + 1);  // tolerate 1-based index\n    ll total\
-    \ = 0;\n    vector<Edge> tree;\n    for (const auto& e : edges) {\n        const\
-    \ auto [u, v, c] = e;\n        if (dsu.merge(u, v)) {\n            total += c;\n\
+    \n\n// MST {{{\nusing ll = long long;\ntemplate<typename EdgeT>\nstd::pair<ll,\
+    \ std::vector<EdgeT>> mst(\n        int n,\n        std::vector<EdgeT> edges)\
+    \ {\n    std::sort(edges.begin(), edges.end());\n\n    DSU dsu(n + 1);  // tolerate\
+    \ 1-based index\n    ll total = 0;\n    vector<EdgeT> tree;\n    for (const auto&\
+    \ e : edges) {\n        if (dsu.merge(e.u, e.v)) {\n            total += e.c;\n\
     \            tree.push_back(e);\n        }\n    }\n    return {total, tree};\n\
-    }\n// }}}\n"
+    }\nstruct Edge {\n    int u, v;\n    ll c;\n};\nbool operator < (const Edge& a,\
+    \ const Edge& b) {\n    return a.c < b.c;\n}\nostream& operator << (ostream& out,\
+    \ const Edge& e) {\n    out << e.u << \" - \" << e.v << \" [\" << e.c << ']';\n\
+    \    return out;\n}\n// }}}\n"
   code: "// MST. 0-based index\n//\n// Returns:\n// {mst cost, edges in mst}\n//\n\
     // If graph is not connected, returns forest (number of edges will be < n-1)\n\
     \n#include \"../DataStructure/DSU/DisjointSet.h\"\n\n// MST {{{\nusing ll = long\
-    \ long;\nstruct Edge {\n    int u, v;\n    ll c;\n};\nbool operator < (const Edge&\
-    \ a, const Edge& b) {\n    return a.c < b.c;\n}\nostream& operator << (ostream&\
-    \ out, const Edge& e) {\n    out << e.u << \" - \" << e.v << \" [\" << e.c <<\
-    \ ']';\n    return out;\n}\nstd::pair<ll, std::vector<Edge>> mst(\n        int\
-    \ n,\n        std::vector<Edge> edges) {\n    std::sort(edges.begin(), edges.end());\n\
-    \n    DSU dsu(n + 1);  // tolerate 1-based index\n    ll total = 0;\n    vector<Edge>\
-    \ tree;\n    for (const auto& e : edges) {\n        const auto [u, v, c] = e;\n\
-    \        if (dsu.merge(u, v)) {\n            total += c;\n            tree.push_back(e);\n\
-    \        }\n    }\n    return {total, tree};\n}\n// }}}\n"
+    \ long;\ntemplate<typename EdgeT>\nstd::pair<ll, std::vector<EdgeT>> mst(\n  \
+    \      int n,\n        std::vector<EdgeT> edges) {\n    std::sort(edges.begin(),\
+    \ edges.end());\n\n    DSU dsu(n + 1);  // tolerate 1-based index\n    ll total\
+    \ = 0;\n    vector<EdgeT> tree;\n    for (const auto& e : edges) {\n        if\
+    \ (dsu.merge(e.u, e.v)) {\n            total += e.c;\n            tree.push_back(e);\n\
+    \        }\n    }\n    return {total, tree};\n}\nstruct Edge {\n    int u, v;\n\
+    \    ll c;\n};\nbool operator < (const Edge& a, const Edge& b) {\n    return a.c\
+    \ < b.c;\n}\nostream& operator << (ostream& out, const Edge& e) {\n    out <<\
+    \ e.u << \" - \" << e.v << \" [\" << e.c << ']';\n    return out;\n}\n// }}}\n"
   dependsOn:
   - DataStructure/DSU/DisjointSet.h
   isVerificationFile: false
   path: Graph/mst.h
   requiredBy: []
-  timestamp: '2023-01-07 01:46:12+08:00'
+  timestamp: '2024-03-17 02:51:32+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Graph/tests/yosupo_mst.test.cpp
   - Graph/tests/aizu_grl_2_a_mst.test.cpp
 documentation_of: Graph/mst.h
 layout: document

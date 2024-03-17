@@ -15,6 +15,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Graph/tests/aizu_grl_2_a_mst.test.cpp
     title: Graph/tests/aizu_grl_2_a_mst.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Graph/tests/yosupo_mst.test.cpp
+    title: Graph/tests/yosupo_mst.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -47,6 +50,7 @@ data:
   verifiedWith:
   - DataStructure/test/aizu_dsl_1_a_dsu.test.cpp
   - DataStructure/test/dsu.test.cpp
+  - Graph/tests/yosupo_mst.test.cpp
   - Graph/tests/aizu_grl_2_a_mst.test.cpp
 documentation_of: DataStructure/DSU/DisjointSet.h
 layout: document

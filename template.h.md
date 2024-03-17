@@ -190,6 +190,9 @@ data:
     path: Graph/tests/aizu_grl_5_a_tree_diameter.test.cpp
     title: Graph/tests/aizu_grl_5_a_tree_diameter.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Graph/tests/yosupo_mst.test.cpp
+    title: Graph/tests/yosupo_mst.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Math/tests/aizu_ntl_1_a_factorize.test.cpp
     title: Math/tests/aizu_ntl_1_a_factorize.test.cpp
   - icon: ':heavy_check_mark:'
@@ -404,6 +407,7 @@ data:
   - DP/tests/aizu_alds1_5_d_count_inversions.test.cpp
   - Graph/tests/aizu_grl_4_a_strongly_connected_cycle_check.test.cpp
   - Graph/tests/aizu_grl_3_a_articulation_points.test.cpp
+  - Graph/tests/yosupo_mst.test.cpp
   - Graph/tests/aizu_grl_5_a_tree_diameter.test.cpp
   - Graph/tests/aizu_grl_2_a_mst.test.cpp
   - Graph/tests/aizu_grl_1_c_floyd.test.cpp
