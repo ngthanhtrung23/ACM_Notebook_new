@@ -335,8 +335,8 @@ data:
   timestamp: '2022-01-07 04:26:13+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - DataStructure/test/splay_tree.test.cpp
   - DataStructure/test/yosupo_rangereversesum_splay.test.cpp
+  - DataStructure/test/splay_tree.test.cpp
 documentation_of: DataStructure/splay_tree.h
 layout: document
 redirect_from:

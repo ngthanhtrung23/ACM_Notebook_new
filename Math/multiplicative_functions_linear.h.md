@@ -86,8 +86,8 @@ data:
   timestamp: '2023-01-16 13:01:49+07:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Math/tests/smallest_prime_factor_stress.test.cpp
   - Math/tests/cnt_divisors_stress.test.cpp
+  - Math/tests/smallest_prime_factor_stress.test.cpp
   - Math/tests/euler_phi_stress.test.cpp
 documentation_of: Math/multiplicative_functions_linear.h
 layout: document

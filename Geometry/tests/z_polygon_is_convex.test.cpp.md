@@ -52,7 +52,7 @@ data:
     // Unless the problem has precision issue, can use Point, which uses double\n\
     // and has more functionalities.\n// For integers, can use P<long long>\n\n#ifndef\
     \ EPS  // allow test files to overwrite EPS\n#define EPS 1e-6\n#endif\n\nconst\
-    \ double PI = acos(-1.0);\n\ndouble DEG_to_RAD(double d) { return d * PI / 180.0;\
+    \ double PI = acos(-1.0l);\n\ndouble DEG_to_RAD(double d) { return d * PI / 180.0;\
     \ }\ndouble RAD_to_DEG(double r) { return r * 180.0 / PI; }\n\ninline int cmp(double\
     \ a, double b) {\n    return (a < b - EPS) ? -1 : ((a > b + EPS) ? 1 : 0);\n}\n\
     \n// for int types\ntemplate<typename T, typename std::enable_if<!std::is_floating_point<T>::value>::type\
@@ -245,7 +245,7 @@ data:
   isVerificationFile: true
   path: Geometry/tests/z_polygon_is_convex.test.cpp
   requiredBy: []
-  timestamp: '2023-02-02 12:34:59+08:00'
+  timestamp: '2024-03-17 10:45:43+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Geometry/tests/z_polygon_is_convex.test.cpp

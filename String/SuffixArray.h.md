@@ -471,9 +471,9 @@ data:
   timestamp: '2023-10-15 09:43:20+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - String/tests/suffix_array_queries.test.cpp
   - String/tests/lcp.test.cpp
   - String/tests/suffix_array.test.cpp
-  - String/tests/suffix_array_queries.test.cpp
 documentation_of: String/SuffixArray.h
 layout: document
 redirect_from:
