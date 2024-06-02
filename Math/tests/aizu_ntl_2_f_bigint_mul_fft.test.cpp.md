@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Math/bigint.h
     title: Math/bigint.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []

@@ -70,9 +70,9 @@ data:
   - String/tests/suffix_array_queries.test.cpp
   - String/tests/lcp.test.cpp
   - String/tests/suffix_array.test.cpp
+  - DataStructure/test/aizu_grl_5_c_lca.test.cpp
   - DataStructure/test/rmq.test.cpp
   - DataStructure/test/lca.test.cpp
-  - DataStructure/test/aizu_grl_5_c_lca.test.cpp
 documentation_of: DataStructure/RMQ.h
 layout: document
 redirect_from:

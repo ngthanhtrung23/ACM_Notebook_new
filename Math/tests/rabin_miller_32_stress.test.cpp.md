@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Math/Prime/SieveFast.h
     title: Math/Prime/SieveFast.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []

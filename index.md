@@ -187,7 +187,7 @@ data:
     - icon: ':warning:'
       path: Geometry/RectInRect.h
       title: Geometry/RectInRect.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Geometry/basic.h
       title: Geometry/basic.h
     - icon: ':heavy_check_mark:'
@@ -199,7 +199,7 @@ data:
     - icon: ':warning:'
       path: Geometry/n_segment_intersects.h
       title: Geometry/n_segment_intersects.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Geometry/polygon.h
       title: Geometry/polygon.h
     - icon: ':warning:'
@@ -589,7 +589,7 @@ data:
     - icon: ':warning:'
       path: stack_increase.cpp
       title: stack_increase.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template.h
       title: template.h
   verificationCategories:
@@ -830,6 +830,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Geometry/tests/polygon_in_convex.test.cpp
       title: Geometry/tests/polygon_in_convex.test.cpp
+    - icon: ':x:'
+      path: Geometry/tests/yosupo_convex_hull.test.cpp
+      title: Geometry/tests/yosupo_convex_hull.test.cpp
     - icon: ':heavy_check_mark:'
       path: Geometry/tests/z_basic_ccw.test.cpp
       title: Geometry/tests/z_basic_ccw.test.cpp

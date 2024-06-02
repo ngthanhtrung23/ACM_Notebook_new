@@ -66,6 +66,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Geometry/tests/polygon_in_convex.test.cpp
     title: Geometry/tests/polygon_in_convex.test.cpp
+  - icon: ':x:'
+    path: Geometry/tests/yosupo_convex_hull.test.cpp
+    title: Geometry/tests/yosupo_convex_hull.test.cpp
   - icon: ':heavy_check_mark:'
     path: Geometry/tests/z_basic_ccw.test.cpp
     title: Geometry/tests/z_basic_ccw.test.cpp
@@ -81,9 +84,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Geometry/tests/z_polygon_is_convex.test.cpp
     title: Geometry/tests/z_polygon_is_convex.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://cses.fi/problemset/task/2190/
@@ -142,7 +145,7 @@ data:
     \ - A.y;\n        b = A.x - B.x;\n        c = - (a * A.x + b * A.y);\n    }\n\
     \    Line(Point P, double m) {\n        a = -m; b = 1;\n        c = -((a * P.x)\
     \ + (b * P.y));\n    }\n    double f(Point p) {\n        return a*p.x + b*p.y\
-    \ + c;\n    }\n};\nostream& operator >> (ostream& cout, const Line& l) {\n   \
+    \ + c;\n    }\n};\nostream& operator << (ostream& cout, const Line& l) {\n   \
     \ cout << l.a << \"*x + \" << l.b << \"*y + \" << l.c;\n    return cout;\n}\n\n\
     bool areParallel(Line l1, Line l2) {\n    return cmp(l1.a*l2.b, l1.b*l2.a) ==\
     \ 0;\n}\n\nbool areSame(Line l1, Line l2) {\n    return areParallel(l1 ,l2) &&\
@@ -220,7 +223,7 @@ data:
     \ _B) : A(_A), B(_B) {\n        a = B.y - A.y;\n        b = A.x - B.x;\n     \
     \   c = - (a * A.x + b * A.y);\n    }\n    Line(Point P, double m) {\n       \
     \ a = -m; b = 1;\n        c = -((a * P.x) + (b * P.y));\n    }\n    double f(Point\
-    \ p) {\n        return a*p.x + b*p.y + c;\n    }\n};\nostream& operator >> (ostream&\
+    \ p) {\n        return a*p.x + b*p.y + c;\n    }\n};\nostream& operator << (ostream&\
     \ cout, const Line& l) {\n    cout << l.a << \"*x + \" << l.b << \"*y + \" <<\
     \ l.c;\n    return cout;\n}\n\nbool areParallel(Line l1, Line l2) {\n    return\
     \ cmp(l1.a*l2.b, l1.b*l2.a) == 0;\n}\n\nbool areSame(Line l1, Line l2) {\n   \
@@ -248,35 +251,36 @@ data:
   isVerificationFile: false
   path: Geometry/basic.h
   requiredBy: []
-  timestamp: '2024-03-17 10:45:43+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2022-07-20 01:28:51+08:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - Geometry/tests/aizu_cgl_7_d_circle_line_intersection.test.cpp
-  - Geometry/tests/z_polygon_convexhull.test.cpp
-  - Geometry/tests/aizu_cgl_5_a_closest_pair.test.cpp
-  - Geometry/tests/aizu_cgl_7_a_cicle_tangents.test.cpp
-  - Geometry/tests/aizu_cgl_3_c_polygon_in_polygon.test.cpp
-  - Geometry/tests/aizu_cgl_2_d_basic_segment_distance.test.cpp
   - Geometry/tests/aizu_cgl_4_c_polygon_convex_cut.test.cpp
+  - Geometry/tests/aizu_cgl_4_a_polygon_convex_hull.test.cpp
+  - Geometry/tests/aizu_cgl_2_a_basic_line.test.cpp
+  - Geometry/tests/aizu_cgl_7_i_circle_common_area.test.cpp
+  - Geometry/tests/z_polygon_is_convex.test.cpp
+  - Geometry/tests/z_basic_segment_intersect.test.cpp
+  - Geometry/tests/aizu_cgl_7_a_cicle_tangents.test.cpp
+  - Geometry/tests/yosupo_convex_hull.test.cpp
+  - Geometry/tests/aizu_cgl_1_a_basic_projection.test.cpp
+  - Geometry/tests/aizu_cgl_1_b_basic_reflection.test.cpp
+  - Geometry/tests/aizu_cgl_7_e_circle_circle_intersection.test.cpp
+  - Geometry/tests/aizu_cgl_2_b_basic_segment_intersect.test.cpp
+  - Geometry/tests/aizu_cgl_7_d_circle_line_intersection.test.cpp
+  - Geometry/tests/aizu_cgl_2_c_basic_line_intersection.test.cpp
+  - Geometry/tests/aizu_cgl_7_f_circle_tangent_points.test.cpp
+  - Geometry/tests/z_polygon_convexhull.test.cpp
+  - Geometry/tests/aizu_cgl_1_c_basic_ccw.test.cpp
+  - Geometry/tests/aizu_cgl_4_b_polygon_convex_diameter.test.cpp
+  - Geometry/tests/aizu_cgl_5_a_closest_pair.test.cpp
+  - Geometry/tests/aizu_cgl_2_d_basic_segment_distance.test.cpp
+  - Geometry/tests/aizu_cgl_3_a_polygon_area.test.cpp
+  - Geometry/tests/aizu_cgl_7_g_circle_circle_tangent_points.test.cpp
+  - Geometry/tests/aizu_cgl_3_b_polygon_is_convex.test.cpp
+  - Geometry/tests/polygon_in_convex.test.cpp
+  - Geometry/tests/aizu_cgl_3_c_polygon_in_polygon.test.cpp
   - Geometry/tests/z_polygon_area.test.cpp
   - Geometry/tests/z_basic_ccw.test.cpp
-  - Geometry/tests/aizu_cgl_1_c_basic_ccw.test.cpp
-  - Geometry/tests/aizu_cgl_7_g_circle_circle_tangent_points.test.cpp
-  - Geometry/tests/aizu_cgl_4_a_polygon_convex_hull.test.cpp
-  - Geometry/tests/aizu_cgl_3_a_polygon_area.test.cpp
-  - Geometry/tests/aizu_cgl_1_a_basic_projection.test.cpp
-  - Geometry/tests/aizu_cgl_2_c_basic_line_intersection.test.cpp
-  - Geometry/tests/aizu_cgl_3_b_polygon_is_convex.test.cpp
-  - Geometry/tests/aizu_cgl_7_e_circle_circle_intersection.test.cpp
-  - Geometry/tests/z_polygon_is_convex.test.cpp
-  - Geometry/tests/aizu_cgl_4_b_polygon_convex_diameter.test.cpp
-  - Geometry/tests/aizu_cgl_7_f_circle_tangent_points.test.cpp
-  - Geometry/tests/aizu_cgl_7_i_circle_common_area.test.cpp
-  - Geometry/tests/aizu_cgl_2_b_basic_segment_intersect.test.cpp
-  - Geometry/tests/polygon_in_convex.test.cpp
-  - Geometry/tests/z_basic_segment_intersect.test.cpp
-  - Geometry/tests/aizu_cgl_1_b_basic_reflection.test.cpp
-  - Geometry/tests/aizu_cgl_2_a_basic_line.test.cpp
 documentation_of: Geometry/basic.h
 layout: document
 redirect_from:

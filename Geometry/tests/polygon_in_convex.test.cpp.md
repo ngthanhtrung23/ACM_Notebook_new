@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Geometry/basic.h
     title: Geometry/basic.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Geometry/polygon.h
     title: Geometry/polygon.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
@@ -102,7 +102,7 @@ data:
     \ _B) : A(_A), B(_B) {\n        a = B.y - A.y;\n        b = A.x - B.x;\n     \
     \   c = - (a * A.x + b * A.y);\n    }\n    Line(Point P, double m) {\n       \
     \ a = -m; b = 1;\n        c = -((a * P.x) + (b * P.y));\n    }\n    double f(Point\
-    \ p) {\n        return a*p.x + b*p.y + c;\n    }\n};\nostream& operator >> (ostream&\
+    \ p) {\n        return a*p.x + b*p.y + c;\n    }\n};\nostream& operator << (ostream&\
     \ cout, const Line& l) {\n    cout << l.a << \"*x + \" << l.b << \"*y + \" <<\
     \ l.c;\n    return cout;\n}\n\nbool areParallel(Line l1, Line l2) {\n    return\
     \ cmp(l1.a*l2.b, l1.b*l2.a) == 0;\n}\n\nbool areSame(Line l1, Line l2) {\n   \
@@ -248,7 +248,7 @@ data:
   isVerificationFile: true
   path: Geometry/tests/polygon_in_convex.test.cpp
   requiredBy: []
-  timestamp: '2024-03-17 10:45:43+08:00'
+  timestamp: '2022-07-20 01:28:51+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Geometry/tests/polygon_in_convex.test.cpp
