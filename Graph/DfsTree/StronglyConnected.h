@@ -8,6 +8,7 @@
 // Tested:
 // - (requires scc to be topo sorted) https://judge.yosupo.jp/problem/scc
 // - https://cses.fi/problemset/task/1686/
+// - (edges have costs) https://oj.vnoi.info/problem/bedao_g16_b
 struct DirectedDfs {
     vector<vector<int>> g;
     int n;
