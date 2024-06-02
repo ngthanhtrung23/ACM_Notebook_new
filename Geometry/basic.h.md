@@ -66,9 +66,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: Geometry/tests/polygon_in_convex.test.cpp
     title: Geometry/tests/polygon_in_convex.test.cpp
-  - icon: ':x:'
-    path: Geometry/tests/yosupo_convex_hull.test.cpp
-    title: Geometry/tests/yosupo_convex_hull.test.cpp
   - icon: ':heavy_check_mark:'
     path: Geometry/tests/z_basic_ccw.test.cpp
     title: Geometry/tests/z_basic_ccw.test.cpp
@@ -84,9 +81,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Geometry/tests/z_polygon_is_convex.test.cpp
     title: Geometry/tests/z_polygon_is_convex.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://cses.fi/problemset/task/2190/
@@ -252,7 +249,7 @@ data:
   path: Geometry/basic.h
   requiredBy: []
   timestamp: '2022-07-20 01:28:51+08:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Geometry/tests/aizu_cgl_4_c_polygon_convex_cut.test.cpp
   - Geometry/tests/aizu_cgl_4_a_polygon_convex_hull.test.cpp
@@ -261,7 +258,6 @@ data:
   - Geometry/tests/z_polygon_is_convex.test.cpp
   - Geometry/tests/z_basic_segment_intersect.test.cpp
   - Geometry/tests/aizu_cgl_7_a_cicle_tangents.test.cpp
-  - Geometry/tests/yosupo_convex_hull.test.cpp
   - Geometry/tests/aizu_cgl_1_a_basic_projection.test.cpp
   - Geometry/tests/aizu_cgl_1_b_basic_reflection.test.cpp
   - Geometry/tests/aizu_cgl_7_e_circle_circle_intersection.test.cpp

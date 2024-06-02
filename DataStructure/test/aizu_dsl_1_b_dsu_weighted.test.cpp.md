@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/DSU/DSU_weighted.h
     title: DataStructure/DSU/DSU_weighted.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []

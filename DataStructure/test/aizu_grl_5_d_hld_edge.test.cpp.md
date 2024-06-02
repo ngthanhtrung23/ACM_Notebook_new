@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/SegTree.h
     title: DataStructure/SegTree.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []

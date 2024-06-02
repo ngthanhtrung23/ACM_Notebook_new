@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/Mo/MoAlgorithm.h
     title: DataStructure/Mo/MoAlgorithm.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []

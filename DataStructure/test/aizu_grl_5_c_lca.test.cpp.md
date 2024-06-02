@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/RMQ.h
     title: DataStructure/RMQ.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []

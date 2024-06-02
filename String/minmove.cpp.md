@@ -4,7 +4,7 @@ data:
   - icon: ':warning:'
     path: String/minmove.h
     title: String/minmove.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []

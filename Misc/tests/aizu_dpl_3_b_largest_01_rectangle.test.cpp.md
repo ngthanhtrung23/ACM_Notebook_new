@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Misc/left_nearest_smaller.h
     title: Misc/left_nearest_smaller.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
