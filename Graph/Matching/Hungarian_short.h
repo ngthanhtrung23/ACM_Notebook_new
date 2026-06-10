@@ -13,11 +13,13 @@
 // Returns {total weight, matches (from left)}
 const int N = 1011;
 template<typename T>
-pair<T, vector<int>> Hungarian (int n, int m, T c[][N]) {
+pair<T, vector<int>> hungarian(int n, int m, T c[][N]) {
     vector<T> v(m), dist(m);
     vector<int> L(n, -1), R(m, -1);
     vector<int> index(m), prev(m);
     auto getc = [&] (int i, int j) {return c[i][j] - v[j];};
+    // For max cost:
+    // auto getc = [&] (int i, int j) { return -c[i][j] - v[j]; };
 
     iota(index.begin(), index.end(), 0);
     for (int f = 0; f < n; ++f) {
