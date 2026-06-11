@@ -78,7 +78,7 @@ data:
   isVerificationFile: false
   path: Graph/Matching/Hungarian_short.h
   requiredBy: []
-  timestamp: '2026-06-11 20:50:04+08:00'
+  timestamp: '2026-06-11 21:03:54+08:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - Graph/tests/matching_bipartite_weighted_2.test.cpp

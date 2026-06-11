@@ -140,12 +140,12 @@ data:
   path: Math/Polynomial/NTT.h
   requiredBy:
   - Math/Polynomial/FormalPowerSeries.h
-  timestamp: '2026-06-11 20:50:04+08:00'
+  timestamp: '2026-06-11 21:03:54+08:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - Math/tests/formal_power_series_multiply_any_mod.test.cpp
-  - Math/tests/ntt_any_mod.test.cpp
   - Math/tests/ntt.test.cpp
+  - Math/tests/ntt_any_mod.test.cpp
+  - Math/tests/formal_power_series_multiply_any_mod.test.cpp
   - Math/tests/formal_power_series_multiply.test.cpp
 documentation_of: Math/Polynomial/NTT.h
 layout: document

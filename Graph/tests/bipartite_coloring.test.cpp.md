@@ -127,7 +127,7 @@ data:
   isVerificationFile: true
   path: Graph/tests/bipartite_coloring.test.cpp
   requiredBy: []
-  timestamp: '2026-06-11 20:50:04+08:00'
+  timestamp: '2026-06-11 21:03:54+08:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: Graph/tests/bipartite_coloring.test.cpp

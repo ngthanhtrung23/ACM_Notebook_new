@@ -41,7 +41,7 @@ data:
   isVerificationFile: false
   path: DataStructure/STL/pbds_faster_map.h
   requiredBy: []
-  timestamp: '2026-06-11 20:50:04+08:00'
+  timestamp: '2026-06-11 21:03:54+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: DataStructure/STL/pbds_faster_map.h

@@ -92,7 +92,7 @@ data:
     \n        initNodes();\n\n        // answer queries\n        vector<T> res;\n\
     \        for (const auto& query : queries) {\n            if (query.typ == Query<T>::ADD)\
     \ {\n                update(query.x, query.y, query.weight);\n            } else\
-    \ {\n                res.push_back(\n                    + get(query.x2 - 1, query.y2\
+    \ {\n                res.push_back(\n                      get(query.x2 - 1, query.y2\
     \ - 1)\n                    - get(query.x2 - 1, query.y  - 1)\n              \
     \      - get(query.x  - 1, query.y2 - 1)\n                    + get(query.x  -\
     \ 1, query.y  - 1)\n                );\n            }\n        }\n        return\
@@ -136,7 +136,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/fenwick_2d_rectsum.test.cpp
   requiredBy: []
-  timestamp: '2026-06-11 20:50:04+08:00'
+  timestamp: '2026-06-11 21:03:54+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/fenwick_2d_rectsum.test.cpp

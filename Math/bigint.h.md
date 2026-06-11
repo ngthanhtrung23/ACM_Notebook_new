@@ -528,17 +528,17 @@ data:
   isVerificationFile: false
   path: Math/bigint.h
   requiredBy: []
-  timestamp: '2026-06-11 20:50:04+08:00'
+  timestamp: '2026-06-11 21:03:54+08:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - Math/tests/aizu_ntl_2_c_bigint_mul_karatsuba.test.cpp
   - Math/tests/aizu_ntl_2_f_bigint_mul_fft.test.cpp
-  - Math/tests/aizu_ntl_2_b_bigint_sub.test.cpp
   - Math/tests/yosupo_bigint_add.test.cpp
-  - Math/tests/aizu_ntl_2_e_bigint_mod.test.cpp
   - Math/tests/aizu_ntl_2_a_bigint_add.test.cpp
-  - Math/tests/aizu_ntl_2_c_bigint_mul.test.cpp
   - Math/tests/aizu_ntl_2_d_bigint_div.test.cpp
+  - Math/tests/aizu_ntl_2_e_bigint_mod.test.cpp
+  - Math/tests/aizu_ntl_2_b_bigint_sub.test.cpp
+  - Math/tests/aizu_ntl_2_c_bigint_mul.test.cpp
 documentation_of: Math/bigint.h
 layout: document
 redirect_from:

@@ -37,7 +37,7 @@ data:
   path: String/minmove.h
   requiredBy:
   - String/minmove.cpp
-  timestamp: '2026-06-11 20:50:04+08:00'
+  timestamp: '2026-06-11 21:03:54+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: String/minmove.h

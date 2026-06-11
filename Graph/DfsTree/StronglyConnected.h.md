@@ -77,13 +77,13 @@ data:
   path: Graph/DfsTree/StronglyConnected.h
   requiredBy:
   - Graph/2sat.h
-  timestamp: '2026-06-11 20:50:04+08:00'
+  timestamp: '2026-06-11 21:03:54+08:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - Graph/tests/two_sat.test.cpp
-  - Graph/tests/aizu_grl_3_c_strongly_connected.test.cpp
   - Graph/tests/strongly_connected.test.cpp
+  - Graph/tests/aizu_grl_3_c_strongly_connected.test.cpp
   - Graph/tests/aizu_grl_4_a_strongly_connected_cycle_check.test.cpp
+  - Graph/tests/two_sat.test.cpp
 documentation_of: Graph/DfsTree/StronglyConnected.h
 layout: document
 redirect_from:

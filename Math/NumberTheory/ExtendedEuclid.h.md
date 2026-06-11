@@ -39,11 +39,11 @@ data:
   path: Math/NumberTheory/ExtendedEuclid.h
   requiredBy:
   - Math/NumberTheory/ChineseRemainder.h
-  timestamp: '2026-06-11 20:50:04+08:00'
+  timestamp: '2026-06-11 21:03:54+08:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - Math/tests/aizu_ntl_1_e_extended_euclid.test.cpp
   - Math/tests/ntt_chemthan_any_mod_2.test.cpp
+  - Math/tests/aizu_ntl_1_e_extended_euclid.test.cpp
 documentation_of: Math/NumberTheory/ExtendedEuclid.h
 layout: document
 redirect_from:

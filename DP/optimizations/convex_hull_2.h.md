@@ -55,7 +55,7 @@ data:
   isVerificationFile: false
   path: DP/optimizations/convex_hull_2.h
   requiredBy: []
-  timestamp: '2026-06-11 20:50:04+08:00'
+  timestamp: '2026-06-11 21:03:54+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: DP/optimizations/convex_hull_2.h

@@ -239,17 +239,17 @@ data:
   isVerificationFile: false
   path: DataStructure/HeavyLight_adamant.h
   requiredBy: []
-  timestamp: '2026-06-11 20:50:04+08:00'
+  timestamp: '2026-06-11 21:03:54+08:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - DataStructure/test/aizu_grl_5_e_hld_edge.test.cpp
   - DataStructure/test/aizu_grl_5_d_hld_edge.test.cpp
-  - DataStructure/test/hld_vertexaddpathsum.test.cpp
   - DataStructure/test/aizu_grl_5_c_hld_lca.test.cpp
-  - DataStructure/test/hld_vertexaddsubtreesum.test.cpp
-  - DataStructure/test/hld_vertexsetpathcomposite.test.cpp
+  - DataStructure/test/hld_vertexaddpathsum.test.cpp
   - DataStructure/test/hld_lca.test.cpp
+  - DataStructure/test/hld_vertexsetpathcomposite.test.cpp
   - DataStructure/test/yosupo_hld_kth_vertex_on_path.test.cpp
+  - DataStructure/test/aizu_grl_5_e_hld_edge.test.cpp
+  - DataStructure/test/hld_vertexaddsubtreesum.test.cpp
 documentation_of: DataStructure/HeavyLight_adamant.h
 layout: document
 redirect_from:
