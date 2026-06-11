@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: DataStructure/RangeSet.h
     title: DataStructure/RangeSet.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://yukicoder.me/problems/no/674
@@ -101,8 +101,8 @@ data:
   isVerificationFile: true
   path: DataStructure/test/yukicoder_674_range_set.test.cpp
   requiredBy: []
-  timestamp: '2022-12-31 08:30:35+00:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-06-11 20:50:04+08:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: DataStructure/test/yukicoder_674_range_set.test.cpp
 layout: document

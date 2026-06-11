@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
@@ -87,7 +87,7 @@ data:
   isVerificationFile: false
   path: DP/optimizations/divide_conquer.cpp
   requiredBy: []
-  timestamp: '2022-12-26 18:28:23+08:00'
+  timestamp: '2026-06-11 20:50:04+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: DP/optimizations/divide_conquer.cpp

@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/NumberTheory/Pollard_factorize.h
     title: Math/NumberTheory/Pollard_factorize.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/Prime/Sieve.h
     title: Math/Prime/Sieve.h
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/cnt_divisors_stress.test.cpp
     title: Math/tests/cnt_divisors_stress.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://www.spoj.com/problems/NUMDIV/
@@ -127,8 +127,8 @@ data:
   isVerificationFile: false
   path: Math/NumberTheory/cnt_divisors.h
   requiredBy: []
-  timestamp: '2023-10-22 16:42:38+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-06-11 20:50:04+08:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - Math/tests/cnt_divisors_stress.test.cpp
 documentation_of: Math/NumberTheory/cnt_divisors.h

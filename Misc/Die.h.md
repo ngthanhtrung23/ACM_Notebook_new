@@ -41,7 +41,7 @@ data:
   path: Misc/Die.h
   requiredBy:
   - Misc/Die.cpp
-  timestamp: '2014-10-15 21:19:05+08:00'
+  timestamp: '2026-06-11 20:50:04+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Misc/Die.h

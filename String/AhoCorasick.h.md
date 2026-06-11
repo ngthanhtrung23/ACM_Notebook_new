@@ -105,7 +105,7 @@ data:
   isVerificationFile: false
   path: String/AhoCorasick.h
   requiredBy: []
-  timestamp: '2021-05-03 12:01:04+08:00'
+  timestamp: '2026-06-11 20:50:04+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: String/AhoCorasick.h

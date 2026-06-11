@@ -63,7 +63,7 @@ data:
   isVerificationFile: false
   path: String/maine_lorentz.h
   requiredBy: []
-  timestamp: '2017-12-04 02:04:24+08:00'
+  timestamp: '2026-06-11 20:50:04+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: String/maine_lorentz.h

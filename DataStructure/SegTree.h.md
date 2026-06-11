@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: DataStructure/SegTree2D.h
     title: DataStructure/SegTree2D.h
   _extendedVerifiedWith:
@@ -24,21 +24,21 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/hld_vertexsetpathcomposite.test.cpp
     title: DataStructure/test/hld_vertexsetpathcomposite.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: DataStructure/test/segment_tree_2d_pointaddrectsum.test.cpp
     title: DataStructure/test/segment_tree_2d_pointaddrectsum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: DataStructure/test/segment_tree_pointaddrangesum.test.cpp
     title: DataStructure/test/segment_tree_pointaddrangesum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
     title: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: DataStructure/test/segment_tree_staticrmq.test.cpp
     title: DataStructure/test/segment_tree_staticrmq.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://atcoder.github.io/ac-library/master/document_en/segtree.html
@@ -182,19 +182,19 @@ data:
   path: DataStructure/SegTree.h
   requiredBy:
   - DataStructure/SegTree2D.h
-  timestamp: '2022-12-21 14:26:45+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-06-11 20:50:04+08:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - DataStructure/test/aizu_grl_5_d_hld_edge.test.cpp
   - DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
-  - DataStructure/test/hld_vertexsetpathcomposite.test.cpp
-  - DataStructure/test/aizu_dsl_2_a_segment_tree_rmq_update.test.cpp
-  - DataStructure/test/segment_tree_2d_pointaddrectsum.test.cpp
-  - DataStructure/test/segment_tree_staticrmq.test.cpp
-  - DataStructure/test/segment_tree_pointaddrangesum.test.cpp
+  - DataStructure/test/aizu_grl_5_d_hld_edge.test.cpp
   - DataStructure/test/hld_vertexaddpathsum.test.cpp
+  - DataStructure/test/segment_tree_2d_pointaddrectsum.test.cpp
+  - DataStructure/test/aizu_dsl_2_a_segment_tree_rmq_update.test.cpp
   - DataStructure/test/hld_vertexaddsubtreesum.test.cpp
+  - DataStructure/test/hld_vertexsetpathcomposite.test.cpp
   - DataStructure/test/aizu_dsl_2_b_segment_tree_sum.test.cpp
+  - DataStructure/test/segment_tree_pointaddrangesum.test.cpp
+  - DataStructure/test/segment_tree_staticrmq.test.cpp
 documentation_of: DataStructure/SegTree.h
 layout: document
 redirect_from:

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: DataStructure/RMQ.h
     title: DataStructure/RMQ.h
   _extendedRequiredBy: []
@@ -68,11 +68,11 @@ data:
   isVerificationFile: false
   path: DataStructure/LCA.h
   requiredBy: []
-  timestamp: '2022-08-11 17:15:37+08:00'
+  timestamp: '2026-06-11 20:50:04+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - DataStructure/test/aizu_grl_5_c_lca.test.cpp
   - DataStructure/test/lca.test.cpp
+  - DataStructure/test/aizu_grl_5_c_lca.test.cpp
 documentation_of: DataStructure/LCA.h
 layout: document
 redirect_from:

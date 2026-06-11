@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Graph/tests/triangles.test.cpp
     title: Graph/tests/triangles.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://judge.yosupo.jp/problem/enumerate_triangles
@@ -51,8 +51,8 @@ data:
   isVerificationFile: false
   path: Graph/find_triangles.h
   requiredBy: []
-  timestamp: '2022-01-06 04:24:18+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-06-11 20:50:04+08:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - Graph/tests/triangles.test.cpp
 documentation_of: Graph/find_triangles.h

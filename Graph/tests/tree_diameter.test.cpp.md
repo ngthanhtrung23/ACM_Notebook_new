@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Graph/tree_diameter.h
     title: Graph/tree_diameter.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/tree_diameter
@@ -50,8 +50,8 @@ data:
   isVerificationFile: true
   path: Graph/tests/tree_diameter.test.cpp
   requiredBy: []
-  timestamp: '2022-11-21 21:56:30+08:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-06-11 20:50:04+08:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: Graph/tests/tree_diameter.test.cpp
 layout: document

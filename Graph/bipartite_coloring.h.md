@@ -36,7 +36,7 @@ data:
   isVerificationFile: false
   path: Graph/bipartite_coloring.h
   requiredBy: []
-  timestamp: '2022-01-07 14:06:07+08:00'
+  timestamp: '2026-06-11 20:50:04+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Graph/bipartite_coloring.h

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: DataStructure/DSU/DSU_rollback.h
     title: DataStructure/DSU/DSU_rollback.h
   _extendedRequiredBy: []
@@ -117,7 +117,7 @@ data:
   isVerificationFile: false
   path: DataStructure/DSU/DSU_dynamic_connectivity.h
   requiredBy: []
-  timestamp: '2023-01-07 01:46:12+08:00'
+  timestamp: '2026-06-11 20:50:04+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: DataStructure/DSU/DSU_dynamic_connectivity.h

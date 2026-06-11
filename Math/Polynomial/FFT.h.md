@@ -111,7 +111,7 @@ data:
   isVerificationFile: false
   path: Math/Polynomial/FFT.h
   requiredBy: []
-  timestamp: '2023-01-16 20:41:27+07:00'
+  timestamp: '2026-06-11 20:50:04+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Math/Polynomial/FFT.h

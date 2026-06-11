@@ -2,19 +2,19 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/NumberTheory/cnt_divisors.h
     title: Math/NumberTheory/cnt_divisors.h
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/cnt_divisors_stress.test.cpp
     title: Math/tests/cnt_divisors_stress.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/sieve.test.cpp
     title: Math/tests/sieve.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 1 \"Math/Prime/Sieve.h\"\n// F is called for each prime\n//\
@@ -49,11 +49,11 @@ data:
   path: Math/Prime/Sieve.h
   requiredBy:
   - Math/NumberTheory/cnt_divisors.h
-  timestamp: '2022-12-14 02:22:04+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-06-11 20:50:04+08:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - Math/tests/cnt_divisors_stress.test.cpp
   - Math/tests/sieve.test.cpp
+  - Math/tests/cnt_divisors_stress.test.cpp
 documentation_of: Math/Prime/Sieve.h
 layout: document
 redirect_from:

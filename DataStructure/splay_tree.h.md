@@ -3,15 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: DataStructure/test/splay_tree.test.cpp
     title: DataStructure/test/splay_tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: DataStructure/test/yosupo_rangereversesum_splay.test.cpp
     title: DataStructure/test/yosupo_rangereversesum_splay.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://judge.yosupo.jp/problem/dynamic_sequence_range_affine_range_sum
@@ -332,8 +332,8 @@ data:
   isVerificationFile: false
   path: DataStructure/splay_tree.h
   requiredBy: []
-  timestamp: '2022-01-07 04:26:13+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-06-11 20:50:04+08:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - DataStructure/test/yosupo_rangereversesum_splay.test.cpp
   - DataStructure/test/splay_tree.test.cpp

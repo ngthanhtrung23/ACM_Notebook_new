@@ -190,7 +190,7 @@ data:
   isVerificationFile: false
   path: Misc/local_search.cpp
   requiredBy: []
-  timestamp: '2017-11-07 23:55:24+05:30'
+  timestamp: '2026-06-11 20:50:04+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Misc/local_search.cpp

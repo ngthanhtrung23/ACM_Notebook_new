@@ -105,12 +105,12 @@ data:
     \ nodes[i].end()), nodes[i].end());\n            f[i].resize(nodes[i].size() +\
     \ 1);\n        }\n    }\n\n    void fakeUpdate(int x, int y) {\n        for (;\
     \ x <= sx; x += x & -x)\n            nodes[x].push_back(y);\n    }\n\n    // point\
-    \ (u, v) += val\n    void update(int u, int v, int val) {\n        for(int x =\
-    \ u; x <= sx; x += x & -x)\n            for(int y = lower_bound(nodes[x].begin(),\
+    \ (u, v) += val\n    void update(int u, int v, T val) {\n        for(int x = u;\
+    \ x <= sx; x += x & -x)\n            for(int y = lower_bound(nodes[x].begin(),\
     \ nodes[x].end(), v) - nodes[x].begin() + 1; y <= (int) nodes[x].size(); y +=\
     \ y & -y)\n                f[x][y] += val;\n    }\n\n    // Get sum of point in\
     \ rectangle with corners at (1, 1) and (u, v)\n    T get(int u, int v) {\n   \
-    \     T res = 0;\n        for(int x = u; x > 0; x -= x & -x)\n            for(int\
+    \     T res{};\n        for(int x = u; x > 0; x -= x & -x)\n            for(int\
     \ y = upper_bound(nodes[x].begin(), nodes[x].end(), v) - nodes[x].begin(); y >\
     \ 0; y -= y & -y)\n                res += f[x][y];\n        return res;\n    }\n\
     };\n// }}}\n"
@@ -153,12 +153,12 @@ data:
     \ nodes[i].end()), nodes[i].end());\n            f[i].resize(nodes[i].size() +\
     \ 1);\n        }\n    }\n\n    void fakeUpdate(int x, int y) {\n        for (;\
     \ x <= sx; x += x & -x)\n            nodes[x].push_back(y);\n    }\n\n    // point\
-    \ (u, v) += val\n    void update(int u, int v, int val) {\n        for(int x =\
-    \ u; x <= sx; x += x & -x)\n            for(int y = lower_bound(nodes[x].begin(),\
+    \ (u, v) += val\n    void update(int u, int v, T val) {\n        for(int x = u;\
+    \ x <= sx; x += x & -x)\n            for(int y = lower_bound(nodes[x].begin(),\
     \ nodes[x].end(), v) - nodes[x].begin() + 1; y <= (int) nodes[x].size(); y +=\
     \ y & -y)\n                f[x][y] += val;\n    }\n\n    // Get sum of point in\
     \ rectangle with corners at (1, 1) and (u, v)\n    T get(int u, int v) {\n   \
-    \     T res = 0;\n        for(int x = u; x > 0; x -= x & -x)\n            for(int\
+    \     T res{};\n        for(int x = u; x > 0; x -= x & -x)\n            for(int\
     \ y = upper_bound(nodes[x].begin(), nodes[x].end(), v) - nodes[x].begin(); y >\
     \ 0; y -= y & -y)\n                res += f[x][y];\n        return res;\n    }\n\
     };\n// }}}\n"
@@ -167,7 +167,7 @@ data:
   isVerificationFile: false
   path: DataStructure/Fenwick/Fenwick2D.h
   requiredBy: []
-  timestamp: '2023-01-07 01:54:04+08:00'
+  timestamp: '2026-06-11 20:50:04+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/fenwick_2d_rectsum.test.cpp

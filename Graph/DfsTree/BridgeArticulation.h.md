@@ -3,18 +3,18 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Graph/tests/aizu_grl_3_a_articulation_points.test.cpp
     title: Graph/tests/aizu_grl_3_a_articulation_points.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Graph/tests/aizu_grl_3_b_bridge.test.cpp
     title: Graph/tests/aizu_grl_3_b_bridge.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Graph/tests/bridge_biconnected.test.cpp
     title: Graph/tests/bridge_biconnected.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://judge.yosupo.jp/problem/two_edge_connected_components
@@ -71,11 +71,11 @@ data:
   isVerificationFile: false
   path: Graph/DfsTree/BridgeArticulation.h
   requiredBy: []
-  timestamp: '2022-08-09 14:38:08+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-06-11 20:50:04+08:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - Graph/tests/aizu_grl_3_b_bridge.test.cpp
   - Graph/tests/aizu_grl_3_a_articulation_points.test.cpp
+  - Graph/tests/aizu_grl_3_b_bridge.test.cpp
   - Graph/tests/bridge_biconnected.test.cpp
 documentation_of: Graph/DfsTree/BridgeArticulation.h
 layout: document

@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Graph/DfsTree/StronglyConnected.h
     title: Graph/DfsTree/StronglyConnected.h
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Graph/tests/two_sat.test.cpp
     title: Graph/tests/two_sat.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://cses.fi/problemset/task/1684/
@@ -98,8 +98,8 @@ data:
   isVerificationFile: false
   path: Graph/2sat.h
   requiredBy: []
-  timestamp: '2024-06-02 18:23:02+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-06-11 20:50:04+08:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - Graph/tests/two_sat.test.cpp
 documentation_of: Graph/2sat.h

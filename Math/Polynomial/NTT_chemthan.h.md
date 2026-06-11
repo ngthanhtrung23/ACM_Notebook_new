@@ -3,18 +3,18 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/ntt_chemthan.test.cpp
     title: Math/tests/ntt_chemthan.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/ntt_chemthan_any_mod.test.cpp
     title: Math/tests/ntt_chemthan_any_mod.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/ntt_chemthan_any_mod_2.test.cpp
     title: Math/tests/ntt_chemthan_any_mod_2.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://judge.yosupo.jp/problem/convolution_mod
@@ -138,12 +138,12 @@ data:
   isVerificationFile: false
   path: Math/Polynomial/NTT_chemthan.h
   requiredBy: []
-  timestamp: '2022-08-21 23:32:29+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-06-11 20:50:04+08:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - Math/tests/ntt_chemthan_any_mod.test.cpp
   - Math/tests/ntt_chemthan.test.cpp
   - Math/tests/ntt_chemthan_any_mod_2.test.cpp
+  - Math/tests/ntt_chemthan_any_mod.test.cpp
 documentation_of: Math/Polynomial/NTT_chemthan.h
 layout: document
 redirect_from:

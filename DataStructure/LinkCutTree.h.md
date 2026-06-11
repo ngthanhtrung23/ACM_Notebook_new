@@ -9,12 +9,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/link_cut_tree_vertexaddsubtreesum.test.cpp
     title: DataStructure/test/link_cut_tree_vertexaddsubtreesum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp
     title: DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://codeforces.com/blog/entry/67637?#comment-650424
@@ -182,8 +182,8 @@ data:
   isVerificationFile: false
   path: DataStructure/LinkCutTree.h
   requiredBy: []
-  timestamp: '2022-12-24 01:16:58+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-06-11 20:50:04+08:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - DataStructure/test/link_cut_tree_addpathsum.test.cpp
   - DataStructure/test/link_cut_tree_vertexaddsubtreesum.test.cpp

@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: DataStructure/RMQ.h
     title: DataStructure/RMQ.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: buffered_reader.h
     title: buffered_reader.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/staticrmq
@@ -62,8 +62,8 @@ data:
   isVerificationFile: true
   path: DataStructure/test/rmq.test.cpp
   requiredBy: []
-  timestamp: '2022-12-14 02:22:04+08:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-06-11 20:50:04+08:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: DataStructure/test/rmq.test.cpp
 layout: document

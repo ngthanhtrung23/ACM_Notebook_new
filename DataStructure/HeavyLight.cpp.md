@@ -50,7 +50,7 @@ data:
   isVerificationFile: false
   path: DataStructure/HeavyLight.cpp
   requiredBy: []
-  timestamp: '2021-12-17 19:15:32+08:00'
+  timestamp: '2026-06-11 20:50:04+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: DataStructure/HeavyLight.cpp

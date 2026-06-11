@@ -74,7 +74,7 @@ data:
   isVerificationFile: false
   path: Math/Simplex.h
   requiredBy: []
-  timestamp: '2016-07-10 02:23:02+08:00'
+  timestamp: '2026-06-11 20:50:04+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Math/Simplex.h

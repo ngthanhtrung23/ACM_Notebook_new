@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/LCA.h
     title: DataStructure/LCA.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: DataStructure/RMQ.h
     title: DataStructure/RMQ.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: buffered_reader.h
     title: buffered_reader.h
   _extendedRequiredBy: []
@@ -86,7 +86,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/lca.test.cpp
   requiredBy: []
-  timestamp: '2022-12-14 02:22:04+08:00'
+  timestamp: '2026-06-11 20:50:04+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/lca.test.cpp

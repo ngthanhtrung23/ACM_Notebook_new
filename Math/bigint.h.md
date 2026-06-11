@@ -3,33 +3,33 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/aizu_ntl_2_a_bigint_add.test.cpp
     title: Math/tests/aizu_ntl_2_a_bigint_add.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/aizu_ntl_2_b_bigint_sub.test.cpp
     title: Math/tests/aizu_ntl_2_b_bigint_sub.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/aizu_ntl_2_c_bigint_mul.test.cpp
     title: Math/tests/aizu_ntl_2_c_bigint_mul.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/aizu_ntl_2_c_bigint_mul_karatsuba.test.cpp
     title: Math/tests/aizu_ntl_2_c_bigint_mul_karatsuba.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/aizu_ntl_2_d_bigint_div.test.cpp
     title: Math/tests/aizu_ntl_2_d_bigint_div.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/aizu_ntl_2_e_bigint_mod.test.cpp
     title: Math/tests/aizu_ntl_2_e_bigint_mod.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/aizu_ntl_2_f_bigint_mul_fft.test.cpp
     title: Math/tests/aizu_ntl_2_f_bigint_mul_fft.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/yosupo_bigint_add.test.cpp
     title: Math/tests/yosupo_bigint_add.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://codeforces.com/contest/504/submission/42348976
@@ -528,17 +528,17 @@ data:
   isVerificationFile: false
   path: Math/bigint.h
   requiredBy: []
-  timestamp: '2023-10-03 01:03:14-07:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-06-11 20:50:04+08:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
+  - Math/tests/aizu_ntl_2_c_bigint_mul_karatsuba.test.cpp
+  - Math/tests/aizu_ntl_2_f_bigint_mul_fft.test.cpp
+  - Math/tests/aizu_ntl_2_b_bigint_sub.test.cpp
+  - Math/tests/yosupo_bigint_add.test.cpp
+  - Math/tests/aizu_ntl_2_e_bigint_mod.test.cpp
+  - Math/tests/aizu_ntl_2_a_bigint_add.test.cpp
   - Math/tests/aizu_ntl_2_c_bigint_mul.test.cpp
   - Math/tests/aizu_ntl_2_d_bigint_div.test.cpp
-  - Math/tests/aizu_ntl_2_e_bigint_mod.test.cpp
-  - Math/tests/aizu_ntl_2_b_bigint_sub.test.cpp
-  - Math/tests/aizu_ntl_2_f_bigint_mul_fft.test.cpp
-  - Math/tests/aizu_ntl_2_c_bigint_mul_karatsuba.test.cpp
-  - Math/tests/aizu_ntl_2_a_bigint_add.test.cpp
-  - Math/tests/yosupo_bigint_add.test.cpp
 documentation_of: Math/bigint.h
 layout: document
 redirect_from:

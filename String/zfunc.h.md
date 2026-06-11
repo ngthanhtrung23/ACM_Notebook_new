@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: String/tests/zfunc.test.cpp
     title: String/tests/zfunc.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://judge.yosupo.jp/problem/zalgorithm
@@ -40,8 +40,8 @@ data:
   isVerificationFile: false
   path: String/zfunc.h
   requiredBy: []
-  timestamp: '2022-12-25 00:11:23+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-06-11 20:50:04+08:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - String/tests/zfunc.test.cpp
 documentation_of: String/zfunc.h

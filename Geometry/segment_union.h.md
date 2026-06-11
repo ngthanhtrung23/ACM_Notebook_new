@@ -26,7 +26,7 @@ data:
   isVerificationFile: false
   path: Geometry/segment_union.h
   requiredBy: []
-  timestamp: '2018-05-30 23:12:09+08:00'
+  timestamp: '2026-06-11 20:50:04+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Geometry/segment_union.h

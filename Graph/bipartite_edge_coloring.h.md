@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Graph/tests/bipartite_coloring.test.cpp
     title: Graph/tests/bipartite_coloring.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://codeforces.com/contest/600/problem/F
@@ -204,8 +204,8 @@ data:
   isVerificationFile: false
   path: Graph/bipartite_edge_coloring.h
   requiredBy: []
-  timestamp: '2022-01-06 03:56:46+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-06-11 20:50:04+08:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - Graph/tests/bipartite_coloring.test.cpp
 documentation_of: Graph/bipartite_edge_coloring.h

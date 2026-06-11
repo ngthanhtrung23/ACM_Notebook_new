@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Graph/MaxFlow/MaxFlowHLPP.h
     title: Graph/MaxFlow/MaxFlowHLPP.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_6_A
@@ -76,8 +76,8 @@ data:
   isVerificationFile: true
   path: Graph/tests/aizu_grl_6_a_maxflow_hlpp.test.cpp
   requiredBy: []
-  timestamp: '2023-01-07 01:46:12+08:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-06-11 20:50:04+08:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: Graph/tests/aizu_grl_6_a_maxflow_hlpp.test.cpp
 layout: document

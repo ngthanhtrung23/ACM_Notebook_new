@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Graph/tests/aizu_alds1_11_c_bfs.test.cpp
     title: Graph/tests/aizu_alds1_11_c_bfs.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://cses.fi/problemset/task/1193/
@@ -85,8 +85,8 @@ data:
   isVerificationFile: false
   path: Graph/bfs.h
   requiredBy: []
-  timestamp: '2022-12-14 02:22:04+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-06-11 20:50:04+08:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - Graph/tests/aizu_alds1_11_c_bfs.test.cpp
 documentation_of: Graph/bfs.h

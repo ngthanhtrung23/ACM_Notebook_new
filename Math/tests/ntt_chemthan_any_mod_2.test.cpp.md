@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/NumberTheory/ChineseRemainder.h
     title: Math/NumberTheory/ChineseRemainder.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/NumberTheory/ExtendedEuclid.h
     title: Math/NumberTheory/ExtendedEuclid.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/Polynomial/NTT_chemthan.h
     title: Math/Polynomial/NTT_chemthan.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/convolution_mod_1000000007
@@ -131,8 +131,8 @@ data:
   isVerificationFile: true
   path: Math/tests/ntt_chemthan_any_mod_2.test.cpp
   requiredBy: []
-  timestamp: '2022-08-21 23:45:42+08:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-06-11 20:50:04+08:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: Math/tests/ntt_chemthan_any_mod_2.test.cpp
 layout: document

@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/NumberTheory/Pollard_factorize.h
     title: Math/NumberTheory/Pollard_factorize.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/NumberTheory/cnt_divisors.h
     title: Math/NumberTheory/cnt_divisors.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/Prime/Sieve.h
     title: Math/Prime/Sieve.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/multiplicative_function.h
     title: Math/multiplicative_function.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/multiplicative_functions_linear.h
     title: Math/multiplicative_functions_linear.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A
@@ -228,8 +228,8 @@ data:
   isVerificationFile: true
   path: Math/tests/cnt_divisors_stress.test.cpp
   requiredBy: []
-  timestamp: '2023-10-22 16:42:38+08:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-06-11 20:50:04+08:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: Math/tests/cnt_divisors_stress.test.cpp
 layout: document

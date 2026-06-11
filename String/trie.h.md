@@ -69,7 +69,7 @@ data:
   isVerificationFile: false
   path: String/trie.h
   requiredBy: []
-  timestamp: '2022-12-29 17:34:35+08:00'
+  timestamp: '2026-06-11 20:50:04+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: String/trie.h

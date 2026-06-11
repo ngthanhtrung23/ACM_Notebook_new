@@ -3,15 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Misc/tests/aizu_dpl_3_b_largest_01_rectangle.test.cpp
     title: Misc/tests/aizu_dpl_3_b_largest_01_rectangle.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Misc/tests/aizu_dpl_3_c_largest_histogram.test.cpp
     title: Misc/tests/aizu_dpl_3_c_largest_histogram.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://cses.fi/problemset/task/1142
@@ -52,11 +52,11 @@ data:
   isVerificationFile: false
   path: Misc/left_nearest_smaller.h
   requiredBy: []
-  timestamp: '2022-11-01 15:19:12+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-06-11 20:50:04+08:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - Misc/tests/aizu_dpl_3_b_largest_01_rectangle.test.cpp
   - Misc/tests/aizu_dpl_3_c_largest_histogram.test.cpp
+  - Misc/tests/aizu_dpl_3_b_largest_01_rectangle.test.cpp
 documentation_of: Misc/left_nearest_smaller.h
 layout: document
 redirect_from:

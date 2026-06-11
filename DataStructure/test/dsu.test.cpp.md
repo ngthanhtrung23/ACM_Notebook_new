@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: DataStructure/DSU/DisjointSet.h
     title: DataStructure/DSU/DisjointSet.h
   _extendedRequiredBy: []
@@ -41,7 +41,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/dsu.test.cpp
   requiredBy: []
-  timestamp: '2023-01-07 01:46:12+08:00'
+  timestamp: '2026-06-11 20:50:04+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/dsu.test.cpp

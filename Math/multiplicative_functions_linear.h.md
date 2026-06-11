@@ -3,18 +3,18 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/cnt_divisors_stress.test.cpp
     title: Math/tests/cnt_divisors_stress.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/euler_phi_stress.test.cpp
     title: Math/tests/euler_phi_stress.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/smallest_prime_factor_stress.test.cpp
     title: Math/tests/smallest_prime_factor_stress.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://codeforces.com/blog/entry/54090
@@ -83,12 +83,12 @@ data:
   isVerificationFile: false
   path: Math/multiplicative_functions_linear.h
   requiredBy: []
-  timestamp: '2023-01-16 13:01:49+07:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-06-11 20:50:04+08:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
+  - Math/tests/smallest_prime_factor_stress.test.cpp
   - Math/tests/euler_phi_stress.test.cpp
   - Math/tests/cnt_divisors_stress.test.cpp
-  - Math/tests/smallest_prime_factor_stress.test.cpp
 documentation_of: Math/multiplicative_functions_linear.h
 layout: document
 redirect_from:

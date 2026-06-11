@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: DataStructure/RangeSet.h
     title: DataStructure/RangeSet.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
@@ -108,7 +108,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/aizu_dsl_4_a_range_set.test.cpp
   requiredBy: []
-  timestamp: '2022-12-31 08:30:35+00:00'
+  timestamp: '2026-06-11 20:50:04+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/aizu_dsl_4_a_range_set.test.cpp

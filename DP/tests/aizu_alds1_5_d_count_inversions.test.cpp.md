@@ -10,7 +10,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Misc/compress.h
     title: Misc/compress.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
@@ -128,7 +128,7 @@ data:
   isVerificationFile: true
   path: DP/tests/aizu_alds1_5_d_count_inversions.test.cpp
   requiredBy: []
-  timestamp: '2023-01-07 01:54:04+08:00'
+  timestamp: '2026-06-11 20:50:04+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DP/tests/aizu_alds1_5_d_count_inversions.test.cpp

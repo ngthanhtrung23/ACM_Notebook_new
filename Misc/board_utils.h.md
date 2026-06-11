@@ -27,7 +27,7 @@ data:
   isVerificationFile: false
   path: Misc/board_utils.h
   requiredBy: []
-  timestamp: '2022-12-31 11:49:15+08:00'
+  timestamp: '2026-06-11 20:50:04+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Misc/board_utils.h

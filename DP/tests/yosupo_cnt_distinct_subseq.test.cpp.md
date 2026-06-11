@@ -4,13 +4,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: DP/cnt_distinct_subseq.h
     title: DP/cnt_distinct_subseq.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Math/modint.h
     title: Math/modint.h
   - icon: ':heavy_check_mark:'
     path: Misc/compress.h
     title: Misc/compress.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
@@ -182,7 +182,7 @@ data:
   isVerificationFile: true
   path: DP/tests/yosupo_cnt_distinct_subseq.test.cpp
   requiredBy: []
-  timestamp: '2023-10-15 09:43:20+08:00'
+  timestamp: '2026-06-11 20:50:04+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DP/tests/yosupo_cnt_distinct_subseq.test.cpp

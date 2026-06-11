@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/LCA.h
     title: DataStructure/LCA.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: DataStructure/RMQ.h
     title: DataStructure/RMQ.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
@@ -97,7 +97,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/aizu_grl_5_c_lca.test.cpp
   requiredBy: []
-  timestamp: '2022-08-11 17:15:37+08:00'
+  timestamp: '2026-06-11 20:50:04+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/aizu_grl_5_c_lca.test.cpp

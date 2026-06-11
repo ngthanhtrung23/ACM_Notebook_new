@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: DP/lis.h
     title: DP/lis.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
@@ -92,7 +92,7 @@ data:
   isVerificationFile: true
   path: DP/tests/yosupo_lis.test.cpp
   requiredBy: []
-  timestamp: '2022-11-29 22:46:48+08:00'
+  timestamp: '2026-06-11 20:50:04+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DP/tests/yosupo_lis.test.cpp

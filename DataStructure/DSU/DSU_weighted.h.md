@@ -38,7 +38,7 @@ data:
   isVerificationFile: false
   path: DataStructure/DSU/DSU_weighted.h
   requiredBy: []
-  timestamp: '2023-01-07 01:46:12+08:00'
+  timestamp: '2026-06-11 20:50:04+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/aizu_dsl_1_b_dsu_weighted.test.cpp

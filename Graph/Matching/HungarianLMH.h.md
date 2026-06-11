@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Graph/tests/matching_bipartite_weighted.test.cpp
     title: Graph/tests/matching_bipartite_weighted.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://codeforces.com/contest/1437/problem/C
@@ -84,8 +84,8 @@ data:
   isVerificationFile: false
   path: Graph/Matching/HungarianLMH.h
   requiredBy: []
-  timestamp: '2022-01-06 04:03:40+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-06-11 20:50:04+08:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - Graph/tests/matching_bipartite_weighted.test.cpp
 documentation_of: Graph/Matching/HungarianLMH.h

@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/BinaryTrie.h
     title: DataStructure/BinaryTrie.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
@@ -115,7 +115,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/binary_trie.test.cpp
   requiredBy: []
-  timestamp: '2022-12-29 19:07:59+08:00'
+  timestamp: '2026-06-11 20:50:04+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/binary_trie.test.cpp

@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/Polynomial/FormalPowerSeries.h
     title: Math/Polynomial/FormalPowerSeries.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/Polynomial/NTT.h
     title: Math/Polynomial/NTT.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Math/modint.h
     title: Math/modint.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/convolution_mod_1000000007
@@ -181,8 +181,8 @@ data:
   isVerificationFile: true
   path: Math/tests/formal_power_series_multiply_any_mod.test.cpp
   requiredBy: []
-  timestamp: '2023-10-15 09:43:20+08:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-06-11 20:50:04+08:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: Math/tests/formal_power_series_multiply_any_mod.test.cpp
 layout: document

@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Geometry/tests/aizu_cgl_5_a_closest_pair.test.cpp
     title: Geometry/tests/aizu_cgl_5_a_closest_pair.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://open.kattis.com/problems/closestpair1
@@ -62,8 +62,8 @@ data:
   isVerificationFile: false
   path: Geometry/closest_pair.h
   requiredBy: []
-  timestamp: '2022-01-12 00:40:19+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-06-11 20:50:04+08:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - Geometry/tests/aizu_cgl_5_a_closest_pair.test.cpp
 documentation_of: Geometry/closest_pair.h

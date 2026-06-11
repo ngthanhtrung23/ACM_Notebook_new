@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Graph/tests/clique_maxindependentset.test.cpp
     title: Graph/tests/clique_maxindependentset.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://judge.yosupo.jp/problem/maximum_independent_set
@@ -63,8 +63,8 @@ data:
   isVerificationFile: false
   path: Graph/MaxClique.h
   requiredBy: []
-  timestamp: '2022-01-06 04:21:41+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-06-11 20:50:04+08:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - Graph/tests/clique_maxindependentset.test.cpp
 documentation_of: Graph/MaxClique.h

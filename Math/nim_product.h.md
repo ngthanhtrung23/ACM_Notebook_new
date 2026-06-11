@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/nimber.test.cpp
     title: Math/tests/nimber.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://judge.yosupo.jp/problem/nim_product_64
@@ -65,8 +65,8 @@ data:
   isVerificationFile: false
   path: Math/nim_product.h
   requiredBy: []
-  timestamp: '2021-12-31 16:23:34+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-06-11 20:50:04+08:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - Math/tests/nimber.test.cpp
 documentation_of: Math/nim_product.h

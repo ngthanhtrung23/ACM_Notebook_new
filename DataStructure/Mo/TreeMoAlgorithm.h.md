@@ -129,7 +129,7 @@ data:
   isVerificationFile: false
   path: DataStructure/Mo/TreeMoAlgorithm.h
   requiredBy: []
-  timestamp: '2023-10-03 15:03:18-07:00'
+  timestamp: '2026-06-11 20:50:04+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: DataStructure/Mo/TreeMoAlgorithm.h

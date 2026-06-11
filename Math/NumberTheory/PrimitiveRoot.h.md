@@ -41,7 +41,7 @@ data:
   isVerificationFile: false
   path: Math/NumberTheory/PrimitiveRoot.h
   requiredBy: []
-  timestamp: '2016-03-13 16:40:38+08:00'
+  timestamp: '2026-06-11 20:50:04+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Math/NumberTheory/PrimitiveRoot.h

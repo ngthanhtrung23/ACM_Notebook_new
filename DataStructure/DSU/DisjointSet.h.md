@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Graph/mst.h
     title: Graph/mst.h
   _extendedVerifiedWith:
@@ -12,15 +12,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/dsu.test.cpp
     title: DataStructure/test/dsu.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Graph/tests/aizu_grl_2_a_mst.test.cpp
     title: Graph/tests/aizu_grl_2_a_mst.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Graph/tests/yosupo_mst.test.cpp
     title: Graph/tests/yosupo_mst.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"DataStructure/DSU/DisjointSet.h\"\n// DisjointSet {{{\n\
@@ -45,13 +45,13 @@ data:
   path: DataStructure/DSU/DisjointSet.h
   requiredBy:
   - Graph/mst.h
-  timestamp: '2023-01-07 01:46:12+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-06-11 20:50:04+08:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - DataStructure/test/dsu.test.cpp
-  - DataStructure/test/aizu_dsl_1_a_dsu.test.cpp
   - Graph/tests/yosupo_mst.test.cpp
   - Graph/tests/aizu_grl_2_a_mst.test.cpp
+  - DataStructure/test/dsu.test.cpp
+  - DataStructure/test/aizu_dsl_1_a_dsu.test.cpp
 documentation_of: DataStructure/DSU/DisjointSet.h
 layout: document
 redirect_from:

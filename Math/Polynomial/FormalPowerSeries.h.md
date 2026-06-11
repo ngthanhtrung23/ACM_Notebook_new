@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/Polynomial/NTT.h
     title: Math/Polynomial/NTT.h
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/formal_power_series_multiply.test.cpp
     title: Math/tests/formal_power_series_multiply.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/formal_power_series_multiply_any_mod.test.cpp
     title: Math/tests/formal_power_series_multiply_any_mod.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 1 \"Math/Polynomial/FormalPowerSeries.h\"\n// Formal Power Series\
@@ -114,11 +114,11 @@ data:
   isVerificationFile: false
   path: Math/Polynomial/FormalPowerSeries.h
   requiredBy: []
-  timestamp: '2022-08-21 23:50:37+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-06-11 20:50:04+08:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - Math/tests/formal_power_series_multiply.test.cpp
   - Math/tests/formal_power_series_multiply_any_mod.test.cpp
+  - Math/tests/formal_power_series_multiply.test.cpp
 documentation_of: Math/Polynomial/FormalPowerSeries.h
 layout: document
 redirect_from:

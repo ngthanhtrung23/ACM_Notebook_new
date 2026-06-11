@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: DataStructure/HeavyLight_adamant.h
     title: DataStructure/HeavyLight_adamant.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: DataStructure/SegTree.h
     title: DataStructure/SegTree.h
   _extendedRequiredBy: []
@@ -214,7 +214,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/hld_vertexaddsubtreesum.test.cpp
   requiredBy: []
-  timestamp: '2023-01-04 02:50:55+08:00'
+  timestamp: '2026-06-11 20:50:04+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/hld_vertexaddsubtreesum.test.cpp

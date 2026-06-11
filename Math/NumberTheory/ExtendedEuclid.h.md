@@ -2,19 +2,19 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/NumberTheory/ChineseRemainder.h
     title: Math/NumberTheory/ChineseRemainder.h
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/aizu_ntl_1_e_extended_euclid.test.cpp
     title: Math/tests/aizu_ntl_1_e_extended_euclid.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/ntt_chemthan_any_mod_2.test.cpp
     title: Math/tests/ntt_chemthan_any_mod_2.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 1 \"Math/NumberTheory/ExtendedEuclid.h\"\n// D\xF9ng Extended\
@@ -39,8 +39,8 @@ data:
   path: Math/NumberTheory/ExtendedEuclid.h
   requiredBy:
   - Math/NumberTheory/ChineseRemainder.h
-  timestamp: '2022-01-06 17:46:09+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-06-11 20:50:04+08:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - Math/tests/aizu_ntl_1_e_extended_euclid.test.cpp
   - Math/tests/ntt_chemthan_any_mod_2.test.cpp

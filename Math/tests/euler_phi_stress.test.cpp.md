@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/Prime/EulerPhi.h
     title: Math/Prime/EulerPhi.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/multiplicative_functions_linear.h
     title: Math/multiplicative_functions_linear.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A
@@ -118,8 +118,8 @@ data:
   isVerificationFile: true
   path: Math/tests/euler_phi_stress.test.cpp
   requiredBy: []
-  timestamp: '2023-01-16 13:01:49+07:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-06-11 20:50:04+08:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: Math/tests/euler_phi_stress.test.cpp
 layout: document

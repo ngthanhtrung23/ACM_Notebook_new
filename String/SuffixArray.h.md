@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: DataStructure/RMQ.h
     title: DataStructure/RMQ.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Math/modint.h
     title: Math/modint.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: String/hash.h
     title: String/hash.h
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: String/tests/lcp.test.cpp
     title: String/tests/lcp.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: String/tests/suffix_array.test.cpp
     title: String/tests/suffix_array.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: String/tests/suffix_array_queries.test.cpp
     title: String/tests/suffix_array_queries.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://codeforces.com/blog/entry/12796?#comment-175287
@@ -468,8 +468,8 @@ data:
   isVerificationFile: false
   path: String/SuffixArray.h
   requiredBy: []
-  timestamp: '2023-10-15 09:43:20+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-06-11 20:50:04+08:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - String/tests/suffix_array_queries.test.cpp
   - String/tests/lcp.test.cpp

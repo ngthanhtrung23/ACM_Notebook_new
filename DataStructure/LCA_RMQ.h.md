@@ -41,7 +41,7 @@ data:
   isVerificationFile: false
   path: DataStructure/LCA_RMQ.h
   requiredBy: []
-  timestamp: '2017-01-10 00:30:14+08:00'
+  timestamp: '2026-06-11 20:50:04+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: DataStructure/LCA_RMQ.h

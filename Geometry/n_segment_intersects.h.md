@@ -102,7 +102,7 @@ data:
   isVerificationFile: false
   path: Geometry/n_segment_intersects.h
   requiredBy: []
-  timestamp: '2019-05-15 17:45:22+08:00'
+  timestamp: '2026-06-11 20:50:04+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Geometry/n_segment_intersects.h

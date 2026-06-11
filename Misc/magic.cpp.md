@@ -30,7 +30,7 @@ data:
   isVerificationFile: false
   path: Misc/magic.cpp
   requiredBy: []
-  timestamp: '2022-07-27 18:36:50+08:00'
+  timestamp: '2026-06-11 20:50:04+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Misc/magic.cpp

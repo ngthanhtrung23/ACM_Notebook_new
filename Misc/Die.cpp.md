@@ -4,7 +4,7 @@ data:
   - icon: ':warning:'
     path: Misc/Die.h
     title: Misc/Die.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []
@@ -67,7 +67,7 @@ data:
   isVerificationFile: false
   path: Misc/Die.cpp
   requiredBy: []
-  timestamp: '2022-01-13 13:16:22+08:00'
+  timestamp: '2026-06-11 20:50:04+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Misc/Die.cpp

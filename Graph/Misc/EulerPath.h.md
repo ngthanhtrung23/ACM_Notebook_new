@@ -69,7 +69,7 @@ data:
   isVerificationFile: false
   path: Graph/Misc/EulerPath.h
   requiredBy: []
-  timestamp: '2022-12-12 13:43:59+07:00'
+  timestamp: '2026-06-11 20:50:04+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Graph/Misc/EulerPath.h

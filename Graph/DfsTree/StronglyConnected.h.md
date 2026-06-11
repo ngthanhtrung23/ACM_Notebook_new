@@ -2,25 +2,25 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Graph/2sat.h
     title: Graph/2sat.h
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Graph/tests/aizu_grl_3_c_strongly_connected.test.cpp
     title: Graph/tests/aizu_grl_3_c_strongly_connected.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Graph/tests/aizu_grl_4_a_strongly_connected_cycle_check.test.cpp
     title: Graph/tests/aizu_grl_4_a_strongly_connected_cycle_check.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Graph/tests/strongly_connected.test.cpp
     title: Graph/tests/strongly_connected.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Graph/tests/two_sat.test.cpp
     title: Graph/tests/two_sat.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://cses.fi/problemset/task/1686/
@@ -77,12 +77,12 @@ data:
   path: Graph/DfsTree/StronglyConnected.h
   requiredBy:
   - Graph/2sat.h
-  timestamp: '2024-06-02 18:23:02+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-06-11 20:50:04+08:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
+  - Graph/tests/two_sat.test.cpp
   - Graph/tests/aizu_grl_3_c_strongly_connected.test.cpp
   - Graph/tests/strongly_connected.test.cpp
-  - Graph/tests/two_sat.test.cpp
   - Graph/tests/aizu_grl_4_a_strongly_connected_cycle_check.test.cpp
 documentation_of: Graph/DfsTree/StronglyConnected.h
 layout: document

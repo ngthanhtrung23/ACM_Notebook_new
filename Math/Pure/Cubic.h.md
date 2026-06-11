@@ -34,7 +34,7 @@ data:
   isVerificationFile: false
   path: Math/Pure/Cubic.h
   requiredBy: []
-  timestamp: '2019-10-13 14:36:50+08:00'
+  timestamp: '2026-06-11 20:50:04+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Math/Pure/Cubic.h

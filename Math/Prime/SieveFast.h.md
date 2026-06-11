@@ -3,15 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/rabin_miller_32_stress.test.cpp
     title: Math/tests/rabin_miller_32_stress.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/sieve_fast.test.cpp
     title: Math/tests/sieve_fast.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://oj.vnoi.info/problem/icpc22_national_c
@@ -142,8 +142,8 @@ data:
   isVerificationFile: false
   path: Math/Prime/SieveFast.h
   requiredBy: []
-  timestamp: '2022-12-26 19:50:08+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-06-11 20:50:04+08:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - Math/tests/rabin_miller_32_stress.test.cpp
   - Math/tests/sieve_fast.test.cpp

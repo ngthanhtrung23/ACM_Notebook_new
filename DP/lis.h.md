@@ -89,7 +89,7 @@ data:
   isVerificationFile: false
   path: DP/lis.h
   requiredBy: []
-  timestamp: '2022-11-29 22:46:48+08:00'
+  timestamp: '2026-06-11 20:50:04+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DP/tests/yosupo_lis.test.cpp

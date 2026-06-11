@@ -2,25 +2,25 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/NumberTheory/cnt_divisors.h
     title: Math/NumberTheory/cnt_divisors.h
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/aizu_ntl_1_a_factorize.test.cpp
     title: Math/tests/aizu_ntl_1_a_factorize.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/cnt_divisors_stress.test.cpp
     title: Math/tests/cnt_divisors_stress.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/factorize.test.cpp
     title: Math/tests/factorize.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/is_prime_yukicoder.test.cpp
     title: Math/tests/is_prime_yukicoder.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://judge.yosupo.jp/problem/factorize
@@ -145,13 +145,13 @@ data:
   path: Math/NumberTheory/Pollard_factorize.h
   requiredBy:
   - Math/NumberTheory/cnt_divisors.h
-  timestamp: '2023-10-22 16:42:38+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-06-11 20:50:04+08:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - Math/tests/factorize.test.cpp
-  - Math/tests/aizu_ntl_1_a_factorize.test.cpp
-  - Math/tests/cnt_divisors_stress.test.cpp
   - Math/tests/is_prime_yukicoder.test.cpp
+  - Math/tests/cnt_divisors_stress.test.cpp
+  - Math/tests/aizu_ntl_1_a_factorize.test.cpp
+  - Math/tests/factorize.test.cpp
 documentation_of: Math/NumberTheory/Pollard_factorize.h
 layout: document
 redirect_from:

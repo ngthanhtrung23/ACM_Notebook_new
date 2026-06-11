@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Graph/MaxFlow/MinCostMaxFlowSPFA.h
     title: Graph/MaxFlow/MinCostMaxFlowSPFA.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_6_B
@@ -87,8 +87,8 @@ data:
   isVerificationFile: true
   path: Graph/tests/aizu_grl_6_b_mincost_maxflow_spfa.test.cpp
   requiredBy: []
-  timestamp: '2022-01-11 21:41:41+08:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-06-11 20:50:04+08:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: Graph/tests/aizu_grl_6_b_mincost_maxflow_spfa.test.cpp
 layout: document

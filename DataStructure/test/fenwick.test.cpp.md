@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/Fenwick/Fenwick.h
     title: DataStructure/Fenwick/Fenwick.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: buffered_reader.h
     title: buffered_reader.h
   _extendedRequiredBy: []
@@ -67,7 +67,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/fenwick.test.cpp
   requiredBy: []
-  timestamp: '2023-01-07 01:54:04+08:00'
+  timestamp: '2026-06-11 20:50:04+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/fenwick.test.cpp

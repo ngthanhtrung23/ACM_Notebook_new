@@ -40,7 +40,7 @@ data:
   isVerificationFile: false
   path: Graph/Matching/StableMarriage.h
   requiredBy: []
-  timestamp: '2015-08-25 02:08:35+08:00'
+  timestamp: '2026-06-11 20:50:04+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Graph/Matching/StableMarriage.h

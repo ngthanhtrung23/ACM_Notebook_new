@@ -42,7 +42,7 @@ data:
   isVerificationFile: false
   path: DP/knapsack.h
   requiredBy: []
-  timestamp: '2023-02-03 11:05:26+08:00'
+  timestamp: '2026-06-11 20:50:04+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: DP/knapsack.h

@@ -24,7 +24,7 @@ data:
   isVerificationFile: false
   path: Misc/KnightMove.h
   requiredBy: []
-  timestamp: '2015-09-09 01:11:48+08:00'
+  timestamp: '2026-06-11 20:50:04+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Misc/KnightMove.h

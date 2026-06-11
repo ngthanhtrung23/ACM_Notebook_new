@@ -3,27 +3,27 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Geometry/tests/aizu_cgl_7_a_cicle_tangents.test.cpp
     title: Geometry/tests/aizu_cgl_7_a_cicle_tangents.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Geometry/tests/aizu_cgl_7_d_circle_line_intersection.test.cpp
     title: Geometry/tests/aizu_cgl_7_d_circle_line_intersection.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Geometry/tests/aizu_cgl_7_e_circle_circle_intersection.test.cpp
     title: Geometry/tests/aizu_cgl_7_e_circle_circle_intersection.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Geometry/tests/aizu_cgl_7_f_circle_tangent_points.test.cpp
     title: Geometry/tests/aizu_cgl_7_f_circle_tangent_points.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Geometry/tests/aizu_cgl_7_g_circle_circle_tangent_points.test.cpp
     title: Geometry/tests/aizu_cgl_7_g_circle_circle_tangent_points.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Geometry/tests/aizu_cgl_7_i_circle_common_area.test.cpp
     title: Geometry/tests/aizu_cgl_7_i_circle_common_area.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - http://codeforces.com/contest/600/problem/D
@@ -149,15 +149,15 @@ data:
   isVerificationFile: false
   path: Geometry/circle.h
   requiredBy: []
-  timestamp: '2022-01-11 12:26:06+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-06-11 20:50:04+08:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - Geometry/tests/aizu_cgl_7_i_circle_common_area.test.cpp
-  - Geometry/tests/aizu_cgl_7_a_cicle_tangents.test.cpp
-  - Geometry/tests/aizu_cgl_7_e_circle_circle_intersection.test.cpp
-  - Geometry/tests/aizu_cgl_7_d_circle_line_intersection.test.cpp
   - Geometry/tests/aizu_cgl_7_f_circle_tangent_points.test.cpp
+  - Geometry/tests/aizu_cgl_7_a_cicle_tangents.test.cpp
   - Geometry/tests/aizu_cgl_7_g_circle_circle_tangent_points.test.cpp
+  - Geometry/tests/aizu_cgl_7_d_circle_line_intersection.test.cpp
+  - Geometry/tests/aizu_cgl_7_i_circle_common_area.test.cpp
+  - Geometry/tests/aizu_cgl_7_e_circle_circle_intersection.test.cpp
 documentation_of: Geometry/circle.h
 layout: document
 redirect_from:

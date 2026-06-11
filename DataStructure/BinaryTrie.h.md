@@ -123,7 +123,7 @@ data:
   isVerificationFile: false
   path: DataStructure/BinaryTrie.h
   requiredBy: []
-  timestamp: '2022-12-29 19:07:59+08:00'
+  timestamp: '2026-06-11 20:50:04+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/binary_trie.test.cpp

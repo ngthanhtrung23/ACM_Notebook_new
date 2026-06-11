@@ -2,10 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: String/SuffixArray.h
     title: String/SuffixArray.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: String/hash.h
     title: String/hash.h
   _extendedVerifiedWith:
@@ -15,63 +15,63 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/hld_vertexsetpathcomposite.test.cpp
     title: DataStructure/test/hld_vertexsetpathcomposite.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp
     title: DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
     title: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: DataStructure/test/segment_tree_rangeaffinepointget.test.cpp
     title: DataStructure/test/segment_tree_rangeaffinepointget.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
     title: DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: DataStructure/test/splay_tree.test.cpp
     title: DataStructure/test/splay_tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp
     title: Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/berlekamp_massey.test.cpp
     title: Math/tests/berlekamp_massey.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/formal_power_series_multiply.test.cpp
     title: Math/tests/formal_power_series_multiply.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/formal_power_series_multiply_any_mod.test.cpp
     title: Math/tests/formal_power_series_multiply_any_mod.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/matrix_mult.test.cpp
     title: Math/tests/matrix_mult.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/ntt.test.cpp
     title: Math/tests/ntt.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/tests/ntt_any_mod.test.cpp
     title: Math/tests/ntt_any_mod.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: String/tests/aizu_alds_14_b_string_hash.test.cpp
     title: String/tests/aizu_alds_14_b_string_hash.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: String/tests/lcp.test.cpp
     title: String/tests/lcp.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: String/tests/suffix_array.test.cpp
     title: String/tests/suffix_array.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: String/tests/suffix_array_queries.test.cpp
     title: String/tests/suffix_array_queries.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: String/tests/yukicoder_1408_string_hash_lcp.test.cpp
     title: String/tests/yukicoder_1408_string_hash_lcp.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: String/tests/zfunc_hash.test.cpp
     title: String/tests/zfunc_hash.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"Math/modint.h\"\n// ModInt {{{\ntemplate<int MD> struct\
@@ -207,29 +207,29 @@ data:
   requiredBy:
   - String/hash.h
   - String/SuffixArray.h
-  timestamp: '2023-10-15 09:43:20+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-06-11 20:50:04+08:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - DP/tests/yosupo_cnt_distinct_subseq.test.cpp
+  - String/tests/yukicoder_1408_string_hash_lcp.test.cpp
+  - String/tests/zfunc_hash.test.cpp
+  - String/tests/aizu_alds_14_b_string_hash.test.cpp
   - String/tests/suffix_array_queries.test.cpp
   - String/tests/lcp.test.cpp
-  - String/tests/aizu_alds_14_b_string_hash.test.cpp
   - String/tests/suffix_array.test.cpp
-  - String/tests/zfunc_hash.test.cpp
-  - String/tests/yukicoder_1408_string_hash_lcp.test.cpp
-  - DP/tests/yosupo_cnt_distinct_subseq.test.cpp
   - DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
-  - DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
   - DataStructure/test/hld_vertexsetpathcomposite.test.cpp
-  - DataStructure/test/segment_tree_rangeaffinepointget.test.cpp
   - DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp
+  - DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
   - DataStructure/test/splay_tree.test.cpp
-  - Math/tests/formal_power_series_multiply.test.cpp
+  - DataStructure/test/segment_tree_rangeaffinepointget.test.cpp
+  - Math/tests/formal_power_series_multiply_any_mod.test.cpp
   - Math/tests/berlekamp_massey.test.cpp
   - Math/tests/matrix_mult.test.cpp
-  - Math/tests/formal_power_series_multiply_any_mod.test.cpp
-  - Math/tests/ntt_any_mod.test.cpp
   - Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp
+  - Math/tests/ntt_any_mod.test.cpp
   - Math/tests/ntt.test.cpp
+  - Math/tests/formal_power_series_multiply.test.cpp
 documentation_of: Math/modint.h
 layout: document
 redirect_from:
