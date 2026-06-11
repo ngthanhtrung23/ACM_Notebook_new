@@ -76,7 +76,7 @@ struct Fenwick2D {
                 update(query.x, query.y, query.weight);
             } else {
                 res.push_back(
-                    + get(query.x2 - 1, query.y2 - 1)
+                      get(query.x2 - 1, query.y2 - 1)
                     - get(query.x2 - 1, query.y  - 1)
                     - get(query.x  - 1, query.y2 - 1)
                     + get(query.x  - 1, query.y  - 1)
