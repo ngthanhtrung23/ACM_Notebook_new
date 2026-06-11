@@ -5,12 +5,14 @@ on: push
 jobs:
   verify:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v4
 
     - name: Set up Python
-      uses: actions/setup-python@v1
+      uses: actions/setup-python@v5
 
     - name: Install dependencies
       run: pip3 install -U git+https://github.com/ngthanhtrung23/verification-helper.git@master
