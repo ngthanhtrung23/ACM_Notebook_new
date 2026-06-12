@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Graph/tests/aizu_grl_6_a_maxflow_hlpp.test.cpp
     title: Graph/tests/aizu_grl_6_a_maxflow_hlpp.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://codeforces.com/blog/entry/66006
@@ -109,7 +109,7 @@ data:
   path: Graph/MaxFlow/MaxFlowHLPP.h
   requiredBy: []
   timestamp: '2023-01-07 01:46:12+08:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Graph/tests/aizu_grl_6_a_maxflow_hlpp.test.cpp
 documentation_of: Graph/MaxFlow/MaxFlowHLPP.h

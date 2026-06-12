@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Geometry/basic.h
     title: Geometry/basic.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Geometry/polygon.h
     title: Geometry/polygon.h
   - icon: ':question:'
@@ -12,9 +12,9 @@ data:
     title: template.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_B
@@ -246,7 +246,7 @@ data:
   path: Geometry/tests/z_polygon_is_convex.test.cpp
   requiredBy: []
   timestamp: '2022-07-20 01:28:51+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Geometry/tests/z_polygon_is_convex.test.cpp
 layout: document

@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Graph/tests/aizu_grl_6_a_maxflow_dinic.test.cpp
     title: Graph/tests/aizu_grl_6_a_maxflow_dinic.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://oj.vnoi.info/problem/fflow
@@ -80,7 +80,7 @@ data:
   path: Graph/MaxFlow/MaxFlowDinic.h
   requiredBy: []
   timestamp: '2022-01-10 00:23:15+08:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Graph/tests/aizu_grl_6_a_maxflow_dinic.test.cpp
 documentation_of: Graph/MaxFlow/MaxFlowDinic.h

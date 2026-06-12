@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Graph/DfsTree/BridgeArticulation.h
     title: Graph/DfsTree/BridgeArticulation.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_B
@@ -65,7 +65,7 @@ data:
   path: Graph/tests/aizu_grl_3_b_bridge.test.cpp
   requiredBy: []
   timestamp: '2022-08-09 14:38:08+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Graph/tests/aizu_grl_3_b_bridge.test.cpp
 layout: document

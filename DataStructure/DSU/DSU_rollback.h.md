@@ -5,19 +5,19 @@ data:
   - icon: ':warning:'
     path: DataStructure/DSU/DSU_dynamic_connectivity.h
     title: DataStructure/DSU/DSU_dynamic_connectivity.h
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Graph/DirectedMST.h
     title: Graph/DirectedMST.h
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Graph/tests/aizu_grl_2_b_directed_mst.test.cpp
     title: Graph/tests/aizu_grl_2_b_directed_mst.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Graph/tests/directed_mst.test.cpp
     title: Graph/tests/directed_mst.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://codeforces.com/gym/100551/problem/A
@@ -67,7 +67,7 @@ data:
   - Graph/DirectedMST.h
   - DataStructure/DSU/DSU_dynamic_connectivity.h
   timestamp: '2023-01-07 01:46:12+08:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Graph/tests/aizu_grl_2_b_directed_mst.test.cpp
   - Graph/tests/directed_mst.test.cpp

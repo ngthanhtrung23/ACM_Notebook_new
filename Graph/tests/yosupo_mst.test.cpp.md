@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/DSU/DisjointSet.h
     title: DataStructure/DSU/DisjointSet.h
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Graph/mst.h
     title: Graph/mst.h
   - icon: ':question:'
@@ -12,9 +12,9 @@ data:
     title: template.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/minimum_spanning_tree
@@ -87,7 +87,7 @@ data:
   path: Graph/tests/yosupo_mst.test.cpp
   requiredBy: []
   timestamp: '2024-03-17 02:51:32+00:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Graph/tests/yosupo_mst.test.cpp
 layout: document

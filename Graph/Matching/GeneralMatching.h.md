@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Graph/tests/matching_general.test.cpp
     title: Graph/tests/matching_general.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://acm.timus.ru/problem.aspx?space=1&num=1099
@@ -90,7 +90,7 @@ data:
   path: Graph/Matching/GeneralMatching.h
   requiredBy: []
   timestamp: '2021-12-19 00:19:58+08:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Graph/tests/matching_general.test.cpp
 documentation_of: Graph/Matching/GeneralMatching.h

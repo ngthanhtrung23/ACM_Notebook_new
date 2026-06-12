@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Graph/tree_diameter.h
     title: Graph/tree_diameter.h
   - icon: ':question:'
@@ -9,9 +9,9 @@ data:
     title: template.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_A
@@ -75,7 +75,7 @@ data:
   path: Graph/tests/aizu_grl_5_a_tree_diameter.test.cpp
   requiredBy: []
   timestamp: '2022-11-21 21:56:30+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Graph/tests/aizu_grl_5_a_tree_diameter.test.cpp
 layout: document

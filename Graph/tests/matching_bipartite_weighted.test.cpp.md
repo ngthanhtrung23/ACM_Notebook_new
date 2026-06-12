@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Graph/Matching/HungarianLMH.h
     title: Graph/Matching/HungarianLMH.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/assignment
@@ -69,7 +69,7 @@ data:
   path: Graph/tests/matching_bipartite_weighted.test.cpp
   requiredBy: []
   timestamp: '2022-01-10 00:30:04+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Graph/tests/matching_bipartite_weighted.test.cpp
 layout: document

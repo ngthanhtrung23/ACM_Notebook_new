@@ -114,13 +114,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/DSU/DSU_persistent.h
       title: DataStructure/DSU/DSU_persistent.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/DSU/DSU_rollback.h
       title: DataStructure/DSU/DSU_rollback.h
     - icon: ':heavy_check_mark:'
       path: DataStructure/DSU/DSU_weighted.h
       title: DataStructure/DSU/DSU_weighted.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/DSU/DisjointSet.h
       title: DataStructure/DSU/DisjointSet.h
   - name: DataStructure/Fenwick
@@ -187,7 +187,7 @@ data:
     - icon: ':warning:'
       path: Geometry/RectInRect.h
       title: Geometry/RectInRect.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Geometry/basic.h
       title: Geometry/basic.h
     - icon: ':heavy_check_mark:'
@@ -199,7 +199,7 @@ data:
     - icon: ':warning:'
       path: Geometry/n_segment_intersects.h
       title: Geometry/n_segment_intersects.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Geometry/polygon.h
       title: Geometry/polygon.h
     - icon: ':warning:'
@@ -222,16 +222,16 @@ data:
       title: Geometry/voronoi.cpp
   - name: Graph
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/2sat.h
       title: Graph/2sat.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/DirectedMST.h
       title: Graph/DirectedMST.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/MaxClique.h
       title: Graph/MaxClique.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/bfs.h
       title: Graph/bfs.h
     - icon: ':warning:'
@@ -240,28 +240,28 @@ data:
     - icon: ':warning:'
       path: Graph/bipartite_coloring.h
       title: Graph/bipartite_coloring.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/bipartite_edge_coloring.h
       title: Graph/bipartite_edge_coloring.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/dijkstra.h
       title: Graph/dijkstra.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/find_triangles.h
       title: Graph/find_triangles.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/floyd.h
       title: Graph/floyd.h
     - icon: ':warning:'
       path: Graph/ford_bellman.h
       title: Graph/ford_bellman.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/mst.h
       title: Graph/mst.h
     - icon: ':warning:'
       path: Graph/topo_sort.h
       title: Graph/topo_sort.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/tree_diameter.h
       title: Graph/tree_diameter.h
   - name: Graph/DfsTree
@@ -269,21 +269,21 @@ data:
     - icon: ':warning:'
       path: Graph/DfsTree/BiconnectedComponent.h
       title: Graph/DfsTree/BiconnectedComponent.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/DfsTree/BridgeArticulation.h
       title: Graph/DfsTree/BridgeArticulation.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/DfsTree/StronglyConnected.h
       title: Graph/DfsTree/StronglyConnected.h
   - name: Graph/Matching
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/Matching/BipartiteMatching.h
       title: Graph/Matching/BipartiteMatching.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/Matching/GeneralMatching.h
       title: Graph/Matching/GeneralMatching.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/Matching/HungarianLMH.h
       title: Graph/Matching/HungarianLMH.h
     - icon: ':x:'
@@ -297,25 +297,25 @@ data:
     - icon: ':warning:'
       path: Graph/MaxFlow/GomoryHu.h
       title: Graph/MaxFlow/GomoryHu.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/MaxFlow/MaxFlowDinic.h
       title: Graph/MaxFlow/MaxFlowDinic.h
     - icon: ':warning:'
       path: Graph/MaxFlow/MaxFlowDinicTrace.h
       title: Graph/MaxFlow/MaxFlowDinicTrace.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/MaxFlow/MaxFlowHLPP.h
       title: Graph/MaxFlow/MaxFlowHLPP.h
     - icon: ':warning:'
       path: Graph/MaxFlow/MaxFlowLMH.h
       title: Graph/MaxFlow/MaxFlowLMH.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/MaxFlow/MaxFlowPR.h
       title: Graph/MaxFlow/MaxFlowPR.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/MaxFlow/MinCostMaxFlowPR.h
       title: Graph/MaxFlow/MinCostMaxFlowPR.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/MaxFlow/MinCostMaxFlowSPFA.h
       title: Graph/MaxFlow/MinCostMaxFlowSPFA.h
     - icon: ':warning:'
@@ -827,114 +827,114 @@ data:
     - icon: ':heavy_check_mark:'
       path: Geometry/tests/aizu_cgl_7_i_circle_common_area.test.cpp
       title: Geometry/tests/aizu_cgl_7_i_circle_common_area.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Geometry/tests/polygon_in_convex.test.cpp
       title: Geometry/tests/polygon_in_convex.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Geometry/tests/z_basic_ccw.test.cpp
       title: Geometry/tests/z_basic_ccw.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Geometry/tests/z_basic_segment_intersect.test.cpp
       title: Geometry/tests/z_basic_segment_intersect.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Geometry/tests/z_polygon_area.test.cpp
       title: Geometry/tests/z_polygon_area.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Geometry/tests/z_polygon_convexhull.test.cpp
       title: Geometry/tests/z_polygon_convexhull.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Geometry/tests/z_polygon_is_convex.test.cpp
       title: Geometry/tests/z_polygon_is_convex.test.cpp
   - name: Graph/tests
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/aizu_alds1_11_c_bfs.test.cpp
       title: Graph/tests/aizu_alds1_11_c_bfs.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/aizu_grl_1_a_dijkstra_aizu.test.cpp
       title: Graph/tests/aizu_grl_1_a_dijkstra_aizu.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/aizu_grl_1_c_floyd.test.cpp
       title: Graph/tests/aizu_grl_1_c_floyd.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/aizu_grl_2_a_mst.test.cpp
       title: Graph/tests/aizu_grl_2_a_mst.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/aizu_grl_2_b_directed_mst.test.cpp
       title: Graph/tests/aizu_grl_2_b_directed_mst.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/aizu_grl_3_a_articulation_points.test.cpp
       title: Graph/tests/aizu_grl_3_a_articulation_points.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/aizu_grl_3_b_bridge.test.cpp
       title: Graph/tests/aizu_grl_3_b_bridge.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/aizu_grl_3_c_strongly_connected.test.cpp
       title: Graph/tests/aizu_grl_3_c_strongly_connected.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/aizu_grl_4_a_strongly_connected_cycle_check.test.cpp
       title: Graph/tests/aizu_grl_4_a_strongly_connected_cycle_check.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/aizu_grl_5_a_tree_diameter.test.cpp
       title: Graph/tests/aizu_grl_5_a_tree_diameter.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/aizu_grl_6_a_maxflow_dinic.test.cpp
       title: Graph/tests/aizu_grl_6_a_maxflow_dinic.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/aizu_grl_6_a_maxflow_hlpp.test.cpp
       title: Graph/tests/aizu_grl_6_a_maxflow_hlpp.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/aizu_grl_6_a_maxflow_pr.test.cpp
       title: Graph/tests/aizu_grl_6_a_maxflow_pr.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/aizu_grl_6_b_mincost_maxflow.test.cpp
       title: Graph/tests/aizu_grl_6_b_mincost_maxflow.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/aizu_grl_6_b_mincost_maxflow_spfa.test.cpp
       title: Graph/tests/aizu_grl_6_b_mincost_maxflow_spfa.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/aizu_grl_7_a_matching_bipartite.test.cpp
       title: Graph/tests/aizu_grl_7_a_matching_bipartite.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/bipartite_coloring.test.cpp
       title: Graph/tests/bipartite_coloring.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/bridge_biconnected.test.cpp
       title: Graph/tests/bridge_biconnected.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/clique_maxindependentset.test.cpp
       title: Graph/tests/clique_maxindependentset.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/dijkstra.test.cpp
       title: Graph/tests/dijkstra.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/directed_mst.test.cpp
       title: Graph/tests/directed_mst.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/matching_bipartite.test.cpp
       title: Graph/tests/matching_bipartite.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/matching_bipartite_weighted.test.cpp
       title: Graph/tests/matching_bipartite_weighted.test.cpp
     - icon: ':x:'
       path: Graph/tests/matching_bipartite_weighted_2.test.cpp
       title: Graph/tests/matching_bipartite_weighted_2.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/matching_general.test.cpp
       title: Graph/tests/matching_general.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/strongly_connected.test.cpp
       title: Graph/tests/strongly_connected.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/tree_diameter.test.cpp
       title: Graph/tests/tree_diameter.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/triangles.test.cpp
       title: Graph/tests/triangles.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/two_sat.test.cpp
       title: Graph/tests/two_sat.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/yosupo_mst.test.cpp
       title: Graph/tests/yosupo_mst.test.cpp
   - name: Math/tests

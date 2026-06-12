@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/DSU/DSU_rollback.h
     title: DataStructure/DSU/DSU_rollback.h
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Graph/DirectedMST.h
     title: Graph/DirectedMST.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/directedmst
@@ -92,7 +92,7 @@ data:
   path: Graph/tests/directed_mst.test.cpp
   requiredBy: []
   timestamp: '2023-01-07 01:46:12+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Graph/tests/directed_mst.test.cpp
 layout: document

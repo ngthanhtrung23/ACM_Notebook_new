@@ -3,15 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Graph/tests/aizu_grl_1_a_dijkstra_aizu.test.cpp
     title: Graph/tests/aizu_grl_1_a_dijkstra_aizu.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Graph/tests/dijkstra.test.cpp
     title: Graph/tests/dijkstra.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://judge.yosupo.jp/problem/shortest_path
@@ -65,7 +65,7 @@ data:
   path: Graph/dijkstra.h
   requiredBy: []
   timestamp: '2022-12-26 16:37:58+08:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Graph/tests/aizu_grl_1_a_dijkstra_aizu.test.cpp
   - Graph/tests/dijkstra.test.cpp

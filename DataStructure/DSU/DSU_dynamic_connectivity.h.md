@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/DSU/DSU_rollback.h
     title: DataStructure/DSU/DSU_rollback.h
   _extendedRequiredBy: []

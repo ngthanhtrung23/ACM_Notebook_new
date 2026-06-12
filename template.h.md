@@ -156,40 +156,40 @@ data:
   - icon: ':heavy_check_mark:'
     path: Geometry/tests/aizu_cgl_7_i_circle_common_area.test.cpp
     title: Geometry/tests/aizu_cgl_7_i_circle_common_area.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Geometry/tests/polygon_in_convex.test.cpp
     title: Geometry/tests/polygon_in_convex.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Geometry/tests/z_basic_ccw.test.cpp
     title: Geometry/tests/z_basic_ccw.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Geometry/tests/z_basic_segment_intersect.test.cpp
     title: Geometry/tests/z_basic_segment_intersect.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Geometry/tests/z_polygon_area.test.cpp
     title: Geometry/tests/z_polygon_area.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Geometry/tests/z_polygon_convexhull.test.cpp
     title: Geometry/tests/z_polygon_convexhull.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Geometry/tests/z_polygon_is_convex.test.cpp
     title: Geometry/tests/z_polygon_is_convex.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Graph/tests/aizu_grl_1_c_floyd.test.cpp
     title: Graph/tests/aizu_grl_1_c_floyd.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Graph/tests/aizu_grl_2_a_mst.test.cpp
     title: Graph/tests/aizu_grl_2_a_mst.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Graph/tests/aizu_grl_3_a_articulation_points.test.cpp
     title: Graph/tests/aizu_grl_3_a_articulation_points.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Graph/tests/aizu_grl_4_a_strongly_connected_cycle_check.test.cpp
     title: Graph/tests/aizu_grl_4_a_strongly_connected_cycle_check.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Graph/tests/aizu_grl_5_a_tree_diameter.test.cpp
     title: Graph/tests/aizu_grl_5_a_tree_diameter.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Graph/tests/yosupo_mst.test.cpp
     title: Graph/tests/yosupo_mst.test.cpp
   - icon: ':x:'

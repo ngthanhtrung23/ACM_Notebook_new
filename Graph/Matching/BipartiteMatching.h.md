@@ -3,15 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Graph/tests/aizu_grl_7_a_matching_bipartite.test.cpp
     title: Graph/tests/aizu_grl_7_a_matching_bipartite.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Graph/tests/matching_bipartite.test.cpp
     title: Graph/tests/matching_bipartite.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://codeforces.com/gym/100337
@@ -77,7 +77,7 @@ data:
   path: Graph/Matching/BipartiteMatching.h
   requiredBy: []
   timestamp: '2023-01-28 18:33:13+08:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Graph/tests/matching_bipartite.test.cpp
   - Graph/tests/aizu_grl_7_a_matching_bipartite.test.cpp

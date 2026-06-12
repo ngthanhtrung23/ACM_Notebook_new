@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/DSU/DisjointSet.h
     title: DataStructure/DSU/DisjointSet.h
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Graph/tests/aizu_grl_2_a_mst.test.cpp
     title: Graph/tests/aizu_grl_2_a_mst.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Graph/tests/yosupo_mst.test.cpp
     title: Graph/tests/yosupo_mst.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"Graph/mst.h\"\n// MST. 0-based index\n//\n// Returns:\n\
@@ -56,7 +56,7 @@ data:
   path: Graph/mst.h
   requiredBy: []
   timestamp: '2024-03-17 02:51:32+00:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Graph/tests/yosupo_mst.test.cpp
   - Graph/tests/aizu_grl_2_a_mst.test.cpp

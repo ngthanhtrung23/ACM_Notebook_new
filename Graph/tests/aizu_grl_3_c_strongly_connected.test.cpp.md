@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Graph/DfsTree/StronglyConnected.h
     title: Graph/DfsTree/StronglyConnected.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_C
@@ -59,7 +59,7 @@ data:
   path: Graph/tests/aizu_grl_3_c_strongly_connected.test.cpp
   requiredBy: []
   timestamp: '2024-06-02 18:23:02+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Graph/tests/aizu_grl_3_c_strongly_connected.test.cpp
 layout: document
