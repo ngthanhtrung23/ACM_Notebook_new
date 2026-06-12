@@ -13,7 +13,7 @@ int32_t main() {
     int n; cin >> n;
     REP(i,n) REP(j,n) cin >> c[i][j];
 
-    auto [cost, matchL] = Hungarian<long long>(n, n, c);
+    auto [cost, matchL] = hungarian<long long>(n, n, c);
     cout << cost << endl;
     for (int m : matchL) cout << m << ' ';
     cout << endl;
