@@ -4,11 +4,11 @@
 #include "../NumberTheory/Pollard_factorize.h"
 
 void solve() {
-    int q; cin >> q;
-    while (q--) {
-        long long n;
-        cin >> n;
-        cout << n << ' ' << isPrime(n) << '\n';
-    }
+    // int q; cin >> q;
+    // while (q--) {
+    //     long long n;
+    //     cin >> n;
+    //     cout << n << ' ' << isPrime(n) << '\n';
+    // }
 }
 
