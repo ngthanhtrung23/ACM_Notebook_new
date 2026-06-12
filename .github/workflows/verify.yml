@@ -1,6 +1,9 @@
 name: verify
 
-on: push
+on:
+  push:
+    paths-ignore:
+      - '.verify-helper/**'
 
 jobs:
   verify:
