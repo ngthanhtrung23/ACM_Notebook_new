@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Misc/container_pipe_utils.h
     title: Misc/container_pipe_utils.h
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: debug.h
     title: debug.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A
@@ -124,7 +124,7 @@ data:
   path: Misc/tests/pipe_utils.test.cpp
   requiredBy: []
   timestamp: '2023-05-21 16:46:44+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Misc/tests/pipe_utils.test.cpp
 layout: document

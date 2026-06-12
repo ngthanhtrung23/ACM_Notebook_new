@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/LCA.h
     title: DataStructure/LCA.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/RMQ.h
     title: DataStructure/RMQ.h
   - icon: ':heavy_check_mark:'

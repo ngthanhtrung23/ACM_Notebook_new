@@ -79,7 +79,7 @@ data:
     - icon: ':warning:'
       path: DataStructure/PersistentSegTree.h
       title: DataStructure/PersistentSegTree.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/RMQ.h
       title: DataStructure/RMQ.h
     - icon: ':heavy_check_mark:'
@@ -354,7 +354,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/bigint.h
       title: Math/bigint.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Math/modint.h
       title: Math/modint.h
     - icon: ':warning:'
@@ -391,7 +391,7 @@ data:
     - icon: ':warning:'
       path: Math/NumberTheory/FactorialMod.h
       title: Math/NumberTheory/FactorialMod.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Math/NumberTheory/Pollard_factorize.h
       title: Math/NumberTheory/Pollard_factorize.h
     - icon: ':warning:'
@@ -501,16 +501,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: Misc/compress.h
       title: Misc/compress.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Misc/container_pipe_utils.h
       title: Misc/container_pipe_utils.h
     - icon: ':warning:'
       path: Misc/input_utils.h
       title: Misc/input_utils.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Misc/int128.h
       title: Misc/int128.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Misc/left_nearest_smaller.h
       title: Misc/left_nearest_smaller.h
     - icon: ':warning:'
@@ -542,10 +542,10 @@ data:
     - icon: ':warning:'
       path: String/PalindromeTree_eertree.cpp
       title: String/PalindromeTree_eertree.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: String/SuffixArray.h
       title: String/SuffixArray.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: String/hash.h
       title: String/hash.h
     - icon: ':warning:'
@@ -560,7 +560,7 @@ data:
     - icon: ':warning:'
       path: String/maine_lorentz.h
       title: String/maine_lorentz.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: String/manacher.h
       title: String/manacher.h
     - icon: ':warning:'
@@ -575,7 +575,7 @@ data:
     - icon: ':warning:'
       path: String/trie.h
       title: String/trie.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: String/zfunc.h
       title: String/zfunc.h
   - name: .
@@ -583,13 +583,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: buffered_reader.h
       title: buffered_reader.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: debug.h
       title: debug.h
     - icon: ':warning:'
       path: stack_increase.cpp
       title: stack_increase.cpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template.h
       title: template.h
   verificationCategories:
@@ -996,9 +996,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/tests/formal_power_series_multiply_any_mod.test.cpp
       title: Math/tests/formal_power_series_multiply_any_mod.test.cpp
-    - icon: ':x:'
-      path: Math/tests/is_prime_yukicoder.test.cpp
-      title: Math/tests/is_prime_yukicoder.test.cpp
     - icon: ':heavy_check_mark:'
       path: Math/tests/matrix_det.test.cpp
       title: Math/tests/matrix_det.test.cpp
@@ -1055,42 +1052,42 @@ data:
       title: Math/tests/yosupo_primality_rabin_miller.test.cpp
   - name: Misc/tests
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Misc/tests/aizu_dpl_3_b_largest_01_rectangle.test.cpp
       title: Misc/tests/aizu_dpl_3_b_largest_01_rectangle.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Misc/tests/aizu_dpl_3_c_largest_histogram.test.cpp
       title: Misc/tests/aizu_dpl_3_c_largest_histogram.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Misc/tests/pipe_utils.test.cpp
       title: Misc/tests/pipe_utils.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Misc/tests/yosupo_int128.test.cpp
       title: Misc/tests/yosupo_int128.test.cpp
   - name: String/tests
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: String/tests/aizu_alds_14_b_string_hash.test.cpp
       title: String/tests/aizu_alds_14_b_string_hash.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: String/tests/lcp.test.cpp
       title: String/tests/lcp.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: String/tests/manacher.test.cpp
       title: String/tests/manacher.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: String/tests/suffix_array.test.cpp
       title: String/tests/suffix_array.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: String/tests/suffix_array_queries.test.cpp
       title: String/tests/suffix_array_queries.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: String/tests/yukicoder_1408_string_hash_lcp.test.cpp
       title: String/tests/yukicoder_1408_string_hash_lcp.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: String/tests/zfunc.test.cpp
       title: String/tests/zfunc.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: String/tests/zfunc_hash.test.cpp
       title: String/tests/zfunc_hash.test.cpp
 layout: toppage

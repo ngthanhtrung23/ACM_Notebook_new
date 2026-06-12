@@ -1,35 +1,35 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Math/modint.h
     title: Math/modint.h
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: String/SuffixArray.h
     title: String/SuffixArray.h
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: String/tests/aizu_alds_14_b_string_hash.test.cpp
     title: String/tests/aizu_alds_14_b_string_hash.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: String/tests/lcp.test.cpp
     title: String/tests/lcp.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: String/tests/suffix_array.test.cpp
     title: String/tests/suffix_array.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: String/tests/suffix_array_queries.test.cpp
     title: String/tests/suffix_array_queries.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: String/tests/yukicoder_1408_string_hash_lcp.test.cpp
     title: String/tests/yukicoder_1408_string_hash_lcp.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: String/tests/zfunc_hash.test.cpp
     title: String/tests/zfunc_hash.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://oj.vnoi.info/problem/dtksub
@@ -231,7 +231,7 @@ data:
   requiredBy:
   - String/SuffixArray.h
   timestamp: '2023-10-15 09:43:20+08:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - String/tests/yukicoder_1408_string_hash_lcp.test.cpp
   - String/tests/zfunc_hash.test.cpp

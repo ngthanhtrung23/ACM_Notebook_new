@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: DP/lis.h
     title: DP/lis.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.h
     title: template.h
   _extendedRequiredBy: []

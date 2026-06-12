@@ -15,12 +15,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Math/tests/factorize.test.cpp
     title: Math/tests/factorize.test.cpp
-  - icon: ':x:'
-    path: Math/tests/is_prime_yukicoder.test.cpp
-    title: Math/tests/is_prime_yukicoder.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://judge.yosupo.jp/problem/factorize
@@ -146,9 +143,8 @@ data:
   requiredBy:
   - Math/NumberTheory/cnt_divisors.h
   timestamp: '2023-10-22 16:42:38+08:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Math/tests/is_prime_yukicoder.test.cpp
   - Math/tests/cnt_divisors_stress.test.cpp
   - Math/tests/aizu_ntl_1_a_factorize.test.cpp
   - Math/tests/factorize.test.cpp

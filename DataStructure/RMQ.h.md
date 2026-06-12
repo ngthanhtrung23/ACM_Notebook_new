@@ -5,7 +5,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/LCA.h
     title: DataStructure/LCA.h
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: String/SuffixArray.h
     title: String/SuffixArray.h
   _extendedVerifiedWith:
@@ -18,18 +18,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/rmq.test.cpp
     title: DataStructure/test/rmq.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: String/tests/lcp.test.cpp
     title: String/tests/lcp.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: String/tests/suffix_array.test.cpp
     title: String/tests/suffix_array.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: String/tests/suffix_array_queries.test.cpp
     title: String/tests/suffix_array_queries.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://judge.yosupo.jp/problem/staticrmq
@@ -65,7 +65,7 @@ data:
   - String/SuffixArray.h
   - DataStructure/LCA.h
   timestamp: '2022-08-11 17:15:37+08:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - String/tests/suffix_array_queries.test.cpp
   - String/tests/lcp.test.cpp

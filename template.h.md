@@ -231,9 +231,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: Math/tests/euler_phi_stress.test.cpp
     title: Math/tests/euler_phi_stress.test.cpp
-  - icon: ':x:'
-    path: Math/tests/is_prime_yukicoder.test.cpp
-    title: Math/tests/is_prime_yukicoder.test.cpp
   - icon: ':heavy_check_mark:'
     path: Math/tests/rabin_miller_32_stress.test.cpp
     title: Math/tests/rabin_miller_32_stress.test.cpp
@@ -243,27 +240,27 @@ data:
   - icon: ':heavy_check_mark:'
     path: Math/tests/yosupo_primality_rabin_miller.test.cpp
     title: Math/tests/yosupo_primality_rabin_miller.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Misc/tests/aizu_dpl_3_b_largest_01_rectangle.test.cpp
     title: Misc/tests/aizu_dpl_3_b_largest_01_rectangle.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Misc/tests/aizu_dpl_3_c_largest_histogram.test.cpp
     title: Misc/tests/aizu_dpl_3_c_largest_histogram.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Misc/tests/yosupo_int128.test.cpp
     title: Misc/tests/yosupo_int128.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: String/tests/aizu_alds_14_b_string_hash.test.cpp
     title: String/tests/aizu_alds_14_b_string_hash.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: String/tests/yukicoder_1408_string_hash_lcp.test.cpp
     title: String/tests/yukicoder_1408_string_hash_lcp.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: String/tests/zfunc_hash.test.cpp
     title: String/tests/zfunc_hash.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://quangloc99.github.io/2021/07/30/my-CP-debugging-template.html
@@ -328,7 +325,7 @@ data:
   - String/minmove.cpp
   - Misc/Die.cpp
   timestamp: '2022-01-13 13:16:22+08:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Graph/tests/aizu_grl_3_a_articulation_points.test.cpp
   - Graph/tests/aizu_grl_1_c_floyd.test.cpp
@@ -405,7 +402,6 @@ data:
   - Math/tests/aizu_ntl_2_e_bigint_mod.test.cpp
   - Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp
   - Math/tests/aizu_ntl_2_a_bigint_add.test.cpp
-  - Math/tests/is_prime_yukicoder.test.cpp
   - Math/tests/aizu_ntl_1_d_euler_phi.test.cpp
   - Math/tests/aizu_ntl_2_c_bigint_mul.test.cpp
   - Math/tests/cnt_divisors_stress.test.cpp

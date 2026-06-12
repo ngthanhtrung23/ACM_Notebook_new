@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Misc/tests/pipe_utils.test.cpp
     title: Misc/tests/pipe_utils.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://codeforces.com/submissions/Yuu
@@ -99,7 +99,7 @@ data:
   path: Misc/container_pipe_utils.h
   requiredBy: []
   timestamp: '2023-05-21 16:46:44+08:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Misc/tests/pipe_utils.test.cpp
 documentation_of: Misc/container_pipe_utils.h
