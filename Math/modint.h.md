@@ -30,25 +30,25 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/splay_tree.test.cpp
     title: DataStructure/test/splay_tree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp
     title: Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/berlekamp_massey.test.cpp
     title: Math/tests/berlekamp_massey.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/formal_power_series_multiply.test.cpp
     title: Math/tests/formal_power_series_multiply.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/formal_power_series_multiply_any_mod.test.cpp
     title: Math/tests/formal_power_series_multiply_any_mod.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/matrix_mult.test.cpp
     title: Math/tests/matrix_mult.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/ntt.test.cpp
     title: Math/tests/ntt.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/ntt_any_mod.test.cpp
     title: Math/tests/ntt_any_mod.test.cpp
   - icon: ':x:'

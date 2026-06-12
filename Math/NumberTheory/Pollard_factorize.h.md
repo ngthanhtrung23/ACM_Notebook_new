@@ -2,17 +2,17 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/NumberTheory/cnt_divisors.h
     title: Math/NumberTheory/cnt_divisors.h
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/aizu_ntl_1_a_factorize.test.cpp
     title: Math/tests/aizu_ntl_1_a_factorize.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/cnt_divisors_stress.test.cpp
     title: Math/tests/cnt_divisors_stress.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/factorize.test.cpp
     title: Math/tests/factorize.test.cpp
   - icon: ':x:'
@@ -20,7 +20,7 @@ data:
     title: Math/tests/is_prime_yukicoder.test.cpp
   _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://judge.yosupo.jp/problem/factorize
@@ -146,7 +146,7 @@ data:
   requiredBy:
   - Math/NumberTheory/cnt_divisors.h
   timestamp: '2023-10-22 16:42:38+08:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - Math/tests/is_prime_yukicoder.test.cpp
   - Math/tests/cnt_divisors_stress.test.cpp

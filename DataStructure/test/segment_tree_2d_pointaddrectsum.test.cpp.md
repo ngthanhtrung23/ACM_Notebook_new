@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/SegTree2D.h
     title: DataStructure/SegTree2D.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: buffered_reader.h
     title: buffered_reader.h
   _extendedRequiredBy: []

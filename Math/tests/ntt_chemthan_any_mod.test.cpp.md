@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/NumberTheory/CRT_chemthan.h
     title: Math/NumberTheory/CRT_chemthan.h
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/Polynomial/NTT_chemthan.h
     title: Math/Polynomial/NTT_chemthan.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/convolution_mod_1000000007
@@ -118,7 +118,7 @@ data:
   path: Math/tests/ntt_chemthan_any_mod.test.cpp
   requiredBy: []
   timestamp: '2022-08-21 23:32:29+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Math/tests/ntt_chemthan_any_mod.test.cpp
 layout: document

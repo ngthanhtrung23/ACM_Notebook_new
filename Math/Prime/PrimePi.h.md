@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/prime_pi.test.cpp
     title: Math/tests/prime_pi.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://judge.yosupo.jp/problem/counting_primes
@@ -86,7 +86,7 @@ data:
   path: Math/Prime/PrimePi.h
   requiredBy: []
   timestamp: '2022-12-26 15:37:34+08:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Math/tests/prime_pi.test.cpp
 documentation_of: Math/Prime/PrimePi.h

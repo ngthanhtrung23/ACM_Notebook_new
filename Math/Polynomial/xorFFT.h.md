@@ -3,15 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/convolution_and.test.cpp
     title: Math/tests/convolution_and.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/convolution_xor.test.cpp
     title: Math/tests/convolution_xor.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://csacademy.com/blog/fast-fourier-transform-and-variations-of-it
@@ -155,7 +155,7 @@ data:
   path: Math/Polynomial/xorFFT.h
   requiredBy: []
   timestamp: '2022-01-06 05:27:57+08:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Math/tests/convolution_and.test.cpp
   - Math/tests/convolution_xor.test.cpp

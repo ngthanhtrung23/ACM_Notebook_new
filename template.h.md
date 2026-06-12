@@ -192,55 +192,55 @@ data:
   - icon: ':heavy_check_mark:'
     path: Graph/tests/yosupo_mst.test.cpp
     title: Graph/tests/yosupo_mst.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/aizu_ntl_1_a_factorize.test.cpp
     title: Math/tests/aizu_ntl_1_a_factorize.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp
     title: Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/aizu_ntl_1_d_euler_phi.test.cpp
     title: Math/tests/aizu_ntl_1_d_euler_phi.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/aizu_ntl_1_e_extended_euclid.test.cpp
     title: Math/tests/aizu_ntl_1_e_extended_euclid.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/aizu_ntl_2_a_bigint_add.test.cpp
     title: Math/tests/aizu_ntl_2_a_bigint_add.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/aizu_ntl_2_b_bigint_sub.test.cpp
     title: Math/tests/aizu_ntl_2_b_bigint_sub.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/aizu_ntl_2_c_bigint_mul.test.cpp
     title: Math/tests/aizu_ntl_2_c_bigint_mul.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/aizu_ntl_2_c_bigint_mul_karatsuba.test.cpp
     title: Math/tests/aizu_ntl_2_c_bigint_mul_karatsuba.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/aizu_ntl_2_d_bigint_div.test.cpp
     title: Math/tests/aizu_ntl_2_d_bigint_div.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/aizu_ntl_2_e_bigint_mod.test.cpp
     title: Math/tests/aizu_ntl_2_e_bigint_mod.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/aizu_ntl_2_f_bigint_mul_fft.test.cpp
     title: Math/tests/aizu_ntl_2_f_bigint_mul_fft.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/cnt_divisors_stress.test.cpp
     title: Math/tests/cnt_divisors_stress.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/euler_phi_stress.test.cpp
     title: Math/tests/euler_phi_stress.test.cpp
   - icon: ':x:'
     path: Math/tests/is_prime_yukicoder.test.cpp
     title: Math/tests/is_prime_yukicoder.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/rabin_miller_32_stress.test.cpp
     title: Math/tests/rabin_miller_32_stress.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/smallest_prime_factor_stress.test.cpp
     title: Math/tests/smallest_prime_factor_stress.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/yosupo_primality_rabin_miller.test.cpp
     title: Math/tests/yosupo_primality_rabin_miller.test.cpp
   - icon: ':x:'

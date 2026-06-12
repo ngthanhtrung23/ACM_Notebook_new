@@ -3,18 +3,18 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/matrix_det.test.cpp
     title: Math/tests/matrix_det.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/matrix_inverse.test.cpp
     title: Math/tests/matrix_inverse.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/matrix_mult.test.cpp
     title: Math/tests/matrix_mult.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://judge.yosupo.jp/problem/inverse_matrix
@@ -201,7 +201,7 @@ data:
   path: Math/Matrix.h
   requiredBy: []
   timestamp: '2022-12-29 18:10:21+08:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Math/tests/matrix_inverse.test.cpp
   - Math/tests/matrix_mult.test.cpp

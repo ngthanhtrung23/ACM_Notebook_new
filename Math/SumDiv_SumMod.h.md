@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/sumdiv.test.cpp
     title: Math/tests/sumdiv.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://judge.yosupo.jp/problem/sum_of_floor_of_linear
@@ -36,7 +36,7 @@ data:
   path: Math/SumDiv_SumMod.h
   requiredBy: []
   timestamp: '2022-01-06 04:47:02+08:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Math/tests/sumdiv.test.cpp
 documentation_of: Math/SumDiv_SumMod.h

@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/NumberTheory/ExtendedEuclid.h
     title: Math/NumberTheory/ExtendedEuclid.h
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/ntt_chemthan_any_mod_2.test.cpp
     title: Math/tests/ntt_chemthan_any_mod_2.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://oj.vnoi.info/problem/icpc21_mt_d
@@ -51,7 +51,7 @@ data:
   path: Math/NumberTheory/ChineseRemainder.h
   requiredBy: []
   timestamp: '2022-02-06 13:20:09+08:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Math/tests/ntt_chemthan_any_mod_2.test.cpp
 documentation_of: Math/NumberTheory/ChineseRemainder.h

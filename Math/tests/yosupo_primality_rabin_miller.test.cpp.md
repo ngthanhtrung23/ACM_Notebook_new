@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/Prime/RabinMiller.h
     title: Math/Prime/RabinMiller.h
   - icon: ':question:'
@@ -9,9 +9,9 @@ data:
     title: template.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/primality_test
@@ -83,7 +83,7 @@ data:
   path: Math/tests/yosupo_primality_rabin_miller.test.cpp
   requiredBy: []
   timestamp: '2023-05-27 17:03:34+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Math/tests/yosupo_primality_rabin_miller.test.cpp
 layout: document

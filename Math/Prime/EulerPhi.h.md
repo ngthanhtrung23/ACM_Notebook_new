@@ -3,15 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/aizu_ntl_1_d_euler_phi.test.cpp
     title: Math/tests/aizu_ntl_1_d_euler_phi.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/tests/euler_phi_stress.test.cpp
     title: Math/tests/euler_phi_stress.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://www.spoj.com/problems/ETFS/
@@ -66,7 +66,7 @@ data:
   path: Math/Prime/EulerPhi.h
   requiredBy: []
   timestamp: '2022-12-19 21:18:52+08:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Math/tests/euler_phi_stress.test.cpp
   - Math/tests/aizu_ntl_1_d_euler_phi.test.cpp

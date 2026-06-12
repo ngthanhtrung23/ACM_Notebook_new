@@ -7,7 +7,7 @@ data:
   - icon: ':question:'
     path: Math/modint.h
     title: Math/modint.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: buffered_reader.h
     title: buffered_reader.h
   _extendedRequiredBy: []

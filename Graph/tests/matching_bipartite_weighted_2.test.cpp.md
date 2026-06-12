@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Graph/Matching/Hungarian_short.h
     title: Graph/Matching/Hungarian_short.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/assignment
@@ -48,14 +48,14 @@ data:
     \    return {ret, L};\n}\n#line 7 \"Graph/tests/matching_bipartite_weighted_2.test.cpp\"\
     \n\n#define REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)\nlong long c[N][N];\n\
     \nint32_t main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n; cin >>\
-    \ n;\n    REP(i,n) REP(j,n) cin >> c[i][j];\n\n    auto [cost, matchL] = Hungarian<long\
+    \ n;\n    REP(i,n) REP(j,n) cin >> c[i][j];\n\n    auto [cost, matchL] = hungarian<long\
     \ long>(n, n, c);\n    cout << cost << endl;\n    for (int m : matchL) cout <<\
     \ m << ' ';\n    cout << endl;\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/assignment\"\n\n#include\
     \ <bits/stdc++.h>\nusing namespace std;\n\n#include \"../Matching/Hungarian_short.h\"\
     \n\n#define REP(i, a) for (int i = 0, _##i = (a); i < _##i; ++i)\nlong long c[N][N];\n\
     \nint32_t main() {\n    ios::sync_with_stdio(0); cin.tie(0);\n    int n; cin >>\
-    \ n;\n    REP(i,n) REP(j,n) cin >> c[i][j];\n\n    auto [cost, matchL] = Hungarian<long\
+    \ n;\n    REP(i,n) REP(j,n) cin >> c[i][j];\n\n    auto [cost, matchL] = hungarian<long\
     \ long>(n, n, c);\n    cout << cost << endl;\n    for (int m : matchL) cout <<\
     \ m << ' ';\n    cout << endl;\n    return 0;\n}\n"
   dependsOn:
@@ -63,8 +63,8 @@ data:
   isVerificationFile: true
   path: Graph/tests/matching_bipartite_weighted_2.test.cpp
   requiredBy: []
-  timestamp: '2026-06-10 11:21:34+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2026-06-12 15:35:23+08:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Graph/tests/matching_bipartite_weighted_2.test.cpp
 layout: document

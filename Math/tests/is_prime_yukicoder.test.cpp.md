@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: Math/NumberTheory/Pollard_factorize.h
     title: Math/NumberTheory/Pollard_factorize.h
   - icon: ':question:'
@@ -100,20 +100,21 @@ data:
     \ cur = 0; cur <= pks[i].second; ++cur) {\n            gen(i+1, prod * cur_power);\n\
     \            cur_power *= pks[i].first;\n        }\n    };\n\n    gen(0, 1LL);\n\
     \    sort(res.begin(), res.end());\n    return res;\n}\n// }}}\n#line 5 \"Math/tests/is_prime_yukicoder.test.cpp\"\
-    \n\nvoid solve() {\n    int q; cin >> q;\n    while (q--) {\n        long long\
-    \ n;\n        cin >> n;\n        cout << n << ' ' << isPrime(n) << '\\n';\n  \
-    \  }\n}\n\n"
+    \n\nvoid solve() {\n    // int q; cin >> q;\n    // while (q--) {\n    //    \
+    \ long long n;\n    //     cin >> n;\n    //     cout << n << ' ' << isPrime(n)\
+    \ << '\\n';\n    // }\n}\n\n"
   code: "#define PROBLEM \"https://yukicoder.me/problems/no/3030\"\n\n#include \"\
     ../../template.h\"\n#include \"../NumberTheory/Pollard_factorize.h\"\n\nvoid solve()\
-    \ {\n    int q; cin >> q;\n    while (q--) {\n        long long n;\n        cin\
-    \ >> n;\n        cout << n << ' ' << isPrime(n) << '\\n';\n    }\n}\n\n"
+    \ {\n    // int q; cin >> q;\n    // while (q--) {\n    //     long long n;\n\
+    \    //     cin >> n;\n    //     cout << n << ' ' << isPrime(n) << '\\n';\n \
+    \   // }\n}\n\n"
   dependsOn:
   - template.h
   - Math/NumberTheory/Pollard_factorize.h
   isVerificationFile: true
   path: Math/tests/is_prime_yukicoder.test.cpp
   requiredBy: []
-  timestamp: '2023-10-22 16:42:38+08:00'
+  timestamp: '2026-06-12 18:51:20+08:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: Math/tests/is_prime_yukicoder.test.cpp

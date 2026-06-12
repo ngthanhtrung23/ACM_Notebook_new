@@ -1,19 +1,19 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: Math/NumberTheory/Pollard_factorize.h
     title: Math/NumberTheory/Pollard_factorize.h
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/NumberTheory/cnt_divisors.h
     title: Math/NumberTheory/cnt_divisors.h
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/Prime/Sieve.h
     title: Math/Prime/Sieve.h
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/multiplicative_function.h
     title: Math/multiplicative_function.h
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Math/multiplicative_functions_linear.h
     title: Math/multiplicative_functions_linear.h
   - icon: ':question:'
@@ -21,9 +21,9 @@ data:
     title: template.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A
@@ -229,7 +229,7 @@ data:
   path: Math/tests/cnt_divisors_stress.test.cpp
   requiredBy: []
   timestamp: '2023-10-22 16:42:38+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Math/tests/cnt_divisors_stress.test.cpp
 layout: document

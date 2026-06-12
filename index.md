@@ -286,7 +286,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Graph/Matching/HungarianLMH.h
       title: Graph/Matching/HungarianLMH.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/Matching/Hungarian_short.h
       title: Graph/Matching/Hungarian_short.h
     - icon: ':warning:'
@@ -339,19 +339,19 @@ data:
     - icon: ':warning:'
       path: Math/Fraction.h
       title: Math/Fraction.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/LinearRecurrence_BerlekampMassey.h
       title: Math/LinearRecurrence_BerlekampMassey.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/Matrix.h
       title: Math/Matrix.h
     - icon: ':warning:'
       path: Math/Simplex.h
       title: Math/Simplex.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/SumDiv_SumMod.h
       title: Math/SumDiv_SumMod.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/bigint.h
       title: Math/bigint.h
     - icon: ':question:'
@@ -360,13 +360,13 @@ data:
     - icon: ':warning:'
       path: Math/modulo.h
       title: Math/modulo.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/multiplicative_function.h
       title: Math/multiplicative_function.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/multiplicative_functions_linear.h
       title: Math/multiplicative_functions_linear.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/nim_product.h
       title: Math/nim_product.h
   - name: Math/Linear
@@ -379,28 +379,28 @@ data:
       title: Math/Linear/GaussianBinary.h
   - name: Math/NumberTheory
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/NumberTheory/CRT_chemthan.h
       title: Math/NumberTheory/CRT_chemthan.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/NumberTheory/ChineseRemainder.h
       title: Math/NumberTheory/ChineseRemainder.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/NumberTheory/ExtendedEuclid.h
       title: Math/NumberTheory/ExtendedEuclid.h
     - icon: ':warning:'
       path: Math/NumberTheory/FactorialMod.h
       title: Math/NumberTheory/FactorialMod.h
-    - icon: ':x:'
+    - icon: ':question:'
       path: Math/NumberTheory/Pollard_factorize.h
       title: Math/NumberTheory/Pollard_factorize.h
     - icon: ':warning:'
       path: Math/NumberTheory/PrimitiveRoot.h
       title: Math/NumberTheory/PrimitiveRoot.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/NumberTheory/SqrtMod.h
       title: Math/NumberTheory/SqrtMod.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/NumberTheory/cnt_divisors.h
       title: Math/NumberTheory/cnt_divisors.h
     - icon: ':warning:'
@@ -417,45 +417,45 @@ data:
     - icon: ':warning:'
       path: Math/Polynomial/FFT.h
       title: Math/Polynomial/FFT.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/Polynomial/FormalPowerSeries.h
       title: Math/Polynomial/FormalPowerSeries.h
     - icon: ':warning:'
       path: Math/Polynomial/Karatsuba.h
       title: Math/Polynomial/Karatsuba.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/Polynomial/NTT.h
       title: Math/Polynomial/NTT.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/Polynomial/NTT_chemthan.h
       title: Math/Polynomial/NTT_chemthan.h
     - icon: ':warning:'
       path: Math/Polynomial/PolynomialValues.h
       title: Math/Polynomial/PolynomialValues.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/Polynomial/xorFFT.h
       title: Math/Polynomial/xorFFT.h
   - name: Math/Prime
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/Prime/EulerPhi.h
       title: Math/Prime/EulerPhi.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/Prime/PrimePi.h
       title: Math/Prime/PrimePi.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/Prime/RabinMiller.h
       title: Math/Prime/RabinMiller.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/Prime/RabinMiller32.h
       title: Math/Prime/RabinMiller32.h
     - icon: ':warning:'
       path: Math/Prime/SegmentedSieve.h
       title: Math/Prime/SegmentedSieve.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/Prime/Sieve.h
       title: Math/Prime/Sieve.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/Prime/SieveFast.h
       title: Math/Prime/SieveFast.h
   - name: Math/Pure
@@ -580,7 +580,7 @@ data:
       title: String/zfunc.h
   - name: .
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: buffered_reader.h
       title: buffered_reader.h
     - icon: ':x:'
@@ -916,7 +916,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Graph/tests/matching_bipartite_weighted.test.cpp
       title: Graph/tests/matching_bipartite_weighted.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Graph/tests/matching_bipartite_weighted_2.test.cpp
       title: Graph/tests/matching_bipartite_weighted_2.test.cpp
     - icon: ':heavy_check_mark:'
@@ -939,118 +939,118 @@ data:
       title: Graph/tests/yosupo_mst.test.cpp
   - name: Math/tests
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/aizu_ntl_1_a_factorize.test.cpp
       title: Math/tests/aizu_ntl_1_a_factorize.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp
       title: Math/tests/aizu_ntl_1_b_modulo_pow.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/aizu_ntl_1_d_euler_phi.test.cpp
       title: Math/tests/aizu_ntl_1_d_euler_phi.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/aizu_ntl_1_e_extended_euclid.test.cpp
       title: Math/tests/aizu_ntl_1_e_extended_euclid.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/aizu_ntl_2_a_bigint_add.test.cpp
       title: Math/tests/aizu_ntl_2_a_bigint_add.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/aizu_ntl_2_b_bigint_sub.test.cpp
       title: Math/tests/aizu_ntl_2_b_bigint_sub.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/aizu_ntl_2_c_bigint_mul.test.cpp
       title: Math/tests/aizu_ntl_2_c_bigint_mul.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/aizu_ntl_2_c_bigint_mul_karatsuba.test.cpp
       title: Math/tests/aizu_ntl_2_c_bigint_mul_karatsuba.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/aizu_ntl_2_d_bigint_div.test.cpp
       title: Math/tests/aizu_ntl_2_d_bigint_div.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/aizu_ntl_2_e_bigint_mod.test.cpp
       title: Math/tests/aizu_ntl_2_e_bigint_mod.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/aizu_ntl_2_f_bigint_mul_fft.test.cpp
       title: Math/tests/aizu_ntl_2_f_bigint_mul_fft.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/berlekamp_massey.test.cpp
       title: Math/tests/berlekamp_massey.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/cnt_divisors_stress.test.cpp
       title: Math/tests/cnt_divisors_stress.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/convolution_and.test.cpp
       title: Math/tests/convolution_and.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/convolution_xor.test.cpp
       title: Math/tests/convolution_xor.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/euler_phi_stress.test.cpp
       title: Math/tests/euler_phi_stress.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/factorize.test.cpp
       title: Math/tests/factorize.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/formal_power_series_multiply.test.cpp
       title: Math/tests/formal_power_series_multiply.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/formal_power_series_multiply_any_mod.test.cpp
       title: Math/tests/formal_power_series_multiply_any_mod.test.cpp
     - icon: ':x:'
       path: Math/tests/is_prime_yukicoder.test.cpp
       title: Math/tests/is_prime_yukicoder.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/matrix_det.test.cpp
       title: Math/tests/matrix_det.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/matrix_inverse.test.cpp
       title: Math/tests/matrix_inverse.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/matrix_mult.test.cpp
       title: Math/tests/matrix_mult.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/nimber.test.cpp
       title: Math/tests/nimber.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/ntt.test.cpp
       title: Math/tests/ntt.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/ntt_any_mod.test.cpp
       title: Math/tests/ntt_any_mod.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/ntt_chemthan.test.cpp
       title: Math/tests/ntt_chemthan.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/ntt_chemthan_any_mod.test.cpp
       title: Math/tests/ntt_chemthan_any_mod.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/ntt_chemthan_any_mod_2.test.cpp
       title: Math/tests/ntt_chemthan_any_mod_2.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/prime_pi.test.cpp
       title: Math/tests/prime_pi.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/rabin_miller_32_stress.test.cpp
       title: Math/tests/rabin_miller_32_stress.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/sieve.test.cpp
       title: Math/tests/sieve.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/sieve_fast.test.cpp
       title: Math/tests/sieve_fast.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/smallest_prime_factor_stress.test.cpp
       title: Math/tests/smallest_prime_factor_stress.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/sqrt_mod.test.cpp
       title: Math/tests/sqrt_mod.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/sumdiv.test.cpp
       title: Math/tests/sumdiv.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/yosupo_bigint_add.test.cpp
       title: Math/tests/yosupo_bigint_add.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/tests/yosupo_primality_rabin_miller.test.cpp
       title: Math/tests/yosupo_primality_rabin_miller.test.cpp
   - name: Misc/tests
