@@ -76,7 +76,7 @@ data:
   isVerificationFile: false
   path: Graph/Matching/BipartiteMatching.h
   requiredBy: []
-  timestamp: '2026-06-11 21:03:54+08:00'
+  timestamp: '2026-06-12 12:43:46+08:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - Graph/tests/matching_bipartite.test.cpp

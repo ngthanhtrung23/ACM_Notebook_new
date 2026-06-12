@@ -200,12 +200,12 @@ data:
   isVerificationFile: false
   path: Math/Matrix.h
   requiredBy: []
-  timestamp: '2026-06-11 21:03:54+08:00'
+  timestamp: '2026-06-12 12:43:46+08:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - Math/tests/matrix_det.test.cpp
-  - Math/tests/matrix_mult.test.cpp
   - Math/tests/matrix_inverse.test.cpp
+  - Math/tests/matrix_mult.test.cpp
+  - Math/tests/matrix_det.test.cpp
 documentation_of: Math/Matrix.h
 layout: document
 redirect_from:

@@ -468,12 +468,12 @@ data:
   isVerificationFile: false
   path: String/SuffixArray.h
   requiredBy: []
-  timestamp: '2026-06-11 21:03:54+08:00'
+  timestamp: '2026-06-12 12:43:46+08:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - String/tests/suffix_array.test.cpp
-  - String/tests/lcp.test.cpp
   - String/tests/suffix_array_queries.test.cpp
+  - String/tests/lcp.test.cpp
+  - String/tests/suffix_array.test.cpp
 documentation_of: String/SuffixArray.h
 layout: document
 redirect_from:

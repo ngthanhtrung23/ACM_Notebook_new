@@ -123,11 +123,11 @@ data:
   isVerificationFile: false
   path: DataStructure/LiChaoSegTree.h
   requiredBy: []
-  timestamp: '2026-06-11 21:03:54+08:00'
+  timestamp: '2026-06-12 12:43:46+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - DataStructure/test/li_chao_seg_tree_segaddgetmin.test.cpp
   - DataStructure/test/li_chao_seg_tree_lineaddgetmin.test.cpp
+  - DataStructure/test/li_chao_seg_tree_segaddgetmin.test.cpp
 documentation_of: DataStructure/LiChaoSegTree.h
 layout: document
 redirect_from:

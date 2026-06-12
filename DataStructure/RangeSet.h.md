@@ -96,12 +96,12 @@ data:
   isVerificationFile: false
   path: DataStructure/RangeSet.h
   requiredBy: []
-  timestamp: '2026-06-11 21:03:54+08:00'
+  timestamp: '2026-06-12 12:43:46+08:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - DataStructure/test/aizu_dsl_2_d_rangeset.test.cpp
-  - DataStructure/test/yukicoder_674_range_set.test.cpp
   - DataStructure/test/aizu_dsl_4_a_range_set.test.cpp
+  - DataStructure/test/yukicoder_674_range_set.test.cpp
+  - DataStructure/test/aizu_dsl_2_d_rangeset.test.cpp
 documentation_of: DataStructure/RangeSet.h
 layout: document
 redirect_from:

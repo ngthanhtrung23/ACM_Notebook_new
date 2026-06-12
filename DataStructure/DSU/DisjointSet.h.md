@@ -45,13 +45,13 @@ data:
   path: DataStructure/DSU/DisjointSet.h
   requiredBy:
   - Graph/mst.h
-  timestamp: '2026-06-11 21:03:54+08:00'
+  timestamp: '2026-06-12 12:43:46+08:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - DataStructure/test/aizu_dsl_1_a_dsu.test.cpp
-  - DataStructure/test/dsu.test.cpp
-  - Graph/tests/aizu_grl_2_a_mst.test.cpp
   - Graph/tests/yosupo_mst.test.cpp
+  - Graph/tests/aizu_grl_2_a_mst.test.cpp
+  - DataStructure/test/dsu.test.cpp
+  - DataStructure/test/aizu_dsl_1_a_dsu.test.cpp
 documentation_of: DataStructure/DSU/DisjointSet.h
 layout: document
 redirect_from:

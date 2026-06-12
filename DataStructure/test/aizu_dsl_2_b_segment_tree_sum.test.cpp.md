@@ -129,7 +129,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/aizu_dsl_2_b_segment_tree_sum.test.cpp
   requiredBy: []
-  timestamp: '2026-06-11 21:03:54+08:00'
+  timestamp: '2026-06-12 12:43:46+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/aizu_dsl_2_b_segment_tree_sum.test.cpp

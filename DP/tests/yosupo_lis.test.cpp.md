@@ -92,7 +92,7 @@ data:
   isVerificationFile: true
   path: DP/tests/yosupo_lis.test.cpp
   requiredBy: []
-  timestamp: '2026-06-11 21:03:54+08:00'
+  timestamp: '2026-06-12 12:43:46+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DP/tests/yosupo_lis.test.cpp

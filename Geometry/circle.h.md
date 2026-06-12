@@ -149,13 +149,13 @@ data:
   isVerificationFile: false
   path: Geometry/circle.h
   requiredBy: []
-  timestamp: '2026-06-11 21:03:54+08:00'
+  timestamp: '2026-06-12 12:43:46+08:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - Geometry/tests/aizu_cgl_7_g_circle_circle_tangent_points.test.cpp
   - Geometry/tests/aizu_cgl_7_f_circle_tangent_points.test.cpp
-  - Geometry/tests/aizu_cgl_7_d_circle_line_intersection.test.cpp
   - Geometry/tests/aizu_cgl_7_a_cicle_tangents.test.cpp
+  - Geometry/tests/aizu_cgl_7_g_circle_circle_tangent_points.test.cpp
+  - Geometry/tests/aizu_cgl_7_d_circle_line_intersection.test.cpp
   - Geometry/tests/aizu_cgl_7_i_circle_common_area.test.cpp
   - Geometry/tests/aizu_cgl_7_e_circle_circle_intersection.test.cpp
 documentation_of: Geometry/circle.h
