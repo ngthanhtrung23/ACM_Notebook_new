@@ -20,6 +20,14 @@ jobs:
     - name: Install python dependencies
       run: pip3 install "setuptools<81.0.0"
 
+    - name: Cache downloaded test cases
+      uses: actions/cache@v4
+      with:
+        path: .verify-helper/cache
+        key: verify-cache-${{ runner.os }}
+        restore-keys: |
+          verify-cache-${{ runner.os }}
+
     - name: Run tests
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
