@@ -52,7 +52,7 @@ data:
   isVerificationFile: false
   path: Misc/left_nearest_smaller.h
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2022-11-01 15:19:12+08:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - Misc/tests/aizu_dpl_3_c_largest_histogram.test.cpp

@@ -3,15 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/test/wavelet_matrix_rangekthsmallest.test.cpp
     title: DataStructure/test/wavelet_matrix_rangekthsmallest.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/test/wavelet_matrix_staticrangefreq.test.cpp
     title: DataStructure/test/wavelet_matrix_staticrangefreq.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://github.com/dacin21/dacin21_codebook/blob/master/trees/wavelet_matrix.cpp
@@ -167,8 +167,8 @@ data:
   isVerificationFile: false
   path: DataStructure/WaveletMatrix.h
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2022-12-14 02:22:04+08:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/wavelet_matrix_staticrangefreq.test.cpp
   - DataStructure/test/wavelet_matrix_rangekthsmallest.test.cpp

@@ -64,7 +64,7 @@ data:
   isVerificationFile: false
   path: Graph/dijkstra.h
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2022-12-26 16:37:58+08:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - Graph/tests/aizu_grl_1_a_dijkstra_aizu.test.cpp

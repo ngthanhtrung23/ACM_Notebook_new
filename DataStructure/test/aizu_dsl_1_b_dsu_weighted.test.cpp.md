@@ -78,7 +78,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/aizu_dsl_1_b_dsu_weighted.test.cpp
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2023-01-07 01:46:12+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/aizu_dsl_1_b_dsu_weighted.test.cpp

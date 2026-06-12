@@ -47,7 +47,7 @@ data:
   isVerificationFile: false
   path: ML/lightbgm_example.py
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2022-02-06 02:34:43+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: ML/lightbgm_example.py

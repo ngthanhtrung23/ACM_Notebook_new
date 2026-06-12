@@ -177,7 +177,7 @@ data:
   isVerificationFile: false
   path: Graph/MaxFlow/MinCostMaxFlowPR.h
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2023-01-07 01:46:12+08:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - Graph/tests/aizu_grl_6_b_mincost_maxflow.test.cpp

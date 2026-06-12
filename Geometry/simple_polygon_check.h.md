@@ -59,7 +59,7 @@ data:
   isVerificationFile: false
   path: Geometry/simple_polygon_check.h
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2016-01-05 03:45:48+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Geometry/simple_polygon_check.h

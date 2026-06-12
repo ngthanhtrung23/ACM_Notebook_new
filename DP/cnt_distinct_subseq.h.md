@@ -78,7 +78,7 @@ data:
   isVerificationFile: false
   path: DP/cnt_distinct_subseq.h
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2022-12-26 18:08:50+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DP/tests/yosupo_cnt_distinct_subseq.test.cpp

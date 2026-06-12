@@ -69,7 +69,7 @@ data:
   isVerificationFile: true
   path: Graph/tests/aizu_alds1_11_c_bfs.test.cpp
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2022-12-14 02:22:04+08:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: Graph/tests/aizu_alds1_11_c_bfs.test.cpp

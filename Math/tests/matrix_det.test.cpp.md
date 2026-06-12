@@ -343,7 +343,7 @@ data:
   isVerificationFile: true
   path: Math/tests/matrix_det.test.cpp
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2022-12-29 18:10:21+08:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: Math/tests/matrix_det.test.cpp

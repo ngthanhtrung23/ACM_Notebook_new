@@ -90,7 +90,7 @@ data:
   isVerificationFile: true
   path: Math/tests/ntt_chemthan.test.cpp
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2022-08-21 23:32:29+08:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: Math/tests/ntt_chemthan.test.cpp

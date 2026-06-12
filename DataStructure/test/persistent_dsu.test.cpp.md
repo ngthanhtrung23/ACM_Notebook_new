@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/DSU/DSU_persistent.h
     title: DataStructure/DSU/DSU_persistent.h
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/PersistentArray.h
     title: DataStructure/PersistentArray.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/persistent_unionfind
@@ -81,8 +81,8 @@ data:
   isVerificationFile: true
   path: DataStructure/test/persistent_dsu.test.cpp
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-01-07 01:46:12+08:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/persistent_dsu.test.cpp
 layout: document

@@ -63,7 +63,7 @@ data:
   isVerificationFile: true
   path: Graph/tests/aizu_grl_7_a_matching_bipartite.test.cpp
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2023-01-28 18:33:13+08:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: Graph/tests/aizu_grl_7_a_matching_bipartite.test.cpp

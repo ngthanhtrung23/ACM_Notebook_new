@@ -83,7 +83,7 @@ data:
   isVerificationFile: false
   path: Math/multiplicative_functions_linear.h
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2023-01-16 13:01:49+07:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - Math/tests/smallest_prime_factor_stress.test.cpp

@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/SegTree.h
     title: DataStructure/SegTree.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/staticrmq
@@ -98,8 +98,8 @@ data:
   isVerificationFile: true
   path: DataStructure/test/segment_tree_staticrmq.test.cpp
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2022-12-21 14:26:45+08:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/segment_tree_staticrmq.test.cpp
 layout: document

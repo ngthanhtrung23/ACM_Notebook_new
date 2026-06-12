@@ -49,7 +49,7 @@ data:
     - icon: ':warning:'
       path: DataStructure/HeavyLight.cpp
       title: DataStructure/HeavyLight.cpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/HeavyLight_adamant.h
       title: DataStructure/HeavyLight_adamant.h
     - icon: ':warning:'
@@ -61,19 +61,19 @@ data:
     - icon: ':warning:'
       path: DataStructure/LCA_RMQ.h
       title: DataStructure/LCA_RMQ.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/LazySegTree.h
       title: DataStructure/LazySegTree.h
     - icon: ':heavy_check_mark:'
       path: DataStructure/LiChaoSegTree.h
       title: DataStructure/LiChaoSegTree.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/LinkCutTree.h
       title: DataStructure/LinkCutTree.h
     - icon: ':warning:'
       path: DataStructure/OrderedSet.h
       title: DataStructure/OrderedSet.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/PersistentArray.h
       title: DataStructure/PersistentArray.h
     - icon: ':warning:'
@@ -82,22 +82,22 @@ data:
     - icon: ':question:'
       path: DataStructure/RMQ.h
       title: DataStructure/RMQ.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/RangeSet.h
       title: DataStructure/RangeSet.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/SegTree.h
       title: DataStructure/SegTree.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/SegTree2D.h
       title: DataStructure/SegTree2D.h
     - icon: ':warning:'
       path: DataStructure/SegmentTreeBeats.cpp
       title: DataStructure/SegmentTreeBeats.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/WaveletMatrix.h
       title: DataStructure/WaveletMatrix.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/splay_tree.h
       title: DataStructure/splay_tree.h
   - name: DataStructure/DSU
@@ -111,7 +111,7 @@ data:
     - icon: ':warning:'
       path: DataStructure/DSU/DSU_partially_persistent_with_color.h
       title: DataStructure/DSU/DSU_partially_persistent_with_color.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/DSU/DSU_persistent.h
       title: DataStructure/DSU/DSU_persistent.h
     - icon: ':x:'
@@ -134,15 +134,15 @@ data:
     - icon: ':warning:'
       path: DataStructure/Fenwick/Fenwick2D_smallN.h
       title: DataStructure/Fenwick/Fenwick2D_smallN.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/Fenwick/PartiallyPersistentFenwick.h
       title: DataStructure/Fenwick/PartiallyPersistentFenwick.h
   - name: DataStructure/Mo
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/Mo/MoAlgorithm.h
       title: DataStructure/Mo/MoAlgorithm.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/Mo/MoAlgorithmWithUndo.h
       title: DataStructure/Mo/MoAlgorithmWithUndo.h
     - icon: ':warning:'
@@ -187,19 +187,19 @@ data:
     - icon: ':warning:'
       path: Geometry/RectInRect.h
       title: Geometry/RectInRect.h
-    - icon: ':x:'
+    - icon: ':question:'
       path: Geometry/basic.h
       title: Geometry/basic.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Geometry/circle.h
       title: Geometry/circle.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Geometry/closest_pair.h
       title: Geometry/closest_pair.h
     - icon: ':warning:'
       path: Geometry/n_segment_intersects.h
       title: Geometry/n_segment_intersects.h
-    - icon: ':x:'
+    - icon: ':question:'
       path: Geometry/polygon.h
       title: Geometry/polygon.h
     - icon: ':warning:'
@@ -711,120 +711,120 @@ data:
     - icon: ':heavy_check_mark:'
       path: DataStructure/test/link_cut_tree_vertexaddsubtreesum.test.cpp
       title: DataStructure/test/link_cut_tree_vertexaddsubtreesum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp
       title: DataStructure/test/link_cut_tree_vertexsetpathcomposite.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/test/mo_algorithm.test.cpp
       title: DataStructure/test/mo_algorithm.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/test/mo_algorithm_with_undo.test.cpp
       title: DataStructure/test/mo_algorithm_with_undo.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/test/persistent_dsu.test.cpp
       title: DataStructure/test/persistent_dsu.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/test/persistent_fenwick_tree_rmq.test.cpp
       title: DataStructure/test/persistent_fenwick_tree_rmq.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/test/rmq.test.cpp
       title: DataStructure/test/rmq.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/test/segment_tree_2d_pointaddrectsum.test.cpp
       title: DataStructure/test/segment_tree_2d_pointaddrectsum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/test/segment_tree_pointaddrangesum.test.cpp
       title: DataStructure/test/segment_tree_pointaddrangesum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
       title: DataStructure/test/segment_tree_pointsetrangecomposite.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/test/segment_tree_rangeaffinepointget.test.cpp
       title: DataStructure/test/segment_tree_rangeaffinepointget.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
       title: DataStructure/test/segment_tree_rangeaffinerangesum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/test/segment_tree_staticrmq.test.cpp
       title: DataStructure/test/segment_tree_staticrmq.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/test/splay_tree.test.cpp
       title: DataStructure/test/splay_tree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/test/wavelet_matrix_rangekthsmallest.test.cpp
       title: DataStructure/test/wavelet_matrix_rangekthsmallest.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/test/wavelet_matrix_staticrangefreq.test.cpp
       title: DataStructure/test/wavelet_matrix_staticrangefreq.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/test/yosupo_hld_kth_vertex_on_path.test.cpp
       title: DataStructure/test/yosupo_hld_kth_vertex_on_path.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/test/yosupo_rangereversesum_splay.test.cpp
       title: DataStructure/test/yosupo_rangereversesum_splay.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: DataStructure/test/yukicoder_674_range_set.test.cpp
       title: DataStructure/test/yukicoder_674_range_set.test.cpp
   - name: Geometry/tests
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Geometry/tests/aizu_cgl_1_a_basic_projection.test.cpp
       title: Geometry/tests/aizu_cgl_1_a_basic_projection.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Geometry/tests/aizu_cgl_1_b_basic_reflection.test.cpp
       title: Geometry/tests/aizu_cgl_1_b_basic_reflection.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Geometry/tests/aizu_cgl_1_c_basic_ccw.test.cpp
       title: Geometry/tests/aizu_cgl_1_c_basic_ccw.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Geometry/tests/aizu_cgl_2_a_basic_line.test.cpp
       title: Geometry/tests/aizu_cgl_2_a_basic_line.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Geometry/tests/aizu_cgl_2_b_basic_segment_intersect.test.cpp
       title: Geometry/tests/aizu_cgl_2_b_basic_segment_intersect.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Geometry/tests/aizu_cgl_2_c_basic_line_intersection.test.cpp
       title: Geometry/tests/aizu_cgl_2_c_basic_line_intersection.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Geometry/tests/aizu_cgl_2_d_basic_segment_distance.test.cpp
       title: Geometry/tests/aizu_cgl_2_d_basic_segment_distance.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Geometry/tests/aizu_cgl_3_a_polygon_area.test.cpp
       title: Geometry/tests/aizu_cgl_3_a_polygon_area.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Geometry/tests/aizu_cgl_3_b_polygon_is_convex.test.cpp
       title: Geometry/tests/aizu_cgl_3_b_polygon_is_convex.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Geometry/tests/aizu_cgl_3_c_polygon_in_polygon.test.cpp
       title: Geometry/tests/aizu_cgl_3_c_polygon_in_polygon.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Geometry/tests/aizu_cgl_4_a_polygon_convex_hull.test.cpp
       title: Geometry/tests/aizu_cgl_4_a_polygon_convex_hull.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Geometry/tests/aizu_cgl_4_b_polygon_convex_diameter.test.cpp
       title: Geometry/tests/aizu_cgl_4_b_polygon_convex_diameter.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Geometry/tests/aizu_cgl_4_c_polygon_convex_cut.test.cpp
       title: Geometry/tests/aizu_cgl_4_c_polygon_convex_cut.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Geometry/tests/aizu_cgl_5_a_closest_pair.test.cpp
       title: Geometry/tests/aizu_cgl_5_a_closest_pair.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Geometry/tests/aizu_cgl_7_a_cicle_tangents.test.cpp
       title: Geometry/tests/aizu_cgl_7_a_cicle_tangents.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Geometry/tests/aizu_cgl_7_d_circle_line_intersection.test.cpp
       title: Geometry/tests/aizu_cgl_7_d_circle_line_intersection.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Geometry/tests/aizu_cgl_7_e_circle_circle_intersection.test.cpp
       title: Geometry/tests/aizu_cgl_7_e_circle_circle_intersection.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Geometry/tests/aizu_cgl_7_f_circle_tangent_points.test.cpp
       title: Geometry/tests/aizu_cgl_7_f_circle_tangent_points.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Geometry/tests/aizu_cgl_7_g_circle_circle_tangent_points.test.cpp
       title: Geometry/tests/aizu_cgl_7_g_circle_circle_tangent_points.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Geometry/tests/aizu_cgl_7_i_circle_common_area.test.cpp
       title: Geometry/tests/aizu_cgl_7_i_circle_common_area.test.cpp
     - icon: ':x:'

@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/test/mo_algorithm_with_undo.test.cpp
     title: DataStructure/test/mo_algorithm_with_undo.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://www.spoj.com/problems/FREQ2/
@@ -83,8 +83,8 @@ data:
   isVerificationFile: false
   path: DataStructure/Mo/MoAlgorithmWithUndo.h
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2023-10-03 00:47:04-07:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/mo_algorithm_with_undo.test.cpp
 documentation_of: DataStructure/Mo/MoAlgorithmWithUndo.h

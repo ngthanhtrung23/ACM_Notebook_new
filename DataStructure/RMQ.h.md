@@ -15,7 +15,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/lca.test.cpp
     title: DataStructure/test/lca.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/test/rmq.test.cpp
     title: DataStructure/test/rmq.test.cpp
   - icon: ':x:'
@@ -64,7 +64,7 @@ data:
   requiredBy:
   - String/SuffixArray.h
   - DataStructure/LCA.h
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2022-08-11 17:15:37+08:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - String/tests/suffix_array_queries.test.cpp

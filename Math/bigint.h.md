@@ -528,7 +528,7 @@ data:
   isVerificationFile: false
   path: Math/bigint.h
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2023-10-03 01:03:14-07:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - Math/tests/aizu_ntl_2_c_bigint_mul_karatsuba.test.cpp

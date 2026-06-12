@@ -2,16 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/DSU/DSU_persistent.h
     title: DataStructure/DSU/DSU_persistent.h
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/test/persistent_dsu.test.cpp
     title: DataStructure/test/persistent_dsu.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://codeforces.com/contest/707/problem/D
@@ -57,8 +57,8 @@ data:
   path: DataStructure/PersistentArray.h
   requiredBy:
   - DataStructure/DSU/DSU_persistent.h
-  timestamp: '2026-06-12 12:43:46+08:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2022-01-02 20:29:22+08:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/persistent_dsu.test.cpp
 documentation_of: DataStructure/PersistentArray.h

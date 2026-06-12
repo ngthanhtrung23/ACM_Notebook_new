@@ -52,7 +52,7 @@ data:
   isVerificationFile: false
   path: String/kmp.h
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2022-12-25 00:11:23+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: String/kmp.h

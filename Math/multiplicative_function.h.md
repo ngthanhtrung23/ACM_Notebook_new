@@ -80,7 +80,7 @@ data:
   isVerificationFile: false
   path: Math/multiplicative_function.h
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2022-12-27 15:34:50+08:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - Math/tests/cnt_divisors_stress.test.cpp

@@ -45,7 +45,7 @@ data:
   path: DataStructure/DSU/DisjointSet.h
   requiredBy:
   - Graph/mst.h
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2023-01-07 01:46:12+08:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - Graph/tests/yosupo_mst.test.cpp

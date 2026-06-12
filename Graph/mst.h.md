@@ -55,7 +55,7 @@ data:
   isVerificationFile: false
   path: Graph/mst.h
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2024-03-17 02:51:32+00:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - Graph/tests/yosupo_mst.test.cpp

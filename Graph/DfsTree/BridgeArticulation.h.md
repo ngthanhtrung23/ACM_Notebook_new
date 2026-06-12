@@ -71,7 +71,7 @@ data:
   isVerificationFile: false
   path: Graph/DfsTree/BridgeArticulation.h
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2022-08-09 14:38:08+08:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - Graph/tests/aizu_grl_3_a_articulation_points.test.cpp

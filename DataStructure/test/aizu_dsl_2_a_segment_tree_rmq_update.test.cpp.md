@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/SegTree.h
     title: DataStructure/SegTree.h
   - icon: ':question:'
@@ -127,7 +127,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/aizu_dsl_2_a_segment_tree_rmq_update.test.cpp
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2022-12-21 14:26:45+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/aizu_dsl_2_a_segment_tree_rmq_update.test.cpp

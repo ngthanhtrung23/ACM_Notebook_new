@@ -46,7 +46,7 @@ data:
   isVerificationFile: false
   path: Graph/MaxFlow/MinimumCut.h
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2022-11-26 11:47:19+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Graph/MaxFlow/MinimumCut.h

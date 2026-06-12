@@ -39,7 +39,7 @@ data:
   isVerificationFile: false
   path: DataStructure/misc/ndvec.h
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2023-10-22 16:42:38+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: DataStructure/misc/ndvec.h

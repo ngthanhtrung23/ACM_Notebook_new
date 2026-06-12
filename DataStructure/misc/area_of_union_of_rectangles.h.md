@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/LazySegTree.h
     title: DataStructure/LazySegTree.h
   _extendedRequiredBy: []
@@ -184,7 +184,7 @@ data:
   isVerificationFile: false
   path: DataStructure/misc/area_of_union_of_rectangles.h
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2023-01-07 02:15:55+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/area_of_union_of_rectangles.test.cpp

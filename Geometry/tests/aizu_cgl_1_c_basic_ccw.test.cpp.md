@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: Geometry/basic.h
     title: Geometry/basic.h
   - icon: ':question:'
@@ -9,9 +9,9 @@ data:
     title: template.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_C
@@ -144,8 +144,8 @@ data:
   isVerificationFile: true
   path: Geometry/tests/aizu_cgl_1_c_basic_ccw.test.cpp
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2022-07-20 01:28:51+08:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Geometry/tests/aizu_cgl_1_c_basic_ccw.test.cpp
 layout: document

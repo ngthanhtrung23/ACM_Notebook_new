@@ -57,7 +57,7 @@ data:
   isVerificationFile: false
   path: Graph/bfs_using_map.h
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2022-01-07 15:25:45+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Graph/bfs_using_map.h

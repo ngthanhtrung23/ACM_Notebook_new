@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/splay_tree.h
     title: DataStructure/splay_tree.h
   - icon: ':question:'
@@ -9,9 +9,9 @@ data:
     title: Math/modint.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/dynamic_sequence_range_affine_range_sum
@@ -288,8 +288,8 @@ data:
   isVerificationFile: true
   path: DataStructure/test/splay_tree.test.cpp
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-10-15 09:43:20+08:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/splay_tree.test.cpp
 layout: document

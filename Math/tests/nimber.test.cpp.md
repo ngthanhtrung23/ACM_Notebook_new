@@ -52,7 +52,7 @@ data:
   isVerificationFile: true
   path: Math/tests/nimber.test.cpp
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2022-01-06 04:47:02+08:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: Math/tests/nimber.test.cpp

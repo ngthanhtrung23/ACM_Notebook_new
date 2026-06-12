@@ -98,7 +98,7 @@ data:
   isVerificationFile: false
   path: Graph/2sat.h
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2024-06-02 18:23:02+08:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - Graph/tests/two_sat.test.cpp

@@ -58,7 +58,7 @@ data:
   isVerificationFile: false
   path: String/lyndon.cpp
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2022-01-13 13:16:22+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: String/lyndon.cpp

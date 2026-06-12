@@ -50,7 +50,7 @@ data:
   isVerificationFile: false
   path: Math/NumberTheory/ChineseRemainder.h
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2022-02-06 13:20:09+08:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - Math/tests/ntt_chemthan_any_mod_2.test.cpp

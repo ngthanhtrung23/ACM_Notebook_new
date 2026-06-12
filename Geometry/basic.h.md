@@ -3,64 +3,64 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Geometry/tests/aizu_cgl_1_a_basic_projection.test.cpp
     title: Geometry/tests/aizu_cgl_1_a_basic_projection.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Geometry/tests/aizu_cgl_1_b_basic_reflection.test.cpp
     title: Geometry/tests/aizu_cgl_1_b_basic_reflection.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Geometry/tests/aizu_cgl_1_c_basic_ccw.test.cpp
     title: Geometry/tests/aizu_cgl_1_c_basic_ccw.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Geometry/tests/aizu_cgl_2_a_basic_line.test.cpp
     title: Geometry/tests/aizu_cgl_2_a_basic_line.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Geometry/tests/aizu_cgl_2_b_basic_segment_intersect.test.cpp
     title: Geometry/tests/aizu_cgl_2_b_basic_segment_intersect.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Geometry/tests/aizu_cgl_2_c_basic_line_intersection.test.cpp
     title: Geometry/tests/aizu_cgl_2_c_basic_line_intersection.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Geometry/tests/aizu_cgl_2_d_basic_segment_distance.test.cpp
     title: Geometry/tests/aizu_cgl_2_d_basic_segment_distance.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Geometry/tests/aizu_cgl_3_a_polygon_area.test.cpp
     title: Geometry/tests/aizu_cgl_3_a_polygon_area.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Geometry/tests/aizu_cgl_3_b_polygon_is_convex.test.cpp
     title: Geometry/tests/aizu_cgl_3_b_polygon_is_convex.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Geometry/tests/aizu_cgl_3_c_polygon_in_polygon.test.cpp
     title: Geometry/tests/aizu_cgl_3_c_polygon_in_polygon.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Geometry/tests/aizu_cgl_4_a_polygon_convex_hull.test.cpp
     title: Geometry/tests/aizu_cgl_4_a_polygon_convex_hull.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Geometry/tests/aizu_cgl_4_b_polygon_convex_diameter.test.cpp
     title: Geometry/tests/aizu_cgl_4_b_polygon_convex_diameter.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Geometry/tests/aizu_cgl_4_c_polygon_convex_cut.test.cpp
     title: Geometry/tests/aizu_cgl_4_c_polygon_convex_cut.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Geometry/tests/aizu_cgl_5_a_closest_pair.test.cpp
     title: Geometry/tests/aizu_cgl_5_a_closest_pair.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Geometry/tests/aizu_cgl_7_a_cicle_tangents.test.cpp
     title: Geometry/tests/aizu_cgl_7_a_cicle_tangents.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Geometry/tests/aizu_cgl_7_d_circle_line_intersection.test.cpp
     title: Geometry/tests/aizu_cgl_7_d_circle_line_intersection.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Geometry/tests/aizu_cgl_7_e_circle_circle_intersection.test.cpp
     title: Geometry/tests/aizu_cgl_7_e_circle_circle_intersection.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Geometry/tests/aizu_cgl_7_f_circle_tangent_points.test.cpp
     title: Geometry/tests/aizu_cgl_7_f_circle_tangent_points.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Geometry/tests/aizu_cgl_7_g_circle_circle_tangent_points.test.cpp
     title: Geometry/tests/aizu_cgl_7_g_circle_circle_tangent_points.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Geometry/tests/aizu_cgl_7_i_circle_common_area.test.cpp
     title: Geometry/tests/aizu_cgl_7_i_circle_common_area.test.cpp
   - icon: ':x:'
@@ -83,7 +83,7 @@ data:
     title: Geometry/tests/z_polygon_is_convex.test.cpp
   _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://cses.fi/problemset/task/2190/
@@ -248,8 +248,8 @@ data:
   isVerificationFile: false
   path: Geometry/basic.h
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2022-07-20 01:28:51+08:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - Geometry/tests/z_basic_segment_intersect.test.cpp
   - Geometry/tests/aizu_cgl_4_b_polygon_convex_diameter.test.cpp

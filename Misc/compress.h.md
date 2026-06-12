@@ -125,7 +125,7 @@ data:
   - DP/count_inversions.h
   - DP/cnt_distinct_subseq.h
   - DataStructure/Fenwick/Fenwick2D.h
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2022-12-22 10:28:54+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DP/tests/aizu_alds1_5_d_count_inversions.test.cpp

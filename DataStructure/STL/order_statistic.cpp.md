@@ -34,7 +34,7 @@ data:
   isVerificationFile: false
   path: DataStructure/STL/order_statistic.cpp
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2022-12-21 09:44:46+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: DataStructure/STL/order_statistic.cpp

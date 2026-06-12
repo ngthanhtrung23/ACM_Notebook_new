@@ -145,7 +145,7 @@ data:
   path: Math/NumberTheory/Pollard_factorize.h
   requiredBy:
   - Math/NumberTheory/cnt_divisors.h
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2023-10-22 16:42:38+08:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - Math/tests/is_prime_yukicoder.test.cpp

@@ -9,12 +9,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/aizu_dsl_4_a_range_set.test.cpp
     title: DataStructure/test/aizu_dsl_4_a_range_set.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/test/yukicoder_674_range_set.test.cpp
     title: DataStructure/test/yukicoder_674_range_set.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://suisen-cp.github.io/cp-library-cpp/library/datastructure/util/range_set.hpp
@@ -96,8 +96,8 @@ data:
   isVerificationFile: false
   path: DataStructure/RangeSet.h
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2022-12-31 08:30:35+00:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/aizu_dsl_4_a_range_set.test.cpp
   - DataStructure/test/yukicoder_674_range_set.test.cpp

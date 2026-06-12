@@ -70,7 +70,7 @@ data:
   isVerificationFile: false
   path: Misc/Rubik.h
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2015-02-02 18:18:41+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Misc/Rubik.h

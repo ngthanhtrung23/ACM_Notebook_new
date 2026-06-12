@@ -74,7 +74,7 @@ data:
   isVerificationFile: true
   path: Graph/tests/aizu_grl_6_a_maxflow_pr.test.cpp
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2023-01-07 01:46:12+08:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: Graph/tests/aizu_grl_6_a_maxflow_pr.test.cpp

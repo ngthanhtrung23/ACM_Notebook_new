@@ -140,7 +140,7 @@ data:
   path: Math/Polynomial/NTT.h
   requiredBy:
   - Math/Polynomial/FormalPowerSeries.h
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2022-08-21 23:32:29+08:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - Math/tests/formal_power_series_multiply_any_mod.test.cpp

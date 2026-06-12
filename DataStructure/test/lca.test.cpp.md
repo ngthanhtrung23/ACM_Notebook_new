@@ -86,7 +86,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/lca.test.cpp
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2022-12-14 02:22:04+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/lca.test.cpp

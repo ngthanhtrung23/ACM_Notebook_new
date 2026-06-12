@@ -24,12 +24,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: DataStructure/test/hld_vertexsetpathcomposite.test.cpp
     title: DataStructure/test/hld_vertexsetpathcomposite.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/test/yosupo_hld_kth_vertex_on_path.test.cpp
     title: DataStructure/test/yosupo_hld_kth_vertex_on_path.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://cses.fi/problemset/task/1687
@@ -239,8 +239,8 @@ data:
   isVerificationFile: false
   path: DataStructure/HeavyLight_adamant.h
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2023-01-04 02:50:55+08:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/aizu_grl_5_e_hld_edge.test.cpp
   - DataStructure/test/aizu_grl_5_d_hld_edge.test.cpp

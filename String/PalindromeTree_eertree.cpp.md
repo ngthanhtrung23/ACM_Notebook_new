@@ -76,7 +76,7 @@ data:
   isVerificationFile: false
   path: String/PalindromeTree_eertree.cpp
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2022-11-01 16:26:05+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: String/PalindromeTree_eertree.cpp

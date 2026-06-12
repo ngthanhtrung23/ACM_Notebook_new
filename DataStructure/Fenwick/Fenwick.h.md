@@ -57,7 +57,7 @@ data:
   path: DataStructure/Fenwick/Fenwick.h
   requiredBy:
   - DP/count_inversions.h
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2023-01-07 01:54:04+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DP/tests/aizu_alds1_5_d_count_inversions.test.cpp

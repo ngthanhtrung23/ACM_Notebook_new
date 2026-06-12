@@ -89,7 +89,7 @@ data:
   isVerificationFile: true
   path: Graph/tests/aizu_grl_1_c_floyd.test.cpp
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2022-01-13 13:16:22+08:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: Graph/tests/aizu_grl_1_c_floyd.test.cpp

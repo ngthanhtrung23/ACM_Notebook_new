@@ -45,7 +45,7 @@ data:
   isVerificationFile: false
   path: Graph/tree_diameter.h
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2022-11-21 21:56:30+08:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - Graph/tests/aizu_grl_5_a_tree_diameter.test.cpp

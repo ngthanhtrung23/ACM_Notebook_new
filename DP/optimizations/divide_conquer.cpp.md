@@ -87,7 +87,7 @@ data:
   isVerificationFile: false
   path: DP/optimizations/divide_conquer.cpp
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2022-12-26 18:28:23+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: DP/optimizations/divide_conquer.cpp

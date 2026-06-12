@@ -117,7 +117,7 @@ data:
   isVerificationFile: false
   path: DataStructure/DSU/DSU_dynamic_connectivity.h
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2023-01-07 01:46:12+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: DataStructure/DSU/DSU_dynamic_connectivity.h

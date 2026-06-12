@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/HeavyLight_adamant.h
     title: DataStructure/HeavyLight_adamant.h
   - icon: ':question:'
@@ -160,7 +160,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/aizu_grl_5_c_hld_lca.test.cpp
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2023-01-04 02:50:55+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/aizu_grl_5_c_hld_lca.test.cpp

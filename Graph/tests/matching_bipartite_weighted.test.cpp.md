@@ -68,7 +68,7 @@ data:
   isVerificationFile: true
   path: Graph/tests/matching_bipartite_weighted.test.cpp
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2022-01-10 00:30:04+08:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: Graph/tests/matching_bipartite_weighted.test.cpp

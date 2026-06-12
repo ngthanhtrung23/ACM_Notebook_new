@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/test/persistent_fenwick_tree_rmq.test.cpp
     title: DataStructure/test/persistent_fenwick_tree_rmq.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"DataStructure/Fenwick/PartiallyPersistentFenwick.h\"\n//\
@@ -52,8 +52,8 @@ data:
   isVerificationFile: false
   path: DataStructure/Fenwick/PartiallyPersistentFenwick.h
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2023-01-07 01:54:04+08:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - DataStructure/test/persistent_fenwick_tree_rmq.test.cpp
 documentation_of: DataStructure/Fenwick/PartiallyPersistentFenwick.h

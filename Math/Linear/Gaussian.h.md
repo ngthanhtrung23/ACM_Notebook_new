@@ -77,7 +77,7 @@ data:
   isVerificationFile: false
   path: Math/Linear/Gaussian.h
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2021-12-21 14:25:18+08:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Math/Linear/Gaussian.h

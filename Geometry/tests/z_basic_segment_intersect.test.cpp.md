@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: Geometry/basic.h
     title: Geometry/basic.h
   - icon: ':question:'
@@ -138,7 +138,7 @@ data:
   isVerificationFile: true
   path: Geometry/tests/z_basic_segment_intersect.test.cpp
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2022-07-20 01:28:51+08:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: Geometry/tests/z_basic_segment_intersect.test.cpp

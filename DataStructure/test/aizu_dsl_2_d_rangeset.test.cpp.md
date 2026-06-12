@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: DataStructure/RangeSet.h
     title: DataStructure/RangeSet.h
   - icon: ':question:'
@@ -114,7 +114,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/aizu_dsl_2_d_rangeset.test.cpp
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2022-12-31 08:30:35+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/aizu_dsl_2_d_rangeset.test.cpp

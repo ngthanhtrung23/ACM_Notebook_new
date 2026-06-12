@@ -102,7 +102,7 @@ data:
   isVerificationFile: true
   path: DataStructure/test/li_chao_seg_tree_segaddgetmin.test.cpp
   requiredBy: []
-  timestamp: '2026-06-12 12:43:46+08:00'
+  timestamp: '2022-01-06 02:48:27+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: DataStructure/test/li_chao_seg_tree_segaddgetmin.test.cpp
