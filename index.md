@@ -243,6 +243,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Graph/bipartite_edge_coloring.h
       title: Graph/bipartite_edge_coloring.h
+    - icon: ':warning:'
+      path: Graph/cactus.h
+      title: Graph/cactus.h
     - icon: ':heavy_check_mark:'
       path: Graph/dijkstra.h
       title: Graph/dijkstra.h
