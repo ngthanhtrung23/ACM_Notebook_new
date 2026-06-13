@@ -340,6 +340,9 @@ data:
   - name: Math
     pages:
     - icon: ':warning:'
+      path: Math/DynamicModInt.h
+      title: Math/DynamicModInt.h
+    - icon: ':warning:'
       path: Math/Fraction.h
       title: Math/Fraction.h
     - icon: ':heavy_check_mark:'
